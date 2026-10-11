@@ -1,11 +1,10 @@
-/* QR Code Generator: boot. Builds the single view and the batch view, wires the Commands button, registers the TlbxCmd commands,
- * and marks the page ready for the tests. Classic script, runs once the page is parsed. */
+/* QR Code Generator: boot. Builds the page (header, tabs, panels, preview), the batch tab and the commands, then marks the page ready
+ * for the tests. Classic script, runs once the page is parsed. */
 (function () {
   'use strict';
   function boot() {
     window.QRApp.init();
     window.QRBatch.init();
-    document.getElementById('qr-cmd').addEventListener('click', () => { if (window.TlbxCmd && TlbxCmd.open) TlbxCmd.open(); });
     window.QRCommands.register();
     document.body.classList.add('ready');
   }

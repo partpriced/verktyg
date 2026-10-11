@@ -1,5 +1,5 @@
 /* Presentations — ui/view-state: coming back to Presentations reopens the presentation you left (the Files file, or
- * the draft) on the same slide, with the same objects selected. Unsaved edits come back from the draft (io/draft.js);
+ * the open tab) on the same slide, with the same objects selected. The tabs and their unsaved edits come back from the strip (ui/tabs.js);
  * the place itself is kept in TlbxSession. Restored only for the same file. Exposes SS.viewState. */
 (function () {
   'use strict';
