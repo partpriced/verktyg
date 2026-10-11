@@ -18,7 +18,7 @@
       W.TlbxProfile.reset('faces');
       W.TlbxFaces.setBackend(stub());
       expect(W.TlbxFaces.setEnabled(true).ok).toBe(true);
-      rec = await H.put(await DT.png('#a2fff6', 40, 30), { name: 'portrait.png', from: 'clean' });
+      rec = await H.get(await H.put(await DT.png('#a2fff6', 40, 30), { name: 'portrait.png', from: 'clean' }));
       await DR.refresh(); DR.render();
       expect(DR.isFaceable(rec)).toBe(true);
     });
