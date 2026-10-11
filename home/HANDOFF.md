@@ -1,7 +1,8 @@
 # Homepage handoff
 
 ## Files
-- `index.html`: intro, Apps / Games / Experiments shelves, Status board, the Authenticator view (`#detector`), footer
+- `index.html`: intro (trust row), "Why it's different" strip, Business apps and Creative apps shelves (under `#apps`),
+  Status board, the Authenticator view (`#detector`), footer
   (licence and trademark line). Loads `style/*.css`, `home/home.css`, the buddy CSS, `shared/apps.js`, `shared/hub.js`,
   the `tlbx/` engine, `app.js`, `home/catalog.js`, `motion.js` and `home/mascot/index.js` (module).
 - `app.js`: routing (home vs `#detector`), the live counter and the Authenticator. Clicks only count as navigation on

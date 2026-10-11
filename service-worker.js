@@ -4,7 +4,7 @@
  * Only same-origin GET requests are handled. Other origins are never cached or intercepted. */
 'use strict';
 
-const VERSION = 'v5';
+const VERSION = 'v6';
 const CACHE = 'worksuite-' + VERSION;
 const OFFLINE = '/offline.html';
 const STATIC = /\.(m?js|css|woff2?|ttf|otf|png|jpe?g|webp|gif|svg|ico|wasm|json|glb|bcmap|pfb)$/i;
@@ -110,7 +110,7 @@ const PRECACHE = [
   '/imageeditor/js/layers/fx-rows.js', '/imageeditor/js/layers/fx.js', '/imageeditor/js/tools/eyedrop.js',
   '/imageeditor/js/tools/fill.js', '/imageeditor/js/tools/heal.js', '/imageeditor/js/tools/paint.js',
   '/imageeditor/js/tools/redeye.js', '/imageeditor/js/tools/select.js', '/imageeditor/js/tools/state.js',
-  '/imageeditor/js/tools/stroke.js', '/imageeditor/js/tools/transform.js', '/imageeditor/js/type/edit.js',
+  '/imageeditor/js/tools/stroke.js', '/imageeditor/js/tools/transform.js', '/imageeditor/js/tools/transform-idle.js', '/imageeditor/js/type/edit.js',
   '/imageeditor/js/type/model.js', '/imageeditor/js/type/props.js', '/imageeditor/js/ui/chrome.js',
   '/imageeditor/js/ui/color-picker.js', '/imageeditor/js/ui/context.js', '/imageeditor/js/ui/dialogs.js',
   '/imageeditor/js/ui/doc-dialogs.js', '/imageeditor/js/ui/filter-dialog.js', '/imageeditor/js/ui/fx-dialog.js',
