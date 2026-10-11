@@ -1,4 +1,4 @@
-/* Contacts: the .scontacts file (JSON, kept in Files) and the export table. Each export returns
+/* Contacts: the .scontacts file (JSON, an import and export format) and the export table. Each export returns
  * { blob, name } so the app can download it and save the same file to Files.
  * Classic script. Adds TlbxContacts.format. */
 (function () {
