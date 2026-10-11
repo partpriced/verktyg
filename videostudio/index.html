@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="css/timeline.css" data-src="videostudio/css/timeline.css">
   <link rel="stylesheet" href="css/themes.css" data-src="videostudio/css/themes.css">
   <link rel="stylesheet" href="css/templates.css" data-src="videostudio/css/templates.css">
+  <link rel="stylesheet" href="css/anim.css" data-src="videostudio/css/anim.css">
   <link rel="stylesheet" href="../shared/video/lane.css" data-src="shared/video/lane.css">
   <link rel="manifest" href="/manifest.webmanifest">
 </head>
@@ -116,9 +117,13 @@
   <script src="../shared/video/orient.js" data-src="shared/video/orient.js"></script>
   <script src="../shared/video/random-edit.js" data-src="shared/video/random-edit.js"></script>
   <script src="../shared/video/lane-view.js" data-src="shared/video/lane-view.js"></script>
+  <script src="../shared/motion/easing.js" data-src="shared/motion/easing.js"></script>
+  <script src="../shared/motion/track.js" data-src="shared/motion/track.js"></script>
   <script src="js/core/util.js" data-src="videostudio/js/core/util.js"></script>
   <script src="js/ui/icons.js" data-src="videostudio/js/ui/icons.js"></script>
   <script src="js/core/model.js" data-src="videostudio/js/core/model.js"></script>
+  <script src="js/core/anim.js" data-src="videostudio/js/core/anim.js"></script>
+  <script src="js/core/fx-random.js" data-src="videostudio/js/core/fx-random.js"></script>
   <script src="js/core/history.js" data-src="videostudio/js/core/history.js"></script>
   <script src="js/core/edit.js" data-src="videostudio/js/core/edit.js"></script>
   <script src="js/core/layout.js" data-src="videostudio/js/core/layout.js"></script>
@@ -128,12 +133,21 @@
   <script src="js/ui/app.js" data-src="videostudio/js/ui/app.js"></script>
   <script src="js/ui/cmd-fallback.js" data-src="videostudio/js/ui/cmd-fallback.js"></script>
   <script src="js/ui/commands.js" data-src="videostudio/js/ui/commands.js"></script>
+  <script src="../shared/config/schema.js" data-src="shared/config/schema.js"></script>
+  <script src="../shared/config/validate.js" data-src="shared/config/validate.js"></script>
+  <script src="../shared/config/io.js" data-src="shared/config/io.js"></script>
+  <script src="../shared/config/prompt.js" data-src="shared/config/prompt.js"></script>
+  <script src="../shared/config/dialog.js" data-src="shared/config/dialog.js"></script>
+  <script src="../shared/config/dialog-ai.js" data-src="shared/config/dialog-ai.js"></script>
+  <script src="js/io/config-map.js" data-src="videostudio/js/io/config-map.js"></script>
+  <script src="js/io/config.js" data-src="videostudio/js/io/config.js"></script>
   <script src="js/media/analyze.js" data-src="videostudio/js/media/analyze.js"></script>
   <script src="js/media/library.js" data-src="videostudio/js/media/library.js"></script>
   <script src="js/media/demux.js" data-src="videostudio/js/media/demux.js"></script>
   <script src="js/media/frames.js" data-src="videostudio/js/media/frames.js"></script>
   <script src="js/render/grade.js" data-src="videostudio/js/render/grade.js"></script>
   <script src="js/render/text.js" data-src="videostudio/js/render/text.js"></script>
+  <script src="js/render/fx-draw.js" data-src="videostudio/js/render/fx-draw.js"></script>
   <script src="js/render/compositor.js" data-src="videostudio/js/render/compositor.js"></script>
   <script src="js/render/vpool.js" data-src="videostudio/js/render/vpool.js"></script>
   <script src="js/render/audiomix.js" data-src="videostudio/js/render/audiomix.js"></script>
@@ -163,6 +177,7 @@
   <script src="js/ui/insp-fields.js" data-src="videostudio/js/ui/insp-fields.js"></script>
   <script src="js/ui/inspector.js" data-src="videostudio/js/ui/inspector.js"></script>
   <script src="js/ui/insp-clip.js" data-src="videostudio/js/ui/insp-clip.js"></script>
+  <script src="js/ui/insp-anim.js" data-src="videostudio/js/ui/insp-anim.js"></script>
   <script src="js/ui/progress.js" data-src="videostudio/js/ui/progress.js"></script>
   <script src="js/ui/transport.js" data-src="videostudio/js/ui/transport.js"></script>
   <script src="js/ui/export-dialog.js" data-src="videostudio/js/ui/export-dialog.js"></script>

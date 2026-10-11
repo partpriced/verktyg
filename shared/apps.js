@@ -88,7 +88,7 @@
       features: ['Text, code and image pastes', 'Highlighting for six languages', 'Random link IDs and expiry labels', 'Copy, download and a local share link'],
       icon: 'doc', status: 'building' }),
     A('hex', 'app', 'Hex Editor', 'hex/', 'View and edit any file as bytes. Saved to Files.', { group: 'business',
-      accepts: ['*'],
+      accepts: [],
       features: ['Offset, hex and ASCII columns, with undo and redo', 'Find bytes or text, and go to any offset', 'Pages large files, so a 100 MB file opens', 'Open from and save to Files'],
       icon: 'doc', status: 'building' }),
     A('convert', 'app', 'Convert', 'convert/', 'Images, PDFs, data and text, converted on your device.', { group: 'business', tool: true,
