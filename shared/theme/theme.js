@@ -19,10 +19,10 @@
   }
   /** The real themes. Every theme has all five tokens; System resolves to one of these. */
   var THEMES = Object.freeze([
-    th('light', 'Light', 'light', '#ebe7de', '#f8f6f1', '#0a0a0a', '#006f64', '#dcd6c9'),
-    th('dark', 'Dark', 'dark', '#0a0a0a', '#151518', '#f1ede4', '#a2fff6', '#2a2a30'),
+    th('light', 'Light', 'light', '#ebe7de', '#f8f6f1', '#0a0a0a', '#006f64', '#8e8b82'),
+    th('dark', 'Dark', 'dark', '#0a0a0a', '#151518', '#f1ede4', '#a2fff6', '#66666a'),
     th('classic', 'Classic 98', 'light', '#c0c0c0', '#ffffff', '#000000', '#000080', '#808080'),
-    th('lime', 'Accent', 'dark', '#061311', '#0c201e', '#dcfffb', '#a2fff6', '#1a4743'),
+    th('lime', 'Accent', 'dark', '#061311', '#0c201e', '#dcfffb', '#a2fff6', '#5f713e'),
   ]);
   var IDS = THEMES.map(function (t) { return t.id; });
   var byId = {};
