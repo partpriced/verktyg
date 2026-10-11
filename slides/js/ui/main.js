@@ -14,6 +14,7 @@
     SS.sorter.mount(document.getElementById('slides-list'));
     SS.inspector.mount(document.getElementById('inspector'));
     SS.toolbar.mount();
+    SS.ctxmenu.mount();
     SS.commands.setup();
     var launch = window.TlbxHub ? await TlbxHub.consumeLaunch() : null;
     await SS.files.boot(launch);
