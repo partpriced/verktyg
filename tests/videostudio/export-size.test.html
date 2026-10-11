@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Video Editor export size tests</title>
+  <style>body { margin: 0; background: #111; } iframe { border: 0; display: block; } #app { width: 1280px; height: 760px; }</style>
+</head>
+<body>
+  <!-- Export at a chosen size from a 1920×1080 source: output size and picture fit, compared with the preview. -->
+  <iframe id="app"></iframe>
+  <script src="../harness.js"></script>
+  <script src="videoedit.helpers.js"></script>
+  <script src="export-size.spec.js"></script>
+  <script>TlbxTest.run({ name: 'Video Editor export size' });</script>
+</body>
+</html>
