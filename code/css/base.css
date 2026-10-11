@@ -1,26 +1,19 @@
 /* Code Editor: layout, tokens and the chrome (toolbar, file tree, tabs, status bar, empty state). */
+/* Colours come from the shared ITpris theme (shared/theme/theme.js sets --sl-* on the page). The fallbacks are the Dark look. */
 :root {
-  --cd-bg: #0c0e12; --cd-panel: #14171e; --cd-line: #262d3a; --cd-fg: #ebedf2; --cd-dim: #9ba6bc; --cd-faint: #647596;
-  --cd-accent: #ffeae8; --cd-hover: rgba(255, 255, 255, .06); --cd-on: rgba(255, 234, 232, .12);
+  --cd-bg: var(--sl-background, #0c0e12); --cd-panel: var(--sl-surface, #14171e); --cd-line: var(--sl-border, #262d3a);
+  --cd-fg: var(--sl-text, #ebedf2); --cd-dim: color-mix(in srgb, var(--cd-fg) 75%, transparent); --cd-faint: color-mix(in srgb, var(--cd-fg) 65%, transparent);
+  --cd-accent: var(--sl-accent, #ffeae8); --cd-ink: var(--sl-on-accent, #0c0e12);
+  --cd-hover: color-mix(in srgb, var(--cd-fg) 7%, transparent); --cd-on: color-mix(in srgb, var(--cd-accent) 14%, transparent);
   --cd-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   --cd-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* syntax colours: the light set on the light and Classic 98 themes, the dark set elsewhere */
   --cd-kw: #ff9ec7; --cd-str: #f5d3d0; --cd-num: #ffcb6b; --cd-com: #7b7f8a; --cd-fn: #82aaff; --cd-tag: #ff7b7b;
   --cd-attr: #f5c178; --cd-prop: #9ad8ff; --cd-type: #c3a6ff; --cd-op: #c1c8d6; --cd-err: #ff4f6e;
   --cd-tree-w: 232px;
   color-scheme: dark;
 }
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) {
-    --cd-bg: #f9fafb; --cd-panel: #edeff3; --cd-line: #d0d5e0; --cd-fg: #181c24; --cd-dim: #4e5c76; --cd-faint: #7786a4;
-    --cd-accent: #c00d00; --cd-hover: rgba(0, 0, 0, .05); --cd-on: rgba(192, 13, 0, .12);
-    --cd-kw: #a2215f; --cd-str: #2b6e1c; --cd-num: #9a5b00; --cd-com: #7f8590; --cd-fn: #1f5bb5; --cd-tag: #b3261e;
-    --cd-attr: #8a4b00; --cd-prop: #0d5f7d; --cd-type: #6a2fb5; --cd-op: #323a4b; --cd-err: #b3261e;
-    color-scheme: light;
-  }
-}
-:root[data-theme="light"] {
-  --cd-bg: #f9fafb; --cd-panel: #edeff3; --cd-line: #d0d5e0; --cd-fg: #181c24; --cd-dim: #4e5c76; --cd-faint: #7786a4;
-  --cd-accent: #c00d00; --cd-hover: rgba(0, 0, 0, .05); --cd-on: rgba(192, 13, 0, .12);
+:root[data-tlbx-theme="light"], :root[data-tlbx-theme="classic"] {
   --cd-kw: #a2215f; --cd-str: #2b6e1c; --cd-num: #9a5b00; --cd-com: #7f8590; --cd-fn: #1f5bb5; --cd-tag: #b3261e;
   --cd-attr: #8a4b00; --cd-prop: #0d5f7d; --cd-type: #6a2fb5; --cd-op: #323a4b; --cd-err: #b3261e;
   color-scheme: light;
