@@ -1,20 +1,24 @@
-/* Donate link. Classic script, exposes window.TlbxDonate. Renders into every [data-donate] element, but only when
+/* Tip jar link (the donate link). Classic script, exposes window.TlbxDonate. Renders into every [data-donate] element, but only when
  * config patreonUrl is set. With an empty URL the element stays hidden and nothing is rendered. */
 (function () {
   'use strict';
   var cfg = window.TLBX_CONSENT_CONFIG;
 
-  /** Fills one [data-donate] container with the link (or hides it when there is no URL). */
+  /** Fills one [data-donate] container with the link (or hides it when there is no URL). Only the link it made before
+   * is replaced: the container may also hold a heading and text (Settings does), and those stay. */
   function render(el) {
     if (!el) return false;
-    while (el.firstChild) el.removeChild(el.firstChild);
+    for (var i = el.children.length - 1; i >= 0; i--) {
+      if (el.children[i].hasAttribute('data-donate-link')) el.removeChild(el.children[i]);
+    }
     if (!cfg.patreonUrl) { el.hidden = true; return false; }
     var a = document.createElement('a');
+    a.setAttribute('data-donate-link', '');
     a.className = 'btn';
     a.href = cfg.patreonUrl;
     a.target = '_blank';
     a.rel = 'noopener';
-    a.textContent = 'Support ITpris Verktyg on Patreon';
+    a.textContent = 'Tip jar';
     el.append(a);
     el.hidden = false;
     return true;

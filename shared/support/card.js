@@ -1,4 +1,4 @@
-/* The support card's contents: Helper, the ask, Donate, the ads slider (or the ad slot with "Turn off"), "No thanks" and ×.
+/* The support card's contents: Helper, the ask, the Tip jar link, the ads slider (or the ad slot with "Turn off"), "No thanks" and ×.
  * Classic script, exposes window.TlbxSupportCard.build({ onClose, onNoThanks }), .setBrand(json), .config().
  * Writes no storage itself. Ads go through TlbxConsent.setChoices only (the one place ads load). Needs
  * shared/consent (config, state, consent-mode) on the page for the ads row; without it the row is hidden.
@@ -121,7 +121,7 @@
     var actions = el('div', 'tlbxsup-actions');
     var url = patreonUrl();
     if (flags.donate && url) {
-      var a = el('a', 'tlbxsup-btn', 'Donate', 'support.donate');
+      var a = el('a', 'tlbxsup-btn', 'Tip jar', 'support.donate');
       a.href = url; a.target = '_blank'; a.rel = 'noopener';
       actions.append(a);
     }
