@@ -1,6 +1,11 @@
 /* Helper, the homepage mascot (home/mascot/). Tokens come from style/base.css. */
-body.has-helpbot { position: relative; }
-.helpbot-layer { position: absolute; inset: 0; z-index: 15; overflow: clip; pointer-events: none; }
+/* The layer spans the whole page (its height is kept in sync by engine.js) and lets clicks through. */
+.helpbot-layer { position: absolute; left: 0; top: 0; width: 100%; z-index: 15; overflow: clip; pointer-events: none; }
+.helpbot-layer[hidden], .helpbot-hud[hidden] { display: none; }
+/* In apps he turns into a ghost while you work (press, drag, paint, play). */
+.helpbot-layer.is-ghost .helpbot { opacity: .28; transition: opacity .2s; }
+.helpbot-layer.is-ghost .helpbot-hit, .helpbot-layer.is-ghost .helpbot-say { pointer-events: none; }
+@media print { .helpbot-layer, .helpbot-hud { display: none; } }
 .helpbot { position: absolute; left: 0; top: 0; will-change: transform; }
 .helpbot[hidden] { display: none; }
 .helpbot-svg { position: absolute; inset: 0; overflow: visible; pointer-events: none; transition: filter .3s; }
