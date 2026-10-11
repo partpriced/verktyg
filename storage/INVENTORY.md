@@ -72,6 +72,7 @@ Keys marked "unversioned" have no envelope. Their readers accept a missing or pa
 | Owner | Key | Version | Record format | Read by | Upgrade |
 |---|---|---|---|---|---|
 | shared/profile | `tlbx-profile` | envelope v1 | `{ v: 1, data: { <app>: { <key>: value } } }` | every app through TlbxProfile; Settings | v1 envelope; the flat object before it is still read (tested) |
+| shared/theme | `tlbx-profile` (app `theme`, key `mode`) | envelope v1 (same key as above) | `system` (default, stored as no override), `light`, `dark`, `classic` or `lime` | shared/theme (every page), Settings | the choice is the default when unset; the app keys below are the fallback for a person who chose before it existed (tested) |
 | shared/consent | `tlbx-consent` | record `version` = policy version (config.js, now 2) | `{ version, timestamp, categories: { necessary, analytics, ads, rates } }` | consent banner, Settings, rates-ecb, ledger rates | old policy records are kept; they are asked again and shown as the default (tested) |
 | shared/nav | `tlbx-nav` | envelope v1 | `{ v: 1, apps: { <app>: { preset, custom: { from, bindings } \| null } } }` | every app through TlbxNav.store; Settings | v1; unknown preset ids fall back to ITpris without rewriting (tested) |
 | shared/sync/config.js | `tlbx-sync` | unversioned | `{ <provider>: { clientId, lastSync } }` | shared/sync | unversioned; missing fields take defaults |
@@ -87,6 +88,8 @@ Keys marked "unversioned" have no envelope. Their readers accept a missing or pa
 | shared/guides | `tlbxguides.state` and `tlbxguides.state.<app>` | unversioned | guide panel state | Guides panel | unversioned; `deepAssign` onto defaults |
 
 ## localStorage: apps
+
+The 18 theme keys below are written by `shared/theme/theme.js` whenever the person picks a theme in Settings (JSON string, or the `theme` field of `tlbx-ai.prefs`, or a plain string for `vectoreditor.theme`). The value is the app's own name for the theme (`pro` for Dark; `system` where the choice follows the operating system, which the app ignores). An app keeps its own value when it differs from the choice, so a theme changed in that app's menu stays on that page.
 
 | Owner | Key | Version | Record format | Read by | Upgrade |
 |---|---|---|---|---|---|
@@ -112,7 +115,7 @@ Keys marked "unversioned" have no envelope. Their readers accept a missing or pa
 | crm/index.html | `tlbx-crm.theme` | unversioned (JSON string) | theme name | CRM, first paint | unversioned |
 | invoices/index.html | `tlbx-invoices.theme` | unversioned (JSON string) | theme name | Invoices, first paint | unversioned |
 | orders/index.html | `tlbx-orders.theme` | unversioned (JSON string) | theme name | Orders, first paint | unversioned |
-| contacts/index.html | `tlbx-contacts.theme` | unversioned (JSON string) | theme name | Contacts, first paint | unversioned |
+| contacts | none | none | Contacts has no theme key; it follows the operating system and its own `data-theme` (light or dark), set by shared/theme | Contacts | n/a |
 | contacts/js/app/state.js | `tlbx-contacts.cc` | unversioned scalar | default country code for phone numbers (E.164), per viewer | Contacts | unversioned scalar; `''` on error |
 | ledger/index.html | `tlbx-ledger.theme` | unversioned (JSON string) | theme name | Ledger, first paint | unversioned |
 | press/index.html | `tlbx.press.theme` | unversioned (JSON string) | theme name | Page Layout, first paint | unversioned |
