@@ -10,9 +10,9 @@
     await CT.clearDrafts();
     const fr = document.getElementById('app');
     fr.src = 'about:blank';
-    await sleep(60);
+    await waitFor(() => fr.contentWindow && fr.contentWindow.location.href === 'about:blank', { timeout: 5000 });
     fr.src = '../../contacts/index.html';
-    await waitFor(() => fr.contentWindow && fr.contentWindow.TlbxContacts && fr.contentWindow.TlbxContacts.ready, { timeout: 30000 });
+    await waitFor(() => fr.contentWindow && fr.contentWindow.location.pathname.endsWith('/contacts/index.html') && fr.contentWindow.TlbxContacts && fr.contentWindow.TlbxContacts.ready, { timeout: 30000 });
     const win = fr.contentWindow;
     win.TlbxContacts.state.setList(list);
     await sleep(20);
