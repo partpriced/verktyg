@@ -32,6 +32,10 @@
       accepts: ['video/*', 'audio/*', 'image/*'],
       features: ['Multi-track timeline', 'Trim, split, transitions & titles', 'Hardware MP4 export (WebCodecs)', 'Offline .html'],
       shot: 'assets/shots/videoedit.jpg', icon: 'film', status: 'building' }),
+    A('drive', 'app', 'Files', 'drive/', 'Every file from every app, in one local drive.', {
+      accepts: ['*'],
+      features: ['Folders, stars, Trash & search', 'Grid, list, columns, node graph & disk usage', 'Duplicate finder', 'One-file backup & restore'],
+      shot: 'assets/shots/drive.jpg', icon: 'folder', status: 'beta' }),
     A('lighter', 'experiment', 'Lighter', 'lighter/', 'Flick it. Strike it. ITpris flames.', { shot: 'assets/shots/lighter.jpg' }),
     A('unsubscribe', 'experiment', 'Unsubscribe', 'unsubscribe/', 'Every dark pattern on the internet, in one form.', { shot: 'assets/shots/unsubscribe.jpg' }),
     A('authenticator', 'experiment', 'AI Text Detector', '#detector', 'Check whether a text reads as machine-written.', { shot: 'assets/shots/authenticator.jpg' }),
