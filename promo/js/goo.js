@@ -1,3 +1,4 @@
+// Helper, metaball circles through an SVG goo filter.
 // helpbot() returns { el, pose(t, o) }: pose is a pure function of time.
 import { h } from './ease.js';
 
