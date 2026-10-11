@@ -54,6 +54,17 @@ node tools/capture/render-promo.mjs --only h --from 0 --to 10   # a quick test r
 - `window.__promo`: `seek(t)` returns a Promise that resolves once every visible clip has seeked; also `play()`, `pause()`, `wav()` (base64 WAV), `duration`.
 - Adding an app to `shared/apps.js` adds a scene automatically, which makes the video longer. Re-run `capture.mjs --only <id>` and then `render-promo.mjs`.
 
-## Known limits / next steps
-- `cutout` and the other apps marked `building` (docs, tables, slides…) are filmed with the generic recipe, or skipped while their page 404s. Give them proper recipes once they have content.
-- The promo renders at roughly 1 frame per second on the software GPU, so a full render of both cuts takes about an hour.
+## Status (at hand-off)
+- **Done.**
+  - Shots and clips exist for imageeditor, vector, pdf, label, ai, press, videoedit, drive, all six games, shots and unsubscribe (~4.5 MB in total).
+  - Homepage card behaviour, with `tests/home/clips.test.html` green (6 tests; catalog and chaos are green too).
+  - `/promo/` plays live with sound, `?t=`, `?v=1` and `__promo.seek()`. Frames for both cuts were checked by eye.
+- **Half done.**
+  - No shot or clip yet for 2100 and the Authenticator: the screenshot timed out while other jobs loaded the CPU, so re-run them alone. Also missing for tank, lighter, reel and paint-classic (the run was stopped), and for cutout, docs, tables and slides (no page yet).
+  - Re-capture `imageeditor`, `vector`, `label` and `drive`. Their recipes were improved after the last run: smaller vector shapes, the PhotoTLBX still taken after the stroke, label drags, Drive thumbnails and real PDFs.
+  - The promo has **not been rendered to MP4 yet**, so `assets/promo/` is empty. `render-promo.mjs` is written but has only been tried through single-frame peeks.
+- **Next steps, in order.**
+  1. Recapture the missing and improved apps, alone on the machine (the video-mode recipes record in real time and need the CPU):
+     `node tools/capture/capture.mjs --only 2100,authenticator,tank,lighter,reel,paint-classic,imageeditor,vector,label,drive`
+  2. Look at `assets/shots/*-sm.jpg` and at a frame from each clip (`ffmpeg -ss 3 -i clip.mp4 -frames:v 1 x.jpg`).
+  3. Run `node tools/capture/render-promo.mjs --only h --from 0 --to 10`, check it, then render the full cut and `--only v`. Aim for 8–15 MB; tune `-crf` / `-maxrate` in `render-promo.mjs` if needed.
