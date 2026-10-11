@@ -59,7 +59,7 @@
       const prefs = edit.find((x) => x && x.label === 'Preferences');
       expect(!!prefs).toBe(true);
       expect(prefs.sub.some((x) => x.label === 'Navigation…')).toBe(true);
-      expect(N.apps.imageeditor.title).toBe('PhotoTLBX');
+      expect(N.apps.imageeditor.title).toBe('Image Editor');
       expect(win.TlbxCmd.get('ps.nav-preset')).toBeTruthy();
       N.openModal('imageeditor');
       await waitFor(dialogUp);
