@@ -188,11 +188,11 @@
       D.querySelector('.dtile[data-id="doc1"]').click();
       expect(sent).toEqual([{ appId: 'pdf', name: 'invoice.pdf', id: 'doc1' }]);
     });
-    it('a .js file opens in the app the Drive rule picks (Assistant takes text/*)', async () => {
+    it('a .js file opens in the code editor, which takes text/javascript, not Assistant (text/*)', async () => {
       await boot();
       await useDrive(LIST);
       D.querySelector('.dtile[data-id="js1"]').click();
-      expect(sent).toEqual([{ appId: 'ai', name: 'app.js', id: 'js1' }]);
+      expect(sent).toEqual([{ appId: 'code', name: 'app.js', id: 'js1' }]);
     });
     it('a .glb opens in 3D Modeller', async () => {
       await boot();
