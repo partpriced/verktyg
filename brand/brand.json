@@ -1,0 +1,54 @@
+{
+  "name": "ITpris Verktyg",
+  "tagline": "Kontors- och affärsverktyg som körs i webbläsaren. Dina filer stannar på din enhet.",
+  "logo": "brand/mark.svg",
+  "home": "/",
+  "colors": {
+    "ink": "#18181b",
+    "paper": "#fafafa",
+    "accent": "#0f766e"
+  },
+  "footer": "© 2026 ITpris. Alla rättigheter förbehållna.",
+  "links": {
+    "patreon": "",
+    "support": "",
+    "reddit": "",
+    "x": "",
+    "tiktok": "",
+    "gumroad": "",
+    "github": ""
+  },
+  "appOrder": [
+    "imageeditor",
+    "vector",
+    "pdf",
+    "label",
+    "cutout",
+    "clean",
+    "ai",
+    "docs",
+    "tables",
+    "slides",
+    "press",
+    "remix",
+    "videoedit",
+    "contacts",
+    "inventory",
+    "orders",
+    "invoices",
+    "convert",
+    "crm",
+    "ledger",
+    "admin",
+    "drive",
+    "code",
+    "gallery",
+    "3d",
+    "music"
+  ],
+  "support": {
+    "exportCard": false,
+    "donate": false,
+    "ads": false
+  }
+}
