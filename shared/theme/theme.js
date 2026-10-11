@@ -54,7 +54,7 @@
     '3d': { key: 'tlbx-3d.theme', fmt: 'json', native: NO_CLASSIC },
     inventory: { key: 'tlbx-inventory.theme', fmt: 'json', native: NO_CLASSIC },
     vector: { key: 'vectoreditor.theme', fmt: 'raw', native: STD },
-    label: { key: null, native: STD },
+    label: { key: 'labeldesigner-theme', fmt: 'raw', native: STD },
     contacts: { key: null, native: DARK_CSS },
   };
 
@@ -62,12 +62,17 @@
    * and Settings take the background and border too. --sl-on-accent is the ink or white that reads on the accent. */
   var CSS = [
     'html:root[data-tlbx-theme]{--panel:var(--sl-surface);--surface:var(--sl-surface);--fg:var(--sl-text);--text:var(--sl-text);',
-    '--accent:var(--sl-accent);--accent-ink:var(--sl-on-accent)}',
+    '--accent:var(--sl-accent);--accent-ink:var(--sl-on-accent);',
+    '--dim:color-mix(in srgb,var(--sl-text) 78%,transparent);--mute:color-mix(in srgb,var(--sl-text) 78%,transparent);',
+    '--faint:color-mix(in srgb,var(--sl-text) 62%,transparent);--fg-faint:color-mix(in srgb,var(--sl-text) 62%,transparent)}',
     'html:root[data-tlbx-theme][data-tlbx-app=home],html:root[data-tlbx-theme][data-tlbx-app=settings]{',
-    '--bg:var(--sl-background);--ink:var(--sl-background);--ink-2:var(--sl-surface);--ink-3:var(--sl-surface);',
-    '--bone:var(--sl-text);--bone-dim:color-mix(in srgb,var(--sl-text) 62%,transparent);',
-    '--bone-faint:color-mix(in srgb,var(--sl-text) 38%,transparent);--line:var(--sl-border);',
-    '--tlbx:var(--sl-accent);--tlbx-deep:var(--sl-accent)}',
+    '--bg:var(--sl-background);--ink-2:var(--sl-surface);--ink-3:var(--sl-surface);',
+    '--bone-dim:color-mix(in srgb,var(--sl-text) 62%,transparent);',
+    '--bone-faint:color-mix(in srgb,var(--sl-text) 62%,transparent);--line:var(--sl-border)}',
+    /* The brand script (brand/brand.js, on the homepage) sets --ink, --bone and --tlbx inline. !important keeps the chosen theme. */
+    'html:root[data-tlbx-theme][data-tlbx-app=home],html:root[data-tlbx-theme][data-tlbx-app=settings]{',
+    '--ink:var(--sl-background) !important;--bone:var(--sl-text) !important;--tlbx:var(--sl-accent) !important;',
+    '--tlbx-deep:var(--sl-accent) !important}',
   ].join('');
 
   var prof = g.TlbxProfile && typeof g.TlbxProfile.create === 'function'
@@ -143,11 +148,19 @@
     return lum > 0.6 ? '#0a0a0a' : '#ffffff';
   }
 
+  /** The theme whose colours a page is painted with. An app whose own look is dark (its native value maps back to a dark
+   * theme) takes the dark colours where the choice is light, so Classic 98 never puts light surfaces under its dark text. */
+  function tokenTheme(e, id) {
+    if (!e || e.identity) return byId[id];
+    var back = fromNative(e, e.native[id]);
+    return back && byId[back] && (byId[back].scheme === 'dark') !== (byId[id].scheme === 'dark') ? byId[back] : byId[id];
+  }
+
   /** Paints a choice on this page: data-theme (for the apps that use it), the --sl-* variables and the colour scheme. */
   function paint(choice) {
-    var id = resolve(choice), t = byId[id], root = doc && doc.documentElement;
+    var id = resolve(choice), root = doc && doc.documentElement;
     if (!root) return id;
-    var e = APPS[page.app];
+    var e = APPS[page.app], t = tokenTheme(e, id);
     root.setAttribute('data-tlbx-theme', id);
     if (e) root.setAttribute('data-theme', native(e, id));
     var tk = t.tokens;
@@ -195,6 +208,17 @@
     return { ok: true, id: id };
   }
 
+  /** An app whose key is missing gets the explicit choice mirrored into it, so the app's own boot code (which reads its key)
+   * agrees with the choice. Only missing keys are written; System and a person who never chose are left alone. */
+  function mirrorMissing() {
+    var o = prof ? prof.overrides('theme') : {};
+    if (o.mode === undefined || o.mode === SYSTEM) return;
+    for (var app in APPS) {
+      var e = APPS[app];
+      if (e.key && legacyRead(e) === null) legacyWrite(e, e.native[o.mode]);
+    }
+  }
+
   /** Runs at first paint from the page's <head>. */
   function load() {
     var self = doc && doc.currentScript;
@@ -206,6 +230,7 @@
       doc.head.appendChild(s);
     }
     if (doc && doc.documentElement) doc.documentElement.setAttribute('data-tlbx-app', page.app);
+    mirrorMissing();
     refresh();
     watch();
     try {
