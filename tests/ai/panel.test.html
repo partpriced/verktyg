@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Assistant: side panel and window.TlbxAI</title></head>
+<body>
+  <script src="../harness.js"></script>
+  <script src="util.js"></script>
+  <script>
+  const { describe, it, expect, waitFor } = TlbxTest;
+  let P, H;
+  describe('window.TlbxAI without a model', () => {
+    it('is not ready and answers with an offline Helper line', async () => {
+      P = await AT.frame('panel-page.html', (w) => w.TlbxAIPanel && w.TlbxAI, { width: 900, height: 700 });
+      await P.TlbxAIPanel.ready;
+      expect(P.TlbxAI.ready).toBe(false); expect(P.TlbxAI.look).toBe(null);
+      const s = P.TlbxAI.ask('hello');
+      const parts = []; for await (const x of s) parts.push(x);
+      expect(parts.join('')).toMatch(/Hello|blorp/); expect(s.offline).toBe(true);
+      P.TlbxAIPanel.open();
+      expect(P.document.querySelector('.sap-empty').textContent).toMatch(/No model is loaded/);
+      expect(P.document.querySelector('.sap-empty a').getAttribute('href')).toMatch(/\/ai\/#models$/);
+    });
+  });
+  describe('sharing a model loaded in Assistant', () => {
+    it('the panel finds the model in another tab', async () => {
+      H = await AT.app('', { width: 900, height: 600 });
+      let readyEvents = 0; P.TlbxAI.on('ready', () => readyEvents++);
+      await H.AI.E.load('Qwen2.5-1.5B-Instruct-q4f16_1-MLC');
+      await waitFor(() => P.TlbxAI.ready);
+      expect(readyEvents).toBe(1);
+      expect(P.TlbxAI.model.kind).toBe('remote'); expect(P.TlbxAI.model.id).toBe('Qwen2.5-1.5B-Instruct-q4f16_1-MLC');
+      expect(P.TlbxAI.look).toEqual({ hat: 'brain', aura: 'ai', sparkle: true });
+      await waitFor(() => P.document.querySelector('.sap-fab').classList.contains('on'));
+    });
+    it('TlbxAI.ask streams a Helper reply through the host tab', async () => {
+      const s = P.TlbxAI.ask('who are you?');
+      let n = 0; for await (const x of s) n++;
+      expect(n).toBeGreaterThan(2);
+      const text = await s.text;
+      expect(text.length).toBeGreaterThan(5);
+      const sys = H.AI.E.engine.calls.pop().messages[0].content;
+      expect(sys).toMatch(/Hello\. Ask me anything\./);
+      expect((await P.TlbxAI.comment('the user drew a cat').text).length).toBeGreaterThan(3);
+    });
+    it('the panel controls the page’s commands, asking before destructive ones', async () => {
+      let asked = 0; P.TlbxUI.confirm = async () => { asked++; return true; };
+      await P.TlbxAIPanel.send('please run demo.bold');
+      expect(P.ran).toEqual(['demo.bold']); expect(asked).toBe(0);
+      await P.TlbxAIPanel.send('now run demo.clear');
+      expect(P.ran).toEqual(['demo.bold', 'demo.clear']); expect(asked).toBe(1);
+      const roles = P.TlbxAIPanel.messages.map((m) => m.role);
+      expect(roles.filter((r) => r === 'tool').length).toBe(2);
+      expect(P.document.querySelectorAll('.sap-tool').length).toBe(2);
+      expect(P.document.querySelector('.sap-list').textContent).toContain('Done!');
+    });
+    it('unloading in Assistant makes the panel offline again', async () => {
+      await H.AI.E.unload();
+      await waitFor(() => !P.TlbxAI.ready);
+      expect(P.TlbxAI.model).toBe(null);
+    });
+  });
+  TlbxTest.run({ name: 'Assistant: side panel and window.TlbxAI' });
+  </script>
+</body>
+</html>
