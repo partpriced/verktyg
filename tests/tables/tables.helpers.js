@@ -5,11 +5,12 @@
   const { waitFor } = TlbxTest;
   const TB = window.TB = {};
 
-  /** Forget the autosave draft so a plain start is blank (unless keepDrafts). */
-  TB.clearDrafts = () => new Promise((res) => {
-    const r = indexedDB.deleteDatabase('tlbx-tables-drafts');
-    r.onsuccess = r.onerror = r.onblocked = () => res();
-  });
+  /** Forget the open tabs (and their unsaved workbooks) so a plain start is blank (unless keepDrafts). */
+  TB.clearDrafts = async () => {
+    await TlbxTest.sleep(300); // a page that was just removed still writes its tabs on pagehide: let that land first
+    localStorage.removeItem('tlbx.doctabs.tables.v1');
+    await new Promise((res) => { const r = indexedDB.deleteDatabase('tlbx-doctabs'); r.onsuccess = r.onerror = r.onblocked = () => res(); });
+  };
 
   /** Loads tables/index.html (plus an optional query) into the iframe and waits for launch to finish. */
   TB.boot = async function (query = '', frameId = 'app', { keepDrafts = false } = {}) {
