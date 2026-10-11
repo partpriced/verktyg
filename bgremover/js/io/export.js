@@ -52,6 +52,7 @@
       const { blob, ext } = await encodeItem(it);
       const name = U.baseName(it.name) + '-cutout.' + ext;
       if (window.TlbxUI) TlbxUI.download(blob, name);
+      TlbxSupport.afterExport('bgremover');
       toast('Saved ' + name + ' · ' + U.fmtBytes(blob.size));
     } catch (e) {
       console.error(e);
@@ -82,6 +83,7 @@
       busy(true, 'Zipping…', 1);
       const zip = await CO.zip(entries);
       if (window.TlbxUI) TlbxUI.download(zip, 'tlbx-cutouts.zip');
+      TlbxSupport.afterExport('bgremover');
       toast(`Saved ${entries.length} cutout${entries.length === 1 ? '' : 's'} to a zip` + (failed ? ` (${failed} failed)` : ''));
     } catch (e) {
       console.error(e);
