@@ -1,4 +1,4 @@
-/* Pastebin data, kept in Files. Each paste is one Drive file with meta.type 'paste': a text paste is a
+/* Paste data, kept in Files. Each paste is one Drive file with meta.type 'paste': a text paste is a
  * text/plain blob, an image paste is the image itself. meta.pasteId is the private random link ID (?paste=<id>).
  * Expiry is a label only: nothing is deleted or hidden by time. Saves are debounced, like Notes. */
 const TYPE = 'paste';
