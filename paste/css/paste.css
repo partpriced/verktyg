@@ -1,29 +1,28 @@
-/* Paste: tokens (light, then dark), the list and editor layout, and the highlighted code block.
+/* Paste: colours come from the shared ITpris theme (--sl-* set by shared/theme/theme.js); the fallbacks are the Dark look.
+ * Then the list and editor layout, and the highlighted code block.
  * Wide (900 px and up): list | paste. Phone (390 px): one pane at a time, chosen by data-pane. */
 :root {
-  --pb-bg: #f9fafb; --pb-panel: #edeff3; --pb-line: #d0d5e0; --pb-fg: #181c24; --pb-dim: #4e5c76; --pb-faint: #7786a4;
-  --pb-accent: #c00d00; --pb-hover: rgba(0, 0, 0, .05); --pb-on: rgba(192, 13, 0, .12); --pb-ink: #24100f;
-  --pb-danger: #b3261e; --pb-code: #f4f5f8;
-  --pb-k: #a2215f; --pb-s: #2b6e1c; --pb-n: #9a5b00; --pb-c: #7f8590; --pb-f: #1f5bb5; --pb-p: #0d5f7d; --pb-t: #b3261e; --pb-a: #8a4b00; --pb-h: #6a2fb5;
+  --pb-bg: var(--sl-background, #0c0e12); --pb-panel: var(--sl-surface, #14171e); --pb-line: var(--sl-border, #262d3a);
+  --pb-fg: var(--sl-text, #ebedf2); --pb-dim: color-mix(in srgb, var(--pb-fg) 75%, transparent); --pb-faint: color-mix(in srgb, var(--pb-fg) 65%, transparent);
+  --pb-accent: var(--sl-accent, #ffeae8); --pb-hover: color-mix(in srgb, var(--pb-fg) 7%, transparent);
+  --pb-on: color-mix(in srgb, var(--pb-accent) 14%, transparent); --pb-ink: var(--sl-on-accent, #24100f);
+  --pb-danger: #ff7b7b; --pb-code: color-mix(in srgb, var(--pb-fg) 8%, var(--pb-panel));
+  /* syntax colours: the dark set by default, the light set on the light and Classic 98 themes */
+  --pb-k: #ff9ec7; --pb-s: #f5d3d0; --pb-n: #ffcb6b; --pb-c: #7b7f8a; --pb-f: #82aaff; --pb-p: #9ad8ff; --pb-t: #ff7b7b; --pb-a: #f5c178; --pb-h: #c3a6ff;
   --pb-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   --pb-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color-scheme: dark;
+}
+:root[data-tlbx-theme="light"], :root[data-tlbx-theme="classic"] {
+  --pb-danger: #b3261e;
+  --pb-k: #a2215f; --pb-s: #2b6e1c; --pb-n: #9a5b00; --pb-c: #7f8590; --pb-f: #1f5bb5; --pb-p: #0d5f7d; --pb-t: #b3261e; --pb-a: #8a4b00; --pb-h: #6a2fb5;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --pb-bg: #0c0e12; --pb-panel: #14171e; --pb-line: #262d3a; --pb-fg: #ebedf2; --pb-dim: #9ba6bc; --pb-faint: #647596;
-    --pb-accent: #ffeae8; --pb-hover: rgba(255, 255, 255, .06); --pb-on: rgba(255, 234, 232, .12); --pb-ink: #24100f;
-    --pb-danger: #ff7b7b; --pb-code: #191d25;
-    --pb-k: #ff9ec7; --pb-s: #f5d3d0; --pb-n: #ffcb6b; --pb-c: #7b7f8a; --pb-f: #82aaff; --pb-p: #9ad8ff; --pb-t: #ff7b7b; --pb-a: #f5c178; --pb-h: #c3a6ff;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --pb-bg: #0c0e12; --pb-panel: #14171e; --pb-line: #262d3a; --pb-fg: #ebedf2; --pb-dim: #9ba6bc; --pb-faint: #647596;
-  --pb-accent: #ffeae8; --pb-hover: rgba(255, 255, 255, .06); --pb-on: rgba(255, 234, 232, .12); --pb-ink: #24100f;
-  --pb-danger: #ff7b7b; --pb-code: #191d25;
-  --pb-k: #ff9ec7; --pb-s: #f5d3d0; --pb-n: #ffcb6b; --pb-c: #7b7f8a; --pb-f: #82aaff; --pb-p: #9ad8ff; --pb-t: #ff7b7b; --pb-a: #f5c178; --pb-h: #c3a6ff;
-  color-scheme: dark;
+/* TlbxUI dialogs, menus and toasts follow the Paste tokens (the shared --s-* fallbacks are fixed greys) */
+:root {
+  --sui-bg: var(--pb-panel); --sui-bg2: var(--pb-bg); --sui-input: var(--pb-bg); --sui-line: var(--pb-line);
+  --sui-fg: var(--pb-fg); --sui-dim: var(--pb-dim); --sui-faint: var(--pb-faint); --sui-hover: var(--pb-hover);
+  --sui-sel: var(--pb-on); --sui-accent: var(--pb-accent); --sui-accent-ink: var(--pb-ink);
 }
 [hidden] { display: none !important; }
 html, body { height: 100%; margin: 0; }
