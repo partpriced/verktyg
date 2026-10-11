@@ -53,7 +53,7 @@
   };
   IO.exportPlainSVG = function () {
     IO.download(new Blob([IO.exportSVG({})], { type: 'image/svg+xml' }), IO.baseName() + '.svg');
-    SV.toast('Exported SVG');
+    SV.toast('Exported SVG'); TlbxSupport.afterExport('vectoreditor');
   };
 
   /* ================= raster export ================= */
@@ -79,7 +79,7 @@
       return new Promise(function (res) {
         c.toBlob(function (blob) {
           IO.download(blob, IO.baseName() + (scale !== 1 ? '@' + scale + 'x' : '') + (type === 'jpg' ? '.jpg' : '.png'));
-          SV.toast('Exported ' + type.toUpperCase() + ' · ' + c.width + '×' + c.height + ' px');
+          SV.toast('Exported ' + type.toUpperCase() + ' · ' + c.width + '×' + c.height + ' px'); TlbxSupport.afterExport('vectoreditor');
           res(blob);
         }, type === 'jpg' ? 'image/jpeg' : 'image/png', quality || 0.92);
       });

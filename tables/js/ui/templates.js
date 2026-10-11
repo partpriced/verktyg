@@ -118,7 +118,7 @@ function more(e, anchor) {
 
 /** The .stab-template Blob for an entry (download, Files, tests). */
 export const exportBlob = (e) => toTemplateBlob({ name: e.name, description: e.description, native: e.native });
-function downloadTemplate(e) { UI().download(exportBlob(e), fileName(e.name)); }
+function downloadTemplate(e) { UI().download(exportBlob(e), fileName(e.name)); TlbxSupport.afterExport('tables'); }
 
 async function saveToDrive(e) {
   const h = hub();

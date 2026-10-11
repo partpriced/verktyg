@@ -73,10 +73,11 @@
     const names = uniqueNames(done);
     const zip = await window.TlbxZip.zip(done.map((it, i) => ({ name: names[i], data: it.out.blob })));
     window.TlbxUI.download(zip, `tlbx-resize-${new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-')}.zip`);
+    TlbxSupport.afterExport('resize');
   }
 
   function download(it) {
-    if (it.out) window.TlbxUI.download(it.out.blob, it.outName);
+    if (it.out) { window.TlbxUI.download(it.out.blob, it.outName); TlbxSupport.afterExport('resize'); }
   }
 
   async function saveTo(items) {
@@ -90,9 +91,18 @@
     if (n) toast(`Saved ${plural(n, 'result', 'results')} to the Resizer folder in Files`);
   }
 
+  /** Sends a row to Upscaler: the result when it is done, else the original. Opens Upscale in a new tab. */
+  async function sendToUpscale(it) {
+    if (!window.TlbxHub) { toast('Files is not available on this page'); return; }
+    const done = it.status === 'done' && it.out;
+    try { await window.TlbxHub.sendTo('upscale', done ? it.out.blob : it.file, done && it.outName ? it.outName : it.name); }
+    catch (e) { toast('Could not send to Upscaler: ' + e.message); }
+  }
+
   const actions = {
     download,
     save: (it) => saveTo([it]),
+    upscale: sendToUpscale,
     remove: (it) => NS.queue.remove(it.id),
   };
 

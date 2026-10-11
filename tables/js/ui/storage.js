@@ -116,9 +116,9 @@ export async function useWorkbook(wb, name) {
   return true;
 }
 
-export const downloadNative = () => window.TlbxUI.download(toBlob(S.wb), fileName());
-export const downloadCsv = () => window.TlbxUI.download(new Blob([toCsv(sheet())], { type: 'text/csv' }), fileName('csv'));
-export async function downloadXlsx() { window.TlbxUI.download(await toXlsx(S.wb), fileName('xlsx')); }
+export const downloadNative = () => { window.TlbxUI.download(toBlob(S.wb), fileName()); TlbxSupport.afterExport('tables'); };
+export const downloadCsv = () => { window.TlbxUI.download(new Blob([toCsv(sheet())], { type: 'text/csv' }), fileName('csv')); TlbxSupport.afterExport('tables'); };
+export async function downloadXlsx() { window.TlbxUI.download(await toXlsx(S.wb), fileName('xlsx')); TlbxSupport.afterExport('tables'); }
 
 /* Startup reads are time-limited: a storage that never answers (blocked IndexedDB, a stalled hub) must not
    keep the workbook from opening, or the page stays blank. A late answer is ignored. */

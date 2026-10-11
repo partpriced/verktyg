@@ -24,13 +24,14 @@ async function labelPNGBlob(dpi, { mono = false, record = App.rec } = {}) {
   const c = renderLabelCanvas(App.doc, buildScene(App.doc, get), dpi || Math.max(300, App.doc.dpi), { mono });
   return new Promise((res) => c.toBlob(res, 'image/png'));
 }
-async function exportPNG() { TlbxUI.download(await labelPNGBlob(), fileBase() + '.png'); }
+async function exportPNG() { TlbxUI.download(await labelPNGBlob(), fileBase() + '.png'); TlbxSupport.afterExport('label'); }
 function exportSVG() {
   const get = previewGet(); get.__print = true;
   TlbxUI.download(new Blob([labelSVG(App.doc, buildScene(App.doc, get))], { type: 'image/svg+xml' }), fileBase() + '.svg');
+  TlbxSupport.afterExport('label');
 }
-async function exportPDFQuick() { try { downloadBytes(await pdfBytes({ prompts: App.prompts }), fileBase() + '.pdf', 'application/pdf'); } catch (e) { TlbxUI.alert('PDF export failed', e.message); } }
-function exportZPLQuick() { try { downloadBytes(zplText({ prompts: App.prompts }), fileBase() + '.zpl', 'text/plain'); } catch (e) { TlbxUI.alert('ZPL export failed', e.message); } }
+async function exportPDFQuick() { try { downloadBytes(await pdfBytes({ prompts: App.prompts }), fileBase() + '.pdf', 'application/pdf'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert('PDF export failed', e.message); } }
+function exportZPLQuick() { try { downloadBytes(zplText({ prompts: App.prompts }), fileBase() + '.zpl', 'text/plain'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert('ZPL export failed', e.message); } }
 
 /* ---------------- projects ---------------- */
 /** File ▸ Save (Ctrl+S): to Files when available (see hub.js), otherwise the .labeldesigner download. */
