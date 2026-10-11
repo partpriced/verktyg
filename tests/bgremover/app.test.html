@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cutout app tests</title>
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }</style>
+</head>
+<body>
+  <!-- App core: undo/redo history (bgremover/js/core/*). -->
+  <script src="../harness.js"></script>
+  <script src="../../bgremover/js/core/util.js"></script>
+  <script src="../../bgremover/js/core/state.js"></script>
+  <script src="../../bgremover/js/core/brush.js"></script>
+  <script src="../../bgremover/js/core/history.js"></script>
+  <script src="app.spec-history.js"></script>
+  <script>TlbxTest.run({ name: 'Cutout app' });</script>
+</body>
+</html>

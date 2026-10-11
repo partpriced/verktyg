@@ -9,7 +9,7 @@
   <script src="../harness.js"></script>
   <script>
   const { describe, it, expect } = TlbxTest;
-  const APPS = ['imageeditor/', 'vector/', 'pdf/', 'label/', 'cutout/', 'ai/', 'docs/', 'tables/', 'slides/', 'press/', 'videoedit/', 'contacts/', 'gallery/', '3d/', 'drive/'];
+  const APPS = ['imageeditor/', 'vectoreditor/', 'pdf/', 'label/', 'bgremover/', 'ai/', 'docs/', 'tables/', 'slides/', 'press/', 'videostudio/', 'contacts/', 'gallery/', '3d/', 'drive/'];
   let m = null;
   const text = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error(url + ' answered ' + r.status); return r.text(); });
 

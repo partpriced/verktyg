@@ -1,6 +1,6 @@
 # shared/video: the video core (window.TlbxVideo)
 
-One copy of the pure layout and random-edit logic, used by VideoEdit (`videoedit/`) and Video Remix (`remix/`).
+One copy of the pure layout and random-edit logic, used by VideoEdit (`videostudio/`) and Video Remix (`remix/`).
 Classic scripts, no DOM except the lane widget, no fetch, no storage. Each file attaches to `window.TlbxVideo`.
 
 ## Files and load order
