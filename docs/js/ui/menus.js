@@ -14,6 +14,7 @@
 
   S.menus = {
     file: () => [
+      window.TlbxDocsConfig ? window.TlbxDocsConfig.menu() : null, '-',
       { label: 'New', sub: [
         { label: 'Blank document', key: key('file.new'), act: act(() => S.newDoc()) },
         { label: 'Random template…', key: key('file.random'), act: () => S.random.open() },

@@ -19,7 +19,7 @@
   }
   /** The real themes. Every theme has all five tokens; System resolves to one of these. */
   var THEMES = Object.freeze([
-    th('light', 'Light', 'light', '#ebe7de', '#f8f6f1', '#0a0a0a', '#008175', '#dcd6c9'),
+    th('light', 'Light', 'light', '#ebe7de', '#f8f6f1', '#0a0a0a', '#006f64', '#dcd6c9'),
     th('dark', 'Dark', 'dark', '#0a0a0a', '#151518', '#f1ede4', '#a2fff6', '#2a2a30'),
     th('classic', 'Classic 98', 'light', '#c0c0c0', '#ffffff', '#000000', '#000080', '#808080'),
     th('lime', 'Accent', 'dark', '#061311', '#0c201e', '#dcfffb', '#a2fff6', '#1a4743'),
@@ -50,21 +50,27 @@
     orders: { key: 'tlbx-orders.theme', fmt: 'json', native: NO_CLASSIC },
     ledger: { key: 'tlbx-ledger.theme', fmt: 'json', native: NO_CLASSIC },
     press: { key: 'tlbx.press.theme', fmt: 'json', native: STD },
-    gallery: { key: 'tlbx-gallery.theme', fmt: 'json', native: NO_CLASSIC },
+    gallery: { key: 'tlbx-gallery.theme', fmt: 'json', native: DARK_CSS },
     '3d': { key: 'tlbx-3d.theme', fmt: 'json', native: NO_CLASSIC },
     inventory: { key: 'tlbx-inventory.theme', fmt: 'json', native: NO_CLASSIC },
     vector: { key: 'vectoreditor.theme', fmt: 'raw', native: STD },
     label: { key: 'labeldesigner-theme', fmt: 'raw', native: STD },
     contacts: { key: null, native: DARK_CSS },
+    convert: { key: null, native: DARK_CSS },
+    slides: { key: null, native: DARK_CSS },
+    music: { key: null, native: DARK_CSS },
+    imageeditor: { key: 'tlbxshop.theme', fmt: 'json', native: { light: 'light', dark: 'pro', classic: 'paint', lime: 'pro' } },
   };
 
   /* Overrides for the app pages: surface, text and accent only (apps keep their own background and borders). The homepage
    * and Settings take the background and border too. --sl-on-accent is the ink or white that reads on the accent. */
   var CSS = [
-    'html:root[data-tlbx-theme]{--panel:var(--sl-surface);--surface:var(--sl-surface);--fg:var(--sl-text);--text:var(--sl-text);',
-    '--accent:var(--sl-accent);--accent-ink:var(--sl-on-accent);',
-    '--dim:color-mix(in srgb,var(--sl-text) 78%,transparent);--mute:color-mix(in srgb,var(--sl-text) 78%,transparent);',
-    '--faint:color-mix(in srgb,var(--sl-text) 62%,transparent);--fg-faint:color-mix(in srgb,var(--sl-text) 62%,transparent)}',
+    /* The colour tokens of the chosen theme. !important: an app's own palette (some sit in higher-specificity rules, such as
+     * a :not() media query) must not win over the theme the person chose. */
+    'html:root[data-tlbx-theme]{--panel:var(--sl-surface)!important;--surface:var(--sl-surface)!important;--fg:var(--sl-text)!important;--text:var(--sl-text)!important;',
+    '--accent:var(--sl-accent)!important;--accent-ink:var(--sl-on-accent)!important;--accent-line:var(--sl-accent)!important;',
+    '--dim:color-mix(in srgb,var(--sl-text) 78%,transparent)!important;--mute:color-mix(in srgb,var(--sl-text) 78%,transparent)!important;',
+    '--faint:color-mix(in srgb,var(--sl-text) 80%,transparent)!important;--fg-faint:color-mix(in srgb,var(--sl-text) 80%,transparent)!important}',
     'html:root[data-tlbx-theme][data-tlbx-app=home],html:root[data-tlbx-theme][data-tlbx-app=settings]{',
     '--bg:var(--sl-background);--ink-2:var(--sl-surface);--ink-3:var(--sl-surface);',
     '--bone-dim:color-mix(in srgb,var(--sl-text) 62%,transparent);',

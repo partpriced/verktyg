@@ -13,6 +13,7 @@ function menuFile() {
   const hub = hubAvailable(), send = sendToItems();
   return [
     { label: 'New…', act: templatesDialog }, { label: 'Open…', key: K('open'), act: openFilesDialog }, { label: 'Import ZPL…', act: importZPLDialog },
+    { label: 'Config', sub: window.TlbxConfigDialog ? TlbxConfigDialog.menuItems({ app: 'label' }) : [] },
     { label: 'Save', key: K('save'), act: saveProject }, { label: 'Download project (.labeldesigner)', act: downloadProject }, '-',
     hub ? { label: 'Open project from Files…', act: openProjectDrive } : null,
     hub ? { label: 'Insert image from Files…', act: imageFromDrive } : null, hub ? { label: 'Data from Files…', act: dataFromDrive } : null, hub ? '-' : null,

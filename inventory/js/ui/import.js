@@ -43,6 +43,8 @@
       cls: 'wide',
       body: h('div', { class: 'import' },
         h('p', { class: 'note', text: 'Columns: SKU, EAN, Name, Price, Reorder level. Other columns are ignored. Nothing is saved until the whole file is valid.' }),
+        h('p', { class: 'note', text: TlbxExamples.info('inventory').note }),
+        h('button', { type: 'button', class: 'btn', text: 'Download example CSV', onclick: () => TlbxExamples.download('inventory') }),
         file, report),
       buttons: [{ label: 'Cancel' }, { label: 'Import all', primary: true, act: apply }],
     });

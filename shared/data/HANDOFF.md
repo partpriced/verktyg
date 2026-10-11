@@ -236,3 +236,14 @@ Rules enforced by `schema.js` and `store.js`:
 - Accounts cannot be deactivated or deleted, and there is no UI or rule for renaming them safely once used.
 - Cross-tab conflict UI: the transactions serialise writes correctly, but the apps must re-read on `subscribe` events.
 - Authorisation. Posting-only checks protect integrity inside the app, not against a malicious script.
+
+## Random barcodes and example files (added with Label Designer's generator)
+
+- `TlbxData.barcode.randomValue({ symbology, kind, length, prefix, rand })` and `randomValues(n, opts)` (distinct values):
+  Code 128, Code 39, QR and Data Matrix take `kind` (digits, letters, alnum), `length` and a `prefix`. EAN-13, EAN-8 and UPC-A
+  are always digits with a valid GS1 check digit (`prefix` is the leading digits). Values come from `crypto.getRandomValues`
+  with rejection sampling. Pass `rand` (a function returning [0,1)) for a repeatable sequence. `seededRand(seed)` makes one (tests).
+- `TlbxExamples` (`shared/data/examples.js`): `kinds()`, `info(kind)` (title, file, columns, note), `csv(kind)` (CSV text, no
+  network) and `download(kind)`. Kinds: `label` (Label Designer merge data), `inventory` (product CSV import), `contacts` (Google
+  Contacts CSV, which Contacts reads), `crm` (the same columns; the CRM imports them through Contacts).
+- Tests: `tests/node/barcode-gen.test.mjs`, `tests/node/examples-csv.test.mjs`.

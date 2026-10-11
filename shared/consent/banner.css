@@ -7,16 +7,24 @@
   --tlbxc-accent-ink: #0a0a0a;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme="light"]):not([data-tlbx-theme]) {
     --tlbxc-bg: #111111;
     --tlbxc-fg: #f1ede4;
     --tlbxc-line: rgba(241, 237, 228, 0.25);
   }
 }
-:root[data-theme="dark"] {
+:root[data-theme="dark"]:not([data-tlbx-theme]) {
   --tlbxc-bg: #111111;
   --tlbxc-fg: #f1ede4;
   --tlbxc-line: rgba(241, 237, 228, 0.25);
+}
+/* On a page with the shared theme (theme.js sets data-tlbx-theme), the banner takes the chosen theme's colours. */
+:root[data-tlbx-theme] {
+  --tlbxc-bg: var(--sl-surface, #ffffff);
+  --tlbxc-fg: var(--sl-text, #111111);
+  --tlbxc-line: color-mix(in srgb, var(--sl-text, #111111) 25%, transparent);
+  --tlbxc-accent: var(--sl-accent, #a2fff6);
+  --tlbxc-accent-ink: var(--sl-on-accent, #0a0a0a);
 }
 
 .tlbxc-banner {

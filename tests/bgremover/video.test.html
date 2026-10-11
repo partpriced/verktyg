@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Background Remover video tests</title>
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }</style>
+</head>
+<body>
+  <!-- Video matte on a generated 2-second clip: real frames, real model (WebAssembly) in the worker. -->
+  <script src="../harness.js"></script>
+  <script src="../../shared/cutout/pipeline.js"></script>
+  <script src="../../shared/cutout/models.js"></script>
+  <script src="../../shared/cutout/cutout.js"></script>
+  <script src="../../vendor/mp4-muxer/mp4-muxer.js"></script>
+  <script src="../../bgremover/js/core/util.js"></script>
+  <script src="../../bgremover/js/io/zip.js"></script>
+  <script src="../../bgremover/js/video/limits.js"></script>
+  <script src="../../bgremover/js/video/smooth.js"></script>
+  <script src="../../bgremover/js/video/source.js"></script>
+  <script src="../../bgremover/js/video/analyze.js"></script>
+  <script src="../../bgremover/js/video/matte.js"></script>
+  <script src="../../bgremover/js/video/webm-alpha.js"></script>
+  <script src="../../bgremover/js/video/encode.js"></script>
+  <script src="video.spec-core.js"></script>
+  <script>TlbxTest.run({ name: "Background Remover video" });</script>
+</body>
+</html>
