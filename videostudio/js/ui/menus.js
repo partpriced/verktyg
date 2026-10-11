@@ -46,6 +46,7 @@
       it('view.safe'), it('view.quality'), '-',
       { label: 'Theme', sub: A.THEMES.map(([t]) => it('view.theme.' + t, C.get('view.theme.' + t).title.replace('Theme: ', ''))) }
     ],
+    Layout: () => (window.TlbxLayouts ? TlbxLayouts.menu('videostudio') : []),
     Help: () => [
       it('help.search'), it('help.keys'), it('help.about'), '-',
       { label: 'ITpris Verktyg home', act: () => { location.href = SE.offline ? 'https://verktyg.itpris.se/' : '../'; } }
