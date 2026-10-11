@@ -179,3 +179,15 @@ Every source file is ≤ 300 lines.
 
 - **Save project (Ctrl+S)** writes the `.videoedit` back to the Drive file the project came from (`PJ.driveId`, set by `PJ.openFile(file, driveId)` for Drive projects, cleared by New project). The first save asks for a folder. `File ▸ Download project (.videoedit)` downloads; offline builds download on Save.
 - Opening a `.videoedit` from Drive (picker or `?drive=`) opens it as a project; media files still import into the bin.
+
+## Remove background (send to Background Remover) — `js/io/cutout.js`
+- Clip menu ▸ "Remove background (send to Isolate)" (video clips): the clip's media goes to Files with the clip id and
+  Background Remover opens on it. Isolate returns a matte pair (colour video + grey matte video). The result is a **new** clip on the
+  video track above the source clip, same start, with `clip.matteMedia` = the matte media id. The source clip is kept.
+- Arrival: over the Hub bus (`cutout-result`) when Cut is open, or with `?drive=` (session.js `S.launch`, `meta.matteId`).
+- `js/render/matte-pair.js` (`SE.matteDraw`): the compositor draws colour × matte (matte's red channel as alpha) in
+  `compositor.js` → `CMP.render`, for preview and export. The frame provider (`media/frames.js` `prepare`) primes the matte
+  under the id `<clip id>:matte` (`SE.matteDraw.clipOf`), and prunes readers by the base clip id.
+- Test: `node tests/run.mjs videostudio/matte-pair` (alpha from the matte: opaque white, transparent black, partial grey).
+- Not tested end to end: the Isolate → Cut return path has no browser test. Expect a check of the bus message and the
+  `?drive=` path on a real pair before release.
