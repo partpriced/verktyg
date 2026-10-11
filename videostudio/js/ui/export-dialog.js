@@ -18,7 +18,7 @@
   };
   function nameFor(ext) { return U.baseName(SE.doc.name).replace(/[\\/:*?"<>|]+/g, '-') + '.' + ext; }
 
-  SE.act.exportVideo = function (preset = {}) { open(Object.assign({ format: SE.caps.webcodecs ? 'mp4' : 'rec' }, preset)); };
+  SE.act.exportVideo = function (preset = {}) { open(Object.assign({}, preset)); };
   SE.act.exportGif = function () { open({ format: 'gif' }); };
 
   function open(init) {
@@ -26,17 +26,21 @@
     SE.player.pause();
     const caps = SE.caps, p = SE.doc, st = U.store.get('export', {});
     const formats = (caps.webcodecs ? [['mp4', 'MP4 (H.264 / AAC)'], ['webm', 'WebM (VP9 / Opus)']] : []).concat(caps.recorder ? [['rec', 'WebM (real-time recording)']] : [], [['gif', 'Animated GIF (short clip)']]);
-    const fmt = TlbxUI.select(formats, formats.some(([v]) => v === init.format) ? init.format : formats[0][0]);
-    const res = TlbxUI.select(SV.presets.choices(), st.res || SV.presets.idFor(p.w, p.h));
+    // Every setting comes back as the person last chose it; the project size is only the fallback for the size.
+    const has = (list, v) => list.some((x) => x[0] === v);
+    const choices = SV.presets.choices();
+    const fmt = TlbxUI.select(formats, has(formats, init.format) ? init.format : has(formats, st.vfmt) ? st.vfmt : formats[0][0]);
+    const res = TlbxUI.select(choices, has(choices, st.res) ? st.res : SV.presets.idFor(p.w, p.h));
     const cw = TlbxUI.number(st.cw || p.w, SV.presets.MIN, SV.presets.MAX_W, 2), ch = TlbxUI.number(st.ch || p.h, SV.presets.MIN, SV.presets.MAX_H, 2);
     const cwRow = TlbxUI.field('Width', cw, 'px'), chRow = TlbxUI.field('Height', ch, 'px');
     const fps = TlbxUI.select([[24, '24 fps'], [25, '25 fps'], [30, '30 fps'], [50, '50 fps'], [60, '60 fps']], st.fps || p.fps);
     const q = TlbxUI.select([['low', 'Low (small file)'], ['medium', 'Medium'], ['high', 'High'], ['max', 'Maximum']], st.q || 'high');
     const hasIO = !!(p.io && (p.io.in != null || p.io.out != null));
-    const range = TlbxUI.select([['all', 'Entire sequence'], ['io', 'In to out']].filter(([v]) => v === 'all' || hasIO), hasIO ? 'io' : 'all');
+    const rangeOpts = [['all', 'Entire sequence'], ['io', 'In to out']].filter(([v]) => v === 'all' || hasIO);
+    const range = TlbxUI.select(rangeOpts, has(rangeOpts, st.range) ? st.range : hasIO ? 'io' : 'all');
     const gw = TlbxUI.select([[320, '320 px wide'], [480, '480 px wide'], [640, '640 px wide']], st.gw || 480);
     const gf = TlbxUI.select([[10, '10 fps'], [12, '12 fps'], [15, '15 fps']], st.gf || 12);
-    const audio = TlbxUI.check('Include audio', true);
+    const audio = TlbxUI.check('Include audio', st.audio !== false);
     const note = h('p', { class: 'exp-note' });
     const vRows = h('div', { class: 'exp-grid' }, TlbxUI.field('Size', res), cwRow, chRow, TlbxUI.field('Frame rate', fps), TlbxUI.field('Quality', q), audio.el);
     const gRows = h('div', { class: 'exp-grid' }, TlbxUI.field('Width', gw), TlbxUI.field('Frame rate', gf));
@@ -59,12 +63,16 @@
       }
       note.textContent = msg;
     }
-    for (const el of [fmt, res, cw, ch, fps, q, range, gw, gf, audio.input]) el.addEventListener('change', refresh);
+    // Remember every choice as it is made (not only on Export), so Cancel and reopen keep it.
+    function save() {
+      U.store.set('export', { vfmt: fmt.value === 'gif' ? st.vfmt : fmt.value, range: range.value, res: res.value, cw: +cw.value, ch: +ch.value, fps: +fps.value, q: q.value, gw: +gw.value, gf: +gf.value, audio: audio.input.checked });
+    }
+    for (const el of [fmt, res, cw, ch, fps, q, range, gw, gf, audio.input]) el.addEventListener('change', () => { save(); refresh(); });
     TlbxUI.dialog({
       title: 'Export', cls: 'exp-dlg',
       body: h('div', null, TlbxUI.field('Format', fmt), TlbxUI.field('Range', range), vRows, gRows, note),
       buttons: [{ label: 'Cancel' }, { label: 'Export', primary: true, act: () => {
-        U.store.set('export', { res: res.value, cw: +cw.value, ch: +ch.value, fps: +fps.value, q: q.value, gw: +gw.value, gf: +gf.value });
+        save();
         const r = XD.range(range.value), size = XD.size(res.value, +cw.value, +ch.value);
         if (size.w !== SE.doc.w || size.h !== SE.doc.h) SE.settings.apply({ w: size.w, h: size.h }); // the preset is the sequence size
         setTimeout(() => run({ format: fmt.value, size, fps: +fps.value, quality: q.value, audio: audio.input.checked, a: r.a, b: r.b, gw: +gw.value, gf: +gf.value }), 0);
