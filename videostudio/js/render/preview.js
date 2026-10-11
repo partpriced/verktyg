@@ -56,7 +56,7 @@
     const c = SE.app.primary();
     PV.box = null;
     if (c && c.kind !== 'audio' && SE.player.time >= c.start && SE.player.time < M.end(c) && !SE.player.playing) {
-      const pts = CMP.bounds(p, c).map(([x, y]) => [x * k, y * k]);
+      const pts = CMP.bounds(p, c, SE.player.time).map(([x, y]) => [x * k, y * k]);
       og.strokeStyle = '#a2fff6'; og.lineWidth = 1.5;
       og.beginPath(); pts.forEach(([x, y], i) => (i ? og.lineTo(x, y) : og.moveTo(x, y))); og.closePath(); og.stroke();
       og.fillStyle = '#a2fff6';
@@ -65,6 +65,7 @@
       og.beginPath(); og.arc(top[0], top[1] - 18 * PV.dpr, 5, 0, Math.PI * 2); og.fill();
       PV.box = { clip: c.id, pts, rot: [top[0], top[1] - 18 * PV.dpr], k };
     }
+    if (SE.maskView) SE.maskView.draw(og); // the clip's mask outline and handles (render/mask-view.js)
   }
   function updateMsg() {
     const p = SE.doc;
@@ -104,6 +105,7 @@
     SE.on('transport', () => { if (!SE.player.playing) VP.pauseAll(); PV.request(); });
     if (document.fonts && document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', PV.request);
     if (PV.initInput) PV.initInput(ov);
+    if (SE.maskInput) SE.maskInput.init();
     PV.layout();
   };
 })();
