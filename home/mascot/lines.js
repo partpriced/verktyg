@@ -1,6 +1,6 @@
 // What Helper says. One pool per mood; the same line never comes up twice in a row.
 export const LINES = {
-  hello: ['Hi! Pet me.', 'oh hi. tlbx.', 'I am Helper. Hello.', 'pet the tlbx.'],
+  hello: ['Hi! Pet me.', 'oh hi. tlbx.', 'no watermarks. ever. tlbx is free.', 'I am Helper. Hello.', 'pet the tlbx.'],
   pet: ['hehe', 'more tlbx pls', 'purr…', 'squish!', 'HAHAHHEHEHE', 'best day', 'tlbx.', 'again again', 'i am jelly happy', '<3'],
   thrown: ['Wheee!', 'Yeet!', 'AAAAAA', 'I CAN FLY', 'tlbx in flight', 'weeeeeee'],
   ouch: ['OUCH!', 'ouch…', 'my goo!', 'oof.', 'that was my face'],
@@ -14,7 +14,7 @@ export const LINES = {
   knock: ['Oops.', 'Mine.', 'Bye!', 'Down you go.', 'gravity test'],
   blast: ['PEW', 'GOO BLAST', 'BLORP!', 'ka-SPLAT', 'eat goo'],
   hole: ['behold: the void', 'black hole go brrr', 'it hungers', 'into the tlbx dimension'],
-  idle: ['tlbx.', 'is it lunch', '…', 'hmm.', 'nice website', 'drag me. I dare you.', 'I could eat a heading'],
+  idle: ['no watermarks. ever. tlbx is free.', 'tlbx.', 'is it lunch', '…', 'hmm.', 'nice website', 'drag me. I dare you.', 'I could eat a heading'],
   level: ['LEVEL UP', 'stronger tlbx', 'I feel taller'],
   restore: ['All better.', 'good as new', 'I didn\'t do it'],
 };
