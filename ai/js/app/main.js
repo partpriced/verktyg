@@ -9,6 +9,7 @@
     AI.initHelpbot();
     AI.wireCommands();
     AI.initCtxMenu();
+    if (window.TlbxWorkspace) TlbxWorkspace.mount(AI.$('views'));
     if (window.TlbxHub) TlbxHub.register('ai');
     E.watchHosts();
     const hash = location.hash.slice(1);
