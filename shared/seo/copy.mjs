@@ -24,6 +24,8 @@ export const APPS = {
     description: 'OCR for images and scanned PDFs, speech to text with .srt export, denoise with a before and after slider and portrait blur. Runs on your device.' },
   ocr: { title: 'OCR: read text from images and PDFs on your device | ITpris', category: 'BusinessApplication',
     description: 'Read text from photos and scanned PDFs on your device. Edit it, then save as TXT, Markdown, Word or a searchable PDF. Nothing is uploaded.' },
+  html2pdf: { title: 'HTML to PDF: print HTML with a header and QR code | ITpris', category: 'BusinessApplication',
+    description: 'Turn an HTML file into a PDF in your browser, with a page header on every page: file name, date and a QR code. Nothing is uploaded.' },
   clean: { title: 'Metadata Remover: see and remove hidden photo data | ITpris', category: 'UtilitiesApplication',
     description: 'Metadata Remover shows the GPS, camera, serial and date fields hidden in a photo and removes them without re-encoding the picture. Nothing is uploaded.' },
   ai: { title: 'Assistant: chat with a model on your own computer | ITpris', category: 'BusinessApplication',
