@@ -33,7 +33,12 @@ async function exportPDFQuick() { try { downloadBytes(await pdfBytes({ prompts: 
 function exportZPLQuick() { try { downloadBytes(zplText({ prompts: App.prompts }), fileBase() + '.zpl', 'text/plain'); } catch (e) { TlbxUI.alert('ZPL export failed', e.message); } }
 
 /* ---------------- projects ---------------- */
+/** File ▸ Save (Ctrl+S): to Files when available (see hub.js), otherwise the .labeldesigner download. */
 function saveProject() {
+  if (hubAvailable()) return saveProjectToDrive();
+  downloadProject();
+}
+function downloadProject() {
   TlbxUI.download(projectBlob(App.doc), safeName(App.doc.name, '.labeldesigner'));
   App.dirty = false;
   status('Saved ' + safeName(App.doc.name, '.labeldesigner'), '', 2500);

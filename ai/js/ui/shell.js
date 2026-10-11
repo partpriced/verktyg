@@ -51,6 +51,8 @@
       '-',
       { label: 'New chat', act: () => AI.newChat() },
       { label: 'Import a conversation (.json)…', act: () => AI.importConv() },
+      { label: 'Open a chat from Files…', act: () => AI.openChatFromDrive(), disabled: !window.TlbxHub },
+      { label: 'Save this chat to Files', act: () => AI.saveChatToDrive(), disabled: !window.TlbxHub || !(AI.chat && AI.chat.conv && AI.chat.conv.messages.length) },
       { label: 'Export this conversation', sub: AI.exportItems ? AI.exportItems() : [], disabled: !AI.conv },
       '-',
       { label: 'Theme', sub: AI.THEMES.map(([t, l]) => ({ label: l, check: document.documentElement.getAttribute('data-theme') === t, act: () => AI.setTheme(t) })) },
