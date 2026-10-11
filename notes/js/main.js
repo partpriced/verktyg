@@ -1,6 +1,7 @@
-/* Notes: boot. Reads the notebooks, folders and notes from Files, reopens the note that was open last
- * (TlbxSession), and wires the screen, the menus, the commands and the save indicator. Saves run in the background. */
+/* Notes: boot. Reads the notebooks, folders and notes from Files, reopens the notes that were open (their tabs,
+ * tabs.js), and wires the screen, the menus, the commands and the save indicator. Saves run in the background. */
 import * as store from './store.js';
+import * as tabs from './tabs.js';
 import { S, curNote } from './state.js';
 import * as A from './actions.js';
 import { renderSide } from './side.js';
@@ -16,6 +17,7 @@ function refresh() {
   renderList();
   renderEditor();
   $('nt-app').dataset.pane = S.pane;
+  tabs.refresh();
 }
 A.setRedraw(refresh);
 
@@ -50,19 +52,9 @@ function wireSaves() {
     t.dataset.state = state;
     t.textContent = state === 'saving' ? 'Saving…' : state === 'saved' ? 'Saved to Files' : 'Not saved: ' + ((err && err.message) || 'Files is unavailable');
     if (window.TlbxGuard) TlbxGuard.setUnsaved('notes', store.hasPending());
+    tabs.refresh();
   });
   addEventListener('pagehide', () => { store.flush(); });
-}
-
-/** Reopens the note (and notebook) that was open last, when it is still in Files. */
-async function restoreLast() {
-  let last = null;
-  try { last = await TlbxSession.load('notes', 'last', null); } catch (e) { last = null; }
-  const n = last && last.noteId && S.notes.find((x) => x.id === last.noteId);
-  if (!n) return;
-  S.noteId = n.id;
-  S.notebookId = last.notebookId && S.notebooks.some((b) => b.id === last.notebookId) ? last.notebookId : n.notebook;
-  S.pane = 'editor';
 }
 
 async function boot() {
@@ -70,12 +62,13 @@ async function boot() {
   wire();
   wireSaves();
   registerCommands();
+  const session = tabs.init({ redraw: refresh });
   try {
     Object.assign(S, await store.load());
-    await restoreLast();
   } catch (e) {
     TlbxUI.toast('Could not read Files: ' + e.message);
   }
+  await tabs.restore(session);   // the notes that were open, if they are still in Files
   refresh();
   document.body.classList.add('ready');
 }
