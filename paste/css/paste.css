@@ -1,4 +1,4 @@
-/* Pastebin: tokens (light, then dark), the list and editor layout, and the highlighted code block.
+/* Paste: tokens (light, then dark), the list and editor layout, and the highlighted code block.
  * Wide (900 px and up): list | paste. Phone (390 px): one pane at a time, chosen by data-pane. */
 :root {
   --pb-bg: #f9fafb; --pb-panel: #edeff3; --pb-line: #d0d5e0; --pb-fg: #181c24; --pb-dim: #4e5c76; --pb-faint: #7786a4;
