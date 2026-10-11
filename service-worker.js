@@ -4,7 +4,7 @@
  * Only same-origin GET requests are handled. Other origins are never cached or intercepted. */
 'use strict';
 
-const VERSION = 'v2';
+const VERSION = 'v3';
 const CACHE = 'worksuite-' + VERSION;
 const OFFLINE = '/offline.html';
 const STATIC = /\.(m?js|css|woff2?|ttf|otf|png|jpe?g|webp|gif|svg|ico|wasm|json|glb|bcmap|pfb)$/i;
@@ -94,7 +94,7 @@ const PRECACHE = [
   '/imageeditor/css/type.css', '/imageeditor/index.html', '/imageeditor/js/app/commands.js', '/imageeditor/js/app/main.js',
   '/imageeditor/js/app/nav-adapter.js', '/imageeditor/js/app/tabs.js', '/imageeditor/js/brushes/engine.js',
   '/imageeditor/js/brushes/packs.js', '/imageeditor/js/brushes/panel.js', '/imageeditor/js/core/composite.js',
-  '/imageeditor/js/core/model.js', '/imageeditor/js/core/ops.js', '/imageeditor/js/core/util.js',
+  '/imageeditor/js/core/model.js', '/imageeditor/js/core/ops.js', '/imageeditor/js/core/size.js', '/imageeditor/js/core/util.js',
   '/imageeditor/js/core/view.js', '/imageeditor/js/filters/catalog.js', '/imageeditor/js/filters/enhance.js',
   '/imageeditor/js/filters/helpers.js', '/imageeditor/js/filters/repair.js', '/imageeditor/js/filters/tlbx.js',
   '/imageeditor/js/guides/input.js', '/imageeditor/js/guides/model.js', '/imageeditor/js/guides/overlay.js',
@@ -107,7 +107,7 @@ const PRECACHE = [
   '/imageeditor/js/type/props.js', '/imageeditor/js/ui/chrome.js', '/imageeditor/js/ui/context.js',
   '/imageeditor/js/ui/dialogs.js', '/imageeditor/js/ui/doc-dialogs.js', '/imageeditor/js/ui/filter-dialog.js',
   '/imageeditor/js/ui/fx-dialog.js', '/imageeditor/js/ui/menus.js', '/imageeditor/js/ui/panels.js',
-  '/imageeditor/js/ui/popups.js', '/press/css/canvas.css', '/press/css/chrome.css', '/press/css/panels.css',
+  '/imageeditor/js/ui/popups.js', '/imageeditor/js/ui/size-dialogs.js', '/press/css/canvas.css', '/press/css/chrome.css', '/press/css/panels.css',
   '/press/css/responsive.css', '/press/css/themes.css', '/press/index.html', '/press/js/core/items.js',
   '/press/js/core/layers.js', '/press/js/core/model.js', '/press/js/core/pages.js', '/press/js/core/state.js',
   '/press/js/core/store.js', '/press/js/core/story.js', '/press/js/core/styles.js', '/press/js/core/util.js',
