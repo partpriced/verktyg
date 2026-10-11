@@ -1,0 +1,63 @@
+/* Consent banner and the Manage switches. Light by default, dark when the system asks for dark. */
+:root {
+  --tlbxc-bg: #ffffff;
+  --tlbxc-fg: #111111;
+  --tlbxc-dim: #4a4a4a;
+  --tlbxc-line: rgba(0, 0, 0, 0.18);
+  --tlbxc-accent: #a2fff6;
+  --tlbxc-accent-ink: #0a0a0a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --tlbxc-bg: #111111;
+    --tlbxc-fg: #f1ede4;
+    --tlbxc-dim: rgba(241, 237, 228, 0.72);
+    --tlbxc-line: rgba(241, 237, 228, 0.25);
+  }
+}
+:root[data-theme="dark"] {
+  --tlbxc-bg: #111111;
+  --tlbxc-fg: #f1ede4;
+  --tlbxc-dim: rgba(241, 237, 228, 0.72);
+  --tlbxc-line: rgba(241, 237, 228, 0.25);
+}
+
+.tlbxc-banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: var(--tlbxc-bg);
+  color: var(--tlbxc-fg);
+  border-top: 1px solid var(--tlbxc-line);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.12);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.tlbxc-body { max-width: 720px; margin: 0 auto; padding: 16px; }
+.tlbxc-body p { margin: 0 0 12px; color: var(--tlbxc-fg); }
+.tlbxc-body a { color: inherit; text-underline-offset: 2px; }
+.tlbxc-actions, .tlbxc-manage { display: flex; flex-wrap: wrap; gap: 8px; }
+.tlbxc-manage { margin-top: 12px; align-items: center; }
+.tlbxc-btn {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1px solid var(--tlbxc-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tlbxc-fg);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tlbxc-btn:hover { border-color: var(--tlbxc-fg); }
+.tlbxc-btn.primary { background: var(--tlbxc-accent); border-color: var(--tlbxc-accent); color: var(--tlbxc-accent-ink); }
+.tlbxc-btn:focus-visible, .tlbxc-switch input:focus-visible { outline: 2px solid var(--tlbxc-fg); outline-offset: 2px; }
+.tlbxc-switch { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding-right: 8px; cursor: pointer; }
+.tlbxc-switch input { width: 20px; height: 20px; margin: 0; accent-color: var(--tlbxc-accent-ink); }
+[hidden] { display: none !important; }
+
+@media (max-width: 420px) {
+  .tlbxc-body { padding: 14px 16px 18px; }
+  .tlbxc-btn { flex: 1 1 auto; }
+}
