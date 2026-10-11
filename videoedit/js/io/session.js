@@ -52,6 +52,7 @@
     if (!window.TlbxHub || SE.offline) return false;
     const rec = await TlbxHub.consumeLaunch();
     if (!rec) return false;
+    if (SE.reel && SE.reel.isManifest(rec)) return SE.reel.launch(rec); // a reel from Gallery (io/reel.js)
     const f = new File([rec.blob], rec.name, { type: rec.type });
     if (/\.videoedit$/i.test(rec.name || '')) await SE.project.openFile(f, rec.id);
     else await SE.app.importFiles([f], { from: 'drive' });
