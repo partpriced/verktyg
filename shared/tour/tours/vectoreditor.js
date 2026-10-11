@@ -1,6 +1,6 @@
 /* TlbxTour: Vector Editor. Targets are ids in vectoreditor/index.html. */
 TlbxTour.define({
-  app: 'vector',
+  app: 'vectoreditor',
   title: 'Vector Editor tour',
   steps: [
     { id: 'menus', title: 'Menus', text: 'File, Edit, Object, Type and the other menus list every command.', target: '#menus' },
