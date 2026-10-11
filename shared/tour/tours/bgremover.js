@@ -1,6 +1,6 @@
 /* TlbxTour: Background Remover (the bgremover folder). Targets are ids in bgremover/index.html. */
 TlbxTour.define({
-  app: 'cutout',
+  app: 'bgremover',
   title: 'Background Remover tour',
   steps: [
     { id: 'queue', title: 'Image list', text: 'Every image you open is listed here. Click one to work on it.', target: '#queue' },
