@@ -12,6 +12,7 @@
       { label: 'New presentation', key: keyOf('file.new'), act: SS.files.newDeck },
       { label: 'New from template…', key: keyOf('file.newTemplate'), act: function () { SS.templatesUI.openNew(); } },
       { label: 'Open from Files…', key: keyOf('file.open'), act: SS.files.openDrive, disabled: !hub },
+      { label: 'Import PowerPoint or picture from Files…', act: SS.files.importDrive, disabled: !hub },
       '-',
       { label: 'Save to Files', key: keyOf('file.save'), act: function () { SS.files.save(false); }, disabled: !hub },
       { label: 'Save as a new Drive file…', act: function () { SS.files.save(true); }, disabled: !hub },
