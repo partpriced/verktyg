@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   const C = window.TlbxCmd;
-  if (!C || C._parts.recorder) return;
+  if (!C || !C._parts || C._parts.recorder) return;
 
   /**
    * Record the next key combination. While recording, app shortcuts are suspended and every key is
@@ -30,7 +30,7 @@
       const st = C.eventSteps(e);
       if (!st) return;
       if (st[0] === 'Escape') { finish(null); return; }
-      steps.push(st[st.length - 1]);
+      steps.push(st[1] || st[0]); // prefer the symbol form ('?' over 'Shift+?')
       if (opts.onStep) opts.onStep(steps.join(' '));
       clearTimeout(timer);
       if (steps.length >= maxSteps) finish(value());
