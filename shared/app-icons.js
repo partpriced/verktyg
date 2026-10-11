@@ -28,6 +28,7 @@
     pdf: '<path d="M12 6h17l9 9v27H12z"/><path d="M29 6v9h9"/><path d="M16 32h4a3 3 0 0 0 0-6h-4v10M26 26h3a4 4 0 0 1 0 8h-3zM34 36v-10h4"/>',
     label: '<path d="M6 8h18l18 18-16 16L8 24z"/><circle cx="15" cy="16" r="3"/>',
     cutout: '<rect x="6" y="6" width="36" height="36" rx="3" stroke-dasharray="4 3"/><circle cx="24" cy="18" r="5"/><path d="M15 38c0-6 4-10 9-10s9 4 9 10"/>',
+    ocr: '<rect x="9" y="6" width="30" height="36" rx="3"/><path d="M15 15h11M15 21h18M15 27h7"/><path d="M31 25v12M28 25h6M28 37h6"/>',
     clean: '<path d="M24 6 8 12v12c0 10 7 17 16 18 9-1 16-8 16-18V12z"/><path d="m17 24 5 5 9-10"/>',
     ai: '<path d="M24 6l4 12 12 4-12 4-4 12-4-12-12-4 12-4z"/><path d="M38 6v6M35 9h6"/>',
     docs: '<path d="M12 6h17l9 9v27H12z"/><path d="M29 6v9h9M17 24h14M17 30h14M17 36h9"/>',
@@ -65,6 +66,7 @@
     calendar: '<rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M16 6v8M32 6v8M15 26h3M22 26h3M29 26h3M15 33h3M22 33h3"/>',
     todo: '<rect x="9" y="8" width="30" height="34" rx="3"/><path d="M15 21l3 3 5-6M15 33l3 3 5-6M27 21h6M27 33h6"/>',
     reminders: '<path d="M13 34V22a11 11 0 0 1 22 0v12l3 4H10z"/><path d="M20 42h8"/><circle cx="24" cy="8" r="2"/>',
+    sheetview: '<rect x="6" y="6" width="22" height="22" rx="2"/><path d="M6 14h22M6 22h22M14 6v22M22 6v22"/><circle cx="33" cy="33" r="6"/><path d="M37.5 37.5 41 41"/>',
     img3d: '<rect x="8" y="8" width="32" height="32" rx="3"/><path d="M8 32l10-10 6 6 6-8 10 12"/><circle cx="32" cy="16" r="3"/>',
   });
 })();
