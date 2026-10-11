@@ -1,4 +1,4 @@
-/* VideoEdit tests: UI smoke on desktop and phone (390×844), shortcuts through the command layer,
+/* Video Editor tests: UI smoke on desktop and phone (390×844), shortcuts through the command layer,
    menus, inspector edits, the sample project, and Hub launch with ?drive=. */
 (function () {
   'use strict';
