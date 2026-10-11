@@ -5,7 +5,7 @@
   'use strict';
   const S = g.TlbxData;
   const NS = (g.TlbxInv = g.TlbxInv || {});
-  const { ok, fail } = S.result;
+  const { fail } = S.result;
   const whole = (n) => Number.isSafeInteger(n) && n > 0;
 
   /** Receipt: adds stock at a location. */
