@@ -1,8 +1,8 @@
 /* ITpris Verktyg shell: the OS layer. Every app page loads it with one line:
  *   a script tag pointing at ../shell/shell.js          (pages in a folder)
  *   a script tag pointing at shell/shell.js             (the homepage)
- * It loads what it needs in order (brand, registry, TlbxUI, then shell/*.js and shell.css, skipping what
- * is already on the page), adds the Apps and Notifications buttons to the page header, and binds Ctrl+Space.
+ * It loads what it needs in order (brand, registry, TlbxUI, the language files, then shell/*.js and shell.css, skipping
+ * what is already on the page), applies the chosen language (TlbxI18n.apply) once the header is in, adds the Apps and Notifications buttons to the page header, and binds Ctrl+Space.
  * Options on the tag: data-no-header (no buttons), data-brand-src (see brand/brand.js).
  * Exposes window.TlbxShell (core helpers) and, once booted, TlbxShell.switcher / .drawer / .notify / .tabs.
  * Modules: shell/notify.js TlbxNotify · shell/layout.js TlbxLayout · shell/tabs.js TlbxTabs ·
@@ -80,6 +80,7 @@
   if (!window.TLBX_APPS) queue.push(['shared/apps.js']);
   if (!window.TlbxBrand) queue.push(['brand/brand.js', { brandSrc: (me && me.dataset.brandSrc) || '' }]);
   if (!window.TlbxUI) { addCss('shared/tlbxui.css'); queue.push(['shared/tlbxui.js']); }
+  if (!window.TlbxI18n) queue.push(['shared/i18n/i18n.js'], ['shared/i18n/strings.js'], ['shared/i18n/es.js']);
   addCss('shell/shell.css');
   for (const m of ['notify', 'layout', 'tabs', 'switcher', 'drawer', 'header']) queue.push(['shell/' + m + '.js']);
 
@@ -92,6 +93,7 @@
     S.drawer = window.TlbxDrawer;
     S.layout = window.TlbxLayout;
     if (!S.noHeader && window.TlbxHeader) window.TlbxHeader.mount();
+    if (window.TlbxI18n) window.TlbxI18n.apply(); // the chosen language, from the profile, on every shell page
     return S;
   });
 })();
