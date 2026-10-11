@@ -33,6 +33,20 @@
     return backupP;
   }
   function reload() { window.TlbxGuard.reload(); }
+  let kitP = null;
+  /** The TlbxUI kit only (used when the backup kit is unavailable). Loaded beside a page's own window.TlbxUI. */
+  function plainKit() {
+    if (window.TlbxUI && window.TlbxUI.confirm) return Promise.resolve(window.TlbxUI);
+    if (!kitP) kitP = new Promise((res, rej) => {
+      const prev = window.TlbxUI;
+      window.TlbxUI = undefined;
+      const s = document.createElement('script'); s.src = new URL('shared/tlbxui.js', ROOT).href;
+      s.onload = () => { const k = window.TlbxUI; window.TlbxUI = prev; res(k); };
+      s.onerror = () => { window.TlbxUI = prev; kitP = null; rej(new Error('TlbxUI is unavailable')); };
+      document.head.append(s);
+    });
+    return kitP;
+  }
 
   let showing = null;
   /** Show the dialog. Resolves with 'export' | 'reload' | 'cancel' (after the dialog closes). */
@@ -40,7 +54,14 @@
     if (showing) return showing;
     showing = (async () => {
       let B, UI;
-      try { B = await backup(); UI = await B.kit(); } catch (e) { return window.confirm(MSG.replace(' Export a backup first?', ' Reload now?')) ? (reload(), 'reload') : 'cancel'; }
+      try { B = await backup(); UI = await B.kit(); } catch (e) {
+        // The backup kit did not load: ask with the plain TlbxUI dialog instead of a browser prompt.
+        let U = null;
+        try { U = await plainKit(); } catch (err) { return 'cancel'; }
+        const ok = await U.confirm('Before you reload', MSG.replace(' Export a backup first?', ' Reload now?'), 'Reload now', { cancel: 'Cancel' });
+        if (ok) { reload(); return 'reload'; }
+        return 'cancel';
+      }
       return new Promise((resolve) => {
         const el = UI.el, never = UI.check('Don’t show this again', false);
         const status = el('p', { class: 'sui-p tlbx-guard-status', role: 'status' });
