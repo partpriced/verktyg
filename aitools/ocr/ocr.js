@@ -67,7 +67,7 @@
   $('docs').addEventListener('click', async () => {
     const base = (file ? file.name.replace(/\.[^.]+$/, '') : 'ocr');
     const id = await T.toDrive(base + '.txt', new Blob([$('out').value], { type: 'text/plain' }), 'ai-ocr', { source: 'OCR' });
-    if (id) { T.openDocs(id); $('msg').textContent = 'Saved to Files as ' + base + '.txt and opened in Documents.'; }
+    if (id) { T.openDocs(id); $('msg').textContent = 'Saved to Files as ' + base + '.txt. Documents is opening it in a new tab.'; }
     else $('msg').textContent = 'Files is not available here, so the text cannot be sent to Documents. Use Download instead.';
   });
   T.gate('ocr', () => { $('ui').hidden = false; $('page').parentElement.hidden = true; });
