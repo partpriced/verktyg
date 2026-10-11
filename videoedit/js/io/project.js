@@ -1,4 +1,4 @@
-/* VideoEdit: .videoedit project files. A store-only zip with project.json and every media file under
+/* Video Editor: .videoedit project files. A store-only zip with project.json and every media file under
    media/<id>.<ext>, so a project moves between browsers and machines with its footage. */
 (function () {
   'use strict';
@@ -22,7 +22,7 @@
     const j = files.get('project.json');
     if (!j) throw new Error('This file has no project.json');
     const data = JSON.parse(await j.text());
-    if (!data || data.app !== 'videoedit' || !data.project) throw new Error('Not a VideoEdit project');
+    if (!data || data.app !== 'videoedit' || !data.project) throw new Error('Not a Video Editor project');
     const doc = M.normalize(data.project);
     for (const m of doc.media) if (m.kind === 'image' && m.dur == null) m.dur = Infinity;
     const blobs = new Map();

@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: brush, pencil, eraser, clone and retouch tools */
+/* Image Editor tools: brush, pencil, eraser, clone and retouch tools */
 'use strict';
 
 /* Painting */

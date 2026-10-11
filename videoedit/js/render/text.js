@@ -1,4 +1,4 @@
-/* VideoEdit: title rendering. A title is drawn into a frame-sized canvas (cached) and composited like
+/* Video Editor: title rendering. A title is drawn into a frame-sized canvas (cached) and composited like
    any other layer; its animation (fade, slide, pop, typewriter, rise) adds alpha/offset/scale. */
 (function () {
   'use strict';

@@ -1,4 +1,4 @@
-/* VideoEdit: the application shell. Elements, status line, selection, theme, imports, drag and drop
+/* Video Editor: the application shell. Elements, status line, selection, theme, imports, drag and drop
    of files onto the window, and the mobile panel tabs. Exposes SE.app. */
 (function () {
   'use strict';

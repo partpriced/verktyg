@@ -1,4 +1,4 @@
-/* PhotoTLBX document: compositing and selections */
+/* Image Editor document: compositing and selections */
 'use strict';
 
 /* ---------- compositing ---------- */

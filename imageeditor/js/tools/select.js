@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: tool registry, move, selection, crop and eyedropper */
+/* Image Editor tools: tool registry, move, selection, crop and eyedropper */
 'use strict';
 
 /* ---------- tool definitions ---------- */

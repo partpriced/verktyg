@@ -1,4 +1,4 @@
-/* VideoEdit: the Templates tab of the bin. Template tiles (click to apply or re-flow), the slots of the
+/* Video Editor: the Templates tab of the bin. Template tiles (click to apply or re-flow), the slots of the
    current layout (drag a clip into a slot, drag a slot onto another to swap, or use the selects), and
    the clips on the timeline as draggable chips. Renders into the bin's list element. */
 (function () {

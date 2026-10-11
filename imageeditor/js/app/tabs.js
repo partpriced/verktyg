@@ -1,4 +1,4 @@
-/* PhotoTLBX: multiple documents in tabs. The globals D / Hist / V always hold the active
+/* Image Editor: multiple documents in tabs. The globals D / Hist / V always hold the active
  * document; switching tabs stashes them into the tab record and restores another. */
 'use strict';
 

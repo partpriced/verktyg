@@ -1,4 +1,4 @@
-/* PhotoTLBX filters: adjustments, blur, sharpen, noise, pixelate, stylize, distort and render */
+/* Image Editor filters: adjustments, blur, sharpen, noise, pixelate, stylize, distort and render */
 'use strict';
 
 FILTERS.push(

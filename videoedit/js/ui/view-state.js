@@ -1,4 +1,4 @@
-/* VideoEdit — ui/view-state: coming back to VideoEdit brings back the project you left (session.js already restores it),
+/* Video Editor — ui/view-state: coming back to Video Editor brings back the project you left (session.js already restores it),
  * and the place you were working in: the timeline zoom and scroll, the tool, and the phone pane. The project and the
  * media stay in this browser (IndexedDB), never uploaded. The place is kept in TlbxSession. Classic script; SE.viewState. */
 (function () {

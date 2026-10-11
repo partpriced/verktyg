@@ -1,4 +1,4 @@
-/* PhotoTLBX UI: filter dialogs with live preview, curves */
+/* Image Editor UI: filter dialogs with live preview, curves */
 'use strict';
 
 /* ---------- filters ---------- */

@@ -1,4 +1,4 @@
-/* VideoEdit: the Project panel. Tabs for Media (imported files) and Effects (transitions, titles,
+/* Video Editor: the Project panel. Tabs for Media (imported files) and Effects (transitions, titles,
    generators; filled by effects.js). Media items drag onto the timeline, or double-click to add. */
 (function () {
   'use strict';

@@ -1,4 +1,4 @@
-/* PhotoTLBX: adjustments, filters and layer styles. Helpers and the FILTERS list.
+/* Image Editor: adjustments, filters and layer styles. Helpers and the FILTERS list.
  * Each entry: { id, name, menu, params, fn(canvas, params, env) → canvas | Promise<canvas> }.
  * fn must not mutate its input. env = { fg, bg } colours. */
 'use strict';

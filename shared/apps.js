@@ -12,7 +12,7 @@
   window.TLBX_GROUP_LABELS = GROUP_LABELS;
   const A = (id, kind, name, path, tagline, extra = {}) => Object.assign({ id, kind, name, path, tagline, status: 'live', accepts: [], features: [] }, extra);
   window.TLBX_APPS = [
-    A('imageeditor', 'app', 'PhotoTLBX', 'imageeditor/', 'Photoshop, rebuilt for the browser.', { group: 'creative',
+    A('imageeditor', 'app', 'Image Editor', 'imageeditor/', 'Photoshop, rebuilt for the browser.', { group: 'creative',
       accepts: ['image/*', 'image/vnd.adobe.photoshop', 'application/x-openraster'],
       features: ['Layers, masks & 17 blend modes', 'Real PSD open & save', '50+ filters, brush packs, .abr import', 'Tabs, autosave, offline .html'],
       shot: 'assets/shots/imageeditor.jpg', icon: 'brush' }),
@@ -28,7 +28,7 @@
       accepts: ['image/*', 'text/csv'],
       features: ['Barcodes & QR, GS1', 'Data merge from CSV & Excel', 'Zebra ZPL export & import', 'Sheets & thermal rolls'],
       shot: 'assets/shots/label.jpg', icon: 'tag', status: 'beta' }),
-    A('cutout', 'app', 'Cutout', 'cutout/', 'Remove backgrounds with AI that runs on your device.', { group: 'creative',
+    A('cutout', 'app', 'Background Remover', 'cutout/', 'Remove backgrounds with AI that runs on your device.', { group: 'creative',
       accepts: ['image/*'],
       features: ['One-click AI background removal', 'Refine brush & soft edges', 'Replace with colour, blur or image', 'Batch, no uploads, no watermarks'],
       shot: 'assets/shots/cutout.jpg', icon: 'brush', status: 'beta' }),
@@ -59,11 +59,11 @@
       accepts: ['image/*', 'application/pdf', 'text/plain'],
       features: ['Master pages & threaded text frames', 'Paragraph & character styles', 'Print-ready PDF export', 'Offline .html'],
       shot: 'assets/shots/press.jpg', icon: 'layout', status: 'beta' }),
-    A('remix', 'app', 'Video Remix', 'remix/', 'Clips and photos in, a random edit out, then fine-tune in VideoEdit.', { group: 'creative',
+    A('remix', 'app', 'Video Remix', 'remix/', 'Clips and photos in, a random edit out, then fine-tune in Video Editor.', { group: 'creative',
       accepts: ['video/*', 'image/*'],
-      features: ['Random edit with grids and layout switches', 'Seeded: reshuffle or repeat exactly', 'Export presets from phone to 4K', 'Sends the project to VideoEdit'],
+      features: ['Random edit with grids and layout switches', 'Seeded: reshuffle or repeat exactly', 'Export presets from phone to 4K', 'Sends the project to Video Editor'],
       icon: 'film', status: 'building' }),
-    A('videoedit', 'app', 'VideoEdit', 'videoedit/', 'A video editor that never uploads your footage.', { group: 'creative',
+    A('videoedit', 'app', 'Video Editor', 'videoedit/', 'A video editor that never uploads your footage.', { group: 'creative',
       accepts: ['video/*', 'audio/*', 'image/*'],
       features: ['Multi-track timeline', 'Trim, split, transitions & titles', 'Hardware MP4 export (WebCodecs)', 'Offline .html'],
       shot: 'assets/shots/videoedit.jpg', icon: 'film', status: 'beta' }),

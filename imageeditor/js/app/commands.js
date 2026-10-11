@@ -1,4 +1,4 @@
-/* PhotoTLBX: every menu item, tool and canvas key as a TlbxCmd command (shared/commands), so the
+/* Image Editor: every menu item, tool and canvas key as a TlbxCmd command (shared/commands), so the
  * Spotlight palette (⌘K) finds them and the person can rebind any shortcut. Without TlbxCmd the
  * legacy keyboard handler in ui/doc-dialogs.js keeps working. */
 'use strict';

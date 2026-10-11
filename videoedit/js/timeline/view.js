@@ -1,4 +1,4 @@
-/* VideoEdit: timeline view state and geometry. Zoom (px per second), scroll, rows, hit testing and
+/* Video Editor: timeline view state and geometry. Zoom (px per second), scroll, rows, hit testing and
    redraw scheduling. Drawing lives in draw.js, pointer input in input.js, headers in heads.js. */
 (function () {
   'use strict';

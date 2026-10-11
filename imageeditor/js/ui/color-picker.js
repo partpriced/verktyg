@@ -1,4 +1,4 @@
-/* PhotoTLBX UI: the colour picker dialog (foreground / background swatches, filter and type colours) and the side panel.
+/* Image Editor UI: the colour picker dialog (foreground / background swatches, filter and type colours) and the side panel.
  * The body is shared with Vector Editor (shared/color/picker.js). The colour itself lives in C (tools/state.js). */
 'use strict';
 

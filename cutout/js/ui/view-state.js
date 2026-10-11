@@ -1,4 +1,4 @@
-/* Cutout — ui/view-state: coming back to Cutout brings back the images you were working on (each file, its
+/* Background Remover — ui/view-state: coming back to Background Remover brings back the images you were working on (each file, its
  * look and its brush edits), the one on screen, and the tool, the view and the split. Everything stays in this browser:
  * it is kept through TlbxSession (IndexedDB), never uploaded. The panel is already kept in the prefs (menus.js).
  * Classic script; uses CO.state and CO.process. Exposes CO.viewState. */

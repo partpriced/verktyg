@@ -1,4 +1,4 @@
-/* VideoEdit: timeline drawing (canvas). Ruler, markers lane, lanes, clips with filmstrips and
+/* Video Editor: timeline drawing (canvas). Ruler, markers lane, lanes, clips with filmstrips and
    waveforms, fades, transitions, volume rubber bands, in/out range, playhead, snap line and ghosts. */
 (function () {
   'use strict';

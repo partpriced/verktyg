@@ -1,4 +1,4 @@
-/* TlbxUI: the shared dialog / toast / menu kit for ITpris Verktyg apps (PhotoTLBX, Vector Editor, PDF Editor).
+/* TlbxUI: the shared dialog / toast / menu kit for ITpris Verktyg apps (Image Editor, Vector Editor, PDF Editor).
  * Classic script, no dependencies. Exposes window.TlbxUI.
  * Theming: set --sui-* custom properties (see tlbxui.css); it falls back to each app's own tokens. */
 (function () {

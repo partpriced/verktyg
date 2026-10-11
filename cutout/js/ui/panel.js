@@ -1,4 +1,4 @@
-/* Cutout — settings panel (#props): Model, Edges, the look sections from panel-look.js, and Export.
+/* Background Remover — settings panel (#props): Model, Edges, the look sections from panel-look.js, and Export.
  * Controls are built once. Each one registers a bind(it) function; refresh() runs them all with the
  * active image (or null) so the shown values always match the image on screen. */
 (function () {

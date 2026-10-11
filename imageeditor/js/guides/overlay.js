@@ -1,4 +1,4 @@
-/* PhotoTLBX guides: drawing the grid, guides, the live layout preview, snap indicator and rulers on the view canvas. */
+/* Image Editor guides: drawing the grid, guides, the live layout preview, snap indicator and rulers on the view canvas. */
 'use strict';
 
 /** Grid and guides, drawn above the image (called from draw() in core/view.js). */

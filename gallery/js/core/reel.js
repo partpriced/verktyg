@@ -1,6 +1,6 @@
 /* Gallery: the reel spec and manifest, as plain data (no DOM, no storage, so tests and the dialog share it).
  * A reel is the selected photos, in an order, with a template, a target length, a pace and an aspect. Its manifest
- * is one Files record (type application/x-tlbx-reel+json) that VideoEdit reads on launch (?drive=<manifest id>).
+ * is one Files record (type application/x-tlbx-reel+json) that Video Editor reads on launch (?drive=<manifest id>).
  * Exposes window.TlbxGallery.reelCore. */
 (function () {
   'use strict';
@@ -47,7 +47,7 @@
   /** "IMG_1.jpg" becomes "IMG_1 (cutout).png" when stored with a cut-out. */
   const cutoutName = (name) => (String(name || 'photo').replace(/\.[^./\\]+$/, '') || 'photo') + ' (cutout).png';
 
-  /** The manifest: what VideoEdit needs to build the reel. files are Drive ids in play order; overlays are cut-out PNGs. */
+  /** The manifest: what Video Editor needs to build the reel. files are Drive ids in play order; overlays are cut-out PNGs. */
   function buildManifest({ spec, fileIds, overlays = [], now = new Date() }) {
     return {
       format: FORMAT, version: VERSION, created: now.toISOString(), from: 'gallery',

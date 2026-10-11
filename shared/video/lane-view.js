@@ -1,5 +1,5 @@
 /* Shared video core (window.TlbxVideo.laneView): the Layout lane, a timeline strip of layout switches used by
-   VideoEdit and Video Remix. Each band is one layout (its name and slot count); each marker is a switch. Add a
+   Video Editor and Video Remix. Each band is one layout (its name and slot count); each marker is a switch. Add a
    switch at the playhead (with a chosen layout), drag a marker to move it, select one and press Delete (or
    the Delete button) to remove it. Every change is reported through onCommit(switches) as a new list; the host
    stores it and calls update() again. Pointer and keyboard only; no dependencies. */

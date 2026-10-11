@@ -1,4 +1,4 @@
-/* PhotoTLBX: document model, history, compositing, selection.
+/* Image Editor: document model, history, compositing, selection.
  *
  * Every layer record and every canvas attached to one is treated as immutable
  * once it is in the document: edits make a new canvas and a new record. That
