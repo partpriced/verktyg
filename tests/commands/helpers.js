@@ -7,7 +7,7 @@
   function fresh(app) {
     for (const id of made.splice(0)) TlbxCmd.unregister(id);
     TlbxCmd.close();
-    document.querySelectorAll('.sui-back').forEach((b) => b.remove());
+    document.querySelectorAll('.sui-dlg .sui-x').forEach((x) => x.click());
     TlbxCmd.mac = false;
     const name = app || 'test-' + Date.now() + '-' + (++n);
     try { localStorage.removeItem('tlbx.keys.' + name); localStorage.removeItem('tlbx.cmd.recent.' + name); } catch (e) { /* ignore */ }

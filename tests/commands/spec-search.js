@@ -72,7 +72,7 @@
       T.fresh();
       TlbxCmd.run('cmd.keymap');
       TlbxCmd.close();
-      document.querySelectorAll('.sui-back').forEach((b) => b.remove());
+      document.querySelectorAll('.sui-dlg .sui-x').forEach((x) => x.click());
       expect(TlbxCmd.recent()).toEqual([]);
     });
   });
