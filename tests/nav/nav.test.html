@@ -13,19 +13,19 @@
   const { describe, it, expect, waitFor, sleep } = TlbxTest;
   let win, W, N;
   const frame = () => document.getElementById('app');
-  async function boot() {
+  async function boot(reset = true) {
     win = frame().contentWindow;
     await waitFor(() => win.document && win.document.body && win.document.body.classList.contains('ready'), { timeout: 30000 });
     W = new Proxy({}, { get: (_, k) => win.eval(String(k)) });
     N = win.TlbxNav;
     cancelAll();
-    N.store.setPreset('imageeditor', 'tlbx');
+    if (reset) N.store.setPreset('imageeditor', 'tlbx');
   }
   async function reload() {
     const done = new Promise((r) => frame().addEventListener('load', r, { once: true }));
     frame().src = '../../imageeditor/index.html?' + Math.random();
     await done;
-    await boot();
+    await boot(false); // keep the saved preset: this is the reload being tested
   }
   const wheel = (o) => {
     const v = win.document.getElementById('viewport');
@@ -140,8 +140,7 @@
       sel.value = 'alt';
       sel.dispatchEvent(new win.Event('change'));
       await applyDialog();
-      const dump = JSON.stringify({ get: N.store.get('imageeditor').preset, res: N.store.resolve('imageeditor').id, raw: win.localStorage.getItem('tlbx-nav') });
-      expect(dump.includes('"res":"custom"') ? 'ok' : dump).toBe('ok');
+      expect(N.store.resolve('imageeditor').id).toBe('custom');
       expect(N.store.resolve('imageeditor').bindings.zoomWheel).toBe('alt');
       await reload();
       const again = win.TlbxNav.store.resolve('imageeditor');
