@@ -69,8 +69,10 @@
     });
     it('reads letters from the code when Alt changes the character, and offers symbol forms', () => {
       expect(TlbxCmd.eventSteps(ev({ key: 'å', code: 'KeyA', altKey: true }), true)).toEqual(['Alt+A']);
-      expect(TlbxCmd.eventSteps(ev({ key: '?', code: 'Slash', shiftKey: true }), false)).toEqual(['Shift+?', '?']);
-      expect(TlbxCmd.eventSteps(ev({ key: '+', code: 'Equal', ctrlKey: true, shiftKey: true }), false)).toEqual(['Mod+Shift++', 'Mod++']);
+      expect(TlbxCmd.eventSteps(ev({ key: '?', code: 'Slash', shiftKey: true }), false)).toEqual(['Shift+?', '?', 'Shift+/']);
+      expect(TlbxCmd.eventSteps(ev({ key: '+', code: 'Equal', ctrlKey: true, shiftKey: true }), false)).toEqual(['Mod+Shift++', 'Mod++', 'Mod+Shift+=']);
+      expect(TlbxCmd.eventSteps(ev({ key: '}', code: 'BracketRight', ctrlKey: true, shiftKey: true }), false)).toEqual(['Mod+Shift+}', 'Mod+}', 'Mod+Shift+]']);
+      expect(TlbxCmd.eventSteps(ev({ key: ']', code: 'BracketRight', ctrlKey: true }), false)).toEqual(['Mod+]']);
       expect(TlbxCmd.eventSteps(ev({ key: ' ', code: 'Space' }), false)).toEqual(['Space']);
       expect(TlbxCmd.eventSteps(ev({ key: 'Shift', code: 'ShiftLeft', shiftKey: true }), false)).toBe(null);
     });
