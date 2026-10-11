@@ -56,6 +56,8 @@ export function restore() {
   M.token++;
   restoreAll();
   for (const n of M.layer.querySelectorAll('.helpbot-letter, .helpbot-goo, .helpbot-ball, .helpbot-hole')) n.remove();
+  // Shaken elements can be left with an empty style attribute; drop it so the markup is exactly as before.
+  for (const n of document.querySelectorAll('main [style=""]')) n.removeAttribute('style');
   say(line('restore'), 1200);
 }
 
