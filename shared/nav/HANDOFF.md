@@ -68,7 +68,7 @@ it is active. Same-action keys are not clashes (PhotoTLBX's Ctrl+0 and the Photo
 ## Adoption
 
 - PhotoTLBX: `imageeditor/js/app/nav-adapter.js` (attaches itself; `view.js` is unchanged). Edit ▸ Preferences ▸ Navigation…, command palette "Navigation preset…". Script tags and the stylesheet are in `imageeditor/index.html`.
-- Vector Editor: `vector/js/ui/nav-adapter.js`. Edit ▸ Preferences ▸ Navigation…, and the command palette ("Navigation…", action `edit.nav`).
+- Vector Editor: `vectoreditor/js/ui/nav-adapter.js`. Edit ▸ Preferences ▸ Navigation…, and the command palette ("Navigation…", action `edit.nav`).
 - Not yet: 3D Modeller, Cutout, Gallery viewer, Slides canvas, Label canvas, Press canvas, VideoEdit monitor, and Paint Classic. Each needs one adapter file and its script tags.
 
 ## Store API (for the profile page)
