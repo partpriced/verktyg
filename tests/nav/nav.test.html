@@ -19,7 +19,6 @@
     W = new Proxy({}, { get: (_, k) => win.eval(String(k)) });
     N = win.TlbxNav;
     N.store.setPreset('imageeditor', 'tlbx');
-    return W;
   }
   async function reload() {
     const done = new Promise((r) => frame().addEventListener('load', r, { once: true }));
@@ -164,6 +163,7 @@
       await waitFor(() => !dialogUp());
     });
   });
+  TlbxTest.run({ name: 'Navigation presets' });
   </script>
 </body>
 </html>
