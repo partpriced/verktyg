@@ -52,6 +52,7 @@
     });
 
     it('a due reminder shows in the in-app notifications with its title and a line of when', async () => {
+      await waitFor(() => w().TlbxNotify, { timeout: 20000 });   // the shell loads TlbxNotify a little after boot
       await w().TlbxReminderEngine.addCustom('Notify me', now - 1000);
       const found = () => w().TlbxNotify.history().find((r) => r.title === 'Notify me');
       await waitFor(async () => { await w().TlbxReminderEngine.scan(); return found(); }, { timeout: 8000 });
