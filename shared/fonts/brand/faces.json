@@ -1,0 +1,240 @@
+{
+ "family": "ITpris",
+ "version": "1.000",
+ "licence": "OFL-1.1",
+ "copyright": "Copyright 2026 ITpris",
+ "licenceFile": "OFL.txt",
+ "fontlog": "FONTLOG.txt",
+ "download": "itpris-fonts.zip",
+ "roles": {
+  "sans": {
+   "family": "ITpris Sans",
+   "category": "sans",
+   "fallback": "ITpris Sans Fallback",
+   "upstream": "Instrument Sans",
+   "styles": [
+    "normal",
+    "italic"
+   ]
+  },
+  "mono": {
+   "family": "ITpris Mono",
+   "category": "mono",
+   "fallback": "ITpris Mono Fallback",
+   "upstream": "Red Hat Mono",
+   "styles": [
+    "normal",
+    "italic"
+   ]
+  }
+ },
+ "features": [
+  {
+   "tag": "ss01",
+   "name": "Square dots",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss02",
+   "name": "Classic y",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss03",
+   "name": "Classic K",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss04",
+   "name": "Classic G",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss05",
+   "name": "Proportional figures",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss06",
+   "name": "Single-storey a",
+   "roles": [
+    "sans"
+   ]
+  },
+  {
+   "tag": "ss01",
+   "name": "Double-storey a",
+   "roles": [
+    "mono"
+   ]
+  },
+  {
+   "tag": "ss02",
+   "name": "Classic g",
+   "roles": [
+    "mono"
+   ]
+  }
+ ],
+ "pua": [],
+ "faces": [
+  {
+   "family": "ITpris Sans",
+   "role": "sans",
+   "style": "normal",
+   "weight": "400 700",
+   "file": "sans-normal-latin.woff2",
+   "subset": "latin",
+   "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+   "bytes": 36108
+  },
+  {
+   "family": "ITpris Sans",
+   "role": "sans",
+   "style": "normal",
+   "weight": "400 700",
+   "file": "sans-normal-latin-ext.woff2",
+   "subset": "latin-ext",
+   "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+   "bytes": 12284
+  },
+  {
+   "family": "ITpris Sans",
+   "role": "sans",
+   "style": "italic",
+   "weight": "400 700",
+   "file": "sans-italic-latin.woff2",
+   "subset": "latin",
+   "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+   "bytes": 38428
+  },
+  {
+   "family": "ITpris Sans",
+   "role": "sans",
+   "style": "italic",
+   "weight": "400 700",
+   "file": "sans-italic-latin-ext.woff2",
+   "subset": "latin-ext",
+   "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+   "bytes": 13124
+  },
+  {
+   "family": "ITpris Mono",
+   "role": "mono",
+   "style": "normal",
+   "weight": "300 700",
+   "file": "mono-normal-latin.woff2",
+   "subset": "latin",
+   "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+   "bytes": 21768
+  },
+  {
+   "family": "ITpris Mono",
+   "role": "mono",
+   "style": "normal",
+   "weight": "300 700",
+   "file": "mono-normal-latin-ext.woff2",
+   "subset": "latin-ext",
+   "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+   "bytes": 12128
+  },
+  {
+   "family": "ITpris Mono",
+   "role": "mono",
+   "style": "italic",
+   "weight": "300 700",
+   "file": "mono-italic-latin.woff2",
+   "subset": "latin",
+   "unicodeRange": "U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD",
+   "bytes": 24060
+  },
+  {
+   "family": "ITpris Mono",
+   "role": "mono",
+   "style": "italic",
+   "weight": "300 700",
+   "file": "mono-italic-latin-ext.woff2",
+   "subset": "latin-ext",
+   "unicodeRange": "U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF",
+   "bytes": 13532
+  }
+ ],
+ "fallbacks": [
+  {
+   "family": "ITpris Sans Fallback",
+   "weight": "100 549",
+   "local": [
+    "Arial",
+    "ArialMT",
+    "Liberation Sans",
+    "LiberationSans",
+    "Arimo Regular",
+    "Arimo-Regular",
+    "Roboto"
+   ],
+   "sizeAdjust": "94.49%",
+   "ascentOverride": "102.65%",
+   "descentOverride": "26.46%",
+   "lineGapOverride": "0.00%"
+  },
+  {
+   "family": "ITpris Sans Fallback",
+   "weight": "550 1000",
+   "local": [
+    "Arial Bold",
+    "Arial-BoldMT",
+    "Liberation Sans Bold",
+    "LiberationSans-Bold",
+    "Arimo Bold",
+    "Arimo-Bold",
+    "Roboto Bold"
+   ],
+   "sizeAdjust": "92.30%",
+   "ascentOverride": "105.10%",
+   "descentOverride": "27.09%",
+   "lineGapOverride": "0.00%"
+  },
+  {
+   "family": "ITpris Mono Fallback",
+   "weight": "100 549",
+   "local": [
+    "Courier New",
+    "CourierNewPSMT",
+    "Liberation Mono",
+    "LiberationMono",
+    "Cousine Regular",
+    "Cousine-Regular"
+   ],
+   "sizeAdjust": "99.98%",
+   "ascentOverride": "101.82%",
+   "descentOverride": "30.50%",
+   "lineGapOverride": "0.00%"
+  },
+  {
+   "family": "ITpris Mono Fallback",
+   "weight": "550 1000",
+   "local": [
+    "Courier New Bold",
+    "CourierNewPS-BoldMT",
+    "Liberation Mono Bold",
+    "LiberationMono-Bold",
+    "Cousine Bold",
+    "Cousine-Bold"
+   ],
+   "sizeAdjust": "99.98%",
+   "ascentOverride": "101.82%",
+   "descentOverride": "30.50%",
+   "lineGapOverride": "0.00%"
+  }
+ ]
+}

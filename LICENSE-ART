@@ -1,0 +1,21 @@
+Chippy artwork licence
+
+Copyright (c) 2026 PartPriced. All rights reserved.
+
+The Chippy character - its drawings, 3D model, expressions, animations and icons - is the property of PartPriced. The files
+listed below are not covered by the MIT License in LICENSE. You may not copy, modify or redistribute them, alone or as
+part of a copy or fork of this repository, without written permission from PartPriced. A fork must remove them and use
+its own mascot.
+
+Files:
+  brand/mascot/anims.js
+  brand/mascot/icon.js
+  brand/mascot/mascot.js
+  brand/mascot/model.js
+  brand/mark.svg
+  brand/logo.svg
+  favicon.svg
+  favicon.ico
+  assets/icons/icon-192.png
+  assets/icons/icon-512.png
+  og-share.png
