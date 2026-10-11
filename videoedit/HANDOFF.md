@@ -4,7 +4,7 @@ In-browser video editor at `/videoedit/` (registry id `videoedit`). Work in prog
 
 ## Status
 1. Media bin: done (import via picker, drag and drop, Files; thumbnails, duration, waveforms).
-2. Timeline: in progress.
+2. Timeline: done (multi-track, drag from bin, move across tracks, trim normal/ripple, razor, split S, snapping, zoom, scrub, J/K/L, markers lane, undo/redo, mute/solo/lock/hide, volume keyframes, fades, context menus).
 
 ## Layout
 `js/core` model/history/edit, `js/media` analysis and library, `js/ui` shell, bin, menus, commands, `js/io` session/synth/sample.

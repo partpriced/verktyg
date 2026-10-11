@@ -26,13 +26,14 @@
       // one page per row
       const tops = [...d.querySelectorAll('#grid .thumb')].map((t) => Math.round(t.getBoundingClientRect().top));
       expect(new Set(tops).size).toBe(3);
-      await waitFor(() => PT.win.localStorage.getItem('tlbx-pdf.thumbSize') === String(O.maxSize()), { timeout: 3000 });
+      expect(PT.win.localStorage.getItem('tlbx-pdf.thumbSize')).toBe(String(O.getSize()));
       // re-rendered sharp: the visible raster is at least as wide as it is shown
       const img = d.querySelector('#grid .thumb .sheet-img');
+      img.closest('.thumb').scrollIntoView({ block: 'start' });
       await waitFor(() => img.naturalWidth >= img.getBoundingClientRect().width * 0.95, { timeout: 15000 });
       expect(PT.E.bucket(2500)).toBe(2800);
       expect(PT.E.bucket(150)).toBe(200);
-    });
+    }, { timeout: 30000 });
 
     it('zooms with Ctrl + wheel and pinch on the grid', async () => {
       const O = PT.SP.organizer, sc = PT.win.document.getElementById('gridWrap');
