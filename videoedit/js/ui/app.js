@@ -47,7 +47,9 @@
     if (!window.TlbxHub) return;
     const rec = await TlbxHub.pickFromDrive({ accept: ['video/*', 'audio/*', 'image/*', 'application/x-videoedit', 'application/zip'], title: 'Import from Files' });
     if (!rec) return;
-    A.importFiles([new File([rec.blob], rec.name, { type: rec.type })], { from: 'drive' });
+    const f = new File([rec.blob], rec.name, { type: rec.type });
+    if (/\.videoedit$/i.test(rec.name || '')) return SE.project.openFile(f, rec.id);
+    A.importFiles([f], { from: 'drive' });
   };
   /** Put media at the end of the timeline (V1 for pictures, A1 for sound). */
   A.appendToTimeline = function (metas, at) {

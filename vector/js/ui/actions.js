@@ -40,7 +40,7 @@
   act('file.openDrive', 'Open from Files…', [], function () { SV.hub.openFromDrive(); });
   act('file.placeDrive', 'Place from Files…', [], function () { SV.hub.placeFromDrive(); });
   act('file.sample', 'Open Sample: Helper', [], function () { SV.loadDoc(SV.sampleDoc(), { fit: true }); SV.commit('sample'); UI.toast('Say hi to Helper'); });
-  act('file.save', 'Save', ['mod+s'], function () { IO.saveSVG(); });
+  act('file.save', 'Save', ['mod+s'], function () { SV.hub.save(); });
   act('file.saveAs', 'Save As…', ['mod+shift+s'], function () { saveAsDialog(); });
   act('file.exportSVG', 'Export as SVG…', [], function () { IO.exportPlainSVG(); });
   act('file.exportPNG', 'Export as PNG…', ['mod+shift+e'], function () { rasterDialog('png'); });

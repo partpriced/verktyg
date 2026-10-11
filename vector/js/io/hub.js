@@ -5,6 +5,10 @@
   var SV = window.SV, S = SV.state, IO = SV.io = SV.io || {};
   var HUB = SV.hub = {};
   var ACCEPT = ['image/svg+xml', 'image/*'];
+  HUB.linked = null; // id of the Files record this document was opened from or saved to
+  // Any new document (New, Open, recovery, sample) is no longer linked to the previous Drive file.
+  var loadDoc = SV.loadDoc;
+  SV.loadDoc = function () { HUB.linked = null; return loadDoc.apply(this, arguments); };
 
   HUB.available = function () { return !!window.TlbxHub; };
   // Sending opens another app at its site path, which only exists when served (not from file://).
@@ -22,7 +26,7 @@
   // Open as a document: SVG → editable document; raster → new artboard the size of the image.
   HUB.openRecord = function (rec) {
     if (!rec || !rec.blob) return Promise.resolve(false);
-    if (isSVG(rec)) return rec.blob.text().then(function (t) { return IO.openSVGText(t, rec.name || 'Untitled.svg'); });
+    if (isSVG(rec)) return rec.blob.text().then(function (t) { var ok = IO.openSVGText(t, rec.name || 'Untitled.svg'); if (ok) HUB.linked = rec.id; return ok; });
     if (!/^image\//.test(rec.type || '')) { SV.toast('Vector Editor can’t open ' + (rec.type || 'that file'), 'warn'); return Promise.resolve(false); }
     return blobToDataURL(rec.blob).then(function (url) {
       return imageSize(url).then(function (sz) {
@@ -51,6 +55,26 @@
   HUB.placeFromDrive = function () {
     if (!HUB.available()) return SV.toast('Files is unavailable', 'warn');
     return window.TlbxHub.pickFromDrive({ accept: ACCEPT, title: 'Place from Files' }).then(function (rec) { if (rec) return HUB.placeRecord(rec); });
+  };
+
+  /* ---------- saving to Files ---------- */
+  // Save writes back to the linked Drive file; the first save asks for a folder and links to the new file.
+  HUB.saveBlob = function (blob, name) {
+    var H = window.TlbxHub;
+    if (!HUB.linked) return H.saveToDrive(blob, name, { from: 'vector' }).then(function (id) { if (id) HUB.linked = id; return id; });
+    var id = HUB.linked;
+    return H.update(id, { blob: blob, name: name, type: blob.type }).then(function (rec) {
+      return rec ? id : H.put(blob, { id: id, name: name, from: 'vector' });
+    });
+  };
+  // File ▸ Save: to Files when available, otherwise the classic SVG download.
+  HUB.save = function () {
+    if (!HUB.available()) return IO.saveSVG();
+    var name = IO.baseName() + '.svg';
+    return HUB.saveBlob(HUB.svgBlob(), name).then(function (id) {
+      if (!id) return;
+      SV.markSaved(); SV.scheduleAutosave(); SV.toast('Saved “' + name + '” to Files');
+    }).catch(function (e) { SV.toast('Could not save: ' + (e && e.message || e), 'warn'); });
   };
 
   /* ---------- sending ---------- */

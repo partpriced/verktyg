@@ -40,10 +40,12 @@
     await SE.session.save();
     return doc;
   };
-  PJ.openFile = async function (file) {
+  // PJ.driveId: the Files record the open project came from (or was saved to). Save writes back to it.
+  PJ.driveId = null;
+  PJ.openFile = async function (file, driveId) {
     if (SE.doc.clips.length && !(await TlbxUI.confirm('Open project', 'Replace the current project with “' + file.name + '”?', 'Open'))) return;
     const dlg = SE.progress.open('Opening ' + file.name, { cancel: false });
-    try { await PJ.load(file); SE.app.status('Opened ' + file.name); }
+    try { await PJ.load(file); PJ.driveId = driveId || null; SE.app.status('Opened ' + file.name); }
     catch (e) { console.error(e); TlbxUI.alert('Open project', 'Could not open this project: ' + e.message); }
     finally { dlg.close(); }
   };
@@ -51,14 +53,28 @@
     const files = await TlbxUI.pickFiles({ accept: '.videoedit,application/zip,' + PJ.MIME });
     if (files[0]) PJ.openFile(files[0]);
   };
-  SE.act.saveProject = async function () {
+  SE.act.downloadProject = async function () {
     const dlg = SE.progress.open('Saving project', { cancel: false });
     try { dlg.set(0.3, 'Packing media…'); TlbxUI.download(await PJ.toBlob(), PJ.fileName()); SE.app.status('Saved ' + PJ.fileName()); }
     catch (e) { TlbxUI.alert('Save project', 'Could not save: ' + e.message); }
     finally { dlg.close(); }
   };
+  // File ▸ Save: writes back to the linked Drive project (first time: asks for a folder); a download without Drive.
+  SE.act.saveProject = async function () {
+    if (!window.TlbxHub || SE.offline) return SE.act.downloadProject();
+    const dlg = SE.progress.open('Saving project to Files', { cancel: false });
+    try {
+      dlg.set(0.3, 'Packing media…');
+      const blob = await PJ.toBlob(), name = PJ.fileName();
+      if (!PJ.driveId) { const id = await TlbxHub.saveToDrive(blob, name, { from: 'videoedit' }); if (id) PJ.driveId = id; return; }
+      if (!(await TlbxHub.update(PJ.driveId, { blob, name, type: blob.type }))) await TlbxHub.put(blob, { id: PJ.driveId, name, from: 'videoedit' });
+      SE.app.status('Saved ' + name + ' to Files');
+    } catch (e) { TlbxUI.alert('Save project', 'Could not save: ' + e.message); }
+    finally { dlg.close(); }
+  };
+  // File ▸ Save project to Files…: a new Drive file in a folder of your choice, which Save then keeps writing to.
   SE.act.saveProjectDrive = async function () {
     if (!window.TlbxHub) return;
-    try { await TlbxHub.saveToDrive(await PJ.toBlob(), PJ.fileName()); } catch (e) { TlbxUI.toast('Could not save: ' + e.message); }
+    try { const id = await TlbxHub.saveToDrive(await PJ.toBlob(), PJ.fileName(), { from: 'videoedit' }); if (id) PJ.driveId = id; } catch (e) { TlbxUI.toast('Could not save: ' + e.message); }
   };
 })();
