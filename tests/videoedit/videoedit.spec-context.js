@@ -1,4 +1,4 @@
-/* VideoEdit: context menus. Right-click and the Menu key / Shift+F10 open the menu for the monitor (clip or
+/* Video Editor: context menus. Right-click and the Menu key / Shift+F10 open the menu for the monitor (clip or
    frame), a timeline clip, a title clip, a bin item and a track header, with the expected items; clicking
    an item performs the action. */
 (function () {
