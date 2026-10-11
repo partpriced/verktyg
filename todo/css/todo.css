@@ -1,14 +1,26 @@
-/* To-do: tokens, the sidebar of views and lists, the task list with subtasks, the editor. Dark by default. At 390 px the
+/* To-do: colours come from the shared ITpris theme (--sl-* set by shared/theme/theme.js); the fallbacks are the Dark look.
+ * Then the sidebar of views and lists, the task list with subtasks, the editor. At 390 px the
  * sidebar sits above the list as a row of buttons, so nothing scrolls sideways. */
 :root {
-  --bg: #0c0e12; --panel: #14171e; --panel-2: #1b2029; --ink: #ebedf2; --mute: #8a97b1; --line: #262c38;
-  --accent: #ffeae8; --accent-ink: #0c0e12; --danger: #ff4f6e; --warn: #ffb547; --chip: #212732; --focus: #ffeae8;
+  --bg: var(--sl-background, #0c0e12); --panel: var(--sl-surface, #14171e);
+  --panel-2: color-mix(in srgb, var(--sl-text, #ebedf2) 6%, var(--sl-surface, #1b2029));
+  --ink: var(--sl-text, #ebedf2); --mute: color-mix(in srgb, var(--sl-text, #ebedf2) 70%, transparent);
+  --line: var(--sl-border, #262c38);
+  --accent: var(--sl-accent, #ffeae8); --accent-ink: var(--sl-on-accent, #0c0e12);
+  --danger: #ff4f6e; --warn: #ffb547;
+  --chip: color-mix(in srgb, var(--sl-text, #ebedf2) 10%, var(--sl-surface, #212732));
+  --focus: var(--sl-accent, #ffeae8);
   color-scheme: dark;
 }
-:root[data-theme="light"] {
-  --bg: #f3f4f7; --panel: #ffffff; --panel-2: #eaecf1; --ink: #13171d; --mute: #596885; --line: #cfd4df;
-  --accent: #2f5bff; --accent-ink: #ffffff; --danger: #c81e44; --warn: #a25b00; --chip: #e0e3ea; --focus: #2f5bff;
+:root[data-tlbx-theme="light"], :root[data-tlbx-theme="classic"] {
+  --danger: #c81e44; --warn: #a25b00;
   color-scheme: light;
+}
+/* TlbxUI dialogs, menus and toasts follow these tokens (the shared --s-* fallbacks are fixed greys) */
+:root {
+  --sui-bg: var(--panel); --sui-bg2: var(--panel-2); --sui-input: var(--panel-2); --sui-line: var(--line);
+  --sui-fg: var(--ink); --sui-dim: var(--mute); --sui-faint: var(--mute); --sui-hover: var(--chip);
+  --sui-sel: color-mix(in srgb, var(--accent) 14%, transparent); --sui-accent: var(--accent); --sui-accent-ink: var(--accent-ink);
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.4 system-ui, sans-serif; }
