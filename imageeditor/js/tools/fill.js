@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: gradient, bucket, type, shape and navigation tools */
+/* Image Editor tools: gradient, bucket, type, shape and navigation tools */
 'use strict';
 
 /* Fill tools */

@@ -1,4 +1,4 @@
-/* VideoEdit: the compositor. Works out which clips are visible at time t (including both sides of a
+/* Video Editor: the compositor. Works out which clips are visible at time t (including both sides of a
    transition) and draws them bottom (V1) to top with fit, crop, position, scale, rotation, opacity,
    fades, colour grading and the transition effect. Used by the live preview and by export.
    render(ctx, p, t, { W, H, source(clip, srcT) }) — source returns a drawable or null. */

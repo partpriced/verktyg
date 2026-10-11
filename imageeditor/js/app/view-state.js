@@ -1,5 +1,5 @@
-/* PhotoTLBX — app/view-state: where you were in each open tab (zoom and pan) and whether the panels are hidden are kept
- * in TlbxSession, so leaving PhotoTLBX (back link, Files, another app) and coming back restores them. The tabs and
+/* Image Editor — app/view-state: where you were in each open tab (zoom and pan) and whether the panels are hidden are kept
+ * in TlbxSession, so leaving Image Editor (back link, Files, another app) and coming back restores them. The tabs and
  * their pixels are already autosaved (io/save.js), and the tool, tool options and collapsed panels are in store. */
 'use strict';
 const VIEW_APP = 'imageeditor';

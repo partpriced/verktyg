@@ -1,4 +1,4 @@
-/* Cutout — store-only zip writer (no compression: PNG, WebP and JPG are already compressed).
+/* Background Remover — store-only zip writer (no compression: PNG, WebP and JPG are already compressed).
  * CO.zip([{name, blob}]) → Promise<Blob>. CRC32 per entry, UTF-8 names (flag bit 11). No zip64. */
 (function () {
   'use strict';

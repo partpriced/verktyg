@@ -1,4 +1,4 @@
-/* PhotoTLBX brushes: brush packs, .abr import and presets */
+/* Image Editor brushes: brush packs, .abr import and presets */
 'use strict';
 
 /* ---------- packs ---------- */

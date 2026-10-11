@@ -1,4 +1,4 @@
-/* VideoEdit: a store-only ZIP writer and reader (with CRC-32) for .videoedit project files.
+/* Video Editor: a store-only ZIP writer and reader (with CRC-32) for .videoedit project files.
    SE.zip.write([{ name, data: Uint8Array|Blob }]) → Blob ; SE.zip.read(blob) → Map(name → Blob) */
 (function () {
   'use strict';

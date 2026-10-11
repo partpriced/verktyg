@@ -1,4 +1,4 @@
-/* PhotoTLBX brushes: Brushes panel and Brush Settings */
+/* Image Editor brushes: Brushes panel and Brush Settings */
 'use strict';
 
 /* ---------- Brushes panel ---------- */

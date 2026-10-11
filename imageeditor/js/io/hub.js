@@ -1,4 +1,4 @@
-/* PhotoTLBX: Hub integration. Open files from Files, send the image to other
+/* Image Editor: Hub integration. Open files from Files, send the image to other
  * ITpris Verktyg apps, and open whatever another app sent here (?drive=<id>).
  * Works without the hub (offline file, old browsers): every entry point checks for it. */
 'use strict';

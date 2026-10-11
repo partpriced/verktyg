@@ -1,4 +1,4 @@
-/* VideoEdit: timeline editing operations. Pure functions over a project p (call them inside SE.change).
+/* Video Editor: timeline editing operations. Pure functions over a project p (call them inside SE.change).
    Overwrite semantics like a pro NLE: a clip dropped or moved onto others cuts them away.
    Linked clips (a video and its audio) move, trim, split and delete together. */
 (function () {

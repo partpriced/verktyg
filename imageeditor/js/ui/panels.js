@@ -1,4 +1,4 @@
-/* PhotoTLBX UI: docked panels and the Layers panel */
+/* Image Editor UI: docked panels and the Layers panel */
 'use strict';
 
 /* ---------- panels ---------- */

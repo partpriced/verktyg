@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: brush dabs, stroke buffers and shape helpers */
+/* Image Editor tools: brush dabs, stroke buffers and shape helpers */
 'use strict';
 
 const dabCache = new Map();

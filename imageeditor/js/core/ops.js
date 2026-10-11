@@ -1,4 +1,4 @@
-/* PhotoTLBX document: document and layer operations */
+/* Image Editor document: document and layer operations */
 'use strict';
 
 /* ---------- document ops ---------- */

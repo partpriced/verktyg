@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: free transform */
+/* Image Editor tools: free transform */
 'use strict';
 
 /* ---------- Free Transform (Ctrl+T) ---------- */

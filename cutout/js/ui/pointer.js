@@ -1,4 +1,4 @@
-/* Cutout — pointer input on #stage: pan (pan tool, middle button, or Space), refine brush strokes
+/* Background Remover — pointer input on #stage: pan (pan tool, middle button, or Space), refine brush strokes
  * (keep / remove, in image px), before/after knob drag, wheel zoom, and the brush cursor. */
 (function () {
   'use strict';

@@ -1,4 +1,4 @@
-/* PhotoTLBX guides: View-menu items, New Guide / Grid Settings dialogs and the shared GuideGuide-style panel. */
+/* Image Editor guides: View-menu items, New Guide / Grid Settings dialogs and the shared GuideGuide-style panel. */
 'use strict';
 
 function guidesMenuItems() {

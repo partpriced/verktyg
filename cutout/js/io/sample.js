@@ -1,4 +1,4 @@
-/* Cutout — the built-in sample: a busy gradient background with a lime "Helper" goo blob (ink outline,
+/* Background Remover — the built-in sample: a busy gradient background with a lime "Helper" goo blob (ink outline,
  * two eyes, a drip). Drawn on canvas with a seeded random so it is identical every time. PNG, no external assets. */
 (function () {
   'use strict';

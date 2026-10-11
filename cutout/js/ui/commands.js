@@ -1,4 +1,4 @@
-/* Cutout — TlbxCmd commands: every menu action, tool, view and zoom step as a command (ids co.*), so the
+/* Background Remover — TlbxCmd commands: every menu action, tool, view and zoom step as a command (ids co.*), so the
  * Spotlight palette finds them and the person can rebind any key. The actions are the shared ones in
  * CO.menus.act (ui/menus.js), so a key, a menu item and a palette row do the same thing. */
 (function () {
@@ -48,7 +48,7 @@
     try {
       SC.init({ app: 'cutout' });
       SC.register(list(a));
-    } catch (err) { console.warn('Cutout: commands are off', err); }
+    } catch (err) { console.warn('Background Remover: commands are off', err); }
   }
 
   CO.commands = { init };

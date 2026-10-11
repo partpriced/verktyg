@@ -1,6 +1,6 @@
 /* Shared video core (window.TlbxVideo.layout): pure layout geometry. fit() gives the transform that puts
    a picture inside a region (aspect kept, letterboxed). A slot i of a layout lives on video track i (V(i+1) in
-   VideoEdit). Project-specific placement (tracks, clips, undo) stays in each app. */
+   Video Editor). Project-specific placement (tracks, clips, undo) stays in each app. */
 (function () {
   'use strict';
   const root = typeof window !== 'undefined' ? window : globalThis;

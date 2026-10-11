@@ -1,4 +1,4 @@
-/* Cutout — the context bar above the stage: tool buttons, brush size and hardness (keep and remove
+/* Background Remover — the context bar above the stage: tool buttons, brush size and hardness (keep and remove
  * only), the preview view switch, and zoom controls. The zoom text (.tb-zoom) is written by render/view.js. */
 (function () {
   'use strict';

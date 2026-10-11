@@ -1,4 +1,4 @@
-/* PhotoTLBX UI: brush picker, context menus and system paste */
+/* Image Editor UI: brush picker, context menus and system paste */
 'use strict';
 
 /* ---------- right-click: brush picker & context menus ---------- */

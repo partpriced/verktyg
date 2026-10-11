@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: the Red Eye tool. Drag a region (a click corrects a square around the point).
+/* Image Editor tools: the Red Eye tool. Drag a region (a click corrects a square around the point).
  * The correction is limited to the region and to the selection when there is one. One history step. */
 'use strict';
 

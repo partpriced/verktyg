@@ -1,6 +1,6 @@
 /* Shared video core (window.TlbxVideo.seed): seeded randomness for the random edit. mulberry32 is small,
    fast and good enough for shuffling clips. A seed is a uint32 shown as 8 hex digits; anything typed in is
-   hashed to one. Loaded by VideoEdit and Video Remix; pure, no DOM. */
+   hashed to one. Loaded by Video Editor and Video Remix; pure, no DOM. */
 (function () {
   'use strict';
   const root = typeof window !== 'undefined' ? window : globalThis;

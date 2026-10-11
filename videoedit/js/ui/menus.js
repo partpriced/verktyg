@@ -1,4 +1,4 @@
-/* VideoEdit: the menu bar (File, Edit, Clip, Sequence, View, Help), built from commands, plus the
+/* Video Editor: the menu bar (File, Edit, Clip, Sequence, View, Help), built from commands, plus the
    About dialog. Every item runs a command so shortcuts shown here always match the keymap. */
 (function () {
   'use strict';
@@ -9,7 +9,7 @@
 
   function sendSub() {
     if (!window.TlbxHub || SE.offline) return null;
-    return { label: 'Send frame to', sub: [it('file.snapshotSend', 'PhotoTLBX (current frame)')] };
+    return { label: 'Send frame to', sub: [it('file.snapshotSend', 'Image Editor (current frame)')] };
   }
   const MENUS = {
     File: () => [
@@ -76,8 +76,8 @@
   };
   SE.act.about = function () {
     const caps = SE.caps || {};
-    TlbxUI.dialog({ title: 'About VideoEdit', body: h('div', null,
-      h('p', { class: 'sui-p' }, 'VideoEdit is a free video editor that runs entirely in your browser. Your footage is never uploaded: it is decoded, edited and encoded on this device.'),
+    TlbxUI.dialog({ title: 'About Video Editor', body: h('div', null,
+      h('p', { class: 'sui-p' }, 'Video Editor is a free video editor that runs entirely in your browser. Your footage is never uploaded: it is decoded, edited and encoded on this device.'),
       h('p', { class: 'sui-p' }, 'Export uses WebCodecs (hardware video encoding) with the MIT-licensed mp4-muxer and webm-muxer by Vanilagy. Browsers without WebCodecs fall back to real-time WebM recording.'),
       h('p', { class: 'sui-p' }, 'This browser: ' + (caps.summary || 'checking…')),
       h('p', { class: 'sui-p' }, 'Autosave keeps your project and media in this browser’s IndexedDB. Turn it off in File ▸ Autosave.')),
