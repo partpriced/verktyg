@@ -146,6 +146,7 @@
     }
     const sel = SE.app.sel;
     for (const c of p.clips) drawClip(g, C, c, sel.has(c.id));
+    if (SE.cells) SE.cells.drawTimeline(g, C); // empty layout slots (render/cells.js)
     if (TL.ghost) for (const gh of TL.ghost) {
       const r = TL.rowOf(gh.track); if (!r) continue;
       g.fillStyle = 'rgba(162, 255, 246,.25)'; g.strokeStyle = C.accent; g.lineWidth = 1.5;
