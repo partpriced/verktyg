@@ -99,7 +99,11 @@
   function moreItems() {
     const now = document.documentElement.dataset.theme || 'pro';
     const out = [{ label: 'Theme', sub: THEMES.map(([v, l]) => ({ label: l, check: now === v, act: () => act.theme(v) })) }];
-    if (hub()) { const sub = sendItems(); if (sub.length) out.push({ label: 'Send to', sub }); }
+    if (hub()) {
+      const sub = sendItems(); if (sub.length) out.push({ label: 'Send to', sub });
+      if (cur() && cur().request) out.push({ label: 'Send mask back to Image Editor', act: () => CO.send.mask(), disabled: !done() });
+      out.push({ label: 'Send cut-out to Image Editor as a new layer', act: () => CO.send.layer(), disabled: !done() });
+    }
     out.push('-', { label: 'About Background Remover', act: act.about });
     return out;
   }
