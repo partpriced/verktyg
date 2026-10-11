@@ -23,7 +23,8 @@
       cmd('edit.undo', 'Undo', 'Edit', ['Mod+Z'], function () { A.undo(); }, function () { return editing() && A.hist.canUndo(); }),
       cmd('edit.redo', 'Redo', 'Edit', ['Shift+Mod+Z', 'Mod+Y'], function () { A.redo(); }, function () { return editing() && A.hist.canRedo(); }),
       cmd('edit.copy', 'Copy', 'Edit', ['Mod+C'], function () { OP.copy(); }, hasSel),
-      cmd('edit.paste', 'Paste', 'Edit', ['Mod+V'], function () { OP.paste(); }, function () { return editing() && !!A.clip; }),
+      cmd('edit.copyBuffer', 'Copy to buffer', 'Edit', [], function () { OP.copyToBuffer(); }, hasSel),
+      cmd('edit.paste', 'Paste', 'Edit', ['Mod+V'], function () { OP.paste(); }, function () { return editing() && (!!A.clip || (OP.hasBuffer && OP.hasBuffer())); }),
       cmd('edit.duplicate', 'Duplicate', 'Edit', ['Mod+D'], function () { OP.duplicateSel(); }, hasSel),
       cmd('edit.delete', 'Delete', 'Edit', ['Delete', 'Backspace'], function () { OP.deleteSel(); }, hasSel),
       cmd('edit.selectAll', 'Select all objects', 'Edit', ['Mod+A'], function () { A.select(A.slide().objects.map(function (o) { return o.id; })); }, editing),
@@ -48,7 +49,7 @@
       L.push(cmd('nudge.' + d[0].toLowerCase(), 'Nudge ' + d[0].toLowerCase(), 'Arrange', ['Arrow' + d[0]], function () { OP.nudge(d[1], d[2]); }, hasSel, { repeat: true, hidden: true }));
       L.push(cmd('nudge.big' + d[0].toLowerCase(), 'Nudge ' + d[0].toLowerCase() + ' (10 pt)', 'Arrange', ['Shift+Arrow' + d[0]], function () { OP.nudge(d[1] * 10, d[2] * 10); }, hasSel, { repeat: true, hidden: true }));
     });
-    return L;
+    return L.concat(SS.configio && SS.configio.commands ? SS.configio.commands() : []);
   }
   /** Called once at boot. Without TlbxCmd the editor still works, only without shortcuts and the palette. */
   K.setup = function () {
