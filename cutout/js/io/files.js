@@ -1,4 +1,4 @@
-/* Cutout — getting images in: the file picker, the built-in sample, drag and drop, and paste.
+/* Background Remover — getting images in: the file picker, the built-in sample, drag and drop, and paste.
  * Every route ends in CO.process.add(files), which keeps only the image files. */
 (function () {
   'use strict';

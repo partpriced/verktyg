@@ -1,4 +1,4 @@
-/* VideoEdit: inspector field widgets. Each returns { el, sync() }; sync() refreshes from the model
+/* Video Editor: inspector field widgets. Each returns { el, sync() }; sync() refreshes from the model
    without disturbing a field that has focus. set(v) runs inside SE.change with a coalescing key. */
 (function () {
   'use strict';

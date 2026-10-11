@@ -1,4 +1,4 @@
-/* PhotoTLBX Layers panel: each layer's effects as indented rows under the layer, in stack order.
+/* Image Editor Layers panel: each layer's effects as indented rows under the layer, in stack order.
  * A row has an eye toggle, its order number, its label and an edit button. Double-click, the edit
  * button and "Edit effect…" open the Layer Style dialog. Rows drag to reorder within their layer.
  * Keys on a focused row: Enter edits, Delete removes, Alt+Up and Alt+Down move. */

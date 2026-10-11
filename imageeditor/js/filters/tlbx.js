@@ -1,4 +1,4 @@
-/* PhotoTLBX filters: the ITpris menu and layer styles */
+/* Image Editor filters: the ITpris menu and layer styles */
 'use strict';
 
 FILTERS.push(

@@ -1,4 +1,4 @@
-/* PhotoTLBX: brush engine v2 and brush packs.
+/* Image Editor: brush engine v2 and brush packs.
  * Presets carry a tip (procedural shape or an imported image) plus dynamics: angle,
  * roundness, size/angle/opacity/hue jitter, scatter, count, follow-stroke and pressure.
  * Packs: built-ins, plus imports from Photoshop .abr, PNG tips and .tlbxbrush/JSON packs. */

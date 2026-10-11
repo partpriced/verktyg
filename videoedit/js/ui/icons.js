@@ -1,4 +1,4 @@
-/* VideoEdit: 24px stroke icon set. SE.icon(name, cls) returns an <svg> element. */
+/* Video Editor: 24px stroke icon set. SE.icon(name, cls) returns an <svg> element. */
 (function () {
   'use strict';
   const SE = window.SE;

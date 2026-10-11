@@ -1,4 +1,4 @@
-/* PhotoTLBX files: autosave, offline build and the sample document */
+/* Image Editor files: autosave, offline build and the sample document */
 'use strict';
 
 /* ---------- autosave (IndexedDB, this browser only) ---------- */
@@ -98,7 +98,7 @@ async function downloadOfflineApp() {
   try {
     const html = buildOfflineHTML(await appSources());
     download(new Blob([html], { type: 'text/html' }), 'imageeditor.html');
-    dialog({ title: 'PhotoTLBX, offline edition', body: h('div', { class: 'about' },
+    dialog({ title: 'Image Editor, offline edition', body: h('div', { class: 'about' },
       h('p', null, 'Your download is a single file, imageeditor.html (' + Math.round(html.length / 1024) + ' KB). It contains the whole app.'),
       h('p', null, 'Open it from your Downloads folder, a USB stick, or anywhere else. It works with no internet connection, and nothing you edit ever leaves your computer.'),
       h('p', { class: 'dlg-p' }, 'Offline, the brand fonts fall back to your system fonts. Everything else is identical.')),
@@ -134,7 +134,7 @@ async function sampleDocument() {
   gr = gg.createRadialGradient(800, 680, 10, 800, 680, 520); gr.addColorStop(0, 'rgba(162, 255, 246,.55)'); gr.addColorStop(1, 'rgba(162, 255, 246,0)');
   gg.fillStyle = gr; gg.fillRect(0, 0, w, hh);
   try { await Promise.all([document.fonts.load('700 200px "Archivo"'), document.fonts.load('400 40px "Inter Tight"')]); } catch (e) { /* offline */ }
-  const title = { str: 'PhotoTLBX', x: 800, y: 120, color: '#f1ede4', font: 'Archivo', size: 210, bold: true, italic: false, align: 'center' };
+  const title = { str: 'Image Editor', x: 800, y: 120, color: '#f1ede4', font: 'Archivo', size: 210, bold: true, italic: false, align: 'center' };
   const tr = renderTextCanvas(title); title.x -= (tr.canvas.width - Math.ceil(210 * 0.35) * 2) / 2; const t1 = renderTextCanvas(title);
   const sub = { str: 'Layers · masks · filters · real PSD files · 100% in your browser', x: 800, y: 360, color: '#a2fff6', font: 'Inter Tight', size: 36, bold: false, italic: false, align: 'center' };
   const sr = renderTextCanvas(sub); sub.x -= (sr.canvas.width - Math.ceil(36 * 0.35) * 2) / 2; const t2 = renderTextCanvas(sub);
@@ -144,7 +144,7 @@ async function sampleDocument() {
     { name: 'Helper', canvas: goo },
     { name: 'Face', canvas: face },
     { name: sub.str.slice(0, 32), canvas: t2.canvas, x: t2.x, y: t2.y, text: sub },
-    { name: 'PhotoTLBX', canvas: t1.canvas, x: t1.x, y: t1.y, text: title },
-  ], 'Welcome to PhotoTLBX');
+    { name: 'Image Editor', canvas: t1.canvas, x: t1.x, y: t1.y, text: title },
+  ], 'Welcome to Image Editor');
   D.dirty = false;
 }

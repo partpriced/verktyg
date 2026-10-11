@@ -1,4 +1,4 @@
-/* ITpris shapes: one rounded-rectangle geometry for Vector Editor (SVG) and PhotoTLBX (canvas).
+/* ITpris shapes: one rounded-rectangle geometry for Vector Editor (SVG) and Image Editor (canvas).
  * Corner radii are [tl, tr, br, bl]. Radii are clamped so corners never overlap: when the radii on one
  * side add up to more than that side, every radius scales down by the same factor. Arcs are circular.
  * window.TlbxShapes = { radii, clampRadii, segments, svgPath, canvasPath }. See shared/shapes/HANDOFF.md. */

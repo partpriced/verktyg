@@ -1,4 +1,4 @@
-/* Shared colour picker body (PhotoTLBX's dialog and side panel, Vector Editor's popover).
+/* Shared colour picker body (Image Editor's dialog and side panel, Vector Editor's popover).
  * Saturation-brightness square, hue and alpha bars, preview, hex / RGB / HSB / alpha fields, a recent-colours row
  * and an optional palette row. Exposed as window.TlbxColorPicker.
  *   TlbxColorPicker.create({ value, onChange(hex), recents: { list(), add(hex) }, palette: [], alpha: true })

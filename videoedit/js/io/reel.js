@@ -1,4 +1,4 @@
-/* VideoEdit: opens a reel made in Gallery. The launch record (?drive=<id>) is a manifest of type
+/* Video Editor: opens a reel made in Gallery. The launch record (?drive=<id>) is a manifest of type
    application/x-tlbx-reel+json (format and fields: gallery/HANDOFF.md). Its photos are imported in the listed order
    into a new project, and the random edit (SE.random.plan and build) lays them out with the chosen template, length,
    pace and aspect. Cut-out PNGs (manifest.overlays) go on a track above the slots, over the next photo's beat.
@@ -8,7 +8,7 @@
   const SE = window.SE, M = SE.model, A = SE.app;
   const R = SE.reel = SE.reel || {};
   const TYPE = 'application/x-tlbx-reel+json';
-  /** Gallery template ids to VideoEdit's. random = the random edit with one slot. */
+  /** Gallery template ids to Video Editor's. random = the random edit with one slot. */
   R.TPL = { random: null, single: 'single', split: 'split-h', grid: 'grid2', reel: 'reel' };
 
   R.isManifest = (rec) => !!rec && (rec.type === TYPE || /\.reel\.json$/i.test(rec.name || ''));

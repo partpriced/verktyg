@@ -1,4 +1,4 @@
-/* PhotoTLBX: boot. */
+/* Image Editor: boot. */
 'use strict';
 
 let samplerCtx = null;
@@ -35,7 +35,7 @@ function buildStatus() {
     }
     if (w === 'docname' || w === 'history') {
       const t = $('#docTitle'); if (t) t.textContent = (D.name || 'Untitled') + (D.dirty ? ' •' : '');
-      document.title = `${D.name || 'Untitled'}${D.dirty ? ' •' : ''} — PhotoTLBX`;
+      document.title = `${D.name || 'Untitled'}${D.dirty ? ' •' : ''} — Image Editor`;
     }
   });
   sync();
@@ -80,6 +80,6 @@ async function boot() {
   await restoreView(restored && !launched);
   emit('docname');
   document.body.classList.add('ready');
-  if (!store.get('welcomed', false)) { store.set('welcomed', true); setTimeout(() => toast('Welcome to PhotoTLBX. Everything stays on your device.', 3600), 400); }
+  if (!store.get('welcomed', false)) { store.set('welcomed', true); setTimeout(() => toast('Welcome to Image Editor. Everything stays on your device.', 3600), 400); }
 }
 boot();

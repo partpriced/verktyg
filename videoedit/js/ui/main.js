@@ -1,4 +1,4 @@
-/* VideoEdit: boot. Feature detection, wiring of panels, restore and Hub launch. */
+/* Video Editor: boot. Feature detection, wiring of panels, restore and Hub launch. */
 (function () {
   'use strict';
   const SE = window.SE, A = SE.app;

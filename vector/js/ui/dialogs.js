@@ -16,7 +16,7 @@
 
   /* ================= dialogs (shared TlbxUI kit) ================= */
   // Thin adapter: app dialogs describe { title, body, buttons:[{label, primary, danger, left, onClick}], cls }
-  // and render through window.TlbxUI (../shared/tlbxui.js), shared with PhotoTLBX and PDF Editor.
+  // and render through window.TlbxUI (../shared/tlbxui.js), shared with Image Editor and PDF Editor.
   function dialog(opts) {
     var body = opts.body;
     if (typeof body === 'string') body = h('div', { class: 'sv-dlg-body', html: body });

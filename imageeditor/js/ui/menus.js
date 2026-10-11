@@ -1,4 +1,4 @@
-/* PhotoTLBX UI: the menu definitions and shortcut table */
+/* Image Editor UI: the menu definitions and shortcut table */
 'use strict';
 
 /* ---------- menus ---------- */
@@ -22,7 +22,7 @@ const MENUS = [
     { label: 'Export Layers as PNGs', act: () => exportLayers() },
     { label: 'Send to', sub: sendToMenu() },
     '-',
-    { label: 'Download PhotoTLBX for offline use (.html)', act: () => downloadOfflineApp() },
+    { label: 'Download Image Editor for offline use (.html)', act: () => downloadOfflineApp() },
     { label: 'Clear Recovery Data', act: () => clearAutosave() },
   ]],
   ['Edit', [
@@ -172,7 +172,7 @@ const MENUS = [
   ['Help', [
     { label: 'Search Commands…', cmdId: 'cmd.palette', act: () => openCommandPalette() },
     { label: 'Keyboard Shortcuts…', cmdId: 'cmd.keymap', act: () => openKeymap() },
-    { label: 'About PhotoTLBX', act: () => dlgAbout() },
+    { label: 'About Image Editor', act: () => dlgAbout() },
     '-',
     { label: 'Open Paint Classic (MS Paint)', act: () => { location.href = 'classic/'; } },
     { label: 'Back to verktyg.itpris.se', act: () => { location.href = '../'; } },

@@ -1,4 +1,4 @@
-/* VideoEdit: a small ISO-BMFF (MP4/MOV) demuxer for frame-accurate decoding with WebCodecs.
+/* Video Editor: a small ISO-BMFF (MP4/MOV) demuxer for frame-accurate decoding with WebCodecs.
    SE.demux.mp4(blob) → { duration, tracks: [{ id, type, codec, timescale, width, height, description,
    sampleRate, channels, samples: [{ offset, size, dts, pts, dur, key }] (decode order, seconds) }] }
    Only reads the moov box up front; sample data is read on demand with SE.demux.reader(blob). */

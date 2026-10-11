@@ -1,4 +1,4 @@
-/* VideoEdit: the current document, edits and undo/redo (snapshot based; the media bin is not undone).
+/* Video Editor: the current document, edits and undo/redo (snapshot based; the media bin is not undone).
    SE.doc            the current project
    SE.change(label, fn, { key })   snapshot, run fn(doc), notify. Same key within 900 ms coalesces (drags, sliders).
    SE.history.undo() / redo() / canUndo() / canRedo() / labels */

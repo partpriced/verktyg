@@ -1,4 +1,4 @@
-/* VideoEdit: the Export dialog (MP4 / WebM / GIF, resolution, frame rate, quality, range), the progress
+/* Video Editor: the Export dialog (MP4 / WebM / GIF, resolution, frame rate, quality, range), the progress
    dialog with Cancel and the result dialog (preview, download, Save to Files). */
 (function () {
   'use strict';

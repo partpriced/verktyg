@@ -1,4 +1,4 @@
-/* PhotoTLBX files: clipboard, open, save and export */
+/* Image Editor files: clipboard, open, save and export */
 'use strict';
 
 /* ---------- clipboard ---------- */

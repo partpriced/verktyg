@@ -1,6 +1,6 @@
 /* Gallery: "Make reel". The Make reel dialog (template, target length, pace, aspect, order, Cut out subjects first),
  * then run(): photos go into a Files folder, optional cut-outs follow (cancellable, rolled back on cancel), a manifest
- * is written and VideoEdit opens on it (?drive=<manifest id>). See HANDOFF.md for the flow and the manifest format.
+ * is written and Video Editor opens on it (?drive=<manifest id>). See HANDOFF.md for the flow and the manifest format.
  * Entry points: init(button) for the toolbar button, open(ids) for menus and the command palette.
  * Exposes window.TlbxGallery.reel. */
 (function () {
@@ -12,18 +12,18 @@
   const STAGE = { runtime: 'loading the runtime', model: 'downloading the model', init: 'starting', infer: 'finding the subject', refine: 'refining the edges' };
   class Cancelled extends Error { constructor() { super('Cancelled'); this.cancelled = true; } }
 
-  /** Opens a tab for VideoEdit inside the click (browsers allow that), filled in when the reel is ready. */
+  /** Opens a tab for Video Editor inside the click (browsers allow that), filled in when the reel is ready. */
   function openTab() {
     try {
       const w = window.open('', '_blank');
-      if (w) w.document.write('<!doctype html><title>VideoEdit</title><p style="font:16px system-ui;padding:24px">Making your reel…</p>');
+      if (w) w.document.write('<!doctype html><title>Video Editor</title><p style="font:16px system-ui;padding:24px">Making your reel…</p>');
       return w;
     } catch (e) { return null; }
   }
   function editorUrl(manifestId) {
     return TlbxHub.urlOf(TlbxHub.appById('videoedit'), { drive: manifestId });
   }
-  /** Points the tab from openTab() at VideoEdit (or this tab, when no tab could be opened). */
+  /** Points the tab from openTab() at Video Editor (or this tab, when no tab could be opened). */
   function openEditor(manifestId, win) {
     const url = editorUrl(manifestId);
     if (win && !win.closed) { try { win.location.href = url; return; } catch (e) { /* fall through */ } }
@@ -116,7 +116,7 @@
     tpl.addEventListener('change', () => { if (tpl.value === 'reel') aspect.value = '9:16'; check(); });
     for (const x of [len, pace, aspect, order]) { x.addEventListener('input', check); x.addEventListener('change', check); }
     const body = el('div', { class: 'reel-form' },
-      el('p', { class: 'sui-p' }, `${n} photo${n === 1 ? '' : 's'} selected. The reel is made in Files and opens in VideoEdit.`),
+      el('p', { class: 'sui-p' }, `${n} photo${n === 1 ? '' : 's'} selected. The reel is made in Files and opens in Video Editor.`),
       TlbxUI.field('Template', tpl), TlbxUI.field('Target length', len, 'seconds'), TlbxUI.field('Pace', pace),
       TlbxUI.field('Aspect', aspect), TlbxUI.field('Order', order), cut.el, err);
     TlbxUI.dialog({

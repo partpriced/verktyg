@@ -1,4 +1,4 @@
-/* PhotoTLBX: tools. Each tool: { id, name, key, icon, down, move, up, hover, overlay, cancel, activate, deactivate, brushCursor }. */
+/* Image Editor: tools. Each tool: { id, name, key, icon, down, move, up, hover, overlay, cancel, activate, deactivate, brushCursor }. */
 'use strict';
 
 const C = { fg: store.get('fg', '#000000'), bg: store.get('bg', '#ffffff') };

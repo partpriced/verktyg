@@ -1,4 +1,4 @@
-/* VideoEdit: a minimal built-in shortcut dispatcher, command palette and shortcut list, used only while
+/* Video Editor: a minimal built-in shortcut dispatcher, command palette and shortcut list, used only while
    the shared TlbxCmd package (shared/commands/) is not available, e.g. in the offline .html. */
 (function () {
   'use strict';

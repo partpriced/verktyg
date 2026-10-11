@@ -1,4 +1,4 @@
-/* PhotoTLBX type: on-canvas text editing (a contenteditable box of styled spans) and the Type tool.
+/* Image Editor type: on-canvas text editing (a contenteditable box of styled spans) and the Type tool.
  * The box shows the rich text at the current zoom; the whole edit becomes one history step. */
 'use strict';
 

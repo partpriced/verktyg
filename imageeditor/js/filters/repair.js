@@ -1,4 +1,4 @@
-/* PhotoTLBX filters: red-eye removal (Filter ▸ Repair). redEyeData is shared with the Red Eye tool. */
+/* Image Editor filters: red-eye removal (Filter ▸ Repair). redEyeData is shared with the Red Eye tool. */
 'use strict';
 
 /**

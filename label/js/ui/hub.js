@@ -1,6 +1,6 @@
 /* Label Designer — ui/hub: Hub integration. Announces the app, opens files other apps sent here
  * (?drive=<id>: images are placed, CSV/Excel become the data source), Files pickers, and
- * File → Send to (PDF to PDF Editor, PNG to PhotoTLBX / Vector Editor). Off under file:// and offline. */
+ * File → Send to (PDF to PDF Editor, PNG to Image Editor / Vector Editor). Off under file:// and offline. */
 'use strict';
 
 const hubAvailable = () => !!window.TlbxHub && location.protocol !== 'file:' && !isOfflineBuild();

@@ -1,7 +1,7 @@
 /* Vector Editor — core: rounded rectangle corners.
  * A rect keeps rx (its single radius, or the largest corner when the corners differ) so older code still works.
  * When the corners were set one by one, rc = [tl, tr, br, bl] holds all four. The geometry (clamping, arcs)
- * is shared with PhotoTLBX in shared/shapes/rounded.js (window.TlbxShapes). */
+ * is shared with Image Editor in shared/shapes/rounded.js (window.TlbxShapes). */
 (function () {
   'use strict';
   var SV = window.SV = window.SV || {};

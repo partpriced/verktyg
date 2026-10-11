@@ -1,4 +1,4 @@
-/* Cutout — compose the final picture from an active cutout: background (transparent, colour,
+/* Background Remover — compose the final picture from an active cutout: background (transparent, colour,
  * gradient or blurred original), drop shadow and crop. Pure canvas work, no DOM state. */
 (function () {
   'use strict';

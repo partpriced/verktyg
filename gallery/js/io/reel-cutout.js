@@ -1,4 +1,4 @@
-/* Gallery: "Cut out subjects first" for a reel. Runs one photo through Cutout's engine (shared/cutout/cutout.js,
+/* Gallery: "Cut out subjects first" for a reel. Runs one photo through Background Remover's engine (shared/cutout/cutout.js,
  * loaded on first use) with the Fast model, as it is, and returns a PNG with alpha. Nothing is re-implemented here.
  * Exposes window.TlbxGallery.reelCutout.cutOut(blob, { signal, onProgress }) -> Promise<Blob> (image/png). */
 (function () {
@@ -11,7 +11,7 @@
       if (!window.TlbxHub || !TlbxHub.loadScript) throw new Error('Hub is not available');
       await TlbxHub.loadScript('shared/cutout/cutout.js');
     }
-    if (!window.VideoStudioout) throw new Error('Cutout did not start');
+    if (!window.VideoStudioout) throw new Error('Background Remover did not start');
     return window.VideoStudioout;
   }
 

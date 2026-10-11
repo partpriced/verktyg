@@ -1,4 +1,4 @@
-/* VideoEdit: "Download app (offline .html)". Builds one self-contained HTML file: every stylesheet and
+/* Video Editor: "Download app (offline .html)". Builds one self-contained HTML file: every stylesheet and
    script listed with data-src in index.html is inlined (the vendored muxers too). Hub is left out,
    because Files belongs to the website's origin; the shared command palette (TlbxCmd) is inlined with all its parts. */
 (function () {

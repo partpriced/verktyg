@@ -1,4 +1,4 @@
-/* Shared colour model (PhotoTLBX and Vector Editor): hex with optional alpha, HSB, recent colours and pixel sampling.
+/* Shared colour model (Image Editor and Vector Editor): hex with optional alpha, HSB, recent colours and pixel sampling.
  * Colours are strings: '#rrggbb', or '#rrggbbaa' when alpha is below 1. Exposed as window.TlbxColor. */
 (function () {
   'use strict';

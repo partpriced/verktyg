@@ -1,4 +1,4 @@
-/* PhotoTLBX tools: the layer's box on the canvas (scale handles and a rotate knob) for the tools that don't paint,
+/* Image Editor tools: the layer's box on the canvas (scale handles and a rotate knob) for the tools that don't paint,
    the Move options' Transform button and X/Y/W/H/rotation fields. Every edit goes through Free Transform. */
 'use strict';
 

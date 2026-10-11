@@ -1,4 +1,4 @@
-/* PhotoTLBX: the viewport. Zoom/pan, checkerboard, composite cache, marching ants, tool overlays, pointer routing. */
+/* Image Editor: the viewport. Zoom/pan, checkerboard, composite cache, marching ants, tool overlays, pointer routing. */
 'use strict';
 
 const V = {
