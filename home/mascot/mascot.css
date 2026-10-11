@@ -1,4 +1,4 @@
-/* Helper, the homepage mascot (home/mascot/). Tokens come from style.css. */
+/* Helper, the homepage mascot (home/mascot/). Tokens come from style/base.css. */
 body.has-helpbot { position: relative; }
 .helpbot-layer { position: absolute; inset: 0; z-index: 15; overflow: clip; pointer-events: none; }
 .helpbot { position: absolute; left: 0; top: 0; will-change: transform; }
