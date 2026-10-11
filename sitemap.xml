@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://verktyg.itpris.se/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/imageeditor/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/vectoreditor/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/pdf/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/label/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/bgremover/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/aitools/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/clean/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/ai/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/docs/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/tables/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/slides/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/press/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/remix/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/videostudio/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/resize/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/upscale/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/contacts/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/inventory/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/orders/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/invoices/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/notes/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/paste/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/effects/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/hex/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/calculator/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/time/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/crm/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/calendar/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/todo/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/reminders/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/ledger/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/admin/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/drive/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/code/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/gallery/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/3d/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/music/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/imageeditor/classic/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/imageeditor/about/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/vectoreditor/about/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/pdf/about/</loc><lastmod>2026-10-11</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/label/about/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/png-to-jpg/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/jpg-to-png/</loc><lastmod>2026-10-11</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/png-to-webp/</loc><lastmod>2026-10-11</lastmod></url>
