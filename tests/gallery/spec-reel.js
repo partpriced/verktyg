@@ -1,5 +1,5 @@
 /* Make reel: the dialog's validation, the Files hand-off (records, order, manifest), Cut out subjects through
- * Cutout's engine (alpha checked on generated discs), cancel with rollback, and VideoEdit opening the manifest. */
+ * Background Remover's engine (alpha checked on generated discs), cancel with rollback, and VideoEdit opening the manifest. */
 (function () {
   'use strict';
   const { describe, it, expect, waitFor, sleep } = TlbxTest;
