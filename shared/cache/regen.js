@@ -6,7 +6,7 @@
  *   models   downloaded AI model files (Cache API webllm/model, webllm/config, webllm/wasm), except models
  *            imported from a folder on this computer, which have no download to make again
  *   cutout   the cut-out model cache (Cache tlbx-cutout-v1 and its IndexedDB fallback tlbx-cutout, store files)
- * Every call resolves with the number of entries removed per kind. A missing database or a blocked browser counts as 0.
+ * Every call resolves with the number of entries removed per kind. TlbxRegen.only(kind) clears one kind. A missing database or a blocked browser counts as 0.
  * Classic script; adds window.TlbxRegen. */
 (function (g) {
   'use strict';
@@ -50,7 +50,11 @@
     return n + (await clearStore('tlbx-cutout', 'files'));
   }
 
+  const ONE = { thumbs: () => clearStore(g.TLBX_THUMB_DB || 'tlbx-drive-thumbs', 'thumbs'), faces: () => clearStore(g.TLBX_FACES_DB || 'tlbx-faces', 'results'), models: clearModels, cutout: clearCutout };
+
   g.TlbxRegen = {
+    /** Clears one kind: 'thumbs' | 'faces' | 'models' | 'cutout'. Resolves with the number removed (0 for an unknown kind). */
+    only(kind) { return ONE[kind] ? ok(ONE[kind]().catch(() => 0), 0) : Promise.resolve(0); },
     /** Clears every regenerable cache. Resolves with { thumbs, faces, models, cutout } counts. */
     async clear() {
       const thumbs = await clearStore(g.TLBX_THUMB_DB || 'tlbx-drive-thumbs', 'thumbs');
