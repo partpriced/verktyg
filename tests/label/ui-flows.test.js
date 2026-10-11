@@ -130,7 +130,7 @@
       expect(W.TlbxHub.self.app).toBe('label');
       const labels = W.sendToItems().filter((i) => i.label).map((i) => i.label);
       expect(labels).toContain('Send to PDF Editor (PDF)');
-      expect(labels).toContain('Send to PhotoTLBX (PNG)');
+      expect(labels).toContain('Send to Image Editor (PNG)');
       expect(labels).toContain('Send to Vector Editor (PNG)');
       expect(labels.some((l) => /PDF Editor \(PNG\)/.test(l))).toBe(false);
     });

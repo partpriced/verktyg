@@ -23,7 +23,7 @@
       const opened = [];
       const r = await K.tools.dispatch({ name: 'open_app', arguments: { id: 'vector', file: 'poster.svg' } }, toolsWith(opened));
       expect(r.ok).toBe(true);
-      expect(opened[0]).toMatch(/\/vector\/\?drive=/);
+      expect(opened[0]).toMatch(/\/vectoreditor\/\?drive=/);
       expect(opened[0]).toContain(id);
       expect(r.result).toBe('Opened Vector Editor with poster.svg.');
     });
@@ -78,7 +78,7 @@
       expect(rows.map((r) => r.dataset.app)).toEqual(want.map((a) => a.id));
       const link = $('#appsLaunch .app-row[data-app="vector"] a.app-link');
       expect(link.target).toBe('_blank');
-      expect(link.getAttribute('href')).toMatch(/\/vector\/$/);
+      expect(link.getAttribute('href')).toMatch(/\/vectoreditor\/$/);
       expect($('#appsLaunch .app-row[data-app="vector"] b').textContent).toBe('Vector Editor');
     });
     it('the Apps menu opens an app in a new tab, and can open a Drive file in it', async () => {

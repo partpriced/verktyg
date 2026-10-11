@@ -22,7 +22,7 @@
     it('the first save from an app makes its folder, named after the app and tagged with its id', async () => {
       const id = await H.put(text('a'), { name: 'a.png', from: 'imageeditor' });
       const f = await H.getFolder((await H.get(id)).folderId);
-      expect(f.name).toBe('PhotoTLBX');
+      expect(f.name).toBe('Image Editor');
       expect(f.app).toBe('imageeditor');
       expect(f.parentId).toBe(null);
     });
@@ -77,7 +77,7 @@
       await W.DR.refresh(); W.DR.renderTree();
       const node = W.document.querySelector('#tree [data-app="imageeditor"]');
       expect(!!node).toBe(true);
-      expect(node.querySelector('.nm').textContent).toBe('PhotoTLBX');
+      expect(node.querySelector('.nm').textContent).toBe('Image Editor');
       expect(node.classList.contains('app')).toBe(true);
     });
   });
