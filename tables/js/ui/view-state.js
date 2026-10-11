@@ -1,6 +1,6 @@
 /* Spreadsheets — ui/view-state: coming back to Spreadsheets reopens the workbook you left (its draft, or the Files
- * file) with the open sheet, the active cell and the scroll position. Unsaved values come back from the draft
- * (drafts.js); the place itself is kept in TlbxSession. Restored only for the same file (same Drive id, or both untitled). */
+ * file) with the open sheet, the active cell and the scroll position. The tabs and their unsaved values come back from
+ * the strip (ui/tabs.js); the place itself is kept in TlbxSession. Restored only for the same file (same Drive id, or both untitled). */
 import { S, $, on } from './state.js';
 
 const APP = 'tables';
