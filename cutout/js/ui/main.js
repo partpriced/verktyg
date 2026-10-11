@@ -89,6 +89,7 @@
   function boot() {
     startModules();
     wire();
+    CO.viewState.restore().catch(function (e) { console.warn('Cutout: the last session was not restored', e); }); // ui/view-state.js
     mode(); status(); download(); guardSync();
     hubBoot().catch((e) => console.warn('Cutout: Hub is not available', e));
   }
