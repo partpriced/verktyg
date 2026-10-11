@@ -126,7 +126,7 @@
     it('sends the artwork through Files and opens the target app', async () => {
       let opened = null; const realOpen = W.open; W.open = (u) => { opened = u; return {}; };
       try { await HUB.sendItems().find((i) => i.label === 'Send PNG to PhotoTLBX').act(); } finally { W.open = realOpen; }
-      expect(opened).toMatch(/\/paint\/\?drive=/);
+      expect(opened).toMatch(/\/imageeditor\/\?drive=/);
       const rec = await W.TlbxHub.get(new URL(opened).searchParams.get('drive'));
       expect([rec.type, rec.from, rec.name]).toEqual(['image/png', 'vector', 'Helpbot.png']);
     });
