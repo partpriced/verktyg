@@ -24,6 +24,14 @@
       accepts: ['image/*', 'text/csv'],
       features: ['Barcodes & QR, GS1', 'Data merge from CSV & Excel', 'Zebra ZPL export & import', 'Sheets & thermal rolls'],
       shot: 'assets/shots/label.jpg', icon: 'tag', status: 'beta' }),
+    A('press', 'app', 'Page Layout', 'press/', 'InDesign, rebuilt for the browser.', {
+      accepts: ['image/*', 'application/pdf', 'text/plain'],
+      features: ['Master pages & threaded text frames', 'Paragraph & character styles', 'Print-ready PDF export', 'Offline .html'],
+      shot: 'assets/shots/press.jpg', icon: 'layout', status: 'building' }),
+    A('videoedit', 'app', 'VideoEdit', 'videoedit/', 'A video editor that never uploads your footage.', {
+      accepts: ['video/*', 'audio/*', 'image/*'],
+      features: ['Multi-track timeline', 'Trim, split, transitions & titles', 'Hardware MP4 export (WebCodecs)', 'Offline .html'],
+      shot: 'assets/shots/videoedit.jpg', icon: 'film', status: 'building' }),
     A('lighter', 'experiment', 'Lighter', 'lighter/', 'Flick it. Strike it. ITpris flames.', { shot: 'assets/shots/lighter.jpg' }),
     A('unsubscribe', 'experiment', 'Unsubscribe', 'unsubscribe/', 'Every dark pattern on the internet, in one form.', { shot: 'assets/shots/unsubscribe.jpg' }),
     A('authenticator', 'experiment', 'AI Text Detector', '#detector', 'Check whether a text reads as machine-written.', { shot: 'assets/shots/authenticator.jpg' }),
