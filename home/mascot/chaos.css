@@ -1,8 +1,8 @@
 /* the helper's chaos and rage effects (home/mascot/). Loaded after mascot.css. */
 
 /* RAGE: red tint, shaking, steam */
-.helpbot.is-rage .helpbot-canvas {
-  filter: hue-rotate(-88deg) saturate(1.8) drop-shadow(0 0 12px rgba(255, 40, 40, .85));
+.helpbot.is-rage .helpbot-svg {
+  filter: drop-shadow(0 0 12px rgba(255, 40, 40, .85));
   animation: helpbot-shake .09s linear infinite;
 }
 .helpbot.is-rage .helpbot-3d { animation: helpbot-shake .09s linear infinite; }
@@ -20,7 +20,7 @@
 
 /* 3D mode: the WebGL canvas replaces the painted one */
 .helpbot-3d { position: absolute; inset: 0; pointer-events: none; }
-.helpbot.is-3d .helpbot-canvas { display: none; }
+.helpbot.is-3d .helpbot-svg { display: none; }
 
 /* goo blasts */
 .helpbot-ball {
@@ -62,5 +62,5 @@
 .sh-3d[aria-pressed="true"] { background: var(--bone); color: var(--ink); border-color: var(--bone); }
 
 @media (prefers-reduced-motion: reduce) {
-  .helpbot.is-rage .helpbot-canvas, .helpbot.is-rage .helpbot-3d, .helpbot-burn, .helpbot-hole .bh-ring, .sh-rage.full i { animation: none; }
+  .helpbot.is-rage .helpbot-svg, .helpbot.is-rage .helpbot-3d, .helpbot-burn, .helpbot-hole .bh-ring, .sh-rage.full i { animation: none; }
 }
