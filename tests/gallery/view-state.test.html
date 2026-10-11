@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gallery saved place</title>
+  <style>body { margin: 0; background: #111; } iframe { width: 1280px; height: 760px; border: 0; display: block; }</style>
+</head>
+<body>
+  <iframe id="app" src="about:blank"></iframe>
+  <script src="../harness.js"></script>
+  <script>
+  const { describe, it, expect, waitFor, sleep, run } = TlbxTest;
+  const f = document.getElementById('app');
+  /** Load a page in the iframe; for Gallery, wait until the library has loaded (TlbxGallery.ready). */
+  async function open(src) {
+    const want = new URL(src, location.href).pathname, app = src.includes('gallery');
+    f.src = src;
+    await waitFor(() => f.contentWindow && f.contentWindow.location.pathname === want && f.contentWindow.document.readyState === 'complete' && (!app || (f.contentWindow.TlbxGallery && f.contentWindow.TlbxGallery.ready)), { timeout: 30000 });
+    return f.contentWindow;
+  }
+
+  describe('Gallery saved place', () => {
+    it('comes back to the same view and filter after leaving for Files', async () => {
+      await new Promise((res) => { const q = indexedDB.deleteDatabase('tlbx-session'); q.onsuccess = q.onerror = q.onblocked = () => res(); });
+      let W = await open('../../gallery/index.html');
+      W.TlbxGallery.state.setView('favourites');
+      W.TlbxGallery.state.setQuery({ text: 'beach' });
+      await sleep(600);
+      await open('../drive/frame.html');
+      await sleep(60);
+      W = await open('../../gallery/index.html');
+      expect(W.TlbxGallery.state.state.view).toBe('favourites');
+      expect(W.TlbxGallery.state.state.query.text).toBe('beach');
+      expect(W.TlbxGallery.state.state.query.fav).toBe(true);
+    }, { timeout: 90000 });
+  });
+  run({ name: 'Gallery · saved place' });
+  </script>
+</body>
+</html>
