@@ -4,13 +4,15 @@
  *   'faces'       face-detection results (IndexedDB tlbx-faces)
  *   'models'      downloaded AI model files (Cache webllm/*), kept: models imported from a folder
  *   'cutout'      the cut-out model cache
+ *   'packs'       downloaded library packs (IndexedDB tlbx-library), downloaded again when you use them
+ *   'aitools'     AI Tools models installed from Get more (IndexedDB tlbx-aitools), downloaded again with the licence
  *   'oldCaches'   offline caches of earlier releases (worksuite-*); the newest one is kept
  *   'extras'      all of the above
  * Resolves with { kind, removed } (removed: count of entries, or of caches for oldCaches). Never throws. Classic script. */
 (function (g) {
   'use strict';
   const SS = (g.TlbxStorage = g.TlbxStorage || {});
-  const KINDS = ['thumbs', 'faces', 'models', 'cutout'];
+  const KINDS = ['thumbs', 'faces', 'models', 'cutout', 'packs', 'aitools'];
 
   function versionOf(name) { const m = /^worksuite-v(\d+)$/.exec(name); return m ? Number(m[1]) : -1; }
   /** Deletes every worksuite-* cache except the newest version. The worker that is running uses the newest. */
