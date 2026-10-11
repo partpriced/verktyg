@@ -73,10 +73,11 @@
     }
 
     const body = h('div', null, form, top);
+    TlbxFormReset.snapshot(body);
     UI.dialog({
       title: p ? 'Edit product' : 'New product',
       body,
-      buttons: [{ label: 'Cancel' }, { label: p ? 'Save' : 'Create product', primary: true, act: save }],
+      buttons: [{ label: 'Cancel' }, TlbxFormReset.dialogButton(body), { label: p ? 'Save' : 'Create product', primary: true, act: save }],
     });
     setTimeout(() => fields[p ? 'name' : 'sku'].control.focus(), 30);
   }

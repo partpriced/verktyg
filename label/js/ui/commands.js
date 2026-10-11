@@ -118,7 +118,7 @@ function updateKeyTitles() {
 function initCommands() {
   if (!window.TlbxCmd) return false;
   TlbxCmd.init({ app: 'label' });
-  TlbxCmd.register(labelCommands());
+  TlbxCmd.register(labelCommands().concat(window.TlbxConfigDialog ? TlbxConfigDialog.commands({ app: 'label', prefix: 'label' }) : []));
   TlbxCmd.on('change', updateKeyTitles);
   const b = $('btnCmd');
   if (b) b.addEventListener('click', () => TlbxCmd.open());
