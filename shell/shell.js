@@ -78,6 +78,7 @@
 
   const queue = [];
   if (!window.TLBX_APPS) queue.push(['shared/apps.js']);
+  if (!window.TLBX_ICONS) queue.push(['shared/app-icons.js']); // before brand.js, which puts the app's icon in the header brand
   if (!window.TlbxBrand) queue.push(['brand/brand.js', { brandSrc: (me && me.dataset.brandSrc) || '' }]);
   if (!window.TlbxUI) { addCss('shared/tlbxui.css'); queue.push(['shared/tlbxui.js']); }
   if (!window.TlbxI18n) queue.push(['shared/i18n/i18n.js'], ['shared/i18n/strings.js'], ['shared/i18n/es.js']);
