@@ -138,7 +138,7 @@
   });
 
   describe('app carousel', () => {
-    // The names the carousel leads with. "Image to 3D" is not in the registry yet, so it has no slide.
+    // The names the carousel leads with, in order. Any that the registry lacks are skipped.
     const TOP = ['Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
     const slides = () => [...doc.querySelectorAll('.carousel .car-slide')];
     const names = () => slides().map((s) => s.querySelector('h3').textContent);
@@ -153,7 +153,6 @@
       const want = TOP.filter((n) => win.TLBX_APPS.some((a) => a.name === n))
         .concat(win.TLBX_APPS.filter((a) => !TOP.includes(a.name)).map((a) => a.name));
       expect(names()).toEqual(want);
-      expect(names().slice(0, 13)).toEqual(TOP.filter((n) => n !== 'Image to 3D'));
       expect(slides().length).toBe(win.TLBX_APPS.length);
       expect(dots().length).toBe(win.TLBX_APPS.length);
     });

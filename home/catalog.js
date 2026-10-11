@@ -132,7 +132,6 @@
 
   /* ---------- app carousel: the top of the homepage, one slide per app ---------- */
   // Names the carousel leads with, in this order; every other registry entry follows in registry order.
-  // "Image to 3D" is not in shared/apps.js yet, so it is skipped until it is registered.
   const CAROUSEL_TOP = ['Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
   // Folders that have a guided tour. Keep in step with TOURS in shared/tour/mount.js.
   const TOUR_DIRS = new Set(['imageeditor', 'vectoreditor', 'videostudio', 'remix', 'bgremover', 'drive', 'orders', 'invoices', 'crm', 'calendar', 'todo', 'notes', 'paste', 'resize', 'upscale', 'aitools', '3d', 'img3d', 'effects', 'docs', 'slides', 'tables', 'label', 'gallery', 'hex', 'code']);
@@ -145,7 +144,7 @@
     return top.concat(APPS.filter((a) => !placed.has(a.id)));
   };
   function slide(a, i, n) {
-    const glyph = window.TLBX_ICONS && window.TLBX_ICONS[a.id];
+    const glyph = (window.TLBX_ICONS && window.TLBX_ICONS[a.id]) || ICONS[a.icon];
     const hash = a.path.startsWith('#');
     const feats = (a.features || []).slice(0, 3);
     const tour = TOUR_DIRS.has(a.path.replace(/\/$/, ''));
