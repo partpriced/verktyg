@@ -1,0 +1,39 @@
+FONTLOG for the ITpris font family
+
+Basic Font Information
+----------------------
+
+ITpris is the type family of ITpris Verktyg: a slightly narrow sans and a mono made from open-source (SIL OFL) fonts, with full Swedish coverage (å ä ö, §, « », „ ”), round dots, an open K, a straight-tailed y and a G with a spur, tabular figures by default.
+
+Version 1.000. Licensed under the SIL Open Font License 1.1 (OFL.txt).
+
+Styles and their sources
+------------------------
+
+- ITpris Sans: modified from Instrument Sans (Copyright 2022 The Instrument Sans Project Authors (https://github.com/Instrument/instrument-sans)).
+    Axes: wdth fixed at 92, wght 400-700.
+    Upstream alternates made the default: ss01, ss03, ss04, ss07, tnum.
+    ss01: Square dots.
+    ss02: Classic y.
+    ss03: Classic K.
+    ss04: Classic G.
+    ss05: Proportional figures.
+    ss06: Single-storey a.
+    Renamed (OFL 1.1); kerning, marks and the other kept features as upstream.
+- ITpris Mono: modified from Red Hat Mono (Copyright 2024 The Red Hat Project Authors (https://github.com/RedHatOfficial/RedHatFont)).
+    Axes: wght 300-700.
+    Upstream alternates made the default: ss01, ss02.
+    The dots of i and j redrawn: circle.
+    ss01: Double-storey a.
+    ss02: Classic g.
+    Renamed (OFL 1.1); kerning, marks and the other kept features as upstream.
+
+Changelog
+---------
+
+- 1.000 (2026-10-25): the first release: Sans and Mono.
+
+Acknowledgements
+----------------
+
+The upstream designers: MCKL; Rodrigo Fuenzalida, Jordan Egstad.
