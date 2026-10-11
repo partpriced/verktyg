@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contacts saved place</title>
+  <style>body { margin: 0; background: #111; } iframe { width: 1280px; height: 760px; border: 0; display: block; }</style>
+</head>
+<body>
+  <iframe id="app" src="about:blank"></iframe>
+  <script src="../harness.js"></script>
+  <script>
+  const { describe, it, expect, waitFor, sleep, run } = TlbxTest;
+  const f = document.getElementById('app');
+  /** Load a page in the iframe; for Contacts, wait until the list has loaded (TlbxContacts.ready). */
+  async function open(src) {
+    const want = new URL(src, location.href).pathname, app = src.includes('contacts');
+    f.src = src;
+    await waitFor(() => f.contentWindow && f.contentWindow.location.pathname === want && f.contentWindow.document.readyState === 'complete' && (!app || (f.contentWindow.TlbxContacts && f.contentWindow.TlbxContacts.ready)), { timeout: 30000 });
+    return f.contentWindow;
+  }
+
+  describe('Contacts saved place', () => {
+    it('comes back to the same group and search after leaving for Files', async () => {
+      let W = await open('../../contacts/index.html');
+      const S = W.TlbxContacts.state;
+      S.group = 'stage:lead';
+      const search = W.document.getElementById('search');
+      search.value = 'smi';
+      search.dispatchEvent(new W.Event('input', { bubbles: true }));
+      await sleep(600);
+      W.TlbxGuard && W.TlbxGuard.setUnsaved('contacts', false); // the leave-page prompt would hold the navigation
+      await open('../drive/frame.html');
+      await sleep(60);
+      W = await open('../../contacts/index.html');
+      expect(W.TlbxContacts.state.group).toBe('stage:lead');
+      expect(W.TlbxContacts.state.query).toBe('smi');
+      expect(W.document.getElementById('search').value).toBe('smi');
+    }, { timeout: 90000 });
+  });
+  run({ name: 'Contacts · saved place' });
+  </script>
+</body>
+</html>
