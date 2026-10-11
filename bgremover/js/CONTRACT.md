@@ -1,4 +1,4 @@
-# Cutout — module contract (internal, shared by all js/ files)
+# Background Remover — module contract (internal, shared by all js/ files)
 
 Namespace `window.CO`. Classic scripts, IIFE per file, `'use strict'`, ≤300 lines per file, no CDNs, no
 external requests, no attribution text anywhere. Load order is in `bgremover/index.html`.
