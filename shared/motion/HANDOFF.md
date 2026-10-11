@@ -1,7 +1,7 @@
 # Shared motion engine (window.TlbxMotion)
 
 One keyframe and motion engine for every app: Presentations (transitions and object animations),
-Cutout (animated previews), Gallery (slideshow transitions) and Motion Graphics.
+Background Remover (animated previews), Gallery (slideshow transitions) and Motion Graphics.
 
 ## The rule
 

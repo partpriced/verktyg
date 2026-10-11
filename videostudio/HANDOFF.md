@@ -1,4 +1,4 @@
-# VideoEdit — handoff
+# Video Editor — handoff
 
 In-browser video editor at `/videostudio/` (registry id `videoedit`). Premiere/DaVinci-lite: media bin, multi-track
 timeline, real-time preview, transitions, titles, colour, audio mixing, WebCodecs export. Nothing is uploaded.
@@ -31,7 +31,7 @@ No SharedArrayBuffer, no ffmpeg.wasm (GitHub Pages cannot send COOP/COEP headers
    dialog with preview, Download, Save to Files. Frames come from `js/media/frames.js`: a hand-written MP4
    demuxer (`demux.js`) + VideoDecoder (frame-exact), falling back to seeking a private `<video>` (rVFC).
    Without WebCodecs: real-time WebM via MediaRecorder (`recorder.js`). GIF (`gif.js`, median-cut palette, LZW,
-   ≤15 s). Snapshot frame to PNG (Shift+E), Send frame to PhotoTLBX. `.videoedit` project files = store-only zip
+   ≤15 s). Snapshot frame to PNG (Shift+E), Send frame to Image Editor. `.videoedit` project files = store-only zip
    (`core/zip.js`) with project.json + media (`io/project.js`). Autosave of the project to IndexedDB (`io/session.js`).
 6. **Polish**: themes Pro/Light/Classic 98 (`--sui-*` tokens), phone layout ≤760 px (monitor on top, bottom tabs
    Media/Effects/Inspector/Timeline, + buttons on bin items), sample project generated on the device
