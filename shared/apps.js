@@ -8,7 +8,7 @@
   'use strict';
   const A = (id, kind, name, path, tagline, extra = {}) => Object.assign({ id, kind, name, path, tagline, status: 'live', accepts: [], features: [] }, extra);
   window.TLBX_APPS = [
-    A('imageeditor', 'app', 'PhotoTLBX', 'paint/', 'Photoshop, rebuilt for the browser.', {
+    A('imageeditor', 'app', 'PhotoTLBX', 'imageeditor/', 'Photoshop, rebuilt for the browser.', {
       accepts: ['image/*', 'image/vnd.adobe.photoshop', 'application/x-openraster'],
       features: ['Layers, masks & 17 blend modes', 'Real PSD open & save', '50+ filters, brush packs, .abr import', 'Tabs, autosave, offline .html'],
       shot: 'assets/shots/imageeditor.jpg', icon: 'brush' }),
@@ -25,8 +25,8 @@
       features: ['Barcodes & QR, GS1', 'Data merge from CSV & Excel', 'Zebra ZPL export & import', 'Sheets & thermal rolls'],
       shot: 'assets/shots/label.jpg', icon: 'tag', status: 'beta' }),
     A('lighter', 'experiment', 'Lighter', 'lighter/', 'Flick it. Strike it. ITpris flames.', { shot: 'assets/shots/lighter.jpg' }),
-    A('unsubscribe', 'experiment', 'Unsubscribe', 'annoying/', 'Every dark pattern on the internet, in one form.', { shot: 'assets/shots/unsubscribe.jpg' }),
+    A('unsubscribe', 'experiment', 'Unsubscribe', 'unsubscribe/', 'Every dark pattern on the internet, in one form.', { shot: 'assets/shots/unsubscribe.jpg' }),
     A('authenticator', 'experiment', 'AI Text Detector', '#detector', 'Check whether a text reads as machine-written.', { shot: 'assets/shots/authenticator.jpg' }),
-    A('paint-classic', 'experiment', 'Paint Classic', 'paint/classic/', 'The 1998 experience. Every MS Paint tool.', { shot: 'assets/shots/paint-classic.jpg' }),
+    A('paint-classic', 'experiment', 'Paint Classic', 'imageeditor/classic/', 'The 1998 experience. Every MS Paint tool.', { shot: 'assets/shots/paint-classic.jpg' }),
   ];
 })();
