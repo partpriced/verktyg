@@ -127,15 +127,8 @@
   C.usingShared = () => registered;
   C.palette = () => (registered && TlbxCmd.open ? TlbxCmd.open() : SE.cmdFallback && SE.cmdFallback.palette());
   C.keymap = () => (registered && TlbxCmd.openKeymap ? TlbxCmd.openKeymap() : SE.cmdFallback && SE.cmdFallback.keymap());
-  /** Load the shared command package if the site has it (it is optional for the offline build). */
+  /** Register with TlbxCmd (loaded by index.html); the built-in fallback covers pages without it. */
   C.load = async function () {
-    if (!window.TlbxCmd && window.TlbxHub && !SE.offline) {
-      try {
-        const css = document.createElement('link'); css.rel = 'stylesheet'; css.href = new URL('shared/commands/commands.css', TlbxHub.ROOT).href;
-        await TlbxHub.loadScript('shared/commands/commands.js');
-        document.head.append(css);
-      } catch (e) { /* not available yet: fallback dispatcher */ }
-    }
     if (!C.register() && SE.cmdFallback) SE.cmdFallback.install(C.list);
   };
 })();
