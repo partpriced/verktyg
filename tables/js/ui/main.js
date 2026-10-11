@@ -1,6 +1,7 @@
 /* Spreadsheets: boot. Wires the grid, keyboard, mouse, editor, toolbar, menus and storage together, and
    exposes window.TlbxTables (used by the tests and by the console). */
 import { S, $, setPainter, on, redraw, sheet } from './state.js';
+import { restorePlace } from './view-state.js';
 import * as grid from './grid.js';
 import * as pointer from './pointer.js';
 import * as keys from './keys.js';
@@ -50,7 +51,7 @@ function boot() {
   $('vp').addEventListener('scroll', () => redraw());
   addEventListener('resize', () => redraw());
   bindToolbar();
-  F.launch().then(() => { if (window.TlbxTables) window.TlbxTables.ready = true; redraw(); });
+  F.launch().then(() => restorePlace()).then(() => { if (window.TlbxTables) window.TlbxTables.ready = true; redraw(); });
   expose();
 }
 
