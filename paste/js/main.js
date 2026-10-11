@@ -1,4 +1,4 @@
-/* Pastebin: boot. Loads the pastes from Files, opens the paste named by ?paste=<id> (a share link) or the one
+/* Paste: boot. Loads the pastes from Files, opens the paste named by ?paste=<id> (a share link) or the one
  * open last (TlbxSession), and wires the screen, the paste handler, the menus, the commands and the save indicator. */
 import * as store from './store.js';
 import { S } from './state.js';
