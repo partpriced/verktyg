@@ -1,22 +1,23 @@
-/* Calculator: tokens (light, then dark), the entry and side panels. One column at phone width (390 px), two from 860 px. */
+/* Calculator: tokens from the shared ITpris theme (--sl-*, set by shared/theme/theme.js), the entry and side panels.
+ * One column at phone width (390 px), two from 860 px. */
 :root {
-  --sc-bg: #f9fafb; --sc-panel: #edeff3; --sc-line: #d0d5e0; --sc-fg: #181c24; --sc-dim: #4e5c76; --sc-faint: #7786a4;
-  --sc-accent: #c00d00; --sc-on: rgba(192, 13, 0, .12); --sc-hover: rgba(0, 0, 0, .05); --sc-ink: #24100f; --sc-danger: #b3261e;
+  --sc-bg: var(--sl-background, #f9fafb); --sc-panel: var(--sl-surface, #edeff3); --sc-line: var(--sl-border, #d0d5e0); --sc-fg: var(--sl-text, #181c24);
+  --sc-dim: color-mix(in srgb, var(--sc-fg) 78%, transparent); --sc-faint: color-mix(in srgb, var(--sc-fg) 64%, transparent);
+  --sc-accent: var(--sl-accent, #c00d00); --sc-on: color-mix(in srgb, var(--sc-accent) 14%, transparent);
+  --sc-hover: color-mix(in srgb, var(--sc-fg) 7%, transparent); --sc-ink: var(--sl-on-accent, #24100f); --sc-danger: #b3261e;
   --sc-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   --sc-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light;
 }
+/* The status red for the dark and lime themes (a light red on a dark surface). */
+:root[data-tlbx-theme="dark"], :root[data-tlbx-theme="lime"] { --sc-danger: #ff7b7b; }
+/* Without the shared theme script (it sets data-tlbx-theme), the page keeps its own dark palette when the system is dark. */
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-tlbx-theme]) {
     --sc-bg: #0c0e12; --sc-panel: #14171e; --sc-line: #262d3a; --sc-fg: #ebedf2; --sc-dim: #9ba6bc; --sc-faint: #647596;
     --sc-accent: #ffeae8; --sc-on: rgba(255, 234, 232, .12); --sc-hover: rgba(255, 255, 255, .06); --sc-ink: #24100f; --sc-danger: #ff7b7b;
     color-scheme: dark;
   }
-}
-:root[data-theme="dark"] {
-  --sc-bg: #0c0e12; --sc-panel: #14171e; --sc-line: #262d3a; --sc-fg: #ebedf2; --sc-dim: #9ba6bc; --sc-faint: #647596;
-  --sc-accent: #ffeae8; --sc-on: rgba(255, 234, 232, .12); --sc-hover: rgba(255, 255, 255, .06); --sc-ink: #24100f; --sc-danger: #ff7b7b;
-  color-scheme: dark;
 }
 [hidden] { display: none !important; }
 html, body { margin: 0; min-height: 100%; }
