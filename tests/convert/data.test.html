@@ -30,7 +30,7 @@ describe('CSV and JSON', () => {
     expect(parseCsv(back)).toEqual(parseCsv(csv));
   });
   it('round-trips a simple CSV exactly', () => {
-    const simple = 'a,b\n1,two\n3,"x;y"\n';
+    const simple = 'a,b\n1,two\n3,"x,y"\n';
     expect(jsonToCsv(csvToJson(simple).json)).toBe(simple);
   });
   it('turns plain numbers into JSON numbers only when they round-trip', () => {
@@ -103,7 +103,7 @@ describe('text tools', () => {
 
 describe('Markdown and HTML', () => {
   it('converts common Markdown and escapes raw HTML', () => {
-    const html = markdownToHtml('# Title\n\nSome **bold** and *em* with `a<b`.\n\n- one\n- two\n\n<script>x</script>\n');
+    const html = markdownToHtml('# Title\n\nSome **bold** and *em* with `a<b`.\n\n- one\n- two\n\n<script>x<\/script>\n');
     expect(html).toContain('<h1>Title</h1>');
     expect(html).toContain('<strong>bold</strong>');
     expect(html).toContain('<em>em</em>');
@@ -120,7 +120,7 @@ describe('Markdown and HTML', () => {
     expect(markdownToHtml('hi', { standalone: true, title: 'T' })).toContain('<!doctype html>');
   });
   it('turns HTML into readable text', () => {
-    const t = htmlToText('<html><head><title>x</title><style>p{}</style></head><body><h1>Hello</h1><p>One <b>two</b></p><ul><li>a</li><li>b</li></ul><script>bad()</script></body></html>');
+    const t = htmlToText('<html><head><title>x</title><style>p{}</style></head><body><h1>Hello</h1><p>One <b>two</b></p><ul><li>a</li><li>b</li></ul><script>bad()<\/script></body></html>');
     expect(t).toContain('Hello');
     expect(t).toContain('One two');
     expect(t).toContain('- a');
