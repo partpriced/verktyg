@@ -1,7 +1,7 @@
 /* Spreadsheet Viewer: CSV and TSV. RFC 4180 quoting (doubled quotes, quoted line breaks), a UTF-8 BOM, CRLF, LF or CR
  * line ends, and text that is not UTF-8 read as Latin-1 (windows-1252, the browser's "latin1").
  *   decodeText(bytes) → string          parseDelimited(text, ',' | '\t') → string[][]
- *   sheetFromGrid(name, grid) → sheet    csvBlob(sheetLike, rowOrder?, delim) → Blob (UTF-8 with BOM)
+ *   sheetFromGrid(name, grid) → sheet    csvBlob(sheet, rowOrder?, delim, { bom }) → Blob (UTF-8, BOM by default)
  * A sheet is { name, rows, text, width, height, fmt, bold }: rows hold typed values (number, string, boolean, Date
  * or null), text holds what each cell shows, fmt maps a cell key to its number format and bold is a set of cell keys.
  * Cell key = row * 16384 + column. Values that look like plain numbers become numbers, so columns sort as numbers. */
@@ -64,11 +64,12 @@ export function sheetFromGrid(name, grid) {
 const needsQuotes = (s, delim) => s.includes(delim) || /["\r\n]/.test(s);
 const quote = (s, delim) => (needsQuotes(s, delim) ? '"' + s.replace(/"/g, '""') + '"' : s);
 
-/** CSV or TSV text of a sheet, with rows taken in rowOrder (default: every row, in order). Shows the cell text. */
-export function csvBlob(sheet, rowOrder = null, delim = ',') {
+/** CSV or TSV text of a sheet, with rows taken in rowOrder (default: every row, in order). Shows the cell text.
+ * bom: a UTF-8 byte-order mark, so Excel reads the file as UTF-8. Off for files that other readers take as plain text. */
+export function csvBlob(sheet, rowOrder = null, delim = ',', { bom = true } = {}) {
   const order = rowOrder || Array.from({ length: sheet.height }, (_, i) => i);
   const lines = order.map((r) => sheet.text[r].map((s) => quote(String(s ?? ''), delim)).join(delim));
   const body = lines.join('\r\n') + (lines.length ? '\r\n' : '');
   const type = delim === '\t' ? 'text/tab-separated-values' : 'text/csv';
-  return new Blob(['﻿', body], { type: type + ';charset=utf-8' });
+  return new Blob(bom ? ['\uFEFF', body] : [body], { type: type + ';charset=utf-8' });
 }

@@ -22,6 +22,7 @@
         { label: 'My templates', sub: mine() },
       ] },
       { label: 'Open from Files…', key: key('file.open'), act: act(() => S.openFromDrive()), disabled: !window.TlbxHub },
+      { label: 'Import Word, Markdown or text from Files…', act: act(() => S.importFromDrive()), disabled: !window.TlbxHub },
       '-',
       { label: 'Save to Files', key: key('file.save'), act: act(() => S.save()) },
       '-',

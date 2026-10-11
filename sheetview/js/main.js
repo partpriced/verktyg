@@ -59,7 +59,8 @@ async function openInTables() {
   const sheet = store.sheet();
   const name = `${d.name}${d.sheets.length > 1 ? ' - ' + sheet.name : ''}.csv`;
   try {
-    await window.TlbxHub.sendTo('tables', csvBlob(sheet), name);
+    // No byte-order mark: Spreadsheets reads the text as it is, and a BOM would sit in cell A1.
+    await window.TlbxHub.sendTo('tables', csvBlob(sheet, null, ',', { bom: false }), name);
     toast('Opened in Spreadsheet');
   } catch (e) {
     toast('Could not send to Spreadsheet: ' + e.message);
