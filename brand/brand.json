@@ -2,7 +2,7 @@
   "name": "ITpris Verktyg",
   "tagline": "Kontors- och affärsverktyg som körs i webbläsaren. Dina filer stannar på din enhet.",
   "logo": "brand/mark.svg",
-  "home": "/",
+  "home": "",
   "colors": {
     "ink": "#18181b",
     "paper": "#fafafa",
