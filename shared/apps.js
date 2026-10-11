@@ -23,7 +23,7 @@
     A('label', 'app', 'Label Designer', 'label/', 'Design and print barcode labels.', {
       accepts: ['image/*', 'text/csv'],
       features: ['Barcodes & QR, GS1', 'Data merge from CSV & Excel', 'Zebra ZPL export & import', 'Sheets & thermal rolls'],
-      shot: 'assets/shots/label.jpg', icon: 'tag', status: 'building' }),
+      shot: 'assets/shots/label.jpg', icon: 'tag', status: 'beta' }),
     A('lighter', 'experiment', 'Lighter', 'lighter/', 'Flick it. Strike it. ITpris flames.', { shot: 'assets/shots/lighter.jpg' }),
     A('unsubscribe', 'experiment', 'Unsubscribe', 'annoying/', 'Every dark pattern on the internet, in one form.', { shot: 'assets/shots/unsubscribe.jpg' }),
     A('authenticator', 'experiment', 'AI Text Detector', '#detector', 'Check whether a text reads as machine-written.', { shot: 'assets/shots/authenticator.jpg' }),
