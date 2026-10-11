@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PhotoTLBX brush resize</title>
+  <title>Image Editor brush resize</title>
   <style>body { margin: 0; background: #111; } iframe { width: 1280px; height: 760px; border: 0; }</style>
 </head>
 <body>
@@ -12,7 +12,7 @@
   const { describe, it, expect, waitFor, sleep, run } = TlbxTest;
   const f = document.getElementById('app');
   /** Right-button drag on the canvas: the brush size follows across, hardness follows down. */
-  describe('PhotoTLBX right-drag brush resize', () => {
+  describe('Image Editor right-drag brush resize', () => {
     it('changes size and hardness live, with no history step, and suppresses the menu after a drag', async () => {
       await new Promise((res) => { const q = indexedDB.deleteDatabase('tlbxshop'); q.onsuccess = q.onerror = q.onblocked = () => res(); });
       f.src = '../../imageeditor/index.html';
@@ -46,6 +46,6 @@
     }, { timeout: 40000 });
   });
   </script>
-  <script>run({ name: 'PhotoTLBX brush resize' });</script>
+  <script>run({ name: 'Image Editor brush resize' });</script>
 </body>
 </html>

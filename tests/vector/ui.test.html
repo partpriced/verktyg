@@ -153,7 +153,7 @@
     });
     it('offers Send to (SVG) and Send PNG items, also in File ▸ Send to', async () => {
       const labels = HUB.sendItems().map((i) => i === '-' ? '-' : i.label);
-      ['Send to PhotoTLBX', 'Send to PDF Editor', 'Send PNG to PhotoTLBX', 'Send PNG to PDF Editor'].forEach((l) => expect(labels).toContain(l));
+      ['Send to Image Editor', 'Send to PDF Editor', 'Send PNG to Image Editor', 'Send PNG to PDF Editor'].forEach((l) => expect(labels).toContain(l));
       expect(labels).not.toContain('Send to Vector Editor');
       const btn = doc().querySelector('.menu-btn[data-menu="File"]');
       btn.dispatchEvent(new W.PointerEvent('pointerdown', { bubbles: true }));
@@ -187,7 +187,7 @@
     });
     it('sends the artwork through Files and opens the target app', async () => {
       let opened = null; const realOpen = W.open; W.open = (u) => { opened = u; return {}; };
-      try { await HUB.sendItems().find((i) => i.label === 'Send PNG to PhotoTLBX').act(); } finally { W.open = realOpen; }
+      try { await HUB.sendItems().find((i) => i.label === 'Send PNG to Image Editor').act(); } finally { W.open = realOpen; }
       expect(opened).toMatch(/\/imageeditor\/\?drive=/);
       const rec = await W.TlbxHub.get(new URL(opened).searchParams.get('drive'));
       expect([rec.type, rec.from, rec.name]).toEqual(['image/png', 'vector', 'Helpbot.png']);

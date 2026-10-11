@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>PhotoTLBX tests</title>
+  <title>Image Editor tests</title>
   <style>body { margin: 0; background: #111; } iframe { width: 1280px; height: 760px; border: 0; }</style>
 </head>
 <body>
@@ -22,7 +22,7 @@
       W = new Proxy({}, { get: (_, k) => win.eval(String(k)) });
       expect(W.D.layers.length).toBeGreaterThan(0);
       expect(W.TOOLS.length).toBeGreaterThanOrEqual(23);
-      expect(W.document.title).toContain('PhotoTLBX');
+      expect(W.document.title).toContain('Image Editor');
       expect(W.document.querySelectorAll('.panel').length).toBeGreaterThanOrEqual(5);
     }, { timeout: 40000 });
   });
@@ -243,7 +243,7 @@
     it('offers Send to for the other apps that open PNGs', () => {
       const labels = W.sendToMenu().map((r) => r.label).filter(Boolean);
       expect(labels).toContain('Send to Vector Editor');
-      expect(labels.some((l) => /PhotoTLBX/.test(l))).toBe(false);
+      expect(labels.some((l) => /ImageEditor/.test(l))).toBe(false);
     });
     it('opens a file another app sent with ?drive=', async () => {
       const c = W.mkCanvas(7, 5); W.cx(c).fillRect(0, 0, 7, 5);
@@ -263,7 +263,7 @@
   contextMenuTests({ describe, it, expect, getW: () => W });
   classicContextTests({ describe, it, expect, waitFor });
 
-  TlbxTest.run({ name: 'PhotoTLBX' });
+  TlbxTest.run({ name: 'Image Editor' });
   </script>
 </body>
 </html>
