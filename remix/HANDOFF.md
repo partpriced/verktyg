@@ -32,7 +32,7 @@ Remix never copies the logic: it fills in options and calls `TlbxVideo.random.pl
 
 The manifest is a Drive record of type `application/x-tlbx-reel+json`: `format: 'tlbx-reel'`, `version: 2`,
 `from: 'remix'`, the clip ids in play order, and `remix`: the exact options used. VideoEdit's reel loader
-(`videoedit/js/io/reel.js`) runs `SE.random.plan` with those options, so the same clips give the same edit, then builds it.
+(`videostudio/js/io/reel.js`) runs `SE.random.plan` with those options, so the same clips give the same edit, then builds it.
 VideoEdit reads durations from its own import, so a clip whose length differs there can change the plan.
 
 ## Tests

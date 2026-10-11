@@ -55,7 +55,7 @@ The hand-off (`ui/reel.js` `run()`, `io/reel-drive.js`):
 
 `files` are in play order. `overlays` may be empty.
 
-**VideoEdit side** (`videoedit/js/io/reel.js`, reached from `io/session.js` when the launch record is a manifest):
+**VideoEdit side** (`videostudio/js/io/reel.js`, reached from `io/session.js` when the launch record is a manifest):
 
 - Asks before replacing an open project, then starts a new project.
 - Imports the files one at a time, so the bin lists them in the manifest's order.
