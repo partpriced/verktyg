@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="css/timeline.css" data-src="videoedit/css/timeline.css">
   <link rel="stylesheet" href="css/themes.css" data-src="videoedit/css/themes.css">
   <link rel="stylesheet" href="css/templates.css" data-src="videoedit/css/templates.css">
+  <link rel="manifest" href="/manifest.webmanifest">
 </head>
 <body>
   <div class="app" id="app" data-pane="media">
@@ -150,5 +151,7 @@
   <script src="js/ui/context.js" data-src="videoedit/js/ui/context.js"></script>
   <script src="js/ui/main.js" data-src="videoedit/js/ui/main.js"></script>
   <script type="module" src="../shared/buddy/boot.js" data-offline="strip"></script>
+  <script src="../shared/pwa.js"></script>
+  <script>TlbxPWA.mount();</script>
 </body>
 </html>
