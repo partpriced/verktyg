@@ -54,7 +54,7 @@
       expect(ids).toContain('vector');
       expect(ids).toContain('pdf');
       expect(ids).not.toContain('tables');
-      expect(DR.openInRows(r)[0].label).toBe('PhotoTLBX (default)');
+      expect(DR.openInRows(r)[0].label).toBe('Image Editor (default)');
     });
 
     it('right-click on a .png shows an Open in submenu with the matching apps', async () => {
@@ -63,7 +63,7 @@
       hover(rowNamed('Open with'));
       await waitFor(() => labels(1).length > 0, { timeout: 3000 });
       expect(labels(1)).toContain('Vector Editor');
-      expect(labels(1)).toContain('PhotoTLBX (default)');
+      expect(labels(1)).toContain('Image Editor (default)');
       closeMenus();
     });
 
