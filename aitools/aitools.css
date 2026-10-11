@@ -1,7 +1,7 @@
 /* AI Tools: shared styles for the hub and the tool pages. Colours are tokens on :root, with dark mode. */
-:root { --bg: #f5f6f8; --fg: #181b23; --muted: #515e79; --card: #ffffff; --line: #d5dae3; --accent: #181b23; --accent-fg: #ffffff; --ok: #1e7a3c; --warn: #8a5a00; --bad: #a11d1d; --focus: #2563eb; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #11141a; --fg: #eaedf1; --muted: #98a3ba; --card: #1b2029; --line: #323b4c; --accent: #eaedf1; --accent-fg: #11141a; --ok: #5fd08a; --warn: #f0b860; --bad: #ff8a8a; --focus: #7aa7ff; } }
-:root[data-theme="dark"] { --bg: #11141a; --fg: #eaedf1; --muted: #98a3ba; --card: #1b2029; --line: #323b4c; --accent: #eaedf1; --accent-fg: #11141a; --ok: #5fd08a; --warn: #f0b860; --bad: #ff8a8a; --focus: #7aa7ff; }
+/* The colours come from the shared theme (--sl-* on data-tlbx-theme, set by shared/theme/theme.js), so AI Tools
+ * follows the same theme switcher as every other app. The fallbacks are the light theme for a page without the script. */
+:root { --bg: var(--sl-background, #f5f6f8); --fg: var(--sl-text, #181b23); --muted: color-mix(in srgb, var(--sl-text, #181b23) 65%, transparent); --card: var(--sl-surface, #ffffff); --line: var(--sl-border, #d5dae3); --accent: var(--sl-accent, #181b23); --accent-fg: var(--sl-on-accent, #ffffff); --ok: #1e7a3c; --warn: #8a5a00; --bad: #a11d1d; --focus: var(--sl-accent, #2563eb); }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
 main { max-width: 880px; margin: 0 auto; padding: 24px 16px 48px; }
