@@ -1,4 +1,4 @@
-# PhotoTLBX: handoff
+# Image Editor: handoff
 
 A layered, Photoshop-style image editor at `/imageeditor/` (`/paint/` redirects here; `paint/classic/` is the separate MS Paint clone, still served from `imageeditor/classic/`, leave it alone). Plain classic scripts loaded in order from `index.html`, sharing top-level names. Every file is at most 300 lines.
 
@@ -77,7 +77,7 @@ Desktop 1440×900 and phone 390×844 in Chromium, zero console errors: guide pan
 5. **Right-drag brush sizing** (coordinator request, not started): right-drag, Alt+right-drag and Ctrl+Alt+left-drag change size (horizontal) and hardness (vertical) with a HUD; a right-click without a drag still opens the brush picker. Use one tool → property mapping table (type: size/leading, wand/bucket: tolerance, marquee: feather, shapes: radius/stroke). Values persist per tool and add no history. Today only the Shift-drag sizing exists (`core/view.js` `V.resize`) and the right-click is the `contextmenu` handler in `initView`; unify them there.
 
 ## Known / next
-- Guides are document-wide lines (no per-artboard guides; PhotoTLBX has no artboards). Smart guides between layers are not implemented.
+- Guides are document-wide lines (no per-artboard guides; Image Editor has no artboards). Smart guides between layers are not implemented.
 - The offline single-file build strips `shared/guard.js` (the hosted-site reload guard).
 
 ## Files (shared storage)

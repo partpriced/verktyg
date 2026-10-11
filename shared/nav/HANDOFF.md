@@ -63,13 +63,13 @@ through untouched. Typing in an input, or a dialog being open, is never taken.
 
 `TlbxNav.shortcutsFrom({ fit: 'Fit on Screen', ... })` reads the app's commands from TlbxCmd by title. The
 modal reports a preset key that another command uses for a different action. The preset still wins while
-it is active. Same-action keys are not clashes (PhotoTLBX's Ctrl+0 and the Photoshop preset's Ctrl/⌘ 0).
+it is active. Same-action keys are not clashes (Image Editor's Ctrl+0 and the Photoshop preset's Ctrl/⌘ 0).
 
 ## Adoption
 
-- PhotoTLBX: `imageeditor/js/app/nav-adapter.js` (attaches itself; `view.js` is unchanged). Edit ▸ Preferences ▸ Navigation…, command palette "Navigation preset…". Script tags and the stylesheet are in `imageeditor/index.html`.
+- Image Editor: `imageeditor/js/app/nav-adapter.js` (attaches itself; `view.js` is unchanged). Edit ▸ Preferences ▸ Navigation…, command palette "Navigation preset…". Script tags and the stylesheet are in `imageeditor/index.html`.
 - Vector Editor: `vectoreditor/js/ui/nav-adapter.js`. Edit ▸ Preferences ▸ Navigation…, and the command palette ("Navigation…", action `edit.nav`).
-- Not yet: 3D Modeller, Cutout, Gallery viewer, Slides canvas, Label canvas, Press canvas, VideoEdit monitor, and Paint Classic. Each needs one adapter file and its script tags.
+- Not yet: 3D Modeller, Cutout, Gallery viewer, Slides canvas, Label canvas, Press canvas, Video Editor monitor, and Paint Classic. Each needs one adapter file and its script tags.
 
 ## Store API (for the profile page)
 
@@ -85,6 +85,6 @@ The Settings page section should read and change presets through `TlbxNav.store`
 
 - Profile hook: the per-app section under `shared/profile/` (TlbxProfile) should call `TlbxNav.store` (`get`, `setPreset`, `setCustom`) to show and change the preset, and `TlbxNav.openModal(app)` for the full dialog.
 - Other apps listed under Adoption are not wired.
-- Touch pinch on PhotoTLBX and Vector runs through the engine only when `pinch` or `touchPan` is on. Other apps have not been tested on a touch screen.
+- Touch pinch on Image Editor and Vector runs through the engine only when `pinch` or `touchPan` is on. Other apps have not been tested on a touch screen.
 - The clash list compares the preset's keys with the keys the app's commands report through TlbxCmd. Keys the app handles outside TlbxCmd (e.g. raw key handlers) are not in that list.
 - Trackpad pinch is detected as a wheel event with Ctrl, which is how Chrome, Edge and Firefox report it. Safari's gesture events are not used.
