@@ -53,6 +53,7 @@ function wireSaves() {
     t.textContent = state === 'saving' ? 'Saving…' : state === 'saved' ? 'Saved to Files' : 'Not saved: ' + ((err && err.message) || 'Files is unavailable');
     if (window.TlbxGuard) TlbxGuard.setUnsaved('notes', store.hasPending());
     tabs.refresh();
+    if (state === 'saved') tabs.flush();
   });
   addEventListener('pagehide', () => { store.flush(); });
 }
