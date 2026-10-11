@@ -26,6 +26,7 @@
     'application/vnd.ms-powerpoint': 'document', 'application/epub+zip': 'document', 'application/x-tlbx-doc': 'document',
     'application/x-tlbx-table': 'document', 'application/x-tlbx-slides': 'document', 'application/x-tlbx-3d': 'model3d',
     'application/json': 'code', 'application/javascript': 'code', 'application/xml': 'code', 'application/x-yaml': 'code',
+    'image/svg+xml': 'image', 'image/webp': 'image', 'image/gif': 'image', 'image/avif': 'image', 'video/webm': 'video',
     'application/zip': 'archive', 'application/x-zip-compressed': 'archive', 'application/x-7z-compressed': 'archive',
     'application/x-rar-compressed': 'archive', 'application/x-tar': 'archive', 'application/gzip': 'archive', 'application/x-bzip2': 'archive',
   };

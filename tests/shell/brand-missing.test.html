@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ITpris Verktyg: missing brand file</title>
+</head>
+<body>
+  <header class="nav"><span class="brand-name" data-brand-name>ITpris Verktyg</span></header>
+  <script src="../harness.js"></script>
+  <script src="../../brand/brand.js" data-brand-src="tests/shell/fixtures/does-not-exist.json"></script>
+  <script>
+  const { describe, it, expect, run } = TlbxTest;
+  TlbxBrand.ready.then(() => {
+    describe('brand defaults', () => {
+      it('uses the built-in name when brand.json is missing', () => {
+        expect(document.querySelector('.brand-name').textContent).toBe('ITpris Verktyg');
+        expect(document.title).toBe('ITpris Verktyg: missing brand file');
+        expect(TlbxBrand.config.name).toBe('ITpris Verktyg');
+      });
+      it('still applies a config passed to apply()', () => {
+        TlbxBrand.apply({ name: 'Temp Co' });
+        expect(document.querySelector('.brand-name').textContent).toBe('Temp Co');
+        TlbxBrand.apply(null);
+        expect(document.querySelector('.brand-name').textContent).toBe('ITpris Verktyg');
+      });
+    });
+    run({ name: 'Shell · brand defaults' });
+  });
+  </script>
+</body>
+</html>
