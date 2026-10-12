@@ -16,6 +16,7 @@
     cmd('file.open', 'Open from Files…', 'File', ['Mod+O'], () => S.openFromDrive(), { keywords: ['drive', 'import', 'docx', 'word'] }),
     cmd('file.random', 'Random template…', 'File', [], () => S.random.open(), { keywords: ['template', 'design', 'generate', 'seed', 'new'] }),
     cmd('file.save', 'Save to Files', 'File', ['Mod+S'], () => S.save(), { keywords: ['store', 'drive'] }),
+    cmd('file.rename', 'Rename…', 'File', [], () => window.TlbxDocTabs.rename(null), { keywords: ['name', 'title'] }),
     cmd('file.docx', 'Download Word (.docx)', 'File', [], () => S.download('docx'), { keywords: ['export', 'word'] }),
     cmd('file.md', 'Download Markdown (.md)', 'File', [], () => S.download('md'), { keywords: ['export'] }),
     cmd('file.txt', 'Download plain text (.txt)', 'File', [], () => S.download('txt'), { keywords: ['export'] }),
