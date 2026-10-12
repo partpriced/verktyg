@@ -58,3 +58,7 @@
 .tlbxc-btn.primary { background: var(--tlbxc-accent); border-color: var(--tlbxc-accent); color: var(--tlbxc-accent-ink); }
 .tlbxc-btn.x { padding: 2px 9px; border: 0; font-size: 16px; line-height: 1; }
 .tlbxc-btn:focus-visible { outline: 2px solid var(--tlbxc-fg); outline-offset: 2px; }
+
+/* While the strip is up, the page's bottom padding grows by the strip's height (set in banner.js), so nothing at the end
+ * of the page can scroll under it. --tlbxc-base-pb is the page's own bottom padding, kept. */
+html.tlbxc-on body { padding-bottom: calc(var(--consent-h, 0px) + var(--tlbxc-base-pb, 0px)); }
