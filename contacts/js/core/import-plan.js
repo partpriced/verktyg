@@ -28,13 +28,14 @@
   }
   const label = (k) => (k.startsWith('p:') ? 'phone +' + k.slice(2) : 'e-mail ' + k.slice(2));
 
-  /** One row per incoming contact: { c, match (the first existing contact sharing a key, or null), why: ['phone …'] }. */
+  /** One row per incoming contact: { c, match (the first existing contact sharing a key, or null), why: ['phone …'] }.
+   *  A contact with the same id (an X-TLBX-ID from the Drive bundle) is a match first. */
   function plan(existing, incoming, cc) {
-    const index = new Map();
+    const index = new Map(), byId = new Map(existing.map((e) => [e.id, e]));
     for (const e of existing) for (const k of new Set(matchKeys(e, cc))) if (!index.has(k)) index.set(k, e);
     return (incoming || []).map((c) => {
-      let match = null;
-      const why = [];
+      let match = byId.get(c.id) || null;
+      const why = match ? ['the same id'] : [];
       for (const k of new Set(matchKeys(c, cc))) {
         const e = index.get(k);
         if (!e) continue;
@@ -46,13 +47,13 @@
   }
 
   /** Applies the rows. choice: 'skip' | 'merge' | 'add' (for matches only; new contacts are always added).
-   *  newId() gives an id for each added contact. Returns { list, added, merged, skipped }. */
+   *  newId(incoming) gives the id for each added contact (the caller may keep the incoming id). Returns { list, added, merged, skipped }. */
   function apply(existing, rows, choice, newId, cc) {
     const list = existing.slice(), pos = new Map(list.map((c, i) => [c.id, i]));
     const out = { added: 0, merged: 0, skipped: 0 };
     for (const r of rows) {
       if (r.match && choice === 'skip') { out.skipped++; continue; }
-      if (!r.match || choice === 'add') { list.push(M.normalise({ ...r.c, id: newId() })); out.added++; continue; }
+      if (!r.match || choice === 'add') { list.push(M.normalise({ ...r.c, id: newId(r.c) })); out.added++; continue; }
       const i = pos.get(r.match.id), cur = list[i];
       const m = SC.dedupe.mergeGroup([cur, r.c], cc);
       list[i] = M.normalise({ ...m, id: cur.id });
