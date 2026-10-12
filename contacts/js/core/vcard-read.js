@@ -95,6 +95,12 @@
         case 'NOTE': c.note = c.note ? c.note + '\n' + u : u; break;
         case 'CATEGORIES': c.groups.push(...T.splitUnescaped(raw, ',').map(T.unescVal)); break;
         case 'UID': if (u.trim()) c.id = u.trim(); break;
+        // Contacts' own properties (core/bundle.js writes them; other apps ignore them)
+        case 'X-TLBX-ID': if (u.trim()) c.id = u.trim(); break;
+        case 'X-TLBX-GROUP': if (u.trim()) c.groups.push(u.trim()); break;
+        case 'X-TLBX-STAGE': c.stage = u.trim(); break;
+        case 'X-TLBX-FOLLOWUP': c.followUp = u.trim(); break;
+        case 'X-TLBX-TAGS': c.tagIds = [...(c.tagIds || []), ...T.splitUnescaped(raw, ',').map(T.unescVal).map((t) => t.trim()).filter(Boolean)]; break;
         case 'PHOTO': if (!c.photo && opts.photos !== false) c.photo = SC.photo.fromVcard(p.value, p.params); break;
         default: break;
       }
