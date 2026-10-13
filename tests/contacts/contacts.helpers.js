@@ -48,6 +48,7 @@
 
   /** Removes every live customer from the shared store (orders and invoices stay; tests use their own names). */
   CT.resetCustomers = async () => {
+    try { localStorage.removeItem('tlbx-contacts.mode'); } catch (e) { /* blocked */ } // the card's mode is per device
     const r = await window.TlbxData.store.list('customers');
     for (const c of r.value || []) await window.TlbxData.store.remove('customers', c.id);
   };
