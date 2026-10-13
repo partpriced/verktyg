@@ -44,7 +44,7 @@
   }
   const panel = () => $('#sc-conv-out').textContent;
   /** The exact converter, once the page has loaded. */
-  const exact = async () => { await until(() => W().TlbxCalc && W().TlbxCalc.exact, 'the calculator'); return W().TlbxCalc.exact; };
+  const exact = async () => { await until(() => W().TlbxCalc && W().TlbxCalc.exact && W().TlbxCalc.units, 'the calculator');   // exact reads units when it converts return W().TlbxCalc.exact; };
 
   describe('Calculator: exact conversions', async () => {
     it('1 mile is exactly 1.609344 km, and 1 km is 1000 m', async () => {
