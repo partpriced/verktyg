@@ -43,15 +43,14 @@
     if (!SP.driveDocs.enabled()) return;
     // The link goes to the tab these files were opened into, even if the person has switched tabs by the time Drive answers
     var owner = SP.tabs && SP.tabs.current ? SP.tabs.current() : null;
-    var reused = false;
     for (var k = 0; k < sources.length; k++) {
       var r = null;
       try { r = await SP.driveDocs.keepOriginal(sources[k].bytes, sources[k].name); }
       catch (e) { console.warn('PDF Editor: Files is not available', e); TlbxUI.toast('Files is not available. This document is kept on this device only.'); return; }
       if (k === 0 && linkFirst) A.setDriveIdOf(owner, r.id);
-      reused = reused || r.reused;
     }
-    TlbxUI.toast(reused ? 'Already in Files: linked, no copy made' : 'Saved the original to Files');
+    // A successful background save says nothing: a toast here would sit over page 1 for seconds, and the top bar's
+    // Files link is always there. Failures (above) are still shown.
   };
   /** The current document as a validated PDF blob. */
   A.currentPdfBlob = async function () {
