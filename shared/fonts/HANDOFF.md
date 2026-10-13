@@ -111,9 +111,14 @@ With no packs listed, the picker button reads "Get more (no packs listed)" and t
 - **Label Designer**: text Family and barcode text font (`js/ui/props-types.js` `familySelect`): Fonts… next to the select. Library
   families render on screen; PDF and ZPL output use the Sans base-14 faces because the library faces are not embedded there.
 - **Effects**: text layer font (`js/ui/props.js`): Get more… and Fonts… (inserted by `attach`).
-- **Documents, Presentations, Page Layout: not wired.** Their layout engines measure and embed TrueType bytes (`.ttf`) and
-  cannot use WOFF2 faces; Press also has its own font list and its own "Load Font File". A Download would give a face these
-  apps cannot embed. Decide the TTF copies (about 8 MB more) or a WOFF2 decoder first, then move Press's list onto the catalogue.
+- **Documents, Presentations, Page Layout: your own files only, kept in the document.** The Fonts panel's "Your own file" adds a
+  TTF or OTF to the open document (`doc.fonts` in Docs and Slides: `{ family, weight, italic, file, data }`, data as a data URL;
+  Press keeps its files in `doc.assets`). The app registers it with its engine and calls `TlbxFontCatalog.setDocumentFonts(list,
+  { only: true })`, so the catalogue lists it as "own" and the panel shows no other font. Dropping a file on a missing row uses it
+  for that family name. WOFF and WOFF2 are refused with a message that names the app (`readFontFile(file, app)`). Library
+  downloads stay off: the engines read TrueType and OTF bytes, not WOFF2. Documents and Presentations have no PDF export yet, so
+  their files are shown on screen and kept in the file; Page Layout embeds them in its PDF. Press's own "Load Font File" uses the
+  same check.
 - **Spreadsheets and Notes: no font UI** to wire.
 
 ## Offline builds and the service worker
