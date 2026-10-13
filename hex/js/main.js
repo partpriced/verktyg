@@ -29,13 +29,18 @@
     });
     $('hx-findform').addEventListener('submit', (e) => { e.preventDefault(); A().find(1); });
     if (window.TlbxCtx) TlbxCtx.bind($('hx-scroll'), () => window.HexCommands.contextItems());
-    /* Drop a file anywhere on the page to open it (TlbxDrop, shared/drop: one file, the browser would otherwise navigate). */
+    /* A file dropped on the tabs, the strip or the bytes opens (TlbxDrop, shared/drop; one file at a time, and a file that is
+       already open is not opened again). */
     window.TlbxDrop.attach($('hx-drop'), {
       accept: { any: true, allowEmpty: true, noun: 'a file' },
       limit: 1,
       compact: true,
-      targets: [document.body],
-      process: async (file) => { await A().openBlob(file, { name: file.name }); return file.name; },
+      targets: [$('hx-tabs'), $('hx-drop'), $('hx-main')],
+      process: async (file) => {
+        if (A().isOpen(file)) throw new Error('is already open');
+        await A().openBlob(file, { name: file.name });
+        return file.name;
+      },
     });
   }
 
