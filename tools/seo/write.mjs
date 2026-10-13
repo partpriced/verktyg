@@ -5,29 +5,20 @@
 //   node tools/seo/write.mjs --date=2026-10-11   lastmod date (default: today)
 // Copy comes from shared/seo/copy.mjs, the app list from shared/apps.js. Each page gets one block between
 // <!-- seo:start --> and <!-- seo:end -->, placed after its charset tag. Read shared/seo/HANDOFF.md first.
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
-import vm from 'node:vm';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { ROOT, SITE, loadRegistry, isPage, pageUrl } from './site.mjs';
+import { landingPages } from './landing.mjs';
 
-export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-export const SITE = 'https://verktyg.itpris.se';
+export { ROOT, SITE, loadRegistry, isPage, pageUrl };
 const DEFAULT_IMAGE = `${SITE}/og-share.png`;
 const DESC_MIN = 120, DESC_MAX = 160;
 const TITLE_SUFFIX = ' | ITpris';
 const OS = 'Any (runs in a web browser)';
 const AUTHOR = { '@type': 'Organization', name: 'ITpris Verktyg', url: `${SITE}/` };
 
-/** The app registry, read the way the browser reads it (a classic script that sets window.TLBX_APPS). */
-export async function loadRegistry() {
-  const src = await readFile(path.join(ROOT, 'shared', 'apps.js'), 'utf8');
-  const win = {};
-  vm.runInNewContext(src, { window: win });
-  return win.TLBX_APPS;
-}
-export const isPage = (app) => !!app.path && !app.path.startsWith('#');
-export const pageUrl = (app) => `${SITE}/${app.path}`;
 /** Open Graph image: the app's shot when the file exists, else the site image. */
 export const imageFor = (app) => (app.shot && existsSync(path.join(ROOT, app.shot)) ? `${SITE}/${app.shot}` : DEFAULT_IMAGE);
 const escAttr = (s) => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
@@ -108,7 +99,7 @@ export function validateCopy(entries) {
 
 /** Builds every page's new content. Returns [{ file, html }] for pages and sitemap, plus the list of problems. */
 export async function build({ date }) {
-  const { HOME, APPS, ABOUT } = await import(pathToFileURL(path.join(ROOT, 'shared', 'seo', 'copy.mjs')).href);
+  const { HOME, APPS, ABOUT, LANDING } = await import(pathToFileURL(path.join(ROOT, 'shared', 'seo', 'copy.mjs')).href);
   const apps = await loadRegistry();
   const pages = [];
   const copyEntries = [['home', HOME]];
@@ -123,6 +114,8 @@ export async function build({ date }) {
     if (!ABOUT[a.id]) throw new Error(`${a.id}: has about/ but no entry in shared/seo/copy.mjs ABOUT`);
     copyEntries.push([`${a.id} about`, ABOUT[a.id]]);
   }
+  const landing = landingPages(apps, SITE, LANDING);
+  for (const p of landing) copyEntries.push([`${p.key} landing`, LANDING[p.key]]);
   validateCopy(copyEntries);
 
   for (const app of apps) {
@@ -152,16 +145,26 @@ export async function build({ date }) {
     const after = injectHead(before, headBlock({ ...p.block, viewport: addViewport }));
     out.push({ file: p.file, html: after, before });
   }
-  out.push(await sitemap(apps, date));
+  // Landing pages: the body comes from landing.mjs, the head block is the same as for every other page.
+  for (const p of landing) {
+    const file = path.join(ROOT, p.dir, 'index.html');
+    const before = existsSync(file) ? await readFile(file, 'utf8') : '';
+    const block = { title: LANDING[p.key].title, description: LANDING[p.key].description, url: p.url, image: DEFAULT_IMAGE, viewport: false,
+      jsonld: [{ '@context': 'https://schema.org', '@type': 'WebPage', name: LANDING[p.key].title, description: LANDING[p.key].description, url: p.url, isPartOf: { '@type': 'WebSite', name: 'ITpris Verktyg', url: `${SITE}/` } },
+        { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` }, { '@type': 'ListItem', position: 2, name: p.crumb, item: p.url }] }] };
+    out.push({ file, html: injectHead(p.html, headBlock(block)), before });
+  }
+  out.push(await sitemap(apps, date, landing.map((p) => p.url)));
   return out;
 }
 
-async function sitemap(apps, date) {
+async function sitemap(apps, date, extra) {
   const file = path.join(ROOT, 'sitemap.xml');
   const old = await readFile(file, 'utf8');
   const urls = [`${SITE}/`];
   for (const a of apps) if (isPage(a)) urls.push(pageUrl(a));
   for (const a of apps) if (isPage(a) && existsSync(path.join(ROOT, a.path, 'about', 'index.html'))) urls.push(`${SITE}/${a.path}about/`);
+  urls.push(...extra);
   // Keep the pages that are not app pages (the convert converters and hub) as they are.
   for (const m of old.matchAll(/<loc>([^<]+)<\/loc>/g)) if (!urls.includes(m[1])) urls.push(m[1]);
   const body = [...new Set(urls)].map((u) => `  <url><loc>${u}</loc><lastmod>${date}</lastmod></url>`).join('\n');
@@ -180,7 +183,7 @@ async function main() {
     console.log(`SEO up to date: ${files.length} files`);
     return;
   }
-  for (const f of files) if (f.before !== f.html) await writeFile(f.file, f.html);
+  for (const f of files) if (f.before !== f.html) { await mkdir(path.dirname(f.file), { recursive: true }); await writeFile(f.file, f.html); }
   console.log(`SEO written: ${stale.length} changed of ${files.length} files (lastmod ${date})`);
 }
 
