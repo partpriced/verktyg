@@ -8,16 +8,7 @@
   const doc = () => PT.win.document;
 
   /** A one-page PDF with "text" set in a subset of Barlow Regular (the way the test document embeds its fonts). */
-  async function barlowPdf(text) {
-    if (!PT.SP) await PT.boot();
-    const L = PT.win.PDFLib, kit = await PT.win.TlbxFontCatalog.fontkit();
-    const d = await L.PDFDocument.create();
-    d.registerFontkit(kit);
-    const font = await d.embedFont(await PT.fixture('Barlow-Regular.ttf'), { subset: true });
-    d.addPage(PT.win.Array.of(300, 200)).drawText(text, { x: 20, y: 20, size: 18, font });
-    d.setCreationDate(new PT.win.Date(PT.win.Date.UTC(2021, 0, 1) + (++PT._nonce) * 1000));
-    return d.save();
-  }
+  const barlowPdf = (text) => PT.barlowPdf(text, { subset: true });
   /** Opens bytes, turns edit text on, and returns where the first line of text is on screen (baseline 20 pt). */
   async function startEdit(bytes, name) {
     if (!PT.SP) await PT.boot();
@@ -61,8 +52,8 @@
       press(at, 11);
       await waitFor(() => doc().querySelector('.sf-ov'), { timeout: 8000 });
       const prompt = doc().querySelector('.sf-ov').textContent;
-      expect(/This document uses Barlow, which is not installed\. Download it to edit the text as it looks\?/.test(prompt)).toBe(true, prompt);
-      expect(/Drop your own file/.test(prompt) && /Use the closest font instead \(Source Sans 3\)/.test(prompt)).toBe(true, prompt);
+      expect(/This document uses: Barlow \(subset\) · not installed\./.test(prompt) && /Barlow · Missing\. It is not installed\./.test(prompt)).toBe(true, prompt);
+      expect(/Drop your own font/.test(prompt) && /Use the closest font instead \(Source Sans 3\)/.test(prompt)).toBe(true, prompt);
       expect(doc().querySelector('.edit-run')).toBe(null);
       doc().querySelectorAll('.sf-row [data-how="closest"]').forEach((b) => b.click());
       await waitFor(() => doc().querySelector('.edit-run'), { timeout: 8000 });
