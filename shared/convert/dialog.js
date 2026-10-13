@@ -1,4 +1,4 @@
-/* Convert dialog: converts files on this device with the converters in convert/js, from any ITpris app.
+/* File Converter dialog: converts files on this device with the converters in convert/js, from any ITpris app.
  *   const ctl = TlbxConvert.open({ file, files, drive })   // file / files: File or Blob with a name; drive: the document is
  *                                                         // linked to a Files file, so results can be saved there too
  *   ctl.close(); ctl.results() -> [{ name, blob }]; ctl.targets() -> target ids; ctl.done -> resolves when the dialog closes.
