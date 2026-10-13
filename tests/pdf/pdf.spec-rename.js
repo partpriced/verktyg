@@ -21,6 +21,7 @@
       expect(items.includes('Rename…')).toBe(true);
       // a Drive-linked document renames its Drive file, keeping .pdf
       const calls = [];
+      const realHub = PT.win.TlbxHub; // put back as it was (the Drive specs after this need it)
       PT.win.TlbxHub = { update: (id, patch) => { calls.push([id, patch]); return Promise.resolve({ id }); } };
       try {
         PT.A.driveId = 'rec-42';
@@ -32,7 +33,7 @@
         expect(PT.A.originalName()).toBe('report.pdf');
         PT.A.rename('   ');
         expect(field.value).toBe('Final.pdf');
-      } finally { delete PT.win.TlbxHub; PT.A.driveId = null; }
+      } finally { PT.win.TlbxHub = realHub; PT.A.driveId = null; }
     }, { timeout: 60000 });
   });
 })();
