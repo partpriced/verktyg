@@ -138,6 +138,16 @@ export const ABOUT = {
 export const PAGES = {
   'how-it-works': { title: 'How ITpris Verktyg works: local files, storage and network | ITpris', crumb: 'How it works',
     description: 'How the ITpris Verktyg apps work: files stay on your device, which browser APIs they use, every network request, and how to check it yourself.' },
+  'convert/csv-to-vcf': { title: 'CSV to vCard (VCF) converter, free, in your browser | File Converter', crumb: 'CSV to vCard',
+    category: 'UtilitiesApplication', description: 'Convert a CSV contact list to vCard (.vcf) in your browser. Name, e-mail, phone and address columns are recognised. Nothing is uploaded.' },
+  'convert/xlsx-to-vcf': { title: 'XLSX to vCard: Excel contacts to .vcf in your browser | File Converter', crumb: 'XLSX to vCard',
+    category: 'UtilitiesApplication', description: 'Turn an Excel (XLSX) contact list into a vCard (.vcf) file for phones and mail apps. Reads the first sheet. Nothing is uploaded from your device.' },
+  'convert/vcf-to-csv': { title: 'vCard to CSV converter for contacts, in your browser | File Converter', crumb: 'vCard to CSV',
+    category: 'UtilitiesApplication', description: 'Turn a vCard (.vcf) address book into a CSV table with name, e-mail, phone and address columns. Runs in your browser. Nothing is uploaded.' },
+  'convert/vcf-to-xlsx': { title: 'vCard to XLSX converter: contacts to an Excel workbook | File Converter', crumb: 'vCard to XLSX',
+    category: 'UtilitiesApplication', description: 'Turn a vCard (.vcf) address book into an Excel (XLSX) workbook you can sort and print. It runs on your device in your browser. Nothing is uploaded.' },
+  'convert/vcf-to-json': { title: 'vCard to JSON converter for contacts, runs in your browser | File Converter', crumb: 'vCard to JSON',
+    category: 'UtilitiesApplication', description: 'Turn a vCard (.vcf) address book into JSON records with names, e-mails, phones and addresses. Photos are left out. Nothing is uploaded.' },
 };
 
 // Landing pages (/apps/<id>/, /businessapps/, /creativepro/, /compare/). Written by tools/seo/landing.mjs,
