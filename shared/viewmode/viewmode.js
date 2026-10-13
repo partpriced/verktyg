@@ -42,7 +42,8 @@
   const el = (sel) => (typeof sel === 'string' ? safe(() => doc.querySelector(sel), null) : sel || null);
 
   /** Put the classes on every region for the current mode, and label every mode button. */
-  function paint() {
+  /** notify: a mode change tells the app to re-measure; a registration does not (an app may not have its data yet). */
+  function paint(notify) {
     for (const r of regions()) {
       const wanted = (apps.get(r.app).hides[mode] || []).includes(r.name);
       r.off = wanted && !(r.peek || peekAll);
@@ -52,14 +53,14 @@
     for (const e of apps.values()) for (const b of e.buttons) b.querySelector('.tlbxvm-txt').textContent = 'View: ' + LABEL[mode];
     if (doc.documentElement) doc.documentElement.dataset.tlbxvm = mode;
     // A changed layout needs a re-measure: apps listen for resize (canvases, editors, grids).
-    if (win.requestAnimationFrame) win.requestAnimationFrame(() => win.dispatchEvent(new Event('resize')));
+    if (notify && win.requestAnimationFrame) win.requestAnimationFrame(() => win.dispatchEvent(new Event('resize')));
   }
   function setMode(next) {
     if (!MODES.includes(next) || next === mode) return mode;
     mode = next; peekAll = false;
     for (const r of regions()) r.peek = false;
     store.set(KEY, mode);
-    paint();
+    paint(true);
     return mode;
   }
   const cycle = () => setMode(MODES[(MODES.indexOf(mode) + 1) % MODES.length]);
@@ -81,7 +82,7 @@
       if (r.off && inZone(r, e.clientX, e.clientY)) { r.peek = true; r.lastIn = now; changed = true; }
       else if (r.peek && (r.el.contains(e.target) || inZone(r, e.clientX, e.clientY))) r.lastIn = now;
     }
-    if (changed) paint();
+    if (changed) paint(true);
     if (regions().some((r) => r.peek)) startSweep();
   }
   /** Hide a peeked region again once the pointer has been away from it for LEAVE_MS. */
@@ -90,7 +91,7 @@
     sweep = win.setInterval(() => {
       const now = Date.now(); let changed = false;
       for (const r of regions()) if (r.peek && now - r.lastIn > LEAVE_MS) { r.peek = false; changed = true; }
-      if (changed) paint();
+      if (changed) paint(true);
       if (!regions().some((r) => r.peek)) { win.clearInterval(sweep); sweep = null; }
     }, 200);
   }
@@ -98,7 +99,7 @@
     if (!(e.ctrlKey || e.metaKey) || !e.shiftKey || e.altKey) return;
     const k = String(e.key || '').toLowerCase();
     if (k === 'f') { e.preventDefault(); e.stopImmediatePropagation(); cycle(); }
-    else if (k === 'l') { e.preventDefault(); e.stopImmediatePropagation(); peekAll = !peekAll; paint(); }
+    else if (k === 'l') { e.preventDefault(); e.stopImmediatePropagation(); peekAll = !peekAll; paint(true); }
   }
 
   /** Put the saved layout back into the app. A bad saved value is ignored. */
@@ -118,8 +119,7 @@
   }
   function span(cls, text) { const n = doc.createElement('span'); n.className = cls; n.setAttribute('aria-hidden', 'true'); n.textContent = text; return n; }
   function mountButton(e) {
-    const host = el(e.spec.mount);
-    if (!host) return;
+    if (!el(e.spec.mount)) return;
     const b = doc.createElement('button');
     b.type = 'button';
     b.className = 'tlbxvm-btn';
@@ -127,8 +127,15 @@
     b.setAttribute('aria-label', 'View mode. Press to change.');
     b.append(span('tlbxvm-ico', '\u25E7'), span('tlbxvm-txt', ''));   // the glyph alone on a narrow screen
     b.addEventListener('click', cycle);
-    host.appendChild(b);
     e.buttons.push(b);
+    placeButton(e, b);
+  }
+  const NARROW = win.matchMedia ? win.matchMedia('(max-width: 760px)') : null;
+  /** The button sits in the app's top bar, or in the body on a narrow screen (see the CSS). */
+  function placeButton(e, b) {
+    const host = el(e.spec.mount);
+    const target = NARROW && NARROW.matches ? doc.body : host;
+    if (target && b.parentNode !== target) target.appendChild(b);
   }
 
   /** Register an app. Returns its handle. Regions the page does not have are skipped. */
@@ -162,6 +169,7 @@
     doc.addEventListener('keydown', onKey, true);
     doc.addEventListener('pointermove', onPointer, { passive: true });
     win.addEventListener('pagehide', () => { for (const a of apps.keys()) saveLayout(a); });
+    if (NARROW && NARROW.addEventListener) NARROW.addEventListener('change', () => { for (const e of apps.values()) for (const b of e.buttons) placeButton(e, b); });
     safe(() => { const s = doc.createElement('style'); s.id = 'tlbxvm-style'; s.textContent = CSS; doc.head.appendChild(s); });
   }
   const CSS = '.tlbxvm-off{display:none!important}' +
@@ -169,7 +177,10 @@
     '.tlbxvm-btn{font:inherit;font-size:12px;line-height:1.2;padding:2px 8px;margin-left:6px;border:1px solid var(--sl-border,#8886);' +
     'border-radius:4px;background:transparent;color:var(--sl-text,inherit);cursor:pointer;white-space:nowrap}' +
     '.tlbxvm-btn:focus-visible{outline:2px solid var(--sl-accent,#06c);outline-offset:2px}' +
-    '@media (max-width:760px){.tlbxvm-btn .tlbxvm-txt{display:none}.tlbxvm-btn{padding:2px 6px}}';
+    // Narrow screens: the button leaves the top bar and floats in the corner (position: fixed), so it takes no width
+    // from the page and stays reachable when a toolbar is hidden.
+    '@media (max-width:760px){.tlbxvm-btn{position:fixed;right:10px;bottom:10px;z-index:9000;margin:0;padding:6px 10px;' +
+    'border-radius:16px;background:var(--sl-surface,#1b1b1f);box-shadow:0 2px 8px #0005}.tlbxvm-btn .tlbxvm-txt{display:none}}';
 
   win.TlbxViewMode = {
     register, mode: () => mode, set: setMode, cycle, saveLayout,
