@@ -48,6 +48,8 @@ export const APPS = {
     description: 'Resize pictures and videos to exact pixels, a percentage or a file size limit, with social and 4K presets. Video exports to MP4 or WebM.' },
   upscale: { title: 'Upscaler: 2x and 4x sharper pictures on your device | ITpris', category: 'MultimediaApplication',
     description: 'Make pictures and short videos 2x or 4x bigger with AI that runs on your device. Fast or Quality mode, tiled, with a before and after slider.' },
+  watermark: { title: 'Watermark: stamp many photos with your logo | ITpris', category: 'MultimediaApplication',
+    description: 'Watermark many pictures at once with your logo or text, in nine positions, with tiling, opacity and shadow. Download each file or a ZIP. Nothing is uploaded.' },
   contacts: { title: 'Contacts: vCard and CSV address book | ITpris', category: 'BusinessApplication',
     description: 'An address book for your browser. Import vCard 2.1, 3.0 and 4.0 or CSV, merge duplicates, and export for iOS, Android, Google and Outlook.' },
   inventory: { title: 'Inventory: stock, barcodes and reorder alerts | ITpris', category: 'BusinessApplication',
@@ -135,6 +137,7 @@ export const ABOUT = {
 // Landing pages (/apps/<id>/, /businessapps/, /creativepro/, /compare/). Written by tools/seo/landing.mjs,
 // with the head block from this copy. Descriptions use only facts from each app's registry entry.
 export const LANDING = {
+  watermark: { title: 'Free bulk watermark tool for pictures and logos | ITpris', description: 'Watermark adds your logo or text to many pictures at once in your browser. Preview it, apply it to all, and download a ZIP. Nothing is uploaded.' },
   imageeditor: { title: 'Free Image Editor photo editor with layers, masks and PSD | ITpris', description: 'Image Editor is a free photo editor that runs in your browser. It has layers, masks, 17 blend modes, real PSD open and save, filters and brushes.' },
   vector: { title: 'Free Vector Editor drawing app: pen, shapes and SVG export | ITpris', description: 'Vector Editor is a free vector editor that runs in your browser. It has pen and shape tools, type, layers, pathfinder booleans and SVG, PNG, PDF and .ai export.' },
   pdf: { title: 'PDF Editor: free PDF tools to merge, split and sign | ITpris', description: 'PDF Editor lets you reorder, merge and split PDFs, add text and signatures, fill forms and watermarks, and compress or convert. Nothing is uploaded.' },

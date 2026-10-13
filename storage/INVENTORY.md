@@ -9,7 +9,7 @@ Totals at the time of writing (2026-10-11, working tree):
 - 19 IndexedDB databases with 36 object stores (the app databases), plus one generic opener in
   `shared/backup/core.js` (opens the databases named in a backup) and the third-party WebLLM model cache
   (`vendor/web-llm`, not app data).
-- 48 localStorage rows below: 38 single keys (18 of them theme keys) and 10 key families (a prefix or an `<app>` suffix).
+- 49 localStorage rows below: 39 single keys (18 of them theme keys) and 10 key families (a prefix or an `<app>` suffix).
 - Contacts drafts: `contacts/js/store/drafts.js` (database `tlbx-contacts-drafts`, store `drafts`, key `current`)
   was deleted in commit c94e877. No code opens it now. A device that still has that database keeps it
   untouched; nothing reads it. Listed under "Retired" at the end.
@@ -109,6 +109,7 @@ The 18 theme keys below are written by `shared/theme/theme.js` whenever the pers
 | slides/js/core/util.js | `tlbx-slides.<key>` (prefix) | unversioned | JSON per key | Presentations | unversioned |
 | pdf/js/core/util.js | `tlbx-pdf.<key>` (prefix; includes `signatures`) | unversioned | JSON per key; saved signatures are an array | PDF Editor, Sign | unversioned; signature list defaults to `[]` |
 | pdf/index.html | `tlbx-pdf.theme` | unversioned (JSON string) | theme name | PDF Editor, first paint | unversioned |
+| watermark/js/settings.js | `tlbxwatermark.setup` | envelope v1 | `{ v: 1, data: { cfg, logo } }`, where logo is `{ name, dataUrl }` (under 500 KB) or null | Watermark | v1 envelope; a missing, corrupt or other-version record means the defaults |
 | docs/js/ui/outline.js | `tlbx-docs.outline` | unversioned | outline open state | Documents | unversioned |
 | docs/index.html | `tlbx-docs.theme` | unversioned (JSON string) | theme name | Documents, first paint | unversioned |
 | tables/index.html | `tlbx-tables.theme` | unversioned (JSON string) | theme name | Spreadsheets, first paint | unversioned |
