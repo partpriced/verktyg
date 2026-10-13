@@ -59,7 +59,7 @@ Each row is one `attach` call (plus the three script tags in the page):
 |---|---|---|
 | Video Remix (`remix/js/ui.js` wireDrop) | bin and stage | `RM.addFiles` per file; Choose files is `#rm-file` |
 | Video Editor (`videostudio/js/ui/app.js` wireDrop) | window; a strip over the monitor | `A.importFiles` per file (timeline lanes keep their batch) |
-| Image Editor (`imageeditor/js/app/tabs.js` bindFileDrop) | page; a strip over the viewport | open as tabs, or place as layers (the zone under the pointer at the last dragover) |
+| Image Editor (`imageeditor/js/app/tabs.js` bindFileDrop) | the document area (tabs and viewport); the strip only shows progress | open as tabs, or place as layers: the zone the drop itself lands on (`TlbxDropChoice.zones`, `files(dt, e)`) |
 | Vector Editor (`vectoreditor/js/io/files.js` bindDrop) | page; a strip over the stage | `placeFiles` at the drop point |
 | Resizer (`resize/js/app/main.js` wireDrop) | a zone above the queue | `NS.queue.add` (an unreadable file is an error row) |
 | Upscaler (`upscale/js/app/main.js` wire) | a zone above the stage, `limit: 1` | `open(file)` (returns true or false now) |
@@ -77,6 +77,20 @@ Code Editor takes no files from the computer (its drop only moves tree items), s
 
 Pages that open the Config import dialog load the three scripts (13 pages: effects, tables, vectoreditor, label, slides, 3d,
 bgremover, imageeditor, docs, calendar, videostudio, todo, remix). Without them the dialog has no zone and works as before.
+
+## Add to current or Create new (window.TlbxDropChoice, shared/drop/choice.js)
+
+Loads after `drop.js`. Two parts:
+
+- `TlbxDropChoice.ask({ files, hasDocument, labels })` resolves `'current' | 'new' | null`. No document open: `'new'` at
+  once. Otherwise a dialog (Add to current, Create new, Cancel; Escape and a backdrop click cancel; Tab stays inside).
+  `labels`: `{ title, message, current, new, cancel }`.
+- `TlbxDropChoice.zones(host, { labels, accept })` is the drop-zone helper: while a file drag is over `host`, two zones
+  show over it. `at(e)` gives the zone the event is over (`'new' | 'current' | null`). Read it in the drop event (the
+  `files(dt, e)` hook); it looks at that event's target, so a drop never inherits an earlier hover. Returns
+  `{ at, hide, destroy }`. `labels`: `{ new, current, newHint, currentHint }` (a hint may be a function).
+
+Image Editor uses `zones` (its Place as layers and Open as new tabs zones); `ask` has no caller yet.
 
 ## Missing elements (why a call can fail)
 
