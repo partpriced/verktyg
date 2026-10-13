@@ -15,6 +15,12 @@
     });
   };
 
+  /** Dropped files the app cannot open (SVG, ui/drop-route.js): the Convert dialog takes them, Images to PDF among its targets. */
+  A.convertFiles = function (files) {
+    if (!window.TlbxConvert) { TlbxUI.toast('Convert is not in the offline file. Use the online PDF Editor.'); return; }
+    window.TlbxConvert.open({ files: files });
+  };
+
   var btn = document.getElementById('btnConvert');
   if (btn) {
     btn.addEventListener('click', function () { A.openConvert(); });
