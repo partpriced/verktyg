@@ -5,17 +5,17 @@
   'use strict';
   var SP = window.SP, U = SP.util, E = SP.engine, A = SP.app, S = A._;
 
-  A.openConvert = function () {
+  A.openConvert = function (target) {
     if (!window.TlbxConvert) { TlbxUI.toast('Convert is not in the offline file. Use the online PDF Editor.'); return; }
     if (!E.state.pages.length) return;
     return S.guarded('Preparing the document…', function () { return A.currentPdfBlob(); }).then(function (blob) {
       if (!blob) return;
       var name = U.safeName(S.els.fileName.value || 'document.pdf', 'pdf');
-      window.TlbxConvert.open({ file: new File([blob], name, { type: 'application/pdf' }), drive: !!A.driveId });
+      window.TlbxConvert.open({ file: new File([blob], name, { type: 'application/pdf' }), drive: !!A.driveId, target: typeof target === 'string' ? target : null });
     });
   };
 
-  /** Dropped files the app cannot open (SVG, ui/drop-route.js): the Convert dialog takes them, Images to PDF among its targets. */
+  /** Dropped files the app cannot open (SVG, ui/drop.js): the Convert dialog takes them, Images to PDF among its targets. */
   A.convertFiles = function (files) {
     if (!window.TlbxConvert) { TlbxUI.toast('Convert is not in the offline file. Use the online PDF Editor.'); return; }
     window.TlbxConvert.open({ files: files });
