@@ -9,7 +9,8 @@
   <!-- Image Editor sends a layer to Background Remover (Layer ▸ Isolate Subject), the mask is refined there and sent back. -->
   <iframe id="ps" src="../../imageeditor/index.html"></iframe>
   <iframe id="iso" src="about:blank"></iframe>
-  <script src="../harness.js"></script>
+    <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window */ }</script>
+<script src="../harness.js"></script>
   <script src="isolate.spec-roundtrip.js"></script>
   <script>TlbxTest.run({ name: 'Image Editor ↔ Background Remover' });</script>
 </body>

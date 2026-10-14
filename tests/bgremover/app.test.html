@@ -7,7 +7,8 @@
 </head>
 <body>
   <!-- App core: undo/redo history (bgremover/js/core/*). -->
-  <script src="../harness.js"></script>
+    <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window */ }</script>
+<script src="../harness.js"></script>
   <script src="../../bgremover/js/core/util.js"></script>
   <script src="../../bgremover/js/core/state.js"></script>
   <script src="../../bgremover/js/core/brush.js"></script>
