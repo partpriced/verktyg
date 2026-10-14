@@ -6,7 +6,8 @@
   <style>body { margin: 0; background: #111; color: #eee; font: 13px system-ui; }</style>
 </head>
 <body>
-  <script src="../harness.js"></script>
+    <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window */ }</script>
+<script src="../harness.js"></script>
   <script>
   const { describe, it, expect } = TlbxTest;
   const APPS = ['imageeditor/', 'vectoreditor/', 'pdf/', 'label/', 'bgremover/', 'ai/', 'docs/', 'tables/', 'slides/', 'press/', 'videostudio/', 'contacts/', 'gallery/', '3d/', 'drive/'];
