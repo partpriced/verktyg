@@ -10,6 +10,7 @@
        in the empty state and once images are in, at desktop and phone widths. -->
   <iframe id="wide" src="../../bgremover/index.html"></iframe>
   <iframe id="phone" src="../../bgremover/index.html"></iframe>
+  <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window: the notice shows, and the tests dismiss it */ }</script>
   <script src="../harness.js"></script>
   <script>
   const { describe, it, expect, waitFor } = TlbxTest;
