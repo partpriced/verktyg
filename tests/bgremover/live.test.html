@@ -7,6 +7,7 @@
 </head>
 <body>
   <iframe id="app" src="about:blank"></iframe>
+  <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window */ }</script>
   <script src="../harness.js"></script>
   <script src="live.spec.js"></script>
   <script>TlbxTest.run({ name: 'Background Remover live brush' });</script>
