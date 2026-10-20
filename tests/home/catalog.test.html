@@ -121,7 +121,7 @@
 
   describe('app carousel', () => {
     // The names the carousel leads with, in order. Any that the registry lacks are skipped.
-    const TOP = ['Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
+    const TOP = ['PDF Editor', 'Email Viewer', 'Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
     const slides = () => [...doc.querySelectorAll('.carousel .car-slide')];
     const names = () => slides().map((s) => s.querySelector('h3').textContent);
     const cur = () => slides().findIndex((s) => s.classList.contains('is-current'));
