@@ -33,6 +33,7 @@ function pasteInternal(inPlace) {
   pasteCanvas(copyCanvas(CLIP.canvas), inPlace ? CLIP.x : null, inPlace ? CLIP.y : null, 'Layer');
 }
 async function onPaste(e) {
+  if (e.defaultPrevented) return; // taken by TlbxIntake (shared/intake)
   const fromCatcher = e.target && e.target.classList && e.target.classList.contains('paste-catcher');
   if ((!fromCatcher && isTyping(e.target)) || TlbxUI.openDialogs) return;
   if (fromCatcher) e.target.blur();
