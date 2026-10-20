@@ -20,9 +20,9 @@
       },
     });
     TlbxViewMode.register('calc', {
-      regions: { toolbar: '.sc-top', sidebar: '.sc-side' },
+      regions: { toolbar: '.smb-bar', sidebar: '.sc-side' },
       edges: { sidebar: 'right' },
-      mount: '.sc-top',
+      mount: '.smb-bar',
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
