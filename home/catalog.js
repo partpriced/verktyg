@@ -144,7 +144,7 @@
   }
   /* ---------- app carousel: the top of the homepage, one slide per app ---------- */
   // Names the carousel leads with, in this order; every other registry entry follows in registry order.
-  const CAROUSEL_TOP = ['Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
+  const CAROUSEL_TOP = ['PDF Editor', 'Email Viewer', 'Image Editor', 'Video Editor', 'Background Remover', 'Vector Editor', 'Video Remix', 'Image to 3D', 'Upscaler', 'Resizer', 'Documents', 'Orders', 'Invoices', 'CRM', 'Calendar', 'Files'];
   // Folders that have a guided tour. Keep in step with TOURS in shared/tour/mount.js.
   const TOUR_DIRS = window.TlbxHomeSections.TOUR_DIRS;
   const CAROUSEL_MS = 7000;
