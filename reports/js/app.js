@@ -58,7 +58,7 @@
     const empty = !loaded.found || !R.hasData(loaded.counts);
     dom.dataNote.hidden = !empty;
     dom.dataNote.textContent = empty
-      ? 'No data yet. Contacts, Invoices and CRM have no records in this browser, so these reports have nothing to show. Add records in those apps and this page fills in.'
+      ? 'No data yet. Contacts, Invoices, Expenses and CRM have no records in this browser, so these reports have nothing to show. Add records in those apps and this page fills in.'
       : '';
     dom.reportNote.textContent = S.def.note || '';
   }
