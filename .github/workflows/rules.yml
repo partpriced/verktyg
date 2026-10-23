@@ -1,0 +1,25 @@
+name: Rules and tests
+
+# Generated with the site: the file rules, the Node tests and the browser tests, on every push.
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Every source file has at most 300 lines
+        run: node tools/check-rules.mjs --all
+      - name: Install the test dependencies
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Node tests
+        run: node --test tests/node/*.test.mjs tests/seo/*.test.mjs
