@@ -6,12 +6,18 @@ on:
   pull_request:
 
 jobs:
+  # Runs in Playwright's image (Chromium, its libraries and git preinstalled): a few Node tests open pages.
   check:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
     steps:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+      - name: Let git work in the checkout (the container runs as root; the workspace is the runner's)
+        run: git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - uses: actions/setup-node@v7
         with:
           node-version: 22
@@ -20,7 +26,6 @@ jobs:
       - name: Install the test dependencies
         run: |
           npm ci --no-audit --no-fund
-          npx playwright install --with-deps chromium
       - name: Node tests
         run: |
           node --test '--test-skip-pattern=^every workflow limits its GITHUB_TOKEN: a top-level permissions block, read-only unless a job asks for more|^the preview copy is the only place that adds noindex to every page|^the browser tests run only in the slices the plan job asks for|^the touch jobs run the touch-marked pages|^the system prompt: short, names the tools to load|^sorting by a column is stable, both directions, and missing values go last|^a label is the short part of the app title|^the feature matrix: one value per tool|^a guide page: the guide sidebar with it marked|^the guide: a sidebar of the app.s pages|^a page has the task, an Open link with the preset|^JSON-LD: breadcrumb to the app, HowTo steps, FAQ and the tutorial|^the default choice is one literal after the profile marker, on one line, and English in this repo|^with the default \(en\) the site starts in English|^the language list is data: English first|^with nothing stored the choice is English|^the shipped brand\/brand\.json has the support block, all on|^each landing page has a description of 120 to 160 characters|^each page has a description of 120 to 160 characters' tests/node/*.test.mjs tests/seo/*.test.mjs
