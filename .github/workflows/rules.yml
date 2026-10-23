@@ -19,7 +19,7 @@ jobs:
         run: node tools/check-rules.mjs --all
       - name: Install the test dependencies
         run: |
-          npm install --no-audit --no-fund
+          npm ci --no-audit --no-fund
           npx playwright install --with-deps chromium
       - name: Node tests
         run: |
