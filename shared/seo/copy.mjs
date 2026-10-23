@@ -56,6 +56,8 @@ export const APPS = {
     description: 'Track products and stock by location, scan barcodes with a camera or USB scanner, and import CSV with a validation report. Nothing is uploaded.' },
   orders: { title: 'Orders: orders from draft to fulfilment | ITpris', category: 'BusinessApplication',
     description: 'Manage customers, products and orders from draft to fulfilment. Fulfilling takes stock out, and an order turns into an invoice in one click.' },
+  expenses: { title: 'Expenses: receipts and bills in your books | ITpris', category: 'BusinessApplication',
+    description: 'Record receipts and bills by supplier and category with the tax to reclaim. Each expense is posted to the ledger, with monthly totals and CSV export.' },
   invoices: { title: 'Invoices: gapless invoices, payments and a ledger | ITpris', category: 'BusinessApplication',
     description: 'Issue invoices with gapless numbers, record payments, track overdue balances by customer and print a PDF. Nothing is uploaded.' },
   notes: { title: 'Notes: Markdown notebooks saved to Files | ITpris', category: 'ProductivityApplication',
@@ -138,6 +140,8 @@ export const ABOUT = {
     description: 'About Invoices: gapless invoice numbers, payments, a ledger, overdue balances and a printable PDF. Everything stays in your browser.' },
   orders: { title: 'About Orders | ITpris',
     description: 'About Orders, which keeps customers, products and orders, takes stock out when you fulfil, and turns an order into an invoice draft.' },
+  expenses: { title: 'About Expenses | ITpris',
+    description: 'About Expenses, which records what a business spends, posts each expense to the same books as invoices, and sums the tax to reclaim.' },
 };
 
 /** Pages that are not apps and have no registry entry, keyed by folder (the URL is /<folder>/). Written by write.mjs. */
@@ -182,6 +186,7 @@ export const LANDING = {
   contacts: { title: 'Contacts: address book with vCard and CSV import | ITpris', description: 'Contacts is an address book that imports vCard 2.1, 3.0, 4.0 and CSV, finds and merges duplicates, and exports for iOS, Android, Google and Outlook.' },
   inventory: { title: 'Inventory: stock, locations and barcode scanning | ITpris', description: 'Inventory tracks products and stock with a camera or USB barcode scanner, transfers and counts, and CSV import. Nothing is uploaded.' },
   orders: { title: 'Orders: customers, products and order fulfilment | ITpris', description: 'Orders takes orders from draft to confirmed, fulfilled or cancelled, takes stock out on fulfilment, and converts to invoices. Nothing is uploaded.' },
+  expenses: { title: 'Expenses: receipts, bills and reclaimable tax | ITpris', description: 'Expenses records receipts and bills by supplier and category, posts them to the ledger, sums reclaimable tax and exports CSV. Nothing is uploaded.' },
   invoices: { title: 'Invoices: gapless numbers, payments and ledger | ITpris', description: 'Invoices issues invoices with gapless numbers posted to the ledger, tracks payments and overdue balances by customer, and prints PDFs. Nothing is uploaded.' },
   notes: { title: 'Notes: notebooks and Markdown notes in your browser | ITpris', description: 'Notes keeps notebooks, folders, tags and pinned notes in Markdown, with a live preview and search across every note. Export as .md or standalone .html.' },
   paste: { title: 'Paste: share text, code and images with a link | ITpris', description: 'Paste text, code or images and share them by link. Highlighting covers six languages, and each paste has an expiry label. Nothing is uploaded.' },
