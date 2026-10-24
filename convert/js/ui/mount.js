@@ -15,6 +15,8 @@ for (const root of document.querySelectorAll('[data-convert-root]')) {
   } : null;
   mountTool(root, { preset });
 }
+// The files the page was opened with (?drive=<id> from Send to…, or a PWA launch) come in through the intake, like a drop.
+if (window.TlbxIntake && window.TlbxIntake.launch && document.querySelector('[data-convert-root]')) window.TlbxIntake.launch({ to: 'convert' });
 
 // The hub's conversion cards and their search box (absent on the converter pages).
 const cardRoot = document.querySelector('[data-convert-cards]');

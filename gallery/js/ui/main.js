@@ -1,43 +1,36 @@
-/* Gallery: boot. Loads the library from IndexedDB, mounts the timeline and the side panel, wires drag and drop
- * (files and folders), the commands, the Files hand-off (?drive=<id>) and the bus. Sets window.TlbxGallery.ready
+/* Gallery: boot. Loads the library from IndexedDB, mounts the timeline and the side panel, registers the app with
+ * the one intake (every way photos come in), the commands, and the bus. Sets window.TlbxGallery.ready
  * when the library is on screen (the tests wait for it). */
 (function () {
   'use strict';
   const G = (window.TlbxGallery = window.TlbxGallery || {});
   const $ = (id) => document.getElementById(id);
 
-  // Files and folders dropped on the window: TlbxDrop (shared/drop) shows the outline and each file's progress. The
-  // folder walk (G.source.fromDrop) reads the drop's entries inside the drop event, as before.
-  // The zone is a compact strip, so the empty library carries the preview (what it makes, and how) and the sample
-  // button; the sample photos go through the zone's batch like a drop.
+  // Every way photos come in (a drop of files or folders, Import, Ctrl+O, Import a folder, Import from Files,
+  // ?drive=<id> from another app, a paste, the sample) goes through the one intake (shared/intake): its rules refuse what
+  // is not a photo, with the reason, and each photo goes to G.actions.importOne. TlbxDrop (shared/drop) is the drop
+  // source and the feedback: the outline, each file's row and the toast. Dropped folders are walked by TlbxDrop.folders
+  // inside the drop event. The zone is a compact strip, so the empty library carries the preview (what it makes, and
+  // how) and the sample button.
   const PREVIEW = {
     picture: { src: '../assets/shots/gallery.jpg', alt: 'A photo library: eight photos under the month they were taken' },
     steps: ['Drop photos or a whole folder', 'Browse by month, make albums, find duplicates', 'Back up the library as a ZIP'],
   };
   function bindDrop() {
-    const drop = window.TlbxDrop.attach($('gDrop'), {
-      accept: {
-        types: ['image/*'],
-        exts: ['.jpg', '.jpeg', '.jpe', '.png', '.webp', '.gif', '.avif', '.bmp', '.heic', '.heif', '.svg', ...(window.TlbxRaw ? window.TlbxRaw.EXTS.map((e) => '.' + e) : [])],
-        noun: 'a photo',
-      },
+    window.TlbxIntake.register({
+      id: 'gallery', accept: G.source.rules(), driveAccept: ['image/*'],
+      process: (file, ctx) => G.actions.importOne(file, ctx),
+    });
+    G.actions.registerBackup();
+    window.TlbxDrop.attach($('gDrop'), {
+      intake: 'gallery',
       compact: true,
       targets: [document.querySelector('main.grid-area') || document.body],
-      files: async (dt) => (await G.source.fromDrop(dt)).map((it) => it.file),
-      process: async (file) => {
-        await G.actions.importItems([{ file, name: file.name }]);
-        return file.name;
-      },
+      files: (dt) => window.TlbxDrop.folders.read(dt),
     });
     const pv = window.TlbxDrop.panel.preview(PREVIEW);
     if (pv) $('emptyIntro').append(pv);
-    $('emptySample').addEventListener('click', () => drop.run(window.TlbxSamples.photos(8)));
-  }
-
-  async function openFromLaunch() {
-    if (!window.TlbxHub || !window.TlbxHub.consumeLaunch) return;
-    const rec = await window.TlbxHub.consumeLaunch();
-    if (rec && rec.blob && G.source.isImage(rec.blob, rec.name)) await G.actions.importItems([{ file: rec.blob, name: rec.name, driveId: rec.id }]);
+    $('emptySample').addEventListener('click', () => window.TlbxIntake.sample(() => window.TlbxSamples.photos(8), { to: 'gallery' }));
   }
 
   async function boot() {
@@ -67,7 +60,7 @@
     G.library.on(() => { if (G.state.state.view === 'album' && !G.library.album(G.state.state.query.album)) G.state.setView('photos'); });
     await G.viewState.restore(); // ui/view-state.js: the view, filters, Select mode and scroll
     G.ready = true;
-    openFromLaunch();
+    window.TlbxIntake.launch({ to: 'gallery' }); // ?drive=<id> (Send to…) or the files the installed app was opened with
   }
 
   G.boot = boot;

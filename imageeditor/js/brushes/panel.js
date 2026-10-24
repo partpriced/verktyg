@@ -29,7 +29,7 @@ function buildBrushesPanel() {
     }
   };
   const bar = h('div', { class: 'bp-bar' },
-    h('button', { type: 'button', class: 'btn', onclick: () => TlbxUI.pickFiles({ accept: '.abr,.tlbxbrush,.json,image/*', multiple: true }).then(importBrushFiles), title: 'Photoshop .abr, PNG/JPEG tips, .tlbxbrush packs' }, 'Import…'),
+    h('button', { type: 'button', class: 'btn', onclick: () => TlbxIntake.pick({ to: 'imageeditor.brushes' }), title: 'Photoshop .abr, PNG/JPEG tips, .tlbxbrush packs' }, 'Import…'),
     h('button', { type: 'button', class: 'btn', onclick: () => dlgBrushSettings() }, 'Settings…'),
     h('button', { type: 'button', class: 'btn', onclick: () => defineBrushFromSelection(), title: 'Make a brush from the selection (or the whole image)' }, 'From selection'));
   listeners.add((w) => { if (w === 'brushes' || w === 'theme') render(); });

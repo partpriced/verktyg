@@ -62,7 +62,7 @@ const MENUS = [
     '-',
     { label: 'Brush Settings…', key: 'F5', act: () => dlgBrushSettings() },
     { label: 'Define Brush Preset…', act: () => defineBrushFromSelection(), need: 'layer' },
-    { label: 'Import Brushes (.abr, .tlbxbrush, PNG)…', act: () => TlbxUI.pickFiles({ accept: '.abr,.tlbxbrush,.json,image/*', multiple: true }).then(importBrushFiles) },
+    { label: 'Import Brushes (.abr, .tlbxbrush, PNG)…', act: () => TlbxIntake.pick({ to: 'imageeditor.brushes' }) },
     '-',
     { label: 'Preferences', sub: [
       { label: 'Navigation…', act: () => TlbxNav.openModal('imageeditor') },

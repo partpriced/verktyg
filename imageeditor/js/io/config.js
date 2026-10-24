@@ -48,8 +48,10 @@
         TlbxUI.el('p', { class: 'sui-p' }, 'The layers are set up. Add each picture; it goes on the layer with the same file name:'),
         TlbxUI.el('ul', { class: 'sui-errors' }, names)),
       buttons: [{ label: 'Later' }, { label: 'Add pictures…', primary: true, act: async () => {
-        const files = await TlbxUI.pickFiles({ accept: 'image/*', multiple: true });
-        for (const f of files || []) await place(f);
+        // the pictures come in the one way (shared/intake): a spec of their own, each placed on its layer
+        TlbxIntake.register({ id: 'imageeditor.layer-pictures', main: false, paste: false, toast: false,
+          accept: { types: ['image/*'], noun: 'a picture' }, process: (f) => place(f) });
+        await TlbxIntake.pick({ to: 'imageeditor.layer-pictures' });
         if (PS.waiting.length) askForPictures();
       } }],
     });
