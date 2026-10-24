@@ -1,7 +1,7 @@
 # PDF passwords (`shared/pdf-crypto/`): handoff
 
-Adds and removes PDF passwords in the browser. One implementation for the whole site: File Converter uses it now
-(`convert/js/core/pdf-lock.js`); PDF Editor should switch to it (below). Nothing is uploaded and nothing is logged.
+Adds and removes PDF passwords in the browser. One implementation for the whole site: File Converter
+(`convert/js/core/pdf-lock.js`) and PDF Editor (`pdf/js/io/decrypt.js`, `pdf/js/ui/protect.js`) use it. Nothing is uploaded and nothing is logged.
 
 ## What it does
 
@@ -57,7 +57,7 @@ await C.encryptPdf(bytes, { userPassword, ownerPassword, permissions, currentPas
                                                       // first with currentPassword (or '')
 ```
 
-## PDF Editor: how to wire it (do this after the script-loading rework of pdf/)
+## PDF Editor: how to wire it (done: see pdf/HANDOFF.md "Passwords"; the scripts load on demand from `<template id="pdf-crypto">`)
 
 1. **Load the scripts** in `pdf/index.html` where `js/io/decrypt.js` is loaded now, before it:
    `../shared/pdf-crypto/{legacy,aes256,security,decrypt,encrypt}.js` (with `data-src="shared/pdf-crypto/…"` like the
