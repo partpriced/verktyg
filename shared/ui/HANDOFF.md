@@ -124,3 +124,12 @@ TlbxMenuButton.attach(button, { label: 'Convert photo.png to', empty: 'No format
   onPick: (value) => { ... } });
 ```
 Used by File Converter's per-file targets (`convert/js/ui/file-row.js`). Tests: `tests/shared/menubutton.test.html`.
+
+## Undo (`undo.js`, TlbxUndo)
+
+One undo history for an app's edits (a drag that moves something, a delete). `TlbxUndo.create({ limit = 50 })` returns
+`{ push(label, undo), undo(), next, size, clear() }`: `undo` is an async function that reverses one step and resolves to a
+Result; `undo()` runs the newest and resolves `{ ok, label }` or `{ ok: false, message }`. `TlbxUndo.keys(history, run)`
+makes Ctrl+Z (Cmd+Z) call `run()` unless a text field, a dialog or a menu has the focus. `TlbxUndo.toast(what, run)` says
+what was done with an Undo button. Used by Calendar (event drags) and Projects (every move, edit and delete).
+Tests: `tests/projects/board.test.html` (undo of moves and deletes), `tests/calendar/drag.test.html`.
