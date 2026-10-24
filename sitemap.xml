@@ -489,6 +489,27 @@
   <url><loc>https://verktyg.itpris.se/convert/powerpoint-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/pptx-to-images/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/pptx-to-text/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/html-to-markdown/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/csv-to-markdown/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/csv-to-html/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/csv-to-tsv/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/jsonl-to-json/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/json-to-jsonl/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/fix-text-encoding/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/epub-to-txt/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/epub-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/epub-to-html/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/epub-to-markdown/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/ass-to-srt/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/sbv-to-srt/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/favicon-generator/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/trim-audio/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/trim-video/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/gpx-to-geojson/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/kml-to-geojson/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/kml-to-gpx/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/gpx-to-csv/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/convert/geojson-to-gpx/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/png-to-jpg/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/jpg-to-png/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/png-to-webp/</loc><lastmod>2026-10-20</lastmod></url>
