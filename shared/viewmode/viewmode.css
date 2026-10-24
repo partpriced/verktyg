@@ -1,24 +1,16 @@
-/* TlbxViewMode: the look of the mode controls. Loaded by viewmode.js; the layout itself is set by paint() in viewmode.js.
- * The controls are a fixed slot at the end of the host toolbar: order keeps it last (after any item another script appends,
- * such as the shell's Apps button or the Drive link), and the fixed widths keep it in the same place in every mode and
- * when the label changes. The reveal button keeps its space in Full too (visibility, not display), so nothing shifts. */
-.tlbxvm-bar { display: inline-flex; align-items: center; justify-content: flex-end; gap: 4px; margin-left: auto; flex: none; order: 999; }
-.tlbxvm-btn, .tlbxvm-reveal {
-  font: inherit; font-size: 12px; line-height: 1.2; margin: 0; padding: 2px 8px; white-space: nowrap; cursor: pointer;
-  border: 1px solid var(--sl-border, #8886); border-radius: 4px;
-  background: var(--sl-surface, transparent); color: var(--sl-text, inherit);
-}
-.tlbxvm-btn { width: 118px; text-align: center; }
-.tlbxvm-reveal { width: 96px; text-align: center; visibility: hidden; }
-html[data-tlbxvm="focus"] .tlbxvm-reveal, html[data-tlbxvm="content"] .tlbxvm-reveal { visibility: visible; }
-.tlbxvm-btn:focus-visible, .tlbxvm-reveal:focus-visible { outline: 2px solid var(--sl-accent, #06c); outline-offset: 2px; }
+/* TlbxViewMode: the place of the view controls. Loaded by viewmode.js; the layout itself is set by paint() in viewmode.js,
+ * and the buttons' look is the shared header button (shared/ui/hbtn.css, .tlbx-hbtn).
+ * The controls are a slot at the end of the host toolbar: order keeps it last (after any item another script appends,
+ * such as the shell's Apps button or the Drive link), and the View button has one width in every mode, so it stays in
+ * the same place. "Show panels" is there only in Focus and Content, to the left of the View button. */
+.tlbxvm-bar { display: inline-flex; align-items: center; justify-content: flex-end; gap: 6px; margin-left: auto; flex: none; order: 999; }
+.tlbxvm-bar .tlbxvm-btn { width: 104px; justify-content: flex-start; }   /* .tlbxvm-bar: wins over hbtn.css, whichever loads last */
+.tlbxvm-btn .tlbx-hbtn-txt { display: inline-flex; flex: 1; align-items: center; justify-content: space-between; gap: 6px; }
+.tlbxvm-caret { width: 0; height: 0; border: 4px solid transparent; border-top-color: currentColor; border-bottom: 0; opacity: .7; }
+.tlbxvm-bar .tlbxvm-reveal { display: none; }
+html[data-tlbxvm="focus"] .tlbxvm-reveal, html[data-tlbxvm="content"] .tlbxvm-reveal { display: inline-flex; }
+.tlbx-htight .tlbxvm-bar .tlbxvm-btn { width: var(--tlbx-hbtn-h, 32px); justify-content: center; }
+.tlbx-htight .tlbxvm-btn .tlbx-hbtn-txt { display: none; }
 .tlbxvm-peek { outline: 1px dashed var(--sl-accent, #888); outline-offset: -1px; }
-/* Narrow screens: the controls are glyphs, so they take little room in the toolbar (the title says what they do). */
-@media (max-width: 760px) {
-  .tlbxvm-btn .tlbxvm-txt { display: none; }
-  .tlbxvm-btn { width: 34px; }
-  .tlbxvm-btn::before { content: '\25E7'; }
-  .tlbxvm-btn, .tlbxvm-reveal { padding: 2px 6px; }
-  .tlbxvm-reveal { width: 28px; font-size: 0; }
-  .tlbxvm-reveal::before { content: '\25C9'; font-size: 12px; }
-}
+.tlbxvm-menu .sui-lbl { white-space: nowrap; }
+@media (max-width: 560px) { .tlbxvm-bar .tlbxvm-btn { width: var(--tlbx-hbtn-h, 30px); justify-content: center; } .tlbxvm-btn .tlbx-hbtn-txt { display: none; } }

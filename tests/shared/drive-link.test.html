@@ -61,9 +61,10 @@
       expect(h.lastElementChild.id).toBe('first');
     });
 
-    it('injects its stylesheet once', () => {
-      TlbxDriveLink.mount(fresh()); TlbxDriveLink.mount(fresh());
-      expect(document.querySelectorAll('#sdl-style').length).toBe(1);
+    it('wears the shared header-button look, with its label as the text an icon-only button drops', () => {
+      const a = TlbxDriveLink.mount(fresh());
+      expect(a.classList.contains('tlbx-hbtn')).toBe(true);
+      expect(a.querySelector('.tlbx-hbtn-txt').textContent).toBe('Files');
     });
   });
 
