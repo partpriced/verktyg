@@ -28,13 +28,17 @@ function css(rel) {
 }
 
 let ready = null;
-/** TlbxUI, TlbxDrop (rules, panel, drop: in that order) and dialog.css. */
+/** TlbxUI, the intake pipeline (shared/intake), TlbxDrop (panel, drop) and dialog.css. */
 export function deps() {
   if (!ready) ready = (async () => {
     css('shared/convert/dialog.css');
     if (!window.TlbxUI) { css('shared/tlbxui.css'); await script('shared/tlbxui.js'); }
-    const SD = window.TlbxDrop || {};
-    if (!SD.rules) await script('shared/drop/rules.js');
+    const SI = () => window.TlbxIntake || {};
+    if (!SI().rules) await script('shared/intake/rules.js');
+    if (!SI().normalize) await script('shared/intake/normalize.js');
+    if (!SI().createPipeline) await script('shared/intake/pipeline.js');
+    if (!SI().take) await script('shared/intake/intake.js');
+    if (!SI().pick) await script('shared/intake/sources.js');
     if (!(window.TlbxDrop || {}).panel) await script('shared/drop/panel.js');
     if (!(window.TlbxDrop || {}).attach) await script('shared/drop/drop.js');
   })().catch((e) => { ready = null; throw e; });
@@ -45,5 +49,6 @@ export function deps() {
 export async function hub() {
   if (!window.TLBX_APPS) await script('shared/apps.js');
   if (!window.TlbxHub) await script('shared/hub.js');
+  if (!window.TlbxOuttake) await script('shared/intake/outtake.js');   // the one "Open in…" builder (TlbxHub.openIn)
   return window.TlbxHub;
 }

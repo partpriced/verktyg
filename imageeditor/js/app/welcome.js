@@ -25,7 +25,7 @@ function showWelcome() {
   const onDown = (e) => { if (card && !card.contains(e.target)) close(); };
   const sample = h('button', { type: 'button', class: 'sd-sample', id: 'psWelcomeSample', onclick: () => {
     close();
-    if (fileDrop && window.TlbxSamples) fileDrop.run(TlbxSamples.photos(1, { width: 1600, height: 1000 }));
+    if (window.TlbxSamples) TlbxIntake.sample(() => TlbxSamples.photos(1, { width: 1600, height: 1000 }), { to: 'imageeditor', mode: 'new' });
   } }, 'Try it with a sample photo');
   const shut = h('button', { type: 'button', class: 'sd-sample', onclick: close }, 'Start with this blank canvas');
   const inner = h('div', { class: 'ps-welcome-card' }, pv, h('div', { class: 'sd-acts' }, sample, shut));
