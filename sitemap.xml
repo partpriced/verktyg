@@ -25,6 +25,7 @@
   <url><loc>https://verktyg.itpris.se/inventory/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/orders/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/quotes/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/timesheets/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/expenses/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://verktyg.itpris.se/invoices/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/notes/</loc><lastmod>2026-10-20</lastmod></url>
@@ -60,6 +61,7 @@
   <url><loc>https://verktyg.itpris.se/bgremover/about/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/orders/about/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/quotes/about/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/timesheets/about/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/expenses/about/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://verktyg.itpris.se/invoices/about/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/calculator/about/</loc><lastmod>2026-10-20</lastmod></url>
@@ -91,6 +93,7 @@
   <url><loc>https://verktyg.itpris.se/apps/inventory/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/orders/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/quotes/</loc><lastmod>2026-10-23</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/apps/timesheets/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/expenses/</loc><lastmod>2026-10-23</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/invoices/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/notes/</loc><lastmod>2026-10-20</lastmod></url>
