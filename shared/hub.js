@@ -178,17 +178,11 @@
     if (newTab) { const w = window.open(url, '_blank'); if (!w) location.href = url; } else location.href = url;
     return fid;
   }
-  /** Menu items (for TlbxUI.menu or an app menu): "Send to Image Editor", … getBlob() may be async.
-   * opts.folder: also add "Save to Files…", which asks for a folder first. */
-  function sendMenuItems(getBlob, name, type, opts = {}) {
-    const nm = () => (typeof name === 'function' ? name() : name);
-    const items = appsAccepting(type).map((a) => ({ label: `Send to ${a.name}`, act: async () => {
-      try { const b = await getBlob(); await sendTo(a.id, b, nm()); if (window.TlbxUI) TlbxUI.toast(`Opened in ${a.name}`); }
-      catch (e) { if (window.TlbxUI) TlbxUI.toast('Could not send: ' + e.message); }
-    } }));
-    if (opts.folder) items.push({ label: 'Save to Files…', act: async () => { try { await saveToDrive(await getBlob(), nm()); } catch (e) { if (window.TlbxUI) TlbxUI.toast('Could not save: ' + e.message); } } });
-    return items;
-  }
+  /** The "Open in…" items for an output: made by the one outbound builder, TlbxOuttake (shared/intake/outtake.js, loaded
+   * after this file). openIn(o) is TlbxOuttake.items(o); sendMenuItems(getBlob, name, type, { folder }) is the older call
+   * ("Send to Image Editor", …, and "Save to Files…" with folder). */
+  const openIn = (o) => (window.TlbxOuttake ? window.TlbxOuttake.items(o) : []);
+  const sendMenuItems = (getBlob, name, type, opts = {}) => openIn({ get: getBlob, name, type, verb: 'Send to', folder: !!opts.folder });
   /** If this page was opened with ?drive=<id>, return that Drive record (once) and tidy the URL. */
   async function consumeLaunch() {
     const u = new URL(location.href), id = u.searchParams.get('drive');
@@ -224,6 +218,6 @@
   }
 
   window.TlbxHub = { apps, appById, urlOf, put, get, list, update, remove, clear, touch, createFolder, getFolder, listFolders, updateFolder, removeFolder, folderPath, inTrash, appFolderId, appSubfolderId,
-    on, emit, register, openApps, appsAccepting, sendTo, sendMenuItems, consumeLaunch, pickFromDrive, pickFolder, saveToDrive, matches, fmtSize, loadScript, self,
+    on, emit, register, openApps, appsAccepting, sendTo, openIn, sendMenuItems, consumeLaunch, pickFromDrive, pickFolder, saveToDrive, matches, fmtSize, loadScript, self,
     driveTx: tx, normFile, normFolder, ROOT, DB_NAME };
 })();

@@ -29,6 +29,77 @@
       "purpose": "any"
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/pdf/",
+      "accept": {
+        "application/pdf": [
+          ".pdf"
+        ]
+      }
+    },
+    {
+      "action": "/imageeditor/",
+      "accept": {
+        "image/vnd.adobe.photoshop": [
+          ".psd"
+        ],
+        "image/png": [
+          ".png"
+        ],
+        "image/jpeg": [
+          ".jpg",
+          ".jpeg"
+        ],
+        "image/webp": [
+          ".webp"
+        ]
+      }
+    },
+    {
+      "action": "/resize/",
+      "accept": {
+        "image/avif": [
+          ".avif"
+        ],
+        "image/gif": [
+          ".gif"
+        ],
+        "video/mp4": [
+          ".mp4"
+        ],
+        "video/webm": [
+          ".webm"
+        ],
+        "video/quicktime": [
+          ".mov"
+        ]
+      }
+    },
+    {
+      "action": "/gallery/",
+      "accept": {
+        "image/heic": [
+          ".heic",
+          ".heif"
+        ]
+      }
+    },
+    {
+      "action": "/convert/",
+      "accept": {
+        "text/csv": [
+          ".csv"
+        ],
+        "application/json": [
+          ".json"
+        ],
+        "text/vcard": [
+          ".vcf"
+        ]
+      }
+    }
+  ],
   "shortcuts": [
     {
       "name": "Files",
