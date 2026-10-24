@@ -139,7 +139,7 @@
           if (!hub || !hub.list) throw new Error('Files is not available on this page.');
           const q = String(a.query || '').toLowerCase();
           const files = (await hub.list()).filter((f) => !q || f.name.toLowerCase().includes(q)).slice(0, 40);
-          return files.map((f) => ({ name: f.name, type: f.type, size: f.size, from: f.from }));
+          return files.map((f) => ({ id: f.id, name: f.name, type: f.type, size: f.size, from: f.from }));
         } },
       { name: 'read_file', description: 'Read a text file from Files (its first 4000 characters), so you can answer questions about it.',
         params: { file: { type: 'string', description: 'Files file name or id', required: true } },

@@ -1,0 +1,5 @@
+{
+  "feature": "WebMCP",
+  "about": "Chrome origin trial tokens for WebMCP, one per origin. See shared/agent/HANDOFF.md to renew. These tokens are public by design (they are in every page).",
+  "tokens": []
+}

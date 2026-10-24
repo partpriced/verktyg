@@ -193,6 +193,7 @@ const MENUS = [
     { label: 'Search Commands…', cmdId: 'cmd.palette', act: () => openCommandPalette() },
     { label: 'Keyboard Shortcuts…', cmdId: 'cmd.keymap', act: () => openKeymap() },
     { label: 'About Image Editor', act: () => dlgAbout() },
+    { label: 'AI agents…', act: () => window.TlbxAgents && window.TlbxAgents.about() },
     '-',
     { label: 'Open Paint Classic (MS Paint)', act: () => { location.href = 'classic/'; } },
     { label: 'Back to verktyg.itpris.se', act: () => { location.href = '../'; } },

@@ -103,6 +103,7 @@
       { label: 'Search commands…', key: A.key('cmd.palette'), act: function () { if (window.TlbxCmd) TlbxCmd.open(); }, disabled: !window.TlbxCmd },
       { label: 'Keyboard shortcuts…', key: A.key('cmd.keymap'), act: S.showKeys },
       { label: 'About PDF Editor & privacy', act: S.showAbout },
+      { label: 'AI agents…', act: function () { if (window.TlbxAgents) TlbxAgents.about(); }, disabled: !window.TlbxAgents },
       '-',
       { label: 'ITpris Verktyg home', act: function () { location.href = SP.offline ? 'https://verktyg.itpris.se/' : '../'; } }
     ];
