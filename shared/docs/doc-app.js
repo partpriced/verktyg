@@ -27,6 +27,7 @@
       return yes;
     }
     NS.state = { view: 'list' };
+    if (!NS.views || !NS.views.data) g.TlbxBiz.backup.attach(NS);   // the Data view: full backup and restore
     return g.TlbxBiz.router.start({ ns: NS, app: cfg.app, parse, leave, after: cfg.after, mount: cfg.mount, tabRoute: cfg.tabRoute,
       editRoute: () => NS.editor.route(), current: () => NS.editor.route() });
   }
