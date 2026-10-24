@@ -48,7 +48,8 @@
     ],
     Layout: () => (window.TlbxLayouts ? TlbxLayouts.menu('videostudio') : []),
     Help: () => [
-      it('help.search'), it('help.keys'), it('help.about'), '-',
+      it('help.search'), it('help.keys'), it('help.about'),
+      { label: 'AI agents…', act: () => window.TlbxAgents && TlbxAgents.about(), disabled: !window.TlbxAgents }, '-',
       { label: 'ITpris Verktyg home', act: () => { location.href = SE.offline ? 'https://verktyg.itpris.se/' : '../'; } }
     ]
   };
