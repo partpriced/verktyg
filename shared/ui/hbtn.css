@@ -9,7 +9,8 @@
  *   --tlbx-hbtn-hover   background under the pointer, and while open    (the text colour at 10%)
  *   --tlbx-hbtn-fs      font size                                       (13px)
  * A header without room for every label gets .tlbx-htight from shared/ui/hbtn.js: the buttons show only their icons
- * (each keeps its title and aria-label). */
+ * (each keeps its title and aria-label). A button with data-hbtn-yield (Convert…, AI) gives up its label first, on its own:
+ * .sh-icon-only, set by hbtn.js. */
 .tlbx-hbtn {
   box-sizing: border-box; position: relative; flex: none; margin: 0; padding: 0 10px;
   height: var(--tlbx-hbtn-h, 32px); min-width: var(--tlbx-hbtn-h, 32px);
@@ -28,6 +29,8 @@
 .tlbx-hbtn[hidden] { display: none; }
 .tlbx-htight .tlbx-hbtn-txt { display: none; }
 .tlbx-htight .tlbx-hbtn { padding: 0; width: var(--tlbx-hbtn-h, 32px); }
+.tlbx-hbtn.sh-icon-only { padding: 0; width: var(--tlbx-hbtn-h, 32px); }
+.tlbx-hbtn.sh-icon-only .tlbx-hbtn-txt { display: none; }
 @media (max-width: 560px) {
   .tlbx-hbtn-txt { display: none; }
   .tlbx-hbtn { padding: 0; width: var(--tlbx-hbtn-h, 30px); height: var(--tlbx-hbtn-h, 30px); min-width: 0; }
