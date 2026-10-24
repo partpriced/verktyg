@@ -1,5 +1,7 @@
 /* ITpris app header: the title bar every app mounts. Classic script; exposes window.TlbxAppBar.
- *   TlbxAppBar.mount(hostEl, { title, subtitle?, icon?, actions?, menu? }) → { setTitle, setSubtitle, setActions, setMenu, setDirty, destroy }
+ *   TlbxAppBar.mount(hostEl, { title, subtitle?, home?, icon?, actions?, menu? }) → { setTitle, setSubtitle, setActions, setMenu, setDirty, destroy }
+ *   home     the site root ('../'): the bar leads with the home link (header a.brand), which brand/brand.js draws as the
+ *            app's icon with the ITpris Verktyg badge, as in every app header. Optional.
  *   icon     a TLBX_ICONS key (shared/app-icons.js). Draws the app badge with TLBX_ICON_BADGE. Optional.
  *   actions  [{ id, label, icon?, primary?, onClick, disabled? }]. Shown as buttons. A narrow host moves them into the ⋯ menu.
  *   menu     [{ id, label, icon?, onClick, disabled? } | { separator: true }]. Always listed in the ⋯ menu.
@@ -69,8 +71,9 @@
     const moreBtn = el('button', { type: 'button', class: 'sab-btn sab-more-btn', 'aria-haspopup': 'menu', 'aria-expanded': 'false', 'aria-label': 'More actions', title: 'More actions' }, icon('more'));
     const menuEl = el('div', { class: 'sab-menu', role: 'menu', 'aria-label': 'More actions', hidden: true });
     const more = el('div', { class: 'sab-more' }, moreBtn, menuEl);
+    const home = opts.home ? el('a', { class: 'brand', href: opts.home, title: 'ITpris Verktyg home', 'aria-label': 'ITpris Verktyg home' }) : null;
     const root = el('header', { class: 'sab', 'data-narrow': 'false' },
-      el('div', { class: 'sab-brand' }, brandBadge, el('div', { class: 'sab-titles' }, el('h1', { class: 'sab-title' }, name, dot), sub)),
+      el('div', { class: 'sab-brand' }, home, brandBadge, el('div', { class: 'sab-titles' }, el('h1', { class: 'sab-title' }, name, dot), sub)),
       acts, more);
 
     function run(a) { closeMenu(false); if (!a.disabled && typeof a.onClick === 'function') a.onClick(); }
