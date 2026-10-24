@@ -280,5 +280,5 @@ export const LANDING = {
   'paint-classic': { title: 'Paint Classic: the 1998 paint program in your browser | ITpris', description: 'Paint Classic is the 1998 paint experience, with every MS Paint tool, running in your browser. It is an experiment on this site.' },
   'businessapps': { title: 'Business apps: invoices, orders, CRM and ledger for business | ITpris', description: 'Business apps is the business group of ITpris Verktyg apps: invoices, orders, contacts, inventory, CRM, ledger, reports, tables, docs and notes, all in your browser.' },
   'creativepro': { title: 'Creative Pro: free browser photo, vector and video apps | ITpris', description: 'Free browser alternatives to Photoshop-style photo editing, Illustrator-style vector drawing and video editing. Not Adobe products; no account or install.' },
-  compare: { title: 'Compare ITpris Verktyg apps: status, features and file types | ITpris', description: 'Compare every ITpris Verktyg app in one table: its status, first two features and the file types it opens, with a link to each app landing page.' },
+  compare: { title: 'All ITpris Verktyg apps and how each compares to other tools | ITpris', description: 'Every ITpris Verktyg app in one table, with a link to its side-by-side comparison with tools like Photopea, Acrobat and QuickBooks, its features and file types.' },
 };
