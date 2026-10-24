@@ -79,7 +79,9 @@
     if (theme) box.append(theme);
     box.append(sw);
     const host = document.querySelector('header.topbar, header.menubar, header.nav, header');
-    if (host) { host.append(box); if (window.TlbxHbtn) window.TlbxHbtn.fit(host); }   // labels give way to icons when the header is full
+    const slot = host && host.querySelector('.sh-hdr-slot');   // room kept for the buttons in the page's own HTML
+    if (slot) slot.replaceWith(box); else if (host) host.append(box);
+    if (host) { if (window.TlbxHbtn) window.TlbxHbtn.fit(host); }   // labels give way to icons when the header is full
     else { box.classList.add('sh-fab'); document.body.append(box); }
     window.TlbxNotify.mountBell(box);
     window.addEventListener('tlbx-lang', () => { sw.title = title(); });

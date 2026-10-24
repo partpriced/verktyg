@@ -36,6 +36,7 @@
     'footer.settings_link': 'Settings and privacy',
     'footer.code_license': 'Code MIT',
     'footer.trademarks': 'Helper™ and ITpris Verktyg™ are trademarks',
+    'footer.made': 'Made with ❤️ in Sweden',
 
     'settings.appearance': 'Appearance',
     'settings.appearance_lede': 'One theme for every ITpris Verktyg app and for this site. Pick it here and it applies at once. Each app uses the same choice when it opens.',
