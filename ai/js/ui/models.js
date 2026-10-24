@@ -34,6 +34,8 @@
   async function load(m, resume) {
     const v = AI.sys ? K.sysinfo.verdict(AI.sys, m) : null;
     if (v && v.level === 'no' && !E.isFake() && !(await window.TlbxUI.confirm('This may not work', `${v.reason}. Try anyway?`, 'Try anyway'))) return;
+    // The first model download of a visit asks the browser to keep this site's data (TlbxQuota.askIfBig, once per visit).
+    if (!E.isFake() && !m.custom && (statuses.get(m.id) || {}).state !== 'ready') window.TlbxQuota.askIfBig((m.sizeMB || 0) * 1048576);
     const ok = await E.load(m.id, { skipConsent: !!resume });
     if (ok) { AI.toast(m.name + ' is ready'); if (AI.prefs.defaultModel == null) setDefault(m, true); }
   }
@@ -76,7 +78,7 @@
 
   async function usage() {
     let total = 0; for (const s of statuses.values()) total += s.bytes || 0;
-    const est = navigator.storage && navigator.storage.estimate ? await navigator.storage.estimate().catch(() => ({})) : {};
+    const est = await window.TlbxQuota.estimate();
     const box = AI.$('mUsage');
     if (box) box.textContent = `Models use ${AI.fmtBytes(total)} on this device` + (est.quota ? ` · ${AI.fmtBytes(est.quota - (est.usage || 0))} free for this site` : '');
     paintStorage(est);
