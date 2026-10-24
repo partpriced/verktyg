@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Assistant: generate_image in an app without a picture editor saves to Files (fake providers)</title></head>
+<body>
+  <script>try { localStorage.setItem('tlbx-firstrun:aitools', '1'); } catch (e) { /* private window */ }</script>
+  <script src="../harness.js"></script>
+  <script src="util.js"></script>
+  <script src="cloud-util.js"></script>
+  <script src="imagegen-util.js"></script>
+  <script>
+  // Covers: shared/ai/imagegen/tools.js, shared/ai/imagegen/run.js, shared/ai/imagegen/openrouter.js, shared/ai/imagegen/index.js,
+  //   shared/ai/imagegen/core.js, shared/ai/apptools.js, shared/ai/panel.js
+  const { describe, it, expect, waitFor } = TlbxTest;
+  let P, cu, F;
+  const steps = () => [...P.document.querySelectorAll('.sap-step')].map((s) => s.textContent);
+  const lastResult = () => cu.requests.filter((r) => /\/v1\/messages$/.test(r.url)).pop().body.messages.pop().content[0];
+  async function wipe() {
+    for (const k of Object.keys(localStorage)) if (/^tlbx-ai\.(cloud|imagegen)|^tlbx-firstrun:ai-cloud:/.test(k)) localStorage.removeItem(k);
+    for (const k of Object.keys(sessionStorage)) if (/^tlbx-ai\.cloud/.test(k)) sessionStorage.removeItem(k);
+    await new Promise((res) => { const r = indexedDB.deleteDatabase('tlbx-ai-keys'); r.onsuccess = r.onerror = r.onblocked = () => res(); });
+  }
+
+  describe('a picture from the AI panel of an app with no picture editor', () => {
+    it('Claude with an OpenRouter key for pictures: asked to spend, the picture is saved to Files, opened through the intake', async () => {
+      await wipe();
+      localStorage.setItem('tlbx-firstrun:ai-cloud:anthropic', '1');
+      sessionStorage.setItem('tlbx-ai.cloud.key:openrouter', 'sk-or-v1-PICTURES0123456789');
+      P = await AT.frame('panel-page.html', (w) => w.TlbxAIPanel && w.TlbxAI, { width: 900, height: 760 });
+      cu = CU.install(P, 'anthropic'); F = IG.install(P);
+      P.TlbxAIPanel.open(); await P.TlbxAIPanel.ready;
+      await P.TlbxAIKit.picker.loadCloud();
+      const eng = new P.TlbxAIKit.CloudEngine({ provider: 'anthropic', model: 'claude-sonnet-5-5', key: async () => 'sk-ant-api03-DRIVE-0123456789' });
+      await eng.load(); await P.TlbxAIPanel.use(eng);
+      expect(P.TlbxAIKit.imageGen.available.map((p) => p.id)).toEqual(['openrouter']);
+      expect(P.TlbxImageSink).toBe(undefined);
+      const asked = []; let answer = false; P.TlbxUI.confirm = async (t, m) => { asked.push(t + ' | ' + m); return answer; };
+      // no: nothing goes to the picture provider
+      cu.replies.push(CU.anthropic.call('generate_image', { prompt: 'a lighthouse at dusk' }), CU.anthropic.text('OK, no picture.'));
+      await P.TlbxAIPanel.send('make a picture of a lighthouse');
+      expect(asked.length).toBe(1);
+      expect(asked[0]).toMatch(/^Spend on image generation\? \| Make 1 picture with OpenRouter \(Google: Nano Banana 2\.1, 1:1, 1K\)/);
+      expect(asked[0]).toContain('goes to OpenRouter, which makes the picture and charges your account. OpenRouter’s terms and content rules apply.');
+      expect(F.calls.length).toBe(0);
+      expect(lastResult().is_error).toBe(true);
+      // yes: saved to Files from 'ai'
+      answer = true; F.color = '#ffaa00';
+      cu.replies.push(CU.anthropic.call('generate_image', { prompt: 'a lighthouse at dusk', aspect: '16:9' }), CU.anthropic.text('Saved it to Files.'));
+      await P.TlbxAIPanel.send('yes, make it');
+      expect(F.calls.length).toBe(1);
+      expect(F.calls[0].url).toBe('https://openrouter.ai/api/v1/images');
+      expect(F.calls[0].headers.authorization).toBe('Bearer sk-or-v1-PICTURES0123456789');
+      expect(F.calls[0].body).toEqual({ model: 'google/gemini-nano-banana-2.1', prompt: 'a lighthouse at dusk', n: 1, aspect_ratio: '16:9', resolution: '1K', quality: 'medium' });
+      expect(steps().pop()).toBe('✓Make a picture: a lighthouse at dusk (done)');
+      const said = lastResult().content;
+      expect(said).toMatch(/^Made 1 picture with OpenRouter google\/gemini-nano-banana-2\.1 \(16:9, 1K\) · about \$0\.04\. Saved “ai-a-lighthouse-at-dusk\.png” to Files\./);
+      const f = (await P.TlbxHub.list()).find((x) => x.name === 'ai-a-lighthouse-at-dusk.png');
+      expect(f.from).toBe('ai'); expect(f.type).toBe('image/png');
+      const bmp = await createImageBitmap(f.blob), c = document.createElement('canvas'); c.width = bmp.width; c.height = bmp.height;
+      c.getContext('2d').drawImage(bmp, 0, 0);
+      expect([...c.getContext('2d').getImageData(5, 5, 1, 1).data].slice(0, 3)).toEqual([255, 170, 0]);
+      // and another app opens it from Files (the intake reads ?drive=)
+      const opened = []; P.open = (url) => { opened.push(url); return {}; };
+      cu.replies.push(CU.anthropic.call('open_app', { id: 'imageeditor', file: 'ai-a-lighthouse-at-dusk.png' }), CU.anthropic.text('Opened it in Image Editor.'));
+      await P.TlbxAIPanel.send('open it in Image Editor');
+      expect(opened.length).toBe(1); expect(opened[0]).toContain('drive=' + encodeURIComponent(f.id));
+      // the visit's totals include the picture's reported cost
+      expect(P.TlbxAIKit.cloud.meter.total().tokens).toBeGreaterThan(4000);
+    }, { timeout: 60000 });
+  });
+  TlbxTest.run({ name: 'Assistant: pictures saved to Files' });
+  </script>
+</body>
+</html>
