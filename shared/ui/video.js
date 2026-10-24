@@ -1,0 +1,57 @@
+/* TlbxTutorialVideo: a video tutorial played in a dialog on the page, from YouTube's privacy-enhanced player
+ * (youtube-nocookie.com), loaded only when the person asks for it. Classic script; needs TlbxUI.dialog (shared/tlbxui.js).
+ *   TlbxTutorialVideo.open({ id, title })   opens the player for YouTube video `id` and starts it; closing the dialog stops it
+ *   TlbxTutorialVideo.wire(doc)             one click handler for the page: a plain click on <a data-tlbx-video="ID"> opens the
+ *                                   player instead of following the link. Ctrl/⌘/Shift/middle clicks still open YouTube,
+ *                                   and the link stays a normal link for search engines and archives.
+ * Loaded by shell/shell.js on every shell page, which calls wire(document). */
+(function () {
+  'use strict';
+  if (window.TlbxTutorialVideo) return;
+  const ID = /^[\w-]{6,20}$/;
+  const STYLE = '.svid-dlg{width:min(960px,100%)}.svid-frame{position:relative;aspect-ratio:16/9;background:#000;border-radius:8px;overflow:hidden}'
+    + '.svid-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.svid-note{margin:8px 0 0;font-size:12px;opacity:.75}'
+    + '.svid-note a{color:inherit}';
+
+  function css(doc) {
+    if (doc.getElementById('svid-css')) return;
+    const s = doc.createElement('style'); s.id = 'svid-css'; s.textContent = STYLE; doc.head.append(s);
+  }
+  /** The embed address: privacy-enhanced, started on open, no related videos from other channels. */
+  const embed = (id) => 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1&playsinline=1';
+  const watch = (id) => 'https://www.youtube.com/watch?v=' + id;
+
+  function open(o) {
+    const id = o && o.id, UI = window.TlbxUI;
+    if (!ID.test(id || '') || !UI || !UI.dialog) return null;
+    const doc = document;
+    css(doc);
+    const frame = doc.createElement('div'); frame.className = 'svid-frame';
+    const ifr = doc.createElement('iframe');
+    ifr.src = embed(id);
+    ifr.title = o.title || 'Video tutorial';
+    ifr.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    ifr.allowFullscreen = true;
+    ifr.referrerPolicy = 'strict-origin-when-cross-origin';
+    frame.append(ifr);
+    const note = doc.createElement('p'); note.className = 'svid-note';
+    const a = doc.createElement('a'); a.href = watch(id); a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Open on YouTube';
+    note.append('Plays from YouTube in privacy-enhanced mode. ', a);
+    const body = doc.createElement('div'); body.append(frame, note);
+    return UI.dialog({ title: o.title || 'Video tutorial', body, cls: 'svid-dlg', dismissable: true });
+  }
+
+  function wire(doc) {
+    if (doc.__tlbxVideo) return;
+    doc.__tlbxVideo = true;
+    doc.addEventListener('click', (e) => {
+      const a = e.target.closest && e.target.closest('a[data-tlbx-video]');
+      if (!a || e.defaultPrevented || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      if (!window.TlbxUI || !ID.test(a.dataset.tlbxVideo)) return;   // no dialog kit: the link opens YouTube as before
+      e.preventDefault();
+      open({ id: a.dataset.tlbxVideo, title: a.dataset.tlbxVideoTitle || a.getAttribute('aria-label') || '' });
+    });
+  }
+
+  window.TlbxTutorialVideo = { open, wire, embed, watch };
+})();
