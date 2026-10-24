@@ -21,8 +21,8 @@
     if (win.TlbxConsentState && win.TlbxConsentState.needsChoice()) {
       win.TlbxConsentState.write({});
       fr.src = '../../contacts/index.html?again';
-      await waitFor(() => fr.contentWindow && fr.contentWindow !== win && fr.contentWindow.TlbxContacts && fr.contentWindow.TlbxContacts.ready, { timeout: 30000 }).catch(() => {});
-      await waitFor(() => fr.contentWindow.TlbxContacts && fr.contentWindow.TlbxContacts.ready, { timeout: 30000 });
+      // The frame's window object stays the same across a navigation: the new page is the one at ?again, once it is ready.
+      await waitFor(() => fr.contentWindow.location.search === '?again' && fr.contentWindow.TlbxContacts && fr.contentWindow.TlbxContacts.ready, { timeout: 30000 });
       win = fr.contentWindow;
     }
     await sleep(300);
