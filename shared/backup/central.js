@@ -18,6 +18,7 @@
   // What never leaves this browser. Listed in every file so the person can see what is not in it.
   const EXCLUDED = [
     { source: 'Sync sign-in tokens (IndexedDB tlbx-sync)', reason: 'secrets: they never leave this browser' },
+    { source: 'Your own AI provider keys (IndexedDB tlbx-ai-keys)', reason: 'secrets: they never leave this browser' },
     { source: 'Sync settings and pending queue (localStorage tlbx-sync, tlbx-sync-pending)', reason: 'tied to this browser and its cloud accounts' },
     { source: 'Consent record (localStorage tlbx-consent)', reason: 'consent choices stay in each browser' },
     { source: 'Drive thumbnails (IndexedDB tlbx-drive-thumbs)', reason: 'a cache, made again on demand' },
