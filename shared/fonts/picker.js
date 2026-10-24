@@ -17,6 +17,7 @@
   const DEPS = [
     [() => root.TlbxLibraryManifest, '../library/manifest.js'],
     [() => root.TlbxLibraryStore, '../library/store.js'],
+    [() => root.TlbxLibraryInstall, '../library/install.js'],
     [() => root.TlbxLibrary, '../library/get-more.js'],
     [() => root.TlbxFontCatalog, 'catalog.js'],
     [() => root.TlbxFonts && root.TlbxFonts.openPanel, 'panel.js'],
