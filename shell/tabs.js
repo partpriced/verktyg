@@ -1,12 +1,12 @@
-/* TlbxTabs: which app tabs are open right now, shared by every ITpris Verktyg page on this browser.
+/* TlbxOpenTabs: which app tabs are open right now, shared by every ITpris Verktyg page on this browser.
  * Each page says hello on a BroadcastChannel ('worksuite-shell') every 3 s and says bye when it
- * closes. A tab not heard from for 8 s is dropped. Exposes window.TlbxTabs:
+ * closes. A tab not heard from for 8 s is dropped. Exposes window.TlbxOpenTabs (not TlbxTabs, which is the view tab strip in shared/ui/tabs.js):
  *   list()        other open pages: [{ tab, app, name, url, seen }], newest hello first
  *   focus(tabId)  asks that page to bring its window to the front (browsers may refuse)
  *   id            this page's id */
 (function () {
   'use strict';
-  if (window.TlbxTabs) return;
+  if (window.TlbxOpenTabs) return;
   const id = Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
   const peers = new Map();
   const STALE = 8000;
@@ -34,7 +34,7 @@
     addEventListener('pagehide', () => send({ type: 'bye', tab: id }));
   }
 
-  window.TlbxTabs = {
+  window.TlbxOpenTabs = {
     id,
     list() {
       const now = Date.now();

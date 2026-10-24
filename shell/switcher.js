@@ -27,7 +27,7 @@
     }
     const cur = S.currentApp && S.currentApp.id;
     const recent = S.recent().filter((id) => id !== cur).map((id) => all.find((a) => a.id === id)).filter(Boolean).slice(0, 5);
-    const tabs = window.TlbxTabs ? window.TlbxTabs.list() : [];
+    const tabs = window.TlbxOpenTabs ? window.TlbxOpenTabs.list() : [];
     return [
       { title: tr('switcher.recent', 'Recent'), items: recent.map((app) => ({ kind: 'app', app })) },
       { title: tr('switcher.open_tabs', 'Open tabs'), items: tabs.map((tab) => ({ kind: 'tab', tab })) },
@@ -76,7 +76,7 @@
     const it = items[i];
     if (!it) return;
     close();
-    if (it.kind === 'tab') window.TlbxTabs && window.TlbxTabs.focus(it.tab.tab);
+    if (it.kind === 'tab') window.TlbxOpenTabs && window.TlbxOpenTabs.focus(it.tab.tab);
     else S.navigate(S.appUrl(it.app));
   }
 
