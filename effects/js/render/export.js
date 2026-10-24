@@ -96,14 +96,9 @@
   }
 
   /** Saves a Blob as a download. */
+  /** Saves a file: TlbxUI.download (shared/tlbxui.js), the one copy. */
   function download(blob, name) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = name;
-    document.body.append(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    window.TlbxUI.download(blob, name);
   }
 
   ns.render = { formats, videoType, frameRange, renderPng, renderVideo, download };

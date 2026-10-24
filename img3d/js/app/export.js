@@ -6,12 +6,8 @@
   const ns = (root.TlbxImg3D = root.TlbxImg3D || {});
   const S3D = 'application/x-tlbx-3d';
 
-  function download(blob, name) {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = name;
-    document.body.append(a); a.click();
-    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-  }
+  /** Saves a file: TlbxUI.download (shared/tlbxui.js), the one copy. */
+  function download(blob, name) { window.TlbxUI.download(blob, name); }
 
   /** OBJ text of a height-field mesh, written by 3D Modeller's writer. */
   function objText(mesh, name) {
