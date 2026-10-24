@@ -36,3 +36,10 @@ export async function exportFile(kind, scope, { doc, sheet, order }) {
   window.TlbxUI.download(blob, name);
   return name;
 }
+
+/** Convert… in the header (shared/convert/provided.js): every sheet of the open document, as one XLSX. */
+addEventListener('tlbx:convert-files', (e) => e.detail.provide(async () => {
+  const d = window.TlbxSheetView && window.TlbxSheetView.store.doc();
+  if (!d) return null;
+  return [{ name: `${safeBase(d.name)}.xlsx`, blob: await toXlsxBlob(d.sheets.map((s) => exportSheet(s))) }];
+}, { app: 'Spreadsheet Viewer' }));
