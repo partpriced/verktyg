@@ -44,6 +44,7 @@
       window.TlbxHub && !SP.offline ? { label: 'Save to Files', key: A.key('file.save'), act: function () { A.saveToDrive(); }, disabled: !has } : null,
       window.TlbxHub && !SP.offline && has ? { label: 'Versions', sub: A.versionItems() } : null,
       { label: 'Download PDF', key: A.key('file.download'), act: A.download, disabled: !has },
+      { label: 'Protect with password…', key: A.key('file.protect'), act: function () { A.protect(); }, disabled: !has },
       { label: 'Download selected pages', act: A.extract, disabled: !O.sel.size },
       { label: 'Extract text…', act: A.extractText, disabled: !has },
       !SP.offline && window.TlbxAITools ? { label: 'Recognise text on this page', act: function () { A.recognisePage(); }, disabled: !has } : null,
