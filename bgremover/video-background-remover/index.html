@@ -38,29 +38,44 @@
 <div class="l-wrap">
 <header class="l-top"><a class="l-brand" href="/"><span class="l-brand-dot" aria-hidden="true"></span>ITpris Verktyg</a><nav aria-label="Site"><a href="/">Home</a><a href="/all-tools/">All tools</a><a href="/compare/">Compare apps</a><a href="/how-it-works/">How it works</a><a href="/settings/">Settings</a></nav></header>
 <main class="l-doc">
+<div class="l-docs">
+<aside class="l-side"><details class="l-side-fold" open><summary>In this guide</summary>
+<nav class="l-side-nav" aria-label="Background Remover guide">
+<p class="l-side-app"><a href="/apps/cutout/">Background Remover</a></p>
+<p><a class="btn l-side-open" href="/bgremover/">Open Background Remover</a></p>
+<p class="l-side-h">Guides</p><ul><li></li></ul>
+<p class="l-side-h">How to</p><ul><li><a href="/bgremover/bulk-background-remover/">Bulk background remover</a></li><li><a href="/bgremover/white-background/">White background for product photos</a></li><li><a href="/bgremover/transparent-png/">Transparent PNG maker</a></li><li><a href="/bgremover/video-background-remover/" aria-current="page">Video background remover</a></li></ul>
+
+</nav>
+<p class="l-side-h">On this page</p><ul class="l-toc"><li><a href="#how-to-do-it">How to do it</a></li><li><a href="#questions">Questions</a></li><li><a href="#more-with-bgremover">More with Background Remover</a></li><li><a href="#related-apps">Related apps</a></li></ul>
+</details></aside>
+<div class="l-docs-main">
 <p class="eyebrow"><a href="/apps/cutout/">Background Remover</a> · free, in your browser</p>
 <h1>Remove the background from a video</h1>
 <p class="lead">Drop a short clip and Background Remover cuts out the person or object in every frame, on your device. Save it with a transparent background to put over another video.</p>
 <p><a class="btn" href="/bgremover/?bg=transparent">Remove a video background</a></p>
 <div class="media"><figure class="shot"><img src="/assets/shots/cutout.jpg" alt="Background Remover open in a browser" width="1280" height="800" loading="lazy"></figure></div>
-<h2>How to do it</h2>
+<h2 id="how-to-do-it">How to do it</h2>
 <ol><li>Drop a short video clip (MP4 or WebM) on the page.</li><li>Check the first frame: the subject is cut out and the edges are smoothed over time.</li><li>Run the whole clip. Progress shows frame by frame.</li><li>Save a WebM with a transparent background, or a ZIP of PNG frames where the browser cannot write transparent WebM.</li></ol>
 
 <p class="note">Your files stay on this device: Background Remover runs in your browser, with no upload, no account and no watermark.</p>
-<h2>Questions</h2>
+<h2 id="questions">Questions</h2>
 <h3>How long can the video be?</h3>
 <p>Short clips work best: every frame is processed on your device, so a few seconds to a minute is practical. The page tells you the limits before it starts.</p>
 <h3>What format is the result?</h3>
 <p>A WebM video with an alpha channel. Browsers that cannot write transparent WebM get a ZIP of PNG frames instead.</p>
 <h3>Is the video uploaded anywhere?</h3>
 <p>No. Decoding, cutting out and encoding all happen in your browser, and the clip never leaves your device.</p>
-<h2>More with Background Remover</h2>
+<h2 id="more-with-bgremover">More with Background Remover</h2>
 <ul><li><a href="/bgremover/bulk-background-remover/">Bulk background remover: hundreds of images at once</a></li><li><a href="/bgremover/white-background/">White background for product photos</a></li><li><a href="/bgremover/transparent-png/">Make a transparent PNG from any picture</a></li></ul>
-<h2>Related apps</h2>
+<h2 id="related-apps">Related apps</h2>
 <ul class="cards"><li><img class="thumb" src="/assets/shots/imageeditor.jpg" alt="" width="220" height="137" loading="lazy"><a href="/apps/imageeditor/">Image Editor</a><br><span class="note">Live</span><br>Photoshop, rebuilt for the browser.</li><li><img class="thumb" src="/assets/shots/vector.jpg" alt="" width="220" height="137" loading="lazy"><a href="/apps/vector/">Vector Editor</a><br><span class="note">Live</span><br>Illustrator, rebuilt for the browser.</li><li><img class="thumb" src="/assets/shots/aitools.jpg" alt="" width="220" height="137" loading="lazy"><a href="/apps/aitools/">AI Tools</a><br><span class="note">Beta</span><br>OCR, speech to text, denoise, auto tags and portrait blur. On your device.</li></ul>
+</div>
+</div>
 </main>
 <footer class="l-foot"><div class="l-foot-links"><a href="/">Home</a><a href="/all-tools/">All tools</a><a href="/compare/">Compare apps</a><a href="/how-it-works/">How it works</a><a href="/settings/">Settings</a><a href="/best/">Free tools compared</a><a href="https://github.com/partpriced/verktyg" rel="noopener">Source code</a></div><p class="l-fine">ITpris Verktyg · free apps that run in your browser · nothing uploaded</p></footer>
 </div>
+<script>if (matchMedia('(max-width: 899px)').matches) for (const d of document.querySelectorAll('.l-side-fold')) d.open = false;   // the guide menu starts folded on phones</script>
 <script src="/shell/shell.js"></script>
 </body>
 </html>
