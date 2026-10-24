@@ -1,5 +1,5 @@
 /* PDF Editor — Hub integration (shared Files, "Send to…", launching with ?drive=<id>)
-   and startup. Loaded last. */
+   and the ?drive= launch (A.launch, run by A.bootRest in ui/app.js). Loaded last. */
 (function () {
   'use strict';
   var SP = window.SP, U = SP.util, E = SP.engine, A = SP.app, S = A._;
@@ -90,6 +90,5 @@
       TlbxUI.toast('Opened “' + (rec.name || 'file') + '” from Files');
     }
   }
-  function start() { A.boot(); launch(); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  A.launch = launch; // run by A.bootRest (ui/app.js) once the app is wired
 })();

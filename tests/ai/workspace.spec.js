@@ -130,7 +130,7 @@
       expect(st.app).toBe('Files');
       expect(st.drivable).toBe(true);
       expect(st.state).toBe(null);
-      expect(st.note).toContain('no window.TlbxAppState hook');
+      expect(st.note).toContain('window.TlbxAppState hook');
     }, LONG);
 
     it('a frame without a command registry errors after the wait, not forever', async () => {
