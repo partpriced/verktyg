@@ -10,7 +10,7 @@
 <script src="../harness.js"></script>
 <script>
   // Covers: imageeditor/js/app/intake.js, imageeditor/js/app/main.js, imageeditor/js/app/tabs.js, imageeditor/js/app/welcome.js, imageeditor/js/io/files.js, imageeditor/js/io/hub.js
-  // Covers: imageeditor/js/ui/menus.js, imageeditor/js/brushes/panel.js, imageeditor/js/watermark/panel.js, imageeditor/js/io/config.js, imageeditor/js/layers/fx-preset-picker.js
+  // Covers: imageeditor/js/ui/menus.js, imageeditor/js/brushes/panel.js, imageeditor/js/watermark/panel.js, shared/watermark/panel.js, imageeditor/js/io/config.js, imageeditor/js/layers/fx-preset-picker.js
   // Covers: imageeditor/js/layers/fx-rows.js, imageeditor/js/ui/panels.js, imageeditor/js/type/edit.js
   // Image Editor, a reference app of the one intake: Open… and Place Image as Layer… (the picker), a drop with its zone's
   // mode, a paste (Add or New asked), Open from Files (the tab keeps the Drive record), ?drive=<id> (launch) and the
@@ -98,12 +98,15 @@
     it('brushes and the watermark logo are parts of their own (the picker goes to them, not to the document)', async () => {
       const got = [];
       win.importBrushFiles = async (files) => { got.push('brushes:' + files.length); };
-      win.wmSetLogo = async (f) => { got.push('logo:' + f.name); };
+      const logos = () => win.wmState().spec.layers.filter((L) => L.kind === 'logo').length;
       win.TlbxUI.pickFiles = async () => [await png('tip.png')];
       seen = [];
       await win.TlbxIntake.pick({ to: 'imageeditor.brushes' });
+      const n = logos();
+      // the logo part is the shared watermark panel's (shared/watermark/panel.js): the picture becomes a logo layer
       await win.TlbxIntake.pick({ to: 'imageeditor.logo' });
-      expect(got).toEqual(['brushes:1', 'logo:tip.png']);
+      await waitFor(() => logos() === n + 1, { timeout: 8000 });
+      expect(got).toEqual(['brushes:1']);
       expect(seen.length).toBe(0);
     });
   });
