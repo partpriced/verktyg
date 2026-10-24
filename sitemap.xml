@@ -209,8 +209,6 @@
   <url><loc>https://verktyg.itpris.se/sheetview/xlsx-to-csv/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/html2pdf/html-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/html2pdf/saved-web-page-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://verktyg.itpris.se/eml/open-eml-file/</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://verktyg.itpris.se/eml/eml-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/notes/markdown-editor/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/notes/markdown-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/paste/code-snippet-manager/</loc><lastmod>2026-10-24</lastmod></url>
@@ -224,6 +222,10 @@
   <url><loc>https://verktyg.itpris.se/clean/remove-exif-data/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/clean/remove-gps-from-photo/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/clean/exif-viewer/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/eml/open-eml-file/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/eml/eml-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/eml/combine-emails-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/eml/mbox-to-pdf/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/invoices/free-invoice-generator/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/invoices/invoice-with-vat/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/invoices/recurring-invoices/</loc><lastmod>2026-10-24</lastmod></url>
