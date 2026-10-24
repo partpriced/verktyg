@@ -32,6 +32,7 @@
     'footer.settings_link': 'Einstellungen und Datenschutz',
     'footer.code_license': 'Code MIT',
     'footer.trademarks': 'Helper™ und ITpris Verktyg™ sind Marken',
+    'footer.made': 'Mit ❤️ in Schweden gemacht',
 
     'settings.appearance': 'Darstellung',
     'settings.appearance_lede': 'Ein Design für alle Worksuite-Apps und für diese Website. Wählen Sie es hier, es wird sofort angewendet. Jede App übernimmt beim Öffnen dieselbe Wahl.',

@@ -18,7 +18,7 @@
     const drop = window.TlbxDrop.attach($('gDrop'), {
       accept: {
         types: ['image/*'],
-        exts: ['.jpg', '.jpeg', '.jpe', '.png', '.webp', '.gif', '.avif', '.bmp', '.heic', '.heif', '.svg'],
+        exts: ['.jpg', '.jpeg', '.jpe', '.png', '.webp', '.gif', '.avif', '.bmp', '.heic', '.heif', '.svg', ...(window.TlbxRaw ? window.TlbxRaw.EXTS.map((e) => '.' + e) : [])],
         noun: 'a photo',
       },
       compact: true,
