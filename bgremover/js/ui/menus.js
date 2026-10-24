@@ -27,10 +27,7 @@
   const act = {
     open: () => CO.files.open(),
     sample: () => CO.files.sample(),
-    driveOpen: () => guard(async () => {
-      const rec = await hub().pickFromDrive({ accept: ['image/*'], title: 'Open from Files' });
-      if (rec) CO.process.add([new File([rec.blob], rec.name || 'Untitled', { type: rec.type })]);
-    }),
+    driveOpen: () => guard(() => TlbxIntake.fromDrive({ to: 'cutout', accept: ['image/*'], title: 'Open from Files' })),
     exportOne: (it) => guard(() => CO.export.one(it || needItem())),
     exportAll: () => guard(() => CO.export.all()),
     // Workflows: Remove background as a step, with the model and the look of the image on screen (shared/ops/flowdoc.js)
