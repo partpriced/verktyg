@@ -10,6 +10,8 @@
   /* Group headings on the homepage. Change a label here only; the keys ('business', 'creative') stay as they are. */
   const GROUP_LABELS = Object.freeze({ business: 'Business apps', creative: 'Creative apps' });
   window.TLBX_GROUP_LABELS = GROUP_LABELS;
+  // extra.video: the app's YouTube tutorial { id, title, date (ISO upload time), duration (ISO 8601) }: the landing page
+  // shows it (thumbnail kept in assets/video/yt-<id>.jpg) and the shell header links it as Tutorial.
   const A = (id, kind, name, path, tagline, extra = {}) => Object.assign({ id, kind, name, path, tagline, status: 'live', accepts: [], features: [] }, extra);
   window.TLBX_APPS = [
     A('imageeditor', 'app', 'Image Editor', 'imageeditor/', 'Photoshop, rebuilt for the browser.', { title: 'Image Editor: photo editor', group: 'creative',
