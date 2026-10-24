@@ -33,7 +33,6 @@ jobs:
           npm ci --no-audit --no-fund
       - name: Node tests
         run: node --test tests/node/*.test.mjs tests/seo/*.test.mjs
-
   # The browser tests (every tests/**/*.test.html), split into 16 slices that run as parallel jobs, 3 pages at a time in each.
   # The slices are balanced by tests/timings.json (refresh with: node tests/run.mjs --record-timings). The jobs run in
   # Playwright's own image, which has Chromium and its system libraries, so a job starts in seconds. Its version must be the
