@@ -163,3 +163,10 @@ The file is the scene JSON itself, UTF-8, with `"format": "tlbx-3d"` and `"versi
   with "Open in 3D Modeller" (a `.s3d` in Files, opened with `?drive=`).
 - Meshes may carry optional `geom.uvs` (two numbers per vertex, checked by `geometry.js`). `render/objects.js` sets the
   `uv` attribute, so `material.map` shows on them. Meshes without `uvs` are unchanged. Mesh edit drops the UVs.
+
+## Phone layout (TlbxSheet)
+Under 900 px the viewport fills the screen and the panels are TlbxSheets (`shared/ui/sheet.js`, see
+`shared/ui/HANDOFF.md`), attached in `js/app/layout.js`: the Scene outliner is a drawer from the left, Properties a
+bottom sheet. The Scene and Properties buttons at the viewport's foot (`.vp-panels`, phone only) open and close them; the
+shared ×, Escape, a tap outside and a swipe close them. Before, the panels were stacked under the viewport in a scrolling
+page. `window.Tlbx3DSheets` (`{ scene, props }`) is for the tests: `tests/3d/phone.test.html`.
