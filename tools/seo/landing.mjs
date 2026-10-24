@@ -93,7 +93,7 @@ export function shell(body) {
   <style>${CSS}</style>
 </head>
 <body>
-<header class="top"><a href="/">ITpris Verktyg</a><a href="/compare/">Compare apps</a><a href="/businessapps/">Business apps</a><a href="/creativepro/">Creative Pro</a></header>
+<header class="top"><a href="/">ITpris Verktyg</a><a href="/all-tools/">All tools</a><a href="/compare/">Compare apps</a><a href="/businessapps/">Business apps</a><a href="/creativepro/">Creative Pro</a></header>
 <main>
 ${body}
 </main>
