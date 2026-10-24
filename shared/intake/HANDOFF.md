@@ -137,7 +137,7 @@ pasted into a field) says why with an `// intake-ok: …` comment. When an app b
 - **Gallery** (`gallery/js/ui/main.js` spec `gallery`; part `gallery.backup`): a drop of files or folders
   (TlbxDrop.folders), Import (Ctrl+O), Import a folder, Import from Files, ?drive= launch, paste, the sample. Each
   photo is one `G.actions.importOne` (a duplicate is skipped with its reason). Out: TlbxHub.sendMenuItems.
-- **Background Remover** (`bgremover/js/io/files.js`, spec `cutout`): see its section below (in is done, out is to do).
+- **Background Remover** (`bgremover/js/io/files.js`, spec `cutout`): see its section below (in and out are done).
 - **Resizer** (`resize/js/app/main.js` spec `resize`): a drop on the column or the zone, Choose files, Open
   (Ctrl+O), Open from Files, ?drive= launch, paste, the sample. Out: Send to Upscaler is `TlbxOuttake.send`.
 
@@ -170,7 +170,7 @@ PWA: `manifest.webmanifest` has `file_handlers` for these five; the files reach 
 
 ## Still to migrate (found by grepping; tick as done)
 
-### bgremover: in is migrated (spec 'cutout', `bgremover/js/io/files.js`); out is still to do
+### bgremover: in and out are migrated (spec 'cutout', `bgremover/js/io/files.js`; out: `bgremover/js/ui/openin.js`)
 
 In (done, after wip/isolate-batch): every route is a source of the intake and the spec's reader (`processAll`) hands the
 whole batch to `CO.files.take` at once, which keeps the app's one first-use gate (`F.gate`) and its one add
@@ -178,7 +178,8 @@ whole batch to `CO.files.take` at once, which keeps the app's one first-use gate
 (`TlbxIntake.sample`), Open from Files (`TlbxIntake.fromDrive`, both menus), ?drive= (`TlbxIntake.launch`; a file
 Image Editor sent keeps its origin and request), the drop zone on #workspace and #queue (`TlbxDrop.attach({ intake:
 'cutout' })`), paste. `bgremover/` is in rule 4's STRICT list. `tests/bgremover/intake.test.html` checks it.
-Out: three overlapping menus become one `TlbxOuttake.items({ from: 'cutout', type: 'image/png', … })` used by the toolbar
+Out (done, wip/isolate-bulk-edit; `tests/bgremover/openin.test.html`): was three overlapping menus, now one
+`TlbxOuttake.items({ from: 'cutout', type: 'image/png', … })` used by the toolbar
 "Open in…", More ▸ Send to and the context menu: `bgremover/js/ui/openin.js` (a hand-kept list of Image Editor and Tlbx
 Vector; Upscaler is missing), More ▸ "Send to" (`menus.js`, sendMenuItems), and "Send cut-out to Image Editor as a new
 layer". Its two richer handovers are `TlbxOuttake.handover`s:
