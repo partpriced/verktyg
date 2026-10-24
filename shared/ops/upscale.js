@@ -1,0 +1,61 @@
+/* Upscaler's headless operation, for Workflows (registry: shared/ops/registry.js):
+ *   upscale.image   2× or 4× with Upscaler's own pipeline (upscale/js/engine/pipeline.js: tile by tile through the
+ *                   engine's worker, FSRCNN on luminance with Lanczos colour), its model registry (upscale/js/core/models.js)
+ *                   and, for Quality at 4×, the Real-ESRGAN model when Get more has installed it (else Lanczos, and the
+ *                   result says so). The picture keeps its format (BMP and GIF become PNG).
+ * The first use asks Upscaler's own first-use notice (key 'upscale'), once. */
+import { register } from './registry.js';
+import { scripts, notice, abortable, decode, encode, stem, pictureKind, kindOfBlob, IMAGE_IN } from './load.js';
+
+const g = globalThis;
+const FILES = ['upscale/js/core/tiling.js', 'upscale/js/core/lanczos.js', 'upscale/js/core/models.js', 'upscale/js/engine/engine.js', 'upscale/js/engine/pipeline.js'];
+const LIBRARY = ['shared/library/manifest.js', 'shared/library/store.js'];
+const QUALITY_ID = 'realesrgan-x4plus';
+
+async function qualityBytes() {
+  try {
+    await scripts(LIBRARY, () => !!g.TlbxLibraryStore);
+    const m = g.TlbxUpscaleModels.get(QUALITY_ID), b = await g.TlbxLibraryStore.getBlob(`${m.packId}/${m.packFile}`);
+    return b ? b.arrayBuffer() : null;
+  } catch (e) { return null; }
+}
+
+/** The model a run uses: { id, bytes, note }. id null is Lanczos only. */
+async function choice(o) {
+  const scale = Number(o.scale) === 4 ? 4 : 2;
+  if (o.model === 'lanczos') return { id: null, scale, note: '' };
+  if (o.model === 'quality' && scale === 4) {
+    if (g.TlbxUpscaleEngine.isLoaded(QUALITY_ID)) return { id: QUALITY_ID, scale, bytes: null, note: '' };
+    const bytes = await qualityBytes();
+    if (bytes) return { id: QUALITY_ID, scale, bytes, note: '' };
+    return { id: null, scale, note: 'The Quality upscale model is not installed, so Lanczos was used. Upscaler’s Get more adds it.' };
+  }
+  return { id: `fsrcnn-x${scale}`, scale, note: o.model === 'quality' ? 'Quality is 4× only, so Fast was used for 2×.' : '' };
+}
+
+async function upscale(files, o, ctx = {}) {
+  await scripts(FILES, () => !!(g.TlbxUpscalePipeline && g.TlbxUpscaleModels));
+  const M = g.TlbxUpscaleModels;
+  await notice('upscale', { title: 'Sharpen pictures on this device', lines: ['Upscale enlarges pictures with Upscaler’s models, which run in your browser.'],
+    downloads: [{ name: 'Quality model (Real-ESRGAN x4plus), only if you choose it', bytes: M.get(QUALITY_ID).bytes }] });
+  abortable(ctx.signal);
+  const f = files[0], c = await choice(o), src = (await decode(f.file)).canvas;
+  const stop = { cancelled: false };
+  if (ctx.signal) ctx.signal.addEventListener('abort', () => { stop.cancelled = true; }, { once: true });
+  const out = await g.TlbxUpscalePipeline.run(src, { scale: c.scale, model: c.id, bytes: c.bytes || null, signal: stop,
+    onProgress: (d, t) => { if (ctx.progress) ctx.progress(d / t); } });
+  const blob = await encode(out, pictureKind(f.kind), 0.92), kind = kindOfBlob(blob);
+  const res = [{ name: `${stem(f.name)}-${c.scale}x.${kind}`, blob, kind }];
+  if (c.note) res.info = c.note;
+  return res;
+}
+
+export const UPSCALE_OPS = register([
+  { id: 'upscale.image', label: 'Upscale', group: 'Pictures', from: IMAGE_IN, mode: 'each', out: (k) => pictureKind(k), engine: 'upscale', notice: 'upscale',
+    description: 'Makes pictures 2× or 4× bigger with an AI model on this device (or plain Lanczos).',
+    keywords: ['upscale', 'enlarge', 'super resolution', 'bigger', 'sharpen', 'enhance'],
+    options: [
+      { key: 'scale', type: 'select', label: 'Scale', value: 2, options: [[2, '2×'], [4, '4×']] },
+      { key: 'model', type: 'select', label: 'Model', value: 'fast', options: [['fast', 'Fast (FSRCNN, comes with the site)'], ['quality', 'Quality (Real-ESRGAN, 4× only, once installed)'], ['lanczos', 'Lanczos (no AI)']] },
+    ], run: upscale },
+], { app: 'upscale', label: 'Upscaler' });
