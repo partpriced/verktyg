@@ -5,7 +5,7 @@
  * what is already on the page), applies the chosen language (TlbxI18n.apply) once the header is in, adds the Apps and Notifications buttons to the page header, and binds Ctrl+Space.
  * Options on the tag: data-no-header (no buttons), data-brand-src (see brand/brand.js).
  * Exposes window.TlbxShell (core helpers) and, once booted, TlbxShell.switcher / .drawer / .notify / .tabs.
- * Modules: shell/notify.js TlbxNotify · shell/layout.js TlbxLayout · shell/tabs.js TlbxTabs ·
+ * Modules: shell/notify.js TlbxNotify · shell/layout.js TlbxLayout · shell/tabs.js TlbxOpenTabs ·
  *          shell/switcher.js TlbxSwitcher · shell/drawer.js TlbxDrawer · shell/header.js TlbxHeader. */
 (function () {
   'use strict';
@@ -90,7 +90,7 @@
     S.currentApp = detectCurrent();
     if (S.currentApp) pushRecent(S.currentApp.id);
     S.notify = window.TlbxNotify;
-    S.tabs = window.TlbxTabs;
+    S.tabs = window.TlbxOpenTabs;
     S.switcher = window.TlbxSwitcher;
     S.drawer = window.TlbxDrawer;
     S.layout = window.TlbxLayout;
