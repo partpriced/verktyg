@@ -93,6 +93,6 @@
   }
 
   const api = { PLAIN, refusal, settings, money, expenseAccounts, commands, h };
-  g.TlbxBiz = api;
+  g.TlbxBiz = Object.assign(g.TlbxBiz || {}, api);   // merge: router.js, backup.js and setup.js may have loaded first
   if (typeof module === 'object' && module.exports) module.exports = api;
 })(typeof window !== 'undefined' ? window : globalThis);
