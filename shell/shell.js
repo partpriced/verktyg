@@ -5,6 +5,7 @@
  * what is already on the page), applies the chosen language (TlbxI18n.apply) once the header is in, adds the Apps and Notifications buttons to the page header, and binds Ctrl+Space.
  * Options on the tag: data-no-header (no buttons), data-brand-src (see brand/brand.js).
  * Exposes window.TlbxShell (core helpers) and, once booted, TlbxShell.switcher / .drawer / .notify / .tabs.
+ * Also loads the touch layer (shared/input: window.TlbxTouch).
  * Modules: shell/notify.js TlbxNotify · shell/layout.js TlbxLayout · shell/tabs.js TlbxOpenTabs ·
  *          shell/switcher.js TlbxSwitcher · shell/drawer.js TlbxDrawer · shell/header.js TlbxHeader. */
 (function () {
@@ -89,6 +90,8 @@
   addCss('brand/brand.css');   // the brand link's app icon and badge
   addCss('shared/ui/hbtn.css');   // the look of every shared header button (Apps, the bell, Drive, Tour, View)
   if (!window.TlbxHbtn) queue.push(['shared/ui/hbtn.js']);
+  // Touch and pen for every app (double tap, long press, pinch on surfaces, palm rejection): shared/input/HANDOFF.md
+  if (!(window.TlbxTouch && window.TlbxTouch.ready)) { addCss('shared/input/touch.css'); queue.push(['shared/input/gesture.js'], ['shared/input/events.js'], ['shared/input/touch.js']); }
   if (!window.TlbxPWA) queue.push(['shared/pwa.js']);   // every app works offline after its first visit
   if (!window.TlbxTutorialVideo) queue.push(['shared/ui/video.js']);   // tutorial links play in a dialog on the page
   for (const m of ['notify', 'layout', 'tabs', 'switcher', 'drawer', 'header']) queue.push(['shell/' + m + '.js']);
