@@ -32,6 +32,8 @@ An Illustrator-style vector editor at `/vectoreditor/`. Plain scripts (no module
 - Every action in `SV.actions` is a TlbxCmd command `sv.<action id>`; tools are `sv.tool.<id>`; canvas keys (X and Shift+X swap fill and stroke, D sets the defaults, / comma, period, arrow nudges) are `sv.paint.*`, `sv.nudge.*`. `sv.focus.toggle` (fill / stroke focus) has no key now; the fill and stroke chips do it. Menus and context menus label items with `UI.actKey(a)`, i.e. the person's own binding.
 - Commands are gated off while the text editor, a TlbxUI menu or the colour picker has the keys. Copy/Cut/Paste keep their native events (no TlbxCmd keys). With TlbxCmd active, `tools/keys.js` handles only Space, Esc, Enter, clipboard and shape-drag arrows.
 - Help ▸ Search Commands… (⌘K), Help ▸ Keyboard Shortcuts (TlbxCmd's editor; F1), and a search button in the menubar.
+  ⌘K is only Search Commands (as in every app); Edit ▸ Preferences… is ⌘, (it was bound to ⌘K by mistake). The legacy keymap
+  (no TlbxCmd) maps ⌘K to Search Commands too.
 
 ## Colour and eyedropper (`shared/color/`, `js/ui/color.js`, `js/tools/eyedrop.js`)
 - **Picker body** is `TlbxColorPicker` (`shared/color/picker.js`, used by Image Editor too): saturation-brightness square, hue and alpha bars, hex / RGB / HSB / alpha fields, a Recent row (`localStorage` `vectoreditor.recentColors`, 12 entries) and the palette row. Every change applies at once through `SV.applyStyle(which, hex, { commit: false })`; the undo step is written when the popover closes.
