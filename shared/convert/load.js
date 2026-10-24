@@ -50,5 +50,6 @@ export async function hub() {
   if (!window.TLBX_APPS) await script('shared/apps.js');
   if (!window.TlbxHub) await script('shared/hub.js');
   if (!window.TlbxOuttake) await script('shared/intake/outtake.js');   // the one "Open in…" builder (TlbxHub.openIn)
+  if (!window.TlbxWorkflowEntry) await script('shared/ops/entry.js');  // its Run a workflow… and Add to a workflow… items
   return window.TlbxHub;
 }

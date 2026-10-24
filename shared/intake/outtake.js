@@ -3,13 +3,14 @@
      1. the handovers apps registered for this output (richer than a plain file: Image Editor as a layer with its mask...),
      2. every app in the registry that takes the output's type (TlbxHub.appsAccepting), the file going through Files
         (TlbxHub.sendTo: the target opens on ?drive=<id> and takes it with TlbxIntake.launch),
-     3. the items shared features add (TlbxOuttake.extend, e.g. Workflows' "Add to a workflow…"), and the listeners of the
-        'tlbx:outtake' event (phase 'items': detail.add(item)),
+     3. Workflows' "Run a workflow…" and "Add to a workflow…" (TlbxWorkflowEntry.menuItems, shared/ops/entry.js, when
+        the page has it; they stand in for "Open in Workflows"), the items other shared features add
+        (TlbxOuttake.extend), and the listeners of the 'tlbx:outtake' event (phase 'items': detail.add(item)),
      4. "Save to Files…".
    TlbxHub.openIn(o) and TlbxHub.sendMenuItems (shared/hub.js) are this builder. Classic script, after shared/hub.js (it
    needs TlbxHub; without it the list is only the extensions). See
    shared/intake/HANDOFF.md.
-     TlbxOuttake.items(o) → menu items ({ label, act } and '-', for TlbxUI.menu or an app menu)
+     TlbxOuttake.items(o) → menu items ({ label, act }, for TlbxUI.menu or an app menu; separators: true adds '-' lines)
        o: { get() → Blob | Promise<Blob>, name: string | () => string, type, from? (the app id, default the page's),
             verb? ('Open in'; 'Send to' for the older menus), folder? (Save to Files…, default true), exclude? [ids] }
      TlbxOuttake.menu(at, o)       opens the items in a TlbxUI menu at an element or { x, y }
@@ -69,6 +70,10 @@
       out.push({ label: h.label, act: guard(async () => { const r = await h.run(ctx); emit({ phase: 'sent', from: ctx.from, to: h.to, type: ctx.type, name: ctx.name(), id: r }); }) });
     }
     const replaced = new Set(mine.filter((h) => h.replaces && h.to).map((h) => h.to));
+    // Workflows comes in one way: its own entry (shared/ops/entry.js) gives "Run a workflow…" and "Add to a
+    // workflow…" (which opens the Workflows page on the file), so its plain "Open in Workflows" is not listed twice.
+    const WF = window.TlbxWorkflowEntry;
+    if (WF) replaced.add('workflows');
     if (hub) {
       for (const a of hub.appsAccepting(ctx.type)) {
         if (exclude.has(a.id) || replaced.has(a.id) || a.id === ctx.from) continue;
@@ -76,11 +81,15 @@
       }
     }
     const extra = [];
+    if (WF && ctx.from !== 'workflows') {
+      const asFile = async () => { const b = await ctx.blob(); return b && b.name ? b : new File([b], ctx.name(), { type: ctx.type || b.type || '' }); };
+      try { extra.push(...WF.menuItems(async () => [await asFile()], { app: ctx.from })); } catch (e) { console.warn('TlbxWorkflowEntry', e); }
+    }
     for (const fn of extensions) { try { extra.push(...[].concat(fn(ctx) || [])); } catch (e) { console.warn('TlbxOuttake extension', e); } }
     emit({ phase: 'items', from: ctx.from, type: ctx.type, ctx, add: (item) => { if (item) extra.push(item); } });
-    if (extra.length) out.push(...(out.length ? ['-'] : []), ...extra);
+    if (extra.length) out.push(...(out.length && o.separators ? ['-'] : []), ...extra);
     if (hub && o.folder !== false) {
-      out.push(...(out.length ? ['-'] : []), { label: 'Save to Files…', act: async () => {
+      out.push({ label: 'Save to Files…', act: async () => {
         try {
           const id = await hub.saveToDrive(await ctx.blob(), ctx.name(), { from: ctx.from || undefined });
           if (id) emit({ phase: 'sent', from: ctx.from, to: 'drive', type: ctx.type, name: ctx.name(), id });
@@ -92,7 +101,7 @@
 
   /** Opens the items in a TlbxUI menu at an element (under it) or a point. */
   O.menu = function (at, o) {
-    const items = O.items(o);
+    const items = O.items(Object.assign({ separators: true }, o));
     const list = items.length ? items : [{ label: 'No app opens this yet', disabled: true }];
     let x = 0, y = 0;
     if (at && at.getBoundingClientRect) { const r = at.getBoundingClientRect(); x = r.left; y = r.bottom + 4; } else if (at) { x = at.x; y = at.y; }
