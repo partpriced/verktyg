@@ -114,17 +114,24 @@
     if (root.TlbxFirstRun && root.TlbxFirstRun.mark) root.TlbxFirstRun.mark('aitools');
     return { id, files: todo.length };
   }
-  /** download.js: on the page already, or loaded once from next to this file (pages that only read models skip it). */
+  /** download.js and the cdn helper it uses (shared/cdn/assets.js): on the page already, or loaded once from the site
+   *  (pages that only read models skip them). */
   let dlp = null;
+  const addScript = (path) => new Promise((resolve, reject) => {
+    const sc = document.createElement('script');
+    sc.src = new URL(path, SITE).href;
+    sc.onload = resolve;
+    sc.onerror = () => reject(new Error('The downloader could not load'));
+    document.head.append(sc);
+  });
   function downloader() {
-    if (root.TlbxAIDownload) return Promise.resolve(root.TlbxAIDownload);
-    if (!dlp) dlp = new Promise((resolve, reject) => {
-      const sc = document.createElement('script');
-      sc.src = new URL('aitools/download.js', SITE).href;
-      sc.onload = () => (root.TlbxAIDownload ? resolve(root.TlbxAIDownload) : reject(new Error('The downloader did not load')));
-      sc.onerror = () => { dlp = null; reject(new Error('The downloader could not load')); };
-      document.head.append(sc);
-    });
+    if (root.TlbxAIDownload && root.TlbxCdn) return Promise.resolve(root.TlbxAIDownload);
+    if (!dlp) {
+      dlp = (root.TlbxCdn ? Promise.resolve() : addScript('shared/cdn/assets.js'))
+        .then(() => (root.TlbxAIDownload ? null : addScript('aitools/download.js')))
+        .then(() => { if (!root.TlbxAIDownload) throw new Error('The downloader did not load'); return root.TlbxAIDownload; });
+      dlp.catch(() => { dlp = null; });
+    }
     return dlp;
   }
   /** Bytes stored on this device for the given models (all when ids is missing). */
