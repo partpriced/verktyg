@@ -32,6 +32,12 @@
       }
       return rows.map((r) => ({ ...r, value: value.get(r.id) || 0 }));
     },
+    /** Time entries: value, what the time is worth at its rate when billable, else 0 (TlbxData.timesheets.amountOf,
+     * shared/data/timesheets.js). */
+    timeValue(rows) {
+      const T = g.TlbxData.timesheets;
+      return rows.map((r) => ({ ...r, value: r.billable ? T.amountOf(r) : 0 }));
+    },
     /** Any dated rows: month, the YYYY-MM of their date. */
     month(rows) {
       return rows.map((r) => ({ ...r, month: typeof r.date === 'string' ? r.date.slice(0, 7) : undefined }));
