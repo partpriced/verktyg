@@ -7,7 +7,7 @@
 //        (use TlbxOuttake.items / menu / button, TlbxHub.openIn or sendMenuItems)
 // A line that has to stay (a drop that reorders tabs, the app's own clipboard) says why with an "intake-ok:" or
 // "outtake-ok:" comment. Add an app's folder to STRICT once it is migrated (shared/intake/HANDOFF.md has the list).
-export const STRICT = ['pdf/', 'imageeditor/js/', 'convert/', 'gallery/', 'resize/'];
+export const STRICT = ['pdf/', 'imageeditor/js/', 'convert/', 'gallery/', 'resize/', 'bgremover/'];
 const EXEMPT = /^(shared\/intake\/|shared\/drop\/|vendor\/|tests\/)|\.min\.js$/;
 export const RULES = [
   { re: /addEventListener\(\s*['"](drop|paste)['"]/, why: "a '$1' listener of its own" },

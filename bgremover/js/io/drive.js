@@ -70,7 +70,6 @@
   /** File ▸ Open from Files: images and videos become queue items. */
   D.open = async function () {
     if (!D.ready()) return;
-    const rec = await TlbxHub.pickFromDrive({ accept: ['image/*', 'video/*'], title: 'Open from Files' });
-    if (rec) CO.process.add([new File([rec.blob], rec.name || 'Untitled', { type: rec.type })], { driveId: rec.id });
+    await TlbxIntake.fromDrive({ to: 'cutout', title: 'Open from Files' }); // the intake (io/files.js)
   };
 })();
