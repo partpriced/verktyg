@@ -4,7 +4,8 @@
 (function (g) {
   'use strict';
   const ns = (g.TlbxData = g.TlbxData || {});
-  const { ok, fail } = ns.result;
+  // The pure helpers load on their own (Reports prices time with amountOf); the writes need TlbxData.result.
+  const ok = (v) => ns.result.ok(v), fail = (code, msg) => ns.result.fail(code, msg);
 
   /** Pure: what an entry is worth, in minor units: minutes at the hourly rate, rounded half up. */
   const amountOf = (e) => Math.round(((e.minutes || 0) * (e.rate || 0)) / 60);
