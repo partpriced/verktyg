@@ -17,7 +17,7 @@ import { suggestModel } from './suggest.js';
 const READY = /^(installed|update|bundled)$/;
 const SITE = new URL('../../', import.meta.url);
 
-/** Loads what the chooser needs on a page that did not load it up front (PDF Editor): the catalog, the OCR model list (which
+/** Loads what the chooser needs on a page that did not load it up front (PDF Editor): the cdn hosts, the catalog, the OCR model list (which
  *  adds itself to the model index) and the dialog's styles. Resolves with window.TlbxOcrModels. */
 export async function loadOcr() {
   const script = (path) => new Promise((resolve, reject) => {
@@ -29,6 +29,7 @@ export async function loadOcr() {
   if (!document.querySelector('link[href$="shared/models/chooser.css"]')) {
     document.head.append(Object.assign(document.createElement('link'), { rel: 'stylesheet', href: new URL('shared/models/chooser.css', SITE).href }));
   }
+  if (!globalThis.TlbxCdn) await script('shared/cdn/assets.js');   // the model URLs (jsDelivr, then GitHub)
   if (!globalThis.TlbxModelCatalog) await script('shared/models/catalog.js');
   if (!globalThis.TlbxOcrModels) await script('aitools/ocr-models.js');
   return globalThis.TlbxOcrModels;
