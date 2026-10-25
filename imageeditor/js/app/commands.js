@@ -94,6 +94,7 @@ function wireCommands() {
     CMD_ON = true;
     if (TlbxCmd.provide) TlbxCmd.provide({ prepare: loadAICommands });   // the assistant's commands load when the AI panel first needs them
     TlbxCmd.register(psGenCommands());   // ps.generate / ps.edit-ai with arguments (over the menu items' own entries)
+    TlbxCmd.register(psRetouchCommands());   // Auto retouch on this device (js/retouch/boot.js)
     const b = $('#cmdBtn'); if (b) { b.hidden = false; b.title = 'Search commands (' + TlbxCmd.keyFor('cmd.palette') + ')'; }
   } catch (err) { console.warn(err); CMD_ON = false; }
   return CMD_ON;

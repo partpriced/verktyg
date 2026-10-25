@@ -15,6 +15,7 @@ import './diff.js';   // Compare: two files → a report
 import './video.js';   // Video Editor's edit list, reframe, captions and reel, and Transcription's speech to text
 import './create.js';
 import './create-tables.js';
+import './retouch.js';   // Image Editor's Auto enhance and Portrait retouch, run in its hidden copy
 import './macros.js';   // the apps' recorded macros (app host adapters), after the apps' own operations
 
 export * from './registry.js';
