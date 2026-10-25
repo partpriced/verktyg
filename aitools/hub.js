@@ -78,6 +78,21 @@
 
   async function refresh() { await renderTools(); await renderModels(); }
 
+  /** The assistant: TlbxCmd's commands with arguments (ai-commands.js, jobs by ai-jobs.js) load when first asked, with what
+   *  they use that the hub does not load itself: Files, shared/commands/sources.js, the tools' common.js and transcript.js. */
+  function assistant() {
+    const C = window.TlbxCmd;
+    if (!C || !C.provide) return;
+    C.init({ app: 'aitools' });
+    const base = new URL('./', doc.currentScript ? doc.currentScript.src : location.href).href;
+    const one = (src) => new Promise((res, rej) => doc.head.append(Object.assign(doc.createElement('script'),
+      { src: new URL(src, base).href, async: false, onload: res, onerror: () => rej(new Error('Could not load ' + src)) })));
+    const steps = [['TLBX_APPS', '../shared/apps.js'], ['TlbxHub', '../shared/hub.js'], ['TlbxCmdSources', '../shared/commands/sources.js'],
+      ['TlbxAITools', 'common.js'], ['TlbxTranscript', 'transcript.js'], ['TlbxAIJobs', 'ai-jobs.js'], [null, 'ai-commands.js']];
+    C.provide({ prepare: () => steps.reduce((p, [g, src]) => p.then(() => (g && window[g] ? null : one(src))), Promise.resolve()) });
+  }
+
+  assistant();
   refresh();
   window.TlbxAIHub = { refresh, toolState, toolPage };
 })();

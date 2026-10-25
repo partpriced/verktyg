@@ -10,7 +10,7 @@
 <body>
   <script src="../../shared/tlbxui.js"></script>
   <script src="../../shared/apps.js"></script>
-  <script src="../../shared/commands/commands.js"></script>
+  <script src="../../shared/input/typing.js"></script><script src="../../shared/commands/commands.js"></script>
   <script>
     TlbxCmd.init({ app: 'frame-test', fab: 'touch' });
     TlbxCmd.register([{ id: 'f.hello', title: 'Say hello', group: 'Test', keys: ['H'], run: () => { window.hello = (window.hello || 0) + 1; } }]);

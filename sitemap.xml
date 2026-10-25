@@ -45,6 +45,7 @@
   <url><loc>https://verktyg.itpris.se/signature/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/qr/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/colors/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/workflows/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/calculator/</loc><lastmod>2026-10-20</lastmod></url>
@@ -124,6 +125,7 @@
   <url><loc>https://verktyg.itpris.se/apps/signature/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/qr/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/colors/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/apps/fontcreator/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/workflows/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/convert/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/calculator/</loc><lastmod>2026-10-20</lastmod></url>
@@ -339,6 +341,10 @@
   <url><loc>https://verktyg.itpris.se/colors/color-picker-from-image/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/colors/color-palette-generator/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/colors/hex-to-rgb/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/free-font-maker/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/handwriting-font/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/fontforge-alternative/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/ttf-to-woff2/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/layers/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/classic/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
@@ -401,6 +407,7 @@
   <url><loc>https://verktyg.itpris.se/diff/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/recorder/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/colors/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/fontcreator/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/all-tools/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/free-online-photo-editors/</loc><lastmod>2026-10-24</lastmod></url>
