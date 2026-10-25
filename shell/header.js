@@ -43,7 +43,7 @@
         .concat((ai && ai.hidden) || (conv && conv.hidden) ? ['-'] : [])
         .concat([{ label: 'System', check: now === T.SYSTEM, act: pick(T.SYSTEM) }, '-'])
         .concat(T.THEMES.map((t) => ({ label: t.name, check: now === t.id, act: pick(t.id) })));
-      const r = b.getBoundingClientRect();
+      const r = (window.TlbxHbtn && window.TlbxHbtn.anchor ? window.TlbxHbtn.anchor(b) : b).getBoundingClientRect();   // folded into More: under it
       const m = window.TlbxUI.menu(items, r.left, r.bottom + 4);
       b.setAttribute('aria-expanded', 'true');
       const done = new MutationObserver(() => { if (!m.isConnected) { b.setAttribute('aria-expanded', 'false'); done.disconnect(); } });
@@ -84,7 +84,8 @@
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'sh-hbtn tlbx-hbtn sh-convert';
-    b.dataset.hbtnYield = '1';   // gives way first when the header is full (shared/ui/hbtn.js), then shows in the Theme menu
+    b.dataset.hbtnYield = '1';   // gives way first when the header is full (shared/ui/hbtn.js), then shows in the Theme and More menus
+    b.dataset.hbtnLabel = 'Convert files…';
     b.title = 'Convert files to another format, on this device';
     b.setAttribute('aria-label', 'Convert files');
     b.setAttribute('aria-haspopup', 'dialog');
@@ -117,8 +118,10 @@
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'sh-hbtn tlbx-hbtn sh-ai';
-    b.dataset.hbtnYield = '2';   // gives way right after Convert… (shared/ui/hbtn.js), then shows in the Theme menu
-    b.title = 'Assistant: ask, or let it work in ' + app.name + ' (runs on this device)';
+    // gives up its label right after Convert… (shared/ui/hbtn.js), but stays as an icon: Theme, the bell, Drive and Apps fold
+    // into More (⋯) first; only a header with no room at all puts it in More, with its label
+    b.dataset.hbtnYield = '2'; b.dataset.hbtnKeep = ''; b.dataset.hbtnLabel = 'Ask Assistant…';
+    b.title = 'Assistant: ask, or let it work in ' + app.name;
     b.setAttribute('aria-label', 'Assistant');
     b.innerHTML = ICON_AI + '<span class="tlbx-hbtn-txt" data-i18n="shell.ai">AI</span>';
     b.addEventListener('click', openAI);
@@ -154,8 +157,8 @@
     if (host) { if (window.TlbxHbtn) window.TlbxHbtn.fit(host); }   // labels give way to icons when the header is full
     else { box.classList.add('sh-fab'); document.body.append(box); }
     window.TlbxNotify.mountBell(box);
-    // Convert… and AI never cost the header a row or the app's controls their room: they give up their labels, then their
-    // place (the Theme menu offers them), before anything else does (shared/ui/hbtn.js). Measured again now the bell is in.
+    // Convert… and AI never cost the header a row or the app's controls their room: they give up their labels, Convert… its
+    // place, then the other buttons fold into More, AI last (shared/ui/hbtn.js). Measured again now the bell is in.
     if (host && window.TlbxHbtn) window.TlbxHbtn.check(host);
     window.addEventListener('tlbx-lang', () => { sw.title = title(); });
   }
