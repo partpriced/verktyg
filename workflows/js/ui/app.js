@@ -24,9 +24,8 @@ async function boot() {
   }
   if (g.TlbxHub) {
     g.TlbxHub.register('workflows');
-    const rec = await g.TlbxHub.consumeLaunch();
-    if (rec && rec.blob) await tool.addFiles([new File([rec.blob], rec.name || 'file', { type: rec.type || '' })]);
   }
+  await g.TlbxIntake.launch({ to: tool.runner.intakeId }); // ?drive=<id> (Add to a workflow…, Open in) and a PWA launch
   if (tool.S.doc.steps.length) tool.frame.showView();
   tool.ready = true;
   document.documentElement.dataset.wfReady = '1';

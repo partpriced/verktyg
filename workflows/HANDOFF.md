@@ -35,6 +35,8 @@ Status `building` in `shared/apps.js`.
 | `ocr.read` | OCR | searchable PDF, text or Markdown | `aitools/common.js` (PP-OCRv4 worker), `ocr/js/sources.js`, `layout.js`, `export.js`; asks to install the model in OCR (Get more) if missing |
 | `files.rename` | Files | `{name}` `{n}` `{date}`, first number, digits (combine) | `renameAll` (pure) |
 | `pdf.compress` | PDF Editor | lossless re-save, or strong (pages to JPEG at 72/110/150 dpi) | pdf-lib; File Converter's `pdf-raster.js` and `pdf-images.js` |
+| `outline-to-presentation` | Presentations | an outline (.json/.md/.txt) → PPTX, PDF or .sslide; theme, size | `slides/js/core/outline.js`, `pptx.js`, `pdf.js` via File Converter's `slidesEngine` |
+| `outline-to-document` | Documents | an outline (.json/.md/.txt) → DOCX, PDF, Markdown or .sdoc; page size | `docs/js/model/build.js` + File Converter's Docs `engine` |
 | every catalog entry | File Converter | merge-pdf (fan-in), images-to-pdf, pdf-to-images, pdf-protect (`check`: password), Files to ZIP (now with a ZIP name), to-jpg… | the catalog |
 
 `shared/ops/load.js`: `scripts(paths, ready)` (through TlbxLoad when present), `notice(app, opts)` (TlbxFirstRun),

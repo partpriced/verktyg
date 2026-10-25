@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shared intake in Video Editor: every way in is the same path</title>
+  <style>body { margin: 0; } iframe { width: 1280px; height: 800px; border: 0; display: block; }</style>
+</head>
+<body>
+<iframe id="app"></iframe>
+<script src="../harness.js"></script>
+<script>
+  // Covers: videostudio/js/io/intake.js, videostudio/js/ui/app.js, videostudio/js/io/session.js, videostudio/js/io/project.js, videostudio/js/io/cutout.js, videostudio/js/io/sample.js, videostudio/js/timeline/menu.js, videostudio/js/render/cells.js, videostudio/js/render/preview.js, videostudio/js/ui/templates-panel.js
+  // Video Editor on the one intake: Import media…, a drop on the monitor, a drop on a timeline lane, the strip's Choose files,
+  // a paste, Import from Files, ?drive=<id> (launch), Background Remover's matte pair and a .videoedit from Files all
+  // reach the same reader (the whole batch at once) with the same events. Out: the frame goes to Image Editor through
+  // TlbxOuttake.
+  const { describe, it, expect, waitFor, run } = TlbxTest;
+  let W, D, seen = [], events = [];
+  async function boot() {
+    const fr = document.getElementById('app');
+    fr.src = '../../videostudio/index.html';
+    await waitFor(() => fr.contentWindow && fr.contentWindow.document.body && fr.contentWindow.document.body.classList.contains('ready') && fr.contentWindow.TlbxIntake && fr.contentWindow.TlbxIntake.spec('videoedit'), { timeout: 40000 });
+    W = fr.contentWindow; D = W.document;
+    const s = W.TlbxIntake.spec('videoedit'), reader = s.processAll;
+    s.processAll = (files, ctx) => { seen.push([ctx.source, files.length]); return reader(files, ctx); };
+    for (const t of ['before', 'file', 'after']) W.TlbxIntake.on(t, (d) => { events.push([t, d.app, d.source]); });
+  }
+  let n = 0;
+  async function png(name) {
+    const c = D.createElement('canvas'); c.width = 32 + (n++ % 7); c.height = 24;
+    const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, c.width, 24);
+    return new W.File([await new Promise((r) => c.toBlob(r, 'image/png'))], name, { type: 'image/png' });
+  }
+  const dtOf = (files) => { const dt = new W.DataTransfer(); files.forEach((f) => dt.items.add(f)); return dt; };
+  const media = () => W.SE.doc.media.length, clips = () => W.SE.doc.clips.length;
+  const centre = (el) => { const r = el.getBoundingClientRect(); return { clientX: r.left + r.width / 2, clientY: r.top + r.height / 2 }; };
+  const drop = (el, files) => el.dispatchEvent(new W.DragEvent('drop', { bubbles: true, cancelable: true, dataTransfer: dtOf(files), ...centre(el) }));
+  /** One source: the batch reaches the reader once (all its files at once), with the events in order. */
+  async function through(source, start, k = 2) {
+    seen = []; events = [];
+    await start();
+    await waitFor(() => events.some((e) => e[0] === 'after'), { timeout: 20000 });
+    expect(seen).toEqual([[source, k]]);
+    expect(events.map((e) => e[0])).toEqual(['before', ...Array(k).fill('file'), 'after']);
+    expect(events.every((e) => e[1] === 'videoedit' && e[2] === source)).toBe(true);
+  }
+
+  describe('Video Editor: one way in', () => {
+    it('Import media…', async () => {
+      await boot();
+      const files = [await png('a.png'), await png('b.png')], before = media();
+      W.TlbxUI.pickFiles = async () => files;
+      await through('picker', () => W.SE.app.openDialog());
+      expect(media()).toBe(before + 2);
+    }, { timeout: 60000 });
+    it('a drop on the monitor', async () => {
+      const files = [await png('c.png'), await png('d.png')], before = media();
+      await through('drop', () => drop(D.getElementById('monitor'), files));
+      expect(media()).toBe(before + 2);
+    });
+    it('a drop on a timeline lane places the batch there', async () => {
+      const files = [await png('e.png'), await png('f.png')], before = clips();
+      await through('drop', () => drop(D.getElementById('tlCanvas'), files));
+      expect(clips()).toBe(before + 2);
+    });
+    it("the strip's Choose files", async () => {
+      const files = [await png('g.png'), await png('h.png')];
+      await through('picker', () => { const i = D.querySelector('#scDrop input[type=file]'); i.files = dtOf(files).files; i.dispatchEvent(new W.Event('change')); });
+    });
+    it('a paste', async () => {
+      const files = [await png('i.png')];
+      await through('paste', () => D.body.dispatchEvent(new W.ClipboardEvent('paste', { bubbles: true, cancelable: true, clipboardData: dtOf(files) })), 1);
+    });
+    it('Import from Files', async () => {
+      const blob = await png('drive.png');
+      W.TlbxHub.pickFromDrive = async () => ({ id: 'x1', name: 'drive.png', type: 'image/png', blob });
+      await through('drive', () => W.SE.app.openFromDrive(), 1);
+    });
+    it('?drive=<id> from another app (launch)', async () => {
+      const blob = await png('sent.png'), before = media();
+      W.TlbxHub.consumeLaunch = async () => ({ id: 'x2', name: 'sent.png', type: 'image/png', blob });
+      await through('launch', () => W.SE.session.launch(), 1);
+      expect(media()).toBe(before + 1);
+    });
+    it("Background Remover's matte pair (the 'cutout-result' message) is one batch of two", async () => {
+      const recs = { c1: { id: 'c1', name: 'colour.png', type: 'image/png', blob: await png('colour.png') }, m1: { id: 'm1', name: 'matte.png', type: 'image/png', blob: await png('matte.png') } };
+      W.TlbxHub.get = async (id) => recs[id] || null;
+      const before = clips();
+      await through('launch', () => W.SE.cutout.receive({ id: 'c1', matteId: 'm1', name: 'colour.png', clipId: null }));
+      expect(clips()).toBe(before + 1);
+    });
+    it('a project from Files opens and stays linked', async () => {
+      const blob = await W.SE.project.toBlob();
+      W.TlbxUI.confirm = async () => true;
+      W.TlbxHub.pickFromDrive = async () => ({ id: 'p1', name: 'My cut.videoedit', type: 'application/zip', blob });
+      await through('drive', () => W.SE.app.openFromDrive(), 1);
+      await waitFor(() => W.SE.project.driveId === 'p1');
+    }, { timeout: 40000 });
+  });
+
+  describe('Video Editor: one way out', () => {
+    it('Send frame to Image Editor is TlbxOuttake.send', async () => {
+      let sent = null;
+      W.TlbxOuttake.send = async (to, o) => { sent = [to, o.from, o.type, o.name]; };
+      await W.SE.act.snapshotSend();
+      expect(sent[0]).toBe('imageeditor');
+      expect(sent[1]).toBe('videoedit');
+      expect(sent[2]).toBe('image/png');
+    });
+  });
+  run({ name: 'Shared intake: Video Editor' });
+</script>
+</body>
+</html>

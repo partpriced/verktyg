@@ -77,5 +77,11 @@
   }
 
   mount();
+  // TlbxCmd (Ctrl+K and the assistant): the commands with arguments (js/ai-commands.js) load when the AI panel first asks
+  if (g.TlbxCmd) {
+    g.TlbxCmd.init({ app: 'signature' });
+    g.TlbxCmd.provide({ prepare: () => (NS.ai ? null : new Promise((res, rej) => document.head.append(Object.assign(document.createElement('script'),
+      { src: new URL('js/ai-commands.js', location.href).href, onload: res, onerror: () => rej(new Error('Could not load ai-commands.js')) })))) });
+  }
   NS.app = { get state() { return state; }, get current() { return current; }, render, copy, copyCode, download, reset, example, presetOf };
 })(typeof window !== 'undefined' ? window : globalThis);

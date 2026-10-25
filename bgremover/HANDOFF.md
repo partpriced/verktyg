@@ -146,3 +146,10 @@ Under 900 px the settings panel (`#props`) is a bottom sheet: `CO.sheet = TlbxSh
 shared ×, Escape, a tap outside and a swipe down close it. Before this the CSS had a `.sheet-open` sheet that nothing ever
 opened, so the settings were out of reach on a phone; that CSS and the unused `.sheet-grip` are gone. On a wide screen the
 button still hides the panel (`no-panel`). Test: `tests/bgremover/phone-sheet.test.html`.
+
+## Assistant: batches (`js/ui/ai-commands.js`)
+`TlbxCmd.prepare()` (ui/commands.js, not in the offline build) loads it with `shared/commands/sources.js`: `new_batch`
+(removes every image; destructive), `add_images` (`files[]`, `urls[]`, through `TlbxIntake.take` like a drop; the queue cuts
+them out), `save_cutouts` (waits for the queue, then `CO.export.encode` each to Files and/or `CO.export.all` as a ZIP;
+`format` png | webp | jpg). The look stays `co.look` (ui/macros.js); `CO.lookArgs` gives it to the state. Test:
+`tests/bgremover/ai-commands.test.html`.

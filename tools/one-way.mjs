@@ -2,12 +2,14 @@
 // and out only through the shared outbound builder (shared/intake/outtake.js, TlbxOuttake / TlbxHub.openIn). In the apps
 // that have moved to it (STRICT below), app code may not add its own way:
 //   in:  a 'drop' or 'paste' listener, TlbxUI.pickFiles, a file <input>, TlbxHub.consumeLaunch / ?drive= / launchQueue,
-//        TlbxHub.pickFromDrive (use TlbxIntake.take, pick, fromDrive, launch, dropTarget, or TlbxDrop.attach)
+//        TlbxHub.pickFromDrive (use TlbxIntake.take, pick, fromDrive, launch, dropTarget, or TlbxDrop.attach), and a list
+//        of Files files built from TlbxHub.list (the one Drive picker is TlbxIntake.fromDrive; a library view or a
+//        lookup by name that is not a picker says so with intake-ok:)
 //   out: a hand-made "Open in …" / "Send to …" list (appsAccepting(...).map, labels built from an app name)
 //        (use TlbxOuttake.items / menu / button, TlbxHub.openIn or sendMenuItems)
 // A line that has to stay (a drop that reorders tabs, the app's own clipboard) says why with an "intake-ok:" or
 // "outtake-ok:" comment. Add an app's folder to STRICT once it is migrated (shared/intake/HANDOFF.md has the list).
-export const STRICT = ['pdf/', 'imageeditor/js/', 'convert/', 'gallery/', 'resize/', 'bgremover/'];
+export const STRICT = ['pdf/', 'imageeditor/js/', 'convert/', 'gallery/', 'resize/', 'bgremover/', 'press/', 'label/', 'upscale/', 'videostudio/index.html', 'videostudio/js/core/', 'videostudio/js/io/', 'videostudio/js/media/', 'videostudio/js/render/', 'videostudio/js/timeline/', 'videostudio/js/ui/', 'vectoreditor/', 'ocr/', 'aitools/', 'transcribe/', 'music/', 'drive/', 'tables/', 'sheetview/', 'docs/', 'eml/', 'hex/', 'code/', 'slides/', 'workflows/', 'remix/', 'clean/', 'img3d/', 'contacts/', 'checksum/', 'serials/', 'html2pdf/', 'sorter/', 'qr/', 'signature/', 'paste/', 'notes/', 'calendar/', 'effects/', '3d/', 'ai/', 'projects/', 'crm/', 'expenses/', 'inventory/', 'invoices/', 'orders/', 'purchases/', 'quotes/', 'admin/', 'ledger/', 'imageeditor/classic/', 'nodes/'];
 const EXEMPT = /^(shared\/intake\/|shared\/drop\/|vendor\/|tests\/)|\.min\.js$/;
 export const RULES = [
   { re: /addEventListener\(\s*['"](drop|paste)['"]/, why: "a '$1' listener of its own" },
@@ -15,6 +17,7 @@ export const RULES = [
   { re: /type:\s*['"]file['"]|type="file"|\.type\s*=\s*['"]file['"]/, why: 'a file input of its own (use TlbxIntake.pick)' },
   { re: /\bconsumeLaunch\s*\(|searchParams\.get\(\s*['"]drive['"]\s*\)|\blaunchQueue\b/, why: 'its own ?drive= or launch reader (use TlbxIntake.launch)' },
   { re: /\bpickFromDrive\s*\(/, why: 'its own Files picker (use TlbxIntake.fromDrive)' },
+  { re: /(?:\bTlbxHub|\b(?:hub|H|SH|HUB)\(\)|(?<![\w.])(?:hub|H))\.list\(/, why: 'a list of Files files of its own (the picker is TlbxIntake.fromDrive; a library or lookup says intake-ok:)' },
   { re: /appsAccepting\([^)]*\)\s*\.map\(|label:\s*[`'"](?:Open in|Send to) (?:\$\{|['"]\s*\+)/, why: 'a hand-made "Open in" / "Send to" list (use TlbxOuttake.items)', out: true },
 ];
 export const strict = (f) => STRICT.some((d) => f.startsWith(d)) && !EXEMPT.test(f) && /\.(m?js|html)$/.test(f);

@@ -99,7 +99,7 @@
   SE.act.snapshot = async function () { SE.player.pause(); TlbxUI.download(await PV.snapshotBlob(), shotName()); SE.app.status('Saved frame as PNG'); };
   SE.act.snapshotSend = async function () {
     SE.player.pause();
-    try { await TlbxHub.sendTo('imageeditor', await PV.snapshotBlob(), shotName()); TlbxUI.toast('Opened the frame in Image Editor'); } catch (e) { TlbxUI.toast('Could not send: ' + e.message); }
+    try { await TlbxOuttake.send('imageeditor', { from: 'videoedit', get: PV.snapshotBlob, name: shotName(), type: 'image/png' }); } catch (e) { TlbxUI.toast('Could not send: ' + e.message); }
   };
   SE.act.toggleSafe = function () { PV.safe = !PV.safe; U.store.set('safe', PV.safe); PV.request(); SE.emit('transport', {}); };
   SE.act.toggleQuality = function () { PV.half = !PV.half; U.store.set('half', PV.half); PV.layout(); SE.app.status('Preview quality: ' + (PV.half ? 'half' : 'full')); };

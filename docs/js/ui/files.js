@@ -1,4 +1,4 @@
-/* Documents — ui/files: Files (open with ?drive=<id>, File ▸ Open, Save and Ctrl+S), the saved templates store,
+/* Documents — ui/files: Files (reading a record for the intake, ui/intake.js; Save and Ctrl+S), the saved templates store,
  * and exports (.sdoc, .docx, .pdf, .md, .txt). Classic script; window.TlbxDocs.
  * Open tabs and their autosave are the tab strip's job (ui/tabs.js and shared/doctabs). Save and Open from Files
  * go through the strip, so each tab writes its own .sdoc (a native record is saved back under its own id). A Word,
@@ -10,7 +10,6 @@
   const H = () => window.TlbxHub || null;
   const SD = () => E().SD, DX = () => E().DX;
   const SDOC_MIME = 'application/x-tlbx-doc', DOCX_MIME = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-  const IMPORT = [DOCX_MIME, 'text/markdown', 'text/plain', 'text/html'];
   const toast = (m) => { if (window.TlbxUI) TlbxUI.toast(m); };
 
   /* ---------- IndexedDB 'tlbx-docs' (store 'templates'; 'drafts' is kept for old data and no longer written) ---------- */
@@ -87,24 +86,7 @@
     if (!silent) toast(r.native ? `Opened ${baseName(rec.name)}` : `Opened ${rec.name} as a new Docs file`);
     return r;
   };
-  /** File ▸ Import: a Word, Markdown or text file from Files, as a new tab that is not linked to the file. */
-  S.importFromDrive = async function () {
-    if (!H()) { toast('Files is not available'); return; }
-    const rec = await H().pickFromDrive({ accept: IMPORT, title: 'Import from Files' });
-    if (!rec) return;
-    try {
-      const r = await readRecord(rec);
-      S.tabsApi().openDoc(S.makeTab(r.doc, { name: baseName(rec.name) + '.sdoc' }), { origName: rec.name });
-      toast(`Opened ${rec.name} as a new Docs file`);
-    } catch (e) { toast('Could not open: ' + e.message); }
-  };
-  /** Open a Drive record by id (used by ?drive= on boot). */
-  S.openDriveId = async function (id) {
-    const rec = H() && (await H().get(id).catch(() => null));
-    if (!rec) { toast('That document is no longer in Files'); return false; }
-    H().touch(id);
-    try { await S.openRecord(rec, { silent: true }); return true; } catch (e) { toast('Could not open: ' + e.message); return false; }
-  };
+  // Open, Import and ?drive= are sources of the one intake (ui/intake.js), whose reader is openRecord.
 
   S.confirmDiscard = async function () {
     if (!S.file.dirty || !window.TlbxUI) return true;
@@ -151,10 +133,10 @@
     toast(`Downloaded ${name}`);
     TlbxSupport.afterExport('docs');
   };
-  /** "Send to…" menu rows for the other ITpris Verktyg apps. */
+  /** "Send to…" menu rows for the other ITpris Verktyg apps: the one builder, TlbxOuttake, with the document as DOCX. */
   S.sendItems = function () {
-    if (!H()) return [];
-    return H().sendMenuItems(() => S.exportBlob('docx'), () => S.displayName() + '.docx', DOCX_MIME);
+    if (!H() || !window.TlbxOuttake) return [];
+    return TlbxOuttake.items({ get: () => S.exportBlob('docx'), name: () => S.displayName() + '.docx', type: DOCX_MIME, from: 'docs', verb: 'Send to', folder: false });
   };
   /** Convert… in the header (shared/convert/provided.js): the open document, as DOCX. */
   addEventListener('tlbx:convert-files', (e) => e.detail.provide(async () => {

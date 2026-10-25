@@ -10,7 +10,7 @@
     { id: 'view.storage', title: 'Go to Storage', group: 'Go to', run: () => NS.app.show('storage') },
     { id: 'data.backup', title: 'Data: download a full backup', group: 'Data', run: () => { NS.app.show('data'); document.getElementById('dBackup').click(); } },
     { id: 'data.everything', title: 'Data: export or import everything in one file', group: 'Data', run: () => { NS.app.show('data'); document.getElementById('dEverything').click(); } },
-    { id: 'data.restore', title: 'Data: restore from a backup file…', group: 'Data', run: () => { NS.app.show('data'); document.getElementById('dRestore').click(); } },
+    { id: 'data.restore', title: 'Data: restore from a backup file…', group: 'Data', run: () => { NS.app.show('data'); document.getElementById('dRestore').click(); } }, // the button opens the intake's picker
     { id: 'data.reset', title: 'Data: reset all data…', group: 'Data', run: () => { NS.app.show('data'); NS.views.data.reset(); } },
   ];
   const byId = Object.fromEntries(COMMANDS.map((c) => [c.id, c]));
@@ -28,6 +28,8 @@
     if (g.TlbxCmd) {
       g.TlbxCmd.init({ app: 'admin' });
       g.TlbxCmd.register(COMMANDS.map((c) => ({ id: c.id, title: c.title, group: c.group, keywords: [], keys: [], run: () => c.run() })));
+      // the assistant's commands (shared/data/ai-records.js through shared/biz/biz.js), loaded when the AI panel first asks
+      if (g.TlbxCmd.provide && g.TlbxBiz && g.TlbxBiz.assistant) g.TlbxCmd.provide({ prepare: () => g.TlbxBiz.assistant('admin') });
     }
     document.addEventListener('click', (e) => {
       const el = e.target.closest && e.target.closest('[data-cmd]');

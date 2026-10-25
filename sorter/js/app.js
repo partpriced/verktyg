@@ -109,17 +109,22 @@ function clear() {
 }
 
 function wire() {
+  // The one way in (shared/intake, spec 'sorter'): a drop of photos or folders, the zone's Choose files and sample, Choose
+  // a folder…, a paste, ?drive=<id> (another app's Open in Photo Sorter) and a PWA launch reach add().
+  window.TlbxIntake.register({
+    id: 'sorter', accept: { types: ['image/*'], exts: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg', '.bmp'], noun: 'a photo' },
+    processAll: async (files) => { add(files); return files.map((f) => f.name); },
+  });
   dropZone = window.TlbxDrop.attach($('soDrop'), {
-    accept: { types: ['image/*'], exts: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg', '.bmp'], noun: 'a photo' },
-    input: $('soPick'), label: 'Drop photos or a folder here, or choose photos', hint: 'As many as you like. They stay on this device.',
+    intake: 'sorter', label: 'Drop photos or a folder here, or choose photos', hint: 'As many as you like. They stay on this device.',
     preview: { picture: { src: '../assets/shots/sorter.jpg', alt: 'Photos sorted into liked and disliked, with tags' },
       steps: ['Drop photos or a whole folder', 'Swipe: ↑ like, ↓ dislike, type to tag', 'Download the keepers as a ZIP'] },
     sample: { label: 'Try it with 8 sample photos', files: () => window.TlbxSamples.photos(8) },
     files: (dt) => window.TlbxDrop.folders.read(dt),   // a dropped folder is read whole, keeping each photo's folder path
-    process: async (file) => { add([file]); return file.name; },
   });
-  $('soFolder').addEventListener('click', () => $('soDir').click());
-  $('soDir').addEventListener('change', (e) => { add([...e.target.files]); e.target.value = ''; });
+  $('soFolder').addEventListener('click', () => window.TlbxIntake.pick({ to: 'sorter', folder: true }));
+  if (window.TlbxHub) { try { window.TlbxHub.register('sorter'); } catch (e) { /* bus unavailable */ } }
+  window.TlbxIntake.launch({ to: 'sorter' });
   $('soStart').addEventListener('click', start);
   $('soZip').addEventListener('click', zipLiked);
   $('soDrive').addEventListener('click', driveLiked);
@@ -131,4 +136,6 @@ function wire() {
 }
 
 wire();
-window.TlbxSorter.app = { set, deck, add, start, draw, zipLiked, get which() { return which; } };
+window.TlbxSorter.app = { set, deck, add, start, draw, zipLiked, driveLiked, get which() { return which; } };
+// TlbxCmd: the assistant's commands with arguments (ai-commands.js), loaded when the AI panel first asks
+if (window.TlbxCmd) { window.TlbxCmd.init({ app: 'sorter' }); if (window.TlbxCmd.provide) window.TlbxCmd.provide({ prepare: () => import('./ai-commands.js') }); }

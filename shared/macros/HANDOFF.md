@@ -59,6 +59,11 @@ become operations of kind `macro` under that app in + Add step (`macroOp`), chec
   setup to a Watermark step. Giving it commands with args first (one `wm.set` with `WATERMARK_OPTIONS` as args, folded like
   Background Remover) is the way in.
 
+- **Video Editor**: Ctrl+K ▸ Record a macro / Macros…; every AI command (`videostudio/js/ai/`) is recorded. Its hidden copy
+  (`videostudio/?macro-host=1`, `videostudio/js/ai/host.js`) opens a video (`open(file, { media, place })`: more media go in the
+  bin), replays, and renders with Video Editor's export (`save({ format, width, height, aspect, fps, quality })`); a Workflows
+  step makes MP4 or WebM. `runInHost` passes `progress` through, and `host.open` gets the options.
+
 ## Adding an app
 
 1. Give the app commands with `args` for what should be repeatable (or reuse its AI commands).

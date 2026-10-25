@@ -38,7 +38,9 @@
       impBody.append(pickBtn);
       const imp = el('section', { class: 'bk-sec' }, el('h3', null, 'Import'), el('p', { class: 'sui-p' }, 'Restore a .backup file into this browser.'), impBody);
       pickBtn.addEventListener('click', async () => {
-        const [f] = await UI.pickFiles({ accept: '.tlbx,.zip,application/zip' });
+        const SI = window.TlbxIntake; // the backup file is a part of the one intake ('backup.import') where the page has it
+        if (SI && SI.part) { await SI.pick({ to: SI.part({ id: 'backup.import', limit: 1, accept: { any: true, noun: 'a .backup file' }, process: async (f) => { await choose(f); return f.name; } }), multiple: false, accept: '.tlbx,.zip,application/zip' }); return; }
+        const [f] = await UI.pickFiles({ accept: '.tlbx,.zip,application/zip' }); // intake-ok: a page without shared/intake
         if (f) await choose(f);
       });
       async function choose(file) {

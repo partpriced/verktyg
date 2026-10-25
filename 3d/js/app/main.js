@@ -91,7 +91,7 @@
     };
     const ui = { applyView, rename, frame: (ids) => view.frame(ids), setView: (name) => { cam.setView(name); view.redraw(); } };
     const cmds = S.commands.list(ui);
-    if (window.TlbxCmd) { TlbxCmd.init({ app: '3d' }); TlbxCmd.register(cmds); }
+    if (window.TlbxCmd) { TlbxCmd.init({ app: '3d' }); TlbxCmd.register(cmds); if (TlbxCmd.provide) TlbxCmd.provide({ prepare: aiPrepare }); }
     const sync = () => {
       objects.sync(s.doc, { selected: s.sel });
       applyView();
@@ -119,6 +119,13 @@
     await S.files.launch();
     view.frame([]);
     document.body.dataset.ready = '1';
+  }
+
+  /** The assistant's commands with arguments (ai-io.js, ai-commands.js), loaded when the AI panel first asks. */
+  function aiPrepare() {
+    if (S.ai && S.ai.ready) return Promise.resolve();
+    const one = (f) => new Promise((res, rej) => { const el = Object.assign(document.createElement('script'), { src: new URL('js/app/' + f, location.href).href, async: false }); el.onload = res; el.onerror = () => rej(new Error('Could not load ' + f)); document.head.append(el); });
+    return one('ai-io.js').then(() => one('ai-commands.js')).then(() => { S.ai.ready = true; });
   }
 
   boot().catch((e) => { console.error(e); showNoGL('3D Modeller could not start: ' + (e.message || e)); });

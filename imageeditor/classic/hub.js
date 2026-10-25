@@ -9,18 +9,13 @@
   let driveId = null; // the Files record this picture was opened from or saved to
   const baseOf = (n) => (String(n || 'untitled').replace(/\.[^.]+$/, '') || 'untitled').slice(0, 60);
 
-  async function openRecord(rec) {
-    if (!rec || !rec.blob) return;
-    driveId = null;
-    await openBlob(rec.blob, rec.name || 'untitled');
-    if (S.fileName === baseOf(rec.name)) driveId = rec.id;
-  }
+  /** The intake's reader opened a Files file: Save writes back to it when the picture is still that file. */
+  window.TlbxPaint.linkDrive = (id, name) => { driveId = S.fileName === baseOf(name) ? id : null; };
   ACTIONS.openDrive = async function () {
     if (P.opActive()) cancelOp();
     finishPending();
     if (!(await confirmSave())) return;
-    const rec = await H.pickFromDrive({ accept: ['image/*'], title: 'Open from Files' });
-    if (rec) await openRecord(rec);
+    await window.TlbxIntake.fromDrive({ to: 'paint-classic', mode: 'open', title: 'Open from Files' }); // the one way in (paint/17-files.js)
   };
   ACTIONS.save = async function () {
     if (P.opActive()) cancelOp();
@@ -34,5 +29,5 @@
   };
 
   try { H.register('paint-classic'); } catch (e) { /* bus unavailable */ }
-  H.consumeLaunch().then((rec) => openRecord(rec)).catch((e) => console.warn('Paint: could not open the Drive file', e));
+  window.TlbxIntake.launch({ to: 'paint-classic', mode: 'open' }).catch((e) => console.warn('Paint: could not open the Drive file', e));
 })();

@@ -62,21 +62,13 @@ function binaryNode(doc) {
     el('p', null, 'This is not a text file, so Code Editor cannot show or edit it.'));
   const list = el('div', { class: 'cd-bin-apps' });
   const rec = { id: doc.id, name: doc.name };
-  const openers = () => {
-    const H = window.TlbxHub;
-    if (!H) return [];
-    return H.appsAccepting ? H.appsAccepting(doc.mime || 'application/octet-stream') : [];
-  };
+  // The one builder (TlbxOuttake): the file is already in Files, so the app opens that record (no copy).
+  const openers = () => (window.TlbxOuttake && window.TlbxHub ? window.TlbxOuttake.items({ id: rec.id, name: rec.name, type: doc.mime || 'application/octet-stream', from: 'code', folder: false }) : []);
   const showApps = () => {
-    const apps = openers();
-    list.replaceChildren(apps.length ? el('p', { class: 'cd-hint' }, 'Open it in:') : el('p', { class: 'cd-hint' }, 'No app opens this type.'),
-      ...apps.map((a) => el('button', { type: 'button', class: 'sui-btn', onclick: () => openIn(a, rec) }, a.name)));
+    const items = openers();
+    list.replaceChildren(items.length ? el('p', { class: 'cd-hint' }, 'Open it in:') : el('p', { class: 'cd-hint' }, 'No app opens this type.'),
+      ...items.map((it) => el('button', { type: 'button', class: 'sui-btn', onclick: it.act }, it.label.replace(/^Open in /, ''))));
   };
   box.append(el('button', { type: 'button', class: 'sui-btn sui-primary', id: 'cd-bin-open', onclick: showApps }, 'Open in an app'), list);
   return box;
-}
-
-async function openIn(app, rec) {
-  try { await window.TlbxHub.sendTo(app.id, null, rec.name, { id: rec.id }); if (window.TlbxUI) TlbxUI.toast(`Opened in ${app.name}`); }
-  catch (e) { if (window.TlbxUI) TlbxUI.toast('Could not open it: ' + e.message); }
 }

@@ -40,10 +40,16 @@
     ];
   }
 
+  const HERE = (document.currentScript && document.currentScript.src) || location.href;
   function register() {
     if (!window.TlbxCmd) return;
     TlbxCmd.init({ app: 'eml' });
     TlbxCmd.register(list());
+    // the assistant's commands with arguments (ai-commands.js), loaded when the AI panel first asks
+    if (TlbxCmd.provide) TlbxCmd.provide({ prepare: () => new Promise((res, rej) => {
+      const s = Object.assign(document.createElement('script'), { src: new URL('ai-commands.js', HERE).href });
+      s.onload = res; s.onerror = () => rej(new Error('Could not load ai-commands.js')); document.head.append(s);
+    }) });
   }
 
   window.EmlCommands = { list, register };
