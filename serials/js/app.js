@@ -190,7 +190,7 @@ function wire() {
 
 wire();
 // The assistant's commands with arguments (ai-commands.js) work on the same state, through these.
-window.TlbxSerials = { state, addFiles, readAll, changeSerial, render, pattern, serialsOf, tally: () => tally(state.photos, pattern()), serialsCsv, photosCsv };
+window.TlbxSerials = { state, DEFAULT_PATTERN, addFiles, readAll, changeSerial, render, pattern, serialsOf, tally: () => tally(state.photos, pattern()), serialsCsv, photosCsv };
 if (window.TlbxCmd) {
   window.TlbxCmd.init({ app: 'serials' });
   if (window.TlbxCmd.provide) window.TlbxCmd.provide({ prepare: () => import('./ai-commands.js') });

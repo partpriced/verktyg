@@ -9,7 +9,7 @@ that this file is up to date and that no covered app loses a create, add or expo
 the picture look_at_canvas and app_snapshot take (`own` or `page`), **Driven** whether those commands reach an assistant
 in another app (the Assistant workspace, open_in_app, agents). **Full** is all of it. ✗ marks a gap.
 
-Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
+Covered: 62 of 62 apps. Full suite: 62 of 62 apps.
 
 | App | Create | Add | Edit | Export | Operations | State | Snapshot | Driven | Covered | Full |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -18,17 +18,17 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 | PDF Editor (`pdf`) | ✓ 1 | ✓ 5 | ✓ 12 | ✓ 2 | 2 | ✓ own | ✓ page | ✓ | yes | yes |
 | Label Designer (`label`) | ✓ 1 | ✓ 5 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Background Remover (`cutout`) | ✓ 1 | ✓ 1 | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| AI Tools (`aitools`) | ✗ | ✗ | ✗ | ✗ |  | ✗ | ✗ | ✗ | no | no |
+| AI Tools (`aitools`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Reports (`reports`) | ✓ 1 | ✓ 1 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | OCR (`ocr`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | HTML to PDF (`html2pdf`) | ✓ 1 | ✓ 1 | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Metadata Remover (`clean`) | ✗ | ✗ | ✗ | ✗ | 1 | ✓ page | ✓ page | ✗ | no | no |
-| Assistant (`ai`) | ✗ | ✗ | ✗ | ✗ |  | ✓ page | ✓ page | ✗ | no | no |
+| Metadata Remover (`clean`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
+| Assistant (`ai`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Documents (`docs`) | ✓ 2 | ✓ 6 | ✓ 4 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Spreadsheets (`tables`) | ✓ 3 | ✓ 3 | ✓ 8 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Presentations (`slides`) | ✓ 2 | ✓ 4 | ✓ 6 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Page Layout (`press`) | ✓ 2 | ✓ 4 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Video Remix (`remix`) | ✗ | ✓ 1 | ✓ 12 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
+| Video Remix (`remix`) | ✓ 1 | ✓ 1 | ✓ 12 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Video Editor (`videoedit`) | ✓ 2 | ✓ 9 | ✓ 22 | ✓ 1 | 4 | ✓ own | ✓ page | ✓ | yes | yes |
 | Resizer (`resize`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Upscaler (`upscale`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
@@ -43,23 +43,24 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 | Invoices (`invoices`) | ✓ 2 | ✓ 1 | ✓ 5 | ✓ 2 |  | ✓ records | ✓ page | ✓ | yes | yes |
 | Notes (`notes`) | ✓ 2 | ✓ 1 | ✓ 2 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Paste (`paste`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Motion Graphics (`effects`) | ✓ 1 | ✓ 4 | ✓ 11 | ✗ |  | ✓ own | ✓ page | ✓ | no | no |
-| Image to 3D (`img3d`) | ✓ 1 | ✗ | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
-| Spreadsheet Viewer (`sheetview`) | ✗ | ✗ | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
-| Hex Editor (`hex`) | ✓ 1 | ✗ | ✓ 3 | ✓ 2 |  | ✓ own | ✓ page | ✓ | no | no |
-| Email Viewer (`eml`) | ✓ 1 | ✗ | ✓ 4 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
-| Checksum (`checksum`) | ✗ | ✗ | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
+| Motion Graphics (`effects`) | ✓ 1 | ✓ 4 | ✓ 11 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Image to 3D (`img3d`) | ✓ 1 | ✓ 1 | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Spreadsheet Viewer (`sheetview`) | ✓ 1 | ✓ 2 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Hex Editor (`hex`) | ✓ 1 | ✓ 2 | ✓ 4 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Email Viewer (`eml`) | ✓ 1 | ✓ 2 | ✓ 4 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Checksum (`checksum`) | ✓ 1 | ✓ 2 | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Compare (`diff`) | ✓ 1 | ✓ 2 | ✓ 2 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Node Calculator (`nodes`) | ✓ 2 | ✓ 1 | ✓ 4 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Serial Counter (`serials`) | ✗ | ✓ 3 | ✓ 4 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
-| Transcription (`transcribe`) | ✗ | ✓ 1 | ✓ 6 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | no | no |
+| Serial Counter (`serials`) | ✓ 1 | ✓ 3 | ✓ 4 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Transcription (`transcribe`) | ✓ 1 | ✓ 1 | ✓ 6 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Screen Recorder (`recorder`) | ✓ 1 | ✓ 1 | ✓ 6 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Email Signature (`signature`) | ✓ 1 | ✓ 2 | ✓ 2 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Email Signature (`signature`) | ✓ 1 | ✓ 2 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | QR Code Generator (`qr`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Colours (`colors`) | ✓ 1 | ✓ 2 | ✓ 7 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
-| Workflows (`workflows`) | ✗ | ✗ | ✗ | ✗ |  | ✓ own | ✓ page | ✗ | no | no |
-| File Converter (`convert`) | ✗ | ✗ | ✗ | ✗ |  | ✗ | ✗ | ✗ | no | no |
-| Calculator (`calculator`) | ✗ | ✓ 1 | ✓ 1 | ✓ 2 |  | ✓ own | ✓ page | ✓ | no | no |
+| Font Creator (`fontcreator`) | ✓ 1 | ✓ 6 | ✓ 17 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Workflows (`workflows`) | ✓ 1 | ✓ 1 | ✓ 7 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| File Converter (`convert`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
+| Calculator (`calculator`) | ✓ 1 | ✓ 1 | ✓ 1 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | World Clock (`time`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | CRM (`crm`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ records | ✓ page | ✓ | yes | yes |
 | Calendar (`calendar`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ records | ✓ page | ✓ | yes | yes |
@@ -70,10 +71,10 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 | Admin (`admin`) | ✓ 1 | ✓ 1 | ✓ 5 | ✓ 2 |  | ✓ records | ✓ page | ✓ | yes | yes |
 | Files (`drive`) | ✓ 2 | ✓ 1 | ✓ 4 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Code Editor (`code`) | ✓ 1 | ✓ 1 | ✓ 5 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Photo Sorter (`sorter`) | ✗ | ✓ 2 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | no | no |
+| Photo Sorter (`sorter`) | ✓ 1 | ✓ 2 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Gallery (`gallery`) | ✓ 1 | ✓ 2 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | 3D Modeller (`3d`) | ✓ 2 | ✓ 2 | ✓ 8 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Music Player (`music`) | ✓ 1 | ✓ 1 | ✓ 18 | ✗ |  | ✓ own | ✓ page | ✓ | no | no |
+| Music Player (`music`) | ✓ 1 | ✓ 1 | ✓ 18 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 
 ## Commands per app
 
@@ -114,6 +115,13 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 - edit: `look`
 - export: `save_cutouts`
 
+### AI Tools
+
+- create: `new_job`
+- add: `add_file`
+- edit: `request_model`, `run_job`, `set_options`
+- export: `export_result`
+
 ### Reports
 
 - create: `create_report`
@@ -135,6 +143,21 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 - add: `add_images`
 - edit: `set_page`
 - export: `export_pdf`
+
+### Metadata Remover
+
+- create: `new_batch`
+- add: `add_files`
+- edit: `remove_file`, `set_options`
+- export: `export_cleaned`
+- operations: `clean.metadata`
+
+### Assistant
+
+- create: `new_chat`
+- add: `add_message`
+- edit: `open_chat`, `send_message`, `set_settings`
+- export: `export_chat`
 
 ### Documents
 
@@ -169,6 +192,7 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 
 ### Video Remix
 
+- create: `new_reel`
 - add: `add_from_drive`
 - edit: `lock_cut`, `move_cut`, `remix`, `remix_from_spec`, `remix_state`, `remove_clip`, `replace_slot`, `reset_options`, `send_to_videostudio`, `set_cut_fill`, `set_options`, `swap_slots`
 - export: `export_reel`
@@ -280,32 +304,40 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 - create: `new_project`
 - add: `add_effect`, `add_keyframe`, `add_layer`, `add_media_from_drive`
 - edit: `animate`, `delete_layer`, `duplicate_layer`, `edit_layer`, `move_layer`, `random_motion`, `remove_effect`, `render`, `set_composition`, `set_effect`, `set_layer_property`
+- export: `export_frame`, `save_project`
 
 ### Image to 3D
 
 - create: `new_from_picture`
+- add: `import_depth_map`
 - edit: `set_options`
 - export: `export_model`
 
 ### Spreadsheet Viewer
 
+- create: `new_workbook`
+- add: `add_rows`, `add_sheet`
 - edit: `clear_filters`, `filter_rows`, `open_file`, `select_sheet`, `sort_column`
 - export: `export_rows`
 
 ### Hex Editor
 
 - create: `new_file`
-- edit: `find_bytes`, `open_file`, `set_bytes`
+- add: `append_bytes`, `insert_bytes`
+- edit: `delete_bytes`, `find_bytes`, `open_file`, `set_bytes`
 - export: `export_file`, `save_version`
 
 ### Email Viewer
 
 - create: `new_message`
+- add: `add_attachment`, `add_recipient`
 - edit: `close_message`, `open_file`, `search_messages`, `select_message`
 - export: `export_messages`
 
 ### Checksum
 
+- create: `new_check`
+- add: `add_text`, `paste_hash`
 - edit: `hash_file`
 - export: `save_hash`
 
@@ -326,12 +358,14 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 
 ### Serial Counter
 
+- create: `new_count`
 - add: `add_photos`, `add_serial`, `add_text`
 - edit: `clear_photos`, `read_photos`, `remove_serial`, `set_pattern`
 - export: `export_serials`
 
 ### Transcription
 
+- create: `new_batch`
 - add: `add_from_drive`
 - edit: `clear_files`, `correct_text`, `remove_file`, `select_file`, `stop`, `transcribe`
 - export: `save_transcript`
@@ -348,7 +382,7 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 
 - create: `new_signature`
 - add: `add_links`, `add_picture`
-- edit: `set_fields`, `set_style`
+- edit: `copy_signature`, `make_logo`, `random_signature`, `set_fields`, `set_style`
 - export: `export_signature`
 
 ### QR Code Generator
@@ -366,8 +400,30 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 - export: `export_palette`
 - operations: `colors.palette`
 
+### Font Creator
+
+- create: `new_font`
+- add: `add_characters`, `add_kerning`, `add_shape`, `draw_glyph`, `draw_glyphs`, `draw_strokes`
+- edit: `asc`, `base`, `cap`, `clear_glyph`, `copy_glyph`, `desc`, `open_font`, `path_operation`, `remove_glyph`, `select_glyph`, `set_glyph_metrics`, `set_info`, `set_metrics`, `show_view`, `subset_font`, `transform_glyph`, `x`
+- export: `export_font`
+
+### Workflows
+
+- create: `new_workflow`
+- add: `add_step`
+- edit: `move_step`, `open_template`, `remove_step`, `rename_workflow`, `run_workflow`, `set_option`, `set_step`
+- export: `export_workflow`, `save_workflow`
+
+### File Converter
+
+- create: `new_conversion`
+- add: `add_files`
+- edit: `run_conversion`, `set_target`
+- export: `export_results`
+
 ### Calculator
 
+- create: `new_sheet`
 - add: `add_calculation`
 - edit: `clear_tape`
 - export: `export_tape`, `save_calculation`
@@ -444,6 +500,7 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 
 ### Photo Sorter
 
+- create: `new_sort`
 - add: `add_photos`, `add_tags`
 - edit: `remove_photos`, `remove_tag`, `set_decision`
 - export: `export_photos`
@@ -467,3 +524,4 @@ Covered: 44 of 61 apps. Full suite: 44 of 61 apps.
 - create: `create_playlist`
 - add: `add_to_playlist`
 - edit: `delete_playlist`, `find_tracks`, `next`, `pause`, `play`, `play_pause`, `play_playlist`, `play_track`, `previous`, `queue_track`, `remove_from_playlist`, `rename_playlist`, `repeat`, `seek`, `shuffle`, `speed`, `tag_track`, `volume`
+- export: `export_playlist`
