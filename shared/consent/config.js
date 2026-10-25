@@ -12,10 +12,14 @@
   };
   // Test hook only: test pages set window.TLBX_CONSENT_OVERRIDES before this file loads. Nothing in the app sets it.
   var over = window.TLBX_CONSENT_OVERRIDES || {};
+  // The brand profile's switch for third parties (brand/profiles/<id>.json "analytics", set at build time): off empties the IDs.
+  var THIRD_PARTY = /*profile:analytics*/false;
+  if (!THIRD_PARTY) { defaults.ga4MeasurementId = ''; defaults.adsensePublisherId = ''; defaults.patreonUrl = ''; }
   var cfg = Object.assign({}, defaults, over);
   if (!/^G-[A-Z0-9]{4,20}$/.test(cfg.ga4MeasurementId)) cfg.ga4MeasurementId = '';
   if (!/^ca-pub-\d{6,20}$/.test(cfg.adsensePublisherId)) cfg.adsensePublisherId = '';
   if (!/^https:\/\/[^\s"'<>]+$/.test(cfg.patreonUrl)) cfg.patreonUrl = '';
   if (!(Number.isInteger(cfg.policyVersion) && cfg.policyVersion >= 1)) cfg.policyVersion = defaults.policyVersion;
+  cfg.thirdParty = THIRD_PARTY;   // false: nothing third-party exists on this site, so the consent strip never shows
   window.TLBX_CONSENT_CONFIG = Object.freeze(cfg);
 })();
