@@ -19,7 +19,7 @@
   describe('World Clock: assistant commands', () => {
     it('add and remove cities, convert a time, a countdown, export the clock', async () => {
       f.src = '../../time/index.html';
-      await waitFor(() => f.contentWindow && f.contentWindow.TlbxTime && f.contentWindow.TlbxTime.world && f.contentWindow.TlbxCmd && f.contentWindow.TlbxHub && f.contentWindow.TlbxData, { timeout: 15000 });
+      await waitFor(() => f.contentWindow && f.contentWindow.TlbxTime && f.contentWindow.TlbxTime.world && f.contentWindow.TlbxCmd && f.contentWindow.TlbxCmd.get('time.world') && f.contentWindow.TlbxHub && f.contentWindow.TlbxData, { timeout: 15000 });   // time.world: the page's own commands (and its prepare) are in
       W = f.contentWindow; C = W.TlbxCmd;
       await C.prepare();
       await run('add-city', { city: 'Lisbon' });
