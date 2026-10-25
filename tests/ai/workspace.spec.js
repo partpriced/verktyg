@@ -129,8 +129,9 @@
       const st = JSON.parse((await call('app_state', { appId: 'drive' }, env())).result);
       expect(st.app).toBe('Files');
       expect(st.drivable).toBe(true);
-      expect(st.state).toBe(null);
-      expect(st.note).toContain('window.TlbxAppState hook');
+      // Files shares its state now (drive/js/ui/ai-commands.js, TlbxCmd.provide({ state }), wip/ai-create)
+      expect(st.state.app).toBe('Files');
+      expect(Array.isArray(st.state.newKinds)).toBe(true);
     }, LONG);
 
     it('a frame without a command registry errors after the wait, not forever', async () => {
