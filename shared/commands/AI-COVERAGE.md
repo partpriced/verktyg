@@ -26,7 +26,7 @@ Covered: 44 of 61 apps.
 | Presentations (`slides`) | ✓ 2 | ✓ 4 | ✓ 6 | ✓ 1 | 1 | yes |
 | Page Layout (`press`) | ✓ 2 | ✓ 4 | ✓ 5 | ✓ 1 |  | yes |
 | Video Remix (`remix`) | ✗ | ✓ 1 | ✓ 12 | ✓ 1 |  | owned by wip/video-ai |
-| Video Editor (`videoedit`) | ✓ 2 | ✓ 9 | ✓ 19 | ✓ 1 | 4 | yes |
+| Video Editor (`videoedit`) | ✓ 2 | ✓ 9 | ✓ 22 | ✓ 1 | 4 | yes |
 | Resizer (`resize`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 | 1 | yes |
 | Upscaler (`upscale`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 | 1 | yes |
 | Watermark (`watermark`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 | 1 | yes |
@@ -173,7 +173,7 @@ Covered: 44 of 61 apps.
 
 - create: `build_from_edit_list`, `new_project`
 - add: `add_captions`, `add_clip`, `add_effect_layer`, `add_graphic`, `add_marker`, `add_music`, `add_title`, `add_transition`, `import_media`
-- edit: `check_edit_list`, `delete_clips`, `duplicate_clip`, `edit_title`, `look_at_frame`, `move_clip`, `picture_in_picture`, `random_edit`, `reframe`, `set_colour`, `set_in_out`, `set_sequence`, `set_source_range`, `set_speed`, `set_track`, `set_transform`, `set_volume`, `split_clip`, `trim_clip`
+- edit: `check_edit_list`, `delete_clips`, `duplicate_clip`, `edit_title`, `fit_frame`, `look_at_frame`, `move_clip`, `picture_in_picture`, `random_edit`, `reframe`, `select_all`, `select_clips`, `set_colour`, `set_in_out`, `set_sequence`, `set_source_range`, `set_speed`, `set_track`, `set_transform`, `set_volume`, `split_clip`, `trim_clip`
 - export: `export_video`
 - operations: `videoedit.edl`, `videoedit.reframe`, `videoedit.captions`, `videoedit.reel`
 
