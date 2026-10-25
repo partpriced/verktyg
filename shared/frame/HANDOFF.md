@@ -155,8 +155,8 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Email Viewer | eml/ | viewer | TlbxFrame | done | |
 | Workflows | workflows/ | tool | TlbxFrame, run panel right | done | |
 | Resizer | resize/ | tool | settings right, Resize all + downloads in the header | done | |
-| Watermark | watermark/ | tool | settings right, run/download in an app bar | to do | being rebuilt on wip/watermark-all (told the rule) |
-| Background Remover | bgremover/ | editor | queue left, #props right; Download, Send back in the header | done | Send back, Open in… and Download at the settings panel's foot (the shared footer); the closed phone sheet shows them; #props resizable |
+| Watermark | watermark/ | tool | settings right, run/download in an app bar | done | rebuilt on TlbxFrame (watermark/js/main.js): files left, the preview, the watermark panel right; Watermark N files (primary), Download, Save to Files… and Open in… at its foot (stack); a phone bottom sheet |
+| Background Remover | bgremover/ | editor | queue left, #props right; Download, Send back in the header | done | Send back, Open in… and Download at the settings panel's foot (the shared footer); one main button: Download (Export N pictures (ZIP) with two or more selected), the Export section keeps Export all; the closed phone sheet shows them; #props resizable |
 | OCR | ocr/ | tool | settings row above the work area, Read in it | done | the model prompt shows before the tool, as before |
 | Transcription | transcribe/ | tool | controls above, list left, text right | done | the file list stays in the view, left of the transcript |
 | Screen Recorder | recorder/ | tool | new: stage centre, settings right, Record at the panel's foot | done | |
@@ -165,7 +165,7 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Image to 3D | img3d/ | tool | settings LEFT, Send in the header | done | |
 | Email Signature | signature/ | tool | form LEFT, preview right, Copy under the preview | done | |
 | QR Code Generator | qr/ | tool | editor LEFT, preview right, downloads under it | done | Save to Drive, Open from Drive and Copy to buffer stay in its app bar (Drive actions, like Open) |
-| Colours | colors/ | tool | new: TlbxFrame from the start | done | Download palette at the panel's foot, with Save to Files…, Copy code and Open in… |
+| Colours | colors/ | tool | new: TlbxFrame from the start | done | the colour, its values (type in any format, the others follow) and Copy in the main view (js/values.js); the panel holds only the settings (harmony, scale, picture, export format), Download palette at its foot with Save to Files…, Copy code and Open in… |
 | Motion Graphics | effects/ | editor | properties right, Render in the header | done | its own panel and TlbxSheet, the shared footer (bare) |
 | Checksum | checksum/ | tool | three stacked cards, Copy under the hash | done | |
 | Compare | diff/ | tool | new: A and B and the result in the view | done | Compare and Export at the panel's foot; the settings and the report's Save and Open in in the panel |
@@ -194,21 +194,21 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Orders | orders/ | records | ws-panel right | done | Save and Confirm order / Fulfil… at the record panel's foot (shared/biz/panel.js); New order stays in the list and the File menu |
 | Quotes | quotes/ | records | ws-panel right | done | Save and Mark as sent at the record panel's foot; a bottom sheet on phones |
 | Purchase Orders | purchases/ | records | ws-panel right | done | Save and Place order at the record panel's foot; a bottom sheet on phones |
-| Contacts | contacts/ | records | groups left, list, card right | close | Edit, Duplicate, Delete (Cancel, Save in the form) at the card's foot (the shared footer, bare); on a phone the card is a page with the footer at the bottom, not a TlbxSheet |
-| CRM | crm/ | records | filters left | close | the customer's record beside the list (shared/layouts) with Edit details and Delete customer at its foot (the shared footer, bare); on a phone a page with a fixed footer, not a TlbxSheet |
+| Contacts | contacts/ | records | groups left, list, card right | done | Edit, Duplicate, Delete (Cancel, Save in the form) at the card's foot (the shared footer, bare); on a phone the card is a TlbxSheet bottom sheet over the list (js/app/card.js), its footer at its foot; × closes the contact |
+| CRM | crm/ | records | filters left | done | the customer's record beside the list (shared/layouts) with Edit details and Delete customer at its foot (the shared footer, bare); on a phone a TlbxSheet bottom sheet over the tab it was opened from (js/ui/app.js), × closes it |
 | Projects | projects/ | records | timeline, undated tasks right | done | a task opens in the TlbxFrame panel right of the board, timeline or list (projects/js/ui/task-panel.js), Cancel, Delete and Save at its foot; project settings stay a dialog |
 | Timesheets | timesheets/ | records | tabs, one-column form | done | an open entry is the panel right of the list (TlbxBiz.panel.records), Save at its foot |
 | Expenses | expenses/ | records | tabs, one-column form | done | an open expense is the panel right of the list (TlbxBiz.panel.records), Record expense / Mark as paid… at its foot |
-| Inventory | inventory/ | records | tabs, one column | close | Receive, Sell, Adjust, Transfer are the stock view's right panel (TlbxBiz.panel.form; Stock actions opens it on a phone), each form keeps its own submit button; the product form, Count and Scan are unchanged |
+| Inventory | inventory/ | records | tabs, one column | done | Receive, Sell, Adjust, Transfer: one form at a time in the stock view's right panel (TlbxBiz.panel.form), one main button at its foot (#sApply, named after the form; the palette's Stock commands choose the form there); the product form is the products view's right panel (js/ui/product-form.js), Create product / Save at its foot; bottom sheets on phones; Count and Scan unchanged |
 | Ledger | ledger/ | records | tabs, one column | done | the new entry, account and rate forms are their view's right panel (TlbxBiz.panel.form), Post entry / Add account / Add rate at its foot |
-| Reports | reports/ | other | one column | done | the report is the view; picker, definition and Export CSV (at the foot) in the TlbxFrame panel (reports/js/layout.js) |
+| Reports | reports/ | other | one column | done | the report is the view; picker, definition and Export CSV (at the foot) in the TlbxFrame panel (reports/js/layout.js); shared/finder's classes are .fd-* (no clash with TlbxFrame's .sf-*), so Reports has no overrides |
 | Assistant | ai/ | other | chat, workspace pane right | n/a | a chat: the composer is the main action |
 | Notes | notes/ | other | notebooks left, list, editor | n/a | no settings |
 | Paste | paste/ | other | list left, main | n/a | no settings |
 | Node Calculator | nodes/ | other | canvas only | n/a | a canvas; Save is in the menu bar |
 | Calculator | calculator/ | other | tape right | n/a | not a settings app |
 | World Clock | time/ | other | tabs | n/a | |
-| Calendar | calendar/ | other | one view | done | js/ui/panel.js: the day's events, display choices and calendar file on the right, New event at its foot; the event editor is still a dialog |
+| Calendar | calendar/ | other | one view | done | js/ui/panel.js: the day's events, display choices and calendar file on the right, New event at its foot; the event editor opens in the same panel (Cancel, Delete, Save at its foot; a bottom sheet on phones, closing it cancels) |
 | To-do | todo/ | other | lists left | n/a | navigation left; add form in the list |
 | Reminders | reminders/ | other | one column | n/a | |
 | Admin | admin/ | other | tabs | n/a | settings pages themselves |
