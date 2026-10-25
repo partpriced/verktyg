@@ -60,6 +60,10 @@ p.footer([{ id: 'up-run', label: 'Upscale 2 pictures', primary: true, run }], { 
   buttons, `aria-pressed="true"` is the chosen one), `.sf-note`.
 - With a footer the panel is a column and the footer is `position: sticky; bottom: 0`; its height is in `--sf-foot-h` on
   the frame's root (frame.css leaves that much room under the page on phones).
+- A footer in the bottom of the window also sets `--tlbx-foot-h` on `<html>` (the room from its top to the window's
+  bottom; a `tlbx-foot` event on window when it changes): the consent card (shared/consent/banner.css, phones) and the
+  buddy's button (shared/buddy/boot.js, until moved) sit above it, so nothing floats over the main button.
+  Test: `tests/consent/sheet-foot.test.html`.
 
 ## Resizing side panels (every app)
 
@@ -152,7 +156,7 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Workflows | workflows/ | tool | TlbxFrame, run panel right | done | |
 | Resizer | resize/ | tool | settings right, Resize all + downloads in the header | done | |
 | Watermark | watermark/ | tool | settings right, run/download in an app bar | to do | being rebuilt on wip/watermark-all (told the rule) |
-| Background Remover | bgremover/ | editor | queue left, #props right; Download, Send back in the header | close | #props is resizable; Download and Send back still in the header (its own branch owns the panel) |
+| Background Remover | bgremover/ | editor | queue left, #props right; Download, Send back in the header | done | Send back, Open in… and Download at the settings panel's foot (the shared footer); the closed phone sheet shows them; #props resizable |
 | OCR | ocr/ | tool | settings row above the work area, Read in it | done | the model prompt shows before the tool, as before |
 | Transcription | transcribe/ | tool | controls above, list left, text right | done | the file list stays in the view, left of the transcript |
 | Metadata Remover | clean/ | tool | choices panel right, Copy and clean in the header | done | |
@@ -169,7 +173,7 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Video Remix | remix/ | editor | bin left, settings right, Remix in the panel | close | phone sheet missing |
 | Image Editor | imageeditor/ | editor | toolbox left, panels right, Export in the header | done | Export at the panels' foot; the top bar fits the app's width (container query, More ▾) beside the Assistant panel |
 | Vector Editor | vectoreditor/ | editor | toolbar left, dock right, no main button | done | Export ▾ at the dock's foot (the File ▸ Export actions); the dock is a drawer on phones |
-| PDF Editor | pdf/ | editor | rail left, properties right, Download in the header | close | properties resizable (shared/ui/resize-panel.js); Download stays in the header: its phone sheet is the app's own (openClass), where a footer would be hidden |
+| PDF Editor | pdf/ | editor | rail left, properties right, Download in the header | done | Download at the properties panel's foot (the shared footer); its own phone sheet (openClass) shows the footer above the rail while closed; properties resizable (shared/ui/resize-panel.js) |
 | Label Designer | label/ | editor | toolbox left, dock right, Print in the header | done | Print at the dock's foot (the shared footer) |
 | Video Editor | videostudio/ | editor | bin left, inspector right, Export in the header | close | Export into the inspector's foot |
 | Page Layout | press/ | editor | toolbar left, dock right, Export PDF in the control bar | done | Export PDF… at the dock's foot; the dock is a drawer on phones |
