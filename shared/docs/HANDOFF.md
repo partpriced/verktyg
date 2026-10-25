@@ -17,7 +17,7 @@ print sheet, and the PDF. The data (money, numbering, totals) is unchanged: this
 | `doc-page.js` | `TlbxDocs.docPage.create(cfg)`: the paper view for that editor (in-place edits through the editor's `fieldError`, the company name, the PDF download). `cfg.view` adds view fields such as `moreMeta`; `cfg.field` takes the app's own fields. |
 | `doc-app.js` | `TlbxDocs.docApp.start(cfg)`: boot and routes (`#list`, `#new`, `#<route>/<id>`, `#data`) with TlbxTabs, the leave-without-saving question and the list redraw on store changes (the list beside an open record redraws with it after a route and after every store change, so a first save or an issue shows at once). |
 | `doc-pdf.js` | `TlbxDocs.docPdf.create(cfg)`: `load(id)` (the record, its customer and the company block), `viewOf(ctx)` and `pdf(id)` for a stored document. |
-| `doc-layout.js` | `TlbxDocs.docLayout.mount(ns, app)`: the list-and-document workspace layout (shared/layouts) above 720 px. |
+| `doc-layout.js` | `TlbxDocs.docLayout.mount(ns, app)`: the list-and-document workspace layout (shared/layouts) above 720 px, and the details as the record panel on the right (`TlbxBiz.panel`, shared/biz/panel.js: TlbxFrame, resizable, Save and the primary action in its footer; a bottom sheet on a phone whose footer stays on screen). `doc-editor.js` hands the record's actions to it (`ns.recordPanel.actions`). |
 | `model.js`, `lines.js` | Unchanged apart from `TlbxDocs.lines.parseField`, which the paper uses so typed values are read exactly as the form reads them. |
 
 ## The template and the seed
