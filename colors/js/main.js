@@ -1,0 +1,48 @@
+/* Colours: boot. The header (TlbxAppBar: Open… only, plus the shell's buttons), the suite's View · Panel layout
+ * (shared/frame, TlbxFrame: the colour, picture, palette and contrast check in the middle; the settings and Download
+ * palette on the right; a bottom sheet on phones whose foot always shows), the drop zone (TlbxDrop, spec 'colors'), a
+ * file sent from another app (?drive=) and the redraw on every state change. Classic script, after the other parts. */
+(function (g) {
+  'use strict';
+  const $ = (id) => document.getElementById(id);
+  let frame = null, zone = null;
+
+  function paint(s) {
+    const W = g.CO.swatches;
+    W.hero(s); W.palette(s); W.generated(s);
+    g.CO.contrast.paint(s);
+    g.CO.panel.paint(s);
+    if (g.CO.picture.has()) g.CO.picture.paintDominant();
+  }
+  function wireDrop() {
+    g.CO.io.register();
+    zone = g.TlbxDrop.attach($('co-drop'), {
+      intake: 'colors',
+      targets: [$('co-drop'), $('co-pic')],
+      label: 'Drop a picture or a palette file here',
+      hint: 'A picture (PNG, JPEG, WebP, GIF, SVG) to pick colours from, or a palette (.gpl, .ase, .json, .css) to open. Read in this browser, never uploaded.',
+      sample: { label: 'Try it with a sample photo', files: () => g.TlbxSamples.photos(1) },
+    });
+  }
+  function boot() {
+    g.TlbxAppBar.mount($('co-bar'), {
+      home: '../', title: 'Colours', subtitle: 'Pick colours from pictures, make palettes and check contrast. Nothing is uploaded.',
+      actions: [{ id: 'open', label: 'Open…', icon: 'open', onClick: () => g.TlbxIntake.pick({ to: 'colors' }) }], menu: [],
+    });
+    frame = g.TlbxFrame.mount($('co-main'), { list: null, view: $('co-view'), panel: $('co-panel'), panelLabel: 'Settings',
+      storageKey: 'colors', phone: '(max-width: 860px)', phoneButton: false, width: 320, min: 280, max: 480 });
+    g.CO.panel.mount($('co-panel'));
+    g.CO.swatches.wire(); g.CO.picture.wire(); g.CO.contrast.wire();
+    $('co-pic-open').addEventListener('click', () => g.TlbxIntake.pick({ to: 'colors', accept: 'image/*' }));
+    wireDrop();
+    g.CO.state.on(paint);
+    paint(g.CO.state.get());
+    if (g.TlbxHub) g.TlbxHub.register('colors');
+    g.TlbxIntake.launch({ to: 'colors' });
+  }
+  g.CO.main = { frame: () => frame, dropEmpty: (on) => { if (zone && zone.empty) zone.empty(on); }, paint: () => paint(g.CO.state.get()) };
+  document.addEventListener('DOMContentLoaded', () => {
+    try { boot(); } catch (e) { console.error(e); if (g.TlbxUI) g.TlbxUI.toast('Colours could not start: ' + e.message); }
+    document.body.classList.add('ready');
+  });
+})(window);

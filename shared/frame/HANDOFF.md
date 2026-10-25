@@ -159,13 +159,16 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Background Remover | bgremover/ | editor | queue left, #props right; Download, Send back in the header | done | Send back, Open in… and Download at the settings panel's foot (the shared footer); the closed phone sheet shows them; #props resizable |
 | OCR | ocr/ | tool | settings row above the work area, Read in it | done | the model prompt shows before the tool, as before |
 | Transcription | transcribe/ | tool | controls above, list left, text right | done | the file list stays in the view, left of the transcript |
+| Screen Recorder | recorder/ | tool | new: stage centre, settings right, Record at the panel's foot | done | |
 | Metadata Remover | clean/ | tool | choices panel right, Copy and clean in the header | done | |
 | HTML to PDF | html2pdf/ | tool | settings LEFT, Print in the header | done | |
 | Image to 3D | img3d/ | tool | settings LEFT, Send in the header | done | |
 | Email Signature | signature/ | tool | form LEFT, preview right, Copy under the preview | done | |
 | QR Code Generator | qr/ | tool | editor LEFT, preview right, downloads under it | done | Save to Drive, Open from Drive and Copy to buffer stay in its app bar (Drive actions, like Open) |
+| Colours | colors/ | tool | new: TlbxFrame from the start | done | Download palette at the panel's foot, with Save to Files…, Copy code and Open in… |
 | Motion Graphics | effects/ | editor | properties right, Render in the header | done | its own panel and TlbxSheet, the shared footer (bare) |
 | Checksum | checksum/ | tool | three stacked cards, Copy under the hash | done | |
+| Compare | diff/ | tool | new: A and B and the result in the view | done | Compare and Export at the panel's foot; the settings and the report's Save and Open in in the panel |
 | Serial Counter | serials/ | tool | one column, bar + actions | done | |
 | Photo Sorter | sorter/ | tool | one column, Start and downloads in bars | done | the view filters stay above the photos |
 | File Converter | convert/ | tool | tool built in JS, one column | done | js/ui/frame.js: files left, results right, Convert + Clear in the panel footer; the Convert dialog (compact) keeps one column |
