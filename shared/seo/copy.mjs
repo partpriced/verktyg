@@ -7,8 +7,9 @@
 import { CONVERT_PAGES } from './convert-copy.mjs';
 
 export const HOME = {
-  title: 'ITpris Verktyg: kontors- och affärsverktyg i webbläsaren',
-  description: 'PDF-redigerare, bildredigerare, dokument, kalkylark, fakturor och mer. Körs i webbläsaren och dina filer stannar på din enhet. Gratis, inga konton.',
+  // A brand profile can set its own (seo.homeTitle, seo.homeDescription; tools/whitelabel/build.mjs writes them here).
+  title: /*profile:seoHomeTitle*/'ITpris Verktyg: kontors- och affärsverktyg i webbläsaren',
+  description: /*profile:seoHomeDescription*/'PDF-redigerare, bildredigerare, dokument, kalkylark, fakturor och mer. Körs i webbläsaren och dina filer stannar på din enhet. Gratis, inga konton.',
 };
 
 export const APPS = {

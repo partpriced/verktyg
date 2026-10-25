@@ -44,7 +44,13 @@
     return bubble;
   };
 
+  const MASCOT = /*profile:mascot*/false;   // the brand profile's mascot switch (set at build time)
   AI.initHelpbot = function () {
+    if (!MASCOT) {
+      AI.$('helpbot').hidden = true; AI.paintHelpbot = () => {};
+      document.head.append(el('style', null, '.hello-helpbot{display:none}'));
+      return;
+    }
     AI.$('helpbot').onclick = () => AI.askHelpbot();
     const base = new URL('../shared/helpbot/index.js', document.baseURI).href;
     import(base).then((m) => { draw = m.drawHelpbot; K.powerUp.install(m.HATS); AI.paintHelpbot(); }).catch((e) => console.warn('Helper painter unavailable', e));

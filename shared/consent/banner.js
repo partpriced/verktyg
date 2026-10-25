@@ -121,6 +121,7 @@
   function mount() {
     if (!S || !C) return false;
     if (document.body && document.body.getAttribute('data-consent') === 'off') return false;
+    if (window.TLBX_CONSENT_CONFIG && window.TLBX_CONSENT_CONFIG.thirdParty === false) return false;
     if (!S.needsChoice() || document.getElementById(ID) || !document.body) return false;
     injectCss();
     var el = build();

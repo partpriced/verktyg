@@ -4,17 +4,24 @@
  *   kind:    app | game | experiment
  *   group:   business | creative (how the homepage groups apps; headings from GROUP_LABELS)
  *   status:  live | beta | building
- *   accepts: MIME patterns the app can open from Files (for "Send to…") */
+ *   accepts: MIME patterns the app can open from Files (for "Send to…")
+ *   weight:  1, or 2 for the apps most people come for: drawn larger on the homepage globe and listed first by the
+ *            homepage finder when nothing is searched (home/globe/globe.js, home/browse.js) */
 (function () {
   'use strict';
   /* Group headings on the homepage. Change a label here only; the keys ('business', 'creative') stay as they are. */
-  const GROUP_LABELS = Object.freeze({ business: 'Business apps', creative: 'Creative apps' });
+  // The brand profile (brand/profiles/<id>.json) sets these at build time (tools/whitelabel/build.mjs rewrites the literal
+  // after each marker). Here they hold this site's own values: brand names, every app listed, shots and videos shown.
+  const NAMING = /*profile:naming*/"plain";
+  const HIDE = /*profile:hideApps*/[];
+  const MEDIA = /*profile:media*/false;
+  const GROUP_LABELS = Object.freeze(NAMING === 'plain' ? { business: 'Business', creative: 'Creative' } : { business: 'Business apps', creative: 'Creative apps' });
   window.TLBX_GROUP_LABELS = GROUP_LABELS;
   // extra.video: the app's YouTube tutorial { id, title, date (ISO upload time), duration (ISO 8601) }: the landing page
   // shows it (thumbnail kept in assets/video/yt-<id>.jpg) and the shell header links it as Tutorial.
-  const A = (id, kind, name, path, tagline, extra = {}) => Object.assign({ id, kind, name, path, tagline, status: 'live', accepts: [], features: [] }, extra);
-  window.TLBX_APPS = [
-    A('imageeditor', 'app', 'Image Editor', 'imageeditor/', 'Photoshop, rebuilt for the browser.', { title: 'Image Editor: photo editor', group: 'creative',
+  const A = (id, kind, name, path, tagline, extra = {}) => Object.assign({ id, kind, name, path, tagline, status: 'live', accepts: [], features: [], weight: 1 }, extra);
+  const list = [
+    A('imageeditor', 'app', 'Image Editor', 'imageeditor/', 'Photoshop, rebuilt for the browser.', { weight: 2, title: 'Image Editor: photo editor', group: 'creative',
       accepts: ['image/*', 'image/vnd.adobe.photoshop', 'application/x-openraster'],
       features: ['Layers, masks & 17 blend modes', 'Real PSD open & save', 'Camera RAW: CR2, CR3, NEF, ARW, DNG, RAF', '50+ filters, brush packs, .abr import', 'Tabs, autosave, offline .html'],
       shot: 'assets/shots/imageeditor.jpg', icon: 'brush' }),
@@ -22,7 +29,7 @@
       accepts: ['image/svg+xml', 'image/*', 'application/illustrator'],
       features: ['Pen, shapes, type & layers', 'Real pathfinder booleans', 'SVG, PNG, PDF & .ai export', 'Offline .html'],
       shot: 'assets/shots/vector.jpg', icon: 'pen' }),
-    A('pdf', 'app', 'PDF Editor', 'pdf/', 'Organise, edit and sign PDFs. Nothing uploaded.', { title: 'PDF tools', group: 'business', featured: true,
+    A('pdf', 'app', 'PDF Editor', 'pdf/', 'Organise, edit and sign PDFs. Nothing uploaded.', { weight: 2, title: 'PDF tools', group: 'business', featured: true,
       accepts: ['application/pdf', 'image/*'],
       features: ['Reorder, merge & split', 'Text, shapes, images & signatures', 'Page numbers, watermarks, forms', 'Compress & convert'],
       shot: 'assets/shots/pdf.jpg', icon: 'doc' }),
@@ -30,7 +37,7 @@
       accepts: ['image/*', 'text/csv'],
       features: ['Barcodes & QR, GS1', 'Data merge from CSV & Excel', 'Zebra ZPL export & import', 'Sheets & thermal rolls'],
       shot: 'assets/shots/label.jpg', icon: 'tag', status: 'beta' }),
-    A('cutout', 'app', 'Background Remover', 'bgremover/', 'Remove backgrounds with AI that runs on your device.', { title: 'Background Remover: background remover', group: 'creative',
+    A('cutout', 'app', 'Background Remover', 'bgremover/', 'Remove backgrounds with AI that runs on your device.', { weight: 2, title: 'Background Remover: background remover', group: 'creative',
       accepts: ['image/*'],
       features: ['One-click AI background removal', 'Refine brush & soft edges', 'Replace with colour, blur or image', 'Batch, no uploads, no watermarks'],
       shot: 'assets/shots/cutout.jpg', icon: 'brush', status: 'beta' }),
@@ -57,17 +64,17 @@
       accepts: ['text/*', 'image/*'],
       features: ['Local models via WebGPU, works offline', 'System check: what can your PC run?', 'Drives every ITpris Verktyg app', 'Builds mini-apps for you'],
       shot: 'assets/shots/ai.jpg', icon: 'spark', status: 'beta' }),
-    A('docs', 'app', 'Documents', 'docs/', 'Word and Google Docs, rebuilt for the browser.', { title: 'Document editor', group: 'business',
+    A('docs', 'app', 'Documents', 'docs/', 'Word and Google Docs, rebuilt for the browser.', { weight: 2, title: 'Document editor', group: 'business',
       accepts: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'text/markdown', 'text/plain', 'text/html'],
       creates: [{ label: 'Document', ext: 'sdoc', mime: 'application/x-tlbx-doc' }],
       features: ['Real pages, styles and lists', 'Opens & saves DOCX and Markdown', 'Exports a PDF that matches the page', 'Headers, footers and page numbers', 'Arabic, Hebrew, Chinese, Hindi and more', 'Offline .html'],
       shot: 'assets/shots/docs.jpg', icon: 'page', status: 'building' }),
-    A('tables', 'app', 'Spreadsheets', 'tables/', 'Excel and Google Sheets, rebuilt for the browser.', { title: 'Spreadsheet editor', group: 'business',
+    A('tables', 'app', 'Spreadsheets', 'tables/', 'Excel and Google Sheets, rebuilt for the browser.', { weight: 2, title: 'Spreadsheet editor', group: 'business',
       accepts: ['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.oasis.opendocument.spreadsheet', 'text/csv', 'text/tab-separated-values'],
       creates: [{ label: 'Spreadsheet', ext: 'stab', mime: 'application/x-tlbx-table' }],
       features: ['300+ functions, charts and pivot tables', 'Opens XLSX, ODS and CSV; saves XLSX and CSV', 'Templates to start from', 'Offline .html'],
       shot: 'assets/shots/tables.jpg', icon: 'grid', status: 'building' }),
-    A('slides', 'app', 'Presentations', 'slides/', 'Keynote and PowerPoint, rebuilt for the browser.', { title: 'Presentation editor', group: 'business',
+    A('slides', 'app', 'Presentations', 'slides/', 'Keynote and PowerPoint, rebuilt for the browser.', { weight: 2, title: 'Presentation editor', group: 'business',
       accepts: ['application/vnd.openxmlformats-officedocument.presentationml.presentation', 'image/*'],
       creates: [{ label: 'Presentation', ext: 'sslide', mime: 'application/x-tlbx-slides' }],
       features: ['Themes, layouts, transitions & animations', 'Opens and exports PowerPoint (PPTX)', 'Exports PDF', 'Presenter view with notes and a timer', 'Offline .html'],
@@ -80,7 +87,7 @@
       accepts: ['video/*', 'image/*'],
       features: ['Random edit with grids and layout switches', 'Seeded: reshuffle or repeat exactly', 'Export presets from phone to 4K', 'Sends the project to Video Editor'],
       icon: 'film', status: 'building' }),
-    A('videoedit', 'app', 'Video Editor', 'videostudio/', 'A video editor that never uploads your footage.', { title: 'Video Editor: video editor', group: 'creative',
+    A('videoedit', 'app', 'Video Editor', 'videostudio/', 'A video editor that never uploads your footage.', { weight: 2, title: 'Video Editor: video editor', group: 'creative',
       accepts: ['video/*', 'audio/*', 'image/*'],
       features: ['Multi-track timeline', 'Trim, split, transitions & titles', 'Hardware MP4 export (WebCodecs)', 'Offline .html'],
       shot: 'assets/shots/videoedit.jpg', icon: 'film', status: 'beta' }),
@@ -176,11 +183,11 @@
       accepts: ['image/*'],
       features: ['Eyedropper with a magnifier, and the main colours of a picture', 'Harmonies, tints, shades and a 50 to 950 ramp', 'WCAG contrast check with a fix for failing text', 'HEX, RGB, HSL, OKLCH and CMYK', 'Export CSS, Tailwind, JSON, ASE and GPL; save to Files'],
       icon: 'brush', status: 'beta' }),
-    A('workflows', 'app', 'Workflows', 'workflows/', 'Chain apps into one workflow for a batch of files. Nothing uploaded.', { title: 'Batch workflows across apps', group: 'creative', tool: true,
+    A('workflows', 'app', 'Workflows', 'workflows/', 'Chain apps into one workflow for a batch of files. Nothing uploaded.', { weight: 2, title: 'Batch workflows across apps', group: 'creative', tool: true,
       accepts: ['image/*', 'application/pdf'],
       features: ['Remove background, watermark, resize, upscale and clean in one run', 'Every File Converter conversion as a step', 'PDF merge, compress, password and OCR', 'Templates, saved workflows, .tlbxflow files and links', 'Progress per file per step; results as a ZIP or to Files'],
       icon: 'spark', status: 'building' }),
-    A('convert', 'app', 'File Converter', 'convert/', 'Images, PDFs, data and text, converted on your device.', { title: 'File converter', group: 'business', tool: true,
+    A('convert', 'app', 'File Converter', 'convert/', 'Images, PDFs, data and text, converted on your device.', { weight: 2, title: 'File converter', group: 'business', tool: true,
       accepts: ['image/*', 'application/pdf', 'text/csv', 'application/json', 'text/markdown', 'text/plain'],
       features: ['iPhone HEIC, camera RAW and images to JPG, PNG, WebP and PDF', 'PDF to images, Word and Excel; merge and split', 'Excel, CSV, JSON, YAML, TOML, XML and subtitles', 'Video and audio: MP4, GIF, MP3, FLAC, OGG, M4A', 'Batch convert, download as zip'],
       icon: 'doc', status: 'building' }),
@@ -234,4 +241,54 @@
     A('authenticator', 'experiment', 'AI Text Detector', '#detector', 'Check whether a text reads as machine-written.', { title: 'AI text detector', shot: 'assets/shots/authenticator.jpg' }),
     A('paint-classic', 'experiment', 'Paint Classic', 'imageeditor/classic/', 'The 1998 experience. Every MS Paint tool.', { title: 'Paint Classic: the 1998 paint program', shot: 'assets/shots/paint-classic.jpg' }),
   ];
+  /* Plain names, for a profile with naming 'plain': [name, one-line description]. A missing description keeps the brand
+   * tagline. Every visible app name reads through these: apps.js swaps them in (name, title, tagline; the brand name stays
+   * in brandName), and tlbxAppName(app) adds the chosen language's 'app.<id>' string (shared/i18n/<lang>-apps.js). */
+  const PLAIN = {
+    imageeditor: ['Image Editor', 'Edit photos with layers, masks and filters.'], vector: ['Vector Editor', 'Draw vector graphics with pens, shapes and layers.'],
+    pdf: ['PDF Editor'], label: ['Label Designer'], cutout: ['Background Remover'], aitools: ['AI Tools'], reports: ['Reports'],
+    ocr: ['OCR'], html2pdf: ['HTML to PDF'], clean: ['Metadata Remover'], ai: ['Assistant'],
+    docs: ['Documents', 'Write documents with pages, styles and lists. Opens and saves DOCX.'],
+    tables: ['Spreadsheets', 'Spreadsheets with formulas, charts and pivot tables. Opens and saves XLSX.'],
+    slides: ['Presentations', 'Build slide decks with themes and layouts. Opens and saves PPTX.'],
+    press: ['Page Layout', 'Lay out pages for print with master pages and text frames.'],
+    remix: ['Video Remix', 'Clips and photos in, an automatic edit out, then fine-tune in the video editor.'],
+    videoedit: ['Video Editor'], resize: ['Resizer'], upscale: ['Upscaler'], watermark: ['Watermark'], contacts: ['Contacts'],
+    inventory: ['Inventory'], orders: ['Orders'], quotes: ['Quotes'], purchases: ['Purchase Orders'], timesheets: ['Timesheets'],
+    expenses: ['Expenses'], invoices: ['Invoices'], notes: ['Notes'], paste: ['Paste'], effects: ['Motion Graphics'],
+    img3d: ['Image to 3D'], sheetview: ['Spreadsheet Viewer'], hex: ['Hex Editor'], eml: ['Email Viewer'], checksum: ['Checksum'],
+    diff: ['Compare'], nodes: ['Node Calculator'], serials: ['Serial Counter'], transcribe: ['Transcription'],
+    recorder: ['Screen Recorder'], signature: ['Email Signature'], qr: ['QR Code Generator'], colors: ['Colours'],
+    workflows: ['Workflows'], convert: ['File Converter'], calculator: ['Calculator'], time: ['World Clock'], crm: ['CRM'],
+    calendar: ['Calendar'], todo: ['To-do'], projects: ['Projects'], reminders: ['Reminders'], ledger: ['Ledger'],
+    admin: ['Admin'], drive: ['Files', 'Every file from every app, in one place on this device.'], code: ['Code Editor'],
+    sorter: ['Photo Sorter'], gallery: ['Gallery'], '3d': ['3D Modeller'], music: ['Music Player'],
+    authenticator: ['AI Text Detector', 'Check whether a text reads as machine-written.'], 'paint-classic': ['Paint Classic', 'A simple paint program in the classic style.'],
+  };
+  window.TLBX_APPS = list.filter((a) => HIDE.indexOf(a.id) < 0);
+  for (const a of window.TLBX_APPS) {
+    const p = PLAIN[a.id] || [a.title || a.name];
+    a.plain = p[0];
+    a.plainTagline = p[1] || a.tagline;
+    a.brandName = a.name;
+    if (NAMING === 'plain') { a.name = a.plain; a.title = a.plain; a.tagline = a.plainTagline; }
+    if (!MEDIA) { delete a.shot; delete a.video; }
+  }
+  window.TLBX_NAMING = NAMING;
+  window.TLBX_HIDDEN_APPS = HIDE;
+  /** The name to show for an app (a registry entry or an id): the profile's name, in the chosen language when that
+   * language has an 'app.<id>' string and the profile uses plain names. Brand names stay as they are in every language. */
+  window.tlbxAppName = (app) => {
+    const a = typeof app === 'string' ? window.TLBX_APPS.find((x) => x.id === app) : app;
+    if (!a) return String(app || '');
+    const I = window.TlbxI18n;
+    if (NAMING === 'plain' && I && typeof I.t === 'function') { const k = 'app.' + a.id, s = I.t(k); if (s && s !== k) return s; }
+    return a.name;
+  };
+  /** The one-line description, the same way: the chosen language's 'apptag.<id>' when the profile uses plain names. */
+  window.tlbxAppTagline = (a) => {
+    const I = window.TlbxI18n;
+    if (NAMING === 'plain' && a && I && typeof I.t === 'function') { const k = 'apptag.' + a.id, s = I.t(k); if (s && s !== k) return s; }
+    return a ? a.tagline : '';
+  };
 })();

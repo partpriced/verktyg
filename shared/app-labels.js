@@ -6,5 +6,6 @@
   const BRAND_KEY = 'tlbx.home.names';
   window.tlbxBrandNamesOn = () => { try { return localStorage.getItem(BRAND_KEY) === '1'; } catch (e) { return false; } };
   window.tlbxSetBrandNames = (on) => { try { localStorage.setItem(BRAND_KEY, on ? '1' : '0'); } catch (e) { /* storage blocked: the switch still works for this visit */ } };
-  window.tlbxAppLabel = (a, withBrand) => (withBrand ? a.name : a.title || a.name);
+  // A profile with plain names (shared/apps.js) has one name per app, in the chosen language: tlbxAppName.
+  window.tlbxAppLabel = (a, withBrand) => (window.TLBX_NAMING === 'plain' && window.tlbxAppName ? window.tlbxAppName(a) : withBrand ? a.name : a.title || a.name);
 })();
