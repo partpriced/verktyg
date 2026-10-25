@@ -187,18 +187,18 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Gallery | gallery/ | viewer | albums/filters/import left | done | js/ui/panel.js: selection, add photos and library tools on the right, Import photos at its foot; albums and filters stay left |
 | Spreadsheet Viewer | sheetview/ | viewer | options in the header | done | js/panel.js: Look (style, colours) and Open in Spreadsheet on the right, Export at its foot |
 | Hex Editor | hex/ | viewer | one column | done | js/panel.js: Inspector (file facts) on the right, Save version + Download at its foot; Go to and Find stay above the bytes |
-| Invoices | invoices/ | records | list, document, ws-panel right; Save in the header | close | Save into the ws-panel's foot |
-| Orders | orders/ | records | ws-panel right | close | New/Save into the panel |
-| Quotes | quotes/ | records | ws-panel right | close | phone sheet; Save into the panel |
-| Purchase Orders | purchases/ | records | ws-panel right | close | phone sheet; Save into the panel |
-| Contacts | contacts/ | records | groups left, list, card right | close | card actions into the card's foot |
-| CRM | crm/ | records | filters left | to do | a detail panel on the right |
-| Projects | projects/ | records | timeline, undated tasks right | to do | a task detail panel on the right |
-| Timesheets | timesheets/ | records | tabs, one-column form | to do | the form → right panel |
-| Expenses | expenses/ | records | tabs, one-column form | to do | the form → right panel |
-| Inventory | inventory/ | records | tabs, one column | to do | forms → right panel |
-| Ledger | ledger/ | records | tabs, one column | to do | forms → right panel |
-| Reports | reports/ | other | one column | to do | the report definition → right panel |
+| Invoices | invoices/ | records | list, document, ws-panel right; Save in the header | done | the details are TlbxBiz.panel (shared/biz/panel.js through shared/docs/doc-layout.js): Save draft and Issue… (or the status's main button) at its foot; a bottom sheet ≤720 px; Print stays in the record bar |
+| Orders | orders/ | records | ws-panel right | done | Save and Confirm order / Fulfil… at the record panel's foot (shared/biz/panel.js); New order stays in the list and the File menu |
+| Quotes | quotes/ | records | ws-panel right | done | Save and Mark as sent at the record panel's foot; a bottom sheet on phones |
+| Purchase Orders | purchases/ | records | ws-panel right | done | Save and Place order at the record panel's foot; a bottom sheet on phones |
+| Contacts | contacts/ | records | groups left, list, card right | close | Edit, Duplicate, Delete (Cancel, Save in the form) at the card's foot (the shared footer, bare); on a phone the card is a page with the footer at the bottom, not a TlbxSheet |
+| CRM | crm/ | records | filters left | close | the customer's record beside the list (shared/layouts) with Edit details and Delete customer at its foot (the shared footer, bare); on a phone a page with a fixed footer, not a TlbxSheet |
+| Projects | projects/ | records | timeline, undated tasks right | done | a task opens in the TlbxFrame panel right of the board, timeline or list (projects/js/ui/task-panel.js), Cancel, Delete and Save at its foot; project settings stay a dialog |
+| Timesheets | timesheets/ | records | tabs, one-column form | done | an open entry is the panel right of the list (TlbxBiz.panel.records), Save at its foot |
+| Expenses | expenses/ | records | tabs, one-column form | done | an open expense is the panel right of the list (TlbxBiz.panel.records), Record expense / Mark as paid… at its foot |
+| Inventory | inventory/ | records | tabs, one column | close | Receive, Sell, Adjust, Transfer are the stock view's right panel (TlbxBiz.panel.form; Stock actions opens it on a phone), each form keeps its own submit button; the product form, Count and Scan are unchanged |
+| Ledger | ledger/ | records | tabs, one column | done | the new entry, account and rate forms are their view's right panel (TlbxBiz.panel.form), Post entry / Add account / Add rate at its foot |
+| Reports | reports/ | other | one column | done | the report is the view; picker, definition and Export CSV (at the foot) in the TlbxFrame panel (reports/js/layout.js) |
 | Assistant | ai/ | other | chat, workspace pane right | n/a | a chat: the composer is the main action |
 | Notes | notes/ | other | notebooks left, list, editor | n/a | no settings |
 | Paste | paste/ | other | list left, main | n/a | no settings |
