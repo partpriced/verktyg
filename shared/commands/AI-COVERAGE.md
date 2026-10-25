@@ -6,7 +6,7 @@ that this file is up to date and that no covered app loses a create, add or expo
 
 **Covered** means the assistant can create, add content, edit and export there. ✗ marks a gap.
 
-Covered: 41 of 58 apps.
+Covered: 44 of 61 apps.
 
 | App | Create | Add | Edit | Export | Operations | Covered |
 |---|---|---|---|---|---|---|
@@ -46,11 +46,14 @@ Covered: 41 of 58 apps.
 | Hex Editor (`hex`) | ✓ 1 | ✗ | ✓ 3 | ✓ 2 |  | no |
 | Email Viewer (`eml`) | ✓ 1 | ✗ | ✓ 4 | ✓ 1 |  | no |
 | Checksum (`checksum`) | ✗ | ✗ | ✓ 1 | ✓ 1 |  | no |
+| Compare (`diff`) | ✓ 1 | ✓ 2 | ✓ 2 | ✓ 1 | 1 | yes |
 | Node Calculator (`nodes`) | ✓ 2 | ✓ 1 | ✓ 4 | ✓ 2 |  | yes |
 | Serial Counter (`serials`) | ✗ | ✓ 3 | ✓ 4 | ✓ 1 |  | no |
 | Transcription (`transcribe`) | ✗ | ✓ 1 | ✓ 6 | ✓ 1 | 1 | owned by wip/video-ai |
+| Screen Recorder (`recorder`) | ✓ 1 | ✓ 1 | ✓ 6 | ✓ 1 |  | yes |
 | Email Signature (`signature`) | ✓ 1 | ✓ 2 | ✓ 2 | ✓ 1 |  | yes |
 | QR Code Generator (`qr`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | yes |
+| Colours (`colors`) | ✓ 1 | ✓ 2 | ✓ 7 | ✓ 1 | 1 | yes |
 | Workflows (`workflows`) | ✗ | ✗ | ✗ | ✗ |  | no |
 | File Converter (`convert`) | ✗ | ✗ | ✗ | ✗ |  | no |
 | Calculator (`calculator`) | ✗ | ✓ 1 | ✓ 1 | ✓ 2 |  | no |
@@ -302,6 +305,14 @@ Covered: 41 of 58 apps.
 - edit: `hash_file`
 - export: `save_hash`
 
+### Compare
+
+- create: `new_comparison`
+- add: `add_file`, `add_text`
+- edit: `compare`, `set_options`
+- export: `export_report`
+- operations: `diff.report`
+
 ### Node Calculator
 
 - create: `build_graph`, `new_graph`
@@ -322,6 +333,13 @@ Covered: 41 of 58 apps.
 - export: `save_transcript`
 - operations: `transcribe.text`
 
+### Screen Recorder
+
+- create: `new_recording`
+- add: `add_recording`
+- edit: `pause_recording`, `resume_recording`, `set_format`, `start_recording`, `stop_recording`, `trim_recording`
+- export: `export_recording`
+
 ### Email Signature
 
 - create: `new_signature`
@@ -335,6 +353,14 @@ Covered: 41 of 58 apps.
 - add: `add_logo`
 - edit: `remove_logo`, `set_content`, `set_design`
 - export: `export_qr`
+
+### Colours
+
+- create: `new_palette`
+- add: `add_colors`, `add_from_picture`
+- edit: `check_contrast`, `convert_color`, `fix_contrast`, `make_palette`, `remove_color`, `rename_palette`, `set_color`
+- export: `export_palette`
+- operations: `colors.palette`
 
 ### Calculator
 
