@@ -66,13 +66,12 @@
     try { download(new Blob([await glbBytes(item, name, canvas)], { type: 'model/gltf-binary' }), name + '.glb'); } catch (e) { fail(e); }
   }
 
-  /** Puts the mesh in Files as a .s3d scene and opens 3D Modeller on it (TlbxHub.sendTo). */
+  /** Puts the mesh in Files as a .s3d scene and opens 3D Modeller on it (the one way out, TlbxOuttake.send). */
   async function sendTo3d(mesh, name, canvas) {
-    const H = root.TlbxHub;
-    if (!H) throw new Error('Files is not available in this browser');
+    if (!root.TlbxOuttake) throw new Error('Files is not available in this browser');
     const scene = ns.s3d.sceneOf(mesh, { name, texture: canvas ? ns.image.jpegUrl(canvas) : null });
     const blob = new Blob([JSON.stringify(scene)], { type: S3D });
-    return H.sendTo('3d', blob, name + '.s3d');
+    return root.TlbxOuttake.send('3d', { from: 'img3d', get: () => blob, name: name + '.s3d', type: S3D });
   }
 
   ns.exporter = { exportObj, exportGlb, sendTo3d, objText, glbBytes, download };

@@ -29,7 +29,10 @@
   function send(opts) {
     const doc = project(opts);
     const blob = new Blob([JSON.stringify(doc, null, 1)], { type: 'application/json' });
-    return g.TlbxHub.sendTo('label', blob, `${doc.name}.labeldesigner`, { from: opts.app || g.TlbxHub.self && g.TlbxHub.self.app });
+    const from = opts.app || (g.TlbxHub.self && g.TlbxHub.self.app), name = `${doc.name}.labeldesigner`;
+    // the one way out (shared/intake/outtake.js), where the page has it
+    if (g.TlbxOuttake) return g.TlbxOuttake.send('label', { from, get: () => blob, name, type: 'application/json' });
+    return g.TlbxHub.sendTo('label', blob, name, { from });
   }
 
   B.addressLabel = { project, send, SIZE: { w: W, h: H } };

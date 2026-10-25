@@ -27,7 +27,11 @@ export function commandList(A) {
 export function registerCommands(A) {
   const list = commandList(A);
   if (window.TlbxCmd) {
-    try { TlbxCmd.init({ app: 'code' }); TlbxCmd.register(list); return; } catch (e) { /* fall back below */ }
+    try {
+      TlbxCmd.init({ app: 'code' }); TlbxCmd.register(list);
+      if (TlbxCmd.provide) TlbxCmd.provide({ prepare: () => import('./ai-commands.js') });   // the assistant's commands, when the AI panel first asks
+      return;
+    } catch (e) { /* fall back below */ }
   }
   const binds = list.flatMap((c) => c.keys.map((k) => ({ run: c.run, ...parse(k) })));
   document.addEventListener('keydown', (e) => {

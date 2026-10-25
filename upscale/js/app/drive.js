@@ -2,8 +2,7 @@
  * adds TlbxUpscale.drive. Needs shared/hub.js (TlbxHub); without it, available() is false.
  *   available()                  whether the hub is on this page
  *   save(blob, name, meta)       Promise<id>  saves a result into the folder
- *   open(id)                     Promise<record | null>  a Drive file with its blob (for ?drive=<id> and the picker)
- *   pick()                       Promise<record | null>  the Drive picker, for pictures and videos */
+ * Files come in from Files through the intake (TlbxIntake.fromDrive and launch, app/main.js). */
 (function (g) {
   'use strict';
   const U = (g.TlbxUpscale = g.TlbxUpscale || {}), D = (U.drive = {});
@@ -26,16 +25,5 @@
   D.save = async function (blob, name, meta = {}) {
     const folderId = await folder();
     return hub().put(blob, { name, from: APP, folderId, meta });
-  };
-
-  D.open = async function (id) {
-    if (!hub()) return null;
-    return (await hub().get(id)) || null;
-  };
-
-  D.pick = async function () {
-    if (!hub()) return null;
-    const rec = await hub().pickFromDrive({ accept: ['image/*', 'video/*'], title: 'Open from Files' });
-    return rec ? D.open(rec.id) : null;
   };
 })(typeof window !== 'undefined' ? window : globalThis);

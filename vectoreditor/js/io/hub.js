@@ -1,10 +1,10 @@
-/* Vector Editor — Hub integration: Files open/place, "Send to" other apps, launch files.
+/* Vector Editor — Hub integration: Save to Files, "Send to" other apps (TlbxOuttake); files come in through the
+   intake (io/intake.js: Open / Place from Files, ?drive= launches).
    Uses window.TlbxHub (../shared/hub.js) and window.TLBX_APPS (../shared/apps.js). */
 (function () {
   'use strict';
   var SV = window.SV, S = SV.state, IO = SV.io = SV.io || {};
   var HUB = SV.hub = {};
-  var ACCEPT = ['image/svg+xml', 'image/*'];
   HUB.linked = null; // id of the Files record this document was opened from or saved to
   // Any new document (New, Open, recovery, sample) is no longer linked to the previous Drive file.
   var loadDoc = SV.loadDoc;
@@ -13,49 +13,9 @@
   HUB.available = function () { return !!window.TlbxHub; };
   // Sending opens another app at its site path, which only exists when served (not from file://).
   HUB.canSend = function () { return HUB.available() && location.protocol !== 'file:'; };
-  function isSVG(rec) { return /svg/.test(rec.type || '') || /\.svg$/i.test(rec.name || ''); }
-  function baseName(n) { return String(n || 'Untitled').replace(/\.[^.\/]+$/, ''); }
-  function blobToDataURL(blob) {
-    return new Promise(function (res, rej) { var fr = new FileReader(); fr.onload = function () { res(fr.result); }; fr.onerror = function () { rej(fr.error); }; fr.readAsDataURL(blob); });
-  }
-  function imageSize(url) {
-    return new Promise(function (res, rej) { var i = new Image(); i.onload = function () { res({ w: i.naturalWidth || 1, h: i.naturalHeight || 1 }); }; i.onerror = function () { rej(new Error('Unreadable image')); }; i.src = url; });
-  }
-
-  /* ---------- opening Drive records ---------- */
-  // Open as a document: SVG → editable document; raster → new artboard the size of the image.
-  HUB.openRecord = function (rec) {
-    if (!rec || !rec.blob) return Promise.resolve(false);
-    if (isSVG(rec)) return rec.blob.text().then(function (t) { var ok = IO.openSVGText(t, rec.name || 'Untitled.svg'); if (ok) HUB.linked = rec.id; return ok; });
-    if (!/^image\//.test(rec.type || '')) { SV.toast('Vector Editor can’t open ' + (rec.type || 'that file'), 'warn'); return Promise.resolve(false); }
-    return blobToDataURL(rec.blob).then(function (url) {
-      return imageSize(url).then(function (sz) {
-        var sc = Math.min(1, 8000 / Math.max(sz.w, sz.h)), w = Math.round(sz.w * sc), h = Math.round(sz.h * sc);
-        var doc = SV.newDoc(w, h, baseName(rec.name));
-        var aid = 'a' + SV.uid(); doc.assets[aid] = url;
-        doc.layers[0].children.push(SV.mk.image(aid, 0, 0, w, h, baseName(rec.name)));
-        SV.loadDoc(doc, { fit: true });
-        SV.commit('open image'); SV.markSaved();
-        SV.toast('Opened “' + (rec.name || 'image') + '” from Files');
-        return true;
-      });
-    });
-  };
-  // Place into the current document: SVG → grouped artwork; raster → image object.
-  HUB.placeRecord = function (rec) {
-    if (!rec || !rec.blob) return Promise.resolve(null);
-    if (isSVG(rec)) return rec.blob.text().then(function (t) { return IO.importSVGText(t, { name: baseName(rec.name) }); });
-    if (!/^image\//.test(rec.type || '')) { SV.toast('Only SVG and images can be placed', 'warn'); return Promise.resolve(null); }
-    return blobToDataURL(rec.blob).then(function (url) { return IO.placeImageURL(url, baseName(rec.name)); });
-  };
-  HUB.openFromDrive = function () {
-    if (!HUB.available()) return SV.toast('Files is unavailable', 'warn');
-    return window.TlbxHub.pickFromDrive({ accept: ACCEPT, title: 'Open from Files' }).then(function (rec) { if (rec) return HUB.openRecord(rec); });
-  };
-  HUB.placeFromDrive = function () {
-    if (!HUB.available()) return SV.toast('Files is unavailable', 'warn');
-    return window.TlbxHub.pickFromDrive({ accept: ACCEPT, title: 'Place from Files' }).then(function (rec) { if (rec) return HUB.placeRecord(rec); });
-  };
+  // Open / Place from Files and ?drive= are sources of the one intake (io/intake.js), which links a Drive document.
+  HUB.openFromDrive = function () { return SV.intake.openFromDrive(); };
+  HUB.placeFromDrive = function () { return SV.intake.placeFromDrive(); };
 
   /* ---------- saving to Files ---------- */
   // Save writes back to the linked Drive file; the first save asks for a folder and links to the new file.
@@ -82,29 +42,22 @@
   HUB.pngBlob = function () {
     return IO.rasterize(2, null).then(function (c) { return new Promise(function (res) { c.toBlob(res, 'image/png'); }); });
   };
-  // Items for File ▸ Send to: the document as SVG, then as PNG, to every app that accepts them.
+  // Items for File ▸ Send to (the one builder, TlbxOuttake): the document as SVG to every app that takes it (and Tlbx
+  // Workflows), then as PNG to the apps that take pictures.
   HUB.sendItems = function () {
-    if (!HUB.available()) return [{ label: 'Hub unavailable', disabled: true }];
-    var name = function () { return IO.baseName(); };
-    var svg = window.TlbxHub.sendMenuItems(function () { return HUB.svgBlob(); }, function () { return name() + '.svg'; }, 'image/svg+xml');
-    var png = window.TlbxHub.sendMenuItems(function () { return HUB.pngBlob(); }, function () { return name() + '.png'; }, 'image/png')
-      .map(function (it) { return { label: it.label.replace(/^Send to /, 'Send PNG to '), act: it.act }; });
+    if (!HUB.available() || !window.TlbxOuttake) return [{ label: 'Hub unavailable', disabled: true }];
+    var name = function () { return IO.baseName(); }, O = window.TlbxOuttake;
+    var svg = O.items({ get: function () { return HUB.svgBlob(); }, name: function () { return name() + '.svg'; }, type: 'image/svg+xml', from: 'vector', verb: 'Send to', folder: false });
+    var png = O.items({ get: function () { return HUB.pngBlob(); }, name: function () { return name() + '.png'; }, type: 'image/png', from: 'vector', verb: 'Send PNG to', folder: false })
+      .filter(function (it) { return it.label.indexOf('Send PNG to ') === 0; }); // the workflow items are there once, with the SVG
     var items = svg.concat(svg.length && png.length ? ['-'] : [], png);
     if (!HUB.canSend()) items = items.map(function (it) { return it === '-' ? it : { label: it.label, disabled: true, title: 'Open Vector Editor on verktyg.itpris.se to send files' }; });
     return items.length ? items : [{ label: 'No other apps accept this', disabled: true }];
   };
-  HUB.sendTo = function (appId, kind) {
-    var make = kind === 'png' ? HUB.pngBlob() : Promise.resolve(HUB.svgBlob());
-    return make.then(function (b) { return window.TlbxHub.sendTo(appId, b, IO.baseName() + (kind === 'png' ? '.png' : '.svg')); });
-  };
 
   /* ---------- boot ---------- */
   HUB.init = function () {
-    if (!HUB.available()) return Promise.resolve(null);
-    try { window.TlbxHub.register('vector'); } catch (e) { /* bus unavailable */ }
-    return window.TlbxHub.consumeLaunch().then(function (rec) {
-      if (!rec) return null;
-      return HUB.openRecord(rec).then(function () { return rec; });
-    }).catch(function () { return null; });
+    if (HUB.available()) { try { window.TlbxHub.register('vector'); } catch (e) { /* bus unavailable */ } }
+    return SV.intake.launch().catch(function () { return null; });
   };
 })();

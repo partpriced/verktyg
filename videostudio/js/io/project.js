@@ -51,10 +51,7 @@
     catch (e) { console.error(e); TlbxUI.alert('Open project', 'Could not open this project: ' + e.message); }
     finally { dlg.close(); }
   };
-  SE.act.openProject = async function () {
-    const files = await TlbxUI.pickFiles({ accept: '.videoedit,application/zip,' + PJ.MIME });
-    if (files[0]) PJ.openFile(files[0]);
-  };
+  SE.act.openProject = () => SE.intake.openProject(); // a source of the one intake (io/intake.js)
   SE.act.downloadProject = async function () {
     const dlg = SE.progress.open('Saving project', { cancel: false });
     try { dlg.set(0.3, 'Packing media…'); TlbxUI.download(await PJ.toBlob(), PJ.fileName()); SE.app.status('Saved ' + PJ.fileName()); }

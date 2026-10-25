@@ -1,0 +1,23 @@
+{
+  "name": "worksuite",
+  "displayName": "ITpris Verktyg",
+  "version": "0.1.0",
+  "description": "Use the ITpris Verktyg apps open in your browser (photo editing, PDF, video, conversions, workflows) from Claude Code: their real commands, your files in and results out. Local only, paired with a code.",
+  "author": {
+    "name": "ITpris Verktyg",
+    "url": "https://verktyg.itpris.se"
+  },
+  "homepage": "https://verktyg.itpris.se/how-it-works/#ai-apps",
+  "repository": "https://github.com/partpriced/claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "worksuite",
+    "mcp",
+    "photo-editor",
+    "pdf",
+    "image",
+    "video",
+    "workflows",
+    "browser"
+  ]
+}

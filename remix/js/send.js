@@ -18,7 +18,7 @@
     const blob = new Blob([JSON.stringify(RM.manifest(ids), null, 1)], { type: TYPE });
     const name = 'Remix ' + stamp + '.reel.json';
     const mid = await TlbxHub.put(blob, { name, from: 'remix' });
-    await TlbxHub.sendTo('videoedit', null, name, { id: mid });
+    await window.TlbxOuttake.send('videoedit', { id: mid, name, type: TYPE, from: 'remix' }); // the one way out, no copy
     $('rm-status').textContent = 'Opened in Video Editor: ' + ids.length + ' clips, manifest ' + name;
     return mid;
   };

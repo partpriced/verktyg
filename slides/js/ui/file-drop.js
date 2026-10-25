@@ -1,29 +1,65 @@
-/* Presentations: presentations from this computer. A PowerPoint (.pptx) or Presentations (.sslide) file dropped anywhere on
-   the editor, or picked with File ▸ Open a file from this computer, opens in a new tab with no Drive link (SS.files.openFile),
-   so Save makes a new Slides file and never writes over the original. The feedback (the outline while a file is
-   dragged over, a refusal that says why, a progress row) is the shared TlbxDrop strip (shared/drop), quiet at rest on the
-   stage. Exposes SS.fileDrop: mount(), choose(). */
+/* Presentations: the one way files come in (shared/intake, spec 'slides'). A .pptx, .sslide or picture dropped anywhere on
+   the editor, File ▸ Open a file from this computer, Open from Files (a .sslide, linked to its file), Import a
+   PowerPoint or picture from Files, Insert picture (mode 'image'), a pasted picture (inserted on the slide),
+   ?drive=<id> (Drive's Open with, another app's Send to…) and a PWA launch all reach one reader: a Files record opens
+   through SS.files.openRecord, a file from this computer through SS.files.openFile (no Drive link, so Save makes a new
+   Presentations file), a picture in mode 'image' goes on the slide. Files wait for the tabs (SS.fileDrop.launch) and for
+   the editor (not during a slide show). The feedback is the shared TlbxDrop strip, quiet at rest on the stage. Templates
+   (.sslide-template) are a part of their own ('slides.template'). Exposes SS.fileDrop: mount(), choose(), launch(). */
 (function () {
   'use strict';
-  var SS = window.SS, N = SS.native;
+  var SS = window.SS, N = SS.native, SI = window.TlbxIntake;
   var FD = SS.fileDrop = {};
-  var drop = null;
+  var PPTX = 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+  var tabsReady = null, mounted = false;
+
+  async function read(file, ctx) {
+    if (ctx.mode === 'image') { await SS.ops.placeImage(file); return file.name; }
+    var rec = ctx.drive && ctx.drive.record;
+    if (rec) { if (!(await SS.files.openRecord(Object.assign({}, rec, { blob: file })))) throw new Error('could not be opened'); }
+    else await SS.files.openFile(file);
+    return file.name;
+  }
+  SI.register({
+    id: 'slides', process: read,
+    accept: { types: [PPTX, N.MIME, 'application/json', 'image/*'], exts: ['.pptx', '.sslide'], noun: 'a PowerPoint (.pptx), Presentations file or picture', allowEmpty: true },
+    gate: function () { if (SS.app.mode !== 'edit') { SS.dom.toast('End the slide show first'); return false; } },
+    before: function (batch) { if (batch.source === 'paste') batch.mode = 'image'; return tabsReady; }, // a pasted picture goes on the slide
+  });
+  SI.register({
+    id: 'slides.template', main: false, paste: false, toast: false, limit: 1, driveAccept: [SS.templateFile.MIME, 'application/json'],
+    accept: { types: [SS.templateFile.MIME, 'application/json'], exts: ['.' + SS.templateFile.EXT], noun: 'a Presentations template' },
+    process: async function (file) {
+      var text;
+      try { text = await file.text(); } catch (e) { TlbxUI.alert('This template was not added', 'The file could not be read'); throw e; }
+      var rec = await SS.templatesUI.importText(text);
+      if (!rec) throw new Error('was not added');
+      return rec;
+    },
+  });
 
   FD.mount = function () {
     var zone = document.getElementById('ssDrop');
-    if (drop || !zone || !window.TlbxDrop) return;
-    drop = TlbxDrop.attach(zone, {
-      accept: { types: [N.PPTX, N.MIME, 'application/json'], exts: ['.pptx', '.sslide'], noun: 'a PowerPoint (.pptx) or Presentations file' },
-      targets: [document.getElementById('app')],
-      compact: true, toast: false, multiple: true,
+    if (mounted || !zone || !window.TlbxDrop) return;
+    mounted = true;
+    TlbxDrop.attach(zone, {
+      intake: 'slides', targets: [document.getElementById('app')], compact: true, toast: false, multiple: true,
       label: 'Drop a .pptx or .sslide file to open it', chooseLabel: 'Open a file',
-      process: async function (file) {
-        if (SS.app.mode !== 'edit') throw new Error('End the slide show first');
-        await SS.files.openFile(file);
-        return file.name;
-      }
     });
   };
-  /** The file picker of the same strip (File ▸ Open a file from this computer). */
-  FD.choose = function () { if (!drop) FD.mount(); if (drop) drop.choose(); };
+  /** File ▸ Open a file from this computer. */
+  FD.choose = function () { return SI.pick({ to: 'slides', accept: '.pptx,.sslide,' + PPTX + ',' + N.MIME }); };
+  FD.openDrive = function () { return SI.fromDrive({ to: 'slides', accept: [N.MIME], title: 'Open from Files' }); };
+  FD.importDrive = function () { return SI.fromDrive({ to: 'slides', accept: [PPTX, 'image/*'], title: 'Import from Files' }); };
+  FD.addImage = function () { return SI.pick({ to: 'slides', mode: 'image', multiple: false, accept: 'image/*' }); };
+  FD.importTemplate = async function () { var r = await SI.pick({ to: 'slides.template', multiple: false, accept: '.' + SS.templateFile.EXT + ',application/json' }); return r.added[0] ? r.added[0].value : null; };
+  FD.importTemplateDrive = async function () { var r = await SI.fromDrive({ to: 'slides.template', title: 'Import a template from Files' }); return r && r.added[0] ? r.added[0].value : null; };
+  /** Boot: what the page was opened with is read at once (the tabs rewrite the address bar), and opens once the tabs are
+   *  back (ready()). Resolves the launch's summary. */
+  FD.launch = function () {
+    var ready;
+    tabsReady = new Promise(function (r) { ready = r; });
+    var p = SI.launch({ to: 'slides' }).catch(function () { return null; });
+    return { ready: function () { ready(); }, done: p };
+  };
 })();

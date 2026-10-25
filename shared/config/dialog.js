@@ -20,28 +20,34 @@
     UI().dialog({ title, body, buttons: [{ label: 'OK', primary: true }] });
   }
 
+  /* A config file comes in one way where the page has the intake (shared/intake): the part 'config' (From this computer…,
+     From Files…, the dialog's zone, a .tlbx.json dropped anywhere on the page). Its reader checks and imports it. */
+  const ACCEPT = '.json,.tlbx.json,application/json';
+  const SI = () => (g.TlbxIntake && g.TlbxIntake.part ? g.TlbxIntake : null);
+  const part = () => SI().part({
+    id: 'config', limit: 1,
+    accept: (f) => /\.tlbx\.json$/i.test(f.name || '') || (f.name || 'file') + ' is not a .tlbx.json file',
+    process: async (f, ctx) => { showResult(await C.importFile(f, { app: (ctx.data && ctx.data.app) || (zone && zone.dataset.app) || appOf() })); return f.name; },
+  });
   async function runFile(app) {
-    const files = await UI().pickFiles({ accept: '.json,.tlbx.json,application/json' });
+    if (SI()) { await SI().pick({ to: part(), multiple: false, data: { app }, accept: ACCEPT }); return; }
+    const files = await UI().pickFiles({ accept: ACCEPT }); // intake-ok: a page without shared/intake
     if (files && files[0]) showResult(await C.importFile(files[0], { app }));
+  }
+  function runDrive(app) {
+    if (SI()) return SI().fromDrive({ to: part(), data: { app }, accept: ['application/json', 'text/plain'], title: 'Import a config from Files' });
+    return C.importFromDrive({ app }).then((res) => showResult(res)); // intake-ok: a page without shared/intake
   }
 
   /** The import dialog's drop zone: one TlbxDrop instance (shared/drop), moved into each dialog that opens. A .tlbx.json
    *  file dropped on it, or chosen there, is checked and imported. Null when the page has no TlbxDrop. */
   let zone = null;
   function importZone() {
-    if (!g.TlbxDrop) return null;
+    if (!g.TlbxDrop || !SI()) return null;
     if (!zone) {
       zone = document.createElement('div');
       zone.className = 'sd-config-zone';
-      g.TlbxDrop.attach(zone, {
-        accept: { types: ['application/json'], exts: ['.json'], noun: 'a .tlbx.json file' },
-        compact: true, window: false, overlay: false,
-        process: async (file) => {
-          if (!/\.tlbx\.json$/i.test(file.name)) throw new Error('is not a .tlbx.json file');
-          showResult(await C.importFile(file, { app: zone.dataset.app }));
-          return file.name;
-        },
-      });
+      g.TlbxDrop.attach(zone, { intake: part(), compact: true, window: false, overlay: false, data: () => ({ app: zone.dataset.app }) });
     }
     return zone;
   }
@@ -57,7 +63,7 @@
       title: o.title || 'Import config', body,
       buttons: [
         { label: 'Cancel' },
-        { label: 'From Files…', act: () => { C.importFromDrive({ app }).then((res) => showResult(res)); } },
+        { label: 'From Files…', act: () => { runDrive(app); } },
         { label: 'From this computer…', primary: true, act: () => { runFile(app); } },
       ],
     });
@@ -136,13 +142,15 @@
       const hasFiles = (e) => !!e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
       g.addEventListener('dragover', (e) => { if (hasFiles(e)) e.preventDefault(); }, true);
     }
-    g.addEventListener('drop', (e) => {
+    // A .tlbx.json dropped anywhere on the page, before the app's own drop places see it: a source of the part 'config'.
+    g.addEventListener('drop', (e) => { // intake-ok: the drop source of the config part (it hands the file to TlbxIntake.take)
       const files = e.dataTransfer && e.dataTransfer.files ? Array.from(e.dataTransfer.files) : [];
       const cfg = files.find((f) => /\.tlbx\.json$/i.test(f.name || ''));
       if (!cfg) return;
       e.preventDefault();
       e.stopPropagation();
-      C.importFile(cfg, { app }).then((res) => showResult(res));
+      if (SI()) SI().take([cfg], { to: part(), source: 'drop', data: { app } });
+      else C.importFile(cfg, { app }).then((res) => showResult(res));
     }, true);
   }
 
