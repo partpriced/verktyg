@@ -45,6 +45,9 @@
   font: 13px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
   animation: tlbxc-in 0.25s ease-out;
 }
+/* On a phone the card sits above a sheet footer pinned to the bottom of the window (an app's main button, shared/frame/panel.js
+ * publishes its height as --tlbx-foot-h), so the main button is never under it. */
+@media (max-width: 900px) { .tlbxc-banner { bottom: calc(16px + var(--tlbx-foot-h, 0px)); } }
 @keyframes tlbxc-in { from { opacity: 0; transform: translateY(8px); } }
 @media (prefers-reduced-motion: reduce) { .tlbxc-banner { animation: none; } }
 .tlbxc-text { margin: 0; padding-inline-end: 22px; }
