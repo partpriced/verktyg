@@ -181,7 +181,7 @@ function unpackBits(src, p, end, dst, dp, dlen) {
 }
 
 /* ---------- small UI helpers ---------- */
-function toast(msg, ms = 2400) { if (window.TlbxUI) TlbxUI.toast(msg, ms); }
+function toast(msg, ms = 2400, action = null) { if (window.TlbxUI) TlbxUI.toast(msg, ms, action); }
 const store = {
   get(k, d) { try { const v = localStorage.getItem('tlbxshop.' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem('tlbxshop.' + k, JSON.stringify(v)); } catch (e) { /* private mode / quota */ } },
