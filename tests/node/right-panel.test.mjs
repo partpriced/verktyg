@@ -52,8 +52,9 @@ test('every app marked done loads TlbxFrame and its phone sheet; a done tool has
   for (const r of done) {
     const dir = r.folder.replace(/\/$/, '');
     const html = (await Promise.all((r.pages ? r.pages.map((x) => dir + '/' + x) : [dir]).map((d) => read(d + '/index.html')))).join('\n');
-    const loads = (f) => html.includes('shared/frame/' + f) || html.includes("'shared/frame/" + f);
     const js = await ownScripts(dir);
+    // in the page, or in a script list the app loads (slides/js/manifest.js)
+    const loads = (f) => html.includes('shared/frame/' + f) || js.includes("'shared/frame/" + f + "'");
     const all = html + js;
     assert.ok(/shared\/frame\/frame\.css/.test(all), r.name + ': frame.css');
     assert.ok(loads('panel.js'), r.name + ': panel.js');
@@ -62,7 +63,8 @@ test('every app marked done loads TlbxFrame and its phone sheet; a done tool has
     // app that already had its own right panel (Files's info panel). A tool always mounts TlbxFrame.
     const bare = /TlbxFramePanel\.create\(.*bare: true/.test(js) && /\.footer\(/.test(js);
     if (r.kind === 'editor' || (r.kind !== 'tool' && bare && !/TlbxFrame\.mount\(/.test(js))) {
-      assert.ok(bare, r.name + ': the shared footer on its own panel');
+      // (an editor that had no panel builds one with the shared sections: Documents' Document panel)
+      assert.ok(bare || (r.kind === 'editor' && /TlbxFramePanel\.create\(/.test(js) && /\.footer\(/.test(js)), r.name + ': the shared footer on its own panel');
       continue;
     }
     assert.ok(loads('frame.js'), r.name + ': frame.js');
