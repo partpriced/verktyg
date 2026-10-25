@@ -37,11 +37,14 @@
   <url><loc>https://verktyg.itpris.se/hex/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/eml/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/checksum/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/nodes/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/serials/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/transcribe/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/signature/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/qr/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/workflows/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/calculator/</loc><lastmod>2026-10-20</lastmod></url>
@@ -113,11 +116,14 @@
   <url><loc>https://verktyg.itpris.se/apps/hex/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/eml/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/checksum/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/apps/diff/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/nodes/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/serials/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/transcribe/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/apps/recorder/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/signature/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/qr/</loc><lastmod>2026-10-20</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/apps/colors/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/workflows/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/convert/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/apps/calculator/</loc><lastmod>2026-10-20</lastmod></url>
@@ -321,6 +327,18 @@
   <url><loc>https://verktyg.itpris.se/gallery/raw-photo-viewer/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/dng-converter/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/resize/resize-raw-photos/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/compare-text/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/compare-pdf/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/compare-images/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/json-csv-diff/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/screen-recorder-with-webcam/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/record-screen-with-audio/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/loom-alternative/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/webcam-recorder/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/contrast-checker/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/color-picker-from-image/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/color-palette-generator/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/hex-to-rgb/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/layers/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/imageeditor/classic/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
@@ -380,6 +398,9 @@
   <url><loc>https://verktyg.itpris.se/music/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/remix/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/videostudio/getting-started/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/diff/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/recorder/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/colors/getting-started/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/all-tools/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/free-online-photo-editors/</loc><lastmod>2026-10-24</lastmod></url>
@@ -416,6 +437,9 @@
   <url><loc>https://verktyg.itpris.se/best/free-email-signature-generators/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/free-to-do-list-apps/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://verktyg.itpris.se/best/free-time-zone-converters/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/best/free-diff-tools/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/best/free-screen-recorders/</loc><lastmod>2026-10-25</lastmod></url>
+  <url><loc>https://verktyg.itpris.se/best/free-color-palette-tools/</loc><lastmod>2026-10-25</lastmod></url>
   <url><loc>https://verktyg.itpris.se/how-it-works/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/csv-to-vcf/</loc><lastmod>2026-10-20</lastmod></url>
   <url><loc>https://verktyg.itpris.se/convert/xlsx-to-vcf/</loc><lastmod>2026-10-20</lastmod></url>
