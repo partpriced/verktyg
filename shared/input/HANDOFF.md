@@ -80,6 +80,27 @@ Handles drawn on a canvas or in SVG use `TlbxTouch.hit(e, r)` in their hit test:
 | Docs | none on the page (it scrolls) | the caret moves on the tap's lift; header/footer open on a double tap |
 | Drive, Gallery, Music, Calendar, Hex, Code, Contacts | grips, waves and draggable chips only | lists keep scrolling; long press selects and opens the menu (Drive), starts a range (Hex) |
 
+## The on-screen keyboard (`keyboard.js`, `window.TlbxKeyboard`)
+
+Loaded by the shell with the layer. Whatever has the focus (input, textarea, contenteditable, an app's own editor) stays
+above a phone's keyboard, and comes back when it goes down.
+
+- Its height: the VirtualKeyboard API where there is one (Chrome on Android; the page is then overlaid, as on iOS), else
+  the visual viewport shrinking while a field has focus (iOS Safari: the accessory bar counts; not while pinch-zoomed in).
+  `TlbxKeyboard.height()`, `--tlbx-kb` on `<html>`, class `tlbx-kb-open`, the `tlbxkeyboard` event on window.
+- The default: the nearest scrolling ancestor scrolls the field up (a scroller marked `data-tlbx-kb-pad` grows room at its
+  end for its last lines: PDF Editor's page view); what is still covered lifts (a CSS `translate` on the editor).
+- An app's own editor pans its view instead: `TlbxKeyboard.track(el, { rect(), reveal(need) })`, or `el.tlbxKeyboard = {…}`
+  when the script may not be there yet. `need.dy` is how far up the view must move. Wired: Page Layout (the caret's line),
+  Vector Editor and Image Editor (their text boxes). PDF Editor (Edit text: lines and paragraphs) scrolls its page view; Slides'
+  text box lifts; Label, 3D and the panels' fields scroll in their sheet.
+- `[data-tlbx-kb="hide"]` hides while the keyboard is up (PDF Editor's bottom tool rail). The shared sheets (`shared/ui/sheet.js`)
+  rise above it.
+- iOS: the viewport gets `maximum-scale=1`, so Safari does not zoom into a field under 16 px (the in-canvas editors take
+  the document's size); a pinch still zooms there. A one-screen app page that iOS scrolled to a field in a fixed box is put back.
+- Tests: `tests/shared/keyboard.test.html` (a stand-in visual viewport: Playwright cannot raise a keyboard),
+  `tests/pdf/keyboard.test.html`. Not testable without a phone: the real keyboard's timing and the accessory bar.
+
 ## Android back
 
 The shared sheets and dialogs (`shared/ui/sheet.js`, `TlbxUI.dialog`) do not push history entries, so the back button

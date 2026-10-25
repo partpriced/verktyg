@@ -1,8 +1,8 @@
 /* Video Editor — Classic 98 overrides, touch, and the simplified phone layout. */
 /* ---------------------------------------------------------------- Classic 98 */
-:root[data-tlbx-theme="classic"] .topbar { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 65%, var(--input))); color: var(--accent-ink); box-shadow: inset 0 1px var(--input), inset 0 -1px var(--line); }
+:root[data-tlbx-theme="classic"] .topbar { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 82%, var(--input))); color: var(--accent-ink); box-shadow: inset 0 1px var(--input), inset 0 -1px var(--line); }
 :root[data-tlbx-theme="classic"] .appname b { font: 700 13px var(--font-ui); color: var(--accent-ink); }
-:root[data-tlbx-theme="classic"] .home-link { color: color-mix(in srgb, var(--accent-ink) 80%, var(--accent)); }
+:root[data-tlbx-theme="classic"] .home-link { color: var(--accent-ink); }
 :root[data-tlbx-theme="classic"] .menu-b, :root[data-tlbx-theme="classic"] .topbar .tb { color: var(--accent-ink); border-radius: 0; }
 :root[data-tlbx-theme="classic"] .menu-b:hover, :root[data-tlbx-theme="classic"] .topbar .tb:hover:not(:disabled) { background: color-mix(in srgb, var(--accent-ink) 20%, transparent); color: var(--accent-ink); }
 :root[data-tlbx-theme="classic"] .brand { border-radius: 0; box-shadow: var(--bevel); background: var(--bg); }
@@ -12,7 +12,7 @@
 :root[data-tlbx-theme="classic"] .btn.primary { outline: 1px solid var(--fg); outline-offset: -1px; font-weight: 700; }
 :root[data-tlbx-theme="classic"] .inp, :root[data-tlbx-theme="classic"] .fname input { border: 0; border-radius: 0; box-shadow: var(--bevel-in); background: var(--input); color: var(--fg); }
 :root[data-tlbx-theme="classic"] .pane, :root[data-tlbx-theme="classic"] .timeline, :root[data-tlbx-theme="classic"] .transport { box-shadow: var(--bevel); }
-:root[data-tlbx-theme="classic"] .pane-head { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 65%, var(--input))); color: var(--accent-ink); }
+:root[data-tlbx-theme="classic"] .pane-head { background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 82%, var(--input))); color: var(--accent-ink); }
 :root[data-tlbx-theme="classic"] .pane-title, :root[data-tlbx-theme="classic"] .bin-info { color: var(--accent-ink); }
 :root[data-tlbx-theme="classic"] .bi-thumb, :root[data-tlbx-theme="classic"] .bi { border-radius: 0; }
 :root[data-tlbx-theme="classic"] .bi.on { background: var(--accent); }
@@ -80,3 +80,5 @@
 }
 @media (hover: none) { .th-b { width: 26px; height: 26px; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+/* The shared header buttons keep their own light face on the title bar: dark text on it. */
+:root[data-tlbx-theme="classic"] .topbar .tlbx-hbtn { color: var(--fg); }
