@@ -70,7 +70,7 @@
       K.base = K.base || new URL('shared/ai/', ROOT).href;
       // the one tool list (shared/ai/HANDOFF.md): the side panel's app tools, its command tools and the operations
       if (!g.TlbxCmdArgs) await script('shared/commands/args.js');
-      for (const [name, have] of [['apptools', K.appTools], ['cmdtools', K.cmdTools], ['optools', K.opTools]]) if (!have) await script('shared/ai/' + name + '.js');
+      for (const [name, have] of [['apptools', K.appTools], ['cmdtools', K.cmdTools], ['optools', K.opTools], ['filetools', K.fileTools]]) if (!have) await script('shared/ai/' + name + '.js');
       if (!g.TlbxAgentTools) await script('shared/agent/tools.js');
       if (!g.TlbxAgentWorkspace) await script('shared/agent/workspace.js');
       await script('shared/agent/toolset.js');
