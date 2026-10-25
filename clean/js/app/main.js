@@ -1,4 +1,5 @@
-/* Metadata Remover: the controller. Opens pictures (button, drop, Files ?drive=<id>), cleans them with the chosen
+/* Metadata Remover: the controller. Opens pictures through the one intake (shared/intake, spec 'clean': Open, a drop, a paste,
+ * Files ?drive=<id>, a PWA launch), cleans them with the chosen
  * categories, and hands out the results: a download (one file, or a zip through the shared TlbxZip), a copy saved to
  * Files, or (only for a picture opened from Drive, after a confirmation) a replaced original. Classic script. */
 (function () {
@@ -79,7 +80,19 @@
     if (window.TlbxGuard && TlbxGuard.setUnsaved) TlbxGuard.setUnsaved('clean', S.items.some((x) => x.out));
   }
 
-  function openPicker() { return UI().pickFiles({ accept: CL.io.ACCEPT, multiple: true }).then((f) => addFiles(f)); }
+  /** The one way in: every source reaches addFiles (a picture from Files keeps its record: Replace original). */
+  function registerIntake() {
+    window.TlbxIntake.register({
+      id: 'clean', accept: { types: ['image/*'], exts: ['.jpg', '.jpeg', '.png', '.webp', '.tif', '.tiff'], noun: 'a picture' },
+      processAll: async (files, ctx) => {
+        for (const f of files) S.items.push(await CL.io.load(f, f.name, f.tlbxDrive ? { driveId: f.tlbxDrive.id } : {}));
+        await runClean();
+        return files.map((f) => f.name);
+      },
+    });
+    window.TlbxIntake.dropTarget(document.body, { to: 'clean' });
+  }
+  const openPicker = () => window.TlbxIntake.pick({ to: 'clean', accept: CL.io.ACCEPT });
 
   function wire() {
     $('cl-open').addEventListener('click', openPicker);
@@ -87,8 +100,6 @@
     $('cl-remove-all').addEventListener('click', removeAll);
     $('cl-all').addEventListener('click', downloadAll);
     $('cl-save-all').addEventListener('click', () => saveAll());
-    document.addEventListener('dragover', (e) => { if (e.dataTransfer && [...e.dataTransfer.types].includes('Files')) e.preventDefault(); });
-    document.addEventListener('drop', (e) => { if (e.dataTransfer && e.dataTransfer.files.length) { e.preventDefault(); addFiles([...e.dataTransfer.files]); } });
     if (window.TlbxCmd && TlbxCmd.register) TlbxCmd.register([
       { id: 'cl.open', title: 'Open pictures…', group: 'File', keys: ['Mod+O'], run: openPicker, keywords: ['add', 'import', 'photo'] },
       { id: 'cl.download', title: 'Download cleaned pictures', group: 'File', keys: ['Mod+S'], run: downloadAll, keywords: ['zip', 'save'] },
@@ -97,11 +108,10 @@
   }
 
   async function boot() {
+    registerIntake();
     wire();
     render();
-    if (!window.TlbxHub) return;
-    const rec = await H().consumeLaunch();
-    if (rec && rec.blob) await addFiles([new File([rec.blob], rec.name, { type: rec.type })], { driveId: rec.id });
+    await window.TlbxIntake.launch({ to: 'clean' });
   }
   document.addEventListener('DOMContentLoaded', boot);
   CL.app = { addFiles, runClean, render, state: S };

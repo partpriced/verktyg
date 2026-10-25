@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shared intake: a config file comes in one way</title>
+  <style>body { margin: 0; } iframe { width: 1280px; height: 800px; border: 0; display: block; }</style>
+</head>
+<body>
+<iframe id="app"></iframe>
+<script src="../harness.js"></script>
+<script>
+  // Covers: shared/config/dialog.js
+  // Import config (shared/config): From this computer…, From Files…, the dialog's zone and a .tlbx.json dropped
+  // anywhere on the page are sources of the part 'config', whose reader checks and imports the file. Other files are
+  // refused with the reason. (In Label Designer, which has the intake.)
+  const { describe, it, expect, waitFor, run } = TlbxTest;
+  let W, D, seen = [];
+  const cfg = (name) => new W.File(['{"format":"tlbx-config","version":1,"kind":"nope"}'], name, { type: 'application/json' });
+  const dtOf = (files) => { const dt = new W.DataTransfer(); files.forEach((f) => dt.items.add(f)); return dt; };
+  const closeDialogs = () => { for (const x of D.querySelectorAll('.sui-back .sui-x')) x.click(); };
+  async function through(src, start) { const k = seen.length; await start(); await waitFor(() => seen.length === k + 1, { timeout: 10000 }); expect(seen[k]).toBe(src); }
+  describe('Import config: one way in', () => {
+    it('From this computer…, From Files…, the zone and a page-wide drop', async () => {
+      const fr = document.getElementById('app');
+      fr.src = '../../label/index.html';
+      await waitFor(() => { try { return fr.contentDocument.body.classList.contains('ready') && fr.contentWindow.TlbxConfigDialog; } catch (e) { return false; } }, { timeout: 30000 });
+      W = fr.contentWindow; D = W.document;
+      W.TlbxConfigDialog.open('import', { app: 'label' });
+      await waitFor(() => W.TlbxIntake.spec('config') && D.querySelector('.sd-config-zone'));
+      const s = W.TlbxIntake.spec('config'), reader = s.process;
+      s.process = (f, ctx) => { seen.push(ctx.source); return reader(f, ctx); };
+      W.TlbxUI.pickFiles = async () => [cfg('a.tlbx.json')];
+      const btn = (t) => [...D.querySelectorAll('.sui-dlg button')].find((b) => b.textContent === t);
+      await through('picker', () => btn('From this computer…').click());
+      closeDialogs();
+      W.TlbxConfigDialog.open('import', { app: 'label' });
+      await waitFor(() => btn('From Files…'));
+      W.TlbxHub.pickFromDrive = async () => ({ id: 'c1', name: 'b.tlbx.json', type: 'application/json', blob: cfg('b.tlbx.json') });
+      await through('drive', () => btn('From Files…').click());
+      closeDialogs();
+      await through('drop', () => D.body.dispatchEvent(new W.DragEvent('drop', { bubbles: true, cancelable: true, dataTransfer: dtOf([cfg('c.tlbx.json')]) })));
+      const r = await W.TlbxIntake.take([cfg('plain.json')], { to: 'config' });
+      expect(r.skipped[0].reason).toContain('is not a .tlbx.json file');
+      closeDialogs();
+    }, { timeout: 40000 });
+  });
+  run({ name: 'Shared intake: config files' });
+</script>
+</body>
+</html>

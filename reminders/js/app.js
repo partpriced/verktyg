@@ -94,6 +94,8 @@
     S.store.subscribe(() => refreshSoon());
     E.start();
     try { if (g.TlbxHub) g.TlbxHub.register('reminders'); } catch (e) { /* no hub */ }
+    // TlbxCmd: the assistant's record commands (shared/data/ai-records.js through shared/biz/biz.js), loaded when the AI panel first asks
+    if (g.TlbxCmd) { g.TlbxCmd.init({ app: 'reminders' }); if (g.TlbxCmd.provide && g.TlbxBiz && g.TlbxBiz.assistant) g.TlbxCmd.provide({ prepare: () => g.TlbxBiz.assistant('reminders') }); }
     await render();
     $('rBoot').hidden = true;
     setInterval(render, 30000);

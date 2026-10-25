@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shared intake: the shared components' files come in as parts</title>
+  <style>body { margin: 0; } iframe { width: 1280px; height: 800px; border: 0; display: block; }</style>
+</head>
+<body>
+<iframe id="app"></iframe>
+<script src="../harness.js"></script>
+<script>
+  // Covers: shared/intake/sources.js, shared/commands/recorder.js, shared/guides/panel-tabs.js, shared/presets/ui.js, shared/backup/ui.js, shared/backup/central-ui.js
+  // On a page with the intake (Image Editor), the shared components' file pickers are parts of the one intake
+  // (TlbxIntake.part): Import shortcuts (keys.import), the guides' Import Presets (guides.presets), the presets dialog's
+  // Import… (presets.import), Backup & restore's Choose backup file… (backup.import) and Export everything's Choose backup
+  // file… (backup.everything). Each pick reaches its part's reader.
+  const { describe, it, expect, waitFor, run } = TlbxTest;
+  let W, D;
+  const json = (name, text = '{}') => new W.File([text], name, { type: 'application/json' });
+  const spy = (id) => { const s = W.TlbxIntake.spec(id), r = s.process, got = []; s.process = (f, ctx) => { got.push(ctx.source); return r(f, ctx); }; return got; };
+  const button = (text) => waitFor(() => [...D.querySelectorAll('button, .sui-row')].find((b) => b.textContent.trim() === text));
+  describe('Shared components on the one intake', () => {
+    it('TlbxIntake.part registers a part once, not main, no paste', async () => {
+      const fr = document.getElementById('app');
+      fr.src = '../../imageeditor/index.html';
+      await waitFor(() => { try { return fr.contentWindow.TlbxIntake.part && fr.contentWindow.TlbxCmd && fr.contentWindow.TlbxPresets; } catch (e) { return false; } }, { timeout: 30000 });
+      W = fr.contentWindow; D = W.document;
+      const id = W.TlbxIntake.part({ id: 'test.part', process: (f) => f.name });
+      expect(W.TlbxIntake.part({ id: 'test.part', process: () => 'other' })).toBe(id);
+      const s = W.TlbxIntake.spec('test.part');
+      expect([s.main, s.paste, s.toast]).toEqual([false, false, false]);
+    }, { timeout: 40000 });
+    it('Import shortcuts (keys.import)', async () => {
+      W.TlbxUI.pickFiles = async () => [json('keys.json', JSON.stringify({ app: W.TlbxCmd.app || 'imageeditor', keys: {} }))];
+      const p = W.TlbxCmd._parts.recorder.importFile();
+      await waitFor(() => W.TlbxIntake.spec('keys.import'));
+      await p;
+      expect(!!W.TlbxIntake.spec('keys.import')).toBe(true);
+    });
+    it("the presets dialog's Import… (presets.import)", async () => {
+      W.TlbxPresets.openPicker({ title: 'Presets', onApply: () => {} });
+      const b = await button('Import…');
+      W.TlbxUI.pickFiles = async () => [json('preset.json')];
+      b.click();
+      await waitFor(() => W.TlbxIntake.spec('presets.import'));
+      await waitFor(() => /Imported|not|could|missing|error|format/i.test((D.querySelector('.sp-status') || {}).textContent || ''));
+      for (const x of D.querySelectorAll('.sui-back .sui-x')) x.click();
+    });
+    it("Backup & restore's Choose backup file… (backup.import) and Export everything's (backup.everything), in Files", async () => {
+      const fr = document.createElement('iframe'); fr.src = '../../drive/index.html'; document.body.append(fr);
+      await waitFor(() => { try { return fr.contentDocument.body.classList.contains('ready') && fr.contentWindow.TlbxBackup; } catch (e) { return false; } }, { timeout: 30000 });
+      W = fr.contentWindow; D = W.document;
+      W.TlbxUI.alert = async () => {};
+      W.TlbxBackup.openDialog(); // resolves when the dialog closes
+      const b = await waitFor(() => D.querySelector('[data-act="import"]'));
+      W.TlbxUI.pickFiles = async () => [new W.File(['not a zip'], 'x.tlbx')];
+      b.click();
+      await waitFor(() => W.TlbxIntake.spec('backup.import'));
+      for (const x of D.querySelectorAll('.sui-back .sui-x')) x.click();
+      W.TlbxBackup.openEverything();
+      const b2 = await waitFor(() => D.querySelector('[data-act="import-all"]'), { timeout: 15000 });
+      W.TlbxUI.pickFiles = async () => [json('all.backup.json', '{"nope":1}')];
+      b2.click();
+      await waitFor(() => W.TlbxIntake.spec('backup.everything'));
+    }, { timeout: 60000 });
+  });
+  run({ name: 'Shared intake: shared components as parts' });
+</script>
+</body>
+</html>

@@ -90,10 +90,22 @@
       return t.dataset.drop === 'root' ? null : t.dataset.drop;
     };
     let batchDest = null;
+    // The one way in (shared/intake, spec 'drive'): a drop (files and folders), Upload files… / Upload a folder… (Ctrl+U),
+    // and what the page was opened with (?drive=<id>: that file is shown; launchQueue files are uploaded). The
+    // whole batch is uploaded at once into its folder (a drop's folder, else the open one); the strip shows each file.
+    window.TlbxIntake.register({
+      id: 'drive', accept: { any: true, allowEmpty: true, noun: 'a file' }, paste: false, // Ctrl+V is Drive's own clipboard
+      processAll: async (files, ctx) => {
+        const rec = ctx.drive && S.files.get(ctx.drive.id);
+        if (ctx.source === 'launch' && rec && files.length === 1) { DR.reveal(rec); return [rec.id]; } // Open in Files
+        const dest = files[0].tlbxDest !== undefined ? files[0].tlbxDest : ctx.data && 'dest' in ctx.data ? ctx.data.dest : DR.dest();
+        return DR.importFiles(files.map((f) => ({ file: f, path: f.tlbxPath || f.webkitRelativePath || f.name })), dest);
+      },
+    });
     // TlbxDrop (shared/drop): the zone is the strip above the pane, shown only while files are added (drive/css/base.css);
     // the drops are taken by the pane and the tree.
     window.TlbxDrop.attach(document.getElementById('drvDrop'), {
-      accept: { any: true, allowEmpty: true, noun: 'a file' },
+      intake: 'drive',
       compact: true,
       targets: [document.getElementById('main'), document.getElementById('tree')],
       files: async (dt, e) => {
@@ -111,10 +123,6 @@
           }
         }
         return list.map((r) => Object.assign(r.file, { tlbxPath: r.path, tlbxDest: batchDest }));
-      },
-      process: async (file) => {
-        await DR.importFiles([{ file, path: file.tlbxPath }], file.tlbxDest);
-        return file.name;
       },
     });
   };

@@ -27,6 +27,7 @@
   function init() {
     g.TlbxBiz.commands('projects', LIST);
     if (g.TlbxCmd) g.TlbxCmd.register(LIST.filter((c) => c.keys.length));
+    if (NS.ai) NS.ai.init();   // the commands with arguments (ai-commands.js) for the palette, macros and the assistant
   }
 
   NS.commands = { init, list: LIST };

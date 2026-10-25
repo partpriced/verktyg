@@ -33,4 +33,6 @@ export function registerCommands() {
   if (!window.TlbxCmd) return;
   TlbxCmd.init({ app: 'notes' });
   TlbxCmd.register(commandList());
+  // the assistant's commands with arguments (ai-commands.js), loaded when the AI panel first asks
+  if (TlbxCmd.provide) TlbxCmd.provide({ prepare: () => import('./ai-commands.js') });
 }

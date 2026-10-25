@@ -47,17 +47,7 @@
   };
   SE.act.newProject = () => S.newProject(true);
 
-  /** Opened from another app with ?drive=<id>: import that file. */
-  S.launch = async function () {
-    if (!window.TlbxHub || SE.offline) return false;
-    const rec = await TlbxHub.consumeLaunch();
-    if (!rec) return false;
-    if (SE.reel && SE.reel.isManifest(rec)) return SE.reel.launch(rec); // a reel from Gallery (io/reel.js)
-    if (rec.meta && rec.meta.matteId) { await SE.cutout.receive({ id: rec.id, matteId: rec.meta.matteId, clipId: rec.meta.clipId || null, name: rec.name }); return true; } // a matte pair from Background Remover
-    const f = new File([rec.blob], rec.name, { type: rec.type });
-    if (/\.videoedit$/i.test(rec.name || '')) await SE.project.openFile(f, rec.id);
-    else await SE.app.importFiles([f], { from: 'drive' });
-    TlbxUI.toast('Opened ' + rec.name + ' from Files');
-    return true;
-  };
+  /** Opened from another app (?drive=<id>: a file, a reel from Gallery, a matte pair from Background Remover) or as the
+   *  installed app with files: through the intake (io/intake.js). */
+  S.launch = () => SE.intake.launch();
 })();

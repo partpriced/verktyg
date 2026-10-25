@@ -29,7 +29,9 @@
     const files = [].concat((await getFiles()) || []);
     const H = g.TlbxHub;
     if (!files.length || !H) { g.open(new URL('workflows/', ROOT).href, '_blank'); return; }
-    await H.sendTo('workflows', files[0], files[0].name || 'file');
+    // the one way out (shared/intake/outtake.js) where the page has it: the file goes through Files
+    if (g.TlbxOuttake) await g.TlbxOuttake.send('workflows', { get: () => files[0], name: files[0].name || 'file', type: files[0].type || '' });
+    else await H.sendTo('workflows', files[0], files[0].name || 'file');
   }
   function menuItems(getFiles) {
     return [

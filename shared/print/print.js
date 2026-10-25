@@ -1,6 +1,8 @@
-/* TlbxPrint: the one print dialog for every ITpris Verktyg app. Classic script, no dependencies.
+/* TlbxPrint: the one print dialog for every ITpris Verktyg app. Classic script.
  * Uses TlbxUI (dialogs, toasts) and TlbxCmd (the "Print" command) when present. Exposes window.TlbxPrint.
- * Load after shared/tlbxui.js. Apps call TlbxPrint.register(appId, provider) once, then open() or print(). */
+ * Load after shared/tlbxui.js; printing HTML also needs TlbxSanitize (vendor/dompurify/purify.min.js, then
+ * shared/sanitize/sanitize.js), which cleans it; the preview and print frames are sandboxed without scripts too.
+ * Apps call TlbxPrint.register(appId, provider) once, then open() or print(). */
 (function () {
   'use strict';
   if (window.TlbxPrint) return;
@@ -28,16 +30,8 @@
     return { ok: true, text: parts.join(', ').replace(/\s*-\s*/g, '-') };
   }
 
-  /** Removes anything that could load or run: scripts, frames, handlers and non-local URLs. Parsed inertly. */
-  function clean(html) {
-    const doc = new DOMParser().parseFromString('<!doctype html><body>' + String(html), 'text/html');
-    doc.querySelectorAll('script, iframe, frame, frameset, object, embed, applet, link, meta, base').forEach((n) => n.remove());
-    for (const n of doc.body.querySelectorAll('*')) for (const a of [...n.attributes]) {
-      const name = a.name.toLowerCase();
-      if (name.startsWith('on') || (/^(src|srcset|href|action|formaction|poster|background|xlink:href)$/.test(name) && !/^(data:|blob:|#)/i.test(a.value.trim()))) n.removeAttribute(a.name);
-    }
-    return doc.body.innerHTML;
-  }
+  /** Removes anything that could load or run: scripts, frames, handlers, links and non-local URLs (TlbxSanitize). */
+  const clean = (html) => window.TlbxSanitize.html(html, { urls: 'local', links: false });
 
   /** The page's own CSS (style blocks and same-origin sheets), read from the CSSOM: nothing is fetched. */
   function pageCss() {
@@ -78,7 +72,8 @@
     f.className = 'sp-print';
     f.setAttribute('aria-hidden', 'true');
     f.tabIndex = -1;
-    if (src.srcdoc != null) f.srcdoc = src.srcdoc; else f.src = src.url;
+    // HTML prints from a frame that runs no script (print() from the parent needs allow-modals; a PDF needs its viewer)
+    if (src.srcdoc != null) { f.setAttribute('sandbox', 'allow-same-origin allow-modals'); f.srcdoc = src.srcdoc; } else f.src = src.url;
     document.body.append(f);
     let timer = 0;
     const done = () => { clearTimeout(timer); f.remove(); };
@@ -95,6 +90,7 @@
     if (!window.TlbxUI || dialogOpen) return null;
     const job = { title: String(o.title || document.title || 'Print'), root: o.root || rootAttrs(), css: '' };
     let objectUrl = null;
+    if (o.html != null && !window.TlbxSanitize) { toast('Printing is not ready yet. Try again in a moment.'); return null; }
     if (o.html != null) { job.html = clean(o.html); job.css = pageCss(); }
     else if (o.blob) { objectUrl = URL.createObjectURL(o.blob); job.pdf = objectUrl; }
     else if (typeof o.pdfUrl === 'string' && /^(blob|data):/i.test(o.pdfUrl)) job.pdf = o.pdfUrl;
@@ -110,7 +106,7 @@
     const pagesIn = el('input', { class: 'sui-input', type: 'text', placeholder: 'All pages, or e.g. 1-3, 5', value: init.pages, 'aria-label': 'Page range', autocomplete: 'off', spellcheck: 'false' });
     const copiesIn = U.number(1, 1, 99);
     const help = el('p', { class: 'sui-p sp-help', role: 'status' });
-    const frame = el('iframe', { class: 'sp-frame', title: 'Print preview', scrolling: 'no', tabindex: '-1' });
+    const frame = el('iframe', { class: 'sp-frame', title: 'Print preview', scrolling: 'no', tabindex: '-1', sandbox: 'allow-same-origin' });
     const wrap = el('div', { class: 'sp-wrap' }, frame);
     const body = el('div', { class: 'sp-body' }, wrap,
       el('div', { class: 'sp-grid' },

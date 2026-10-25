@@ -17,7 +17,8 @@ function wire() {
     navigator.clipboard.writeText(v).then(() => TlbxUI.toast('Link copied'), () => { $('pb-link').select(); TlbxUI.toast('Select the link and copy it'); });
   });
   wireView(A);
-  document.addEventListener('paste', (e) => A.onPaste(e));
+  A.registerIntake();
+  document.addEventListener('paste', (e) => A.onPaste(e)); // intake-ok: pasted text (a pasted picture is the intake's)
   if (window.TlbxCtx) TlbxCtx.bind($('pb-app'), resolveMenu);
 }
 

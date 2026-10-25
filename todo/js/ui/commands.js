@@ -21,6 +21,8 @@
     if (!g.TlbxCmd) return;
     g.TlbxCmd.init({ app: 'todo' });
     g.TlbxCmd.register(COMMANDS);
+    // the assistant's record commands (shared/data/ai-records.js through shared/biz/biz.js), loaded when the AI panel first asks
+    if (g.TlbxCmd.provide && g.TlbxBiz && g.TlbxBiz.assistant) g.TlbxCmd.provide({ prepare: () => g.TlbxBiz.assistant('todo') });
   }
 
   NS.commands = { init, list: COMMANDS };

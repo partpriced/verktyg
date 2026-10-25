@@ -120,8 +120,17 @@ function updateKeyTitles() {
   t('btnCmd', 'Search commands', window.TlbxCmd && TlbxCmd.keyFor('cmd.palette'));
   document.querySelectorAll('.tool[data-tool]').forEach((b) => { const tool = toolById(b.dataset.tool); const k = K('tool.' + tool.id); b.title = k ? `${tool.name} (${k})` : tool.name; });
 }
+/** The assistant's commands with arguments (ai-commands.js, ai-files.js) and shared/commands/sources.js, loaded in order the
+ * first time TlbxCmd.prepare() asks (the AI panel). Not in the offline build, which has no AI panel. */
+const LABEL_AI_BASE = (document.currentScript && document.currentScript.src) || location.href;
+function loadLabelAI() {
+  if (window.LabelAI && window.LabelAI.state) return Promise.resolve();
+  const one = (rel) => new Promise((res, rej) => { const s = document.createElement('script'); s.src = new URL(rel, LABEL_AI_BASE).href; s.async = false; s.onload = res; s.onerror = () => rej(new Error('Could not load ' + rel)); document.head.append(s); });
+  return (window.TlbxCmdSources ? Promise.resolve() : one('../../../shared/commands/sources.js')).then(() => one('ai-commands.js')).then(() => one('ai-files.js'));
+}
 function initCommands() {
   if (!window.TlbxCmd) return false;
+  if (TlbxCmd.provide) TlbxCmd.provide({ prepare: loadLabelAI });
   TlbxCmd.init({ app: 'label' });
   TlbxCmd.register(labelCommands().concat(window.TlbxConfigDialog ? TlbxConfigDialog.commands({ app: 'label', prefix: 'label' }) : []));
   TlbxCmd.on('change', updateKeyTitles);

@@ -76,12 +76,8 @@
       { label: 'Download JSON', act: () => window.TlbxUI.download(js(), nm('.json')) },
     ];
   };
-  AI.importConv = async function () {
-    const files = await window.TlbxUI.pickFiles({ accept: '.json,application/json' });
-    const f = files && files[0]; if (!f) return;
-    try { const c = AI.fromJSON(await f.text()); await AI.db.put(c, { touch: false }); AI.setTab(c.kind === 'build' ? 'build' : 'chat'); if (c.kind === 'build') AI.openBuild(c.id); else AI.openConv(c.id); AI.toast('Imported “' + c.title + '”'); }
-    catch (e) { window.TlbxUI.alert('Could not import', e.message); }
-  };
+  /** Import a conversation (.json): the intake's part 'ai.conv' (ui/intake.js). */
+  AI.importConv = () => AI.intake.importConv();
 
   let chatsBtn = null;   // made once: it is the phone drawer's toggle, so bar() keeps the same button
   function bar() {

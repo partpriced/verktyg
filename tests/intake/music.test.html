@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Shared intake in Music Player: every way in is the same path</title></head>
+<body>
+  <script src="../harness.js"></script>
+  <script src="../drive/util.js"></script>
+  <script src="../../shared/tlbxui.js"></script>
+  <script src="../../shared/apps.js"></script>
+  <script src="../../shared/hub.js"></script>
+  <script src="../music/fixtures.js"></script>
+  <script>
+  // Covers: music/js/ui/library.js, music/js/ui/playlists.js, music/js/app/main.js
+  // Music Player on the one intake: Add files, the empty library's button, a drop on the library, a paste and a PWA launch
+  // reach the same reader (the file goes into Files, the library) with the same events; ?drive=<id> of a track the
+  // library has plays it. Open a playlist from Files is a part of its own.
+  const { describe, it, expect, waitFor } = TlbxTest;
+  const F = window.MusicFixtures;
+  let W, D, seen = [], events = [];
+  const wavFile = (name) => new W.File([F.wav(1)], name, { type: 'audio/wav' });
+  const dtOf = (files) => { const dt = new W.DataTransfer(); files.forEach((f) => dt.items.add(f)); return dt; };
+  const count = () => W.TlbxMusic.lib.list().length;
+  async function through(source, start, n = 1, app = 'music') {
+    seen = []; events = [];
+    await start();
+    await waitFor(() => events.some((e) => e[0] === 'after'), { timeout: 15000 });
+    if (app === 'music') expect(seen).toEqual(Array(n).fill(source));
+    expect(events.map((e) => e[0])).toEqual(['before', ...Array(n).fill('file'), 'after']);
+    expect(events.every((e) => e[1] === app && e[2] === source)).toBe(true);
+  }
+
+  describe('Music Player: one way in', () => {
+    it('the empty library’s Add files', async () => {
+      await window.TlbxHub.clear();
+      W = await DT.frame('../../music/', (w) => w.TlbxMusic && w.TlbxIntake && w.TlbxIntake.spec('music') && w.TlbxIntake.spec('music.playlist'));
+      D = W.document;
+      const s = W.TlbxIntake.spec('music'), reader = s.process;
+      s.process = (f, ctx) => { seen.push(ctx.source); return reader(f, ctx); };
+      for (const t of ['before', 'file', 'after']) W.TlbxIntake.on(t, (d) => { events.push([t, d.app, d.source]); });
+      const files = [wavFile('One.wav'), wavFile('Two.wav')];
+      W.TlbxUI.pickFiles = async () => files;
+      await through('picker', () => D.getElementById('lib-add-empty').click(), 2);
+      await waitFor(() => count() === 2);
+    }, { timeout: 40000 });
+    it('the header’s Add files', async () => {
+      W.TlbxUI.pickFiles = async () => [wavFile('Three.wav')];
+      await through('picker', () => D.getElementById('mu-add').click());
+      await waitFor(() => count() === 3);
+    });
+    it('a drop on the library', async () => {
+      await through('drop', () => D.getElementById('v-library').dispatchEvent(new W.DragEvent('drop', { bubbles: true, cancelable: true, dataTransfer: dtOf([wavFile('Four.wav')]) })));
+      await waitFor(() => count() === 4);
+    });
+    it('a paste', async () => {
+      await through('paste', () => D.body.dispatchEvent(new W.ClipboardEvent('paste', { bubbles: true, cancelable: true, clipboardData: dtOf([wavFile('Five.wav')]) })));
+      await waitFor(() => count() === 5);
+    });
+    it('?drive=<id> of a library track plays it (nothing is added twice)', async () => {
+      const t = W.TlbxMusic.lib.list()[0], rec = await W.TlbxHub.get(t.id);
+      W.TlbxHub.consumeLaunch = async () => rec;
+      await through('launch', () => W.TlbxIntake.launch({ to: 'music' }));
+      expect(count()).toBe(5);
+      expect(W.TlbxMusic.engine.state().trackId).toBe(t.id);
+    });
+    it('Open a playlist from Files is a part of its own', async () => {
+      const ids = W.TlbxMusic.lib.list().slice(0, 2).map((x) => x.id);
+      const blob = W.TlbxMusic.plfile.build('Road trip', ids.map((id) => ({ id })));
+      W.TlbxHub.pickFromDrive = async () => ({ id: 'pl1', name: 'Road trip.splaylist', type: W.TlbxMusic.plfile.MIME, blob });
+      await through('drive', () => D.getElementById('pl-open').click(), 1, 'music.playlist');
+      expect(seen).toEqual([]);
+      await waitFor(() => W.TlbxMusic.playlists.all().some((p) => p.name === 'Road trip'));
+    });
+  });
+  TlbxTest.run({ name: 'Shared intake: Music Player' });
+  </script>
+</body>
+</html>

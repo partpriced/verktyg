@@ -41,6 +41,10 @@
     // Timeline tabs: the timeline and the graph editor share the lower area.
     g.TlbxTabs.mount($('fx-tl-tabs'), { panel: (k) => $(k === 'graph' ? 'fx-graph' : 'fx-timeline') }).show('timeline');
 
+    // The suite rule (shared/frame/HANDOFF.md): Render, the main button, sits at the foot of the right panel; on a phone
+    // the closed sheet still shows it, with Properties to open the rest (TlbxFramePanel's footer, shared/frame/panel.js).
+    g.TlbxFramePanel.create(document.querySelector('.fx-side'), { bare: true })
+      .footer([{ el: $('fx-render') }], { more: 'Properties', onMore: () => sheet && sheet.toggle() });
     const menus = ns.menus.mount(S, Object.assign(act, { toast }), io);
     const renderDialog = () => ns.renderDialog.open(S, toast);
     const compDialog = () => ns.menus.compDialog(S, act);
@@ -55,6 +59,9 @@
     S.emit('sel');
     g.TlbxEffects.app = { S, act, ka, io, tr, preview, menus, showTab, sheet };
     menus.refresh();
+    g.TlbxIntake.dropTarget($('fx-view'), { to: 'effects' });
+    if (g.TlbxHub) { try { g.TlbxHub.register('effects'); } catch (e) { /* bus unavailable */ } }
+    io.launch();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot, { once: true });
