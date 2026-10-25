@@ -16,7 +16,7 @@
     ['paste', 'Paste'], ['resize', 'Resizer'], ['upscale', 'Upscaler'], ['aitools', 'AI Tools'],
     ['3d', '3D Modeller'], ['img3d', 'Image to 3D'], ['effects', 'Motion Graphics'], ['docs', 'Documents'],
     ['slides', 'Presentations'], ['tables', 'Spreadsheets'], ['label', 'Label Designer'], ['gallery', 'Gallery'],
-    ['hex', 'Hex Editor'], ['code', 'Code Editor'],
+    ['hex', 'Hex Editor'], ['code', 'Code Editor'], ['fontcreator', 'Font Creator'],
   ];
   const NAME = Object.fromEntries(TOURS);
   let loading = null;

@@ -1,15 +1,14 @@
 /* Photo Sorter for the assistant: TlbxCmd commands with arguments, imported on demand by TlbxCmd.prepare() (app.js).
- * On the page's own set (TlbxSorter.app, model.js): add_photos (from Files), set_decision (like, dislike or not
+ * On the page's own set (TlbxSorter.app, model.js): new_sort (a fresh pile, as Clear does; destructive: the decisions go),
+ * add_photos (from Files), set_decision (like, dislike or not
  * sorted), add_tags, remove_tag, remove_photos (destructive: out of the pile; the Drive files stay) and export_photos (the
  * liked photos as a ZIP, or the decisions as CSV, to Files and/or a download; or the liked photos into a Drive
- * folder, as the page's button). Photos are named by name or id; with none given, the shown ones. The pile is not a
- * document, so there is nothing to create. */
+ * folder, as the page's button). Photos are named by name or id; with none given, the shown ones. */
 import { writeZip } from '../../shared/office/zip.js';
 
 const C = window.TlbxCmd, P = () => window.TlbxSorter.app, M = () => window.TlbxSorter.model;
 const list = [];
-const add = (tool, title, args, run, extra) => list.push(Object.assign({ id: 'sorter.ai.' + tool.replace(/_/g, '-'), tool, title, group: 'AI', hidden: true, destructive: false, args,
-  run: (a) => run(a || window.TlbxCmdArgs.defaults(args)) }, extra));
+const add = C.aiAdder('sorter', list);   // shared/commands/commands.js
 const PHOTOS = { name: 'photos', type: 'array', maxItems: 5000, items: { type: 'string' }, description: 'photo names or ids; the shown ones when empty' };
 function pick(names) {
   const items = P().set.items;
@@ -28,15 +27,23 @@ async function save(blob, name, to) {
   return out.join(' and ') + '.';
 }
 
-add('add_photos', 'Add photos from Files', [{ name: 'files', type: 'array', required: true, maxItems: 5000, items: { type: 'string' }, description: 'Files names or ids' }], async (a) => {
-  const H = window.TlbxHub, all = await H.list(), files = [];   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
-  for (const q of a.files) {
-    const s = String(q).toLowerCase(), hit = all.find((f) => f.id === q) || all.find((f) => f.name.toLowerCase() === s);
-    if (!hit) throw new Error(`No Files file “${q}”`);
-    const rec = await H.get(hit.id);
-    files.push(new File([rec.blob], rec.name, { type: rec.type || rec.blob.type }));
-  }
-  const added = P().add(files);
+/** Files files by id or name (shared/commands/sources.js), all found before anything changes. */
+async function driveFiles(names) {
+  const src = await window.TlbxCmd.sources(), files = [];
+  for (const q of names) files.push(await src.driveAsFile(q));
+  return files;
+}
+const FILES = { name: 'files', type: 'array', required: true, maxItems: 5000, items: { type: 'string' }, description: 'Files names or ids' };
+
+add('new_sort', 'Start a new sort', [Object.assign({}, FILES, { required: false, description: 'Files photos (names or ids) to start the new pile with' })], async (a) => {
+  const files = a.files && a.files.length ? await driveFiles(a.files) : [];   // all found before the old pile goes
+  const was = P().set.items.length;
+  P().clear();
+  const added = files.length ? P().add(files) : [];
+  return `Started a new sort (${was} photo(s) and their decisions cleared) with ${added.length} photo(s).`;
+}, { destructive: true, description: 'Clear the pile and its decisions and start a new sort, empty or with photos from Files. Export first to keep the decisions.' });
+add('add_photos', 'Add photos from Files', [FILES], async (a) => {
+  const added = P().add(await driveFiles(a.files));
   return `Added ${added.length} photo(s). ${counts()}.`;
 });
 add('set_decision', 'Like or dislike photos', [PHOTOS, { name: 'decision', type: 'enum', values: ['liked', 'disliked', 'none'], required: true }], async (a) => {

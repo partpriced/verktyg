@@ -136,6 +136,6 @@ function wire() {
 }
 
 wire();
-window.TlbxSorter.app = { set, deck, add, start, draw, zipLiked, driveLiked, get which() { return which; } };
+window.TlbxSorter.app = { set, deck, add, clear, start, draw, zipLiked, driveLiked, get which() { return which; } };
 // TlbxCmd: the assistant's commands with arguments (ai-commands.js), loaded when the AI panel first asks
 if (window.TlbxCmd) { window.TlbxCmd.init({ app: 'sorter' }); if (window.TlbxCmd.provide) window.TlbxCmd.provide({ prepare: () => import('./ai-commands.js') }); }
