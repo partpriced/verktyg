@@ -12,7 +12,7 @@ const load = (file, win) => vm.runInNewContext(readFileSync(path.join(ROOT, file
 const win = {};
 load('shared/apps.js', win);
 load('shared/app-icons.js', win);
-const apps = JSON.parse(JSON.stringify(win.TLBX_APPS)); // copy out of the vm realm
+const apps = JSON.parse(JSON.stringify(win.TLBX_ALL_APPS || win.TLBX_APPS)); // copy out of the vm realm; with any app a brand profile hides
 const icons = { ...win.TLBX_ICONS };
 
 test('every app id in shared/apps.js has an icon entry', () => {
