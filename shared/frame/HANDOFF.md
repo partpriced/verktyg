@@ -170,16 +170,16 @@ Kind: tool (open → settings → run → save), editor, records (list + form), 
 | Photo Sorter | sorter/ | tool | one column, Start and downloads in bars | done | the view filters stay above the photos |
 | File Converter | convert/ | tool | tool built in JS, one column | done | js/ui/frame.js: files left, results right, Convert + Clear in the panel footer; the Convert dialog (compact) keeps one column |
 | AI Tools | aitools/ (+ ocr, speech, denoise, tags, portrait) | tool | each tool one column | done | one module for the five pages (aitools/frame.js, data-side marks); the hub is a list of tools |
-| Video Remix | remix/ | editor | bin left, settings right, Remix in the panel | close | phone sheet missing |
+| Video Remix | remix/ | editor | bin left, settings right, Remix in the panel | done | Remix and Export in the options panel's footer; the panel is a phone bottom sheet whose closed state shows them |
 | Image Editor | imageeditor/ | editor | toolbox left, panels right, Export in the header | done | Export at the panels' foot; the top bar fits the app's width (container query, More ▾) beside the Assistant panel |
 | Vector Editor | vectoreditor/ | editor | toolbar left, dock right, no main button | done | Export ▾ at the dock's foot (the File ▸ Export actions); the dock is a drawer on phones |
 | PDF Editor | pdf/ | editor | rail left, properties right, Download in the header | done | Download at the properties panel's foot (the shared footer); its own phone sheet (openClass) shows the footer above the rail while closed; properties resizable (shared/ui/resize-panel.js) |
 | Label Designer | label/ | editor | toolbox left, dock right, Print in the header | done | Print at the dock's foot (the shared footer) |
-| Video Editor | videostudio/ | editor | bin left, inspector right, Export in the header | close | Export into the inspector's foot |
+| Video Editor | videostudio/ | editor | bin left, inspector right, Export in the header | done | Export at the inspector's foot (the shared footer); the inspector is a phone bottom sheet whose closed state shows Export |
 | Page Layout | press/ | editor | toolbar left, dock right, Export PDF in the control bar | done | Export PDF… at the dock's foot; the dock is a drawer on phones |
-| Presentations | slides/ | editor | slides left, inspector right, Save in the header | close | Save stays in the header (a document app saves from File) |
+| Presentations | slides/ | editor | slides left, inspector right, Save in the header | done | Save and Present at the inspector's foot (the shared footer); the closed phone sheet shows them; File ▸ Save and Ctrl+S too |
 | 3D Modeller | 3d/ | editor | outliner left, properties right, Save in the header | done | Save at the Properties foot (the shared footer) |
-| Documents | docs/ | editor | outline left, no inspector | to do | no inspector yet (a new right panel is a larger job); the outline is a list and stays left |
+| Documents | docs/ | editor | outline left, no inspector | done | a Document panel on the right (docs/js/ui/panel.js: file, page, download and send; resizable), Save and PDF at its foot; a phone bottom sheet; the outline stays left |
 | Spreadsheets | tables/ | editor | sheets and objects list LEFT | n/a | the left column is a list (sheets, charts, pivots), which the rule keeps on the left; no settings panel |
 | Code Editor | code/ | editor | file tree left, preview right | n/a | an IDE: tree left is a list; no settings panel |
 | Music Player | music/ | other | tags/playlists left | n/a | navigation only |
