@@ -80,6 +80,7 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'projects.files.open_first': 'Abra primeiro um projeto.',
   'projects.files.opened_sample': 'Exemplo “{name}” aberto',
   'projects.files.opened': '“{name}” aberto com {n} tarefas',
+  'projects.files.opened#one': '“{name}” aberto com {n} tarefa',
   'projects.files.not_saved': 'Não foi possível salvá-lo.',
   'projects.files.noun': 'um backup do Projects (.json)',
   'projects.files.drop': 'Solte aqui um backup de projeto (.json)',

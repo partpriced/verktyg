@@ -22,6 +22,7 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'ui.buddy.three_d': 'Helper em 3D',
   'ui.buddy.restore': 'Restaurar página',
   'ui.buddy.restore_n': 'Restaurar página (desfazer {n} mudanças)',
+  'ui.buddy.restore_n#one': 'Restaurar página (desfazer {n} mudança)',
   'ui.buddy.hat_btn': 'Chapéu',
   'ui.buddy.change_hat': 'Trocar chapéu (usando: {hat})',
   'ui.buddy.unleash': 'Soltar',
