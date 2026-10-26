@@ -17,6 +17,8 @@ const G = await import(pathToFileURL(path.join(ROOT, 'tools/seo/guides.mjs')).hr
 const { GUIDES } = await import(pathToFileURL(path.join(ROOT, 'shared/seo/guides/index.mjs')).href);
 const { loadRegistry, SITE } = await import(pathToFileURL(path.join(ROOT, 'tools/seo/site.mjs')).href);
 const apps = await loadRegistry(), app = (id) => apps.find((a) => a.id === id);
+const { context, ROOT_LANG } = await import(pathToFileURL(path.join(ROOT, 'tools/seo/lang.mjs')).href);
+const EN = context('en');   // the templates' English words: these checks read them (the root language may be another)
 const { FACTS } = await import(pathToFileURL(path.join(ROOT, 'tests/brand-facts.mjs')).href);
 const good = { app: 'imageeditor', slug: 'getting-started', crumb: 'Getting started', title: 't', description: 'd', h1: 'Getting started with Image Editor', lead: 'l',
   sections: [{ h2: 'Open a picture', steps: ['Drop it', 'Look'] }, { h2: 'Layers', text: ['Each layer…'], image: { src: '/assets/shots/imageeditor.jpg', alt: 'The Layers panel' } },
@@ -31,7 +33,7 @@ test('checks: at least 3 sections with text or steps, images under /assets/ with
 });
 
 test('a guide page: the guide sidebar with it marked, its sections listed, the video, the steps and the shortcuts', () => {
-  const [p] = G.guidePages(apps, SITE, [good]);
+  const [p] = G.guidePages(apps, SITE, [good], {}, EN);
   assert.equal(p.dir, 'imageeditor/getting-started/');
   assert.match(p.html, /<a href="\/imageeditor\/getting-started\/" aria-current="page">Getting started<\/a>/);
   assert.match(p.html, /On this page/);
@@ -39,7 +41,7 @@ test('a guide page: the guide sidebar with it marked, its sections listed, the v
   if (FACTS.media) assert.match(p.html, /yt-vid00000004\.jpg/); else assert.doesNotMatch(p.html, /yt-[\w-]+\.jpg|youtube/);
   assert.match(p.html, /<ol><li>Drop it<\/li><li>Look<\/li><\/ol>/);
   assert.match(p.html, /<td><code>Ctrl\+Z<\/code><\/td><td>Undo<\/td>/);
-  const ld = G.guideJsonLd(good, app('imageeditor'), `${SITE}/imageeditor/getting-started/`, SITE);
+  const ld = G.guideJsonLd(good, app('imageeditor'), `${SITE}/imageeditor/getting-started/`, SITE, EN);
   assert.deepEqual(ld.map((x) => x['@type']), ['TechArticle', 'BreadcrumbList'].concat(FACTS.media ? ['VideoObject'] : []));
 });
 
