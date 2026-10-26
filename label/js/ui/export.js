@@ -30,8 +30,8 @@ function exportSVG() {
   TlbxUI.download(new Blob([labelSVG(App.doc, buildScene(App.doc, get))], { type: 'image/svg+xml' }), fileBase() + '.svg');
   TlbxSupport.afterExport('label');
 }
-async function exportPDFQuick() { try { downloadBytes(await pdfBytes({ prompts: App.prompts }), fileBase() + '.pdf', 'application/pdf'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert('PDF export failed', e.message); } }
-function exportZPLQuick() { try { downloadBytes(zplText({ prompts: App.prompts }), fileBase() + '.zpl', 'text/plain'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert('ZPL export failed', e.message); } }
+async function exportPDFQuick() { try { downloadBytes(await pdfBytes({ prompts: App.prompts }), fileBase() + '.pdf', 'application/pdf'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert(LT('label.exp.pdf_export_failed'), e.message); } }
+function exportZPLQuick() { try { downloadBytes(zplText({ prompts: App.prompts }), fileBase() + '.zpl', 'text/plain'); TlbxSupport.afterExport('label'); } catch (e) { TlbxUI.alert(LT('label.exp.zpl_export_failed'), e.message); } }
 
 /* ---------------- projects ---------------- */
 /** File ▸ Save (Ctrl+S): to Files when available (see hub.js), otherwise the .labeldesigner download. */
@@ -42,7 +42,7 @@ function saveProject() {
 function downloadProject() {
   TlbxUI.download(projectBlob(App.doc), safeName(App.doc.name, '.labeldesigner'));
   markSaved();
-  status('Saved ' + safeName(App.doc.name, '.labeldesigner'), '', 2500);
+  status(LT('label.exp.saved', { name: safeName(App.doc.name, '.labeldesigner') }), '', 2500);
 }
 /** Open whatever came in (ui/intake.js: chosen, dropped, sent from another app): projects, ZPL, images (placed) or data
  *  files (merged). o.driveId: the Files file a project came from (Save writes back to it). */
@@ -51,19 +51,19 @@ async function openFiles(files, o = {}) {
   for (const f of files) {
     const n = (f.name || '').toLowerCase();
     try {
-      if (/\.labeldesigner$/.test(n)) { openDocTab(parseProject(await f.text()), tab(f)); status('Opened ' + f.name, '', 2500); }
+      if (/\.labeldesigner$/.test(n)) { openDocTab(parseProject(await f.text()), tab(f)); status(LT('label.exp.opened', { name: f.name }), '', 2500); }
       else if (/\.(zpl|prn)$/.test(n)) await importZPLText(await f.text(), f.name);
-      else if (/\.webm$/.test(n) || /^video\//.test(f.type)) TlbxUI.alert('WebM is video', 'Label Designer places pictures and does not play video. Export a still image (PNG, JPEG or WebP) instead.');
+      else if (/\.webm$/.test(n) || /^video\//.test(f.type)) TlbxUI.alert(LT('label.exp.webm_is_video'), LT('label.exp.labeldesigner_places_pictures_and_does'));
       else if (/^image\//.test(f.type) || /\.(png|jpe?g|gif|webp|avif|svg|bmp)$/.test(n)) await insertImageFile(f);
       else if (/\.(csv|tsv|tab|xlsx)$/.test(n) || /csv|spreadsheet/.test(f.type)) await importDataDialog(f);
       else if (/\.(json|txt)$/.test(n)) {
         const t = await f.text();
-        if (/"app"\s*:\s*"labeldesigner"/.test(t.slice(0, 400))) { openDocTab(parseProject(t), tab(f)); status('Opened ' + f.name, '', 2500); }
+        if (/"app"\s*:\s*"labeldesigner"/.test(t.slice(0, 400))) { openDocTab(parseProject(t), tab(f)); status(LT('label.exp.opened', { name: f.name }), '', 2500); }
         else if (/"format"\s*:\s*"labeldesigner-configs"/.test(t.slice(0, 400))) importConfigsText(t);
         else if (/\^XA/.test(t)) await importZPLText(t, f.name);
         else await importDataDialog(f);
-      } else TlbxUI.toast('Unsupported file: ' + f.name);
-    } catch (e) { TlbxUI.alert('Could not open ' + f.name, e.message || String(e)); }
+      } else TlbxUI.toast(LT('label.exp.unsupported', { name: f.name }));
+    } catch (e) { TlbxUI.alert(LT('label.exp.cannot_open', { name: f.name }), e.message || String(e)); }
   }
 }
 
@@ -73,20 +73,20 @@ async function importZPLText(text, name, dpi = App.doc.dpi) {
   try {
     const d = await importZPL(text, { dpi });
     if (name) d.name = name.replace(/\.[^.]+$/, '');
-    openDocTab(d, { label: 'Import ZPL', origName: name || null, dirty: true });
-    TlbxUI.toast(`Imported ${d.objects.length} objects${d.vars.length ? ` and ${d.vars.length} variables` : ''} from ZPL`);
+    openDocTab(d, { label: LT('label.exp.import_zpl'), origName: name || null, dirty: true });
+    TlbxUI.toast(d.vars.length ? LT('label.exp.zpl_vars', { n: d.objects.length, v: d.vars.length }) : LT('label.exp.zpl', { n: d.objects.length }));
     return true;
-  } catch (e) { TlbxUI.alert('Could not import ZPL', e.message || String(e)); return false; }
+  } catch (e) { TlbxUI.alert(LT('label.exp.could_not_import_zpl'), e.message || String(e)); return false; }
 }
 function importZPLDialog() {
   const ta = mk('textarea', { class: 'inp', rows: 12, placeholder: '^XA\n^FO50,50^A0N,40,40^FDHello^FS\n^XZ', style: 'width:100%;min-height:220px;font-family:var(--mono)' });
   const dpi = dSel([[152, '152 dpi'], [203, '203 dpi'], [300, '300 dpi'], [600, '600 dpi']], App.doc.dpi);
-  const zbody = mk('div', { class: 'dlg-form' }, mk('p', { class: 'sui-p' }, 'Paste a ZPL II format (from ZebraDesigner, NiceLabel, an ERP or a printer dump). Fields with ^FN become prompts and ^SN becomes a counter.'), ta, dRow('Printer resolution', dpi));
+  const zbody = mk('div', { class: 'dlg-form' }, mk('p', { class: 'sui-p' }, LT('label.exp.paste_a_zpl_ii_format')), ta, dRow(LT('label.exp.printer_resolution'), dpi));
   TlbxFormReset.snapshot(zbody);
-  TlbxUI.dialog({ title: 'Import ZPL', cls: 'sui-wide', body: zbody,
-    buttons: [{ label: 'Open file…', act: async () => { const t = await pickZPLText(); if (t != null) ta.value = t; return false; } }, TlbxFormReset.dialogButton(zbody), { label: 'Cancel' },
-      { label: 'Import', primary: true, act: async () => {
-        if (!/\^XA/i.test(ta.value)) { TlbxUI.toast('No ^XA … ^XZ format found'); return false; }
+  TlbxUI.dialog({ title: LT('label.exp.import_zpl'), cls: 'sui-wide', body: zbody,
+    buttons: [{ label: LT('label.exp.open_file'), act: async () => { const t = await pickZPLText(); if (t != null) ta.value = t; return false; } }, TlbxFormReset.dialogButton(zbody), { label: LT('label.dlg.cancel') },
+      { label: LT('label.exp.import'), primary: true, act: async () => {
+        if (!/\^XA/i.test(ta.value)) { TlbxUI.toast(LT('label.exp.no_xa_xz_format_found')); return false; }
         await importZPLText(ta.value, undefined, +dpi.value);
       } }] });
 }

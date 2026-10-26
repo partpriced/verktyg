@@ -15,7 +15,7 @@
   window.__net = { engine: 0 };
   window.fetch = async (input, init) => {
     const url = String(input && input.url ? input.url : input);
-    if (window.TlbxCdn && new RegExp(`${window.TlbxCdn.REPO}[@/].*/engines/libraw/`).test(url)) {   // jsDelivr (cdn@tag) or GitHub (cdn/tag); the build's repository (here partpriced/cdn)
+    if (/worksuite\/cdn[@/].*\/engines\/libraw\//.test(url)) {   // jsDelivr (cdn@tag) or GitHub (cdn/tag)
       window.__net.engine++;
       if (window.__mode === '404') return new Response('not found', { status: 404 });
       if (window.__mode === 'bad' && url.endsWith('.wasm')) return new Response(new Uint8Array(1417725), { status: 200 });

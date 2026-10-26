@@ -33,8 +33,8 @@ async function autosave() {
     if (!DOCS.some((d) => d.id === snap.id)) return; // closed meanwhile
     await idbDo('readwrite', (st) => st.put({ v: 2, w: snap.w, h: snap.h, name: snap.name, active: snap.active, layers, guides: snap.guides, wm: snap.wm && { on: snap.wm.on, spec: snap.wm.spec }, time: Date.now() }, 'doc:' + snap.id));
     saveTabsIndex();
-    const s = $('#sbSaved'); if (s) { s.textContent = 'Saved on this device'; s.title = 'Recovered automatically if you close the tab. Never uploaded.'; }
-  } catch (e) { const s = $('#sbSaved'); if (s) s.textContent = 'Recovery off'; try { window.TlbxStorage && TlbxStorage.handle(e, { once: 'imageeditor-recovery' }); } catch (x) { /* no dialog on this page */ }; }
+    const s = $('#sbSaved'); if (s) { s.textContent = tr('imageeditor.save.saved_device'); s.title = tr('imageeditor.save.saved_device_tip'); }
+  } catch (e) { const s = $('#sbSaved'); if (s) s.textContent = tr('imageeditor.save.recovery_off'); try { window.TlbxStorage && TlbxStorage.handle(e, { once: 'imageeditor-recovery' }); } catch (x) { /* no dialog on this page */ }; }
 }
 async function blobToCanvasExact(b) { const u = URL.createObjectURL(b); try { const i = await loadImage(u); const c = mkCanvas(i.width, i.height); cx(c).drawImage(i, 0, 0); return c; } finally { URL.revokeObjectURL(u); } }
 async function docFromSaved(d) {
@@ -61,12 +61,12 @@ async function loadAutosave() {
       if (idx && idx.active === id) activeRec = rec;
     }
     if (activeRec) switchToDoc(activeRec);
-    toast(saved.length > 1 ? `Recovered ${saved.length} documents (saved only on this device)` : 'Recovered your last session (saved only on this device)', 3200);
+    toast(saved.length > 1 ? tr('imageeditor.save.recovered_n', { n: saved.length }) : tr('imageeditor.save.recovered_one'), 3200);
     return true;
   } catch (e) { return false; }
 }
 async function clearAutosave() {
-  try { await idbDo('readwrite', (st) => st.clear()); toast('Recovery data cleared'); } catch (e) { toast('Nothing to clear'); }
+  try { await idbDo('readwrite', (st) => st.clear()); toast(tr('imageeditor.save.cleared')); } catch (e) { toast(tr('imageeditor.save.nothing_to_clear')); }
 }
 
 /* ---------- offline single-file build ---------- */
@@ -77,6 +77,10 @@ async function appSources() {
   const files = { 'index.html': await get('index.html') };
   const refs = [...files['index.html'].matchAll(/<link rel="stylesheet" href="([^"]+)">|<script src="([^"]+)"><\/script>/g)].map((m) => m[1] || m[2]).filter((u) => !/^(https?:)?\/\//.test(u));
   for (const u of refs) files[u] = await get(u);
+  // the string tables: the offline copy runs in English with them inline (its marker tells i18n.js to fetch nothing)
+  const parts = (((await get('i18n/index.js')).match(/parts: \[([^\]]*)\]/) || [])[1] || '').match(/[\w-]+/g) || [];
+  const tables = ['../shared/i18n/i18n.js', '../shared/i18n/strings.js', '../shared/i18n/ui/en.js'].concat(parts.map((p) => 'i18n/en/' + p + '.js'));
+  files.i18n = (await Promise.all(tables.map(get))).join('\n;\n');
   try { files['favicon'] = await get('../favicon.svg'); } catch (e) { /* optional */ }
   return files;
 }
@@ -85,6 +89,8 @@ function buildOfflineHTML(files) {
   let html = files['index.html'];
   // Web fonts stay online-only (the woff2 set is ~0.8 MB): offline, the fallback font stack is used.
   html = html.replace(/\s*<script src="[^"]*shared\/guard\.js"[^>]*><\/script>/g, '').replace(/\s*<script\b[^>]*data-offline="strip"[^>]*><\/script>/g, '').replace(/\s*<link rel="preconnect"[^>]*>/g, '').replace(/\s*<link\b[^>]*data-offline="strip"[^>]*>/g, '');
+  html = html.replace(/\s*<script src="[^"]*i18n\/index\.js"[^>]*><\/script>/, '');
+  if (files.i18n != null) html = html.replace(/<script src="[^"]*shared\/i18n\/i18n\.js"[^>]*><\/script>/, () => `<meta name="tlbx-offline" content="offline"><script>\n${esc(files.i18n)}\n</script>`);
   // Function replacers throughout: a replacement *string* would treat "$$" and "$&" in the code as patterns.
   if (files.favicon) html = html.replace(/<link rel="icon" href="[^"]*"[^>]*>/, () => `<link rel="icon" href="data:image/svg+xml,${encodeURIComponent(files.favicon)}" type="image/svg+xml">`);
   html = html.replace(/<link rel="stylesheet" href="([^"]+)">/g, (m, href) => (files[href] != null ? `<style>\n${files[href].replace(/<\/style/gi, '<\\/style')}\n</style>` : m));
@@ -98,11 +104,11 @@ async function downloadOfflineApp() {
   try {
     const html = buildOfflineHTML(await appSources());
     download(new Blob([html], { type: 'text/html' }), 'imageeditor.html');
-    dialog({ title: 'Image Editor, offline edition', body: h('div', { class: 'about' },
-      h('p', null, 'Your download is a single file, imageeditor.html (' + Math.round(html.length / 1024) + ' KB). It contains the whole app.'),
-      h('p', null, 'Open it from your Downloads folder, a USB stick, or anywhere else. It works with no internet connection, and nothing you edit ever leaves your computer.'),
-      h('p', { class: 'dlg-p' }, 'Offline, the brand fonts fall back to your system fonts. Everything else is identical.')),
-    buttons: [{ label: 'Nice', primary: true }] });
-  } catch (e) { console.warn(e); alertDlg('Could not build the offline file', e.message); }
+    dialog({ title: tr('imageeditor.save.offline_title'), body: h('div', { class: 'about' },
+      h('p', null, tr('imageeditor.save.offline_file', { kb: Math.round(html.length / 1024) })),
+      h('p', null, tr('imageeditor.save.offline_where')),
+      h('p', { class: 'dlg-p' }, tr('imageeditor.save.offline_fonts'))),
+    buttons: [{ label: tr('imageeditor.save.nice'), primary: true }] });
+  } catch (e) { console.warn(e); alertDlg(tr('imageeditor.save.offline_failed'), e.message); }
 }
 

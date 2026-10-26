@@ -12,7 +12,7 @@ finds in its code (`node tools/i18n/i18n.mjs extract <app>` lists them). The rat
 | Shared chrome (header, switcher, footer, Settings) | 246 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 | Shared components (shared/i18n/ui) | 220 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 
-Shared code (shell/, shared/) still has 6246 hard-coded strings; most belong to one app family (office, biz, watermark, ...).
+Shared code (shell/, shared/) still has 6263 hard-coded strings; most belong to one app family (office, biz, watermark, ...).
 
 ## Apps, by strings to translate
 
@@ -20,33 +20,33 @@ Shared code (shell/, shared/) still has 6246 hard-coded strings; most belong to 
 |---:|---|---|---:|---:|---:|---:|
 | 1 | File Converter | convert | 2030 | 0 | 2030 | 0 of 29 |
 | 2 | Image Editor | imageeditor | 1858 | 0 | 1858 | 0 of 29 |
-| 3 | PDF Editor | pdf | 1739 | 1522 | 217 | 0 of 29 |
-| 4 | Video Editor | videoedit | 1428 | 0 | 1428 | 0 of 29 |
+| 3 | PDF Editor | pdf | 1692 | 1477 | 215 | 0 of 29 |
+| 4 | Video Editor | videoedit | 1426 | 0 | 1426 | 0 of 29 |
 | 5 | Label Designer | label | 1406 | 0 | 1406 | 0 of 29 |
 | 6 | Page Layout | press | 1373 | 0 | 1373 | 0 of 29 |
 | 7 | Vector Editor | vector | 1020 | 0 | 1020 | 0 of 29 |
 | 8 | Presentations | slides | 785 | 0 | 785 | 0 of 29 |
-| 9 | Spreadsheets | tables | 695 | 0 | 695 | 0 of 29 |
+| 9 | Spreadsheets | tables | 694 | 0 | 694 | 0 of 29 |
 | 10 | Files | drive | 683 | 0 | 683 | 0 of 29 |
 | 11 | Documents | docs | 659 | 0 | 659 | 0 of 29 |
 | 12 | Motion Graphics | effects | 604 | 0 | 604 | 0 of 29 |
-| 13 | Contacts | contacts | 541 | 0 | 541 | 0 of 29 |
-| 14 | Assistant | ai | 509 | 0 | 509 | 0 of 29 |
+| 13 | Contacts | contacts | 540 | 0 | 540 | 0 of 29 |
+| 14 | Assistant | ai | 508 | 0 | 508 | 0 of 29 |
 | 15 | Font Creator | fontcreator | 474 | 0 | 474 | 0 of 29 |
 | 16 | 3D Modeller | 3d | 458 | 0 | 458 | 0 of 29 |
-| 17 | Background Remover | cutout | 435 | 0 | 435 | 0 of 29 |
-| 18 | Gallery | gallery | 381 | 0 | 381 | 0 of 29 |
+| 17 | Background Remover | cutout | 433 | 0 | 433 | 0 of 29 |
+| 18 | Gallery | gallery | 380 | 0 | 380 | 0 of 29 |
 | 19 | Projects | projects | 372 | 0 | 372 | 0 of 29 |
 | 20 | Inventory | inventory | 359 | 0 | 359 | 0 of 29 |
 | 21 | CRM | crm | 350 | 0 | 350 | 0 of 29 |
-| 22 | Video Remix | remix | 339 | 0 | 339 | 0 of 29 |
+| 22 | Video Remix | remix | 338 | 0 | 338 | 0 of 29 |
 | 23 | Ledger | ledger | 335 | 0 | 335 | 0 of 29 |
 | 24 | Invoices | invoices | 318 | 0 | 318 | 0 of 29 |
-| 25 | Paint Classic | paint-classic | 265 | 0 | 265 | 0 of 29 |
+| 25 | Paint Classic | paint-classic | 266 | 0 | 266 | 0 of 29 |
 | 26 | QR Code Generator | qr | 265 | 0 | 265 | 0 of 29 |
 | 27 | Email Viewer | eml | 246 | 0 | 246 | 0 of 29 |
 | 28 | Resizer | resize | 233 | 0 | 233 | 0 of 29 |
-| 29 | Metadata Remover | clean | 232 | 0 | 232 | 0 of 29 |
+| 29 | Metadata Remover | clean | 231 | 0 | 231 | 0 of 29 |
 | 30 | Code Editor | code | 228 | 0 | 228 | 0 of 29 |
 | 31 | Music Player | music | 216 | 0 | 216 | 0 of 29 |
 | 32 | Notes | notes | 214 | 0 | 214 | 0 of 29 |
@@ -74,7 +74,7 @@ Shared code (shell/, shared/) still has 6246 hard-coded strings; most belong to 
 | 54 | Quotes | quotes | 115 | 0 | 115 | 0 of 29 |
 | 55 | Paste | paste | 112 | 0 | 112 | 0 of 29 |
 | 56 | Calculator | calculator | 109 | 0 | 109 | 0 of 29 |
-| 57 | OCR | ocr | 98 | 0 | 98 | 0 of 29 |
+| 57 | OCR | ocr | 101 | 0 | 101 | 0 of 29 |
 | 58 | HTML to PDF | html2pdf | 83 | 0 | 83 | 0 of 29 |
 | 59 | Image to 3D | img3d | 81 | 0 | 81 | 0 of 29 |
 | 60 | Serial Counter | serials | 66 | 0 | 66 | 0 of 29 |
@@ -82,7 +82,7 @@ Shared code (shell/, shared/) still has 6246 hard-coded strings; most belong to 
 | 62 | Reminders | reminders | 44 | 0 | 44 | 0 of 29 |
 | 63 | Checksum | checksum | 42 | 0 | 42 | 0 of 29 |
 
-Total: 25232 strings in 63 apps.
+Total: 25179 strings in 63 apps.
 
 ## Apps with tables, per language
 

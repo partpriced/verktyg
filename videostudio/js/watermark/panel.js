@@ -10,16 +10,16 @@
   let root = null, panel = null;
 
   function build() {
-    root = h('div', { class: 'wm-panel' }, h('div', { class: 'ins-title' }, SE.icon('sparkle'), h('b', null, 'Watermark')));
+    root = h('div', { class: 'wm-panel' }, h('div', { class: 'ins-title' }, SE.icon('sparkle'), h('b', null, U.t('videoedit.bin.watermark'))));
     panel = TlbxWatermarkPanel.mount(root, {
       value: WM.settings().spec,
       media: { pages: false, time: true },
-      onChange: (spec, how) => WM.set({ spec }, how.label || 'Watermark', how.key || 'spec'),
-      toggle: { get: () => WM.settings().on, set: (on) => WM.set({ on }, on ? 'Watermark on' : 'Watermark off', 'on'), label: 'Watermark',
-        note: (on) => (on ? 'On: shows in the monitor and in every export.' : 'Off: no watermark in the monitor or in exports. Turn it on to add it.') },
+      onChange: (spec, how) => WM.set({ spec }, how.label || U.t('videoedit.bin.watermark'), how.key || 'spec'),
+      toggle: { get: () => WM.settings().on, set: (on) => WM.set({ on }, on ? U.t('videoedit.wm.watermark_on') : U.t('videoedit.wm.watermark_off'), 'on'), label: U.t('videoedit.bin.watermark'),
+        note: (on) => (on ? U.t('videoedit.wm.on_shows_in_the_monitor') : U.t('videoedit.wm.off_no_watermark_in_the')) },
       actions: [
-        { label: 'Save as device default', title: 'New projects on this device start with this watermark', act: () => { WM.saveDefaults(); TlbxUI.toast('Saved as this device’s watermark default'); } },
-        { label: 'Use device default', title: 'Copy this device’s default watermark into this project', act: () => WM.useDefaults() },
+        { label: U.t('videoedit.wm.save_as_device_default'), title: U.t('videoedit.wm.new_projects_on_this_device'), act: () => { WM.saveDefaults(); TlbxUI.toast(U.t('videoedit.wm.saved_as_this_device_s')); } },
+        { label: U.t('videoedit.wm.use_device_default'), title: U.t('videoedit.wm.copy_this_device_s_default'), act: () => WM.useDefaults() },
       ],
     });
     return root;

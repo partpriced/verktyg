@@ -4,24 +4,25 @@
 (function (g) {
   'use strict';
   const NS = (g.TlbxCalcCalendar = {});
+  const t = (k, v) => (g.TlbxI18n ? g.TlbxI18n.t(k, v) : k);
 
   /** The form for the Calendar editor, for a saved calculation whose result is a date. Null for anything else. */
   function formFor(last) {
     if (!last || !last.value || last.value.t !== 'd') return null;
     const day = last.value.iso;
     return { title: `${last.expr} = ${last.text}`, allDay: true, date: day, endDate: day, kind: 'event', color: 'teal',
-      notes: `Calculated in Calculator: ${last.expr} = ${last.text}.` };
+      notes: `Calculated in Calculator: ${last.expr} = ${last.text}.` };   // i18n-ignore: the event's own notes
   }
 
   /** Adds the calculation as an all-day event. Resolves { ok, message } and never throws. */
   async function add(last) {
     const form = formFor(last);
-    if (!form) return { ok: false, message: 'Only a date result goes on the calendar.' };
-    if (!g.TlbxEvents || !g.TlbxData) return { ok: false, message: 'Calendar is not available in this browser.' };
+    if (!form) return { ok: false, message: t('calculator.cal.only_date') };
+    if (!g.TlbxEvents || !g.TlbxData) return { ok: false, message: t('calculator.cal.unavailable') };
     const made = g.TlbxEvents.fromForm(form);
     if (!made.ok) return { ok: false, message: made.error };
     const r = await g.TlbxEvents.save(made.value);
-    return r.ok ? { ok: true, message: `Added to Calendar on ${form.date}.` } : { ok: false, message: r.message || 'Not added to Calendar.' };
+    return r.ok ? { ok: true, message: t('calculator.cal.added', { date: form.date }) } : { ok: false, message: r.message || t('calculator.cal.not_added') };
   }
 
   NS.formFor = formFor;

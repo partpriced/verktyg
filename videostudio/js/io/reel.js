@@ -47,36 +47,36 @@
   function place(m, photos, links) {
     if (m.remix) { // a Video Remix project: the same options, so the same seed gives the same edit (shared/video plan)
       const plan = SE.random.plan(m.remix, photos);
-      if (!plan) { A.appendToTimeline(photos); return 'added in order'; }
-      SE.change('Make reel', (p) => { SE.random.build(p, plan); });
-      return 'Video Remix, ' + Math.round(plan.total) + ' s';
+      if (!plan) { A.appendToTimeline(photos); return SE.util.t('videoedit.io.added_in_order'); }
+      SE.change(SE.util.t('videoedit.io.make_reel'), (p) => { SE.random.build(p, plan); });
+      return 'Video Remix, ' + Math.round(plan.total) + ' s'; // i18n-ignore: the app's name and seconds
     }
     const tplId = Object.prototype.hasOwnProperty.call(R.TPL, m.template) ? R.TPL[m.template] : null;
     const tpl = tplId && SE.templates ? SE.templates.get(tplId) : null;
     const plan = SE.random && SE.random.plan({ target: m.length, pace: m.pace, aspect: m.aspect, tpl: tpl ? tpl.id : null }, photos);
-    if (!plan) { A.appendToTimeline(photos); return 'added in order'; }
-    SE.change('Make reel', (p) => { SE.random.build(p, plan); overlayClips(p, plan, links, tpl); });
-    return (tpl ? tpl.name : 'random edit') + ', ' + Math.round(plan.total) + ' s';
+    if (!plan) { A.appendToTimeline(photos); return SE.util.t('videoedit.io.added_in_order'); }
+    SE.change(SE.util.t('videoedit.io.make_reel'), (p) => { SE.random.build(p, plan); overlayClips(p, plan, links, tpl); });
+    return (tpl ? tpl.name : SE.util.t('videoedit.io.random_edit')) + ', ' + Math.round(plan.total) + ' s';
   }
 
   /** Opened from Gallery with ?drive=<manifest id>. Replaces the open project (after a question, when there is one). */
   R.launch = async function (rec) {
     let m;
-    try { m = await R.read(rec); } catch (e) { TlbxUI.toast('Could not open the reel: ' + e.message); return true; }
+    try { m = await R.read(rec); } catch (e) { TlbxUI.toast(SE.util.t('videoedit.io.reel_failed', { error: e.message })); return true; }
     if (SE.doc.clips.length || SE.doc.media.length) {
-      const ok = await TlbxUI.confirm('Make reel', 'Replace the open project with this reel? Save the project first if you want to keep it.', 'Replace', { danger: true });
+      const ok = await TlbxUI.confirm(SE.util.t('videoedit.io.make_reel'), SE.util.t('videoedit.io.replace_the_open_project_with'), SE.util.t('videoedit.io.replace'), { danger: true });
       if (!ok) return true;
     }
     await SE.session.newProject(false);
-    A.status('Making your reel…');
+    A.status(SE.util.t('videoedit.io.making_your_reel'));
     const photos = await importAll(m.files);
     const overlays = await importAll((m.overlays || []).map((o) => o.id));
     const ordered = m.files.map((id) => photos.get(id)).filter(Boolean);
     const links = (m.overlays || []).filter((o) => photos.get(o.of) && overlays.get(o.id))
       .map((o) => ({ photo: photos.get(o.of), overlay: overlays.get(o.id) }));
-    if (ordered.length < 2) { A.status('The reel needs at least two photos; ' + ordered.length + ' could be read'); return true; }
+    if (ordered.length < 2) { A.status(SE.util.t('videoedit.io.reel_two', { n: ordered.length })); return true; }
     const summary = place(m, ordered, links);
-    A.status(`Reel: ${ordered.length} photos${links.length ? ', ' + links.length + ' cut-outs' : ''}, ${summary}`);
+    A.status(SE.util.t('videoedit.io.reel', { n: ordered.length }) + (links.length ? ', ' + SE.util.t('videoedit.io.cutouts', { n: links.length }) : '') + ', ' + summary);
     return true;
   };
 })();

@@ -15,7 +15,7 @@ Covered: 62 of 62 apps. Full suite: 62 of 62 apps.
 |---|---|---|---|---|---|---|---|---|---|---|
 | Image Editor (`imageeditor`) | ✓ 1 | ✓ 7 | ✓ 34 | ✓ 1 | 2 | ✓ own | ✓ page | ✓ | yes | yes |
 | Vector Editor (`vector`) | ✓ 1 | ✓ 3 | ✓ 10 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| PDF Editor (`pdf`) | ✓ 1 | ✓ 7 | ✓ 20 | ✓ 2 | 2 | ✓ own | ✓ page | ✓ | yes | yes |
+| PDF Editor (`pdf`) | ✓ 1 | ✓ 5 | ✓ 12 | ✓ 2 | 2 | ✓ own | ✓ page | ✓ | yes | yes |
 | Label Designer (`label`) | ✓ 1 | ✓ 5 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Background Remover (`cutout`) | ✓ 1 | ✓ 1 | ✓ 1 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | AI Tools (`aitools`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
@@ -96,8 +96,8 @@ Covered: 62 of 62 apps. Full suite: 62 of 62 apps.
 ### PDF Editor
 
 - create: `new_document`
-- add: `add_image`, `add_pages`, `add_shape`, `add_text`, `insert_pdf`, `paste_in_place`, `paste_on_pages`
-- edit: `arrange_page_object`, `copy_selection`, `delete_page_object`, `delete_pages`, `duplicate_page_object`, `edit_text_block`, `fill_form_field`, `move_annotation_to_page`, `move_page`, `move_page_object`, `move_text_block`, `replace_page_image`, `resize_page_object`, `resize_text_block`, `rotate_page_object`, `rotate_pages`, `rotate_text_block`, `select_text_block`, `set_metadata`, `transform_annotation`
+- add: `add_image`, `add_pages`, `add_shape`, `add_text`, `insert_pdf`
+- edit: `arrange_page_object`, `delete_page_object`, `delete_pages`, `duplicate_page_object`, `fill_form_field`, `move_page`, `move_page_object`, `replace_page_image`, `resize_page_object`, `rotate_page_object`, `rotate_pages`, `set_metadata`
 - export: `export_pdf`, `export_pdf_contents`
 - operations: `pdf.compress`, `pdf.extract`
 

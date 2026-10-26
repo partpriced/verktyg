@@ -4,7 +4,7 @@
   'use strict';
   const NS = (g.TlbxOrders = g.TlbxOrders || {});
   NS.page = g.TlbxDocs.docPage.create({
-    ns: NS, kind: 'order', title: 'Order', statusLabel: g.TlbxDocs.model.STATUS_LABEL,
+    ns: NS, kind: 'order', title: 'Order', statusLabel: g.TlbxDocs.model.STATUS_LABEL,   // i18n-ignore: the document's own printed words
     editable: (st) => st.status === 'draft' || st.status === 'open',
     pdf: (id) => NS.pdf.orderPdf(id),
   });

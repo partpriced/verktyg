@@ -5,6 +5,7 @@
   'use strict';
   const G = (window.TlbxGallery = window.TlbxGallery || {});
   const $ = (id) => document.getElementById(id);
+  const t = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
 
   function init() {
     $('dchips').replaceChildren(...window.TlbxKinds.CHIPS.map((c) => {
@@ -37,7 +38,7 @@
       b.setAttribute('aria-pressed', String(query.chips.includes(b.dataset.chip)));
       b.querySelector('.chip-n').textContent = String(counts[b.dataset.chip] || 0);
     }
-    $('dCount').textContent = `${shown} of ${total}`;
+    $('dCount').textContent = t('gallery.drive.shown', { shown, total });
     $('dSort').value = query.sort;
   }
 

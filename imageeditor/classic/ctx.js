@@ -8,6 +8,7 @@
   const P = window.tlbxPaint && window.tlbxPaint.cmd, C = window.TlbxCmd;
   if (!P || !window.TlbxUI) return;
   const ALL = P.MENUS.flatMap((m) => m.items).filter((it) => it && it !== '-');
+  const t = (k) => (window.TlbxI18n ? window.TlbxI18n.t(k) : k);
   const tidy = (rows) => rows.filter((r, i) => r && (r !== '-' || (i > 0 && rows[i - 1] && rows[i - 1] !== '-' && i < rows.length - 1)));
 
   /** The menu-bar item for an action, as a TlbxUI row. */
@@ -22,8 +23,8 @@
 
   function swatchItems(i) {
     const c = P.palette[i];
-    return [{ label: 'Set as Primary Color', act: () => P.setColor(0, c) }, { label: 'Set as Secondary Color', act: () => P.setColor(2, c) }, '-',
-      { label: 'Edit Color…', act: () => P.editSwatch(i) }];
+    return [{ label: t('paint-classic.ctx.set_primary'), act: () => P.setColor(0, c) }, { label: t('paint-classic.ctx.set_secondary'), act: () => P.setColor(2, c) }, '-',
+      { label: t('paint-classic.ctx.edit_color'), act: () => P.editSwatch(i) }];
   }
   function canvasItems() {
     const any = !!window.tlbxPaint.selection;

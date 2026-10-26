@@ -141,7 +141,11 @@
     list,
     install() {
       if (!window.TlbxCmd || !TlbxCmd.register) return;
-      TlbxCmd.register(list);
+      // the palette's titles and groups in the current language (music/i18n/<code>/commands.js), again after a change
+      const I = window.TlbxI18n, tr = (k, en) => (I && I.has(k) ? I.t(k) : en);
+      const shown = () => list.map((c) => Object.assign({}, c, { title: tr('music.cmd.' + c.tool, c.title), group: tr('music.cmd.group_' + c.group.toLowerCase(), c.group) }));
+      TlbxCmd.register(shown());
+      if (I && I.on) I.on(() => TlbxCmd.register(shown()));
       TlbxCmd.provide({ state: () => A().state(), checkpoint: () => A().checkpoint() });
     },
   };

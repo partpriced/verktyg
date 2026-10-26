@@ -37,7 +37,7 @@
     if (window.TlbxFonts) { const names = [...new Set(doc.clips.filter((c) => c.kind === 'title').map((c) => c.text.font))]; TlbxFonts.ready().then(() => TlbxFonts.askOnce({}, names, { standard: M.FONTS })).catch(() => {}); }
     await SE.media.restore(doc.media, blobs);
     SE.app.select([]);
-    SE.emit('change', { label: 'Open project', history: true });
+    SE.emit('change', { label: U.t('videoedit.io.open_project'), history: true });
     SE.emit('settings', {});
     await SE.session.save();
     return doc;
@@ -45,35 +45,35 @@
   // PJ.driveId: the Files record the open project came from (or was saved to). Save writes back to it.
   PJ.driveId = null;
   PJ.openFile = async function (file, driveId) {
-    if (SE.doc.clips.length && !(await TlbxUI.confirm('Open project', 'Replace the current project with “' + file.name + '”?', 'Open'))) return;
-    const dlg = SE.progress.open('Opening ' + file.name, { cancel: false });
-    try { await PJ.load(file); PJ.driveId = driveId || null; SE.app.status('Opened ' + file.name); }
-    catch (e) { console.error(e); TlbxUI.alert('Open project', 'Could not open this project: ' + e.message); }
+    if (SE.doc.clips.length && !(await TlbxUI.confirm(U.t('videoedit.io.open_project'), U.t('videoedit.io.replace_with', { name: file.name }), U.t('videoedit.io.open')))) return;
+    const dlg = SE.progress.open(U.t('videoedit.io.opening', { name: file.name }), { cancel: false });
+    try { await PJ.load(file); PJ.driveId = driveId || null; SE.app.status(U.t('videoedit.io.opened', { name: file.name })); }
+    catch (e) { console.error(e); TlbxUI.alert(U.t('videoedit.io.open_project'), U.t('videoedit.io.open_failed', { error: e.message })); }
     finally { dlg.close(); }
   };
   SE.act.openProject = () => SE.intake.openProject(); // a source of the one intake (io/intake.js)
   SE.act.downloadProject = async function () {
-    const dlg = SE.progress.open('Saving project', { cancel: false });
-    try { dlg.set(0.3, 'Packing media…'); TlbxUI.download(await PJ.toBlob(), PJ.fileName()); SE.app.status('Saved ' + PJ.fileName()); }
-    catch (e) { TlbxUI.alert('Save project', 'Could not save: ' + e.message); }
+    const dlg = SE.progress.open(U.t('videoedit.io.saving_project'), { cancel: false });
+    try { dlg.set(0.3, U.t('videoedit.io.packing_media')); TlbxUI.download(await PJ.toBlob(), PJ.fileName()); SE.app.status(U.t('videoedit.io.saved', { name: PJ.fileName() })); }
+    catch (e) { TlbxUI.alert(U.t('videoedit.io.save_project'), U.t('videoedit.io.save_failed', { error: e.message })); }
     finally { dlg.close(); }
   };
   // File ▸ Save: writes back to the linked Drive project (first time: asks for a folder); a download without Drive.
   SE.act.saveProject = async function () {
     if (!window.TlbxHub || SE.offline) return SE.act.downloadProject();
-    const dlg = SE.progress.open('Saving project to Files', { cancel: false });
+    const dlg = SE.progress.open(U.t('videoedit.io.saving_project_to_tlbx_drive'), { cancel: false });
     try {
-      dlg.set(0.3, 'Packing media…');
+      dlg.set(0.3, U.t('videoedit.io.packing_media'));
       const blob = await PJ.toBlob(), name = PJ.fileName();
       if (!PJ.driveId) { const id = await TlbxHub.saveToDrive(blob, name, { from: 'videoedit' }); if (id) PJ.driveId = id; return; }
       if (!(await TlbxHub.update(PJ.driveId, { blob, name, type: blob.type }))) await TlbxHub.put(blob, { id: PJ.driveId, name, from: 'videoedit' });
-      SE.app.status('Saved ' + name + ' to Files');
-    } catch (e) { TlbxUI.alert('Save project', 'Could not save: ' + e.message); }
+      SE.app.status(U.t('videoedit.io.saved_drive', { name }));
+    } catch (e) { TlbxUI.alert(U.t('videoedit.io.save_project'), U.t('videoedit.io.save_failed', { error: e.message })); }
     finally { dlg.close(); }
   };
   // File ▸ Save project to Files…: a new Drive file in a folder of your choice, which Save then keeps writing to.
   SE.act.saveProjectDrive = async function () {
     if (!window.TlbxHub) return;
-    try { const id = await TlbxHub.saveToDrive(await PJ.toBlob(), PJ.fileName(), { from: 'videoedit' }); if (id) PJ.driveId = id; } catch (e) { TlbxUI.toast('Could not save: ' + e.message); }
+    try { const id = await TlbxHub.saveToDrive(await PJ.toBlob(), PJ.fileName(), { from: 'videoedit' }); if (id) PJ.driveId = id; } catch (e) { TlbxUI.toast(U.t('videoedit.io.save_failed', { error: e.message })); }
   };
 })();

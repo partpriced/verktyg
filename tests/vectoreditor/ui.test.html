@@ -192,7 +192,7 @@
       try { await HUB.sendItems().find((i) => i.label === 'Send PNG to Image Editor').act(); } finally { W.open = realOpen; }
       expect(opened).toMatch(/\/imageeditor\/\?drive=/);
       const rec = await W.TlbxHub.get(new URL(opened).searchParams.get('drive'));
-      expect([rec.type, rec.from, rec.name]).toEqual(['image/png', 'vector', 'Helper' + '.png']);
+      expect([rec.type, rec.from, rec.name]).toEqual(['image/png', 'vector', 'Helpbot.png']);
     });
     // Drive records come in through the one intake (vectoreditor/js/io/intake.js): mode 'new' opens, no mode places.
     const openRec = async (rec) => W.TlbxIntake.take([rec], { to: 'vector', mode: 'new', source: 'drive' });

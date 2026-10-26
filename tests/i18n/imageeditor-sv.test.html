@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Image Editor in Swedish</title>
+  <!-- Covers: imageeditor/i18n/index.js, imageeditor/js/core/util.js, imageeditor/js/ui/menus.js, imageeditor/js/ui/chrome.js, shared/i18n/i18n.js -->
+  <!-- Covers (strings): imageeditor/js/app/ai-commands.js imageeditor/js/app/ai-draw-cmds.js imageeditor/js/app/ai-draw.js
+        imageeditor/js/app/ai-ops.js imageeditor/js/app/ai-tool-use.js imageeditor/js/app/ai-tools.js
+        imageeditor/js/app/commands.js imageeditor/js/app/imagegen.js imageeditor/js/app/intake.js
+        imageeditor/js/app/macros.js imageeditor/js/app/main.js imageeditor/js/app/nav-adapter.js imageeditor/js/app/tabs.js
+        imageeditor/js/app/topbar-fit.js imageeditor/js/app/welcome.js imageeditor/js/brushes/engine.js
+        imageeditor/js/brushes/packs.js imageeditor/js/brushes/panel.js imageeditor/js/core/brush-resize.js
+        imageeditor/js/core/composite.js imageeditor/js/core/model.js imageeditor/js/core/ops.js imageeditor/js/core/size.js
+        imageeditor/js/core/util.js imageeditor/js/core/view-rot.js imageeditor/js/filters/catalog.js
+        imageeditor/js/filters/enhance.js imageeditor/js/filters/fx-more.js imageeditor/js/filters/helpers.js
+        imageeditor/js/filters/repair.js imageeditor/js/filters/tlbx.js imageeditor/js/guides/input.js
+        imageeditor/js/guides/model.js imageeditor/js/guides/overlay.js imageeditor/js/guides/ui.js
+        imageeditor/js/io/buffer.js imageeditor/js/io/config.js imageeditor/js/io/files.js imageeditor/js/io/formats.js
+        imageeditor/js/io/hub.js imageeditor/js/io/isolate.js imageeditor/js/io/psd.js imageeditor/js/io/raw.js
+        imageeditor/js/io/save.js imageeditor/js/layers/fx-preset-picker.js imageeditor/js/layers/fx-presets.js
+        imageeditor/js/layers/fx-rows.js imageeditor/js/layers/fx.js imageeditor/js/layers/masks.js
+        imageeditor/js/retouch/boot.js imageeditor/js/retouch/dialog-view.js imageeditor/js/retouch/dialog.js
+        imageeditor/js/retouch/enhance.js imageeditor/js/retouch/portrait.js imageeditor/js/retouch/remove.js
+        imageeditor/js/retouch/source.js imageeditor/js/retouch/tool.js imageeditor/js/tools/eyedrop.js
+        imageeditor/js/tools/fill.js imageeditor/js/tools/heal.js imageeditor/js/tools/paint.js
+        imageeditor/js/tools/redeye.js imageeditor/js/tools/select.js imageeditor/js/tools/shape-layer.js
+        imageeditor/js/tools/state.js imageeditor/js/tools/stroke.js imageeditor/js/tools/subject.js
+        imageeditor/js/tools/transform-idle.js imageeditor/js/tools/transform.js imageeditor/js/type/edit.js
+        imageeditor/js/type/model.js imageeditor/js/type/props.js imageeditor/js/ui/chrome.js
+        imageeditor/js/ui/color-picker.js imageeditor/js/ui/context.js imageeditor/js/ui/dialogs.js
+        imageeditor/js/ui/doc-dialogs.js imageeditor/js/ui/filter-dialog.js imageeditor/js/ui/fx-dialog.js
+        imageeditor/js/ui/layer-style-pages.js imageeditor/js/ui/layer-style.js imageeditor/js/ui/menus.js
+        imageeditor/js/ui/panels.js imageeditor/js/ui/popups.js imageeditor/js/ui/size-dialogs.js
+        imageeditor/js/watermark/panel.js imageeditor/js/watermark/state.js -->
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; } iframe { width: 1280px; height: 800px; border: 0; display: block; }</style>
+</head>
+<body>
+  <script src="../harness.js"></script>
+  <script>
+  const { describe, it, beforeEach, afterEach, expect, waitFor, run } = TlbxTest;
+  // Image Editor in a same-origin iframe, so it shares this page's localStorage (the language choice); the tour is marked shown.
+  const frames = [];
+  function open(lang, width = 1280) {
+    if (lang) localStorage.setItem('tlbx-profile', JSON.stringify({ v: 1, data: { lang: { mode: lang } } }));
+    localStorage.setItem('imageeditor.tourShown', '1');
+    const f = document.createElement('iframe');
+    f.style.width = width + 'px';
+    f.src = '../../imageeditor/index.html';
+    document.body.append(f);
+    frames.push(f);
+    return waitFor(() => f.contentDocument && f.contentDocument.body && f.contentDocument.body.classList.contains('ready') && f.contentDocument.querySelector('#menubar .mb-item') && f.contentDocument.querySelector('#toolbox .tool'), { timeout: 30000 }).then(() => f);
+  }
+  const KEY = /(^|[\s(“"'«”])(imageeditor|ui|menu|shell|nav)\.[a-z0-9_]+\.[a-z0-9_.]*[a-z0-9_]/;
+  /** Text a person sees or hears in the page: the body text and the labelling attributes. */
+  function visible(doc) {
+    const out = [doc.body.innerText];
+    for (const el of doc.querySelectorAll('[title], [aria-label], [placeholder]')) out.push(el.getAttribute('title') || '', el.getAttribute('aria-label') || '', el.getAttribute('placeholder') || '');
+    return out.join('\n');
+  }
+  const menuNames = (doc) => [...doc.querySelectorAll('#menubar .mb-item')].map((b) => b.textContent.trim());
+  const toolNames = (doc) => [...doc.querySelectorAll('#toolbox .tool')].map((b) => b.getAttribute('aria-label'));
+  async function fileMenu(f) {
+    const b = f.contentDocument.querySelector('#menubar .mb-item');
+    b.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+    const m = await waitFor(() => f.contentDocument.querySelector('.menu'), { timeout: 20000 });
+    const items = m.innerText;
+    f.contentWindow.closeMenus();
+    return items;
+  }
+
+  describe('Image Editor in Swedish', () => {
+    beforeEach(() => { localStorage.clear(); });
+    afterEach(() => { frames.splice(0).forEach((f) => f.remove()); localStorage.clear(); });
+
+    it('shows Swedish menus, tools and File menu, with no key showing', async () => {
+      const f = await open('sv');
+      const doc = f.contentDocument;
+      expect(doc.documentElement.getAttribute('lang')).toBe('sv');
+      expect(menuNames(doc).slice(0, 4)).toEqual(['Arkiv', 'Redigera', 'Bild', 'Lager']);
+      expect(toolNames(doc)).toContain('Penselverktyg');
+      expect(toolNames(doc)).not.toContain('Brush Tool');
+      const items = await fileMenu(f);
+      expect(items).toContain('Öppna');
+      expect(KEY.test(items)).toBe(false);
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+
+    it('switching to English live switches back, then Swedish again', async () => {
+      const f = await open('sv');
+      const doc = f.contentDocument, I = f.contentWindow.TlbxI18n;
+      I.set('en');
+      await waitFor(() => menuNames(doc)[0] === 'File' && toolNames(doc).includes('Brush Tool'), { timeout: 20000 });
+      expect(doc.documentElement.getAttribute('lang')).toBe('en');
+      I.set('sv');
+      await waitFor(() => menuNames(doc)[0] === 'Arkiv' && toolNames(doc).includes('Penselverktyg'), { timeout: 20000 });
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+
+    it('at 390 px the top bar fits in Swedish, with no sideways scroll', async () => {
+      const f = await open('sv', 390);
+      const doc = f.contentDocument;
+      expect(doc.documentElement.scrollWidth <= f.contentWindow.innerWidth + 1).toBe(true);
+      const bar = doc.querySelector('.topbar');
+      expect(bar.scrollWidth <= bar.clientWidth + 1).toBe(true);
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+  });
+  run({ name: 'Image Editor in Swedish' });
+  </script>
+</body>
+</html>

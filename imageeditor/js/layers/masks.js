@@ -9,7 +9,7 @@
 function invertMask(id) {
   const L = D.layers.find((l) => l.id === id);
   if (!L || !L.mask) return;
-  setLayerProps(id, { mask: TlbxMask.invert(L.mask) }, 'Invert Mask');
+  setLayerProps(id, { mask: TlbxMask.invert(L.mask) }, tr('imageeditor.layer.step_invert_mask'));
 }
 /** While a mask is edited with the overlay on (UI.maskOverlay), tints where it hides (the live stroke's mask while
  *  painting). Off by default: the canvas shows the composited result, so black paint hides pixels as it goes. */
@@ -35,9 +35,9 @@ function setClipping(id, on) {
   if (i < 0) return;
   const L = D.layers[i];
   if (!!L.clip === !!on) return;
-  if (on && i === 0) { toast('The bottom layer has no layer below to clip to'); return; }
-  if (L.locked && on) { toast('That layer is locked'); return; }
-  setLayerProps(id, { clip: on ? true : false }, on ? 'Create Clipping Mask' : 'Release Clipping Mask');
+  if (on && i === 0) { toast(tr('imageeditor.layer.no_layer_below')); return; }
+  if (L.locked && on) { toast(tr('imageeditor.layer.locked')); return; }
+  setLayerProps(id, { clip: on ? true : false }, tr(on ? 'imageeditor.layer.step_create_clip' : 'imageeditor.layer.step_release_clip'));
 }
 /** Alt-click on a layer row: toggles the clipping mask of that layer. */
 function toggleClippingAt(id) { const L = D.layers.find((l) => l.id === id); if (L) setClipping(id, !L.clip); }

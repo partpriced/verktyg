@@ -7,7 +7,7 @@
   'use strict';
   var SS = window.SS, TF = SS.templateFile, U = SS.util;
   var S = SS.templateStore = {};
-  var DB = 'tlbx-slides-templates', STORE = 'templates', FOLDER = 'Templates', dbp = null;
+  var DB = 'tlbx-slides-templates', STORE = 'templates', FOLDER = 'Templates', dbp = null; // i18n-ignore
   var hub = function () { return window.TlbxHub || null; };
 
   function db() {

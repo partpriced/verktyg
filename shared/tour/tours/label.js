@@ -1,13 +1,11 @@
-/* TlbxTour: Label Designer. Targets are ids in label/index.html. */
-TlbxTour.define({
-  app: 'label',
-  title: 'Label Designer tour',
-  steps: [
-    { id: 'setup', title: 'Label setup', text: 'Choose the label size: a sheet or a thermal roll.', target: '#cbLabel' },
-    { id: 'tools', title: 'Tools', text: 'Add text, barcodes, shapes and images to the label.', target: '#toolbox' },
-    { id: 'label', title: 'Your label', text: 'Click an object to select it, then drag it into place.', target: '#workspace' },
-    { id: 'zoom', title: 'Zoom', text: 'Fit the label to the window with Ctrl+0.', target: '#zoomVal' },
-    { id: 'panels', title: 'Panels', text: 'Properties and data panels. On a phone, the ☰ button opens them.', target: '#dock' },
-    { id: 'print', title: 'Print', text: 'Print the labels (Ctrl+P).', target: '#btnPrint' },
-  ],
-});
+/* TlbxTour: Label Designer. Targets are ids in label/index.html. The words are in label/i18n (label.tour.*), read when the
+   tour shows them, so they follow the chosen language. */
+(function () {
+  const t = (k) => (globalThis.TlbxI18n ? TlbxI18n.t(k) : k);
+  const step = (id, target) => ({ id, target, get title() { return t('label.tour.' + id); }, get text() { return t('label.tour.' + id + '_text'); } });
+  TlbxTour.define({
+    app: 'label',
+    get title() { return t('label.tour.title'); },
+    steps: [step('setup', '#cbLabel'), step('tools', '#toolbox'), step('label', '#workspace'), step('zoom', '#zoomVal'), step('panels', '#dock'), step('print', '#btnPrint')],
+  });
+})();

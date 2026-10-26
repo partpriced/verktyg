@@ -1,7 +1,6 @@
 /* PDF Editor — the built-in sample document, generated with pdf-lib (includes a fillable form). Its words come from the
  * brand profile's tone (the TONE marker below, set by the white-label build): playful is "the helper's Guide to Goo", plain is a
- * neutral four-page sample with the same layout, form fields and page sizes. E.sampleInfo: its file name and busy line.
- * E.makeSample(tone?) makes it in the profile's tone, or the one asked for. */
+ * neutral four-page sample with the same layout, form fields and page sizes. E.sampleInfo: its file name and busy line. */
 (function () {
   'use strict';
   var SP = window.SP, U = SP.util, E = SP.engine;
@@ -34,14 +33,12 @@
       shape: 'M40 0h80l50 50v150H40z', colors: [[0.15, 0.39, 0.92], [0.96, 0.45, 0.36], [0.05, 0.58, 0.53], [0.96, 0.62, 0.04], [0.95, 0.96, 0.97], [0.15, 0.39, 0.92]],
     },
   };
-  var X0 = TEXT[TONE] || TEXT.playful;
+  var X = TEXT[TONE] || TEXT.playful;
   // the busy line is UI (a key, read when shown); the file name and the words of the document are its content
-  E.sampleInfo = { file: X0.file, slug: X0.slug, get busy() { return U.t(X0.busy); } };
+  E.sampleInfo = { file: X.file, slug: X.slug, get busy() { return U.t(X.busy); } };
 
   /* --------------------------------------------------------- sample PDF */
-  /** tone: 'playful' or 'plain' for that wording (tests that read the sample's lines ask for one); default the profile's. */
-  E.makeSample = async function (tone) {
-    var X = (tone && TEXT[tone]) || X0;
+  E.makeSample = async function () {
     await E.libs();
     var L = PDFLib, doc = await L.PDFDocument.create();
     var H = doc.embedStandardFont(L.StandardFonts.HelveticaBold), R = doc.embedStandardFont(L.StandardFonts.Helvetica), T = doc.embedStandardFont(L.StandardFonts.TimesRomanItalic);

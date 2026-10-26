@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Paint Classic in Swedish</title>
+  <!-- Covers: imageeditor/classic/i18n/index.js, imageeditor/classic/commands.js, imageeditor/classic/ctx.js, imageeditor/classic/hub.js, imageeditor/classic/paint/01-helpers.js, imageeditor/classic/paint/03-state.js, imageeditor/classic/paint/04-icons.js, imageeditor/classic/paint/05-view.js, imageeditor/classic/paint/06-undo.js, imageeditor/classic/paint/07-colors.js, imageeditor/classic/paint/08-selection.js, imageeditor/classic/paint/09-text.js, imageeditor/classic/paint/13-tool-handlers.js, imageeditor/classic/paint/14-pointer.js, imageeditor/classic/paint/15-tools-ui.js, imageeditor/classic/paint/17-files.js, imageeditor/classic/paint/18-dialogs.js, imageeditor/classic/paint/19-dialogs-colors.js, imageeditor/classic/paint/20-menus.js, imageeditor/classic/paint/22-boot.js -->
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }</style>
+</head>
+<body>
+  <script src="../harness.js"></script>
+  <script src="app-sv.js"></script>
+  <script>
+  AppSv.spec({
+    name: 'Paint Classic', path: '../../imageeditor/classic/index.html', ns: 'paint-classic',
+    ready: (doc, win) => win.tlbxPaint && doc.querySelector('#menubar .mb-item') && doc.querySelector('#tools .tool'),
+    checks: [
+      ['#menubar .mb-item', 'Arkiv', 'File'],
+      ['#tools .tool[data-tool="pencil"]', 'Penna', 'Pencil', 'title'],
+      ['#sbMsg', 'Hjälpavsnitt', 'Help Topics'],
+      ['#title', 'namnlös', 'untitled'],
+      ['#startmenu [data-act="about"] span', 'Om Paint', 'About Paint'],
+      ['#palette', 'Färgpalett', 'Color palette', 'aria-label'],
+    ],
+  });
+  TlbxTest.run({ name: 'Paint Classic in Swedish' });
+  </script>
+</body>
+</html>

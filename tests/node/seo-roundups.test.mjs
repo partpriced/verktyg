@@ -17,7 +17,6 @@ const R = await import(pathToFileURL(path.join(ROOT, 'tools/seo/roundups.mjs')).
 const { ROUNDUPS } = await import(pathToFileURL(path.join(ROOT, 'shared/seo/roundups/index.mjs')).href);
 const { loadRegistry, SITE } = await import(pathToFileURL(path.join(ROOT, 'tools/seo/site.mjs')).href);
 const apps = await loadRegistry();
-const { FACTS } = await import(pathToFileURL(path.join(ROOT, 'tests/brand-facts.mjs')).href);
 const tool = (name, extra = {}) => ({ name, url: `https://${name.toLowerCase()}.example/`, bestFor: 'x', pros: ['a'], cons: ['b'], cells: ['Free', 'Yes'],
   sources: [{ label: `${name} pricing`, url: `https://${name.toLowerCase()}.example/pricing` }], ...extra });
 const good = { slug: 'free-pdf-editors', app: 'pdf', checked: '2026-10-24', title: 't', description: 'd', h1: 'Best free PDF editors', lead: 'l',
@@ -74,8 +73,7 @@ test('the feature matrix: one value per tool, shown with marks, and the same tab
   assert.match(html, /<tr class="us"><th scope="row">PDF Editor <span class="l-badge">ours<\/span>/);
   const L = await import(pathToFileURL(path.join(ROOT, 'tools/seo/landing.mjs')).href);
   const page = L.landingPages(apps, SITE, new Proxy({}, { get: () => ({ title: 't', description: 'd' }) }), [], [withMatrix]).find((p) => p.key === 'pdf');
-  const name = apps.find((a) => a.id === 'pdf').name;   // the heading and its id follow the app's name (this site: PDF Editor)
-  assert.ok(page.html.includes(`<h2 id="how-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-compares">How ${name} compares</h2>`), page.html.slice(0, 400));
+  assert.match(page.html, /<h2 id="how-tlbx-pdf-compares">How PDF Editor compares<\/h2>/);
   assert.ok(page.html.includes(R.compareTables(withMatrix)));
   assert.match(page.html, /href="\/best\/free-pdf-editors\/"/);
 });
@@ -86,8 +84,7 @@ test('the guide: a sidebar of the app\'s pages on its landing, task and comparis
   const nav = G.appNav(pdf, { tasks: [{ slug: 'sign-pdf', h1: 'Sign a PDF', crumb: 'Sign a PDF' }], roundups: [good] }, '/pdf/sign-pdf/');
   assert.match(nav, /<a href="\/pdf\/sign-pdf\/" aria-current="page">Sign a PDF<\/a>/);
   assert.match(nav, /<a href="\/best\/free-pdf-editors\/">Best free PDF editors<\/a>/);
-  // PDF Editor has a tutorial in the registry; a build without media has none
-  if (FACTS.media) assert.match(nav, /Video tutorial/); else assert.doesNotMatch(nav, /Video tutorial|youtube/);
+  assert.match(nav, /Video tutorial/);   // PDF Editor has a tutorial in the registry
   assert.match(nav, /<a class="btn l-side-open" href="\/pdf\/">Open PDF Editor<\/a>/);
   const { body, toc } = G.withToc('<h2>One</h2><p>x</p><h2 id="keep">Two</h2><h2>One</h2>');
   assert.deepEqual(toc.map((t) => t.id), ['one', 'keep', 'one-2']);

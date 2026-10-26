@@ -29,11 +29,9 @@
       await boot(1280);
       expect(D.querySelectorAll('#sv-empty .sd-steps li').length).toBe(3);
       const img = $('#sv-empty .sd-pic img');
-      TlbxTest.shot(img, '../assets/shots/sheetview.jpg');   // a build without media has no picture
-      if (img) {
-        expect(img.alt.length > 10).toBe(true);
-        await waitFor(() => img.complete && img.naturalWidth > 300);
-      }
+      expect(img.getAttribute('src')).toBe('../assets/shots/sheetview.jpg');
+      expect(img.alt.length > 10).toBe(true);
+      await waitFor(() => img.complete && img.naturalWidth > 300);
       $('#sv-sample').click();
       await waitFor(() => { const d = W.TlbxSheetView.store.doc(); return d && d.sheets.length === 2; }, { timeout: 20000 });
       const d = W.TlbxSheetView.store.doc();

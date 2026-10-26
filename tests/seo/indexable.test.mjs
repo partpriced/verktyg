@@ -40,4 +40,9 @@ test('noindex is only on the 404 and offline pages, Settings, and "Moved" pages,
   }
 });
 
-// The preview workflow that adds it to its copy is this repository's own: tests/node/site-workflows.test.mjs (repo-only).
+test('the preview copy is the only place that adds noindex to every page', () => {
+  const wf = read('.github/workflows/preview.yml');
+  assert.match(wf, /branches: \[testing\]/, 'the preview is made from the testing branch only');
+  assert.match(wf, /noindex, nofollow/);
+  assert.match(wf, /rm -rf CNAME/, 'the preview never takes the live domain');
+});

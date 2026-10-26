@@ -65,8 +65,8 @@
     for (let i = 2; i < 10000; i++) { const n = `${root} (${i})${ext}`; if (!sib.has(n.toLowerCase())) return n; }
     return name + ' ' + Date.now();
   };
-  DR.parentName = (it) => (it.parent ? (S.folders.get(it.parent) || {}).name : 'Files');
+  DR.parentName = (it) => (it.parent ? (S.folders.get(it.parent) || {}).name : 'Files');   // i18n-ignore: the app name
   DR.liveFiles = () => [...S.files.values()].filter((r) => !DR.hidden(r));
   DR.liveFolders = () => [...S.folders.values()].filter((f) => !DR.hidden(f));
-  DR.appName = (from) => { const a = H().appById(from); return a ? a.name : from === 'drive' ? 'Files' : from === 'upload' ? 'Uploaded' : from && from !== 'unknown' ? from : '—'; };
+  DR.appName = (from) => { const a = H().appById(from); return a ? a.name : from === 'drive' ? 'Files' : from === 'upload' ? DR.t('drive.app.uploaded') : from && from !== 'unknown' ? from : '—'; };
 })(window.DR);

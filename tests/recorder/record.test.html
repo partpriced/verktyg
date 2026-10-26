@@ -88,8 +88,7 @@
       expect(back.name).toBe(out.name);
       expect(back.blob.size).toBe(out.blob.size);
       const items = R.save.openInItems();
-      const cut = W.TLBX_APPS.find((a) => a.id === 'videoedit');   // the video editor, by the build's name for it (here Video Editor)
-      expect([cut.name, W.tlbxAppName(cut)].some((n) => items[0].label.includes(n))).toBe(true);
+      expect(items[0].label).toMatch(/VideoStudio/);
       expect(items.some((i) => /Save to Files/.test(i.label))).toBe(true);
     }, { timeout: 40000 });
 

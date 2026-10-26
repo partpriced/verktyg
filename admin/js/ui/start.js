@@ -5,6 +5,7 @@
   const NS = (g.TlbxAdmin = g.TlbxAdmin || {});
   const el = g.TlbxUI.el;
   const $ = (id) => document.getElementById(id);
+  const t = (k, v) => (g.TlbxI18n ? g.TlbxI18n.t(k, v) : k);
 
   async function render() {
     const r = await g.TlbxBiz.setup.load();
@@ -12,12 +13,12 @@
     const { steps, done, total } = r.value;
     $('sProgress').value = done;
     $('sProgress').max = total;
-    $('sCount').textContent = done === total ? 'All set. Every business app is ready to use.' : `${done} of ${total} done`;
+    $('sCount').textContent = done === total ? t('admin.st.all_set') : t('admin.st.n_done', { done: String(done), total: String(total) });
     $('sSteps').replaceChildren(...steps.map((s) => el('li', { class: `start-step${s.done ? ' is-done' : ''}`, 'data-step': s.id },
       el('span', { class: 'start-mark', 'aria-hidden': 'true' }, s.done ? '✓' : ''),
       el('span', { class: 'start-text' }, el('b', {}, s.title), el('span', { class: 'sub' }, s.why)),
-      el('a', { class: `btn small${s.done ? '' : ' primary'}`, href: `../${s.href}` }, s.done ? 'Open' : 'Start'),
-      el('span', { class: 'sr' }, s.done ? 'Done' : 'Not done yet'))));
+      el('a', { class: `btn small${s.done ? '' : ' primary'}`, href: `../${s.href}` }, t(s.done ? 'admin.st.open' : 'admin.st.start')),
+      el('span', { class: 'sr' }, t(s.done ? 'admin.st.done' : 'admin.st.not_done')))));
   }
 
   NS.views = NS.views || {};

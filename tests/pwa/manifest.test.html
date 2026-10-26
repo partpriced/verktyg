@@ -11,15 +11,14 @@
   <script>
   const { describe, it, expect } = TlbxTest;
   const APPS = ['imageeditor/', 'vectoreditor/', 'pdf/', 'label/', 'bgremover/', 'ai/', 'docs/', 'tables/', 'slides/', 'press/', 'videostudio/', 'contacts/', 'gallery/', '3d/', 'drive/'];
-  let m = null, brand = null;
+  let m = null;
   const text = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error(url + ' answered ' + r.status); return r.text(); });
 
   describe('manifest.webmanifest', () => {
     it('parses and names the app', async () => {
       m = JSON.parse(await text('/manifest.webmanifest'));
-      brand = JSON.parse(await text('/brand/brand.json'));
-      expect(m.name).toBe(brand.name);   // this site: ITpris Verktyg, short name Tlbx (tests/node/whitelabel-facts.test.mjs)
-      expect(m.short_name.length > 0 && m.short_name.length <= 12).toBe(true);
+      expect(m.name).toBe('ITpris Verktyg');
+      expect(m.short_name).toBe('Tlbx');
       expect(m.start_url).toBe('/');
       expect(m.scope).toBe('/');
       expect(m.display).toBe('standalone');
@@ -28,7 +27,7 @@
       const home = await text('/index.html');
       const theme = home.match(/name="theme-color" content="([^"]+)"/)[1];
       expect(m.theme_color).toBe(theme);
-      expect(m.background_color).toBe(brand.colors.ink);   // this site: #0a0a0a
+      expect(m.background_color).toBe('#0a0a0a');
     });
     it('lists icons that exist on disk, including 192 and 512 PNGs', async () => {
       const sizes = new Set();

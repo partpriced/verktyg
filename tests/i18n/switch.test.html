@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="tlbx-test-lang" content="default">
   <title>Language switch across pages</title>
   <!-- Covers: settings/language.js, shared/i18n/i18n.js -->
   <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; } iframe { width: 1000px; height: 700px; border: 0; }</style>
@@ -46,7 +45,7 @@
 
     it('choosing Spanish changes the homepage nav text, and it persists across a reload', async () => {
       const home = await open('../../index.html');
-      expect(navText(home)).toBe(TlbxTest.said(home.contentWindow, 'nav.apps', 'Apps'));   // the build's start language (here English)
+      expect(navText(home)).toBe('Apps');
       await choose('es');
       const h = await open('../../index.html');
       expect(navText(h)).toBe('Aplicaciones');
@@ -74,9 +73,7 @@
       await choose('en');
       const h = await open('../../index.html');
       expect(navText(h)).toBe('Apps');
-      // English is the default here, so the override is cleared; a build that starts in another language keeps the choice
-      if (BRAND_FACTS.defaultLang === 'en') expect(stored().data.lang).toBeFalsy();
-      else expect(stored().data.lang.mode).toBe('en');
+      expect(stored().data.lang).toBeFalsy(); // English is the default, so the override is cleared
     });
   });
   run({ name: 'Language switch across pages' });

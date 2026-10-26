@@ -1,13 +1,17 @@
 /* TlbxTour: CRM. Targets are ids in crm/index.html. */
-TlbxTour.define({
-  app: 'crm',
-  title: 'CRM tour',
-  steps: [
-    { id: 'views', title: 'Views', text: 'Switch between Customers, Pipeline and Follow-ups.', target: '#tab-customers' },
-    { id: 'search', title: 'Search', text: 'Find a customer by name, email, phone or address.', target: '#cSearch' },
-    { id: 'stage', title: 'Stage and category', text: 'Filter by pipeline stage, or by category.', target: '#cStage' },
-    { id: 'groups', title: 'Groups and tags', text: 'Filter the list by group or tag from this side panel.', target: '#cSide' },
-    { id: 'pipeline', title: 'Pipeline', text: 'The Pipeline tab shows your customers by stage.', target: '#tab-pipeline' },
-    { id: 'import', title: 'Import', text: 'Bring customers in from Contacts.', target: '#cImport' },
-  ],
-});
+(function () {
+  /* The words are in the app's string tables (crm/i18n/<code>/tour.js), read when the tour loads. */
+  const T = (k) => (globalThis.TlbxI18n ? globalThis.TlbxI18n.t(k) : k);
+  TlbxTour.define({
+    app: 'crm',
+    title: T('crm.tour.title'),
+    steps: [
+      { id: 'views', title: T('crm.tour.s_views'), text: T('crm.tour.s_views_text'), target: '#tab-customers' },
+      { id: 'search', title: T('crm.tour.s_search'), text: T('crm.tour.s_search_text'), target: '#cSearch' },
+      { id: 'stage', title: T('crm.tour.s_stage'), text: T('crm.tour.s_stage_text'), target: '#cStage' },
+      { id: 'groups', title: T('crm.tour.s_groups'), text: T('crm.tour.s_groups_text'), target: '#cSide' },
+      { id: 'pipeline', title: T('crm.tour.s_pipeline'), text: T('crm.tour.s_pipeline_text'), target: '#tab-pipeline' },
+      { id: 'import', title: T('crm.tour.s_import'), text: T('crm.tour.s_import_text'), target: '#cImport' },
+    ],
+  });
+})();

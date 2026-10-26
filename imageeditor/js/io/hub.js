@@ -17,26 +17,26 @@ async function docBlob(type) {
 // Open from Files and ?drive=<id> are sources of the one intake (app/intake.js): a tab opened from a Drive file
 // remembers its record (CUR.driveId), so Save writes back to that same file.
 function openFromDrive(place) {
-  return TlbxIntake.fromDrive({ to: 'imageeditor', mode: place ? 'add' : 'new', title: place ? 'Place from Files' : 'Open from Files' });
+  return TlbxIntake.fromDrive({ to: 'imageeditor', mode: place ? 'add' : 'new', title: tr(place ? 'imageeditor.io.place_from_drive' : 'imageeditor.io.open_from_drive') });
 }
 /** File ▸ Save (Ctrl+S): writes the layered PSD back to the linked Drive file, or asks for a folder the first time. */
 async function saveDrive() {
   if (!hub()) return savePSD();
   const H = hub(), blob = await docBlob('image/vnd.adobe.photoshop'), name = safeName() + '.psd';
   if (!CUR.driveId) { const id = await H.saveToDrive(blob, name, { from: 'imageeditor' }); if (!id) return; CUR.driveId = id; }
-  else { if (!(await H.update(CUR.driveId, { blob, name, type: blob.type }))) await H.put(blob, { id: CUR.driveId, name, from: 'imageeditor' }); toast('Saved ' + name + ' to Files'); }
+  else { if (!(await H.update(CUR.driveId, { blob, name, type: blob.type }))) await H.put(blob, { id: CUR.driveId, name, from: 'imageeditor' }); toast(tr('imageeditor.io.saved_to_drive', { name })); }
   D.dirty = false; emit('docname');
 }
 async function saveToDrive() {
   if (!hub()) return;
   await hub().put(await docBlob('image/png'), { name: safeName() + '.png', from: 'imageeditor' });
-  toast('Saved a PNG to Files');
+  toast(tr('imageeditor.io.saved_png_drive'));
 }
 /** The "Send to" submenu: one row per app that opens PNGs, plus a PSD copy into Files. */
 function sendToMenu() {
-  if (!hub()) return [{ label: 'Files is not available here', act: () => {}, en: () => false }];
+  if (!hub()) return [{ label: tr('imageeditor.io.no_drive'), cmdId: 'ps.file-send-to-tlbx-drive-is-not-available-here', act: () => {}, en: () => false }];
   const rows = hub().sendMenuItems(() => docBlob('image/png'), () => safeName() + '.png', 'image/png');
-  return rows.concat(['-', { label: 'Save PNG to Files', act: () => saveToDrive() }]);
+  return rows.concat(['-', { label: tr('imageeditor.io.save_png_drive'), act: () => saveToDrive() }]);
 }
 /** Called once at boot: announce ourselves and open a file another app sent here (through the intake). */
 async function hubBoot() {

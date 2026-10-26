@@ -1,0 +1,16 @@
+/* Label Designer, Swedish: the guided tour (shared/tour/tours/label.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('sv', {
+  'label.tour.title': 'Rundtur i Label Designer',
+  'label.tour.setup': 'Etikettinställningar',
+  'label.tour.setup_text': 'Välj etikettstorlek: ett ark eller en termorulle.',
+  'label.tour.tools': 'Verktyg',
+  'label.tour.tools_text': 'Lägg till text, streckkoder, former och bilder på etiketten.',
+  'label.tour.label': 'Din etikett',
+  'label.tour.label_text': 'Klicka på ett objekt för att markera det och dra det sedan på plats.',
+  'label.tour.zoom': 'Zoom',
+  'label.tour.zoom_text': 'Anpassa etiketten till fönstret med Ctrl+0.',
+  'label.tour.panels': 'Paneler',
+  'label.tour.panels_text': 'Egenskaps- och datapaneler. På en mobil öppnar ☰-knappen dem.',
+  'label.tour.print': 'Skriv ut',
+  'label.tour.print_text': 'Skriv ut etiketterna (Ctrl+P).',
+});
