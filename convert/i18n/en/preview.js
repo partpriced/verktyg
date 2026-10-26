@@ -2,6 +2,8 @@
 window.TlbxI18n && window.TlbxI18n.add('en', {
   'convert.pv.add_file': 'Add a file or type text to see the preview.',
   'convert.pv.alt': '{panel}: {label}',
+  'convert.pv.after': 'After',
+  'convert.pv.before': 'Before',
   'convert.pv.binary': 'Binary file, {size}. Download to open it.',
   'convert.pv.binary_label': 'Binary',
   'convert.pv.cannot_show': 'This browser cannot show this picture. Download it to open it.',
