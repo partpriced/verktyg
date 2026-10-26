@@ -71,7 +71,7 @@ function openFxPresetPicker(layerId) {
   exportBtn.addEventListener('click', () => { const f = sel && SP.exportFile(sel); if (f) TlbxUI.download(f.blob, f.name); });
   // Import comes in the one way (shared/intake): a spec of its own, for this dialog.
   TlbxIntake.register({ id: 'imageeditor.fx-preset', main: false, paste: false, limit: 1, toast: false,
-    accept: { types: ['application/json'], exts: ['.json'], noun: tr('imageeditor.fx.noun_preset') },
+    accept: { types: ['application/json'], exts: ['.json'], noun: 'imageeditor.fx.noun_preset' },
     process: async (f) => {
       const r = await SP.importFile(f);
       status.textContent = r.ok ? tr('imageeditor.fx.imported') : SP.errorText(r.errors);

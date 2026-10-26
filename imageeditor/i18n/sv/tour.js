@@ -1,0 +1,20 @@
+/* Image Editor, Swedish: the guided tour (shared/tour/tours/imageeditor.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('sv', {
+  'imageeditor.tour.title': 'Rundtur i Image Editor',
+  'imageeditor.tour.new_title': 'Starta en fil',
+  'imageeditor.tour.new_text': 'Ny anger storlek, förinställning och bakgrund för ett dokument (under Mer ▾ i ett smalt fönster); Öppna läser in en PSD, ORA eller bild. Varje fil får en flik.',
+  'imageeditor.tour.menus_title': 'Menyrad',
+  'imageeditor.tour.menus_text': 'Arkiv, Redigera, Bild, Lager, Markera och Filter finns här. Varje meny listar sina kommandon.',
+  'imageeditor.tour.tools_title': 'Verktyg',
+  'imageeditor.tour.tools_text': 'Penslar, markering, text och beskärning finns i verktygslådan. Välj ett och ställ in det i alternativfältet.',
+  'imageeditor.tour.options_title': 'Verktygsalternativ',
+  'imageeditor.tour.options_text': 'Alternativfältet ändras med det aktiva verktyget: storlek, opacitet, blandningsläge med mera.',
+  'imageeditor.tour.canvas_title': 'Arbetsytan',
+  'imageeditor.tour.canvas_text': 'Måla, markera och omforma på arbetsytan. Statusfältet visar zoom och storlek.',
+  'imageeditor.tour.panels_title': 'Lager och paneler',
+  'imageeditor.tour.panels_text': 'Lager, historik och egenskaper finns i den här kolumnen. På en telefon visar knappen Lager dem.',
+  'imageeditor.tour.export_title': 'Exportera',
+  'imageeditor.tour.export_text': 'Exportera PNG, JPEG, WebP eller PSD. Filen skapas på din enhet; inget laddas upp.',
+  'imageeditor.tour.theme_title': 'Tema',
+  'imageeditor.tour.theme_text': 'Växla mellan Pro, Ljust och Paint ’98.',
+});

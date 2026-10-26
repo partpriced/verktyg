@@ -7,6 +7,12 @@
   if (g.TlbxConfigDialog) return;
   const C = g.TlbxConfig, UI = () => g.TlbxUI;
 
+  const tr = (key) => (g.TlbxI18n ? g.TlbxI18n.t(key) : key);
+  /** The four actions' words (shared/i18n/ui/<code>/widgets.js): menu items read them when drawn, commands are retitled
+   *  after a language change. */
+  const WORDS = { export: 'ui.config.export_current', template: 'ui.config.export_template', import: 'ui.config.import', ai: 'ui.config.ask_ai' };
+  const issued = new Map();   // command id → key, for the retitle
+  if (g.TlbxI18n && g.TlbxI18n.on) g.TlbxI18n.on(() => { for (const [id, key] of issued) { const c = g.TlbxCmd && g.TlbxCmd.get(id); if (c) c.title = tr(key); } });
   const appOf = (o = {}) => o.app || (g.TlbxHub && g.TlbxHub.self && g.TlbxHub.self.app) || C.consts.SHARED_APP;
   const note = (msg) => { try { UI().toast(msg); } catch (e) { /* no toast layer on this page */ } };
   const errorList = (errors) => UI().el('ul', { class: 'sui-errors' },
@@ -157,24 +163,28 @@
   /** Call once per page: binds drag and drop. Returns the four menu items (see menuItems). */
   function install(o = {}) { bindDrop(o); return menuItems(o); }
 
-  /** The four Config items for a TlbxUI.menu: export current config, plain template, import, ask AI. */
+  /** The four Config items for a TlbxUI.menu: export current config, plain template, import, ask AI. Each label is a
+   *  getter: a menu drawn again (TlbxMenuBar after a language change, a menu built on open) reads the current language. */
   function menuItems(o = {}) {
+    const item = (w, act) => ({ get label() { return tr(WORDS[w]); }, act });
     return [
-      { label: 'Export current config…', act: () => exportDialog(o) },
-      { label: 'Export plain template…', act: () => templateDialog(o) },
-      { label: 'Import config…', act: () => importDialog(o) },
-      { label: 'Ask AI to write a config…', act: () => aiDialog(o) },
+      item('export', () => exportDialog(o)),
+      item('template', () => templateDialog(o)),
+      item('import', () => importDialog(o)),
+      item('ai', () => aiDialog(o)),
     ];
   }
 
-  /** The same four actions as palette commands (TlbxCmd shape): ids '<prefix>.config.export' and so on. */
+  /** The same four actions as palette commands (TlbxCmd shape): ids '<prefix>.config.export' and so on. The titles are in
+   *  the current language; once registered in TlbxCmd they are retitled after a language change (issued above). */
   function commands(o = {}) {
     const pre = o.prefix || appOf(o);
+    const cmd = (w, keywords, run) => { const id = `${pre}.config.${w}`; issued.set(id, WORDS[w]); return { id, title: tr(WORDS[w]), group: 'Config', keywords, run }; };
     return [
-      { id: `${pre}.config.export`, title: 'Export current config…', group: 'Config', keywords: ['save', 'json', 'tlbx'], run: () => exportDialog(o) },
-      { id: `${pre}.config.template`, title: 'Export plain template…', group: 'Config', keywords: ['example', 'blank', 'empty'], run: () => templateDialog(o) },
-      { id: `${pre}.config.import`, title: 'Import config…', group: 'Config', keywords: ['load', 'open', 'drop'], run: () => importDialog(o) },
-      { id: `${pre}.config.ai`, title: 'Ask AI to write a config…', group: 'Config', keywords: ['make', 'generate', 'model'], run: () => aiDialog(o) },
+      cmd('export', ['save', 'json', 'tlbx'], () => exportDialog(o)),
+      cmd('template', ['example', 'blank', 'empty'], () => templateDialog(o)),
+      cmd('import', ['load', 'open', 'drop'], () => importDialog(o)),
+      cmd('ai', ['make', 'generate', 'model'], () => aiDialog(o)),
     ];
   }
 

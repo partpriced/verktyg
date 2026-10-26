@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'imageeditor',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['ai', 'app', 'brushes', 'chrome', 'commands', 'core', 'dialogs', 'filters', 'filters2', 'fx', 'guides', 'io', 'io2', 'menus', 'panels', 'retouch', 'tools', 'type', 'watermark'],
+  parts: ['ai', 'app', 'brushes', 'chrome', 'commands', 'core', 'dialogs', 'filters', 'filters2', 'fx', 'guides', 'io', 'io2', 'menus', 'panels', 'retouch', 'tools', 'tour', 'type', 'watermark'],
   langs: ['en', 'sv'],
 });

@@ -17,7 +17,6 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'docs.menu.dl_txt': 'Download plain text (.txt)',
   'docs.menu.dl_sdoc': 'Download Document (.sdoc)',
   'docs.menu.send_to': 'Send to…',
-  'docs.menu.send_verb': 'Send to',
   'docs.menu.print': 'Print…',
   'docs.menu.select_all': 'Select all',
   'docs.menu.align': 'Align',

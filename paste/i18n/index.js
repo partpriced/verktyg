@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'paste',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['app'],
+  parts: ['app', 'tour'],
   langs: ['en', 'sv'],
 });

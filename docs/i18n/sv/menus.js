@@ -17,7 +17,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.menu.dl_txt': 'Ladda ned oformaterad text (.txt)',
   'docs.menu.dl_sdoc': 'Ladda ned Document (.sdoc)',
   'docs.menu.send_to': 'Skicka till…',
-  'docs.menu.send_verb': 'Skicka till',
   'docs.menu.print': 'Skriv ut…',
   'docs.menu.select_all': 'Markera allt',
   'docs.menu.align': 'Justering',

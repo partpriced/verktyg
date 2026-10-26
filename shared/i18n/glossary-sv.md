@@ -770,3 +770,23 @@ history step and palette word, so never strip a suffix to get it. Layer names th
 | paper tape | pappersremsa | Calculator |
 | expression / variable | uttryck / variabel |  |
 | exchange rate | växelkurs |  |
+
+## Guided tours (the tour words in each app's tables)
+
+| English | Svenska | Example |
+| --- | --- | --- |
+| <App> tour (tour name) | Rundtur i <App> | «Rundtur i Hex Editor» |
+| drop zone | släppyta | «Släppyta» |
+| side bearings (font) | sidomarginaler | «Bredd och sidomarginaler» |
+| depth scale | djupskala | «Djupskala» |
+
+## Shared labels that follow a language switch (widgets)
+
+| English | Swedish | Note |
+| --- | --- | --- |
+| Object / Data (menu) | Objekt / Data | TlbxMenuBar titles |
+| Send to {app} | Skicka till {app} | TlbxOuttake verb |
+| Export current config… | Exportera aktuell konfiguration… |  |
+| Export plain template… | Exportera tom mall… |  |
+| Ask AI to write a config… | Be AI skriva en konfiguration… |  |
+| Number formats | Nummerformat | invoice and order numbers |

@@ -136,7 +136,7 @@
   /** "Send to…" menu rows for the other ITpris Verktyg apps: the one builder, TlbxOuttake, with the document as DOCX. */
   S.sendItems = function () {
     if (!H() || !window.TlbxOuttake) return [];
-    return TlbxOuttake.items({ get: () => S.exportBlob('docx'), name: () => S.displayName() + '.docx', type: DOCX_MIME, from: 'docs', verb: S.t('docs.menu.send_verb'), folder: false });
+    return TlbxOuttake.items({ get: () => S.exportBlob('docx'), name: () => S.displayName() + '.docx', type: DOCX_MIME, from: 'docs', verb: 'ui.outtake.send_to', folder: false });
   };
   /** Convert… in the header (shared/convert/provided.js): the open document, as DOCX. */
   addEventListener('tlbx:convert-files', (e) => e.detail.provide(async () => {
