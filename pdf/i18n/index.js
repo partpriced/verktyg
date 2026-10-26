@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'pdf',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['actions', 'app', 'commands', 'editor', 'find', 'io', 'macro', 'menus', 'redact', 'select', 'tools', 'tools2'],
+  parts: ['actions', 'actions3', 'app', 'commands', 'editor', 'find', 'io', 'macro', 'menus', 'redact', 'select', 'tools', 'tools2'],
   langs: ['ar', 'de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'],
 });
