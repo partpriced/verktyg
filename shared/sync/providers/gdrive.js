@@ -15,7 +15,7 @@
     const headers = Object.assign({ Authorization: 'Bearer ' + token }, init.headers || {});
     const res = await fetch(url, Object.assign({}, init, { headers }));
     if (!res.ok) {
-      const e = new Error('Google Drive request failed (HTTP ' + res.status + ').');
+      const e = new Error(window.TlbxI18n ? window.TlbxI18n.t('ui.sync.http', { name: 'Google Drive', status: String(res.status) }) : 'HTTP ' + res.status);   // i18n-ignore: service names
       e.status = res.status;
       try { const j = await res.json(); if (j && j.error && j.error.message) e.message += ' ' + String(j.error.message).slice(0, 200); } catch (x) { /* no body */ }
       throw e;
@@ -89,5 +89,5 @@
   }
 
   window.TlbxSyncProviders = window.TlbxSyncProviders || {};
-  window.TlbxSyncProviders.gdrive = { label: 'Google Drive', upload, download, list };
+  window.TlbxSyncProviders.gdrive = { label: 'Google Drive', upload, download, list };   // i18n-ignore: service names
 })();

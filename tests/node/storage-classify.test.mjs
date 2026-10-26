@@ -3,8 +3,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { loadClassic } from './storage-env.mjs';
+import { setLang } from './ui-i18n-en.mjs';   // the message's words (shared/i18n/ui/<code>/backup2.js), as a page has them
 
-const ctx = await loadClassic(['shared/storage/classify.js']);
+const ctx = await loadClassic(['shared/storage/classify.js'], { TlbxI18n: globalThis.TlbxI18n });
 const classify = ctx.TlbxStorage.classify;
 const named = (name, message = '', extra = {}) => Object.assign(new Error(message), { name }, extra);
 
@@ -72,4 +73,14 @@ test('a cyclic error and a throwing getter do not throw', () => {
 test('classify is also on window.TlbxStorage, so the other storage scripts can extend it', () => {
   assert.equal(typeof ctx.TlbxStorage.classify, 'function');
   assert.equal(typeof ctx.TlbxStorage.QUOTA_MESSAGE, 'string');
+});
+
+// Covers: shared/i18n/ui/en/backup3.js, shared/i18n/ui/sv/backup3.js
+test('the quota message is in the chosen language, read when an error is classified', () => {
+  setLang('sv');
+  try {
+    assert.match(classify(named('QuotaExceededError')).message, /^Webbplatsens lagring är full\./);
+    assert.match(ctx.TlbxStorage.QUOTA_MESSAGE, /lagring är full/);
+  } finally { setLang('en'); }
+  assert.match(classify(named('QuotaExceededError')).message, /storage is full/);
 });
