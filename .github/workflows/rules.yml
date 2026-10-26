@@ -66,6 +66,9 @@ jobs:
       shards: ${{ steps.plan.outputs.shards }}
       pages: ${{ steps.plan.outputs.pages }}
       touch: ${{ steps.plan.outputs.touch }}
+      wl_suite: ${{ steps.plan.outputs.wl_suite }}
+      wl_count: ${{ steps.plan.outputs.wl_count }}
+      wl_shards: ${{ steps.plan.outputs.wl_shards }}
     steps:
       - uses: actions/checkout@v7
         with:
