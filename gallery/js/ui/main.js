@@ -12,10 +12,11 @@
   // source and the feedback: the outline, each file's row and the toast. Dropped folders are walked by TlbxDrop.folders
   // inside the drop event. The zone is a compact strip, so the empty library carries the preview (what it makes, and
   // how) and the sample button.
-  const PREVIEW = {
-    picture: { src: '../assets/shots/gallery.jpg', alt: 'A photo library: eight photos under the month they were taken' },
-    steps: ['Drop photos or a whole folder', 'Browse by month, make albums, find duplicates', 'Back up the library as a ZIP'],
-  };
+  const t = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
+  const preview = () => ({
+    picture: { src: '../assets/shots/gallery.jpg', alt: t('gallery.grid.preview_alt') },
+    steps: [t('gallery.grid.step_drop'), t('gallery.grid.step_browse'), t('gallery.grid.step_backup')],
+  });
   function bindDrop() {
     window.TlbxIntake.register({
       id: 'gallery', accept: G.source.rules(), driveAccept: ['image/*'],
@@ -28,8 +29,9 @@
       targets: [document.querySelector('main.grid-area') || document.body],
       files: (dt) => window.TlbxDrop.folders.read(dt),
     });
-    const pv = window.TlbxDrop.panel.preview(PREVIEW);
+    const pv = window.TlbxDrop.panel.preview(preview());
     if (pv) $('emptyIntro').append(pv);
+    if (window.TlbxI18n) window.TlbxI18n.on(() => { const n = window.TlbxDrop.panel.preview(preview()); if (n) $('emptyIntro').replaceChildren(n); });
     $('emptySample').addEventListener('click', () => window.TlbxIntake.sample(() => window.TlbxSamples.photos(8), { to: 'gallery' }));
   }
 

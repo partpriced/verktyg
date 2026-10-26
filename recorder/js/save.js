@@ -9,6 +9,7 @@
   'use strict';
   const R = (g.TlbxRec = g.TlbxRec || {});
   let rec = null, made = null, key = '', name = '', busy = null;
+  const t = (k, v) => (g.TlbxI18n ? g.TlbxI18n.t(k, v) : k);
   const toast = (m) => { if (g.TlbxUI && g.TlbxUI.toast) g.TlbxUI.toast(m); };
 
   function want() {
@@ -18,7 +19,7 @@
   function use(r) { rec = r; made = null; key = ''; name = r ? (r.name || R.plan.fileName(new Date(), 'x')) : ''; }
   function stale() { made = null; key = ''; }
   async function file(o = {}) {
-    if (!rec) throw new Error('Record something first.');
+    if (!rec) throw new Error(t('recorder.err.nothing'));
     const w = want();
     if (made && key === w.key) return made;
     if (busy && busy.key === w.key) return busy.p;
@@ -35,9 +36,9 @@
   }
   async function toDrive(o) {
     const out = await file(o);
-    if (!g.TlbxHub) throw new Error('Files is not available on this page.');
+    if (!g.TlbxHub) throw new Error(t('recorder.err.no_drive'));
     const id = await g.TlbxHub.put(out.blob, { name: out.name, from: 'recorder' });
-    toast(`Saved ${out.name} to Files.`);
+    toast(t('recorder.app.saved_drive', { name: out.name }));
     return { id, name: out.name };
   }
   /** Open in…: Video Editor first (it takes every video), then every other app that takes the file, then Save to Files…. */

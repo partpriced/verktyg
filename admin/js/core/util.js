@@ -21,7 +21,7 @@
   }
 
   /** Text for a failed Result. Says nothing was changed when the Result came from a refused write. */
-  const refusal = (r) => (r && r.message) || 'Nothing was changed.';
+  const refusal = (r) => (r && r.message) || (g.TlbxI18n ? g.TlbxI18n.t('admin.core.unchanged') : '');
 
   NS.util = { settings, bytes, refusal };
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -12,8 +12,9 @@
     query: { text: '', chips: [], sort: 'added' },
   };
 
+  const t = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
   const fmtSize = (n) => window.TlbxHub.fmtSize(n);   // TlbxHub.fmtSize (shared/hub.js)
-  const fmtDate = (t) => (t ? new Date(t).toLocaleDateString(undefined, { dateStyle: 'medium' }) : 'Unknown date');
+  const fmtDate = (d) => (d ? (window.TlbxI18n ? window.TlbxI18n.date(d, { dateStyle: 'medium' }) : new Date(d).toLocaleDateString(undefined, { dateStyle: 'medium' })) : t('gallery.drive.unknown_date'));
   const extOf = (name) => window.TlbxKinds.extOf(name);
 
   function revokeThumbs() {
@@ -31,7 +32,7 @@
       '<span class="dname"></span><span class="dmeta"></span>';
     b.querySelector('.dk').textContent = window.TlbxKinds.label(it.kind);
     const ext = extOf(it.name);
-    b.querySelector('.dx').textContent = ext ? '.' + ext : 'FILE';
+    b.querySelector('.dx').textContent = ext ? '.' + ext : t('gallery.drive.file');
     b.querySelector('.dname').textContent = it.name;
     b.querySelector('.dmeta').textContent = `${fmtSize(it.size)} · ${fmtDate(it.time)}`;
     b.addEventListener('click', () => G.driveOpen.open(it, state.visible, idx));
@@ -74,10 +75,10 @@
     observe(tiles);
     $('dempty').hidden = visible.length > 0;
     $('dEmptyText').textContent = state.items.length
-      ? 'No files match these filters.'
-      : 'Files has no files yet. Save a file to it from any ITpris Verktyg app.';
+      ? t('gallery.drive.empty_filtered')
+      : t('gallery.drive.empty');
     G.driveBar.sync(counts, state.query, state.items.length, visible.length);
-    $('status').textContent = `${visible.length} of ${state.items.length} files in Files`;
+    $('status').textContent = t('gallery.drive.status', { shown: visible.length, total: state.items.length });
   }
 
   /** Reads Files again and redraws. Each switch to the Drive source does this. */
@@ -85,7 +86,7 @@
     const my = ++state.token;
     const busy = $('busy');
     busy.hidden = false;
-    busy.textContent = 'Reading Files…';
+    busy.textContent = t('gallery.drive.reading');
     try {
       const items = await G.driveSource.load();
       if (my !== state.token) return;
@@ -93,7 +94,7 @@
     } catch (e) {
       if (my !== state.token) return;
       state.items = [];
-      if (window.TlbxUI) TlbxUI.toast('Could not read Files');
+      if (window.TlbxUI) TlbxUI.toast(t('gallery.drive.read_failed'));
     } finally {
       if (my === state.token) busy.hidden = true;
     }
@@ -122,6 +123,7 @@
   function init() {
     $('srcLibrary').addEventListener('click', () => setSource('library'));
     $('srcDrive').addEventListener('click', () => setSource('drive'));
+    if (window.TlbxI18n) window.TlbxI18n.on(() => render()); // the tiles, the empty text and the status
   }
 
   G.driveView = {

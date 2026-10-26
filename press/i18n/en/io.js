@@ -1,0 +1,27 @@
+/* Page Layout, English (the source of truth for the app's keys): opening, placing, saving, Files and the offline copy (io/). Every other language copies these
+ * keys into press/i18n/<code>/io.js. Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('en', {
+  'press.io.saved_drive': 'Saved {name} to Files',
+  'press.io.send_pdf_to': 'Send PDF to',
+  'press.io.send_png_to': 'Send page PNG to',
+  'press.io.open_drive_title': 'Open from Files',
+  'press.io.place_drive_title': 'Place from Files',
+  'press.io.intake_noun': 'an image, text, PDF, font or .slpress file',
+  'press.io.placed_text': 'Placed text: {n} pages added',
+  'press.io.placed_text#one': 'Placed text: {n} page added',
+  'press.io.rendering_pdf': 'Rendering PDF pages…',
+  'press.io.placed_pdf': 'Placed {n} PDF pages',
+  'press.io.placed_pdf#one': 'Placed {n} PDF page',
+  'press.io.pdf_failed': 'Could not read PDF: {error}',
+  'press.io.font_loaded': 'Font loaded: {name}',
+  'press.io.cannot_place': 'Cannot place {name}',
+  'press.io.saved': 'Saved {name}',
+  'press.io.save_as_title': 'Save As',
+  'press.io.file_name': 'File name',
+  'press.io.opened': 'Opened {name}',
+  'press.io.cannot_open': 'Page Layout cannot open {name}',
+  'press.io.page_alt': 'Page {page}',
+  'press.io.building_offline': 'Building offline copy…',
+  'press.io.offline_done': 'Downloaded {name} — open it from disk, it works offline',
+  'press.io.offline_failed': 'Could not build offline copy: {error}',
+});

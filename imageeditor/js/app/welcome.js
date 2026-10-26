@@ -4,14 +4,15 @@
  * first stroke, a new tab, a file or Close removes it. */
 'use strict';
 
-const WELCOME = {
-  picture: { src: '../assets/shots/imageeditor.jpg', alt: 'A sample photo in Image Editor with a title on its own layer, and the Layers panel' },
-  steps: ['Open or drop a photo, a PSD or a new canvas', 'Edit with layers, masks, filters and text', 'Export a PNG, JPEG or PSD'],
-};
+/** The card's picture and steps, in the current language. */
+const WELCOME = () => ({
+  picture: { src: '../assets/shots/imageeditor.jpg', alt: tr('imageeditor.welcome.alt') },
+  steps: [tr('imageeditor.welcome.step_open'), tr('imageeditor.welcome.step_edit'), tr('imageeditor.welcome.step_export')],
+});
 
 function showWelcome() {
   const vp = $('#viewport');
-  const pv = window.TlbxDrop && TlbxDrop.panel.preview(WELCOME);
+  const pv = window.TlbxDrop && TlbxDrop.panel.preview(WELCOME());
   if (!vp || !pv || $('#psWelcome')) return;
   const doc = D; // the blank tab the card belongs to
   let card = null;
@@ -26,11 +27,11 @@ function showWelcome() {
   const sample = h('button', { type: 'button', class: 'sd-sample', id: 'psWelcomeSample', onclick: () => {
     close();
     if (window.TlbxSamples) TlbxIntake.sample(() => TlbxSamples.photos(1, { width: 1600, height: 1000 }), { to: 'imageeditor', mode: 'new' });
-  } }, 'Try it with a sample photo');
-  const shut = h('button', { type: 'button', class: 'sd-sample', onclick: close }, 'Start with this blank canvas');
+  } }, tr('imageeditor.welcome.sample'));
+  const shut = h('button', { type: 'button', class: 'sd-sample', onclick: close }, tr('imageeditor.welcome.blank'));
   const inner = h('div', { class: 'ps-welcome-card' }, pv, h('div', { class: 'sd-acts' }, sample, shut));
   inner.addEventListener('pointerdown', (e) => e.stopPropagation()); // a press on the card is not a stroke on the canvas
-  card = h('div', { class: 'ps-welcome', id: 'psWelcome', role: 'region', 'aria-label': 'What Image Editor does' }, inner);
+  card = h('div', { class: 'ps-welcome', id: 'psWelcome', role: 'region', 'aria-label': tr('imageeditor.welcome.region') }, inner);
   vp.append(card);
   listeners.add(onModel);
   vp.addEventListener('pointerdown', onDown, true); // a stroke on the canvas starts work: the card goes, the stroke goes on

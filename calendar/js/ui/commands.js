@@ -5,31 +5,35 @@
   'use strict';
   const NS = (g.TlbxCal = g.TlbxCal || {});
   const A = () => NS.app;
+  const t = (k) => () => (g.TlbxI18n ? g.TlbxI18n.t(k) : k);   // a title read when the commands are registered
+  const CAL = t('calendar.cmd.g_cal'), GO = t('calendar.cmd.g_goto');
   const COMMANDS = [
-    { id: 'cal.prev', title: 'Calendar: previous period', group: 'Calendar', keys: ['ArrowLeft'], keywords: ['back', 'earlier'], run: () => A().step(-1) },
-    { id: 'cal.next', title: 'Calendar: next period', group: 'Calendar', keys: ['ArrowRight'], keywords: ['forward', 'later'], run: () => A().step(1) },
-    { id: 'cal.today', title: 'Calendar: go to today', group: 'Calendar', keys: ['t'], run: () => A().goToday() },
-    { id: 'cal.year', title: 'Calendar: year view', group: 'Calendar', keys: ['y'], run: () => A().setView('year') },
-    { id: 'cal.month', title: 'Calendar: month view', group: 'Calendar', keys: ['m'], run: () => A().setView('month') },
-    { id: 'cal.split', title: 'Calendar: split view', group: 'Calendar', keys: ['s'], keywords: ['two', 'panes', 'side'], run: () => A().setView('split') },
-    { id: 'cal.undo', title: 'Calendar: undo last move', group: 'Calendar', keys: [], keywords: ['back', 'revert', 'drag'], run: () => A().undo() },
-    { id: 'cal.week', title: 'Calendar: week view', group: 'Calendar', keys: ['w'], run: () => A().setView('week') },
-    { id: 'cal.day', title: 'Calendar: day view', group: 'Calendar', keys: ['d'], run: () => A().setView('day') },
-    { id: 'cal.agenda', title: 'Calendar: agenda', group: 'Calendar', keys: ['a'], run: () => A().setView('agenda') },
-    { id: 'cal.new', title: 'Calendar: new event', group: 'Calendar', keys: ['n'], keywords: ['add', 'create', 'event'], run: () => A().newAt(NS.state.anchor, 9 * 60) },
-    { id: 'cal.tasks', title: 'Calendar: show or hide to-dos', group: 'Calendar', keys: ['k'], keywords: ['task', 'todo', 'layer'], run: () => A().toggleTasks() },
-    { id: 'cal.import', title: 'Calendar: import .ics', group: 'Calendar', keywords: ['ics', 'ical', 'load'], run: () => A().importIcs() },
-    { id: 'cal.export', title: 'Calendar: export .ics', group: 'Calendar', keywords: ['ics', 'ical', 'download', 'save'], run: () => NS.ics.exportIcs() },
-    { id: 'cal.todo', title: 'Go to To-do', group: 'Go to', run: () => { location.href = '../todo/'; } },
-    { id: 'cal.reminders', title: 'Go to Reminders', group: 'Go to', run: () => { location.href = '../reminders/'; } },
-    { id: 'cal.crm', title: 'Go to CRM', group: 'Go to', run: () => { location.href = '../crm/#followups'; } },
+    { id: 'cal.prev', title: t('calendar.cmd.prev'), group: CAL, keys: ['ArrowLeft'], keywords: ['back', 'earlier'], run: () => A().step(-1) },
+    { id: 'cal.next', title: t('calendar.cmd.next'), group: CAL, keys: ['ArrowRight'], keywords: ['forward', 'later'], run: () => A().step(1) },
+    { id: 'cal.today', title: t('calendar.cmd.today'), group: CAL, keys: ['t'], run: () => A().goToday() },
+    { id: 'cal.year', title: t('calendar.cmd.year'), group: CAL, keys: ['y'], run: () => A().setView('year') },
+    { id: 'cal.month', title: t('calendar.cmd.month'), group: CAL, keys: ['m'], run: () => A().setView('month') },
+    { id: 'cal.split', title: t('calendar.cmd.split'), group: CAL, keys: ['s'], keywords: ['two', 'panes', 'side'], run: () => A().setView('split') },
+    { id: 'cal.undo', title: t('calendar.cmd.undo'), group: CAL, keys: [], keywords: ['back', 'revert', 'drag'], run: () => A().undo() },
+    { id: 'cal.week', title: t('calendar.cmd.week'), group: CAL, keys: ['w'], run: () => A().setView('week') },
+    { id: 'cal.day', title: t('calendar.cmd.day'), group: CAL, keys: ['d'], run: () => A().setView('day') },
+    { id: 'cal.agenda', title: t('calendar.cmd.agenda'), group: CAL, keys: ['a'], run: () => A().setView('agenda') },
+    { id: 'cal.new', title: t('calendar.cmd.new'), group: CAL, keys: ['n'], keywords: ['add', 'create', 'event'], run: () => A().newAt(NS.state.anchor, 9 * 60) },
+    { id: 'cal.tasks', title: t('calendar.cmd.tasks'), group: CAL, keys: ['k'], keywords: ['task', 'todo', 'layer'], run: () => A().toggleTasks() },
+    { id: 'cal.import', title: t('calendar.cmd.import'), group: CAL, keywords: ['ics', 'ical', 'load'], run: () => A().importIcs() },
+    { id: 'cal.export', title: t('calendar.cmd.export'), group: CAL, keywords: ['ics', 'ical', 'download', 'save'], run: () => NS.ics.exportIcs() },
+    { id: 'cal.todo', title: t('calendar.cmd.todo'), group: GO, run: () => { location.href = '../todo/'; } },
+    { id: 'cal.reminders', title: t('calendar.cmd.reminders'), group: GO, run: () => { location.href = '../reminders/'; } },
+    { id: 'cal.crm', title: t('calendar.cmd.crm'), group: GO, run: () => { location.href = '../crm/#followups'; } },
   ];
 
   /** Registers the commands and starts TlbxCmd for this app. Without TlbxCmd the buttons still work. */
   function init() {
     if (!g.TlbxCmd) return;
     g.TlbxCmd.init({ app: 'calendar' });
-    g.TlbxCmd.register(COMMANDS);
+    const reg = () => g.TlbxCmd.register(COMMANDS.map((c) => ({ ...c, title: c.title(), group: c.group() })));
+    reg();
+    if (g.TlbxI18n) g.TlbxI18n.on(reg);   // the palette in the new language
     // the assistant's record commands (shared/data/ai-records.js through shared/biz/biz.js), loaded when the AI panel first asks
     if (g.TlbxCmd.provide && g.TlbxBiz && g.TlbxBiz.assistant) g.TlbxCmd.provide({ prepare: () => g.TlbxBiz.assistant('calendar') });
   }

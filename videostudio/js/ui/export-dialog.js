@@ -22,43 +22,43 @@
   SE.act.exportGif = function () { open({ format: 'gif' }); };
 
   function open(init) {
-    if (!SE.doc.clips.length) { TlbxUI.toast('Add some clips to the timeline first'); return; }
+    if (!SE.doc.clips.length) { TlbxUI.toast(U.t('videoedit.menu.add_some_clips_to_the')); return; }
     SE.player.pause();
     const caps = SE.caps, p = SE.doc, st = U.store.get('export', {});
-    const formats = (caps.webcodecs ? [['mp4', 'MP4 (H.264 / AAC)'], ['webm', 'WebM (VP9 / Opus)']] : []).concat(caps.recorder ? [['rec', 'WebM (real-time recording)']] : [], [['gif', 'Animated GIF (short clip)']]);
+    const formats = (caps.webcodecs ? [['mp4', 'MP4 (H.264 / AAC)'], ['webm', U.t('videoedit.exp.webm_vp9_opus')]] : []).concat(caps.recorder ? [['rec', U.t('videoedit.exp.webm_real_time_recording')]] : [], [['gif', U.t('videoedit.exp.animated_gif_short_clip')]]);
     // Every setting comes back as the person last chose it; the project size is only the fallback for the size.
     const has = (list, v) => list.some((x) => x[0] === v);
     const choices = SV.presets.choices();
     const fmt = TlbxUI.select(formats, has(formats, init.format) ? init.format : has(formats, st.vfmt) ? st.vfmt : formats[0][0]);
     const res = TlbxUI.select(choices, has(choices, st.res) ? st.res : SV.presets.idFor(p.w, p.h));
     const cw = TlbxUI.number(st.cw || p.w, SV.presets.MIN, SV.presets.MAX_W, 2), ch = TlbxUI.number(st.ch || p.h, SV.presets.MIN, SV.presets.MAX_H, 2);
-    const cwRow = TlbxUI.field('Width', cw, 'px'), chRow = TlbxUI.field('Height', ch, 'px');
+    const cwRow = TlbxUI.field(U.t('videoedit.fx.width'), cw, 'px'), chRow = TlbxUI.field(U.t('videoedit.fx.height'), ch, 'px');
     const fps = TlbxUI.select([[24, '24 fps'], [25, '25 fps'], [30, '30 fps'], [50, '50 fps'], [60, '60 fps']], st.fps || p.fps);
-    const q = TlbxUI.select([['low', 'Low (small file)'], ['medium', 'Medium'], ['high', 'High'], ['max', 'Maximum']], st.q || 'high');
+    const q = TlbxUI.select([['low', U.t('videoedit.exp.low_small_file')], ['medium', U.t('videoedit.exp.medium')], ['high', U.t('videoedit.exp.high')], ['max', U.t('videoedit.exp.maximum')]], st.q || 'high');
     const hasIO = !!(p.io && (p.io.in != null || p.io.out != null));
-    const rangeOpts = [['all', 'Entire sequence'], ['io', 'In to out']].filter(([v]) => v === 'all' || hasIO);
+    const rangeOpts = [['all', U.t('videoedit.exp.entire_sequence')], ['io', U.t('videoedit.exp.in_to_out')]].filter(([v]) => v === 'all' || hasIO);
     const range = TlbxUI.select(rangeOpts, has(rangeOpts, st.range) ? st.range : hasIO ? 'io' : 'all');
-    const gw = TlbxUI.select([[320, '320 px wide'], [480, '480 px wide'], [640, '640 px wide']], st.gw || 480);
+    const gw = TlbxUI.select([[320, U.t('videoedit.exp.320_px_wide')], [480, U.t('videoedit.exp.480_px_wide')], [640, U.t('videoedit.exp.640_px_wide')]], st.gw || 480);
     const gf = TlbxUI.select([[10, '10 fps'], [12, '12 fps'], [15, '15 fps']], st.gf || 12);
-    const audio = TlbxUI.check('Include audio', st.audio !== false);
+    const audio = TlbxUI.check(U.t('videoedit.exp.include_audio'), st.audio !== false);
     const note = h('p', { class: 'exp-note' });
-    const vRows = h('div', { class: 'exp-grid' }, TlbxUI.field('Size', res), cwRow, chRow, TlbxUI.field('Frame rate', fps), TlbxUI.field('Quality', q), audio.el);
-    const gRows = h('div', { class: 'exp-grid' }, TlbxUI.field('Width', gw), TlbxUI.field('Frame rate', gf));
+    const vRows = h('div', { class: 'exp-grid' }, TlbxUI.field(U.t('videoedit.exp.size'), res), cwRow, chRow, TlbxUI.field(U.t('videoedit.fx.frame_rate'), fps), TlbxUI.field(U.t('videoedit.exp.quality'), q), audio.el);
+    const gRows = h('div', { class: 'exp-grid' }, TlbxUI.field(U.t('videoedit.fx.width'), gw), TlbxUI.field(U.t('videoedit.fx.frame_rate'), gf));
     async function refresh() {
       const f = fmt.value, gif = f === 'gif';
       vRows.hidden = gif; gRows.hidden = !gif;
       cwRow.hidden = chRow.hidden = res.value !== SV.presets.CUSTOM;
       const r = XD.range(range.value), dur = r.b - r.a;
-      if (gif) { note.className = 'exp-note' + (dur > 15 ? ' warn' : ''); note.textContent = dur > 15 ? 'GIFs are limited to 15 seconds: the first 15 s of the range will be used. Set in/out points (I, O) to pick a part.' : 'Exports ' + U.dur(dur) + ' as a looping GIF.'; return; }
+      if (gif) { note.className = 'exp-note' + (dur > 15 ? ' warn' : ''); note.textContent = dur > 15 ? U.t('videoedit.exp.gifs_are_limited_to_15') : U.t('videoedit.exp.gif_note', { d: U.dur(dur) }); return; }
       const s = XD.size(res.value, +cw.value, +ch.value), est = SE.encode.bitrate(s.w, s.h, +fps.value, q.value) * dur / 8 + (audio.input.checked ? 16000 * dur : 0);
-      let msg = s.w + '×' + s.h + ' · ' + U.dur(dur) + ' · about ' + U.fmtBytes(est) + '. ';
+      let msg = s.w + '×' + s.h + ' · ' + U.dur(dur) + ' · ' + U.t('videoedit.exp.about', { size: U.fmtBytes(est) }) + '. ';
       note.className = 'exp-note';
-      if (f === 'rec') { msg += 'This browser has no WebCodecs, so the video is recorded in real time while it plays (takes ' + U.dur(dur) + '). Keep this tab visible.'; note.className = 'exp-note warn'; }
+      if (f === 'rec') { msg += U.t('videoedit.exp.rec_note', { d: U.dur(dur) }); note.className = 'exp-note warn'; }
       else {
         try {
           const sel = await SE.encode.pick(f, s.w, s.h, +fps.value, SE.encode.bitrate(s.w, s.h, +fps.value, q.value), audio.input.checked);
-          msg += 'Video: ' + sel.video.codec + (sel.audio ? ' · audio: ' + sel.audio.codec : audio.input.checked ? ' · no audio encoder here' : '') + '.';
-          if (f === 'mp4' && !sel.video.h264) { msg += ' H.264 is not available in this browser, so the MP4 uses ' + sel.video.mux.toUpperCase() + '.'; note.className = 'exp-note warn'; }
+          msg += U.t('videoedit.exp.video_codec', { c: sel.video.codec }) + (sel.audio ? ' · ' + U.t('videoedit.exp.audio_codec', { c: sel.audio.codec }) : audio.input.checked ? ' · ' + U.t('videoedit.exp.no_audio_enc') : '') + '.';
+          if (f === 'mp4' && !sel.video.h264) { msg += ' ' + U.t('videoedit.exp.no_h264', { c: sel.video.mux.toUpperCase() }); note.className = 'exp-note warn'; }
         } catch (e) { msg += e.message; note.className = 'exp-note warn'; }
       }
       note.textContent = msg;
@@ -69,9 +69,9 @@
     }
     for (const el of [fmt, res, cw, ch, fps, q, range, gw, gf, audio.input]) el.addEventListener('change', () => { save(); refresh(); });
     TlbxUI.dialog({
-      title: 'Export', cls: 'exp-dlg',
-      body: h('div', null, TlbxUI.field('Format', fmt), TlbxUI.field('Range', range), vRows, gRows, note),
-      buttons: [{ label: 'Cancel' }, { label: 'Export', primary: true, act: () => {
+      title: U.t('videoedit.app.export'), cls: 'exp-dlg',
+      body: h('div', null, TlbxUI.field(U.t('videoedit.exp.format'), fmt), TlbxUI.field(U.t('videoedit.exp.range'), range), vRows, gRows, note),
+      buttons: [{ label: U.t('videoedit.fx.cancel') }, { label: U.t('videoedit.app.export'), primary: true, act: () => {
         save();
         const r = XD.range(range.value), size = XD.size(res.value, +cw.value, +ch.value);
         if (size.w !== SE.doc.w || size.h !== SE.doc.h) SE.settings.apply({ w: size.w, h: size.h }); // the preset is the sequence size
@@ -83,7 +83,7 @@
   /** Run an export with progress and cancel. Resolves with { blob, info } or null. */
   async function run(o) {
     const signal = { cancelled: false };
-    const prog = SE.progress.open(o.format === 'gif' ? 'Exporting GIF' : 'Exporting video', { onCancel: () => { signal.cancelled = true; } });
+    const prog = SE.progress.open(o.format === 'gif' ? U.t('videoedit.exp.exporting_gif') : U.t('videoedit.exp.exporting_video'), { onCancel: () => { signal.cancelled = true; } });
     const progress = (f, m) => prog.set(f, m);
     // A long video render (not GIF) shows the support card inside this dialog; the render is never affected.
     const sup = o.format === 'gif' ? null : TlbxSupport.trackRender('videostudio', prog.box);
@@ -100,24 +100,24 @@
     } catch (e) {
       if (sup) sup.done();
       prog.close();
-      if (e && e.name === 'AbortError') { SE.app.status('Export cancelled'); return null; }
+      if (e && e.name === 'AbortError') { SE.app.status(U.t('videoedit.exp.export_cancelled')); return null; } // i18n-ignore: class names
       console.error(e);
-      TlbxUI.alert('Export failed', (e && e.message) || String(e));
+      TlbxUI.alert(U.t('videoedit.exp.export_failed'), (e && e.message) || String(e));
       return null;
     }
   }
   XD.run = run;
   function result(out, name) {
     const url = URL.createObjectURL(out.blob);
-    const media = out.blob.type === 'image/gif' ? h('img', { src: url, alt: 'Exported GIF', class: 'exp-media' }) : h('video', { src: url, controls: true, playsinline: true, class: 'exp-media' });
+    const media = out.blob.type === 'image/gif' ? h('img', { src: url, alt: U.t('videoedit.exp.exported_gif'), class: 'exp-media' }) : h('video', { src: url, controls: true, playsinline: true, class: 'exp-media' });
     const i = out.info || {};
     TlbxUI.dialog({
-      title: 'Export finished', cls: 'exp-dlg', onClose: () => setTimeout(() => URL.revokeObjectURL(url), 60000),
+      title: U.t('videoedit.exp.export_finished'), cls: 'exp-dlg', onClose: () => setTimeout(() => URL.revokeObjectURL(url), 60000),
       body: h('div', null, media, h('p', { class: 'sui-p' }, name + ' · ' + U.fmtBytes(out.blob.size) + (i.w ? ' · ' + i.w + '×' + i.h : '') + (i.codec ? ' · ' + i.codec : '') + (i.seconds ? ' · rendered in ' + i.seconds.toFixed(1) + ' s' : ''))),
-      buttons: [window.TlbxHub && !SE.offline ? { label: 'Save to Files', act: async () => { await TlbxHub.saveToDrive(out.blob, name); return false; } } : null,
-        { label: 'Download', primary: true, act: () => TlbxUI.download(out.blob, name) }].filter(Boolean)
+      buttons: [window.TlbxHub && !SE.offline ? { label: U.t('videoedit.exp.save_to_tlbx_drive'), act: async () => { await TlbxHub.saveToDrive(out.blob, name); return false; } } : null,
+        { label: U.t('videoedit.exp.download'), primary: true, act: () => TlbxUI.download(out.blob, name) }].filter(Boolean)
     });
-    SE.app.status('Exported ' + name);
+    SE.app.status(U.t('videoedit.exp.exported', { name }));
     TlbxSupport.afterExport('videostudio');
     XD.last = out;
   }

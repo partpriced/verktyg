@@ -35,7 +35,7 @@ function onGuidePointerDown(e) {
   const s = screenPt(e), r = inRuler(s);
   if (r === 'corner') { e.stopImmediatePropagation(); e.preventDefault(); return; }
   if (r) {
-    if (GUIDE_PREFS.lock) { toast('Guides are locked (View ▸ Lock Guides)'); e.stopImmediatePropagation(); return; }
+    if (GUIDE_PREFS.lock) { toast(tr('imageeditor.guide.locked')); e.stopImmediatePropagation(); return; }
     startGuideDrag(e, r === 'top' ? 'h' : 'v', -1); return;
   }
   if (!canGrabGuide(e)) return;
@@ -72,7 +72,7 @@ function onGuidePointerUp(e) {
   if (d.idx >= 0) list.splice(d.idx, 1);
   if (!d.out) list.push({ o: d.o, pos: d.pos });
   else if (d.idx < 0) { dirty(); return; }
-  setGuides(list, d.idx < 0 ? 'New Guide' : d.out ? 'Delete Guide' : 'Move Guide');
+  setGuides(list, tr(d.idx < 0 ? 'imageeditor.guide.step_new' : d.out ? 'imageeditor.guide.step_delete' : 'imageeditor.guide.step_move'));
 }
 function onGuideCancel(e) { if (V.guideDrag && V.guideDrag.id === e.pointerId) { V.guideDrag = null; e.stopImmediatePropagation(); dirty(); } }
 function onGuideDblClick(e) {
@@ -96,11 +96,11 @@ function initGuideInput() {
     const i = guideAt(screenPt(e)); if (i < 0 || GUIDE_PREFS.lock) return;
     e.preventDefault(); e.stopImmediatePropagation();
     TlbxUI.menu([
-      { label: 'Edit Guide Position…', act: () => dlgNewGuide(i) },
-      { label: 'Delete Guide', act: () => { const l = D.guides.slice(); l.splice(i, 1); setGuides(l, 'Delete Guide'); } },
+      { label: tr('imageeditor.guide.edit_pos'), act: () => dlgNewGuide(i) },
+      { label: tr('imageeditor.guide.step_delete'), act: () => { const l = D.guides.slice(); l.splice(i, 1); setGuides(l, tr('imageeditor.guide.step_delete')); } },
       '-',
-      { label: 'Clear All Guides', act: clearGuides },
-      { label: 'Lock Guides', act: () => togglePref('lockGuides', false, 'Lock guides') },
+      { label: tr('imageeditor.guide.clear_all'), act: clearGuides },
+      { label: tr('imageeditor.menu.lock_guides'), act: () => togglePref('lockGuides', false, 'lock_guides') },
     ], e.clientX, e.clientY);
   }, opt);
   listeners.add((w) => { if (w === 'doc' && TlbxGuides.panel) TlbxGuides.panel.refresh(); });

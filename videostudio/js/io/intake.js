@@ -18,7 +18,7 @@
   IN.RULES = {
     types: ['video/*', 'audio/*', 'image/*', 'application/x-videoedit', 'application/zip', REEL, 'application/json'],
     exts: ['.mp4', '.m4v', '.mov', '.webm', '.mkv', '.mp3', '.wav', '.m4a', '.aac', '.ogg', '.opus', '.flac', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.videoedit'],
-    noun: 'a video, audio, picture or project',
+    noun: SE.util.t('videoedit.io.a_video_audio_picture_or'),
   };
   const DRIVE = ['video/*', 'audio/*', 'image/*', 'application/x-videoedit', 'application/zip'];
   const names = (files) => files.map((f) => f.name);
@@ -47,7 +47,7 @@
   IN.importMedia = () => SI.pick({ to: 'videoedit', accept: SE.app.ACCEPT + ',.videoedit' });
   /** Open project (.videoedit)… (Ctrl+O). */
   IN.openProject = () => SI.pick({ to: 'videoedit', multiple: false, accept: '.videoedit,application/zip,' + SE.project.MIME });
-  IN.fromDrive = () => SI.fromDrive({ to: 'videoedit', title: 'Import from Files' });
+  IN.fromDrive = () => SI.fromDrive({ to: 'videoedit', title: SE.util.t('videoedit.bin.import_from_tlbx_drive') });
   /** What the page was opened with (?drive=<id>, a PWA launch). Resolves true when something came in. */
   IN.launch = async () => { const r = await SI.launch({ to: 'videoedit' }); return !!(r && r.added && r.added.length); };
   /** Files (or Files records) another app handed over while Video Editor is open, with what they are for (data). */

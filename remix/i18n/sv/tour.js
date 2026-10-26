@@ -1,0 +1,16 @@
+/* Video Remix, Swedish: the guided tour (shared/tour/tours/remix.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('sv', {
+  'remix.tour.title': 'Rundtur i Video Remix',
+  'remix.tour.clips': 'Lägg till klipp',
+  'remix.tour.clips_text': 'Släpp klipp och foton här. Vart och ett fyller en plats i reelen.',
+  'remix.tour.preview': 'Förhandsgranskning',
+  'remix.tour.preview_text': 'Reelen spelas upp här. Använd Spela upp, eller dra uppspelningshuvudet under den för att bläddra.',
+  'remix.tour.keys': 'Nyckelbildrutor',
+  'remix.tour.keys_text': 'Välj en plats, lägg sedan till nycklar vid uppspelningshuvudet och välj en easing.',
+  'remix.tour.layout': 'Layout',
+  'remix.tour.layout_text': 'Välj rutnätslayout. Slump byter layout vid punkter du väljer.',
+  'remix.tour.export': 'Exportera',
+  'remix.tour.export_text': 'Rendera reelen med exportförinställningen och spara den.',
+  'remix.tour.config': 'Konfiguration',
+  'remix.tour.config_text': 'Exportera eller importera reelen som en .tlbx.json-konfiguration.',
+});

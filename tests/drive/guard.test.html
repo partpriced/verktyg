@@ -72,7 +72,7 @@
       W.TlbxGuard.setUnsaved('doc-1', false);
       expect(ev()).toBe(false);
     });
-    it('works on a page that owns a different window.TlbxUI (the homepage)', async () => {
+    it('works on a page that owns a different window.TlbxUI', async () => {
       const F = await DT.frame('frame.html?foreign=1', (w) => w.TlbxGuard);
       F.localStorage.removeItem('tlbx-guard-off');
       F.document.body.dispatchEvent(DT.key('R', { ctrlKey: true, shiftKey: true }));

@@ -12,7 +12,7 @@
 const PS_RULES = () => ({
   types: ['image/*'],
   exts: ['.psd', '.psb', '.ora', '.kra', '.tif', '.tiff', '.svg', '.ico', '.avif', '.bmp', '.gif', '.webp', '.jfif', ...(window.TlbxRaw ? TlbxRaw.EXTS.map((e) => '.' + e) : [])],
-  noun: 'a picture or a document',
+  noun: tr('imageeditor.app.noun_picture'),
 });
 
 function registerIntake() {
@@ -22,7 +22,7 @@ function registerIntake() {
     driveAccept: ['image/*', 'image/vnd.adobe.photoshop', 'application/x-openraster'],
     except: (f) => !!(window.TlbxBuffer && TlbxBuffer.isSystemCopyOf(f)), // our own buffer copies stay with onPaste
     hasOpen: () => D.layers.length > 0,
-    openName: () => D.name || 'the open document',
+    openName: () => D.name || tr('imageeditor.app.open_document'),
     process: async (file, ctx) => {
       const before = CUR, place = ctx.mode === 'add';
       const failed = await handleFiles([file], place);
@@ -33,7 +33,7 @@ function registerIntake() {
   });
   // Brushes: .abr, .tlbxbrush packs and picture tips, all of a pick at once (one toast).
   SI.register({ id: 'imageeditor.brushes', main: false, paste: false, toast: false,
-    accept: { types: ['image/*', 'application/json'], exts: ['.abr', '.tlbxbrush', '.json'], noun: 'a brush file (.abr, .tlbxbrush or a picture)' },
+    accept: { types: ['image/*', 'application/json'], exts: ['.abr', '.tlbxbrush', '.json'], noun: tr('imageeditor.app.noun_brush') },
     processAll: (files) => importBrushFiles(files) });
   // The watermark's logo ('imageeditor.logo') is the shared watermark panel's own part (shared/watermark/panel.js, watermark/panel.js).
 }

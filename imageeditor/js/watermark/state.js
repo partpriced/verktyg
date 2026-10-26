@@ -26,14 +26,14 @@ function wmState() { return D.wm || (D.wm = { on: false, spec: wmDefaults() }); 
 function wmUpdate(patch) { D.wm = Object.assign({}, wmState(), patch); wmChanged(); }
 function wmChanged() { wmVer++; D.dirty = true; scheduleAutosave(); dirty(); emit('watermark'); }
 function wmSetOn(on) { wmUpdate({ on: !!on }); }
-function wmToggle() { wmSetOn(!wmOn()); toast(wmOn() ? 'Watermark on: added to exports and shown on the page' : 'Watermark off'); }
+function wmToggle() { wmSetOn(!wmOn()); toast(tr(wmOn() ? 'imageeditor.wm.toast_on' : 'imageeditor.wm.toast_off')); }
 function wmSetSpec(spec) { wmUpdate({ spec: TlbxWatermarkSpec.normalize(spec) }); }
 /** Keeps the current look as this device's default for new documents (the switch is not kept). */
 function wmSaveDefaults() {
   let spec = wmState().spec;
   if (JSON.stringify(spec).length > WM_DEFAULT_MAX) spec = Object.assign({}, spec, { layers: spec.layers.filter((L) => L.kind !== 'logo') });
   store.set('watermark.defaults', spec);
-  toast('Saved as this device’s default watermark');
+  toast(tr('imageeditor.wm.saved_default'));
 }
 /** Back to the device default look; the switch stays. */
 function wmResetStyle() { wmUpdate({ spec: wmDefaults() }); }

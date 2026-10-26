@@ -10,13 +10,13 @@
   // for its own pan. Mirror Space into the app's state here, first, so V.space (read by view.js and the guides) is
   // set under every preset. Keyup needs nothing: main.js's keyup handler clears V.space and is not stopped.
   window.addEventListener('keydown', (e) => {
-    if (e.code !== 'Space' || e.repeat || e.ctrlKey || e.metaKey) return;
+    if (e.code !== 'Space' || e.repeat || e.ctrlKey || e.metaKey) return;   // i18n-ignore: ids, class names, key names or text for agents
     if (window.TlbxUI && TlbxUI.openDialogs) return;
     if ((!!window.TlbxTyping && window.TlbxTyping.isTyping(e, { controls: true }))) return;   // shared/input/typing.js
     V.space = true; V.el.classList.add('space');
   }, true);
   TlbxNav.attach(APP, {
-    title: 'Image Editor',
+    title: 'Image Editor',   // i18n-ignore: ids, class names, key names or text for agents
     host,
     adapter: {
       zoomAt: (f, x, y) => setZoom(V.zoom * f, viewPt(x, y)), // x, y are viewport points
@@ -27,9 +27,10 @@
       // A second finger takes over from a stroke the first finger started.
       cancelStroke: () => { if (V.op) { const t = V.op.tool; if (t.cancel) t.cancel(); V.op = null; dirty(); } },
     },
-    shortcuts: TlbxNav.shortcutsFrom({ fit: 'Fit on Screen', actual: '100%', zoomIn: 'Zoom In', zoomOut: 'Zoom Out', handTool: 'Hand Tool' }),
+    // matched by command title, so the titles are read in the current language each time
+    shortcuts: TlbxNav.shortcutsFrom({ get fit() { return tr('imageeditor.menu.fit_on_screen'); }, actual: '100%', get zoomIn() { return tr('imageeditor.menu.zoom_in'); },
+      get zoomOut() { return tr('imageeditor.menu.zoom_out'); }, get handTool() { return TOOL.hand ? TOOL.hand.name : 'Hand Tool'; } }),   // i18n-ignore: fallback
   });
-  if (window.TlbxCmd && TlbxCmd.register) {
-    TlbxCmd.register([{ id: 'ps.nav-preset', title: 'Navigation preset…', group: 'View', keywords: ['navigation', 'zoom', 'pan', 'wheel', 'trackpad', 'touch', 'preset', 'mouse'], keys: [], run: () => TlbxNav.openModal(APP) }]);
-  }
+  const register = () => TlbxCmd.register([{ id: 'ps.nav-preset', title: tr('imageeditor.cmd.nav_preset'), group: 'View', keywords: ['navigation', 'zoom', 'pan', 'wheel', 'trackpad', 'touch', 'preset', 'mouse'], keys: [], run: () => TlbxNav.openModal(APP) }]);   // i18n-ignore: ids, class names, key names or text for agents
+  if (window.TlbxCmd && TlbxCmd.register) { register(); onLang(register); }
 })();
