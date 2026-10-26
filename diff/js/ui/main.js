@@ -102,7 +102,7 @@ function wireIntake() {
 
 function boot() {
   bar = window.TlbxCompareBar;   // js/ui/bar.js, mounted before the shell
-  frame = window.TlbxFrame.mount($('df-main'), { list: null, view: $('df-work'), panel: $('df-panel'), panelLabel: t('ui.settings'),
+  frame = window.TlbxFrame.mount($('df-main'), { list: null, view: $('df-work'), panel: $('df-panel'), panelLabel: 'ui.settings',
     storageKey: 'diff', phone: '(max-width: 860px)', phoneButton: false, width: 320, min: 280, max: 480 });
   side = window.TlbxFrame.panel($('df-panel'), { title: t('diff.panel.compare') });
   settings = panelUI.build($('df-settings'));

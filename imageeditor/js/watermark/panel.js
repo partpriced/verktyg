@@ -9,10 +9,10 @@ function buildWatermarkPanel() {
     value: wmState().spec,
     intake: 'imageeditor.logo',   // the logo part: TlbxIntake.pick({ to: 'imageeditor.logo' })
     onChange: (spec) => wmSetSpec(spec),
-    toggle: { get: wmOn, set: wmSetOn, label: tr('imageeditor.wm.on'), note: (on) => tr(on ? 'imageeditor.wm.on_note' : 'imageeditor.wm.off_note') },
+    toggle: { get: wmOn, set: wmSetOn, label: 'imageeditor.wm.on', note: (on) => tr(on ? 'imageeditor.wm.on_note' : 'imageeditor.wm.off_note') },
     actions: [
-      { label: tr('imageeditor.wm.save_default'), title: tr('imageeditor.wm.save_default_tip'), act: () => wmSaveDefaults() },
-      { label: tr('imageeditor.wm.reset_default'), title: tr('imageeditor.wm.reset_default_tip'), act: () => wmResetStyle() },
+      { label: 'imageeditor.wm.save_default', title: 'imageeditor.wm.save_default_tip', act: () => wmSaveDefaults() },
+      { label: 'imageeditor.wm.reset_default', title: 'imageeditor.wm.reset_default_tip', act: () => wmResetStyle() },
     ],
   });
   // the document's watermark: after an undo, a tab switch or opening a file. Only when it is another spec: 'doc' comes

@@ -35,7 +35,7 @@
       home: '../', title: 'Colours', subtitle: t('colors.app.subtitle'),
       actions: [{ id: 'open', label: t('colors.app.open'), icon: 'open', onClick: () => g.TlbxIntake.pick({ to: 'colors' }) }], menu: [],
     });
-    frame = g.TlbxFrame.mount($('co-main'), { list: null, view: $('co-view'), panel: $('co-panel'), panelLabel: t('ui.settings'),
+    frame = g.TlbxFrame.mount($('co-main'), { list: null, view: $('co-view'), panel: $('co-panel'), panelLabel: 'ui.settings',
       storageKey: 'colors', phone: '(max-width: 860px)', phoneButton: false, width: 320, min: 280, max: 480 });
     g.CO.panel.mount($('co-panel'));
     g.CO.swatches.wire(); g.CO.picture.wire(); g.CO.contrast.wire();

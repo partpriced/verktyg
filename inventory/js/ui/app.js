@@ -31,10 +31,10 @@
   const forms = document.querySelector('#view-stock .forms');
   if (g.TlbxBiz.panel && forms) {
     forms.append(document.getElementById('sMsg'));
-    NS.stockPanel = g.TlbxBiz.panel.form({ app: 'inventory', key: 'stock', view: '#view-stock', form: forms, foot: ['#sApply'], label: g.TlbxI18n ? g.TlbxI18n.t('inventory.ap.stock') : '' });
+    NS.stockPanel = g.TlbxBiz.panel.form({ app: 'inventory', key: 'stock', view: '#view-stock', form: forms, foot: ['#sApply'], label: 'inventory.ap.stock' });
   }
   if (g.TlbxBiz.panel && document.getElementById('pForm')) {
-    NS.productPanel = g.TlbxBiz.panel.form({ app: 'inventory', key: 'product', view: '#view-products', form: '#pForm', foot: ['#pCancel', '#pSave'], label: g.TlbxI18n ? g.TlbxI18n.t('inventory.ap.product') : '' });
+    NS.productPanel = g.TlbxBiz.panel.form({ app: 'inventory', key: 'product', view: '#view-products', form: '#pForm', foot: ['#pCancel', '#pSave'], label: 'inventory.ap.product' });
   }
   const app = g.TlbxBiz.router.start({
     ns: NS, app: 'inventory', parse: (h) => ({ view: VIEWS.includes(h) ? h : 'products' }),

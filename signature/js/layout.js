@@ -9,7 +9,7 @@
   const $ = (id) => document.getElementById(id);
   const t = (k, v) => (g.TlbxI18n ? g.TlbxI18n.t(k, v) : k);
   const fr = g.TlbxFrame.mount($('sgApp'), {
-    list: null, view: $('sgView'), panel: $('sgPanel'), phone: '(max-width: 860px)', panelLabel: t('signature.lay.details'),
+    list: null, view: $('sgView'), panel: $('sgPanel'), phone: '(max-width: 860px)', panelLabel: 'signature.lay.details',
     storageKey: 'signature', button: '.smb-tools', phoneButton: false, width: 420, min: 320, max: 600,
   });
   const panel = g.TlbxFrame.panel($('sgPanel'), { title: t('signature.lay.title') });

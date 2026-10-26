@@ -17,7 +17,7 @@
   function mount() {
     if (!g.TlbxFrame || p) return null;
     const side = $('cSide');
-    const frame = g.TlbxFrame.mount($('cBody'), { view: $('main'), panel: side, panelLabel: t('calendar.panel.day'), storageKey: 'calendar',
+    const frame = g.TlbxFrame.mount($('cBody'), { view: $('main'), panel: side, panelLabel: 'calendar.panel.day', storageKey: 'calendar',
       button: '.toolbar', phoneButton: false, phone: '(max-width: 640px)', width: 290, min: 240, max: 440,
       onChange: () => { if (editing && NS.panel.frame && NS.panel.frame.isPhone() && !phoneOpen()) done(); } });   // the sheet closed: cancel
     p = g.TlbxFrame.panel(side, { title: t('calendar.panel.day') });

@@ -7,7 +7,7 @@
   const $ = (id) => document.getElementById(id);
   const t = (k) => (g.TlbxI18n ? g.TlbxI18n.t(k) : k);
   const fr = g.TlbxFrame.mount($('ck-frame'), {
-    list: null, view: $('ck-view'), panel: $('ck-side'), phone: '(max-width: 760px)', panelLabel: t('checksum.app.settings'),
+    list: null, view: $('ck-view'), panel: $('ck-side'), phone: '(max-width: 760px)', panelLabel: 'checksum.app.settings',
     storageKey: 'checksum', phoneButton: false, width: 300, min: 260,
   });
   const panel = g.TlbxFrame.panel($('ck-side'), { title: 'Checksum' });
