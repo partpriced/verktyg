@@ -32,7 +32,7 @@
   const NOTICE = {
     title: 'ui.firstrun.heic_title',
     lines: ['ui.firstrun.heic_text'],
-    downloads: [{ name: () => root.TlbxI18n.t('ui.firstrun.heic_name', { version: '1.23.5' }), bytes: PACK.size }],
+    downloads: [{ name: () => tr('ui.firstrun.heic_name', { version: '1.23.5' }), bytes: PACK.size }],
   };
   // TlbxUI too: TlbxFirstRun lets everything through when a page has no dialog kit, and the engine must not download unasked
   const DEPS = [['TlbxUI', '../tlbxui.js'], ['TlbxLibraryManifest', '../library/manifest.js'], ['TlbxLibraryStore', '../library/store.js'], ['TlbxLibraryInstall', '../library/install.js'], ['TlbxFirstRun', '../firstrun/notice.js']];
