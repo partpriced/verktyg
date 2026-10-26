@@ -21,7 +21,6 @@ text with tables of their own: the recipe is `APPS-HOWTO.md`, the progress `COVE
   buttons, the TlbxCmd palette and shortcut editor, tours, TlbxIntake/TlbxOuttake, drop panels, document tabs, view modes).
 - `sv-apps.js`: Swedish app names, `app.<id>` and `apptag.<id>`, for every id in `shared/apps.js`
   (`tests/node/i18n-sv.test.mjs`). It loads after `sv.js` because the `sv` entry has `appNames: true`.
-- `early.js`: the first frame in another language (Loading, below); precached with `i18n.js`.
 - `script/<script>.css`: per-script font fallbacks and line breaking (World-ready, below).
 - `settings/language.js`: the Language picker in Settings > Appearance (lists `LANGS` in order, `(beta)` after a beta one).
 - `tools/i18n/`: the extractor, the checker and the coverage report (`APPS-HOWTO.md` § 6).
@@ -43,10 +42,6 @@ text with tables of their own: the recipe is `APPS-HOWTO.md`, the progress `COVE
   `i18n/index.js`). Nothing is fetched for the other languages.
 - In the `<head>` it writes the tables into the page while it is parsed (`document.write` of same-origin scripts), so
   they run before the page's own scripts and the first paint is in the right language, with no layout shift.
-- While the page is parsed in a language other than English, `i18n.js` also writes `early.js` (before the tables), whose
-  MutationObserver fills each marked element as the parser adds it (`TlbxI18n.fill`, before the next frame), so the first frame already reads in that language; `apply()` at DOMContentLoaded then
-  fills the rest (an app's later tables). `tests/node/first-paint-lang.test.mjs` holds the homepage's HTML back after the
-  hero and checks the header and hero there.
 - Later (a language change, another tab's change, or `i18n.js` added by the shell) it appends them, applies the marked
   elements once they are in, and fires `tlbxi18n` on `window` (`TlbxI18n.on(fn)`); `tlbx-lang` fires at once on `set()`.
   The shell marks its own tag `data-late` and waits for `TlbxI18n.ready()` before it mounts the header.
@@ -71,6 +66,13 @@ language a visitor gets when nothing is stored. It is written as one line, `var 
 and the white-label build (`tools/whitelabel`) rewrites the literal after the marker from the profile's `defaultLang`
 (a profile with `"defaultLang": "sv"` starts in Swedish). Keep the marker and the literal on one line. Every language stays in the picker
 on every build; only the starting choice changes. `create({ defaultLang })` overrides it in tests.
+
+## A page in one language (data-lang-page)
+A static SEO page and every copy in a language's folder (`/sv/pdf/`, tools/seo) say their language in the HTML:
+`<html lang="sv" data-lang-page="sv">`. `create()` then reads that page in it (it wins over the stored choice until
+`set()`), and a page language other than `DEFAULT_CHOICE` is also stored as the visitor's choice, so the apps they open
+from there follow it. The header switcher (`switcher.js` `pick`) on such a page goes to the same page in the language
+picked, its `<link rel="alternate" hreflang>`, when there is one.
 
 ## Storage
 The choice is `TlbxProfile` appId `lang`, key `mode` (default `DEFAULT_CHOICE`), so it lives in the `tlbx-profile` key with the
@@ -158,7 +160,9 @@ A change in another tab re-applies on `storage`.
 - **Shared code** outside the components in `ui.*`: the app families' shared modules (office, biz, watermark, ai, ...),
   notifications (`shell/notify.js`) and the drawer (`shell/drawer.js`); their CSS is not mirrored yet (Right-to-left).
 - **Homepage and Settings** paragraphs that are not marked (privacy explanations, the exchange-rate and defaults bodies).
-- **SEO landing pages and guides** (`tools/seo`): English by design for now.
+- **SEO pages** (`tools/seo`): written in every language whose SEO tables are complete (`shared/seo/i18n`, Swedish
+  today), each at its own URL (`/sv/...`; shared/seo/HANDOFF.md, "Languages"). The about pages, How it works and the
+  typeface page are still English only, and so is any text of an app page or the homepage that is not marked.
 
 ## The TlbxI18n API
 

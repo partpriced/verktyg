@@ -109,9 +109,4 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'drive.toast.copied_to_n#one': 'Copied {n} item to {place}',
   'drive.toast.link_copied': 'Link copied',
   'drive.toast.link_failed': 'Could not copy the link',
-  'drive.newdoc.sdoc': 'Document',
-  'drive.newdoc.stab': 'Spreadsheet',
-  'drive.newdoc.sslide': 'Presentation',
-  'drive.newdoc.sfont': 'Font',
-  'drive.newdoc.s3d': 'Scene',
 });

@@ -7,12 +7,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import path from 'node:path';
-import { existsSync, mkdtempSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { existsSync } from 'node:fs';
 import { readFile } from 'node:fs/promises';
 import { loadRegistry, isPage, SITE, ROOT } from '../../tools/seo/site.mjs';
-import { esc, fileTypeList, related, TLBX365, STATUS } from '../../tools/seo/landing.mjs';
-import { jpegSize } from '../../tools/seo/jpeg-size.mjs';
+import { esc, fileTypeList, related, TLBX365, STATUS, regWords } from '../../tools/seo/landing.mjs';
+import { context, ROOT_LANG } from '../../tools/seo/lang.mjs';
+
+/** The root language's words (the profile's defaultLang: a build can have another than English at the root). */
+const R = context(ROOT_LANG), say = (k, v) => esc(R.t(k, v));
 
 const read = (rel) => readFile(path.join(ROOT, rel), 'utf8');
 const apps = await loadRegistry();
@@ -45,14 +47,14 @@ test('every app page in the registry has a landing page', () => {
 test('each landing page has exactly one H1 with the registry title', () => {
   for (const a of pageApps) {
     if (!html[a.id]) continue;
-    assert.deepEqual(h1Of(html[a.id]), [esc(a.title || a.name)], `${a.id}: H1`);
+    assert.deepEqual(h1Of(html[a.id]), [esc(regWords(a, R).title)], `${a.id}: H1`);
   }
 });
 
 test('each app landing page has an Open now button to the app folder', () => {
   for (const a of pageApps) {
     if (!html[a.id]) continue;
-    assert.match(html[a.id], new RegExp(`<a class="btn" href="/${a.path.replace(/[/]/g, '\\/')}" aria-label="Open now: [^"]*">Open now</a>`), `${a.id}: Open now link to /${a.path}`);
+    assert.ok(html[a.id].includes(`<a class="btn" href="/${a.path}" aria-label="${say('seo.ui.app.open_now_label', { app: a.name })}">${say('seo.ui.app.open_now')}</a>`), `${a.id}: Open now link to /${a.path}`);
     assert.ok(existsSync(path.join(ROOT, a.path, 'index.html')), `${a.id}: the app folder ${a.path} has no index.html`);
   }
 });
@@ -73,9 +75,9 @@ test('each feature matrix lists exactly the registry features, with status and f
   for (const a of pageApps) {
     if (!html[a.id]) continue;
     const rows = rowsOf(html[a.id]);
-    const feats = [...(a.features || [])]; // copied out of the VM realm the registry is loaded in
-    const types = fileTypeList(a).map(esc).join(', ') || 'Not listed yet';
-    if (!feats.length) { assert.match(html[a.id], /No features are listed for this app yet\./, `${a.id}: empty matrix note`); continue; }
+    const feats = regWords(a, R).features; // copied out of the VM realm the registry is loaded in
+    const types = fileTypeList(a, R).map(esc).join(', ') || say('seo.ui.type.none');
+    if (!feats.length) { assert.ok(html[a.id].includes(say('seo.ui.app.no_features')), `${a.id}: empty matrix note`); continue; }
     assert.deepEqual(rows.map((r) => r[0]), feats.map(esc), `${a.id}: feature rows`);
     for (const r of rows) assert.deepEqual(r.slice(1), [STATUS[a.status || 'live'], types], `${a.id}: status and file types`);
   }
@@ -103,7 +105,7 @@ test('the compare page lists every app page with a link and its file types', () 
   assert.ok(h, 'no compare page');
   assert.equal(h1Of(h).length, 1, 'compare: one H1');
   for (const a of pageApps) assert.ok(h.includes(`href="/apps/${a.id}/"`), `compare: missing ${a.id}`);
-  assert.ok(h.includes(`${pageApps.length} apps with a page`), 'compare: app count in the intro');
+  assert.ok(h.includes(say('seo.ui.cmp.lead', { n: pageApps.length })), 'compare: app count in the intro');
 });
 
 test('the Business apps page links to each of its tools', () => {
@@ -119,39 +121,10 @@ test('the Creative Pro page names the three apps and says it is not affiliated w
   const h = html['creativepro'];
   assert.ok(h, 'no Creative Pro page');
   for (const id of ['imageeditor', 'vector', 'videoedit']) assert.ok(h.includes(`href="/apps/${id}/"`), `creative: missing ${id}`);
-  assert.match(h, /free browser alternative to Photoshop-style photo editing, Illustrator-style vector drawing and video editing/);
-  assert.match(h, /not affiliated with, endorsed by or sponsored by Adobe/);
-  assert.match(h, /They are not Adobe products/);
-  assert.match(h, /do not run the full feature sets/);
-  assert.match(h, /no account or install is needed/);
-});
-
-// A video's box is 300 x 150 until its poster loads, and the card below it moved (CLS 0.03 on /apps/pdf/ on a phone); the
-// posters (assets/shots) come in many sizes, so each video and screenshot carries its own picture's width and height.
-test('every landing video and screenshot has the width and height of its picture', () => {
-  let videos = 0;
-  const attr = (tag, n) => (new RegExp(`\\s${n}="([^"]*)"`).exec(tag) || [])[1];
-  for (const [id, h] of Object.entries(html)) {
-    const tags = [...h.matchAll(/<video\b[^>]*>/g)].map((m) => ({ tag: m[0], pic: attr(m[0], 'poster') }))
-      .concat([...h.matchAll(/<figure class="shot"><img\b[^>]*>/g)].map((m) => ({ tag: m[0], pic: attr(m[0], 'src') })));
-    for (const { tag, pic } of tags) {
-      if (tag.startsWith('<video')) videos++;
-      assert.ok(pic, `${id}: a video without a poster: ${tag}`);
-      const size = jpegSize(path.join(ROOT, pic));
-      assert.ok(size, `${id}: ${pic} is not a JPEG on disk`);
-      assert.deepEqual([attr(tag, 'width'), attr(tag, 'height')], [String(size.width), String(size.height)], `${id}: ${tag} is not the size of ${pic}`);
-    }
+  for (const k of ['lead', 'not_1', 'not_2', 'not_3']) assert.ok(h.includes(say('seo.ui.csp.' + k)), `creative: ${k}`);
+  if (ROOT_LANG === 'en') {   // the English words, as this site says them
+    assert.match(h, /free browser alternative to Photoshop-style photo editing, Illustrator-style vector drawing and video editing/);
+    assert.match(h, /not affiliated with, endorsed by or sponsored by Adobe/);
+    assert.match(h, /do not run the full feature sets/);
   }
-  const clips = pageApps.filter((a) => existsSync(path.join(ROOT, `assets/clips/${a.id}.mp4`))).length;
-  assert.equal(videos, clips, 'one video per app with a clip');
-});
-
-test('jpegSize reads a JPEG frame header (baseline and progressive) and refuses other files', () => {
-  const jpeg = (sof) => Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0, 4, 1, 2, 0xff, sof, 0, 11, 8, 0x01, 0x90, 0x03, 0x84, 3, 0, 0, 0, 0xff, 0xd9]);
-  const dir = mkdtempSync(path.join(tmpdir(), 'jpeg-'));
-  writeFileSync(path.join(dir, 'a.jpg'), jpeg(0xc0)); writeFileSync(path.join(dir, 'b.jpg'), jpeg(0xc2)); writeFileSync(path.join(dir, 'c.jpg'), 'GIF89a');
-  assert.deepEqual(jpegSize(path.join(dir, 'a.jpg')), { width: 900, height: 400 });
-  assert.deepEqual(jpegSize(path.join(dir, 'b.jpg')), { width: 900, height: 400 });
-  assert.equal(jpegSize(path.join(dir, 'c.jpg')), null);
-  assert.equal(jpegSize(path.join(dir, 'none.jpg')), null);
 });

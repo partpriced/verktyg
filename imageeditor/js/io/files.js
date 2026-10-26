@@ -20,8 +20,7 @@ function cutSel() {
   if (D.sel) clearSelectionPixels(tr('imageeditor.io.step_cut'));
   else { patchLayer(L.id, { canvas: mkCanvas(1, 1), x: 0, y: 0, text: null }); commit(tr('imageeditor.io.step_cut')); }
 }
-/** name: a file's name, or a key of imageeditor.layer.* (the default name in the chosen language, see nextName). */
-function pasteCanvas(c, x, y, name = 'imageeditor.layer.pasted') {
+function pasteCanvas(c, x, y, name = 'Pasted Layer') { // i18n-ignore: layer names are the document's
   if (x == null) { x = Math.round((D.w - c.width) / 2); y = Math.round((D.h - c.height) / 2); }
   const L = newLayerRecord({ name: nextName(name.replace(/ \d+$/, '')), canvas: c, x, y });
   const i = layerIndex(D.activeId);
@@ -31,7 +30,7 @@ function pasteCanvas(c, x, y, name = 'imageeditor.layer.pasted') {
 }
 function pasteInternal(inPlace) {
   if (!CLIP.canvas) { toast(tr('imageeditor.io.nothing_to_paste')); return; }
-  pasteCanvas(copyCanvas(CLIP.canvas), inPlace ? CLIP.x : null, inPlace ? CLIP.y : null, 'imageeditor.layer.default');
+  pasteCanvas(copyCanvas(CLIP.canvas), inPlace ? CLIP.x : null, inPlace ? CLIP.y : null, 'Layer'); // i18n-ignore: layer name
 }
 /** The app's own clipboard: a paste with no file the intake takes (files go through shared/intake, app/intake.js, which
  *  marks the paste prevented), or one of our own buffer copies, places the buffer item or the internal copy. */

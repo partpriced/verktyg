@@ -63,6 +63,7 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'ui.frame.resize_aria': 'Змінити розмір панелі «{label}» (клавіші зі стрілками; подвійне клацання — скидання)',
   'ui.frame.resize_tip': 'Перетягніть, щоб змінити розмір. Подвійне клацання — ширина за замовчуванням.',
   'ui.frame.reset_sizes': 'Скинути розміри панелей',
+  'ui.list.empty': '{items}: поки нічого немає.',
   'ui.flow.from_to': '{from} у {to}',
   'ui.flow.file': 'Файл',
   'ui.flow.file_lc': 'файл',

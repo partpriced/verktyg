@@ -127,26 +127,3 @@ Register: informal «tu», as Microsoft Office, Google Workspace and Adobe Acrob
 | workflow | flusso di lavoro |  |
 | recording | registrazione |  |
 | view mode Full / Focus / Content | Completa / Concentrazione / Contenuto |  |
-| template | Modello | also AI «model» (Modello); never «template» |
-| preset | Preset | invariable, masculine; «impostazioni predefinite» only for defaults |
-| defaults | impostazioni predefinite | «per impostazione predefinita» for «by default» |
-| keyframe | fotogramma chiave |  |
-| timeline | timeline | feminine; never «linea temporale» or «sequenza temporale» |
-| sequence (video) | Sequenza | a Video Editor sequence; not the timeline |
-| trash | Cestino | capital C, Files's Cestino |
-| media bin | Contenuti | not «cestino» |
-| follow-up | Ricontatto | plural Ricontatti |
-| task | Attività | not «compito» |
-| tag / label | tag, etichetta | tag for the tags of files and contacts; etichetta for a printed label and a card label |
-| gradient | sfumatura | as Adobe; «Sfumatura bordi» for feather |
-| artboard | Tavola |  |
-| preferences | Preferenze | Image Editor and Vector Editor menus; elsewhere «Impostazioni» |
-| clear | Cancella | empties a field, list or cache; «Elimina» deletes an item |
-| key: Enter | Invio |  |
-| key: Delete | Canc |  |
-| key: Shift | Maiusc |  |
-| key: Page Up / Page Down | PagSu / PagGiù |  |
-| key: Ctrl, Alt, Esc, Tab, Home | Ctrl, Alt, Esc, Tab, Home | unchanged |
-| instruction text | imperative, «tu» | «Scegli», «Premi», «Fai clic»; infinitive only in confirmation questions («Eliminare la pagina?») |
-| typed amount example | 12,50 | decimal comma in hints; CSV messages keep the dot |
-| home page | Home | «Home di ITpris Verktyg» |

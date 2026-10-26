@@ -63,6 +63,7 @@ window.TlbxI18n && window.TlbxI18n.add('zu', {
   'ui.frame.resize_aria': 'Shintsha usayizi wephaneli: {label} (okhiye bemicibisholo; ukuchofoza kabili kuyasetha kabusha)',
   'ui.frame.resize_tip': 'Hudula ukuze ushintshe usayizi. Chofoza kabili: ububanzi obuzenzakalelayo.',
   'ui.frame.reset_sizes': 'Setha kabusha osayizi bamaphaneli',
+  'ui.list.empty': 'Akukho {items} okwamanje.',
   'ui.flow.from_to': 'Kusuka: {from}, kuya: {to}',
   'ui.flow.file': 'Ifayela',
   'ui.flow.file_lc': 'ifayela',

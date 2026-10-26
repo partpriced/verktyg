@@ -8,8 +8,7 @@
   const byName = (a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' });
 
   DR.internalProvider = {
-    id: 'drive', kind: 'internal',
-    get label() { return DR.rootName(); },   // the drive's name in the chosen language
+    id: 'drive', label: 'Files', kind: 'internal',   // i18n-ignore: the app name
     rootRef: () => null,
     within: (ancestor, ref) => nr(ref) != null && DR.contains(ancestor, ref),
     async list(ref) {

@@ -4,13 +4,13 @@
 /* ---------- document ops ---------- */
 function newDocument(w, hh, bg = '#ffffff', name = 'Untitled') { // i18n-ignore: the document's own name
   D.w = w; D.h = hh; D.name = name; D.sel = null; D.guides = []; D.wm = null; live = null;
-  const L = newLayerRecord({ name: tr('imageeditor.layer.background') });
+  const L = newLayerRecord({ name: 'Background' }); // i18n-ignore: layer name
   if (bg && bg !== 'transparent') { const g = cx(L.canvas); g.fillStyle = bg; g.fillRect(0, 0, w, hh); }
   D.layers = [L]; D.activeId = L.id;
   histReset(tr('imageeditor.core.step_new'));
 }
 function addLayer(props = {}, label = tr('imageeditor.core.step_new_layer'), above = true) {
-  const L = newLayerRecord(Object.assign({ name: nextName('imageeditor.layer.default') }, props));
+  const L = newLayerRecord(Object.assign({ name: nextName('Layer') }, props)); // i18n-ignore: layer name
   const i = layerIndex(D.activeId);
   D.layers.splice(above && i >= 0 ? i + 1 : D.layers.length, 0, L);
   D.activeId = L.id;
@@ -31,7 +31,7 @@ async function removeAllLayers() {
   const count = tr('imageeditor.core.n_layers', { n });
   if (!(await confirmDlg(tr('imageeditor.core.remove_all_q'), tr('imageeditor.core.remove_all_body', { count, name: D.name }), tr('imageeditor.core.continue')))) return;
   if (!(await confirmDlg(tr('imageeditor.core.remove_all_q'), tr('imageeditor.core.remove_all_body2', { count }), tr('imageeditor.core.remove_all'), { danger: true }))) return;
-  D.layers = [newLayerRecord({ name: nextName('imageeditor.layer.default') })];
+  D.layers = [newLayerRecord({ name: nextName('Layer') })]; // i18n-ignore: layer name
   D.activeId = D.layers[0].id;
   commit(tr('imageeditor.core.step_remove_all_layers'));
 }
@@ -78,7 +78,7 @@ function mergeDown() {
 function mergeVisible() { const v = D.layers.filter((l) => l.visible); if (v.length) mergeLayers(v, v[0].name, tr('imageeditor.core.step_merge_visible')); }
 function flattenImage() {
   const c = flattenCanvas('#ffffff');
-  const L = newLayerRecord({ name: tr('imageeditor.layer.background'), canvas: c });
+  const L = newLayerRecord({ name: 'Background', canvas: c }); // i18n-ignore: layer name
   D.layers = [L]; D.activeId = L.id;
   commit(tr('imageeditor.core.step_flatten'));
 }

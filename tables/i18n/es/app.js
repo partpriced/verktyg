@@ -70,7 +70,6 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'tables.sheet.tab_tip': '{name} (doble clic para cambiar el nombre)',
   'tables.sheet.rename_title': 'Cambiar nombre de la hoja',
   'tables.sheet.name': 'Nombre de la hoja',
-  'tables.sheet.default': 'Hoja{n}',
   'tables.sheet.need_one': 'Un libro necesita al menos una hoja',
   'tables.sheet.delete_body': '¿Eliminar “{name}” y todo lo que contiene?',
 

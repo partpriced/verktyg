@@ -4,10 +4,9 @@
  * page names them (an app's i18n/index.js calls source()). Only English and the chosen language are fetched.
  * The language list (LANGS) is data: add an entry to make a language choosable. A key the chosen language lacks is read
  * from English, so a page never shows an empty label. quality: 'beta' marks a table that has not had a native review.
- * Storage: the choice is kept in TlbxProfile under appId 'lang', key 'mode' (default DEFAULT_CHOICE: 'en', or the brand
- * profile's defaultLang in a white-label build; opts.defaultLang in create() overrides it).
- * The API (t and plurals, apply and data-i18n marks, num/date/money/list, label, on, at, shipped, create) is described in
- * shared/i18n/HANDOFF.md, section "The TlbxI18n API"; APPS-HOWTO.md is the recipe. */
+ * Storage: the choice is kept in TlbxProfile under appId 'lang', key 'mode' (default DEFAULT_CHOICE: 'en', or the brand profile's defaultLang in a white-label build; opts.defaultLang in create() overrides it).
+ * A page in one language only (<html data-lang-page="sv">: a static SEO page, a copy in a language's folder) reads in it.
+ * The API (t and plurals, apply and data-i18n marks, num/date/money/list, label, on, at, shipped, create) is described in shared/i18n/HANDOFF.md, section "The TlbxI18n API"; APPS-HOWTO.md is the recipe. */
 (function (g) {
   'use strict';
   var L = function (code, name, en, dir, extra) { return Object.freeze(Object.assign({ code: code, name: name, en: en, dir: dir, complete: true }, extra || {})); };
@@ -44,13 +43,11 @@
     L('af', 'Afrikaans', 'Afrikaans', 'ltr', BETA),
   ]);
   var DEFAULT = 'en';   // the fallback language: a key missing in the chosen language is read from here
-  // The language a visitor gets when nothing is stored. The white-label build (tools/whitelabel) rewrites the literal after
-  // the marker from the brand profile's defaultLang; keep it on one line.
+  // The language a visitor gets when nothing is stored. tools/whitelabel rewrites the literal from the profile's defaultLang; keep it on one line.
   var DEFAULT_CHOICE = /*profile:defaultLang*/"sv";
   var KEY_RE = /\{(\w+)\}/g;
-  // The shared components' tables beyond ui/<code>.js: shared/i18n/ui/<code>/<part>.js, for the languages that have them
-  // (the others read English). Written by node tools/i18n/i18n.mjs index ui; keep it on one line.
-  var UI_PARTS = /*ui-parts*/{ parts: ['agent', 'ai', 'ai2', 'ai5', 'ai6', 'ai7', 'ai8', 'ai9', 'backup', 'backup2', 'backup3', 'buddy', 'buddy2', 'calc', 'calendar', 'config', 'data', 'data2', 'finder', 'firstrun', 'fonts', 'graphics', 'guides', 'macros', 'misc', 'models', 'models2', 'ops', 'ops2', 'ops3', 'presets', 'preview', 'print', 'sheets', 'shell', 'shell2', 'templates', 'video', 'watermark', 'widgets'], langs: ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'ko', 'nl', 'pl', 'pt-BR', 'ru', 'sv', 'tr', 'uk', 'zh-CN', 'zh-TW'] };
+  // The shared components' tables beyond ui/<code>.js (ui/<code>/<part>.js; other languages read English). Written by node tools/i18n/i18n.mjs index ui; keep it on one line.
+  var UI_PARTS = /*ui-parts*/{ parts: ['agent', 'ai', 'ai2', 'ai5', 'ai6', 'ai7', 'ai8', 'backup', 'backup2', 'backup3', 'buddy', 'buddy2', 'calc', 'calendar', 'config', 'data', 'data2', 'finder', 'firstrun', 'fonts', 'graphics', 'guides', 'macros', 'misc', 'models', 'models2', 'ops', 'ops2', 'ops3', 'presets', 'preview', 'print', 'sheets', 'shell', 'shell2', 'templates', 'video', 'watermark', 'widgets'], langs: ['ar', 'de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'] };
   var me = typeof document !== 'undefined' ? document.currentScript : null;
 
   function create(opts) {
@@ -69,9 +66,13 @@
         options: { lang: { mode: { label: 'Language', type: 'enum', values: list.map(function (l) { return l.code; }), default: choice } } },
       })
       : null);
+    // The page's own language (data-lang-page) wins until set(); one other than the default choice is also kept as the choice.
+    var el = doc && doc.documentElement, page = el && el.getAttribute ? el.getAttribute('data-lang-page') : null;
+    if (!byCode[page]) page = null; else if (page !== choice && prof && prof.get('lang', 'mode', choice) !== page) prof.set('lang', 'mode', page);
 
     /** The stored language code, or the default choice when nothing is stored or the stored one is not in the list. */
     function get() {
+      if (page) return page;
       var c = prof ? prof.get('lang', 'mode', choice) : choice;
       return byCode[c] ? c : choice;
     }
@@ -139,31 +140,35 @@
         money: function (n, cur, opt) { return money(n, cur, opt, loc); }, list: function (items, opt) { return listOf(items, opt, loc); } });
     }
 
-    function varsOf(el) { var v = { brand: brand() }, raw = el.getAttribute('data-i18n-vars'); // {brand}, data-i18n-vars (JSON)
-      try { if (raw) Object.assign(v, JSON.parse(raw)); } catch (e) { /* not JSON: no vars */ } return v; }
-    function pick(code, key, el) { var s = key ? find(code, key) : null; if (s === null && key) s = find(DEFAULT, key); return s === null ? null : fill(s, varsOf(el)); }
-    /** One element's data-i18n text and data-i18n-attr attributes in a language (English for a key it lacks; a key missing
-     * in both leaves it as it is: the HTML holds the English text). Text that already reads right is not rewritten. */
-    function fillEl(el, code) {
-      var s = pick(code, el.getAttribute('data-i18n'), el), a = el.getAttribute('data-i18n-attr');
-      if (s !== null && el.textContent !== s) el.textContent = s;
-      if (a) a.split(';').forEach(function (pair) {
-        var c = pair.indexOf(':'), v = c < 1 ? null : pick(code, pair.slice(c + 1).trim(), el);
-        if (v !== null) el.setAttribute(pair.slice(0, c).trim(), v);
-      });
-    }
-    function mark(code) { var r = doc.documentElement; r.setAttribute('lang', code); r.setAttribute('dir', byCode[code].dir === 'rtl' ? 'rtl' : 'ltr'); }
-    /** Sets lang and dir on <html>, and fills the marked elements (fillEl). */
+    /** Sets lang and dir on <html>, and replaces the text and attributes of the marked elements. A key missing in the
+     * chosen language and in English leaves the element as it is (the HTML holds the English text). */
     function apply(scope) {
       if (!doc || !doc.documentElement) return get();
-      var code = get(), at = scope && scope.querySelectorAll ? scope : doc, i, nodes = at.querySelectorAll('[data-i18n]');
+      var code = get(), root = doc.documentElement;
       applied = brand();
-      mark(code);
-      for (i = 0; i < nodes.length; i++) fillEl(nodes[i], code);
-      nodes = g.tlbxAppName ? at.querySelectorAll('[data-app-name]') : [];   // data-app-name="<id>": the app list's name (tlbxAppName), as text or aria-label
-      for (var k = 0; k < nodes.length; k++) { var nm = g.tlbxAppName(nodes[k].getAttribute('data-app-name')); if (nodes[k].hasAttribute('aria-label')) nodes[k].setAttribute('aria-label', nm); else nodes[k].textContent = nm; }
-      nodes = at.querySelectorAll('[data-i18n-attr]');   // the ones without text
-      for (i = 0; i < nodes.length; i++) if (!nodes[i].hasAttribute || !nodes[i].hasAttribute('data-i18n')) fillEl(nodes[i], code);
+      root.setAttribute('lang', code);
+      root.setAttribute('dir', byCode[code].dir === 'rtl' ? 'rtl' : 'ltr');
+      var at = scope && scope.querySelectorAll ? scope : doc;
+      var varsOf = function (el) {
+        var v = { brand: brand() }, raw = el.getAttribute('data-i18n-vars');
+        if (raw) { try { Object.assign(v, JSON.parse(raw)); } catch (e) { /* not JSON: no vars */ } }
+        return v;
+      };
+      var pick = function (key, el) { var s = find(code, key); if (s === null) s = find(DEFAULT, key); return s === null ? null : fill(s, varsOf(el)); };
+      var nodes = at.querySelectorAll('[data-i18n]');
+      for (var i = 0; i < nodes.length; i++) {
+        var s = pick(nodes[i].getAttribute('data-i18n'), nodes[i]);
+        if (s !== null) nodes[i].textContent = s;
+      }
+      nodes = at.querySelectorAll('[data-i18n-attr]');
+      for (var j = 0; j < nodes.length; j++) {
+        nodes[j].getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
+          var c = pair.indexOf(':');
+          if (c < 1) return;
+          var v = pick(pair.slice(c + 1).trim(), nodes[j]);
+          if (v !== null) nodes[j].setAttribute(pair.slice(0, c).trim(), v);
+        });
+      }
       return code;
     }
     /* ---- Loading: a source is { ns, files(code) → [url, ...] }. English and the chosen language are fetched, once. */
@@ -235,6 +240,7 @@
       if (!prof) return { ok: false, error: 'Could not save: browser storage is blocked.' };
       var r = prof.set('lang', 'mode', code);
       if (!r.ok) return r;
+      page = null;
       apply();
       emit('tlbx-lang');
       need(code).then(changed);
@@ -250,8 +256,6 @@
       var root = me && me.src ? me.src.replace(/[^/]*$/, '') : '';
       if (!root) return;
       cssRoot = root;
-      // parsed in another language: early.js fills each marked element as the parser adds it (the first frame in it)
-      if (get() !== DEFAULT && g.MutationObserver && doc.readyState === 'loading' && !me.hasAttribute('data-late')) { mark(get()); doc.write('<script src="' + root + 'early.js"><\/script>'); }
       source({ ns: 'chrome', files: function (c) {
         if (c === DEFAULT) return [root + 'strings.js'];
         return [root + c + '.js'].concat(byCode[c] && byCode[c].appNames ? [root + c + '-apps.js'] : []);
@@ -261,14 +265,30 @@
       } });
     }
     return {
-      LANGS: list, UI_PARTS: UI_PARTS, DEFAULT: DEFAULT, DEFAULT_CHOICE: choice,
+      LANGS: list,
+      UI_PARTS: UI_PARTS,
+      DEFAULT: DEFAULT,
+      DEFAULT_CHOICE: choice,
       langs: function () { return list.slice(); },
       lang: function (code) { return byCode[code || get()] || null; },
-      get: get, set: set, t: t, has: has, label: label, add: add, apply: apply, load: load,
-      fill: function (el, code) { fillEl(el, byCode[code] ? code : get()); },   // one marked element (shared/i18n/early.js)
-      source: source, need: need, ready: ready, on: on,
+      get: get,
+      set: set,
+      t: t,
+      has: has,
+      label: label,
+      add: add,
+      apply: apply,
+      load: load,
+      source: source,
+      need: need,
+      ready: ready,
+      on: on,
       plural: function (n) { return pluralOf(get(), n); },
-      num: num, date: date, money: money, list: listOf, at: at,
+      num: num,
+      date: date,
+      money: money,
+      list: listOf,
+      at: at,
       shipped: function (ns) { var s = sources.filter(function (x) { return x.ns === ns; })[0]; return s && s.langs ? s.langs.slice() : []; },
       create: create,
     };

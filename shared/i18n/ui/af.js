@@ -63,6 +63,7 @@ window.TlbxI18n && window.TlbxI18n.add('af', {
   'ui.frame.resize_aria': 'Verander die grootte van die paneel {label} (pyltjiesleutels; dubbelklik stel terug)',
   'ui.frame.resize_tip': 'Sleep om die grootte te verander. Dubbelklik: die verstekwydte.',
   'ui.frame.reset_sizes': 'Stel paneelgroottes terug',
+  'ui.list.empty': 'Nog geen {items} nie.',
   'ui.flow.from_to': '{from} na {to}',
   'ui.flow.file': 'Lêer',
   'ui.flow.file_lc': 'lêer',

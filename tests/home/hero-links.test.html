@@ -9,7 +9,7 @@
   <script src="../harness.js"></script>
   <script src="hero-boot.js"></script>
   <script>
-  // Covers: home/globe/globe.js, home/globe/list.js, home/globe/sphere.js, shared/apps.js, home/browse.js, index.html
+  // Covers: home/globe/globe.js, home/globe/list.js, home/browse.js, index.html
   /* The hero's links: every globe icon is a link to its app with the app's name, pointing at one brings it to the front
    * and shows the name, the keyboard list holds every app as one tab stop moved with the arrow keys, Open the apps puts the cursor in
    * the finder's search, How it works opens its page; the copy is translated through shared/i18n. */
@@ -21,22 +21,6 @@
   const label = (a) => win.tlbxAppLabel(a, win.tlbxBrandNamesOn());
 
   describe('globe icons', () => {
-    it('opens on the lead apps (shared/apps.js TLBX_LEAD, the PDF family): the PDF editor front-most, the family in front with it', async () => {
-      await ready;
-      const lead = win.TLBX_LEAD || [];
-      if (win.TLBX_APPS.some((a) => a.id === 'pdf')) expect(lead.slice(0, 3)).toEqual(['pdf', 'html2pdf', 'ocr']);
-      if (!lead.length) return;
-      const check = () => {
-        const icons = win.TlbxGlobe.icons();
-        expect(icons.reduce((m, i) => (i.z > m.z ? i : m)).id).toBe(lead[0]);   // the first front-facing icon
-        for (const id of lead) expect(icons.find((i) => i.id === id).z).toBeGreaterThan(0.5);   // beside it, facing you
-      };
-      check();
-      win.TlbxGlobe.reduce(true);   // the still globe (reduced motion) opens the same way
-      expect(win.TlbxGlobe.tier()).toBe('static');
-      check();
-      win.TlbxGlobe.reduce(false);
-    });
     it('each icon is a link to an app, named after it, out of the tab order and hidden from screen readers', async () => {
       await ready;
       const icons = [...doc.querySelectorAll('.gx-layer .gx-i')];
@@ -84,8 +68,7 @@
     it('lists every app with an icon and a page, as one tab stop', async () => {
       await ready;
       const links = [...doc.querySelectorAll('.gx-nav a')];
-      const want = win.TlbxGlobeMath.leadFirst(win.TLBX_APPS.filter((a) => !a.path.startsWith('#') && win.TLBX_ICONS[a.id]), win.TLBX_LEAD);
-      expect(links.slice(0, win.TLBX_LEAD.length).map((a) => a.dataset.id)).toEqual(win.TLBX_LEAD);   // the lead apps first, as the globe
+      const want = win.TLBX_APPS.filter((a) => !a.path.startsWith('#') && win.TLBX_ICONS[a.id]);
       expect(links.map((a) => a.getAttribute('href'))).toEqual(want.map((a) => a.path));
       expect(links.map((a) => a.textContent)).toEqual(want.map(label));
       expect(links.filter((a) => a.tabIndex === 0).length).toBe(1);

@@ -63,6 +63,7 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'ui.frame.resize_aria': 'Zmień rozmiar panelu „{label}” (klawisze strzałek; dwukrotne kliknięcie przywraca)',
   'ui.frame.resize_tip': 'Przeciągnij, aby zmienić rozmiar. Dwukrotne kliknięcie: domyślna szerokość.',
   'ui.frame.reset_sizes': 'Resetuj rozmiary paneli',
+  'ui.list.empty': '{items}: na razie brak.',
   'ui.flow.from_to': '{from} na {to}',
   'ui.flow.file': 'Plik',
   'ui.flow.file_lc': 'plik',

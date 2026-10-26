@@ -16,5 +16,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.finder.not_sorted': 'inte sorterad',
   'ui.list.count': '{n} objekt',
   'ui.list.count#one': '{n} objekt',
+  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'Inget här än.',
 });

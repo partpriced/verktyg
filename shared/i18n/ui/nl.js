@@ -63,6 +63,7 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'ui.frame.resize_aria': 'Formaat van deelvenster {label} wijzigen (pijltoetsen; dubbelklikken herstelt)',
   'ui.frame.resize_tip': 'Sleep om het formaat te wijzigen. Dubbelklikken: de standaardbreedte.',
   'ui.frame.reset_sizes': 'Formaat van deelvensters herstellen',
+  'ui.list.empty': 'Nog geen {items}.',
   'ui.flow.from_to': '{from} naar {to}',
   'ui.flow.file': 'Bestand',
   'ui.flow.file_lc': 'bestand',

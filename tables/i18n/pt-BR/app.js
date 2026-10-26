@@ -64,7 +64,6 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'tables.sheet.tab_tip': '{name} (clique duplo para renomear)',
   'tables.sheet.rename_title': 'Renomear planilha',
   'tables.sheet.name': 'Nome da planilha',
-  'tables.sheet.default': 'Planilha{n}',
   'tables.sheet.need_one': 'Uma pasta de trabalho precisa de pelo menos uma planilha',
   'tables.sheet.delete_body': 'Excluir “{name}” e tudo o que há nela?',
   'tables.nf.general': 'Geral',

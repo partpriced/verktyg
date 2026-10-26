@@ -53,7 +53,7 @@
     $('qSearch').addEventListener('input', draw);
     $('qStatus').addEventListener('change', draw);
     $('qNew').addEventListener('click', () => NS.app.go('new'));
-    list = g.TlbxList.mount($('qRows'), { label: 'quotes.li.label', count: 'quotes.li.count', summary: $('qSummary'),
+    list = g.TlbxList.mount($('qRows'), { label: 'quotes.li.label', noun: ['quotes.li.quote', 'quotes.li.quotes'], summary: $('qSummary'),
       empty: 'quotes.li.empty', row, open: (x) => NS.app.go(`q/${x.id}`), menu: menuFor });
   }
 

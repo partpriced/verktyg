@@ -33,13 +33,9 @@
     // the tooltip is a key (ui.misc.drive_tip), marked so a language switch redraws it (TlbxI18n.apply)
     a.setAttribute('data-i18n-attr', 'title:ui.misc.drive_tip');
     a.title = window.TlbxI18n ? window.TlbxI18n.t('ui.misc.drive_tip') : 'ui.misc.drive_tip';
-    // the name is Drive's as the app list shows it, in the chosen language (tlbxAppName); data-app-name keeps it so on a switch
-    const name = window.tlbxAppName ? window.tlbxAppName('drive') : 'Files';   // i18n-ignore: the app name
-    a.setAttribute('aria-label', name);
+    a.setAttribute('aria-label', 'Files');
     a.dataset.sdl = '';
-    a.dataset.appName = 'drive';
-    a.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON}</svg><span class="tlbx-hbtn-txt" data-app-name="drive"></span>`;
-    a.lastChild.textContent = name;
+    a.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON}</svg><span class="tlbx-hbtn-txt">Files</span>`;
     // Plain click: the browser follows the link in this tab. Modified or middle clicks open a new tab.
     a.addEventListener('click', (e) => {
       if (e.button !== 0 || e.shiftKey || e.ctrlKey || e.metaKey) { e.preventDefault(); window.open(a.href, '_blank', 'noopener'); }

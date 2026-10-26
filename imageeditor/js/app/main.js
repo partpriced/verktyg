@@ -37,7 +37,7 @@ function buildStatus() {
     }
     if (w === 'docname' || w === 'history') {
       const t = $('#docTitle'); if (t) t.textContent = (D.name || tr('ui.untitled')) + (D.dirty ? ' •' : '');
-      document.title = `${D.name || tr('ui.untitled')}${D.dirty ? ' •' : ''} — ${window.tlbxAppName ? tlbxAppName('imageeditor') : 'Image Editor'}`;   // the app list's name
+      document.title = `${D.name || tr('ui.untitled')}${D.dirty ? ' •' : ''} — Image Editor`;
     }
   });
   sync();

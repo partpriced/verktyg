@@ -53,7 +53,7 @@ export function render() {
   if (document.activeElement !== title) title.value = S.file.name;
   $('saveState').textContent = t(S.file.dirty ? 'tables.status.unsaved' : S.file.driveId ? 'tables.status.saved' : 'tables.status.not_saved');
   $('saveState').classList.toggle('dirty', !!S.file.dirty);
-  document.title = (S.file.dirty ? '• ' : '') + fileName() + ' — ' + (window.tlbxAppName ? tlbxAppName('tables') : 'Spreadsheets');   // the app list's name
+  document.title = (S.file.dirty ? '• ' : '') + fileName() + ' — Spreadsheets';
   Sheets.render();
 }
 

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://verktyg.itpris.se/sitemap.xml
+Sitemap: https://verktyg.itpris.se/sitemap-index.xml

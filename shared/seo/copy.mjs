@@ -1,196 +1,80 @@
 // SEO copy for the homepage, every app page and every about page. Read by tools/seo/write.mjs,
 // which writes the head block (title, description, canonical, Open Graph, Twitter, JSON-LD) into
-// each page, and rebuilds sitemap.xml. Edit the copy here, then run: node tools/seo/write.mjs
+// each page, and rebuilds the sitemaps. The words are in the SEO tables (shared/seo/i18n/<code>/copy.js, keys
+// seo.home.*, seo.app.<id>.*, seo.about.<id>.*, seo.page.<folder>.*; shared/seo/i18n/README.md); this file holds the
+// facts: which pages have copy and each app's category. Edit the words there, then run: node tools/seo/write.mjs
 // Keys are app ids from shared/apps.js. Titles are full titles. Descriptions must be 120 to 160 characters.
 // category: a schema.org applicationCategory (SoftwareApplication).
 
-import { CONVERT_PAGES, VCF_COPY, FINANCE_COPY, THREED_COPY } from './convert-copy.mjs';
+import { VCF_COPY, FINANCE_COPY, THREED_COPY, CONVERT_PAGES } from './convert-copy.mjs';
+import { cardKey } from '../../convert/js/core/page-words.js';
+import { hydrate, seg, text, appTable } from './i18n.mjs';
 
-export const HOME = {
-  // A brand profile can set its own (seo.homeTitle, seo.homeDescription; tools/whitelabel/build.mjs writes them here).
-  title: /*profile:seoHomeTitle*/'ITpris Verktyg: kontors- och affärsverktyg i webbläsaren',
-  description: /*profile:seoHomeDescription*/'PDF-redigerare, bildredigerare, dokument, kalkylark, fakturor och mer. Körs i webbläsaren och dina filer stannar på din enhet. Gratis, inga konton.',
-};
+/** The homepage. A brand profile can set its own for its root language (seo.homeTitle, seo.homeDescription;
+ * tools/whitelabel/build.mjs writes them here); null reads the tables. root: the language is the build's root one. */
+const HOME_PROFILE = { title: /*profile:seoHomeTitle*/"ITpris Verktyg: kontors- och affärsverktyg i webbläsaren", description: /*profile:seoHomeDescription*/"PDF-redigerare, bildredigerare, dokument, kalkylark, fakturor och mer. Körs i webbläsaren och dina filer stannar på din enhet. Gratis, inga konton." };
+export function homeIn(code = 'en', root = code === 'en') {
+  const t = hydrate({}, 'seo.home', code);
+  return root ? { title: HOME_PROFILE.title || t.title, description: HOME_PROFILE.description || t.description } : t;
+}
+export const HOME = homeIn('en');
 
-export const APPS = {
-  imageeditor: { title: 'Image Editor: layers, masks and filters in your browser | ITpris', category: 'DesignApplication',
-    description: 'Image Editor is a layered image editor for your browser, with masks, 17 blend modes, real PSD open and save, filters and brushes. Nothing is uploaded.' },
-  vector: { title: 'Vector Editor: pen, shapes and layers in your browser | ITpris', category: 'DesignApplication',
-    description: 'Vector Editor is an illustration editor for your browser with pen and shape tools, type, layers and Pathfinder booleans. Exports SVG, PNG, PDF and .ai.' },
-  pdf: { title: 'PDF Editor: merge, split, sign and edit PDFs in your browser | ITpris', category: 'BusinessApplication',
-    description: 'Organise, edit and sign PDFs in your browser. Merge, split, reorder, fill forms, add text and watermarks, compress and convert. Nothing is uploaded.' },
-  label: { title: 'Label Designer: barcode labels, GS1 and ZPL in your browser | ITpris', category: 'BusinessApplication',
-    description: 'Design and print barcode labels in your browser. Code 128, GS1 and QR codes, CSV and Excel data merge, Avery sheets and Zebra ZPL export.' },
-  cutout: { title: 'Free background remover, one image or bulk: Background Remover | ITpris', category: 'MultimediaApplication',
-    description: 'Remove backgrounds from one image or hundreds at once with AI on your device. Transparent PNG, white, blur or colour, then a ZIP. No upload, no watermark.' },
-  aitools: { title: 'AI Tools: OCR, transcription and denoise on your device | ITpris', category: 'MultimediaApplication',
-    description: 'OCR for images and scanned PDFs, speech to text with .srt export, photo denoise with a before and after slider and portrait blur. Runs on your device.' },
-  ocr: { title: 'OCR: read text from images and PDFs on your device | ITpris', category: 'BusinessApplication',
-    description: 'Read text from photos and scanned PDFs on your device. Edit it, then save as TXT, Markdown, Word or a searchable PDF. Nothing is uploaded.' },
-  reports: { title: 'Reports: profit by month, unpaid invoices and CRM | ITpris', category: 'BusinessApplication',
-    description: 'Business reports from your own books: profit and cash flow by month, sales tax by quarter, unpaid invoices and spend by supplier. Read-only, CSV export.' },
-  html2pdf: { title: 'HTML to PDF: print HTML with a header and QR code | ITpris', category: 'BusinessApplication',
-    description: 'Turn an HTML file into a PDF in your browser, with a page header on every page: file name, date and a QR code. Nothing is uploaded.' },
-  clean: { title: 'Metadata Remover: see and remove hidden photo data | ITpris', category: 'UtilitiesApplication',
-    description: 'Metadata Remover shows the GPS, camera, serial and date fields hidden in a photo and removes them without re-encoding the picture. Nothing is uploaded.' },
-  ai: { title: 'Assistant: chat with a model on your own computer | ITpris', category: 'BusinessApplication',
-    description: 'Chat with an AI model that runs on your own computer with WebGPU. It works offline, checks what your PC can run and builds small apps for you.' },
-  docs: { title: 'Documents: free online word processor, DOCX in and out | ITpris', category: 'BusinessApplication',
-    description: 'A word processor for your browser with real pages, headers and footers. Opens and saves DOCX, exports a PDF that matches the page, and needs no account.' },
-  tables: { title: 'Spreadsheets: online spreadsheet with charts, pivots and XLSX | ITpris', category: 'BusinessApplication',
-    description: 'A spreadsheet for your browser with 300+ functions, charts and pivot tables. Opens XLSX, ODS and CSV, saves XLSX and CSV. Free, no account, no upload.' },
-  slides: { title: 'Presentations: free online presentation maker | ITpris', category: 'BusinessApplication',
-    description: 'Build presentations in your browser with themes, transitions and animations. Open and export PowerPoint (PPTX), export PDF, present with speaker notes.' },
-  press: { title: 'Page Layout: page layout and print PDFs in your browser | ITpris', category: 'DesignApplication',
-    description: 'Lay out pages in your browser with master pages, threaded text frames and paragraph styles. Export print-ready PDFs from the same page.' },
-  remix: { title: 'Video Remix: a random video edit from your clips | ITpris', category: 'MultimediaApplication',
-    description: 'Drop in clips and photos and get a random edit that you can reshuffle or repeat exactly. Export presets from phone to 4K, then tune it in Video Editor.' },
-  videoedit: { title: 'Video Editor: a browser video editor that never uploads | ITpris', category: 'MultimediaApplication',
-    description: 'A multi-track video editor for your browser. Trim, split, add transitions and titles, then export MP4 with hardware acceleration. Footage stays put.' },
-  resize: { title: 'Resizer: resize pictures and videos to a size | ITpris', category: 'MultimediaApplication',
-    description: 'Resize pictures and videos to exact pixels, a percentage or a file size limit, with social and 4K presets. Video exports to MP4 or WebM.' },
-  upscale: { title: 'Upscaler: 2x and 4x sharper pictures on your device | ITpris', category: 'MultimediaApplication',
-    description: 'Make pictures and short videos 2x or 4x bigger with AI that runs on your device. Fast or Quality mode, tiled, with a before and after slider.' },
-  watermark: { title: 'Watermark: watermark photos, videos and PDFs | ITpris', category: 'MultimediaApplication',
-    description: 'Watermark photos, videos and PDFs at once with your logo or text: layers, nine positions, tiling and rotation. Download each file or a ZIP. Nothing is uploaded.' },
-  contacts: { title: 'Free contacts manager: vCard, CSV and duplicates | ITpris', category: 'BusinessApplication',
-    description: 'An address book for your browser. Import vCard 2.1, 3.0 and 4.0 or CSV, merge duplicates, and export for iOS, Android, Google and Outlook.' },
-  inventory: { title: 'Free inventory and barcode stock tracker: Inventory | ITpris', category: 'BusinessApplication',
-    description: 'Track products and stock by location, scan barcodes with a camera or USB scanner, and import CSV with a validation report. Nothing is uploaded.' },
-  orders: { title: 'Orders: orders from draft to fulfilment | ITpris', category: 'BusinessApplication',
-    description: 'Manage customers, products and orders from draft to fulfilment. Fulfilling takes stock out, and an order turns into an invoice in one click.' },
-  quotes: { title: 'Free quote and estimate maker with PDF: Quotes | ITpris', category: 'BusinessApplication',
-    description: 'Write quotes and estimates with lines, tax and a valid-until date, mark them sent, and turn an accepted quote into an order or invoice.' },
-  purchases: { title: 'Free purchase order maker with PDF: Purchase Orders | ITpris', category: 'BusinessApplication',
-    description: 'Order stock from suppliers with purchase orders, receive the goods straight into inventory, and post the supplier bill to your books as an expense.' },
-  timesheets: { title: 'Free timesheet and time tracker: Timesheets | ITpris', category: 'BusinessApplication',
-    description: 'Track time with a timer or by hand, per customer and project, and turn billable hours into a draft invoice in one click. CSV export too.' },
-  expenses: { title: 'Free expense tracker with receipts: Expenses | ITpris', category: 'BusinessApplication',
-    description: 'Track business expenses free: read receipts on your device, log mileage, record bills to pay and the tax to reclaim, and export CSV. Nothing uploaded.' },
-  invoices: { title: 'Invoices: free invoicing with PDF, payments and books | ITpris', category: 'BusinessApplication',
-    description: 'Free invoice generator in your browser: tax by rate, gapless numbers, PDF in five templates, payments, credit notes and recurring invoices. No account.' },
-  notes: { title: 'Notes: Markdown notebooks saved to Files | ITpris', category: 'ProductivityApplication',
-    description: 'Write Markdown notes in notebooks, with folders, tags, pinned notes, a live preview and search across every note. Export .md or .html.' },
-  paste: { title: 'Paste: share text, code and images by link | ITpris', category: 'UtilitiesApplication',
-    description: 'Paste text, code or images and share them by link. Syntax highlighting for six languages, expiry labels and a local share link. Nothing is uploaded.' },
-  effects: { title: 'Motion Graphics: motion design in your browser | ITpris', category: 'MultimediaApplication',
-    description: 'Layers with keyframes and easing, a graph editor, seeded random motion and effects such as glow, glitch and grain. Exports WebM, MP4 or PNG.' },
-  hex: { title: 'Hex Editor: view and edit any file as bytes | ITpris', category: 'DeveloperApplication',
-    description: 'A hex editor for your browser. Edit any file in offset, hex and ASCII columns, find bytes or text, and page through files up to 100 MB.' },
-  sheetview: { title: 'Spreadsheet Viewer: open XLSX and CSV files online, no Excel | ITpris', category: 'BusinessApplication',
-    description: 'Open XLSX, CSV and TSV spreadsheets on your device. Sort and filter any column, export the rows you see, and open a sheet in Spreadsheets.' },
-  eml: { title: 'Email Viewer: open EML files online and convert to PDF | ITpris', category: 'UtilitiesApplication',
-    description: 'Open .eml files and .mbox mailboxes in your browser. Read, search and print them, combine many into one PDF, or export text and CSV. Nothing uploaded.' },
-  checksum: { title: 'Checksum: SHA-256 file hash checker online, free | ITpris', category: 'UtilitiesApplication',
-    description: 'Compute SHA-256, SHA-384, SHA-512 or SHA-1 for any file in your browser, and check it against a published hash. Nothing is uploaded.' },
-  diff: { title: 'Compare: compare two texts, files, PDFs or images | ITpris', category: 'UtilitiesApplication',
-    description: 'Compare two texts, code files, JSON, CSV, PDFs or images in your browser: every change word by word, a report and a .patch. Nothing is uploaded.' },
-  nodes: { title: 'Node Calculator: node calculator with live formulas | ITpris', category: 'BusinessApplication',
-    description: 'A node calculator: named formulas joined by their names. Change a value and every node downstream updates. Runs in your browser.' },
-  sorter: { title: 'Photo Sorter: swipe to keep the best photos | ITpris', category: 'MultimediaApplication',
-    description: 'Drop photos or a folder and swipe through them one at a time: like, dislike or tag each. Download the keepers as a ZIP. Nothing is uploaded.' },
-  signature: { title: 'Email Signature: email signature generator | ITpris', category: 'BusinessApplication',
-    description: 'Make an email signature with your details, logo and social links in four templates, then copy it into Gmail, Outlook or Apple Mail. Free.' },
-  transcribe: { title: 'Transcription: voice, MP3 and video to text | ITpris', category: 'BusinessApplication',
-    description: 'Record your voice or add MP3, WAV or video files and get the text on your device with Whisper. Correct it, then save as text, Word or subtitles.' },
-  recorder: { title: 'Screen Recorder: free screen recorder in your browser | ITpris', category: 'MultimediaApplication',
-    description: 'Record your screen, a tab, your webcam or microphone, or the screen with your webcam in a corner. Trim it, save as WebM, MP4 or GIF. Nothing uploaded.' },
-  serials: { title: 'Serial Counter: count unique serials from photos | ITpris', category: 'BusinessApplication',
-    description: 'Read serial numbers from a batch of photos and count each unique serial once, with a table of totals. Runs in your browser; nothing is uploaded.' },
-  qr: { title: 'QR Code Generator: QR codes for links, Wi-Fi and contacts | ITpris', category: 'UtilitiesApplication',
-    description: 'QR codes for text, links, email, Wi-Fi, contacts, locations and events. Download SVG or PNG, with transparency if you need it. Nothing is uploaded.' },
-  colors: { title: 'Colours: colour picker, palettes and contrast | ITpris', category: 'DesignApplication',
-    description: 'Pick colours from any picture, make palettes on a colour wheel (RGB, RYB or OKLCH), check WCAG contrast and export CSS, Tailwind, ASE or GPL. Nothing uploaded.' },
-  fontcreator: { title: 'Font Creator: make your own font in the browser | ITpris', category: 'DesignApplication',
-    description: 'Draw a font, trace your handwriting or edit a TTF, OTF or WOFF2. Pen, shapes, kerning and a type test; export TTF, OTF, WOFF2 and CSS. Nothing uploaded.' },
-  workflows: { title: 'Workflows: batch workflows across apps | ITpris', category: 'UtilitiesApplication',
-    description: 'Chain apps into one workflow for a batch of files: remove backgrounds, watermark, resize, convert, compress and zip. Runs on your device, no upload.' },
-  convert: { title: 'File Converter: image, PDF and data converter | ITpris', category: 'UtilitiesApplication',
-    description: 'Convert images to PNG, JPG, WebP, BMP, ICO and PDF, PDFs to images, and CSV, JSON, XLSX, Markdown and Base64, on your device, in batches.' },
-  calculator: { title: 'Calculator: calculator with paper tape and units | ITpris', category: 'UtilitiesApplication',
-    description: 'A calculator with a paper tape, units, currency and manual exchange rates, plus date and time arithmetic. Nothing is uploaded.' },
-  time: { title: 'World Clock: world clock, time zones and meeting planner | ITpris', category: 'UtilitiesApplication',
-    description: 'A world clock and meeting planner that finds the overlap across time zones, with a converter, stopwatch and timer. Nothing is uploaded.' },
-  crm: { title: 'Free simple CRM with pipeline and follow-ups: CRM | ITpris', category: 'BusinessApplication',
-    description: 'Track customers on a pipeline board from lead to customer, with dated notes, follow-up dates, and orders and invoices per customer. Nothing is uploaded.' },
-  calendar: { title: 'Calendar: month, week and agenda views | ITpris', category: 'BusinessApplication',
-    description: 'A calendar with month, week, day and agenda views, repeats, time zones, reminders and .ics import and export. Nothing is uploaded.' },
-  todo: { title: 'To-do: tasks and lists that show in Calendar | ITpris', category: 'BusinessApplication',
-    description: 'Tasks with due dates and times, lists, tags and subtasks. Tasks show in Calendar and CRM, and nothing is uploaded.' },
-  projects: { title: 'Projects: Kanban board and Gantt timeline | ITpris', category: 'BusinessApplication', description: 'Plan projects on a Kanban board and a Gantt timeline with dependencies, checklists and WIP limits. Runs in your browser; nothing is uploaded.' },
-  reminders: { title: 'Reminders: one timeline for every reminder | ITpris', category: 'BusinessApplication',
-    description: 'One timeline of reminders from Calendar and To-do, with snooze, dismiss, custom reminders and browser notifications. Nothing is uploaded.' },
-  ledger: { title: 'Ledger: free double-entry bookkeeping and statements | ITpris', category: 'BusinessApplication',
-    description: 'Free double-entry bookkeeping in your browser: journal, P&L, balance sheet, SIE import, and bank matching from CSV, OFX, QIF, camt.053 or MT940.' },
-  admin: { title: 'Admin: company profile, backup and restore | ITpris', category: 'BusinessApplication',
-    description: 'Set your company profile and default currency, use numbering that only moves forward, and make a validated full backup or restore.' },
-  drive: { title: 'Files: every file from every app in one drive | ITpris', category: 'UtilitiesApplication',
-    description: 'One local drive for the files from every ITpris Verktyg app, with folders, stars, Trash, several views, a duplicate finder and backup.' },
-  code: { title: 'Code Editor: a code editor for your Files files | ITpris', category: 'DeveloperApplication',
-    description: 'Edit JavaScript, TypeScript, HTML, CSS, JSON, Markdown and Python in your browser, with completion, multiple cursors and a sandboxed preview.' },
-  gallery: { title: 'Gallery: your photo library on this device | ITpris', category: 'MultimediaApplication',
-    description: 'A photo library that stays on this device, with a timeline, albums, favourites, a sort mode, an exact duplicate finder and backup.' },
-  '3d': { title: '3D Modeller: a 3D editor for simple models and scenes | ITpris', category: 'DesignApplication',
-    description: 'Build simple 3D models and scenes in your browser. Opens GLB, glTF, OBJ, STL, PLY, 3MF, DAE and FBX, and exports OBJ, STL, GLB, glTF, USDZ and PNG.' },
-  img3d: { title: 'Image to 3D: turn a picture into a 3D model | ITpris', category: 'DesignApplication',
-    description: 'Turn a picture into a 3D height-field mesh, a point cloud or a splat render, on your device. Nothing is uploaded, and you can export OBJ or GLB.' },
-  music: { title: 'Music Player: play the audio in your Files | ITpris', category: 'MultimediaApplication',
-    description: 'Play the audio in your Files from a searchable library, with playlists, waveform seek, shuffle, repeat and lock-screen controls.' },
-  'paint-classic': { title: 'Paint Classic: the 1998 paint program in your browser | ITpris', category: 'MultimediaApplication',
-    description: 'The classic 1998 paint program in your browser, with every paint tool from the original and its look. Quick pictures and sketches. Nothing is uploaded.' },
+/** Every app page's category; its title and description are seo.app.<id>.*. */
+const CATEGORY = {
+  imageeditor: 'DesignApplication', vector: 'DesignApplication', pdf: 'BusinessApplication',
+  label: 'BusinessApplication', cutout: 'MultimediaApplication', aitools: 'MultimediaApplication',
+  ocr: 'BusinessApplication', reports: 'BusinessApplication', html2pdf: 'BusinessApplication',
+  clean: 'UtilitiesApplication', ai: 'BusinessApplication', docs: 'BusinessApplication',
+  tables: 'BusinessApplication', slides: 'BusinessApplication', press: 'DesignApplication',
+  remix: 'MultimediaApplication', videoedit: 'MultimediaApplication', resize: 'MultimediaApplication',
+  upscale: 'MultimediaApplication', watermark: 'MultimediaApplication', contacts: 'BusinessApplication',
+  inventory: 'BusinessApplication', orders: 'BusinessApplication', quotes: 'BusinessApplication',
+  purchases: 'BusinessApplication', timesheets: 'BusinessApplication', expenses: 'BusinessApplication',
+  invoices: 'BusinessApplication', notes: 'ProductivityApplication', paste: 'UtilitiesApplication',
+  effects: 'MultimediaApplication', hex: 'DeveloperApplication', sheetview: 'BusinessApplication',
+  eml: 'UtilitiesApplication', checksum: 'UtilitiesApplication', diff: 'UtilitiesApplication',
+  nodes: 'BusinessApplication', sorter: 'MultimediaApplication', signature: 'BusinessApplication',
+  transcribe: 'BusinessApplication', recorder: 'MultimediaApplication', serials: 'BusinessApplication',
+  qr: 'UtilitiesApplication', colors: 'DesignApplication', fontcreator: 'DesignApplication',
+  workflows: 'UtilitiesApplication', convert: 'UtilitiesApplication', calculator: 'UtilitiesApplication',
+  time: 'UtilitiesApplication', crm: 'BusinessApplication', calendar: 'BusinessApplication',
+  todo: 'BusinessApplication', projects: 'BusinessApplication', reminders: 'BusinessApplication',
+  ledger: 'BusinessApplication', admin: 'BusinessApplication', drive: 'UtilitiesApplication',
+  code: 'DeveloperApplication', gallery: 'MultimediaApplication', '3d': 'DesignApplication',
+  img3d: 'DesignApplication', music: 'MultimediaApplication', 'paint-classic': 'MultimediaApplication',
 };
+export const appsIn = (code = 'en') => Object.fromEntries(Object.entries(CATEGORY).map(([id, category]) => [id, hydrate({ category }, `seo.app.${seg(id)}`, code)]));
+export const APPS = appsIn('en');
 
-/** About pages, keyed by app id. Only apps with an about/ folder appear here. */
-export const ABOUT = {
-  imageeditor: { title: 'About Image Editor | ITpris',
-    description: 'About Image Editor, the layered image editor that runs in your browser: what it opens and saves, its tools, and how your images stay on your device.' },
-  vector: { title: 'About Vector Editor | ITpris',
-    description: 'About Vector Editor, the illustration editor that runs in your browser: its pen, shape, type and layer tools, Pathfinder, and its export formats.' },
-  pdf: { title: 'About PDF Editor | ITpris',
-    description: 'About PDF Editor, which merges, splits, annotates, redacts and fills PDFs in your browser. Forms, passwords, compression and signatures.' },
-  cutout: { title: 'About Background Remover | ITpris',
-    description: 'About Background Remover, which removes photo backgrounds with AI that runs on your device, with brush refinement and batch processing.' },
-  label: { title: 'About Label Designer | ITpris',
-    description: 'About Label Designer, which designs and prints barcode labels in your browser. Code 128, GS1, QR, Data Matrix, data merge and thermal rolls.' },
-  calendar: { title: 'About Calendar | ITpris',
-    description: 'About Calendar, the local calendar with month, week, day and agenda views, repeats, time zones, reminders and .ics files. Nothing uploaded.' },
-  todo: { title: 'About To-do | ITpris',
-    description: 'About To-do: tasks with due dates and times, lists, tags, subtasks and repeats. Tasks with a due time show in Calendar. Nothing uploaded.' },
-  projects: { title: 'About Projects | ITpris', description: 'About Projects, a project planner for small teams: a Kanban board, a Gantt timeline with dependencies, and JSON and CSV files, all in the browser.' },
-  reminders: { title: 'About Reminders | ITpris',
-    description: 'About Reminders: one timeline of reminders from Calendar and To-do, with snooze, dismiss and custom reminders. Pop-ups show while a page is open.' },
-  time: { title: 'About World Clock | ITpris',
-    description: 'About World Clock: a world clock, time zones, working hours and a meeting planner that adds meetings to Calendar. Runs in your browser.' },
-  calculator: { title: 'About Calculator | ITpris',
-    description: 'About Calculator, the calculator with a paper tape, units, currency and date arithmetic. Save a calculation to Files or a date to Calendar.' },
-  invoices: { title: 'About Invoices | ITpris',
-    description: 'About Invoices: gapless invoice numbers, payments, a ledger, overdue balances and a printable PDF. Everything stays in your browser.' },
-  orders: { title: 'About Orders | ITpris',
-    description: 'About Orders, which keeps customers, products and orders, takes stock out when you fulfil, and turns an order into an invoice draft.' },
-  quotes: { title: 'About Quotes | ITpris',
-    description: 'About Quotes, which writes priced quotes for customers, tracks sent, accepted and declined ones, and turns a yes into an order or an invoice draft.' },
-  purchases: { title: 'About Purchase Orders | ITpris',
-    description: 'About Purchase Orders, which sends purchase orders to suppliers, receives what arrives into Inventory, and records each bill in Expenses.' },
-  timesheets: { title: 'About Timesheets | ITpris',
-    description: 'About Timesheets, which tracks the time you work for each customer and project and bills the hours on a draft invoice, with nothing uploaded.' },
-  expenses: { title: 'About Expenses | ITpris',
-    description: 'About Expenses, which records what a business spends, posts each expense to the same books as invoices, and sums the tax to reclaim.' },
-};
+/** About pages (seo.about.<id>.*), keyed by app id. Only apps with an about/ folder appear here. */
+const ABOUT_IDS = [
+  'imageeditor', 'vector', 'pdf', 'cutout', 'label', 'calendar', 'todo', 'projects', 'reminders', 'time', 'calculator',
+  'invoices', 'orders', 'quotes', 'purchases', 'timesheets', 'expenses',
+];
+export const aboutIn = (code = 'en') => Object.fromEntries(ABOUT_IDS.map((id) => [id, hydrate({}, `seo.about.${seg(id)}`, code)]));
+export const ABOUT = aboutIn('en');
 
 /** Pages that are not apps and have no registry entry, keyed by folder (the URL is /<folder>/). Written by write.mjs. */
-export const PAGES = {
+export const pagesIn = (code = 'en') => ({
   // The typeface page (typeface/): only in a build whose profile has a type family (tools/whitelabel/font.mjs).
-  .../*profile:font*/true ? { typeface: { title: 'The ITpris Verktyg typeface: Sans, Serif, Mono, Condensed | ITpris', crumb: 'Typeface',
-    description: 'The ITpris Verktyg type family: Sans, Serif, Mono and Condensed, with drop dots, a drip ligature and stylistic sets. Free under the SIL Open Font License.' } } : {},
-  'how-it-works': { title: 'How ITpris Verktyg works: local files, storage and network | ITpris', crumb: 'How it works',
-    description: 'How the ITpris Verktyg apps work: files stay on your device, which browser APIs they use, every network request, and how to check it yourself.' },
+  .../*profile:font*/true ? { typeface: hydrate({}, 'seo.page.typeface', code) } : {},
+  'how-it-works': hydrate({}, 'seo.page.how-it-works', code),
   // Converter pages: their copy is in the page lists of convert/js/core (convert-copy.mjs), their crumb the hub card's
-  // label from the convert tables. Contacts, then finance files (SIE and bank statements), then 3D models.
-  ...VCF_COPY,
-  ...FINANCE_COPY,
-  ...THREED_COPY,
-  // Camera RAW, HEIC, audio, document, data and subtitle converter pages: their copy is in convert/js/core (convert-copy.mjs)
-  ...CONVERT_PAGES,
-};
+  // label from the convert tables. Contacts, then finance files (SIE and bank statements), then 3D models, then the rest.
+  ...convertIn(code),
+});
+// In English the converter copy is the page lists' own (convert-copy.mjs); in another language its title and description
+// are seo.cv.<slug>.* (the English part cv-*.js is written from the page lists by tools/seo/tables.mjs) and its crumb the
+// convert tables' card label in that language.
+const CONVERT = { ...VCF_COPY, ...FINANCE_COPY, ...THREED_COPY, ...CONVERT_PAGES };
+function convertIn(code) {
+  if (code === 'en') return CONVERT;
+  const labels = appTable('convert', code);
+  return Object.fromEntries(Object.entries(CONVERT).map(([k, c]) => {
+    const slug = k.slice('convert/'.length), s = `seo.cv.${seg(slug)}`;
+    return [k, { ...c, title: text(`${s}.title`, code), description: text(`${s}.description`, code), crumb: labels.get(cardKey({ slug })) || c.crumb }];
+  }));
+}
+export const PAGES = pagesIn('en');
 
-export { LANDING } from './landing-copy.mjs';
+export { LANDING, landingIn } from './landing-copy.mjs';

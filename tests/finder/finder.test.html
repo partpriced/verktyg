@@ -243,7 +243,7 @@
         expect($('.fd-count').textContent).toBe('2 objekt');   // no count of the caller's: the shared default
       } finally { f.destroy(); await lang('en'); localStorage.removeItem('tlbx-profile'); TlbxTest.english(); }
     });
-    it('TlbxList counts with the app\'s plural key (a function or a key), else "N items"', async () => {
+    it('TlbxList counts with the app\'s plural key, and the older noun pair still reads', async () => {
       const box = document.createElement('div'), sum = document.createElement('p');
       document.body.append(box, sum);
       const L = TlbxList.mount(box, { summary: sum, count: (n) => I.t('ui.shell.folder_aria', { name: 'X', n }) });
@@ -251,8 +251,8 @@
       expect(sum.textContent).toBe('X, folder with 1 app');
       L.set([{ id: 1 }, { id: 2 }]);
       expect(sum.textContent).toBe('X, folder with 2 apps');
-      TlbxList.mount(box, { summary: sum, count: 'ui.list.count' }).set([{ id: 1 }]);
-      expect(sum.textContent).toBe('1 item');
+      TlbxList.mount(box, { summary: sum, noun: ['expense', 'expenses'] }).set([{ id: 1 }]);
+      expect(sum.textContent).toBe('1 expense');
       TlbxList.mount(box, { summary: sum }).set([{ id: 1 }, { id: 2 }]);
       expect(sum.textContent).toBe('2 items');
       box.remove(); sum.remove();
