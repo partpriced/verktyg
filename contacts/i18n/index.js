@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'contacts',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['edit', 'io', 'page', 'tools', 'views'],
-  langs: ['en', 'es', 'pt-BR', 'sv'],
+  langs: ['en', 'es', 'fr', 'pt-BR', 'sv'],
 });
