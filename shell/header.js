@@ -1,4 +1,5 @@
-/* TlbxHeader: adds the shell's buttons to the page header: AI (the Assistant panel, loaded on click), the theme menu (every page, from TlbxTheme), "Apps" (opens
+/* TlbxHeader: adds the shell's buttons to the page header: AI (the Assistant panel, loaded on click), the language menu
+ * (shared/i18n/switcher.js), the theme menu (every page, from TlbxTheme), "Apps" (opens
  * the switcher), the notifications bell, and Tutorial (the app's YouTube tutorial, when the registry has one). Goes at the end of header.topbar, header.menubar or header.nav, or floats at the
  * top right when the page has no header. Loaded and mounted by shell/shell.js, which applies the language after.
  * The Apps text and the button's aria-label are marked for TlbxI18n; the title is set here (it carries the shortcut). */
@@ -21,6 +22,9 @@
     return s && s !== 'shell.switch_title' ? s : 'Switch app (' + shortcut + ')';
   }
 
+  /** A shared-chrome string in the chosen language (shared/i18n), or the English given when TlbxI18n is not on the page. */
+  function tr(key, en) { const I = window.TlbxI18n, s = I ? I.t(key) : key; return s && s !== key ? s : en; }
+
   /** The theme button: a menu of System and every theme in TlbxTheme, the current choice checked. None without TlbxTheme. */
   function themeButton() {
     const T = window.TlbxTheme;
@@ -30,18 +34,22 @@
     b.className = 'sh-hbtn tlbx-hbtn sh-theme';
     b.title = 'Theme';
     b.setAttribute('aria-label', 'Theme');
+    b.setAttribute('data-i18n-attr', 'title:shell.theme;aria-label:shell.theme');
     b.setAttribute('aria-haspopup', 'menu');
     b.setAttribute('aria-expanded', 'false');
-    b.innerHTML = ICON_THEME + '<span class="tlbx-hbtn-txt">Theme</span>';
+    b.innerHTML = ICON_THEME + '<span class="tlbx-hbtn-txt" data-i18n="shell.theme">Theme</span>';
     b.addEventListener('click', () => {
       if (!window.TlbxUI) return;
       const now = T.get();
       const pick = (id) => () => { const r = T.set(id); if (!r.ok && window.TlbxUI.toast) window.TlbxUI.toast(r.error); };
       const conv = document.querySelector('.sh-convert');   // no room for Convert… in the header: it is the first row here
-      const ai = document.querySelector('.sh-ai');
+      const ai = document.querySelector('.sh-ai'), lang = document.querySelector('.sh-lang');
+      // the language button gave way in a full header: its menu is a row here (it opens once this menu has closed)
+      const langRow = lang && lang.hidden ? [{ label: tr('shell.language', 'Language') + '…', act: () => setTimeout(() => lang.click(), 0) }] : [];
       const items = (ai && ai.hidden ? [{ label: 'Ask Assistant…', act: openAI }] : []).concat(conv && conv.hidden ? [{ label: 'Convert files…', act: openConvert }] : [])
         .concat((ai && ai.hidden) || (conv && conv.hidden) ? ['-'] : [])
-        .concat([{ label: 'System', check: now === T.SYSTEM, act: pick(T.SYSTEM) }, '-'])
+        .concat(langRow.length ? langRow.concat(['-']) : [])
+        .concat([{ label: tr('shell.theme_system', 'System'), check: now === T.SYSTEM, act: pick(T.SYSTEM) }, '-'])
         .concat(T.THEMES.map((t) => ({ label: t.name, check: now === t.id, act: pick(t.id) })));
       const r = (window.TlbxHbtn && window.TlbxHbtn.anchor ? window.TlbxHbtn.anchor(b) : b).getBoundingClientRect();   // folded into More: under it
       const m = window.TlbxUI.menu(items, r.left, r.bottom + 4);
@@ -154,22 +162,38 @@
     sw.innerHTML = ICON_SEARCH + '<span class="sh-hbtn-txt tlbx-hbtn-txt" data-i18n="nav.apps">Apps</span>';
     sw.addEventListener('click', () => window.TlbxSwitcher.toggle());
     const tut = tutorialLink(), theme = themeButton(), conv = convertButton(), ai = aiButton();
+    const lang = window.TlbxLangSwitch ? window.TlbxLangSwitch.button() : null;   // the language menu (shared/i18n/switcher.js)
     if (ai) box.append(ai);
     if (conv) box.append(conv);
     if (tut) box.append(tut);
+    if (lang) box.append(lang);
     if (theme) box.append(theme);
     box.append(sw);
-    const host = document.querySelector('header.topbar, header.menubar, header.nav, header');
-    const slot = host && host.querySelector('.sh-hdr-slot');   // room kept for the buttons in the page's own HTML
-    if (slot) slot.replaceWith(box); else if (host) host.append(box);
-    if (host) { if (window.TlbxHbtn) window.TlbxHbtn.fit(host); }   // labels give way to icons when the header is full
-    else { box.classList.add('sh-fab'); document.body.append(box); }
+    shellBox = box;
+    place();
     window.TlbxNotify.mountBell(box);
     // Convert… and AI never cost the header a row or the app's controls their room: they give up their labels, Convert… its
     // place, then the other buttons fold into More, AI last (shared/ui/hbtn.js). Measured again now the bell is in.
-    if (host && window.TlbxHbtn) window.TlbxHbtn.check(host);
-    window.addEventListener('tlbx-lang', () => { sw.title = title(); });
+    const host = box.parentNode;
+    if (!box.classList.contains('sh-fab') && window.TlbxHbtn) window.TlbxHbtn.check(host);
+    for (const ev of ['tlbx-lang', 'tlbxi18n']) window.addEventListener(ev, () => { sw.title = title(); });   // tlbxi18n: its tables are in
   }
 
-  window.TlbxHeader = { mount, openConvert, openAI };
+  /** Puts the buttons in the page's header (or floating at the top right when it has none). Called by mount() and again
+   *  by a page header built later (TlbxMenuBar.mount, shared/menubar/menubar.js): the shell's scripts load side by side
+   *  with the page's, so either can come first (cached scripts make the shell first). Wherever they went before, the
+   *  buttons end where mounting after the page header would have put them. Does nothing before mount(). */
+  let shellBox = null;
+  function place() {
+    const box = shellBox;
+    if (!box) return;
+    const host = document.querySelector('header.topbar, header.menubar, header.nav, header');
+    if (host && box.parentNode === host && box.isConnected) return;
+    const slot = host && host.querySelector('.sh-hdr-slot');   // room kept for the buttons in the page's own HTML
+    box.classList.toggle('sh-fab', !host);
+    if (slot) slot.replaceWith(box); else if (host) host.append(box); else document.body.append(box);
+    if (host && window.TlbxHbtn) { window.TlbxHbtn.fit(host); window.TlbxHbtn.check(host); }   // labels give way to icons when the header is full
+  }
+
+  window.TlbxHeader = { mount, place, openConvert, openAI };
 })();
