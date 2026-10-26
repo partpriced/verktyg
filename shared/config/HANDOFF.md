@@ -52,7 +52,8 @@ TlbxConfig.registerKind(kind, app, schema, apply, opts)
 // app:    your registry id, e.g. 'slides'; '*' only for shared kinds
 // schema: { fields: { key: spec, ... }, strict: true }   (strict is the default)
 // apply:  async (data, ctx) => { ... }   runs only after validation passed; throw to roll back
-// opts:   { read: async () => data, label, description }  read enables Export for this kind
+// opts:   { read: async () => data, label, description }  read enables Export for this kind; label and description
+//         may be i18n keys ('ui.config.kind_settings') or functions: read each time they are shown (a language change)
 ```
 
 Field specs (`TlbxConfig.F`): `str({max, pattern})`, `text({max})`, `num({min, max})`, `int({min, max})`, `bool()`,
@@ -190,3 +191,11 @@ changes per app.
 missing media), `tests/node/remix-config.test.mjs` (Video Remix: the same plan after a round trip, missing clips, refusals), and
 `tests/videostudio/videostudio-config.test.html` (drop a config on Video Editor: clips listed as missing media). The other apps are checked for
 load and wiring by their own suites.
+
+## Words (shared/i18n)
+
+`TlbxConfigDialog.menuItems(o)` labels are getters (a menu drawn again reads the current language) and `commands(o)` titles
+are in the current language; once registered, TlbxCmd's copies are retitled after a language change. The words are
+`ui.config.*` in `shared/i18n/ui/<code>/widgets.js`; the shared kinds' labels are keys too. Still English: the bodies,
+buttons and toasts of the import, export, template and AI dialogs (dialog.js, dialog-ai.js).
+

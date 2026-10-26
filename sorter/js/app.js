@@ -113,17 +113,16 @@ function wire() {
   // The one way in (shared/intake, spec 'sorter'): a drop of photos or folders, the zone's Choose files and sample, Choose
   // a folder…, a paste, ?drive=<id> (another app's Open in Photo Sorter) and a PWA launch reach add().
   window.TlbxIntake.register({
-    id: 'sorter', accept: { types: ['image/*'], exts: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg', '.bmp'], noun: t('sorter.app.a_photo') },
+    id: 'sorter', accept: { types: ['image/*'], exts: ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.svg', '.bmp'], noun: 'sorter.app.a_photo' },
     processAll: async (files) => { add(files); return files.map((f) => f.name); },
   });
   dropZone = window.TlbxDrop.attach($('soDrop'), {
-    intake: 'sorter', label: t('sorter.drop.label'), hint: t('sorter.drop.hint'),
-    preview: { picture: { src: '../assets/shots/sorter.jpg', alt: t('sorter.drop.alt') },
-      steps: [t('sorter.drop.step1'), t('sorter.drop.step2'), t('sorter.drop.step3')] },
-    sample: { label: t('sorter.drop.sample'), files: () => window.TlbxSamples.photos(8) },
+    intake: 'sorter', label: 'sorter.drop.label', hint: 'sorter.drop.hint',
+    preview: { picture: { src: '../assets/shots/sorter.jpg', alt: 'sorter.drop.alt' },
+      steps: ['sorter.drop.step1', 'sorter.drop.step2', 'sorter.drop.step3'] },
+    sample: { label: 'sorter.drop.sample', files: () => window.TlbxSamples.photos(8) },
     files: (dt) => window.TlbxDrop.folders.read(dt),   // a dropped folder is read whole, keeping each photo's folder path
   });
-  window.TlbxSorter.markDrop($('soDrop'), 'sorter.drop');
   $('soFolder').addEventListener('click', () => window.TlbxIntake.pick({ to: 'sorter', folder: true }));
   if (window.TlbxHub) { try { window.TlbxHub.register('sorter'); } catch (e) { /* bus unavailable */ } }
   window.TlbxIntake.launch({ to: 'sorter' });

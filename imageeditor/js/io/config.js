@@ -50,7 +50,7 @@
       buttons: [{ label: tr('imageeditor.io.later') }, { label: tr('imageeditor.io.add_pictures'), primary: true, act: async () => {
         // the pictures come in the one way (shared/intake): a spec of their own, each placed on its layer
         TlbxIntake.register({ id: 'imageeditor.layer-pictures', main: false, paste: false, toast: false,
-          accept: { types: ['image/*'], noun: tr('imageeditor.io.noun_picture') }, process: (f) => place(f) });
+          accept: { types: ['image/*'], noun: 'imageeditor.io.noun_picture' }, process: (f) => place(f) });
         await TlbxIntake.pick({ to: 'imageeditor.layer-pictures' });
         if (PS.waiting.length) askForPictures();
       } }],

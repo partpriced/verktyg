@@ -1,11 +1,13 @@
-/* TlbxTour: Label Designer. Targets are ids in label/index.html. The words are in label/i18n (label.tour.*), read when the
-   tour shows them, so they follow the chosen language. */
-(function () {
-  const t = (k) => (globalThis.TlbxI18n ? TlbxI18n.t(k) : k);
-  const step = (id, target) => ({ id, target, get title() { return t('label.tour.' + id); }, get text() { return t('label.tour.' + id + '_text'); } });
-  TlbxTour.define({
-    app: 'label',
-    get title() { return t('label.tour.title'); },
-    steps: [step('setup', '#cbLabel'), step('tools', '#toolbox'), step('label', '#workspace'), step('zoom', '#zoomVal'), step('panels', '#dock'), step('print', '#btnPrint')],
-  });
-})();
+/* TlbxTour: Label Designer. Targets are ids in label/index.html. The words are keys in label/i18n (label.tour.title,
+ * label.tour.<step>_title and _text), read when the tour shows them (shared/tour/HANDOFF.md). */
+TlbxTour.define({
+  app: 'label',
+  steps: [
+    { id: 'setup', target: '#cbLabel' },
+    { id: 'tools', target: '#toolbox' },
+    { id: 'label', target: '#workspace' },
+    { id: 'zoom', target: '#zoomVal' },
+    { id: 'panels', target: '#dock' },
+    { id: 'print', target: '#btnPrint' },
+  ],
+});

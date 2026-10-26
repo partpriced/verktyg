@@ -2,8 +2,8 @@
  * keys into press/i18n/<code>/io.js. Rules: shared/i18n/APPS-HOWTO.md. */
 window.TlbxI18n && window.TlbxI18n.add('en', {
   'press.io.saved_drive': 'Saved {name} to Files',
-  'press.io.send_pdf_to': 'Send PDF to',
-  'press.io.send_png_to': 'Send page PNG to',
+  'press.io.send_pdf_to': 'Send PDF to {app}',
+  'press.io.send_png_to': 'Send page PNG to {app}',
   'press.io.open_drive_title': 'Open from Files',
   'press.io.place_drive_title': 'Place from Files',
   'press.io.intake_noun': 'an image, text, PDF, font or .slpress file',
