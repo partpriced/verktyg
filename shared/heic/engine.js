@@ -25,10 +25,11 @@
     id: 'engine-libheif', kind: 'model', name: 'HEIC photo decoder (libheif 1.23.5, WebAssembly)', licence: 'LGPL-3.0',
     licenceUrl: 'https://github.com/partpriced/cdn/blob/main/' + BASE + 'SOURCE.md', size: FILES.reduce((n, f) => n + f.size, 0), files: FILES.map((f) => ({ ...f, cdn: BASE + f.name })),
   };
+  // the words are keys (shared/i18n/ui/<code>/firstrun.js), read by TlbxFirstRun when the notice shows
   const NOTICE = {
-    title: 'Download the HEIC photo decoder?',
-    lines: ['This browser cannot open HEIC photos (the iPhone format) by itself, so converting one needs the HEIC decoder (libheif, compiled to run in your browser; LGPL-3.0 licence). It is downloaded once from ITpris Verktyg\'s file store, checked, and kept in this browser. Your photos are never uploaded.'],
-    downloads: [{ name: 'HEIC photo decoder (libheif 1.23.5)', bytes: PACK.size }],
+    title: 'ui.firstrun.heic_title',
+    lines: ['ui.firstrun.heic_text'],
+    downloads: [{ name: () => root.TlbxI18n.t('ui.firstrun.heic_name', { version: '1.23.5' }), bytes: PACK.size }],
   };
   // TlbxUI too: TlbxFirstRun lets everything through when a page has no dialog kit, and the engine must not download unasked
   const DEPS = [['TlbxUI', '../tlbxui.js'], ['TlbxLibraryManifest', '../library/manifest.js'], ['TlbxLibraryStore', '../library/store.js'], ['TlbxLibraryInstall', '../library/install.js'], ['TlbxFirstRun', '../firstrun/notice.js']];
