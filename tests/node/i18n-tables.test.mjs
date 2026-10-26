@@ -33,7 +33,7 @@ test('a plural family carries every form the language needs for counts; a millio
 
 test('"tlbx" written in another script is refused, so a white-label rename still finds every product name', () => {
   for (const s of ['مرحبا من سلوبو', 'スロップ ブラシ', 'Слоппо', '斯洛普']) assert.ok(TRANSLIT.test(s), s);
-  for (const s of ['Tlbx ブラシ', 'مرحبا من Helper', 'HTML 转 PDF', 'slope']) assert.ok(!TRANSLIT.test(s), s);
+  for (const s of ['Tlbx ブラシ', 'مرحبا من Helper', 'HTML 转 PDF', 'slope', 'بأسلوب واضح']) assert.ok(!TRANSLIT.test(s), s);
   const en = new Map([['a.hi', 'Hi from Helper']]);
   assert.equal(compare('x/ar', en, new Map([['a.hi', 'مرحبا من سلوبو']])).length, 1);
   assert.deepEqual(compare('x/ar', en, new Map([['a.hi', 'مرحبا من Helper']])), []);
