@@ -956,3 +956,34 @@ history step and palette word, so never strip a suffix to get it. Layer names th
 | downloaded extras | nedladdade tillägg | Storage: «Rensa alla nedladdade tillägg» |
 | offline caches | offlinecacher | |
 | Light / Dark (theme) | Ljust / Mörkt | neuter, agrees with «tema» |
+
+## wip/i18n-r2-ai (model notes, script and language names, AI model tags)
+
+| English | Swedish | Note |
+|---|---|---|
+| script (writing system) | skrift | «latinsk skrift», «kyrillisk skrift»; lower case in running text |
+| recogniser (OCR model part) | igenkännare | «CRNN-igenkännare» |
+| detector (OCR) | detektor | «DB-detektor» |
+| accents (diacritics) | diakritiska tecken | as in ui.models.ocr_accents |
+| encoder-decoder | kodare-avkodare | Whisper |
+| fine-tuned / trained further | finjusterad / vidaretränad |  |
+| language names | from Intl.DisplayNames («svenska», «förenklad kinesiska») | capital first letter in lists only |
+| strength tags (Assistant cards) | pytteliten, snabb, chatt, balanserad, flerspråkig, verktyg, kod, miniappar, skrivande, sammanfattningar, resonemang, matte, smartast | lower case, as the English tags |
+| National Library of Sweden / Norway | Kungliga biblioteket / Norges nationalbibliotek |  |
+
+## wip/i18n-r2-shell (app descriptions, theme names, shell leftovers)
+
+| English | Svenska | Note |
+|---|---|---|
+| Light / Dark / Classic 98 (theme) | Ljust / Mörkt / Klassiskt 98 | neuter, agrees with «tema»; «Accent» kept |
+| Language… (menu row) | Språk… |  |
+| N new (notifications) | {n} nya / {n} ny | «Aviseringar, 1 ny» |
+| Preview (status tag of an app in development) | Förhandsversion | the plain tone's word, also in the app switcher |
+| rows (report count) | rader / rad | «3 av 12 rader matchar» |
+| presenter view | presentatörsvy |  |
+| master pages / threaded text | mallsidor / länkade textramar | as InDesign sv |
+| fulfilment (orders) | leverans |  |
+| gapless numbers (invoices) | obrutna nummerserier |  |
+| keyframes / easing | nyckelrutor / easing |  |
+| sandboxed preview | isolerad förhandsvisning |  |
+| leads (CRM) | leads |  |
