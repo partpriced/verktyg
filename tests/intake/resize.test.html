@@ -18,7 +18,8 @@
   async function boot() {
     const fr = document.getElementById('app');
     fr.src = '../../resize/index.html';
-    await waitFor(() => fr.contentWindow && fr.contentWindow.TlbxIntake && fr.contentWindow.TlbxIntake.spec('resize'), { timeout: 20000 });
+    // TlbxIntake can be on the page a moment before its spec() is (a script that only adds to it runs first)
+    await waitFor(() => fr.contentWindow && fr.contentWindow.TlbxIntake && typeof fr.contentWindow.TlbxIntake.spec === 'function' && fr.contentWindow.TlbxIntake.spec('resize'), { timeout: 20000 });
     W = fr.contentWindow; D = W.document;
     const s = W.TlbxIntake.spec('resize'), reader = s.process;
     s.process = (f, ctx) => { seen.push(ctx.source); return reader(f, ctx); };
