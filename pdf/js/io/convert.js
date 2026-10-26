@@ -122,7 +122,7 @@
       var dw = im.w * s, dh = im.h * s;
       page.drawImage(img, { x: (pw - dw) / 2, y: (ph - dh) / 2, width: dw, height: dh });
     }
-    out.setProducer('PDF Editor · verktyg.itpris.se/pdf');
+    out.setProducer('PDF Editor · verktyg.itpris.se/pdf'); // i18n-ignore: PDF names / font names / producer, not UI
     return out.save();
   };
 })();

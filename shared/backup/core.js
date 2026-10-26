@@ -14,7 +14,8 @@
   const req = (r) => new Promise((res, rej) => { r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
   const done = (t) => new Promise((res, rej) => { t.oncomplete = res; t.onerror = () => rej(t.error); t.onabort = () => rej(t.error || new Error('Aborted')); });
   const pad = (n) => String(n).padStart(2, '0');
-  const fileName = (d = new Date()) => `worksuite-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}.tlbx`;
+  // The extension is TlbxBackup.EXT (index.js, which loads this file); '.zip' only when this file is used on its own.
+  const fileName = (d = new Date()) => `worksuite-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}${(window.TlbxBackup && window.TlbxBackup.EXT) || '.zip'}`;
 
   async function dbNames() {
     let names = [];
