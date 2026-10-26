@@ -1,0 +1,23 @@
+/* Image Editor, Dutch: palette titles of the canvas, tool and window commands (app/commands.js). Same keys as imageeditor/i18n/en/commands.js. Terms: shared/i18n/glossary-nl.md. */
+window.TlbxI18n && window.TlbxI18n.add('nl', {
+  'imageeditor.cmd.opacity_toast': 'Dekking {pct}%',
+  'imageeditor.cmd.cycle_tools': 'Wissel tussen {tools}',
+  'imageeditor.cmd.swap_colors': 'Voorgrond- en achtergrondkleur omwisselen',
+  'imageeditor.cmd.default_colors': 'Standaardkleuren (zwart / wit)',
+  'imageeditor.cmd.brush_bigger': 'Penseelgrootte vergroten',
+  'imageeditor.cmd.brush_smaller': 'Penseelgrootte verkleinen',
+  'imageeditor.cmd.brush_harder': 'Penseelhardheid vergroten',
+  'imageeditor.cmd.brush_softer': 'Penseelhardheid verkleinen',
+  'imageeditor.cmd.tool_opacity': 'Dekking van het gereedschap {pct}%',
+  'imageeditor.cmd.nudge_left': 'Naar links verschuiven {n} px',
+  'imageeditor.cmd.nudge_right': 'Naar rechts verschuiven {n} px',
+  'imageeditor.cmd.nudge_up': 'Omhoog verschuiven {n} px',
+  'imageeditor.cmd.nudge_down': 'Omlaag verschuiven {n} px',
+  'imageeditor.cmd.next_doc': 'Volgend document',
+  'imageeditor.cmd.prev_doc': 'Vorig document',
+  'imageeditor.cmd.go_to_doc': 'Ga naar document {i}',
+  'imageeditor.cmd.restore_aspect': 'Oorspronkelijke beeldverhouding herstellen',
+  'imageeditor.cmd.guides_panel': 'Deelvenster Hulplijnen (hulplijnindelingen)',
+  'imageeditor.cmd.search_key': 'Opdrachten zoeken ({key})',
+  'imageeditor.cmd.nav_preset': 'Navigatievoorinstelling…',
+});
