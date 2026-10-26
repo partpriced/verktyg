@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'calendar',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['commands', 'page', 'tour', 'views'],
-  langs: ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'nl', 'pt-BR', 'sv', 'zh-CN'],
+  langs: ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-BR', 'sv', 'zh-CN'],
 });
