@@ -28,7 +28,7 @@
     const column = document.querySelector('.col-list');
     const zone = document.getElementById('ctDrop');
     if (!column || !zone || !window.TlbxDrop) return;
-    TlbxDrop.attach(zone, { intake: 'contacts', compact: true, label: SC.tr('contacts.imp.drop'), targets: [column] });
+    TlbxDrop.attach(zone, { intake: 'contacts', compact: true, label: 'contacts.imp.drop', targets: [column] });
   }
   /** Import ▸ Choose files…. */
   const pick = () => SI.pick({ to: 'contacts', accept: ACCEPT });

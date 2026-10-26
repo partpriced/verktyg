@@ -169,7 +169,7 @@
     register();
     if (!window.TlbxDrop) return;
     TlbxDrop.attach(document.getElementById('pdfDrop'), {
-      intake: 'pdf', compact: true, label: t('pdf.app.drop_label'), chooseLabel: t('pdf.app.choose_files'),
+      intake: 'pdf', compact: true, label: 'pdf.app.drop_label', chooseLabel: 'pdf.app.choose_files',
       targets: [document.getElementById('stage'), document.getElementById('tabs')],
       mode: dropMode, data: dropData,
     });
@@ -182,9 +182,8 @@
       });
     };
     if (art && TlbxDrop.panel) { var shown = preview(); if (shown) art.replaceWith(shown); art = shown || art; }
-    // A language switch: the zone's message and the preview are drawn again in the new words
+    // A language switch: the preview is drawn again in the new words (the zone's own words are keys TlbxDrop redraws)
     U.onLang(function () {
-      var msg = document.querySelector('#pdfDrop .sd-msg'); if (msg) msg.textContent = t('pdf.app.drop_label');
       if (art && art.classList && art.classList.contains('sd-preview') && art.parentNode) { var next = preview(); if (next) { art.replaceWith(next); art = next; } }
     });
   };
