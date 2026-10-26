@@ -36,8 +36,7 @@ jobs:
         run: |
           npm ci --no-audit --no-fund
       - name: Node tests
-        run: |
-          node --test '--test-skip-pattern=^every workflow limits its GITHUB_TOKEN: a top-level permissions block, read-only unless a job asks for more|^the preview copy is the only place that adds noindex to every page|^the browser tests run only in the slices the plan job asks for|^the touch jobs run the touch-marked pages|^the system prompt: short, names the tools to load|^sorting by a column is stable, both directions, and missing values go last|^a label is the short part of the app title|^the feature matrix: one value per tool|^a guide page: the guide sidebar with it marked|^the guide: a sidebar of the app.s pages|^a page has the task, an Open link with the preset|^JSON-LD: breadcrumb to the app, HowTo steps, FAQ and the tutorial|^the default choice is one literal after the profile marker, on one line, and English in this repo|^with the default \(en\) the site starts in English|^the language list is data: English first|^with nothing stored the choice is English|^the shipped brand\/brand\.json has the support block, all on|^COVERAGE\.md and tables\.covers\.txt are up to date|^each landing page has a description of 120 to 160 characters|^each page has a description of 120 to 160 characters' tests/node/*.test.mjs tests/seo/*.test.mjs
+        run: node --test tests/node/*.test.mjs tests/seo/*.test.mjs
       # The files the browser pages download (models, wasm: tests/net-urls.txt), kept between runs; filled here when the list
       # changed, so the slices below find them (tests/netcache.mjs).
       - name: Look up the download cache
@@ -52,39 +51,108 @@ jobs:
         if: hashFiles('tests/net-urls.txt') != '' && steps.netcache.outputs.cache-hit != 'true'
         run: node tests/netcache.mjs --fill
 
-  # Browser pages served from this repository: the smoke set. The full browser suite runs where the site is made.
-  smoke:
+  # What the browser jobs run (tools/ci/plan.mjs; the policy is in README.md, "Rules for every change"): testing runs the
+  # full suite; main skips it for a merge of a commit that already passed (its tree is the merged parent's), else runs it;
+  # wip/* and every other branch run only the test pages their changes need (tools/ci/affected.mjs), never the full suite.
+  plan:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
-    container:
-      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+    outputs:
+      suite: ${{ steps.plan.outputs.suite }}
+      count: ${{ steps.plan.outputs.count }}
+      shards: ${{ steps.plan.outputs.shards }}
+      pages: ${{ steps.plan.outputs.pages }}
+      touch: ${{ steps.plan.outputs.touch }}
+      wl_suite: ${{ steps.plan.outputs.wl_suite }}
+      wl_count: ${{ steps.plan.outputs.wl_count }}
+      wl_shards: ${{ steps.plan.outputs.wl_shards }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v7
         with:
           node-version: 22
-      - run: npm ci --no-audit --no-fund
-      - name: Browser smoke pages
-        run: |
-          printf '%s\n' tests/i18n/default-lang.test.html tests/shell/drawer.test.html tests/shell/brand.test.html tests/imageeditor/welcome.test.html tests/pdf/pages.test.html tests/drive/look.test.html tests/tables/look.test.html tests/docs/look.test.html tests/settings/look.test.html tests/how-it-works/how-it-works.test.html tests/invoices/workspace.test.html tests/home/plain-tone.test.html > smoke-pages.txt
-          node tests/run.mjs --skip-node --jobs=3 --pages-file=smoke-pages.txt
+      - name: Plan the browser tests
+        id: plan
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PLAN_BASE: ${{ github.event.pull_request.base.sha || 'origin/testing' }}
+        run: node tools/ci/plan.mjs
 
-  # The contrast sweep (tests/a11y/sweep-*) in this site's own colours, in 6 parallel slices.
-  sweep:
-    name: Contrast sweep ${{ matrix.shard }}/6
+  # The browser tests (tests/**/*.test.html), in the slices the plan asks for, run as parallel jobs, 3 pages at a time in
+  # each. The slices are balanced by tests/timings.json (refreshed from CI's browser-results artifacts with
+  # node tests/results.mjs). The jobs run in Playwright's own image, which has Chromium and its system libraries. Its version
+  # must be the one in package-lock.json (tests/node/ci-config.test.mjs checks it). This is CI only: GitHub Pages serves the
+  # files as they are.
+  browser:
+    name: Browser tests ${{ matrix.shard }}/${{ needs.plan.outputs.count }}
+    needs: plan
+    if: ${{ needs.plan.outputs.count != '0' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 15
     container:
       image: mcr.microsoft.com/playwright:v1.64.1-noble
     strategy:
       fail-fast: false
       matrix:
-        shard: [1, 2, 3, 4, 5, 6]
+        shard: ${{ fromJSON(needs.plan.outputs.shards) }}
+    env:
+      SLICE: --shard=${{ matrix.shard }}/${{ needs.plan.outputs.count }}${{ needs.plan.outputs.suite == 'changed' && ' --pages-file=plan-pages.txt' || '' }}
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: 22
       - run: npm ci --no-audit --no-fund
-      - name: Contrast sweep, slice ${{ matrix.shard }} of 6
-        run: node tests/run.mjs a11y/sweep- --skip-node --jobs=3 --shard=${{ matrix.shard }}/6
+      - name: The pages of the plan
+        env:
+          PAGES: ${{ needs.plan.outputs.pages }}
+        run: echo "$PAGES" > plan-pages.txt
+      - name: Does a page of this slice download files?
+        id: net
+        run: echo "needs=$(node tests/run.mjs $SLICE --skip-node --needs-net)" >> "$GITHUB_OUTPUT"
+      - name: Restore the download cache
+        if: steps.net.outputs.needs == 'yes'
+        uses: actions/cache/restore@v6
+        with:
+          path: tests/.cache/net
+          key: testnet-${{ hashFiles('tests/net-urls.txt') }}
+          restore-keys: testnet-
+      - name: Browser tests, slice ${{ matrix.shard }} of ${{ needs.plan.outputs.count }}
+        run: node tests/run.mjs $SLICE --jobs=3 --skip-node --results=browser-results-${{ matrix.shard }}.json
+      # Each page's seconds, test times and downloads: node tests/results.mjs <the artifacts> refreshes tests/timings.json
+      # and tests/net-urls.txt.
+      - uses: actions/upload-artifact@v5
+        if: always()
+        with:
+          name: browser-results-${{ matrix.shard }}
+          path: browser-results-${{ matrix.shard }}.json
+          retention-days: 14
+          if-no-files-found: ignore
+
+  # The touch tests: pages marked <meta name="tlbx-test-touch"> on a touch tablet, with real touches from the runner
+  # (tests/touch.mjs). WebKit is Safari's engine as an iPad (iOS: no dblclick on a double tap, no contextmenu on a long
+  # press); Chromium is an Android tablet (its own dblclick and contextmenu, which the touch layer must not double).
+  # The plan (tools/ci/plan.mjs) decides: every touch page on a full run, else only the touch pages among the changed pages.
+  touch:
+    name: Touch tests ${{ matrix.engine }}
+    needs: plan
+    if: ${{ needs.plan.outputs.touch == 'true' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    container:
+      image: mcr.microsoft.com/playwright:v1.64.1-noble
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [webkit, chromium]
+    steps:
+      - uses: actions/checkout@v7
+      - run: npm ci --no-audit --no-fund
+      - name: The pages of the plan
+        env:
+          PAGES: ${{ needs.plan.outputs.pages }}
+        run: echo "$PAGES" > plan-pages.txt
+      - name: Touch tests in ${{ matrix.engine }}
+        run: node tests/run.mjs --touch --browser=${{ matrix.engine }} --jobs=2 --skip-node ${{ needs.plan.outputs.suite == 'changed' && '--pages-file=plan-pages.txt' || '' }}
