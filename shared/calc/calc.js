@@ -5,6 +5,8 @@
 (function (g) {
   'use strict';
   const ns = (g.TlbxCalc = g.TlbxCalc || {});
+  /** A word from the shared tables (shared/i18n/ui/<code>/calc.js), the key without TlbxI18n. */
+  const say = (key, vars) => (g.TlbxI18n ? g.TlbxI18n.t(key, vars) : key);
 
   function calc(text, opts) {
     const o = opts || {};
@@ -16,7 +18,7 @@
       if (e && e.name === 'CalcError') {
         return { ok: false, error: { code: e.code, message: e.message, pos: e.pos, from: e.from, to: e.to } };
       }
-      return { ok: false, error: { code: 'syntax', message: 'Could not calculate that: ' + (e && e.message ? e.message : 'unknown error'), pos: 0 } };
+      return { ok: false, error: { code: 'syntax', message: say('ui.calc.failed', { why: e && e.message ? e.message : say('ui.calc.unknown_error') }), pos: 0 } };
     }
   }
 
