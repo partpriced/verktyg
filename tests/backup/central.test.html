@@ -80,7 +80,7 @@
 
     it('a version 1 ITpris Verktyg .backup file imports: its Drive databases and profile settings', async () => {
       const C = await BK.central();
-      localStorage.removeItem('tlbx-profile');
+      localStorage.removeItem('tlbx-profile'); TlbxTest.english();
       await BK.deleteDb('tlbx-drive');
       const manifest = { format: 'worksuite-backup', version: 1, created: '2025-06-01T10:00:00.000Z', origin: location.origin, app: 'ITpris Verktyg', counts: {}, bytes: 3 };
       const local = { 'tlbx-profile': JSON.stringify({ v: 1, data: { imageeditor: { zoom: 'fit' } } }), 'tlbx-sync': '{"clientId":"LEGACY-SYNC"}', 'tlbx-consent': '{"token":"LEGACY-CONSENT"}' };
@@ -103,7 +103,7 @@
       expect((await C.apply(p)).ok).toBe(true);
       expect(await (await BK.driveFile('f1')).blob.text()).toBe('abc');
       expect(JSON.parse(localStorage.getItem('tlbx-profile')).data.imageeditor.zoom).toBe('fit');
-      localStorage.removeItem('tlbx-profile');
+      localStorage.removeItem('tlbx-profile'); TlbxTest.english();
     });
   });
   describe('the dialog', () => {

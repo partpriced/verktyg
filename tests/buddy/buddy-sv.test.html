@@ -62,7 +62,7 @@
       const tip = win.document.querySelector('.buddy-toggle .bt-main').title;
       expect(tip === win.TlbxI18n.t('ui.buddy.toggle_tip') || /^[^()]+ \(Alt\+Shift\+S\)$/.test(tip)).toBe(true);
       expect(win.TlbxI18n.t('ui.buddy.toggle_tip')).toMatch(/ buddy \(Alt\+Shift\+S\)$/);
-      try { localStorage.removeItem('tlbx-profile'); } catch (e) { /* none */ }
+      try { localStorage.removeItem('tlbx-profile'); TlbxTest.english(); } catch (e) { /* none */ }
     });
   });
   run({ name: 'Buddy in Swedish' });
