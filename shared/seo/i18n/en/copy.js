@@ -89,7 +89,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.app.qr.title': 'QR Code Generator: QR codes for links, Wi-Fi and contacts | ITpris',
   'seo.app.qr.description': 'QR codes for text, links, email, Wi-Fi, contacts, locations and events. Download SVG or PNG, with transparency if you need it. Nothing is uploaded.',
   'seo.app.colors.title': 'Colours: colour picker, palettes and contrast | ITpris',
-  'seo.app.colors.description': 'Pick colours from any picture, find its main colours, make palettes and harmonies, check WCAG contrast and export CSS, Tailwind, ASE or GPL. Nothing uploaded.',
+  'seo.app.colors.description': 'Pick colours from any picture, make palettes on a colour wheel (RGB, RYB or OKLCH), check WCAG contrast and export CSS, Tailwind, ASE or GPL. Nothing uploaded.',
   'seo.app.fontcreator.title': 'Font Creator: make your own font in the browser | ITpris',
   'seo.app.fontcreator.description': 'Draw a font, trace your handwriting or edit a TTF, OTF or WOFF2. Pen, shapes, kerning and a type test; export TTF, OTF, WOFF2 and CSS. Nothing uploaded.',
   'seo.app.workflows.title': 'Workflows: batch workflows across apps | ITpris',

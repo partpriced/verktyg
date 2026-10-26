@@ -1,0 +1,23 @@
+/* Image Editor, Russian: palette titles of the canvas, tool and window commands (app/commands.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('ru', {
+  'imageeditor.cmd.opacity_toast': 'Непрозрачность {pct}%',
+  'imageeditor.cmd.cycle_tools': 'Переключить {tools}',
+  'imageeditor.cmd.swap_colors': 'Поменять местами основной и фоновый цвета',
+  'imageeditor.cmd.default_colors': 'Цвета по умолчанию (чёрный / белый)',
+  'imageeditor.cmd.brush_bigger': 'Увеличить размер кисти',
+  'imageeditor.cmd.brush_smaller': 'Уменьшить размер кисти',
+  'imageeditor.cmd.brush_harder': 'Увеличить жёсткость кисти',
+  'imageeditor.cmd.brush_softer': 'Уменьшить жёсткость кисти',
+  'imageeditor.cmd.tool_opacity': 'Непрозрачность инструмента {pct}%',
+  'imageeditor.cmd.nudge_left': 'Сдвинуть влево на {n} px',
+  'imageeditor.cmd.nudge_right': 'Сдвинуть вправо на {n} px',
+  'imageeditor.cmd.nudge_up': 'Сдвинуть вверх на {n} px',
+  'imageeditor.cmd.nudge_down': 'Сдвинуть вниз на {n} px',
+  'imageeditor.cmd.next_doc': 'Следующий документ',
+  'imageeditor.cmd.prev_doc': 'Предыдущий документ',
+  'imageeditor.cmd.go_to_doc': 'Перейти к документу {i}',
+  'imageeditor.cmd.restore_aspect': 'Вернуть исходное соотношение сторон',
+  'imageeditor.cmd.guides_panel': 'Панель направляющих (макеты направляющих)',
+  'imageeditor.cmd.search_key': 'Поиск команд ({key})',
+  'imageeditor.cmd.nav_preset': 'Пресет навигации…',
+});

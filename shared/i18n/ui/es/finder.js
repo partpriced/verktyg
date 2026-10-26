@@ -16,6 +16,5 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'ui.finder.not_sorted': 'sin ordenar',
   'ui.list.count': '{n} elementos',
   'ui.list.count#one': '{n} elemento',
-  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'Todavía no hay nada aquí.',
 });

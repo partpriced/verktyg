@@ -1,0 +1,27 @@
+/* Video Editor (VideoEdit), Polish: the short counts, the template and render notes, and the export size notes. Same keys as
+ * videostudio/i18n/en/tail.js. Terms: shared/i18n/glossary-pl.md. */
+window.TlbxI18n && window.TlbxI18n.add('pl', {
+  'videoedit.render.step_drop': 'Upuść wideo, dźwięk lub zdjęcia',
+  'videoedit.insp.n_clips': '{n} klipów',
+  'videoedit.insp.n_clips#one': '{n} klip',
+  'videoedit.insp.n_clips#few': '{n} klipy',
+  'videoedit.insp.n_clips#many': '{n} klipów',
+  'videoedit.insp.n_tracks': '{n} ścieżek',
+  'videoedit.insp.n_tracks#one': '{n} ścieżka',
+  'videoedit.insp.n_tracks#few': '{n} ścieżki',
+  'videoedit.insp.n_tracks#many': '{n} ścieżek',
+  'videoedit.insp.n_markers': '{n} znaczników',
+  'videoedit.insp.n_markers#one': '{n} znacznik',
+  'videoedit.insp.n_markers#few': '{n} znaczniki',
+  'videoedit.insp.n_markers#many': '{n} znaczników',
+  'videoedit.tpl.reflowed': 'klipy zachowane i przeułożone',
+  'videoedit.tpl.filled': 'Wypełniono miejsc: {k} z {n}',
+  'videoedit.tpl.filled#one': 'Wypełniono miejsc: {k} z {n}',
+  'videoedit.tpl.filled#few': 'Wypełniono miejsc: {k} z {n}',
+  'videoedit.tpl.filled#many': 'Wypełniono miejsc: {k} z {n}',
+  'videoedit.exp.about': 'około {size}',
+  'videoedit.rnd.cells': '{name} ({n} komórek)',
+  'videoedit.rnd.cells#one': '{name} ({n} komórka)',
+  'videoedit.rnd.cells#few': '{name} ({n} komórki)',
+  'videoedit.rnd.cells#many': '{name} ({n} komórek)',
+});

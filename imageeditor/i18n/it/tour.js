@@ -1,0 +1,20 @@
+/* Image Editor, Italian: the guided tour (shared/tour/tours/imageeditor.js). Same keys as imageeditor/i18n/en/tour.js. Terms: shared/i18n/glossary-it.md. */
+window.TlbxI18n && window.TlbxI18n.add('it', {
+  'imageeditor.tour.title': 'Tour di Image Editor',
+  'imageeditor.tour.new_title': 'Inizia un file',
+  'imageeditor.tour.new_text': 'Nuovo imposta dimensione, preset e sfondo di un documento (in Altro ▾ su una finestra stretta); Apri carica un PSD, ORA o un’immagine. Ogni file ha una scheda.',
+  'imageeditor.tour.menus_title': 'Barra dei menu',
+  'imageeditor.tour.menus_text': 'File, Modifica, Immagine, Livello, Seleziona e Filtro sono qui. Ogni menu elenca i propri comandi.',
+  'imageeditor.tour.tools_title': 'Strumenti',
+  'imageeditor.tour.tools_text': 'Pennelli, selezione, testo e ritaglio stanno nella casella degli strumenti. Scegline uno, poi impostalo nella barra delle opzioni.',
+  'imageeditor.tour.options_title': 'Opzioni strumento',
+  'imageeditor.tour.options_text': 'La barra delle opzioni cambia con lo strumento attivo: dimensione, opacità, modalità di fusione e altro.',
+  'imageeditor.tour.canvas_title': 'La tela',
+  'imageeditor.tour.canvas_text': 'Dipingi, seleziona e trasforma sulla tela. La barra di stato mostra zoom e dimensione.',
+  'imageeditor.tour.panels_title': 'Livelli e pannelli',
+  'imageeditor.tour.panels_text': 'Livelli, cronologia e proprietà stanno in questa colonna. Su telefono, il pulsante Livelli le mostra.',
+  'imageeditor.tour.export_title': 'Esporta',
+  'imageeditor.tour.export_text': 'Esporta PNG, JPEG, WebP o PSD. Il file viene creato sul dispositivo; non viene caricato nulla.',
+  'imageeditor.tour.theme_title': 'Tema',
+  'imageeditor.tour.theme_text': 'Passa tra Pro, Chiaro e Paint ’98.',
+});

@@ -1,0 +1,20 @@
+/* Image Editor, Traditional Chinese: the guided tour (shared/tour/tours/imageeditor.js). Same keys as imageeditor/i18n/en/tour.js. Terms: shared/i18n/glossary-zh-TW.md. */
+window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
+  'imageeditor.tour.title': 'Image Editor 導覽',
+  'imageeditor.tour.new_title': '開始一個檔案',
+  'imageeditor.tour.new_text': '「新增」可設定文件的大小、預設集和背景（在窄視窗中位於「更多 ▾」）；「開啟」可載入 PSD、ORA 或圖片。每個檔案都會有一個分頁。',
+  'imageeditor.tour.menus_title': '選單列',
+  'imageeditor.tour.menus_text': '檔案、編輯、影像、圖層、選取和濾鏡都在這裡。每個選單都會列出其命令。',
+  'imageeditor.tour.tools_title': '工具',
+  'imageeditor.tour.tools_text': '筆刷、選取、文字和裁切都位於工具箱中。選擇一個，然後在選項列中進行設定。',
+  'imageeditor.tour.options_title': '工具選項',
+  'imageeditor.tour.options_text': '選項列會隨使用中的工具而變化：大小、不透明度、混合模式等。',
+  'imageeditor.tour.canvas_title': '畫布',
+  'imageeditor.tour.canvas_text': '在畫布上上色、選取和變形。狀態列會顯示縮放比例和大小。',
+  'imageeditor.tour.panels_title': '圖層與面板',
+  'imageeditor.tour.panels_text': '圖層、歷程記錄和屬性都位於這一欄。在手機上，「圖層」按鈕會將其顯示出來。',
+  'imageeditor.tour.export_title': '匯出',
+  'imageeditor.tour.export_text': '匯出 PNG、JPEG、WebP 或 PSD。檔案會在您的裝置上產生；不會上傳任何內容。',
+  'imageeditor.tour.theme_title': '佈景主題',
+  'imageeditor.tour.theme_text': '在 Pro、Light 和 Paint ’98 之間切換。',
+});

@@ -1,0 +1,23 @@
+/* Image Editor, Korean: palette titles of the canvas, tool and window commands (app/commands.js). Same keys as imageeditor/i18n/en/commands.js. Rules: shared/i18n/APPS-HOWTO.md, words: shared/i18n/glossary-ko.md. */
+window.TlbxI18n && window.TlbxI18n.add('ko', {
+  'imageeditor.cmd.opacity_toast': '불투명도 {pct}%',
+  'imageeditor.cmd.cycle_tools': '{tools} 순환',
+  'imageeditor.cmd.swap_colors': '전경색과 배경색 바꾸기',
+  'imageeditor.cmd.default_colors': '기본 색(검정/흰색)',
+  'imageeditor.cmd.brush_bigger': '브러시 크기 키우기',
+  'imageeditor.cmd.brush_smaller': '브러시 크기 줄이기',
+  'imageeditor.cmd.brush_harder': '브러시 경도 높이기',
+  'imageeditor.cmd.brush_softer': '브러시 경도 낮추기',
+  'imageeditor.cmd.tool_opacity': '도구 불투명도 {pct}%',
+  'imageeditor.cmd.nudge_left': '왼쪽으로 {n}px 이동',
+  'imageeditor.cmd.nudge_right': '오른쪽으로 {n}px 이동',
+  'imageeditor.cmd.nudge_up': '위로 {n}px 이동',
+  'imageeditor.cmd.nudge_down': '아래로 {n}px 이동',
+  'imageeditor.cmd.next_doc': '다음 문서',
+  'imageeditor.cmd.prev_doc': '이전 문서',
+  'imageeditor.cmd.go_to_doc': '문서 {i}(으)로 이동',
+  'imageeditor.cmd.restore_aspect': '원래 가로세로 비율로 되돌리기',
+  'imageeditor.cmd.guides_panel': '안내선 패널(안내선 배치)',
+  'imageeditor.cmd.search_key': '명령 검색({key})',
+  'imageeditor.cmd.nav_preset': '탐색 프리셋…',
+});

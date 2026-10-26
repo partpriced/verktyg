@@ -56,7 +56,7 @@ Covered: 62 of 62 apps. Full suite: 62 of 62 apps.
 | Screen Recorder (`recorder`) | ✓ 1 | ✓ 1 | ✓ 6 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Email Signature (`signature`) | ✓ 1 | ✓ 2 | ✓ 5 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | QR Code Generator (`qr`) | ✓ 1 | ✓ 1 | ✓ 3 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
-| Colours (`colors`) | ✓ 1 | ✓ 2 | ✓ 7 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
+| Colours (`colors`) | ✓ 1 | ✓ 2 | ✓ 10 | ✓ 1 | 1 | ✓ own | ✓ page | ✓ | yes | yes |
 | Font Creator (`fontcreator`) | ✓ 1 | ✓ 6 | ✓ 17 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | Workflows (`workflows`) | ✓ 1 | ✓ 1 | ✓ 7 | ✓ 2 |  | ✓ own | ✓ page | ✓ | yes | yes |
 | File Converter (`convert`) | ✓ 1 | ✓ 1 | ✓ 2 | ✓ 1 |  | ✓ own | ✓ page | ✓ | yes | yes |
@@ -396,7 +396,7 @@ Covered: 62 of 62 apps. Full suite: 62 of 62 apps.
 
 - create: `new_palette`
 - add: `add_colors`, `add_from_picture`
-- edit: `check_contrast`, `convert_color`, `fix_contrast`, `make_palette`, `remove_color`, `rename_palette`, `set_color`
+- edit: `check_contrast`, `convert_color`, `fix_contrast`, `make_palette`, `move_wheel_handle`, `read_wheel`, `remove_color`, `rename_palette`, `set_color`, `set_wheel`
 - export: `export_palette`
 - operations: `colors.palette`
 
