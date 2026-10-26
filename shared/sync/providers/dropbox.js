@@ -18,7 +18,7 @@
     if (!res.ok) {
       let summary = '';
       try { summary = String((await res.json()).error_summary || ''); } catch (x) { /* no body */ }
-      const e = new Error('Dropbox request failed (HTTP ' + res.status + ')' + (summary ? ': ' + summary.trim() : '.'));
+      const e = new Error(window.TlbxI18n ? window.TlbxI18n.t(summary ? 'ui.sync.http_why' : 'ui.sync.http', { name: 'Dropbox', status: String(res.status), why: summary ? summary.trim() : '' }) : 'HTTP ' + res.status);   // i18n-ignore: service names
       e.status = res.status;
       e.summary = summary;
       throw e;
@@ -84,5 +84,5 @@
   }
 
   window.TlbxSyncProviders = window.TlbxSyncProviders || {};
-  window.TlbxSyncProviders.dropbox = { label: 'Dropbox', upload, download, list };
+  window.TlbxSyncProviders.dropbox = { label: 'Dropbox', upload, download, list };   // i18n-ignore: service names
 })();

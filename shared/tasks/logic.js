@@ -3,6 +3,7 @@
 // 'tasks' collection. Exposes window.TlbxTasks. Needs tz.js and rrule.js first.
 (function (g) {
   'use strict';
+  const tr = (key, vars) => (g.TlbxI18n ? g.TlbxI18n.t(key, vars) : key);   // words: shared/i18n/ui/<code>/backup3.js (ui.tasks.*)
   const T = g.TlbxTime, RR = g.TlbxRecur;
   const NS = (g.TlbxTasks = g.TlbxTasks || {});
   const DEFAULT_TIME = '09:00';   // a due date without a time is due at 09:00 for reminders
@@ -98,8 +99,8 @@
   /** Errors for a task edit that the schema does not catch: a time without a date, or an unknown zone. */
   function editErrors(task) {
     const out = [];
-    if (task.dueTime && !task.due) out.push('give the task a due date before a due time');
-    if (task.tz && !T.isZone(task.tz)) out.push('the time zone is not known');
+    if (task.dueTime && !task.due) out.push(tr('ui.tasks.time_no_date'));
+    if (task.tz && !T.isZone(task.tz)) out.push(tr('ui.tasks.bad_zone'));
     return out;
   }
 
