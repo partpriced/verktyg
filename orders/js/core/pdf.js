@@ -2,6 +2,6 @@
 (function (g) {
   'use strict';
   const NS = (g.TlbxOrders = g.TlbxOrders || {});
-  const P = g.TlbxDocs.docPdf.create({ ns: NS, collection: 'orders', kind: 'order', title: 'Order', statusLabel: g.TlbxDocs.model.STATUS_LABEL });   // i18n-ignore: the document's own printed words
+  const P = g.TlbxDocs.docPdf.create({ ns: NS, collection: 'orders', kind: 'order' });
   NS.pdf = { load: P.load, viewOf: P.viewOf, orderPdf: P.pdf };
 })(typeof window !== 'undefined' ? window : globalThis);

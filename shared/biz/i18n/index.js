@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'biz',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['biz', 'docs'],
+  parts: ['biz', 'docs', 'print', 'print2'],
   langs: ['en', 'sv'],
 });
