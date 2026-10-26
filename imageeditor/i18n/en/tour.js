@@ -1,0 +1,20 @@
+/* Image Editor, English (the source of truth for the keys): the guided tour (shared/tour/tours/imageeditor.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('en', {
+  'imageeditor.tour.title': 'Image Editor tour',
+  'imageeditor.tour.new_title': 'Start a file',
+  'imageeditor.tour.new_text': 'New sets the size, preset and background of a document (in More ▾ on a narrow window); Open loads a PSD, ORA or image. Each file gets a tab.',
+  'imageeditor.tour.menus_title': 'Menu bar',
+  'imageeditor.tour.menus_text': 'File, Edit, Image, Layer, Select and Filter live here. Each menu lists its commands.',
+  'imageeditor.tour.tools_title': 'Tools',
+  'imageeditor.tour.tools_text': 'Brushes, selection, type and crop sit in the toolbox. Pick one, then set it up in the options bar.',
+  'imageeditor.tour.options_title': 'Tool options',
+  'imageeditor.tour.options_text': 'The options bar changes with the active tool: size, opacity, blend mode and more.',
+  'imageeditor.tour.canvas_title': 'The canvas',
+  'imageeditor.tour.canvas_text': 'Paint, select and transform on the canvas. The status bar shows zoom and size.',
+  'imageeditor.tour.panels_title': 'Layers and panels',
+  'imageeditor.tour.panels_text': 'Layers, history and properties live in this column. On a phone, the Layers button shows them.',
+  'imageeditor.tour.export_title': 'Export',
+  'imageeditor.tour.export_text': 'Export PNG, JPEG, WebP or PSD. The file is made on your device; nothing is uploaded.',
+  'imageeditor.tour.theme_title': 'Theme',
+  'imageeditor.tour.theme_text': 'Switch between Pro, Light and Paint ’98.',
+});

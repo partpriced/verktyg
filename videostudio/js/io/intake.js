@@ -18,7 +18,7 @@
   IN.RULES = {
     types: ['video/*', 'audio/*', 'image/*', 'application/x-videoedit', 'application/zip', REEL, 'application/json'],
     exts: ['.mp4', '.m4v', '.mov', '.webm', '.mkv', '.mp3', '.wav', '.m4a', '.aac', '.ogg', '.opus', '.flac', '.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.videoedit'],
-    noun: SE.util.t('videoedit.io.a_video_audio_picture_or'),
+    noun: 'videoedit.io.a_video_audio_picture_or',
   };
   const DRIVE = ['video/*', 'audio/*', 'image/*', 'application/x-videoedit', 'application/zip'];
   const names = (files) => files.map((f) => f.name);

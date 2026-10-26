@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'resize',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['app', 'panel'],
+  parts: ['app', 'panel', 'tour'],
   langs: ['en', 'sv'],
 });

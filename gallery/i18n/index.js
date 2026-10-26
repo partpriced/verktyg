@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'gallery',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['app', 'dialogs', 'menus', 'viewer'],
+  parts: ['app', 'dialogs', 'menus', 'tour', 'viewer'],
   langs: ['en', 'sv'],
 });

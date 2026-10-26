@@ -44,7 +44,9 @@ the same place everywhere:
 Tool apps use TlbxFrame directly:
 
 ```js
-const fr = TlbxFrame.mount(root, { list, view, panel, panelLabel: 'Settings', storageKey: 'upscale', button: '.up-tools', phoneButton: false });
+const fr = TlbxFrame.mount(root, { list, view, panel, panelLabel: 'upscale.panel.settings', storageKey: 'upscale', button: '.up-tools', phoneButton: false });
+// panelLabel / listLabel: an i18n key (translated, and again on a language change: the button, the panel's aria-label, the
+// sheet's × and the resize handles follow), a function, or plain text (TlbxI18n.label)
 const p = TlbxFrame.panel(panel, { title: 'Upscale' });
 p.render([
   { title: 'Size', settings: sizeGroupEl },            // the app's own controls (ids, listeners and values stay)

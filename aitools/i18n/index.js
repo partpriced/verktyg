@@ -3,6 +3,6 @@
 window.TlbxI18n && window.TlbxI18n.source({
   ns: 'aitools',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
-  parts: ['hub', 'pages'],
+  parts: ['hub', 'pages', 'tour'],
   langs: ['en', 'sv'],
 });

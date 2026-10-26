@@ -12,7 +12,7 @@
 const PS_RULES = () => ({
   types: ['image/*'],
   exts: ['.psd', '.psb', '.ora', '.kra', '.tif', '.tiff', '.svg', '.ico', '.avif', '.bmp', '.gif', '.webp', '.jfif', ...(window.TlbxRaw ? TlbxRaw.EXTS.map((e) => '.' + e) : [])],
-  noun: tr('imageeditor.app.noun_picture'),
+  noun: 'imageeditor.app.noun_picture',
 });
 
 function registerIntake() {
@@ -33,7 +33,7 @@ function registerIntake() {
   });
   // Brushes: .abr, .tlbxbrush packs and picture tips, all of a pick at once (one toast).
   SI.register({ id: 'imageeditor.brushes', main: false, paste: false, toast: false,
-    accept: { types: ['image/*', 'application/json'], exts: ['.abr', '.tlbxbrush', '.json'], noun: tr('imageeditor.app.noun_brush') },
+    accept: { types: ['image/*', 'application/json'], exts: ['.abr', '.tlbxbrush', '.json'], noun: 'imageeditor.app.noun_brush' },
     processAll: (files) => importBrushFiles(files) });
   // The watermark's logo ('imageeditor.logo') is the shared watermark panel's own part (shared/watermark/panel.js, watermark/panel.js).
 }

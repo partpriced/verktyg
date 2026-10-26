@@ -45,7 +45,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'workflows.run.save_drive': 'Spara alla i Files',
   'workflows.run.saved_drive': 'Sparade {n} filer i Files',
   'workflows.run.saved_drive#one': 'Sparade {n} fil i Files',
-  'workflows.run.send_to': 'Skicka till',
   'workflows.run.starting': 'Startar…',
   'workflows.run.step_n': 'Steg {n}',
   'workflows.run.step_of': 'Steg {i} av {n}: {name}…',

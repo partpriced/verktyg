@@ -1,13 +1,13 @@
-/* TlbxTour: Hex Editor. Targets are ids in hex/index.html. */
+/* TlbxTour: Hex Editor. Targets are ids in hex/index.html. The words are keys in hex/i18n (hex.tour.title,
+ * hex.tour.<step>_title and _text), read when the tour shows them (shared/tour/HANDOFF.md). */
 TlbxTour.define({
   app: 'hex',
-  title: 'Hex Editor tour',
   steps: [
-    { id: 'open', title: 'Open', text: 'Open a file from this computer (Ctrl+O), or drop one on the window.', target: '#hx-open' },
-    { id: 'drive', title: 'Open from Drive', text: 'Open a file that is already in Files.', target: '#hx-drive' },
-    { id: 'bytes', title: 'Bytes', text: 'The bytes in hex, with the text beside them. Scroll to move through the file.', target: '#hx-main' },
-    { id: 'goto', title: 'Go to offset', text: 'Type an offset, such as 0x4D2, to jump to it.', target: '#hx-goto' },
-    { id: 'find', title: 'Find', text: 'Find bytes, such as 4D 5A, or text. F3 finds the next match.', target: '#hx-q' },
-    { id: 'save', title: 'Save', text: 'Save a new version to Files (Ctrl+S), or save as a new file.', target: '#hx-save' },
+    { id: 'open', target: '#hx-open' },
+    { id: 'drive', target: '#hx-drive' },
+    { id: 'bytes', target: '#hx-main' },
+    { id: 'goto', target: '#hx-goto' },
+    { id: 'find', target: '#hx-q' },
+    { id: 'save', target: '#hx-save' },
   ],
 });

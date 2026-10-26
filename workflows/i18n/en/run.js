@@ -45,7 +45,6 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'workflows.run.save_drive': 'Save all to Files',
   'workflows.run.saved_drive': 'Saved {n} files to Files',
   'workflows.run.saved_drive#one': 'Saved {n} file to Files',
-  'workflows.run.send_to': 'Send to',
   'workflows.run.starting': 'Starting…',
   'workflows.run.step_n': 'Step {n}',
   'workflows.run.step_of': 'Step {i} of {n}: {name}…',

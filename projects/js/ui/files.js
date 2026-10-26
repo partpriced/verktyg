@@ -40,7 +40,7 @@
      drop on that zone, the sample and a paste of a .json backup, one at a time. */
   function registerIntake() {
     if (!g.TlbxIntake || g.TlbxIntake.spec('projects')) return;
-    g.TlbxIntake.register({ id: 'projects', limit: 1, accept: { types: ['application/json'], exts: ['.json'], get noun() { return t('projects.files.noun'); } }, process: (file) => openFile(file) });
+    g.TlbxIntake.register({ id: 'projects', limit: 1, accept: { types: ['application/json'], exts: ['.json'], noun: 'projects.files.noun' }, process: (file) => openFile(file) });
   }
   async function importFile() {
     registerIntake();

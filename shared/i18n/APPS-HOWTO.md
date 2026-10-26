@@ -76,6 +76,13 @@ them all (`APPS-HOWTO.md` § 6). An offline single-file copy lists the English p
   (a toolbar, a rail, a panel, a status bar) must follow a change: mark its elements with `data-i18n` /
   `data-i18n-attr` (then `apply()` updates them), or re-render it from `TlbxI18n.on(fn)` (the PDF app has `U.onLang`).
   The `tlbxi18n` event on `window` fires after the new tables are in; `tlbx-lang` fires at once.
+- Shared components take keys: a label, title, noun or verb given to TlbxSheet, TlbxResizePanel, TlbxFrame
+  (`panelLabel`, `listLabel`), TlbxMenuBar (menu titles, item and tool labels), TlbxDrop (`label`, `hint`, `chooseLabel`,
+  `preview.steps`, `preview.picture.alt`, `sample.label`), TlbxIntake (`noun`), TlbxOuttake (`verb`, one key with `{app}`),
+  TlbxFlow (`label`, `onTo` label) and TlbxConfig (`registerKind` label and description) may be an i18n key or a function
+  (`TlbxI18n.label(v, vars)`: a string that is a known key is translated, a function is called, other text is shown as
+  given). Pass the key (`label: 'diff.drop.label'`), not `t('diff.drop.label')`: the component reads it again on every
+  language change. Never mark a component's nodes from the app.
 - TlbxCmd: the title, group and description of each command come from `t()`; register them again from
   `TlbxI18n.on(...)` so the palette follows a switch. Never translate command ids, argument names or AI tool names
   and descriptions written for agents (they are API).

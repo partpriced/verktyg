@@ -6,15 +6,16 @@
   'use strict';
   const me = document.currentScript;
   if (!me || !me.src) return;
-  /** A word from the shared tables (shared/i18n/ui/en.js), or the English given when TlbxI18n or the key is absent. */
-  function tr(key, en, vars) { const I = globalThis.TlbxI18n; if (I && I.has && I.has(key)) return I.t(key, vars); return vars ? String(en).replace(/\{(\w+)\}/g, (m, k) => (k in vars ? String(vars[k]) : m)) : en; }
+  /** A word from the shared tables (shell.* in shared/i18n/strings.js, ui.tour.* in shared/i18n/ui/<code>.js); the key
+   *  itself without TlbxI18n. Everything built once is marked (data-i18n) or rebuilt from TlbxI18n.on, so it follows a switch. */
+  const tr = (key, vars) => { const I = globalThis.TlbxI18n; return I && I.t ? I.t(key, vars) : key; };
   const BASE = new URL('./', me.src).href;
   const APP = me.dataset.app || '';
   const HOME = me.dataset.home === '1';
   const TOURS = [
     ['imageeditor', 'Image Editor'], ['vectoreditor', 'Vector Editor'], ['videostudio', 'Video Editor'], ['remix', 'Video Remix'],
     ['bgremover', 'Background Remover'], ['drive', 'Files'], ['orders', 'Orders'], ['invoices', 'Invoices'],
-    ['crm', 'CRM'], ['calendar', 'Calendar'], ['todo', 'To-do'], ['notes', 'Notes'],
+    ['crm', 'CRM'], ['calendar', 'Calendar'], ['projects', 'Projects'], ['todo', 'To-do'], ['notes', 'Notes'],
     ['paste', 'Paste'], ['resize', 'Resizer'], ['upscale', 'Upscaler'], ['aitools', 'AI Tools'],
     ['3d', '3D Modeller'], ['img3d', 'Image to 3D'], ['effects', 'Motion Graphics'], ['docs', 'Documents'],
     ['slides', 'Presentations'], ['tables', 'Spreadsheets'], ['label', 'Label Designer'], ['gallery', 'Gallery'],
@@ -53,32 +54,31 @@
       console.warn('TlbxTour: the tour did not start. ' + e.message);
     }
   }
-  /** keys: [label key, title key, vars]: marked for TlbxI18n, so a later language change retranslates them. */
-  function button(label, title, fn, keys) {
+  /** A header button. lk, tk: the label and title keys, marked for TlbxI18n so a later language change retranslates them. */
+  function button(lk, tk, vars, fn) {
     const b = document.createElement('button');
     // The shared header-button look (shared/ui/hbtn.css): a compass, and the label that gives way to it in a full header.
     b.type = 'button'; b.className = 'stour-btn tlbx-hbtn';
     b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m15 9-2 4-4 2 2-4z"/></svg><span class="tlbx-hbtn-txt"></span>';
-    const [lk, tk, vars] = keys || [];
-    if (lk) { label = tr(lk, label); b.lastChild.setAttribute('data-i18n', lk); }
-    if (tk) { title = tr(tk, title, vars); b.setAttribute('data-i18n-attr', `title:${tk};aria-label:${tk}`); }
+    b.lastChild.setAttribute('data-i18n', lk);
+    b.setAttribute('data-i18n-attr', `title:${tk};aria-label:${tk}`);
     if (vars) b.setAttribute('data-i18n-vars', JSON.stringify(vars));
-    b.lastChild.textContent = label;
-    b.title = title; b.setAttribute('aria-label', title);
+    b.lastChild.textContent = tr(lk);
+    b.title = tr(tk, vars); b.setAttribute('aria-label', b.title);
     b.addEventListener('click', fn);
     return b;
   }
   function headerButton() {
     const host = document.querySelector('.top-actions') || document.querySelector('header.topbar') || document.querySelector('header') || document.querySelector('main') || document.body;
     if (host.querySelector('.stour-btn')) return;
-    const b = button('Tour', 'Start the ' + NAME[APP] + ' tour', () => startTour(APP), ['shell.tour', 'shell.tour_title', { app: NAME[APP] }]);
+    const b = button('shell.tour', 'shell.tour_title', { app: NAME[APP] }, () => startTour(APP));
     const slot = host.querySelector('.stour-slot');   // room kept for it in the page's own HTML, so nothing moves
     if (slot) slot.replaceWith(b); else if (host.matches('.top-actions, main, body')) host.prepend(b); else host.append(b);
   }
   /** Register "Start tour: <name>". Pages without the palette get its registry core (no key handling) to hold it. */
   function paletteCommand() {
     const reg = () => window.TlbxCmd && TlbxCmd.register && TlbxCmd.register([{
-      id: 'tour.start.' + APP, title: tr('ui.tour.start_cmd', 'Start tour: {name}', { name: NAME[APP] }), group: 'Help',
+      id: 'tour.start.' + APP, title: tr('ui.tour.start_cmd', { name: NAME[APP] }), group: 'Help',   // a group id (shared/commands/search.js shows it translated)
       keywords: ['tour', 'guide', 'walkthrough', 'learn', 'help'], run: () => startTour(APP),
     }]);
     if (window.TlbxCmd) reg(); else script(BASE + '../commands/commands.js').then(reg, () => {});
@@ -105,15 +105,15 @@
     const dlg = document.createElement('dialog');
     dlg.className = 'stour-menu'; dlg.setAttribute('aria-labelledby', 'stour-menu-title');
     const head = document.createElement('div'); head.className = 'stour-menu-head';
-    const h = document.createElement('h2'); h.id = 'stour-menu-title'; h.textContent = tr('ui.tour.guided', 'Guided tours'); h.dataset.i18n = 'ui.tour.guided';
+    const h = document.createElement('h2'); h.id = 'stour-menu-title'; h.textContent = tr('ui.tour.guided'); h.dataset.i18n = 'ui.tour.guided';
     const x = document.createElement('button');
     x.type = 'button'; x.className = 'stour-menu-x'; x.textContent = '×';
-    x.setAttribute('aria-label', tr('ui.tour.close_list', 'Close guided tours')); x.dataset.i18nAttr = 'aria-label:ui.tour.close_list'; x.addEventListener('click', () => dlg.close());
+    x.setAttribute('aria-label', tr('ui.tour.close_list')); x.dataset.i18nAttr = 'aria-label:ui.tour.close_list'; x.addEventListener('click', () => dlg.close());
     head.append(h, x);
     const lede = document.createElement('p'); lede.className = 'stour-menu-lede';
-    lede.textContent = tr('ui.tour.lede', 'Pick an app to start its guided tour. You can stop at any step.'); lede.dataset.i18n = 'ui.tour.lede';
+    lede.textContent = tr('ui.tour.lede'); lede.dataset.i18n = 'ui.tour.lede';
     const search = document.createElement('input');
-    search.type = 'search'; search.className = 'stour-search'; search.placeholder = tr('ui.tour.search', 'Search tours');
+    search.type = 'search'; search.className = 'stour-search'; search.placeholder = tr('ui.tour.search');
     search.setAttribute('aria-label', search.placeholder); search.dataset.i18nAttr = 'placeholder:ui.tour.search;aria-label:ui.tour.search'; search.autocomplete = 'off';
     const ul = document.createElement('ul'); ul.className = 'stour-grid';
     const items = TOURS.map(([app, fallback]) => {
@@ -134,7 +134,7 @@
       return { li, key: name.toLowerCase() };
     });
     const empty = document.createElement('p'); empty.className = 'stour-empty'; empty.hidden = true;
-    empty.textContent = tr('ui.tour.no_match', 'No tour matches that name.'); empty.dataset.i18n = 'ui.tour.no_match';
+    empty.textContent = tr('ui.tour.no_match'); empty.dataset.i18n = 'ui.tour.no_match';
     const filter = () => {
       const q = search.value.trim().toLowerCase();
       let shown = 0;
@@ -145,11 +145,10 @@
     dlg.append(head, lede, search, ul, empty);
     dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
     let opener = null;
-    const I = window.TlbxI18n, t = (k, en) => { const v = I && typeof I.t === 'function' ? I.t(k) : k; return v === k ? en : v; };
-    const tours = button(t('tour.tours', 'Tours'), t('tour.tours_title', 'Guided tours for each app'), () => {
+    const tours = button('shell.tours', 'shell.tours_title', null, () => {
       opener = tours; search.value = ''; filter();
       dlg.showModal();
-    }, ['shell.tours', 'shell.tours_title']);
+    });
     tours.setAttribute('aria-haspopup', 'dialog');
     dlg.addEventListener('close', () => { if (opener) opener.focus(); opener = null; });
     document.body.append(dlg);

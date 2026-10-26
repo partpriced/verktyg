@@ -70,7 +70,7 @@
 
   const drop = $('ck-drop');
   // The one way in (shared/intake, spec 'checksum'): the box (click to choose, or a drop on it) and a paste; one file.
-  TlbxIntake.register({ id: 'checksum', accept: { any: true, allowEmpty: true, noun: t('checksum.app.a_file') }, limit: 1, toast: false, process: async (f) => { drop.classList.remove('over'); await choose(f); return f.name; } });
+  TlbxIntake.register({ id: 'checksum', accept: { any: true, allowEmpty: true, noun: 'checksum.app.a_file' }, limit: 1, toast: false, process: async (f) => { drop.classList.remove('over'); await choose(f); return f.name; } });
   $('ck-alg').addEventListener('change', show);
   $('ck-expect').addEventListener('input', check);
   $('ck-copy').addEventListener('click', async () => {
