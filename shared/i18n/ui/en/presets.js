@@ -95,4 +95,8 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'ui.presets.bd.pulse': 'Grows 8 % and returns',
   'ui.presets.b.spin_in': 'Spin in',
   'ui.presets.bd.spin_in': 'Turns a full turn while it grows in',
+  'ui.presets.err_no_file': 'No file was given.',
+  'ui.presets.err_too_big': 'The file is larger than {size}.',
+  'ui.presets.err_problems': 'Not a valid preset: {list}',
+  'ui.presets.err_invalid': 'Not a valid preset.',
 });
