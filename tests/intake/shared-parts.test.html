@@ -32,14 +32,17 @@
     }, { timeout: 40000 });
     it('Import shortcuts (keys.import)', async () => {
       W.TlbxUI.pickFiles = async () => [json('keys.json', JSON.stringify({ app: W.TlbxCmd.app || 'imageeditor', keys: {} }))];
-      const p = W.TlbxCmd._parts.recorder.importFile();
+      // a file from another app asks first ("Import them here anyway?"): yes (the page's app id can differ in a build)
+      const ask = W.TlbxUI.confirm; W.TlbxUI.confirm = async () => true;
+      const p = W.TlbxCmd._parts.recorder.importFile().finally(() => { W.TlbxUI.confirm = ask; });
       await waitFor(() => W.TlbxIntake.spec('keys.import'));
       await p;
       expect(!!W.TlbxIntake.spec('keys.import')).toBe(true);
     });
     it("the presets dialog's Import… (presets.import)", async () => {
       W.TlbxPresets.openPicker({ title: 'Presets', onApply: () => {} });
-      const b = await button('Import…');
+      // the dialog's own Import… (a panel of the page, Brushes, has a button of that name too)
+      const b = await waitFor(() => [...D.querySelectorAll('.sp-dlg button')].find((x) => x.textContent.trim() === 'Import…'));
       W.TlbxUI.pickFiles = async () => [json('preset.json')];
       b.click();
       await waitFor(() => W.TlbxIntake.spec('presets.import'));
