@@ -62,7 +62,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.frame.resize_aria': 'Ändra storlek på panelen {label} (piltangenter; dubbelklicka för att återställa)',
   'ui.frame.resize_tip': 'Dra för att ändra storlek. Dubbelklicka: standardbredd.',
   'ui.frame.reset_sizes': 'Återställ panelstorlekar',
-  'ui.list.empty': 'Inga {items} än.',
   'ui.flow.from_to': '{from} till {to}',
   'ui.flow.file': 'Fil',
   'ui.flow.file_lc': 'fil',
