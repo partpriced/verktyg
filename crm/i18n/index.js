@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'crm',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['forms', 'page', 'views'],
-  langs: ['en', 'es', 'fr', 'pt-BR', 'sv'],
+  langs: ['de', 'en', 'es', 'fr', 'pt-BR', 'sv'],
 });
