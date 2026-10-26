@@ -79,8 +79,8 @@ them all (`APPS-HOWTO.md` § 6). An offline single-file copy lists the English p
 - Shared components take keys: a label, title, noun or verb given to TlbxSheet, TlbxResizePanel, TlbxFrame
   (`panelLabel`, `listLabel`), TlbxMenuBar (menu titles, item and tool labels), TlbxDrop (`label`, `hint`, `chooseLabel`,
   `preview.steps`, `preview.picture.alt`, `sample.label`), TlbxIntake (`noun`), TlbxOuttake (`verb`, one key with `{app}`),
-  TlbxFlow (`label`, `onTo` label), TlbxConfig (`registerKind` label and description), TlbxList (`label`, `noun`, a text
-  `empty`), TlbxBiz.panel (`label`) and TlbxWatermarkPanel (`toggle.label`, `actions[].label` and `title`) may be an i18n key or a function
+  TlbxFlow (`label`, `onTo` label), TlbxConfig (`registerKind` label and description), TlbxList (`label`, a text `empty`, and
+  `count`: one plural family such as `invoices.li.count` with `#one`, `#few`, ..., never a `[singular, plural]` pair), TlbxBiz.panel (`label`) and TlbxWatermarkPanel (`toggle.label`, `actions[].label` and `title`) may be an i18n key or a function
   (`TlbxI18n.label(v, vars)`: a string that is a known key is translated, a function is called, other text is shown as
   given). Pass the key (`label: 'diff.drop.label'`), not `t('diff.drop.label')`: the component reads it again on every
   language change. Never mark a component's nodes from the app.

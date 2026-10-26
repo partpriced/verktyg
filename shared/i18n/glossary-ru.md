@@ -130,3 +130,14 @@ Register: address the user as «вы» (lowercase), as Microsoft Office, Google 
 | view mode Full / Focus / Content | Полный / Фокус / Содержимое |  |
 | count forms | #one 1, 21… «файл»; #few 2–4 «файла»; #many 5–20 «файлов»; plain key = #many form |  |
 | app noun in a sentence | «{items}: пока ничего нет», «Панель «{label}»» | keeps any noun in the nominative |
+| preset | Пресет | everywhere (Image Editor, Resize, Remix, guides); «набор» only for a literal set («Набор фавиконов») |
+| clipping mask | обтравочная маска | as in Photoshop; Image Editor and Vector Editor alike |
+| quote (sales) | коммерческое предложение | app and document name; the short form «предложение» in lists, buttons and commands |
+| statement (bank) | выписка | bank statement in Ledger and Convert |
+| statement (customer) | акт сверки | customer account statement in Invoices and printed documents |
+| follow-up | напоминание | contacts, reports, invoices |
+| ledger (app) | бухгалтерская книга | the Ledger app |
+| general ledger | главная книга | the general-ledger view inside the app |
+| typed amounts | 12,50 | placeholders and hints use the decimal comma; file-format messages (CSV) keep the dot |
+| quotes (text) | «ёлочки» | also for dynamic text such as «{text}» |
+| OK button | ОК | not «Хорошо» |

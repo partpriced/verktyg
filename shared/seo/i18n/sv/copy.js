@@ -89,7 +89,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.app.qr.title': 'QR Code Generator: QR-koder för länkar, wifi och kontakter | ITpris',
   'seo.app.qr.description': 'QR-koder för text, länkar, e-post, wifi, kontakter, platser och händelser. Ladda ned SVG eller PNG, med transparens om du behöver. Inget laddas upp.',
   'seo.app.colors.title': 'Colours: färgväljare, paletter och kontrast | ITpris',
-  'seo.app.colors.description': 'Hämta färger ur bilder, hitta huvudfärgerna, gör paletter och harmonier, kontrollera WCAG-kontrast och exportera CSS, Tailwind, ASE eller GPL. Inget laddas upp.',
+  'seo.app.colors.description': 'Hämta färger ur bilder, gör paletter på ett färghjul (RGB, RYB eller OKLCH), kolla WCAG-kontrast och exportera CSS, Tailwind, ASE eller GPL. Inget laddas upp.',
   'seo.app.fontcreator.title': 'Font Creator: gör ditt eget teckensnitt i webbläsaren | ITpris',
   'seo.app.fontcreator.description': 'Rita ett teckensnitt, spåra din handstil eller redigera TTF, OTF, WOFF2. Penna, former, kerning och provtext; exportera TTF, OTF, WOFF2 och CSS. Helt lokalt.',
   'seo.app.workflows.title': 'Workflows: arbetsflöden för många filer i flera appar | ITpris',
