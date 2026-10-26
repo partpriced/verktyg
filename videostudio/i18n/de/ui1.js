@@ -116,7 +116,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'videoedit.menu.worksuite_home': 'Worksuite-Startseite',
   'videoedit.menu.add_some_clips_to_the': 'Zuerst einige Clips zur Zeitleiste hinzufügen',
   'videoedit.menu.about_videostudio': 'Über Video Editor',
-  'videoedit.menu.videostudio_is_a_free_video': 'Video Editor ist ein kostenloser Videoeditor, der vollständig im Browser läuft. Das Material wird nie hochgeladen: Es wird auf diesem Gerät dekodiert, bearbeitet und kodiert.',
+  'videoedit.menu.videostudio_is_a_free_video': 'Video Editor ist ein kostenloses Videoschnittprogramm, das vollständig im Browser läuft. Das Material wird nie hochgeladen: Es wird auf diesem Gerät dekodiert, bearbeitet und kodiert.',
   'videoedit.menu.export_uses_webcodecs_hardware_video': 'Der Export nutzt WebCodecs (Hardware-Videokodierung) mit den MIT-lizenzierten Muxern mp4-muxer und webm-muxer von Vanilagy. Browser ohne WebCodecs weichen auf eine Aufnahme als WebM in Echtzeit aus.',
   'videoedit.menu.autosave_keeps_your_project_and': 'Das automatische Speichern hält das Projekt und die Medien in der IndexedDB dieses Browsers. Es lässt sich unter Datei ▸ Automatisch speichern ausschalten.',
   'videoedit.menu.nice': 'Schön',
