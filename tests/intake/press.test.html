@@ -101,10 +101,11 @@
     it('File ▸ Send to is the TlbxOuttake builder: the PDF to the apps and Workflows once, the page PNG to the apps', async () => {
       const items = W.PR.hub.sendItems().filter((x) => x !== '-');
       const labels = items.map((x) => x.label);
-      expect(labels.some((l) => /^Send PDF to PDF$/.test(l))).toBe(true);
+      const names = (id) => { const a = W.TLBX_APPS.find((x) => x.id === id); return [a.name, W.tlbxAppName(a)]; };   // the build's names (here PDF Editor)
+      expect(labels.some((l) => names('pdf').some((n) => l === `Send PDF to ${n}`))).toBe(true);
       expect(labels.some((l) => /^Send page PNG to /.test(l))).toBe(true);
       expect(labels.filter((l) => l === 'Run a workflow…').length).toBe(1);
-      expect(labels.filter((l) => /Tlbx Workflows$/.test(l)).length).toBe(0);
+      expect(labels.filter((l) => names('workflows').some((n) => l.endsWith(n))).length).toBe(0);
       expect(labels[labels.length - 1]).toBe('Save to Files…');
     });
   });
