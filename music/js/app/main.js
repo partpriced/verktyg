@@ -47,6 +47,7 @@
     M.libUI.bind(); M.plUI.bind(); M.now.bind(); M.mini.bind(() => setView('now'));
     M.libUI.render();
     M.engine.subscribe(() => { titleNow(); M.mini.paint(view); });
+    if (window.TlbxI18n && window.TlbxI18n.on) window.TlbxI18n.on(() => M.mini.paint(view));   // its play button's label
     bindTabs();
     document.addEventListener('keydown', keys);
     const hash = location.hash.slice(1);

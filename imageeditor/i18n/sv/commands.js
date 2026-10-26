@@ -1,0 +1,23 @@
+/* Image Editor, Swedish: palette titles of the canvas, tool and window commands (app/commands.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('sv', {
+  'imageeditor.cmd.opacity_toast': 'Opacitet {pct} %',
+  'imageeditor.cmd.cycle_tools': 'Växla mellan {tools}',
+  'imageeditor.cmd.swap_colors': 'Byt förgrunds- och bakgrundsfärg',
+  'imageeditor.cmd.default_colors': 'Standardfärger (svart/vitt)',
+  'imageeditor.cmd.brush_bigger': 'Större pensel',
+  'imageeditor.cmd.brush_smaller': 'Mindre pensel',
+  'imageeditor.cmd.brush_harder': 'Hårdare pensel',
+  'imageeditor.cmd.brush_softer': 'Mjukare pensel',
+  'imageeditor.cmd.tool_opacity': 'Verktygets opacitet {pct} %',
+  'imageeditor.cmd.nudge_left': 'Flytta {n} px åt vänster',
+  'imageeditor.cmd.nudge_right': 'Flytta {n} px åt höger',
+  'imageeditor.cmd.nudge_up': 'Flytta {n} px uppåt',
+  'imageeditor.cmd.nudge_down': 'Flytta {n} px nedåt',
+  'imageeditor.cmd.next_doc': 'Nästa dokument',
+  'imageeditor.cmd.prev_doc': 'Föregående dokument',
+  'imageeditor.cmd.go_to_doc': 'Gå till dokument {i}',
+  'imageeditor.cmd.restore_aspect': 'Återställ ursprungliga proportioner',
+  'imageeditor.cmd.guides_panel': 'Stödlinjepanel (stödlinjelayouter)',
+  'imageeditor.cmd.search_key': 'Sök kommandon ({key})',
+  'imageeditor.cmd.nav_preset': 'Navigeringsförinställning…',
+});

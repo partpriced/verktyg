@@ -1,0 +1,23 @@
+/* Image Editor, English: palette titles of the canvas, tool and window commands (app/commands.js). Rules: shared/i18n/APPS-HOWTO.md. */
+window.TlbxI18n && window.TlbxI18n.add('en', {
+  'imageeditor.cmd.opacity_toast': 'Opacity {pct}%',
+  'imageeditor.cmd.cycle_tools': 'Cycle {tools}',
+  'imageeditor.cmd.swap_colors': 'Swap foreground and background colours',
+  'imageeditor.cmd.default_colors': 'Default colours (black / white)',
+  'imageeditor.cmd.brush_bigger': 'Brush size up',
+  'imageeditor.cmd.brush_smaller': 'Brush size down',
+  'imageeditor.cmd.brush_harder': 'Brush hardness up',
+  'imageeditor.cmd.brush_softer': 'Brush hardness down',
+  'imageeditor.cmd.tool_opacity': 'Tool opacity {pct}%',
+  'imageeditor.cmd.nudge_left': 'Nudge left {n} px',
+  'imageeditor.cmd.nudge_right': 'Nudge right {n} px',
+  'imageeditor.cmd.nudge_up': 'Nudge up {n} px',
+  'imageeditor.cmd.nudge_down': 'Nudge down {n} px',
+  'imageeditor.cmd.next_doc': 'Next document',
+  'imageeditor.cmd.prev_doc': 'Previous document',
+  'imageeditor.cmd.go_to_doc': 'Go to document {i}',
+  'imageeditor.cmd.restore_aspect': 'Restore original aspect ratio',
+  'imageeditor.cmd.guides_panel': 'Guides panel (guide layouts)',
+  'imageeditor.cmd.search_key': 'Search commands ({key})',
+  'imageeditor.cmd.nav_preset': 'Navigation preset…',
+});

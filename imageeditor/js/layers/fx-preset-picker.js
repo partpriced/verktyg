@@ -19,11 +19,11 @@ function openFxPresetPicker(layerId) {
   const orig = L0.fx || null;
   const SP = TlbxPresets;
   let sel = null, applied = false;
-  const list = h('ul', { class: 'sp-list', role: 'listbox', 'aria-label': 'Presets' });
+  const list = h('ul', { class: 'sp-list', role: 'listbox', 'aria-label': tr('imageeditor.fx.presets') });
   const status = h('p', { class: 'sui-p sp-status', role: 'status' });
-  const exportBtn = h('button', { type: 'button', class: 'sui-btn' }, 'Export…');
-  const deleteBtn = h('button', { type: 'button', class: 'sui-btn sui-danger' }, 'Delete');
-  const importBtn = h('button', { type: 'button', class: 'sui-btn' }, 'Import…');
+  const exportBtn = h('button', { type: 'button', class: 'sui-btn' }, tr('imageeditor.fx.export'));
+  const deleteBtn = h('button', { type: 'button', class: 'sui-btn sui-danger' }, tr('ui.delete'));
+  const importBtn = h('button', { type: 'button', class: 'sui-btn' }, tr('imageeditor.fx.import'));
   const mine = () => { const p = sel && SP.get(sel); return p && !p.builtin ? p : null; };
 
   /** Puts the layer back to what it was before the picker opened (no history step). */
@@ -46,42 +46,42 @@ function openFxPresetPicker(layerId) {
       const on = p.id === sel;
       const li = h('li', { role: 'option', 'aria-selected': on ? 'true' : 'false', tabindex: '0', class: 'sp-row' + (on ? ' on' : ''), 'data-id': p.id },
         fxPresetChips(p),
-        h('span', { class: 'sp-name' }, h('b', null, p.label), h('small', null, (p.builtin ? 'Built-in' : 'Mine') + ' · Effect' + (p.description ? ' · ' + p.description : ''))));
+        h('span', { class: 'sp-name' }, h('b', null, p.label), h('small', null, tr(p.builtin ? 'imageeditor.fx.builtin' : 'imageeditor.fx.mine') + ' · ' + tr('imageeditor.fx.effect') + (p.description ? ' · ' + p.description : ''))));
       li.addEventListener('click', () => choose(p.id));
       li.addEventListener('dblclick', () => { if (applyChosen()) closeDlg(); });
       li.addEventListener('keydown', (e) => { if (e.key === 'Enter' && applyChosen()) closeDlg(); });
       return li;
     }));
-    if (!rows.length) list.append(h('li', { class: 'sp-empty' }, 'No presets here yet. Save one from a layer’s menu, or import a .tlbx.json file.'));
+    if (!rows.length) list.append(h('li', { class: 'sp-empty' }, tr('imageeditor.fx.no_presets')));
     exportBtn.disabled = !sel;
     deleteBtn.disabled = !mine();
   }
   /** Writes the chosen preset to the layer as one step. False when nothing is chosen or nothing can apply. */
   function applyChosen() {
     const p = sel && SP.get(sel);
-    if (!p) { status.textContent = 'Choose a preset first.'; return false; }
+    if (!p) { status.textContent = tr('imageeditor.fx.choose_first'); return false; }
     restore();
     const r = fxPresetApply(layerId, p);
-    if (!r.added) { preview(p); status.textContent = 'Nothing in “' + p.label + '” can apply to a layer here.'; return false; }
+    if (!r.added) { preview(p); status.textContent = tr('imageeditor.fx.nothing_applies', { name: p.label }); return false; }
     applied = true;
-    TlbxUI.toast('Applied “' + p.label + '”' + (r.skipped ? ` (${r.skipped} effect${r.skipped > 1 ? 's' : ''} skipped)` : ''));
+    TlbxUI.toast(r.skipped ? tr('imageeditor.fx.applied_skipped', { name: p.label, n: r.skipped }) : tr('imageeditor.fx.applied', { name: p.label }));
     return true;
   }
 
   exportBtn.addEventListener('click', () => { const f = sel && SP.exportFile(sel); if (f) TlbxUI.download(f.blob, f.name); });
   // Import comes in the one way (shared/intake): a spec of its own, for this dialog.
   TlbxIntake.register({ id: 'imageeditor.fx-preset', main: false, paste: false, limit: 1, toast: false,
-    accept: { types: ['application/json'], exts: ['.json'], noun: 'an effects preset (.tlbx.json)' },
+    accept: { types: ['application/json'], exts: ['.json'], noun: tr('imageeditor.fx.noun_preset') },
     process: async (f) => {
       const r = await SP.importFile(f);
-      status.textContent = r.ok ? 'Imported.' : SP.errorText(r.errors);
+      status.textContent = r.ok ? tr('imageeditor.fx.imported') : SP.errorText(r.errors);
       if (r.ok) choose(r.id); else paint();
       return r.ok;
     } });
   importBtn.addEventListener('click', () => TlbxIntake.pick({ to: 'imageeditor.fx-preset', multiple: false }));
   deleteBtn.addEventListener('click', async () => {
     const m = mine();
-    if (!m || !(await TlbxUI.confirm('Delete preset', 'Delete “' + m.label + '”? It is removed from Files for every app.', 'Delete', { danger: true }))) return;
+    if (!m || !(await TlbxUI.confirm(tr('imageeditor.fx.delete_preset'), tr('imageeditor.fx.delete_ask', { name: m.label }), tr('ui.delete'), { danger: true }))) return;
     const r = await SP.remove(m.id);
     if (!r.ok) status.textContent = SP.errorText(r.errors);
     sel = null; restore(); paint();
@@ -90,14 +90,14 @@ function openFxPresetPicker(layerId) {
   const repaint = () => paint();
   window.addEventListener('tlbx-presets:change', repaint);
   const body = h('div', { class: 'sp-dialog' }, h('div', { class: 'sp-tools' }, exportBtn, importBtn, deleteBtn), list, status,
-    h('p', { class: 'sp-help' }, 'Choose a preset to preview it on the layer. Apply keeps it as one undo step.'));
+    h('p', { class: 'sp-help' }, tr('imageeditor.fx.picker_help')));
   let closeDlg = () => {};
   TlbxUI.dialog({
-    title: 'Apply effect preset', cls: 'sp-dlg', body,
+    title: tr('imageeditor.fx.apply_preset'), cls: 'sp-dlg', body,
     onClose: (ok) => { window.removeEventListener('tlbx-presets:change', repaint); if (!applied) restore(); },
     buttons: [
-      { label: 'Close' },
-      { label: 'Apply', primary: true, act: () => applyChosen() },
+      { label: tr('menu.close') },
+      { label: tr('ui.apply'), primary: true, act: () => applyChosen() },
     ],
   });
   // Closes the dialog from a double click or Enter on a row (the Close button's own handler does the restore).

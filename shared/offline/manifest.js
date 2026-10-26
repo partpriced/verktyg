@@ -101,7 +101,10 @@
     id: 'vector', entry: 'vectoreditor/index.html', mode: 'inline', marker: 'tlbx-vector-build',
     drop: ['shared/guard.js', 'shared/spotlight/spotlight.js'],
     files: [
-    'shared/profile/profile.js', 'shared/theme/theme.js', 'shared/support/state.js', 'shared/support/card.js',
+    'shared/profile/profile.js', 'shared/theme/theme.js',
+    'shared/i18n/i18n.js', 'vectoreditor/i18n/index.js', 'shared/i18n/strings.js', 'shared/i18n/ui/en.js',
+    'vectoreditor/i18n/en/actions.js', 'vectoreditor/i18n/en/dialogs.js', 'vectoreditor/i18n/en/messages.js',
+    'vectoreditor/i18n/en/panels.js', 'vectoreditor/i18n/en/tools.js', 'vectoreditor/i18n/en/ui.js', 'shared/support/state.js', 'shared/support/card.js',
     'shared/support/support.js', 'shared/tlbxui.css', 'shared/color/picker.css', 'shared/nav/nav.css',
     'shared/commands/commands.css', 'shared/guides/guides.css', 'vectoreditor/css/themes.css',
     'shared/frame/frame.css', 'vectoreditor/css/chrome.css', 'vectoreditor/css/canvas.css', 'vectoreditor/css/panels.css',

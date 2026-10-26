@@ -27,18 +27,18 @@
   AI.askHelpbot = function (question) {
     if (bubble) { bubble.remove(); bubble = null; }
     const out = el('div', { class: 'say' }, AI.E.ready() ? '…' : '');
-    const inp = el('input', { class: 'inp', placeholder: 'Ask Helper anything', 'aria-label': 'Ask Helper' });
+    const inp = el('input', { class: 'inp', placeholder: AI.t('ai.helpbot.placeholder'), 'aria-label': AI.t('ai.helpbot.ask') });
     const go = async (q) => {
       out.textContent = '';
       const s = window.TlbxAI.ask(q || 'Say hi to me in your style.', { persona: 'helpbot' });
       AI.lastHelpbot = s;
       try { for await (const piece of s) out.textContent += piece; } catch (e) { out.textContent = 'blorp. ' + e.message; }
     };
-    bubble = el('div', { class: 'helpbot-bubble', role: 'dialog', 'aria-label': 'Ask Helper' }, out,
+    bubble = el('div', { class: 'helpbot-bubble', role: 'dialog', 'aria-label': AI.t('ai.helpbot.ask') }, out,
       el('form', { onsubmit: (e) => { e.preventDefault(); const q = inp.value.trim(); if (q) { inp.value = ''; go(q); } } }, inp),
-      el('button', { type: 'button', class: 'x', 'aria-label': 'Close', onclick: () => { bubble.remove(); bubble = null; } }, '×'));
+      el('button', { type: 'button', class: 'x', 'aria-label': AI.t('menu.close'), onclick: () => { bubble.remove(); bubble = null; } }, '×'));
     document.body.append(bubble);
-    if (!AI.E.ready()) out.textContent = 'Hello. Ask me anything. (load a model first and my brain hat turns on)';
+    if (!AI.E.ready()) out.textContent = AI.t('ai.helpbot.no_model');
     else go(question);
     setTimeout(() => inp.focus(), 0);
     return bubble;

@@ -15,6 +15,11 @@
     let html = await text('videostudio/index.html');
     const files = new Map();
     for (const m of html.matchAll(/data-src="([^"]+)"/g)) if (!files.has(m[1]) && m[1] !== 'shared/hub.js') files.set(m[1], await text(m[1]));
+    // the string tables: the copy runs in English (i18n.js fetches nothing in it), so the English parts and the shared
+    // words follow videostudio/i18n/index.js inline
+    const parts = (/parts:\s*\[([^\]]*)\]/.exec(files.get('videostudio/i18n/index.js') || '') || [])[1];
+    const tables = parts ? ['shared/i18n/ui/en.js'].concat(parts.split(',').map((x) => 'videostudio/i18n/en/' + x.trim().replace(/^'|'$/g, '') + '.js')) : [];
+    for (const t of tables) files.set(t, await text(t));
     html = html.replace(/^[^\n]*data-offline="strip"[^\n]*\n/gm, () => '');
     html = html.replace(/<link\b[^>]*\bdata-src="([^"]+)"[^>]*>/g, (m, p) => '<style data-src="' + p + '">\n' + esc(files.get(p) || '') + '\n</style>');
     html = html.replace(/<script\b[^>]*\bdata-src="([^"]+)"[^>]*><\/script>/g, (m, p) => {
@@ -22,6 +27,7 @@
       const app = (/\sdata-app="([^"]+)"/.exec(m) || [])[1];   // theme.js reads its app id from this attribute
       let out = '<script data-src="' + p + '"' + (app ? ' data-app="' + app + '"' : '') + '>\n' + esc(files.get(p) || '') + '\n</script>';
       if (p === 'shared/tlbxui.js') out = '<script>window.SE = { offline: true };</script>\n' + out;
+      if (p === 'videostudio/i18n/index.js') out += tables.map((t) => '\n<script data-src="' + t + '">\n' + esc(files.get(t)) + '\n</script>').join('');
       return out;
     });
     const fav = await optional('favicon.svg');
@@ -31,12 +37,12 @@
     return html;
   };
   SE.act.downloadApp = async function () {
-    if (SE.offline) { TlbxUI.toast('This is already the offline app'); return; }
+    if (SE.offline) { TlbxUI.toast(SE.util.t('videoedit.io.this_is_already_the_offline')); return; }
     try {
-      SE.app.status('Building the offline app…');
+      SE.app.status(SE.util.t('videoedit.io.building_the_offline_app'));
       const html = await B.make();
       TlbxUI.download(new Blob([html], { type: 'text/html' }), 'videoedit.html');
-      SE.app.status('Downloaded videoedit.html (' + Math.round(html.length / 1024) + ' KB). It works without a connection.');
-    } catch (e) { TlbxUI.alert('Download app', 'Could not build the offline file: ' + e.message); }
+      SE.app.status(SE.util.t('videoedit.io.downloaded', { kb: Math.round(html.length / 1024) }));
+    } catch (e) { TlbxUI.alert(SE.util.t('videoedit.io.download_app'), SE.util.t('videoedit.io.build_failed', { error: e.message })); }
   };
 })();

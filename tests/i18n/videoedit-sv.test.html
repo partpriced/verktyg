@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Video Editor in Swedish</title>
+  <!-- Covers: videostudio/i18n/index.js, videostudio/js/core/history.js, videostudio/js/core/model.js, videostudio/js/core/util.js, videostudio/js/io/build.js,
+       videostudio/js/io/config.js, videostudio/js/io/cutout.js, videostudio/js/io/encode.js, videostudio/js/io/gif.js, videostudio/js/io/intake.js,
+       videostudio/js/io/project.js, videostudio/js/io/recorder.js, videostudio/js/io/reel.js, videostudio/js/io/sample.js, videostudio/js/io/session.js,
+       videostudio/js/media/demux.js, videostudio/js/media/library.js, videostudio/js/render/cells.js, videostudio/js/render/mask-input.js,
+       videostudio/js/render/preview-input.js, videostudio/js/render/preview.js, videostudio/js/render/text.js, videostudio/js/timeline/actions.js,
+       videostudio/js/timeline/draw.js, videostudio/js/timeline/heads.js, videostudio/js/timeline/input.js, videostudio/js/timeline/menu.js,
+       videostudio/js/timeline/order.js, videostudio/js/timeline/view.js, videostudio/js/ui/app.js, videostudio/js/ui/aspect.js, videostudio/js/ui/bin.js,
+       videostudio/js/ui/cmd-fallback.js, videostudio/js/ui/commands.js, videostudio/js/ui/context.js, videostudio/js/ui/effects.js,
+       videostudio/js/ui/export-dialog.js, videostudio/js/ui/graphics-panel.js, videostudio/js/ui/insp-anim.js, videostudio/js/ui/insp-clip.js,
+       videostudio/js/ui/insp-fields.js, videostudio/js/ui/insp-graphic.js, videostudio/js/ui/insp-mask.js, videostudio/js/ui/inspector.js,
+       videostudio/js/ui/lane.js, videostudio/js/ui/layout.js, videostudio/js/ui/main.js, videostudio/js/ui/menus.js, videostudio/js/ui/presets.js,
+       videostudio/js/ui/progress.js, videostudio/js/ui/random-dialog.js, videostudio/js/ui/templates-panel.js, videostudio/js/ui/tpl-actions.js,
+       videostudio/js/ui/tr-preview.js, videostudio/js/ui/transport.js, videostudio/js/watermark/panel.js, videostudio/js/watermark/state.js,
+       shared/tour/tours/videostudio.js -->
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; } iframe { width: 1280px; height: 800px; border: 0; display: block; }</style>
+</head>
+<body>
+  <script src="../harness.js"></script>
+  <script>
+  const { describe, it, beforeEach, afterEach, expect, waitFor, run } = TlbxTest;
+  // The app in a same-origin iframe, so it shares this page's localStorage (the language choice).
+  const frames = [];
+  function open(lang, width = 1280) {
+    if (lang) localStorage.setItem('tlbx-profile', JSON.stringify({ v: 1, data: { lang: { mode: lang } } }));
+    const f = document.createElement('iframe');
+    f.style.width = width + 'px';
+    f.src = '../../videostudio/index.html';
+    document.body.append(f);
+    frames.push(f);
+    return waitFor(() => f.contentDocument && f.contentDocument.readyState === 'complete' && (f.contentDocument.body.classList.contains('ready')) && f.contentWindow.TlbxShell && f.contentWindow.TlbxShell.currentApp, { timeout: 30000 }).then(() => f);
+  }
+  const KEY = /(^|[\s(“"'«])(videoedit|ui|menu|shell|nav)\.[a-z0-9_]+\.?[a-z0-9_.]*[a-z0-9_]/;
+  /** Text a person sees or hears in the page: the body text, the labelling attributes and the options. */
+  function visible(doc) {
+    const out = [doc.body.innerText];
+    for (const el of doc.querySelectorAll('[title], [aria-label], [placeholder]')) out.push(el.getAttribute('title') || '', el.getAttribute('aria-label') || '', el.getAttribute('placeholder') || '');
+    for (const o of doc.querySelectorAll('option')) out.push(o.textContent);
+    return out.join('\n');
+  }
+  const txt = (doc, sel) => doc.querySelector(sel).textContent.trim();
+  /** The tour file's words, read the way TlbxTour reads them (a getter on each step). */
+  function tour(f) {
+    const w = f.contentWindow, got = [], keep = w.TlbxTour;
+    w.TlbxTour = { define: (t) => got.push(t) };
+    return new Promise((res, rej) => {
+      const s = f.contentDocument.createElement('script');
+      s.src = '../shared/tour/tours/videostudio.js';
+      s.onload = () => { w.TlbxTour = keep; res(got[0]); };
+      s.onerror = rej;
+      f.contentDocument.head.append(s);
+    });
+  }
+
+  describe('Video Editor in Swedish', () => {
+    beforeEach(() => { localStorage.clear(); });
+    afterEach(() => { frames.splice(0).forEach((f) => f.remove()); localStorage.clear(); });
+    const menus = (doc) => [...doc.querySelectorAll('#menus .menu-b')].map((b) => b.textContent.trim());
+    const tabs = (doc) => [...doc.querySelectorAll('#mtabs .mtab span')].map((s) => s.textContent.trim());
+
+    it('shows Swedish menus, tabs, bin, timeline tools and palette titles, with no key showing', async () => {
+      const f = await open('sv');
+      const doc = f.contentDocument, w = f.contentWindow;
+      expect(doc.documentElement.getAttribute('lang')).toBe('sv');
+      expect(menus(doc)).toEqual(['Arkiv', 'Redigera', 'Klipp', 'Sekvens', 'Visa', 'Layout', 'Hjälp']);
+      expect(tabs(doc)).toEqual(['Media', 'Effekter', 'Granskare', 'Tidslinje']);
+      expect(txt(doc, '#statusLeft')).toBe('Klar');
+      expect(doc.querySelector('#bin').textContent).toContain('Importera filer');
+      expect(w.TlbxCmd.get('edit.split').title).toBe('Dela vid uppspelningshuvudet');
+      expect(w.TlbxCmd.get('tr.cross').title).toBe('Lägg till övergång: Övertoning');
+      expect(doc.querySelector('#tlBar [data-cmd="edit.split"]').getAttribute('aria-label')).toBe('Dela vid uppspelningshuvudet');
+      const t = await tour(f);
+      expect(t.title).toBe('Rundtur i Video Editor');
+      expect(t.steps[0].title).toBe('Mediebibliotek');
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+
+    it('switching to English live switches back, then Swedish again', async () => {
+      const f = await open('sv');
+      const doc = f.contentDocument, w = f.contentWindow, I = w.TlbxI18n;
+      I.set('en');
+      await waitFor(() => menus(doc)[0] === 'File' && w.TlbxCmd.get('edit.split').title === 'Split at playhead', { timeout: 20000 });
+      expect(doc.documentElement.getAttribute('lang')).toBe('en');
+      expect(tabs(doc)).toEqual(['Media', 'Effects', 'Inspector', 'Timeline']);
+      expect(doc.querySelector('#bin').textContent).toContain('Import files');
+      expect(w.TlbxCmd.get('tr.cross').title).toBe('Add transition: Cross dissolve');
+      I.set('sv');
+      await waitFor(() => menus(doc)[0] === 'Arkiv' && doc.querySelector('#bin').textContent.includes('Importera filer'), { timeout: 20000 });
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+
+    it('the offline copy carries the English tables, read before anything is fetched', async () => {
+      const f = await open('sv');
+      const html = await f.contentWindow.SE.build.make();
+      expect(html.indexOf('name="videoedit-build" content="offline"') < html.indexOf('data-src="shared/i18n/i18n.js"')).toBe(true);
+      for (const p of ['shared/i18n/ui/en.js', 'videostudio/i18n/en/ui1.js', 'videostudio/i18n/en/defs.js']) expect(html).toContain('data-src="' + p + '"');
+    });
+
+    it('at 390 px Swedish fits with no sideways scroll', async () => {
+      const f = await open('sv', 390);
+      const doc = f.contentDocument;
+      await waitFor(() => doc.documentElement.getAttribute('lang') === 'sv', { timeout: 20000 });
+      expect(doc.documentElement.scrollWidth <= f.contentWindow.innerWidth + 1).toBe(true);
+      expect(KEY.test(visible(doc))).toBe(false);
+    });
+  });
+  run({ name: 'Video Editor in Swedish' });
+  </script>
+</body>
+</html>

@@ -73,9 +73,9 @@
     if (!scenes.length) throw new Error('Every slide is hidden');
     var doc = await L.PDFDocument.create();
     doc.registerFontkit(window.fontkit);
-    doc.setTitle(deck.title || 'Presentation');
-    doc.setCreator('Presentations');
-    doc.setProducer('Presentations (pdf-lib)');
+    doc.setTitle(deck.title || 'Presentation'); // i18n-ignore
+    doc.setCreator('Presentations'); // i18n-ignore
+    doc.setProducer('Presentations (pdf-lib)'); // i18n-ignore
     var fonts = await SS.pdfText.prepare(doc, scenes, { ask: opts.ask });
     var imgs = await images(doc, deck, scenes);
     scenes.forEach(function (sc) {

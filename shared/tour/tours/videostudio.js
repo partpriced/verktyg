@@ -1,13 +1,11 @@
-/* TlbxTour: Video Editor (the videostudio folder). Targets are ids in videostudio/index.html. */
-TlbxTour.define({
-  app: 'videostudio',
-  title: 'Video Editor tour',
-  steps: [
-    { id: 'bin', title: 'Media bin', text: 'Your clips, music and effects. Drag them onto the timeline to build the cut.', target: '#bin' },
-    { id: 'monitor', title: 'Program monitor', text: 'Shows the cut as it plays. Space plays and pauses.', target: '#monitor' },
-    { id: 'inspector', title: 'Inspector', text: 'Settings for the selected clip. Select a clip on the timeline to change it.', target: '#insp' },
-    { id: 'timeline', title: 'Timeline', text: 'Clips sit on tracks. S splits at the playhead; arrows step frame by frame.', target: '#timeline' },
-    { id: 'undo', title: 'Undo and redo', text: 'Undo and redo are in the top bar, next to the project name.', target: '#btnUndo' },
-    { id: 'export', title: 'Export', text: 'Export the finished cut as a video file.', target: '#btnExport' },
-  ],
-});
+/* TlbxTour: Video Editor (the videostudio folder). Targets are ids in videostudio/index.html. The words are in videostudio/i18n (videoedit.tour.*), read when the
+   tour shows them, so they follow the chosen language. */
+(function () {
+  const t = (k) => (globalThis.TlbxI18n ? TlbxI18n.t(k) : k);
+  const step = (id, target) => ({ id, target, get title() { return t('videoedit.tour.' + id); }, get text() { return t('videoedit.tour.' + id + '_text'); } });
+  TlbxTour.define({
+    app: 'videostudio',
+    get title() { return t('videoedit.tour.title'); },
+    steps: [step('bin', '#bin'), step('monitor', '#monitor'), step('inspector', '#insp'), step('timeline', '#timeline'), step('undo', '#btnUndo'), step('export', '#btnExport')],
+  });
+})();

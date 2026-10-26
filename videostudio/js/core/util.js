@@ -5,6 +5,14 @@
   const SE = window.SE = window.SE || {};
   const U = SE.util = {};
   SE.act = SE.act || {}; // actions run by commands (see ui/commands.js)
+  /* Text a person reads: t(key, vars) from the app's tables (videostudio/i18n, shared/i18n/APPS-HOWTO.md), the key itself
+     when TlbxI18n is missing (node tests). onLang(fn) re-runs fn after a language change, once the new tables are in. */
+  U.t = (key, vars) => { const I = window.TlbxI18n; return I ? I.t(key, vars) : key; };
+  U.onLang = (fn) => { const I = window.TlbxI18n; return I && I.on ? I.on(fn) : () => {}; };
+  /** A built-in name (a transition, a preset, a template...) in the chosen language, videoedit.def.<kind>.<id>, else en; the
+     names themselves stay English (they are data). wl(kind, list) maps [id, label, ...] rows the same way. */
+  U.w = (kind, id, en) => { const I = window.TlbxI18n, k = 'videoedit.def.' + kind + '.' + String(id).replace(/[^a-z0-9]+/gi, '_').toLowerCase(); return I && I.has(k) ? I.t(k) : en; };
+  U.wl = (kind, list) => list.map((r) => [r[0], U.w(kind, r[0], r[1])].concat(r.slice(2)));
 
   U.$ = (sel, root) => (root || document).querySelector(sel);
   U.$$ = (sel, root) => [...(root || document).querySelectorAll(sel)];
@@ -93,7 +101,7 @@
     return dbp;
   }
   /** A full quota shows the storage dialog once (shared/storage/ui.js); the error still goes to the caller. */
-  const full = (e) => { try { window.TlbxStorage && TlbxStorage.handle(e, { what: 'this media' }); } catch (x) { /* no dialog on this page */ } return e; };
+  const full = (e) => { try { window.TlbxStorage && TlbxStorage.handle(e, { what: U.t('videoedit.core.this_media') }); } catch (x) { /* no dialog on this page */ } return e; };
   async function tx(store, mode, fn) {
     const d = await db();
     return new Promise((res, rej) => {

@@ -29,7 +29,7 @@
     return jobs.get(rel);
   }
   let kitP = null;
-  /** The TlbxUI kit. Some pages own a different window.TlbxUI (the homepage), so load the kit beside it. */
+  /** The TlbxUI kit. A page may own a different window.TlbxUI, so load the kit beside it. */
   function kit() {
     if (window.TlbxUI && window.TlbxUI.dialog) return Promise.resolve(window.TlbxUI);
     if (!kitP) kitP = (async () => {

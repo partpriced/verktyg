@@ -8,18 +8,18 @@
   /** Store the clips and the manifest in Files, then open Video Editor on the manifest. */
   RM.sendToVideoStudio = async function () {
     const st = RM.state;
-    if (!window.TlbxHub) { $('rm-status').textContent = 'Files is not available here'; return null; }
-    if (!RM.media().length) { $('rm-status').textContent = 'Add some clips or photos first'; return null; }
+    if (!window.TlbxHub) { $('rm-status').textContent = RM.t('remix.send.no_drive'); return null; }
+    if (!RM.media().length) { $('rm-status').textContent = RM.t('remix.ui.add_first'); return null; }
     if (!st.plan) RM.remix();
-    $('rm-status').textContent = 'Sending to Video Editor…';
+    $('rm-status').textContent = RM.t('remix.send.sending');
     const ids = [];
     for (const it of RM.media()) ids.push(await TlbxHub.put(it.file, { name: it.name, from: 'remix' }));
     const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, '.');
     const blob = new Blob([JSON.stringify(RM.manifest(ids), null, 1)], { type: TYPE });
-    const name = 'Remix ' + stamp + '.reel.json';
+    const name = 'Remix ' + stamp + '.reel.json'; // i18n-ignore: a file name
     const mid = await TlbxHub.put(blob, { name, from: 'remix' });
     await window.TlbxOuttake.send('videoedit', { id: mid, name, type: TYPE, from: 'remix' }); // the one way out, no copy
-    $('rm-status').textContent = 'Opened in Video Editor: ' + ids.length + ' clips, manifest ' + name;
+    $('rm-status').textContent = RM.t('remix.send.opened', { n: ids.length, name });
     return mid;
   };
   function $(id) { return document.getElementById(id); }
