@@ -70,8 +70,10 @@
         expect(tagOf('Label Designer')).toBe('Beta');
         const I = window.TlbxI18n, swapped = () => new Promise((ok) => window.addEventListener('tlbxi18n', ok, { once: true }));
         let w = swapped(); I.set('sv'); await w;
-        typeQuery('Documents');
-        expect(tagOf('Documents')).toBe('Förhandsversion');
+        // the app's name in Swedish where the tables give one (sv-apps.js), as the switcher shows it
+        const docs = window.TLBX_APPS.find((a) => a.id === 'docs'), svName = window.tlbxAppName ? window.tlbxAppName(docs) : docs.name;
+        typeQuery(svName);
+        expect(tagOf(svName)).toBe('Förhandsversion');
         w = swapped(); I.set('en'); await w;
         closeIfOpen();
       });
