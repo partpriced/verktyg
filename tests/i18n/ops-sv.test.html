@@ -53,7 +53,7 @@
         expect(R.byId('resize.image').label).toBe('Resize');
         expect(R.byId('videoedit.reframe').options[0].label).toBe('Frame');
         expect(window.TlbxWorkflowEntry.menuItems(() => []).map((i) => i.label)).toEqual(['Run a workflow…', 'Add to a workflow…']);
-      } finally { localStorage.removeItem('tlbx-profile'); }
+      } finally { localStorage.removeItem('tlbx-profile'); TlbxTest.english(); }
     });
   });
   run({ name: 'Workflows steps in Swedish' });
