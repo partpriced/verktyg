@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'pdf',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['actions', 'actions3', 'app', 'commands', 'editor', 'find', 'io', 'macro', 'menus', 'redact', 'select', 'tools', 'tools2'],
-  langs: ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-BR', 'ru', 'sv', 'uk', 'zh-CN'],
+  langs: ['ar', 'de', 'en', 'es', 'fr', 'it', 'ja', 'nl', 'pl', 'pt-BR', 'ru', 'sv', 'tr', 'uk', 'zh-CN'],
 });
