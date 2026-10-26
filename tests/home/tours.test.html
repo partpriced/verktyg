@@ -37,10 +37,11 @@
       await ready;
       doc.querySelector('.nav .stour-btn').click();
       const search = menu().querySelector('.stour-search');
-      search.value = 'photo';
+      const name = win.TLBX_APPS.find((a) => a.id === 'imageeditor').name;   // the image editor, by the build's name for it (here Image Editor)
+      search.value = name.toLowerCase();
       search.dispatchEvent(new win.Event('input'));
       expect(shown().length).toBe(1);
-      expect(shown()[0].querySelector('strong').textContent).toBe('Image Editor');
+      expect(shown()[0].querySelector('strong').textContent).toBe(name);
       search.value = 'zzz';
       search.dispatchEvent(new win.Event('input'));
       expect(shown().length).toBe(0);
