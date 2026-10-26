@@ -4,10 +4,11 @@
 Any app can load it (no CDN, no build, no DOM needed to read the data). Video Editor uses it; Video Remix and the others can use it later.
 
 ## API
-- `TlbxGraphics.list()` → `[{ id, name, group, paths }]`, a copy of the library.
+- `TlbxGraphics.list()` → `[{ id, name, group, groupId, paths }]`, a copy of the library. `name` and `group` are read from
+  the shared tables at each call (`ui.graphics.<id>`, `ui.graphics.group.<groupId>`, `shared/i18n/ui/<code>/graphics.js`).
 - `TlbxGraphics.get(id)` → one shape, or `null`.
 - `TlbxGraphics.svg(id, { color, stroke, size })` → a standalone `<svg>` string (`currentColor` by default).
-- `TlbxGraphics.ANIMS` → `[['draw','Draw on'], ['pulse','Pulse'], ['bounce','Bounce'], ['pop','Pop'], ['none','None']]`.
+- `TlbxGraphics.ANIMS` → `[[id, label]]` for `draw`, `pulse`, `bounce`, `pop`, `none` (a getter; labels `ui.graphics.anim.<id>`).
 - `TlbxGraphics.STROKE` → stroke width in the 100 box (7).
 
 ## Shapes (id: meaning)
