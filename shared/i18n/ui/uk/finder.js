@@ -22,6 +22,5 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'ui.list.count#few': '{n} елементи',
   'ui.list.count#many': '{n} елементів',
   'ui.list.count': '{n} елементів',
-  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'Поки що тут нічого немає.',
 });

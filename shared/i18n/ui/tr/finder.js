@@ -15,6 +15,5 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'ui.finder.not_sorted': 'sıralı değil',
   'ui.list.count': '{n} öğe',
   'ui.list.count#one': '{n} öğe',
-  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'Henüz burada bir şey yok.',
 });
