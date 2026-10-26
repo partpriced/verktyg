@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'html2pdf',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['app'],
-  langs: ['de', 'en', 'es', 'fr', 'pt-BR', 'sv', 'zh-CN'],
+  langs: ['de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'],
 });

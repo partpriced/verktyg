@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'label',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['defs', 'manual', 'page', 'tail', 'tour', 'ui1', 'ui2', 'ui3'],
-  langs: ['de', 'en', 'es', 'fr', 'pt-BR', 'sv', 'zh-CN'],
+  langs: ['de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'],
 });
