@@ -25,6 +25,8 @@ function button(label, cls, act) {
   return b;
 }
 const toast = (m) => { if (window.TlbxUI && window.TlbxUI.toast) window.TlbxUI.toast(m); };
+/** The words (shared/i18n/ui/<code>/ai2.js and the base table). */
+const T = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
 
 export async function addActions(listEl, outputs, { from = 'convert' } = {}) {
   let H;
@@ -35,19 +37,19 @@ export async function addActions(listEl, outputs, { from = 'convert' } = {}) {
     const li = rows[i];
     if (!li || li.querySelector('.sl-cvt-save')) return;
     const type = typeOf(o);
-    const save = button('Save to Files', 'sl-cvt-save', async () => {
+    const save = button(T('ui.convert.save_drive'), 'sl-cvt-save', async () => {
       save.disabled = true;
       try {
-        const id = await H.saveToDrive(o.blob, o.name, { from, title: `Save “${o.name}” to Files` });
-        if (id) { save.textContent = 'Saved to Files'; return; }
-      } catch (e) { toast('Could not save to Files: ' + ((e && e.message) || e)); }
+        const id = await H.saveToDrive(o.blob, o.name, { from, title: T('ui.convert.save_title', { name: o.name }) });
+        if (id) { save.textContent = T('ui.convert.saved'); return; }
+      } catch (e) { toast(T('ui.convert.save_failed', { error: String((e && e.message) || e) })); }
       save.disabled = false;
     });
     // Open in…: the one outbound menu (TlbxOuttake, shared/intake/outtake.js): every app that takes the type, and the
     // handovers and shared items others register. Save to Files is the button beside it.
     const O = window.TlbxOuttake;
     const openIn = O && H.appsAccepting(type).length
-      ? O.button({ get: () => o.blob, name: o.name, type, from, folder: false }, { label: 'Open in…', cls: 'cv-btn cv-small sl-cvt-open' }) : null;
+      ? O.button({ get: () => o.blob, name: o.name, type, from, folder: false }, { label: T('ui.outtake.open_in_dots'), cls: 'cv-btn cv-small sl-cvt-open' }) : null;
     li.append(save, ...(openIn ? [openIn] : []));
   });
 }

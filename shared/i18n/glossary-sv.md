@@ -790,3 +790,92 @@ history step and palette word, so never strip a suffix to get it. Layer names th
 | Export plain template… | Exportera tom mall… |  |
 | Ask AI to write a config… | Be AI skriva en konfiguration… |  |
 | Number formats | Nummerformat | invoice and order numbers |
+
+## Shared panels: workflow steps, watermark, preview, deck, faces, guides (wave 1, shared components)
+
+| English | Svenska | Note |
+| --- | --- | --- |
+| step (workflow) | steg | «Steg 1 har ingen åtgärd» |
+| Run a workflow… / Add to a workflow… | Kör ett arbetsflöde… / Lägg till i ett arbetsflöde… |  |
+| see-through (background) | genomskinlig | «Genomskinlig (PNG)» |
+| cut-out | urklipp |  |
+| drop shadow | skugga |  |
+| crop to the subject | Beskär till motivet |  |
+| fit / fill / stretch (resize) | Anpassa / Fyll / Sträck ut |  |
+| longest side | längsta sidan |  |
+| lossless / strong (compression) | förlustfri / stark |  |
+| searchable PDF | sökbar PDF |  |
+| plain text | oformaterad text |  |
+| frame (aspect, video) | bildformat | «Stående 9:16», «Liggande 16:9» |
+| frame rate | bildfrekvens |  |
+| seed (random edit) | startvärde |  |
+| pace | tempo |  |
+| edit list (EDL) | redigeringslista |  |
+| outline (deck, document) | disposition |  |
+| speaker notes | talaranteckningar |  |
+| denoise | brusreducering |  |
+| blemish | hudfläck | «Läk hudfläckar» |
+| whiten teeth / eyes | Bleka tänder / Ljusa upp ögonvitor |  |
+| layer (watermark) | lager | «Lägg till textlager» |
+| My watermarks | Mina vattenstämplar |  |
+| shorter side | kortsidan | «% av kortsidan» |
+| move across / move down | Flytta i sidled / Flytta nedåt |  |
+| tile (repeat a mark) | Upprepa över bilden | «sida vid sida» in the step option |
+| actual size | verklig storlek |  |
+| like / dislike (photo deck) | Gilla / Ogilla; stamp «Gillad» / «Ogillad» |  |
+| tag (photo) | tagg | «Taggade ”a”, ”b”.» |
+| merge / split (people) | Slå ihop / Dela upp |  |
+| face boxes | ansiktsrutor |  |
+| margins / columns / rows / gutter (guides) | marginaler / kolumner / rader / mellanrum |  |
+| baseline grid | baslinjeraster |  |
+| wildcard (guide notation) | jokertecken |  |
+| Live preview | Direkt förhandsgranskning |  |
+| Rule of thirds / Golden ratio | Tredjedelsregeln / Gyllene snittet |  |
+| kinds: Images, Code and text, Archives, Other | Bilder, Kod och text, Arkiv, Övrigt | Gallery filters |
+
+## Shared AI panel, own AI account and model choice
+
+| English | Svenska | Note |
+| --- | --- | --- |
+| AI permissions | AI-behörigheter | the panel's ⚙ and the mode switch |
+| Ask each time / Allow app changes / Allow everything | Fråga varje gång / Tillåt appändringar / Tillåt allt | permission modes |
+| Allow once / for this request / for this visit / Always allow / Deny | Tillåt en gång / för den här förfrågan / under det här besöket / Tillåt alltid / Neka | the permission question |
+| kinds of action | appändringar, borttagningar, filutskick, kommandon i en annan app, kostnader för bildgenerering | nouns, so «Tillåt filutskick i …» reads |
+| the assistant | assistenten |  |
+| Undo all AI changes | Ångra alla AI-ändringar |  |
+| step (of a request) | steg | «3 steg, 1 misslyckades» |
+| operation (file job) | åtgärd | «Lista åtgärderna» |
+| good at app control | bra på att styra appar | model badge |
+| GPU memory | GPU-minne |  |
+| licence / commercial use | licens / kommersiell användning |  |
+| Detect automatically | Identifiera automatiskt | the language list's first row |
+| Recommended / Fastest / Made for … | Rekommenderas / Snabbast / Gjord för … | model badges |
+| Speed / Accuracy | Hastighet / Noggrannhet |  |
+| matting (cut-out) | frilägga |  |
+| AI provider | AI-leverantör | «Välj en leverantör» |
+| API key | API-nyckel | |
+| own AI account | eget AI-konto | «Använd ditt eget AI-konto» |
+| Test connection | Testa anslutningen | button |
+| Forget key | Glöm nyckeln | |
+| spending cap | utgiftstak | «inget tak», «(tak 500)» |
+| token (AI usage) | token (pl. token) | «976 token» |
+| request (to a provider) | förfrågan / förfrågningar | |
+| rate limit | hastighetsgräns | |
+| free tier / free trial | gratisnivå / gratis provperiod | badges «Gratis», «Gratismodeller», «Gratis provperiod» |
+| model turn | modellvända | usage hover text |
+| cached (tokens) | i cache | «35 314 från cache» |
+| Main (provider group) | Huvudval | groups: Snabb inferens, Öppna modeller, Moln, Lokalt på den här datorn, Bilder, Fler |
+| Any address | Valfri adress | the OpenAI-compatible custom entry |
+| needs a proxy / browser OK | kräver proxy / webbläsare OK | picker badges |
+| endpoint | slutpunkt | «Slutpunkts-id» |
+| deployment (Azure) | driftsättning | |
+| mixed content | blandat innehåll | |
+| How to connect … | Så ansluter du … | |
+| Generate image / Generate (button) | Skapa bild / Skapa | imagegen dialog |
+| Edit with AI | Redigera med AI | |
+| Made by (picture provider) | Görs av | |
+| Transparent background | Genomskinlig bakgrund | |
+| Spend on image generation | Betala för bildgenerering | permission question title |
+| prompt | prompt | kept as «prompt» in AI contexts |
+| content rules | innehållsregler | |
+| charges your account | debiterar ditt konto | |
