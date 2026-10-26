@@ -20,7 +20,7 @@ Shared code (shell/, shared/) still has 6263 hard-coded strings; most belong to 
 |---:|---|---|---:|---:|---:|---:|
 | 1 | File Converter | convert | 2030 | 0 | 2030 | 0 of 29 |
 | 2 | Image Editor | imageeditor | 1858 | 0 | 1858 | 0 of 29 |
-| 3 | PDF Editor | pdf | 1692 | 1477 | 215 | 0 of 29 |
+| 3 | PDF Editor | pdf | 1738 | 1522 | 216 | 0 of 29 |
 | 4 | Video Editor | videoedit | 1426 | 0 | 1426 | 0 of 29 |
 | 5 | Label Designer | label | 1406 | 0 | 1406 | 0 of 29 |
 | 6 | Page Layout | press | 1373 | 0 | 1373 | 0 of 29 |
@@ -82,7 +82,7 @@ Shared code (shell/, shared/) still has 6263 hard-coded strings; most belong to 
 | 62 | Reminders | reminders | 44 | 0 | 44 | 0 of 29 |
 | 63 | Checksum | checksum | 42 | 0 | 42 | 0 of 29 |
 
-Total: 25179 strings in 63 apps.
+Total: 25225 strings in 63 apps.
 
 ## Apps with tables, per language
 
