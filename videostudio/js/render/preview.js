@@ -71,8 +71,8 @@
   /** An empty project shows what Video Editor makes and how (TlbxDrop's preview; the bin has Import and Sample project). */
   let intro = null;
   const introOf = () => intro || (intro = window.TlbxDrop.panel.preview({
-    picture: { src: '../assets/shots/videoedit.jpg', alt: U.t('videoedit.render.a_short_film_on_the') },
-    steps: [U.t('videoedit.render.step_drop'), U.t('videoedit.render.cut_and_arrange_them_on'), U.t('videoedit.render.export_a_video_file')] }));
+    picture: { src: '../assets/shots/videoedit.jpg', alt: 'videoedit.render.a_short_film_on_the' },   // keys: the preview follows a language change
+    steps: ['videoedit.render.step_drop', 'videoedit.render.cut_and_arrange_them_on', 'videoedit.render.export_a_video_file'] }));
   function updateMsg() {
     const p = SE.doc;
     if (!p.clips.length) {

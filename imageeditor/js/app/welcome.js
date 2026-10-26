@@ -4,10 +4,10 @@
  * first stroke, a new tab, a file or Close removes it. */
 'use strict';
 
-/** The card's picture and steps, in the current language. */
+/** The card's picture and steps as keys: TlbxDrop's preview draws them again on a language change. */
 const WELCOME = () => ({
-  picture: { src: '../assets/shots/imageeditor.jpg', alt: tr('imageeditor.welcome.alt') },
-  steps: [tr('imageeditor.welcome.step_open'), tr('imageeditor.welcome.step_edit'), tr('imageeditor.welcome.step_export')],
+  picture: { src: '../assets/shots/imageeditor.jpg', alt: 'imageeditor.welcome.alt' },
+  steps: ['imageeditor.welcome.step_open', 'imageeditor.welcome.step_edit', 'imageeditor.welcome.step_export'],
 });
 
 function showWelcome() {
@@ -24,14 +24,14 @@ function showWelcome() {
   };
   const onModel = (w) => { if (D !== doc || (w === 'history' && Hist.idx > 0)) close(); };
   const onDown = (e) => { if (card && !card.contains(e.target)) close(); };
-  const sample = h('button', { type: 'button', class: 'sd-sample', id: 'psWelcomeSample', onclick: () => {
+  const sample = h('button', { type: 'button', class: 'sd-sample', id: 'psWelcomeSample', 'data-i18n': 'imageeditor.welcome.sample', onclick: () => {
     close();
     if (window.TlbxSamples) TlbxIntake.sample(() => TlbxSamples.photos(1, { width: 1600, height: 1000 }), { to: 'imageeditor', mode: 'new' });
   } }, tr('imageeditor.welcome.sample'));
-  const shut = h('button', { type: 'button', class: 'sd-sample', onclick: close }, tr('imageeditor.welcome.blank'));
+  const shut = h('button', { type: 'button', class: 'sd-sample', 'data-i18n': 'imageeditor.welcome.blank', onclick: close }, tr('imageeditor.welcome.blank'));
   const inner = h('div', { class: 'ps-welcome-card' }, pv, h('div', { class: 'sd-acts' }, sample, shut));
   inner.addEventListener('pointerdown', (e) => e.stopPropagation()); // a press on the card is not a stroke on the canvas
-  card = h('div', { class: 'ps-welcome', id: 'psWelcome', role: 'region', 'aria-label': tr('imageeditor.welcome.region') }, inner);
+  card = h('div', { class: 'ps-welcome', id: 'psWelcome', role: 'region', 'aria-label': tr('imageeditor.welcome.region'), 'data-i18n-attr': 'aria-label:imageeditor.welcome.region' }, inner);
   vp.append(card);
   listeners.add(onModel);
   vp.addEventListener('pointerdown', onDown, true); // a stroke on the canvas starts work: the card goes, the stroke goes on
