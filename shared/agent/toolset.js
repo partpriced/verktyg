@@ -17,10 +17,11 @@
   'use strict';
   if (g.TlbxAgentToolset) return;
   const T = g.TlbxAgentTools, W = g.TlbxAgentWorkspace;
+  const tr = (k, v) => { const I = g.TlbxI18n; return I ? I.t(k, v) : k; };
   const subs = new Set();
   let busy = 0, timer = 0;
 
-  const appName = () => { const a = g.TlbxShell && g.TlbxShell.currentApp; return (a && a.name) || document.title.split(/[|–—-]/)[0].trim() || 'this app'; };
+  const appName = () => { const a = g.TlbxShell && g.TlbxShell.currentApp; return (a && a.name) || document.title.split(/[|–—-]/)[0].trim() || tr('ui.ai.this_app'); };
   const appId = () => (g.TlbxHub && g.TlbxHub.self && g.TlbxHub.self.app) || ((g.TlbxShell && g.TlbxShell.currentApp) || {}).id || '';
   const dialogOpen = () => !!(g.TlbxUI && g.TlbxUI.openDialogs > 0);
   function usable(id) {
@@ -47,7 +48,7 @@
     hookCmd();
     const K = g.TlbxAIKit;
     // look: the agent can see the result too (look_at_canvas, look_at_file: a small picture, asked as a 'send')
-    let list = K.appTools.build({ cmd: hooked ? g.TlbxCmd : null, ops: true, appId: appId(), appName: appName(), look: true, who: 'the AI agent' }).map(K.cmdTools.neutral)
+    let list = K.appTools.build({ cmd: hooked ? g.TlbxCmd : null, ops: true, appId: appId(), appName: appName(), look: true, who: tr('ui.agent.the_agent') }).map(K.cmdTools.neutral)
       .filter((d) => !d.cmdId || usable(d.cmdId));
     const isCmd = (d) => !!d.cmdId || d.name === 'run_command';
     if (dialogOpen() && !busy) list = list.filter((d) => !isCmd(d) || d.readOnly);
@@ -57,8 +58,8 @@
   async function confirm(text, client, about = {}) {
     const P = g.TlbxAIPermissions;
     const ask = () => (P && typeof P.ask === 'function'
-      ? P.ask({ kind: about.kind || 'delete', app: appId() || 'site', appName: appName(), action: about.action || '', detail: text, who: about.who || 'an AI agent' })
-      : g.TlbxUI && g.TlbxUI.confirm ? g.TlbxUI.confirm('Allow this AI agent action?', text, 'Allow', { danger: true })
+      ? P.ask({ kind: about.kind || 'delete', app: appId() || 'site', appName: appName(), action: about.action || '', detail: text, who: about.who || tr('ui.agent.an_agent') })
+      : g.TlbxUI && g.TlbxUI.confirm ? g.TlbxUI.confirm(tr('ui.agent.allow_q'), text, tr('ui.agent.allow'), { danger: true })
         : Promise.resolve(g.confirm(text)));
     if (client && typeof client.requestUserInteraction === 'function') return !!(await client.requestUserInteraction(ask));
     return !!(await ask());

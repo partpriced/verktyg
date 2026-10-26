@@ -6,6 +6,16 @@
 // Covers: shared/3d-io/convert.js, shared/3d-io/resources.js, shared/3d-io/decoders.js, shared/3d-io/textures.js
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { createRequire } from 'node:module';
+
+// TlbxI18n with the English words of the 3D messages (ui.d3.*, shared/i18n/ui/en/misc.js), as on a page: the readers,
+// writers and the status line read them when they speak. Covers: shared/i18n/ui/en/misc.js
+const require = createRequire(import.meta.url);
+require('../../shared/i18n/i18n.js');
+globalThis.TlbxI18n = globalThis.TlbxI18n.create({ defaultLang: 'en', profile: null });
+globalThis.window = globalThis;
+require('../../shared/i18n/ui/en/misc.js');
+delete globalThis.window;
 
 const V = '../../vendor/three/';
 const T = await import(V + 'three.module.min.js');
@@ -159,4 +169,18 @@ test('the cdn decoders: which extensions need which engine, pinned to the releas
   assert.deepEqual(needed({ extensionsUsed: ['KHR_materials_unlit'] }), []);
   assert.equal(CDN_BASE, `https://cdn.jsdelivr.net/gh/partpriced/cdn@${globalThis.TlbxCdn.TAG}/engines/`);
   for (const e of Object.values(ENGINES)) for (const [hash, bytes] of Object.values(e.files)) { assert.match(hash, /^[0-9a-f]{64}$/); assert.ok(bytes > 1000); }
+});
+
+test('the 3D words follow the language (shared/i18n/ui/sv/misc.js): what a format drops and a refusal', async () => {
+  // they were English in every language; ui.d3.* keys now, read when the message is made
+  const en = globalThis.TlbxI18n;
+  globalThis.TlbxI18n = en.create({ defaultLang: 'sv', profile: null });
+  globalThis.window = globalThis;
+  try {
+    require('../../shared/i18n/ui/sv/misc.js');
+    const s = { meshes: 1, triangles: 12, vertices: 24, materials: 1, textures: 0, animations: 2 };
+    assert.deepEqual(dropped(s, 'stl'), ['1 material', '2 animationer']);
+    await assert.rejects(readModel([{ name: 'a.txt', blob: new Blob(['hello']) }]), /^Error: Ingen av filerna är en 3D-modell/);
+  } finally { globalThis.TlbxI18n = en; delete globalThis.window; }
+  assert.deepEqual(dropped({ animations: 2 }, 'stl'), ['2 animations']);
 });

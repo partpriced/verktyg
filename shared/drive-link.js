@@ -30,7 +30,9 @@
     const a = document.createElement('a');
     a.className = 'sdl tlbx-hbtn';
     a.href = url;
-    a.title = 'Open Files (Shift- or middle-click: new tab)';
+    // the tooltip is a key (ui.misc.drive_tip), marked so a language switch redraws it (TlbxI18n.apply)
+    a.setAttribute('data-i18n-attr', 'title:ui.misc.drive_tip');
+    a.title = window.TlbxI18n ? window.TlbxI18n.t('ui.misc.drive_tip') : 'ui.misc.drive_tip';
     a.setAttribute('aria-label', 'Files');
     a.dataset.sdl = '';
     a.innerHTML = `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON}</svg><span class="tlbx-hbtn-txt">Files</span>`;
