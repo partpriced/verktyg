@@ -84,6 +84,17 @@
       await sleep(600);
       fits(D);
     }, { timeout: 60000 });
+    // Swedish menu names are longer (Redigera, Infoga): at 1024 the bar still fits (a white-label build defaults to sv)
+    it('1024 in Swedish: one row, nothing past the edge', async () => {
+      let was = null;
+      try { was = localStorage.getItem('tlbx-profile'); localStorage.setItem('tlbx-profile', JSON.stringify({ v: 1, data: { lang: { mode: 'sv' } } })); } catch (e) { /* no storage */ }
+      try {
+        const D = await open(1024);
+        expect(D.documentElement.lang).toBe('sv');
+        oneRow(D, '#btnSave');
+        fits(D);
+      } finally { try { if (was === null) localStorage.removeItem('tlbx-profile'); else localStorage.setItem('tlbx-profile', was); } catch (e) { /* no storage */ } }
+    }, { timeout: 40000 });
   });
   TlbxTest.run({ name: 'Spreadsheets: the look' });
   </script>
