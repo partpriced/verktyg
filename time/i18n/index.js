@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'time',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['page', 'panels'],
-  langs: ['en', 'sv'],
+  langs: ['en', 'pt-BR', 'sv'],
 });
