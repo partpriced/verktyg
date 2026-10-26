@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Apps opened in English follow a live switch to Swedish</title>
+  <meta name="tlbx-test-limit" content="600">
+  <!-- Covers: tests/i18n/live-switch.js, shared/watermark/panel.js, shared/drop/panel.js, shared/frame/frame.js -->
+  <!-- Covers: imageeditor/js/app/welcome.js, imageeditor/js/app/main.js, imageeditor/js/io/save.js, imageeditor/js/watermark/panel.js -->
+  <!-- Covers: videostudio/js/render/preview.js, videostudio/js/timeline/heads.js, videostudio/js/ui/bin.js, videostudio/js/ui/inspector.js -->
+  <!-- Covers: videostudio/js/ui/layout.js, videostudio/js/ui/main.js, videostudio/js/ui/transport.js, videostudio/js/watermark/panel.js -->
+  <!-- Covers: resize/js/app/layout.js, upscale/js/app/layout.js, img3d/js/app/layout.js, sorter/js/frame.js -->
+  <!-- Covers: watermark/js/settings.js, watermark/js/main.js, drive/js/app/main.js, drive/js/ui/info.js -->
+  <!-- Covers: workflows/js/ui/run.js, workflows/js/ui/mount.js -->
+  <style>body { margin: 0; background: #111; color: #eee; font: 12px system-ui; }</style>
+</head>
+<body>
+  <script src="../harness.js"></script>
+  <script src="live-switch.js"></script>
+  <script>
+  // Each app opens in English, then TlbxI18n.set('sv') runs in its window: the words it drew once (a welcome card, a
+  // drop zone, a panel's name, buttons and titles) must read the Swedish table value afterwards.
+  const S = LiveSwitch.spec, q = (s) => (doc) => doc.querySelector(s);
+  S({ name: 'Image Editor', path: '../../imageeditor/index.html', ready: q('#psWelcome .sd-steps li'),
+    checks: [['#psWelcome .sd-steps li', 'imageeditor.welcome.step_open'], ['#psWelcomeSample', 'imageeditor.welcome.sample'],
+      ['#psWelcome .sd-acts .sd-sample:last-child', 'imageeditor.welcome.blank'], ['#sbSaved', 'imageeditor.status.local_only']] });
+  S({ name: 'Image Editor watermark panel', path: '../../imageeditor/index.html', ready: q('.ps-wm .swp-actions button'),
+    checks: [['.ps-wm .swp-actions button', 'imageeditor.wm.save_default'], ['.ps-wm .swp-actions button', 'imageeditor.wm.save_default_tip', 'title']] });
+  S({ name: 'Video Editor', path: '../../videostudio/index.html', ready: q('.sd-steps li'),
+    checks: [['.sd-steps li', 'videoedit.render.step_drop'], ['.insp-body .ins-note:last-child', 'videoedit.insp.select_a_clip_on_the'],
+      ['.tc', 'videoedit.tr.current_time_click_to_go', 'title'], ['.tl-tc', 'videoedit.tl.current_time_click_to_type', 'title'],
+      ['#btnExport', 'videoedit.lay.export_the_video_ctrl_e', 'title'], ['.bin-tools .btn', 'videoedit.bin.import_files_ctrl_i', 'title'],
+      ['.bin-tab[data-tab="effects"]', 'videoedit.app.effects']] });
+  S({ name: 'Resizer', path: '../../resize/index.html', ready: q('#rs-panel'), checks: [], labels: ['resize.app.settings'] });
+  S({ name: 'Upscaler', path: '../../upscale/index.html', ready: q('#up-panel'), checks: [], labels: ['ui.settings'] });
+  S({ name: 'Image to 3D', path: '../../img3d/index.html', ready: q('#panel'), checks: [], labels: ['img3d.app.settings'] });
+  S({ name: 'Photo Sorter', path: '../../sorter/index.html', ready: q('#soSide'), checks: [], labels: ['sorter.app.save'] });
+  S({ name: 'Watermark', path: '../../watermark/index.html', ready: q('.swp-actions button'),
+    checks: [['.swp-actions button', 'watermark.set.reset'], ['.swp-actions button', 'watermark.set.reset_title', 'title']], labels: ['watermark.app.watermark'] });
+  S({ name: 'Files', path: '../../drive/index.html', ready: q('#info .muted'),
+    checks: [['#info .muted', 'drive.info.select_hint'], ['#info', 'drive.info.items_here']] });
+  S({ name: 'Workflows', path: '../../workflows/index.html', ready: q('.wf-file-list'),
+    checks: [['.wf-file-list', 'workflows.run.files_in', 'aria-label']], labels: ['workflows.run.panel'] });
+  TlbxTest.run({ name: document.title });
+  </script>
+</body>
+</html>

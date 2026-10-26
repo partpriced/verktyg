@@ -33,8 +33,8 @@ async function autosave() {
     if (!DOCS.some((d) => d.id === snap.id)) return; // closed meanwhile
     await idbDo('readwrite', (st) => st.put({ v: 2, w: snap.w, h: snap.h, name: snap.name, active: snap.active, layers, guides: snap.guides, wm: snap.wm && { on: snap.wm.on, spec: snap.wm.spec }, time: Date.now() }, 'doc:' + snap.id));
     saveTabsIndex();
-    const s = $('#sbSaved'); if (s) { s.textContent = tr('imageeditor.save.saved_device'); s.title = tr('imageeditor.save.saved_device_tip'); }
-  } catch (e) { const s = $('#sbSaved'); if (s) s.textContent = tr('imageeditor.save.recovery_off'); try { window.TlbxStorage && TlbxStorage.handle(e, { once: 'imageeditor-recovery' }); } catch (x) { /* no dialog on this page */ }; }
+    const s = $('#sbSaved'); if (s) { s.textContent = tr('imageeditor.save.saved_device'); s.title = tr('imageeditor.save.saved_device_tip'); s.dataset.i18n = 'imageeditor.save.saved_device'; s.dataset.i18nAttr = 'title:imageeditor.save.saved_device_tip'; }
+  } catch (e) { const s = $('#sbSaved'); if (s) { s.textContent = tr('imageeditor.save.recovery_off'); s.dataset.i18n = 'imageeditor.save.recovery_off'; } try { window.TlbxStorage && TlbxStorage.handle(e, { once: 'imageeditor-recovery' }); } catch (x) { /* no dialog on this page */ }; }
 }
 async function blobToCanvasExact(b) { const u = URL.createObjectURL(b); try { const i = await loadImage(u); const c = mkCanvas(i.width, i.height); cx(c).drawImage(i, 0, 0); return c; } finally { URL.revokeObjectURL(u); } }
 async function docFromSaved(d) {

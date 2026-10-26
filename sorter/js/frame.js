@@ -8,7 +8,7 @@
   const t = (k) => (g.TlbxI18n ? g.TlbxI18n.t(k) : k);
   const $ = (id) => document.getElementById(id);
   const fr = g.TlbxFrame.mount($('soFrame'), {
-    list: null, view: $('soView'), panel: $('soSide'), phone: '(max-width: 760px)', panelLabel: t('sorter.app.save'),
+    list: null, view: $('soView'), panel: $('soSide'), phone: '(max-width: 760px)', panelLabel: 'sorter.app.save',
     storageKey: 'sorter', button: '.smb-tools', phoneButton: false, width: 280, min: 240,
   });
   const panel = g.TlbxFrame.panel($('soSide'), { title: t('sorter.app.keep_best') });

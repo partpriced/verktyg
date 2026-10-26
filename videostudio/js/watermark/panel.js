@@ -15,11 +15,11 @@
       value: WM.settings().spec,
       media: { pages: false, time: true },
       onChange: (spec, how) => WM.set({ spec }, how.label || U.t('videoedit.bin.watermark'), how.key || 'spec'),
-      toggle: { get: () => WM.settings().on, set: (on) => WM.set({ on }, on ? U.t('videoedit.wm.watermark_on') : U.t('videoedit.wm.watermark_off'), 'on'), label: U.t('videoedit.bin.watermark'),
+      toggle: { get: () => WM.settings().on, set: (on) => WM.set({ on }, on ? U.t('videoedit.wm.watermark_on') : U.t('videoedit.wm.watermark_off'), 'on'), label: 'videoedit.bin.watermark',
         note: (on) => (on ? U.t('videoedit.wm.on_shows_in_the_monitor') : U.t('videoedit.wm.off_no_watermark_in_the')) },
       actions: [
-        { label: U.t('videoedit.wm.save_as_device_default'), title: U.t('videoedit.wm.new_projects_on_this_device'), act: () => { WM.saveDefaults(); TlbxUI.toast(U.t('videoedit.wm.saved_as_this_device_s')); } },
-        { label: U.t('videoedit.wm.use_device_default'), title: U.t('videoedit.wm.copy_this_device_s_default'), act: () => WM.useDefaults() },
+        { label: 'videoedit.wm.save_as_device_default', title: 'videoedit.wm.new_projects_on_this_device', act: () => { WM.saveDefaults(); TlbxUI.toast(U.t('videoedit.wm.saved_as_this_device_s')); } },
+        { label: 'videoedit.wm.use_device_default', title: 'videoedit.wm.copy_this_device_s_default', act: () => WM.useDefaults() },
       ],
     });
     return root;

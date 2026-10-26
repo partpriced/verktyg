@@ -9,7 +9,7 @@ const t = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
 export function mountPanel({ has }) {
   if (!window.TlbxFrame) return { paint() {} };
   const side = $('sv-side');
-  const frame = window.TlbxFrame.mount($('sv-body'), { view: $('sv-main'), panel: side, panelLabel: t('sheetview.app.sheet'), storageKey: 'sheetview',
+  const frame = window.TlbxFrame.mount($('sv-body'), { view: $('sv-main'), panel: side, panelLabel: 'sheetview.app.sheet', storageKey: 'sheetview',
     width: 260, min: 220, max: 420 });   // shown and hidden with Ctrl+Alt+B (the View command); no header button
   $('sv-export').classList.add('sv-primary');
   const p = window.TlbxFrame.panel(side, { title: t('sheetview.app.sheet') });

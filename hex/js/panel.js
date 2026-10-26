@@ -10,7 +10,7 @@
   function mount() {
     if (!window.TlbxFrame) return null;
     const side = $('hx-side');
-    const frame = window.TlbxFrame.mount($('hx-body'), { view: $('hx-main'), panel: side, panelLabel: t('hex.app.inspector'), storageKey: 'hex',
+    const frame = window.TlbxFrame.mount($('hx-body'), { view: $('hx-main'), panel: side, panelLabel: 'hex.app.inspector', storageKey: 'hex',
       button: '.smb-tools', phoneButton: false, width: 300, min: 240, max: 480 });
     const p = window.TlbxFrame.panel(side, { title: t('hex.app.inspector') });
     const none = document.createElement('p');
