@@ -22,6 +22,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.io.wm_off_export': 'Aucun filigrane : le filigrane est désactivé.',
   'imageeditor.io.cannot_encode': 'Ce navigateur ne peut pas encoder ce format',
   'imageeditor.io.exported_layers': '{n} calques exportés',
+  'imageeditor.io.exported_layers#one': '{n} calque exporté',
   'imageeditor.io.buffer_merged': 'Copie fusionnée dans le presse-papiers',
   'imageeditor.io.buffer_copied': 'Copié dans le presse-papiers',
   'imageeditor.io.buffer_copy_failed': 'Copie dans le presse-papiers impossible',

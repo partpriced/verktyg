@@ -31,6 +31,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'crm.li.no_match': 'Keine Kunden entsprechen diesen Filtern.',
   'crm.li.none': 'Noch keine Kunden. Einen anlegen oder die Kontakte aus Contacts importieren.',
   'crm.li.summary': '{shown} von {n} Kunden',
+  'crm.li.summary#one': '{shown} von {n} Kunde',
   'crm.li.all_stages': 'Alle Phasen',
   'crm.li.comfortable': 'Komfortabel',
   'crm.li.compact': 'Kompakt',

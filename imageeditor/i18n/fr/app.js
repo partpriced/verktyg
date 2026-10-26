@@ -4,6 +4,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.status.rotation': 'Rotation de la vue (non enregistrée dans le fichier)',
   'imageeditor.status.local_only': 'Local uniquement',
   'imageeditor.status.size': '{w} × {h} px · {n} calques',
+  'imageeditor.status.size#one': '{w} × {h} px · {n} calque',
   'imageeditor.status.transparent': 'transparent',
   'imageeditor.app.panels': 'Panneaux',
   'imageeditor.app.welcome_toast': 'Bienvenue dans Image Editor. Tout reste sur votre appareil.',

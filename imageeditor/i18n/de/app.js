@@ -4,6 +4,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.status.rotation': 'Ansichtsdrehung (wird nicht in der Datei gespeichert)',
   'imageeditor.status.local_only': 'Nur lokal',
   'imageeditor.status.size': '{w} × {h} px · {n} Ebenen',
+  'imageeditor.status.size#one': '{w} × {h} px · {n} Ebene',
   'imageeditor.status.transparent': 'transparent',
   'imageeditor.app.panels': 'Bereiche',
   'imageeditor.app.welcome_toast': 'Willkommen bei Image Editor. Alles bleibt auf dem Gerät.',

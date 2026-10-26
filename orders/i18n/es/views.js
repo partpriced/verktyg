@@ -28,6 +28,7 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'orders.ed.new': 'Nuevo pedido',
   'orders.ed.date_error': 'Escribe la fecha del pedido.',
   'orders.li.lines': '{n} líneas',
+  'orders.li.lines#one': '{n} línea',
   'orders.li.invoiced': 'facturado',
   'orders.li.sample': 'Muestra',
   'orders.li.not_done': 'No se hizo',

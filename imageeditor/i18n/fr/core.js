@@ -28,6 +28,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.core.need_one_layer': 'Un document doit contenir au moins un calque',
   'imageeditor.core.step_delete_layer': 'Supprimer le calque',
   'imageeditor.core.n_layers': '{n} calques',
+  'imageeditor.core.n_layers#one': '{n} calque',
   'imageeditor.core.remove_all_q': 'Supprimer tous les calques ?',
   'imageeditor.core.remove_all_body': 'Cela supprime {count} de « {name} ». Le document conserve un calque vide.',
   'imageeditor.core.continue': 'Continuer',

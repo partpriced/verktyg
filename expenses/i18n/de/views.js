@@ -96,5 +96,6 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'expenses.su.year': 'In {year} ausgegeben',
   'expenses.su.tax': 'Vorsteuer in {year}',
   'expenses.su.other': '{n} Ausgaben in anderen Währungen sind in der CSV enthalten, nicht in diesen Summen.',
+  'expenses.su.other#one': '{n} Ausgabe in anderen Währungen ist in der CSV enthalten, nicht in diesen Summen.',
   'expenses.su.not_exported': 'Nicht exportiert',
 });

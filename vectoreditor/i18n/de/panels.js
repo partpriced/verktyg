@@ -145,6 +145,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'vector.layers.delete': 'Auswahl / Ebene löschen',
   'vector.layers.need_one': 'Ein Dokument braucht mindestens eine Ebene',
   'vector.layers.count': '{n} Ebenen',
+  'vector.layers.count#one': '{n} Ebene',
   'vector.layers.show': 'Einblenden',
   'vector.layers.hide': 'Ausblenden',
   'vector.layers.unlock': 'Entsperren',

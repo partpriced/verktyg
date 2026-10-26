@@ -9,6 +9,7 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'qr.design.transparent': 'Fondo transparente',
   'qr.design.quiet': 'Zona silenciosa',
   'qr.design.quiet_n': '{n} módulos',
+  'qr.design.quiet_n#one': '{n} módulo',
   'qr.design.size_aria': 'Tamaño en píxeles',
   'qr.design.modules': 'Módulos',
   'qr.design.size': 'Tamaño (px)',

@@ -17,6 +17,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'colors.panel.copy_code': 'Code kopieren',
   'colors.panel.open_in': 'Öffnen in…',
   'colors.panel.count': '{n} Farben in „{name}“',
+  'colors.panel.count#one': '{n} Farbe in „{name}“',
   'colors.panel.empty': 'Farben zur Palette hinzufügen, um sie zu exportieren',
   'colors.harmony.complementary': 'Komplementär',
   'colors.harmony.analogous': 'Analog',

@@ -22,6 +22,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.io.wm_off_export': 'Kein Wasserzeichen: Das Wasserzeichen ist aus.',
   'imageeditor.io.cannot_encode': 'Dieser Browser kann dieses Format nicht kodieren',
   'imageeditor.io.exported_layers': '{n} Ebenen exportiert',
+  'imageeditor.io.exported_layers#one': '{n} Ebene exportiert',
   'imageeditor.io.buffer_merged': 'Zusammengeführte Kopie in der Zwischenablage',
   'imageeditor.io.buffer_copied': 'In die Zwischenablage kopiert',
   'imageeditor.io.buffer_copy_failed': 'Konnte nicht in die Zwischenablage kopiert werden',

@@ -1,6 +1,7 @@
 /* Background Remover, French: what is done to one picture or the selected ones (copy and paste settings, export, Files, workflows, removing from the queue) and the messages that report it. Same keys as bgremover/i18n/en/actions.js. Terms: shared/i18n/glossary-fr.md. */
 window.TlbxI18n && window.TlbxI18n.add('fr', {
   'cutout.act.pictures_n': '{n} images',
+  'cutout.act.pictures_n#one': '{n} image',
   'cutout.act.copied': 'Réglages copiés. Sélectionnez des images et choisissez Coller les réglages.',
   'cutout.act.copy_first': 'Copiez d’abord les réglages d’une image',
   'cutout.act.pasted': 'Réglages collés sur {what}',
@@ -41,7 +42,9 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'cutout.export.failed_all': 'L’exportation a échoué pour toutes les images',
   'cutout.export.zipping': 'Compression…',
   'cutout.export.saved_zip': '{n} détourages enregistrés dans une archive ZIP',
+  'cutout.export.saved_zip#one': '{n} détourage enregistré dans une archive ZIP',
   'cutout.export.saved_zip_failed': '{n} détourages enregistrés dans une archive ZIP ({failed} en échec)',
+  'cutout.export.saved_zip_failed#one': '{n} détourage enregistré dans une archive ZIP ({failed} en échec)',
   'cutout.send.wait': 'Attendez d’abord le détourage',
   'cutout.send.not_imageeditor': 'Cette image ne vient pas de Image Editor. Utilisez Envoyer à Image Editor comme nouveau calque.',
   'cutout.send.mask_sent': 'Masque envoyé à Image Editor',

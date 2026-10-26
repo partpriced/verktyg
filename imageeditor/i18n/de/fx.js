@@ -11,6 +11,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.fx.nothing_applies': 'Nichts in „{name}“ lässt sich hier auf eine Ebene anwenden.',
   'imageeditor.fx.applied': '„{name}“ angewendet',
   'imageeditor.fx.applied_skipped': '„{name}“ angewendet ({n} Effekte übersprungen)',
+  'imageeditor.fx.applied_skipped#one': '„{name}“ angewendet ({n} Effekt übersprungen)',
   'imageeditor.fx.noun_preset': 'eine Effektvorgabe (.tlbx.json)',
   'imageeditor.fx.imported': 'Importiert.',
   'imageeditor.fx.delete_preset': 'Vorgabe löschen',

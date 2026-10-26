@@ -11,6 +11,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.fx.nothing_applies': 'Rien dans « {name} » ne peut s’appliquer à un calque ici.',
   'imageeditor.fx.applied': '« {name} » appliqué',
   'imageeditor.fx.applied_skipped': '« {name} » appliqué ({n} effets ignorés)',
+  'imageeditor.fx.applied_skipped#one': '« {name} » appliqué ({n} effet ignoré)',
   'imageeditor.fx.noun_preset': 'un préréglage d’effets (.tlbx.json)',
   'imageeditor.fx.imported': 'Importé.',
   'imageeditor.fx.delete_preset': 'Supprimer le préréglage',

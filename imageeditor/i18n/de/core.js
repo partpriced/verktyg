@@ -28,6 +28,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.core.need_one_layer': 'Ein Dokument braucht mindestens eine Ebene',
   'imageeditor.core.step_delete_layer': 'Ebene löschen',
   'imageeditor.core.n_layers': '{n} Ebenen',
+  'imageeditor.core.n_layers#one': '{n} Ebene',
   'imageeditor.core.remove_all_q': 'Alle Ebenen entfernen?',
   'imageeditor.core.remove_all_body': 'Dies entfernt {count} aus „{name}“. Das Dokument behält eine leere Ebene.',
   'imageeditor.core.continue': 'Weiter',
