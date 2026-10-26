@@ -3,7 +3,7 @@
 (function () {
   'use strict';
   const CO = window.CO, U = CO.util;
-  const W = 1200, H = 900, INK = '#0b0b0f', LIME = '#a2fff6';
+  const W = 1200, H = 900, INK = '#0b0b0f', LIME = '#d4ff3a';
   const CONFETTI = ['#ffb020', '#00d1b2', '#9b5cff', '#ff5a36', '#ffe14d', '#3ddc84', '#ff3ea5'];
 
   /** Small deterministic PRNG (mulberry32). */

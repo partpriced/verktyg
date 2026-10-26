@@ -16,7 +16,7 @@
     g.fill();
   }
   function helpbot(g, x, y, r, t) {
-    goo(g, x, y, r, t, '#a2fff6');
+    goo(g, x, y, r, t, '#d4ff3a');
     g.fillStyle = '#0a0a0a';
     const blink = Math.sin(t * 2.3) > 0.97 ? 0.15 : 1;
     for (const s of [-1, 1]) { g.beginPath(); g.ellipse(x + s * r * 0.32, y - r * 0.12, r * 0.09, r * 0.13 * blink, 0, 0, TAU); g.fill(); }
@@ -42,7 +42,7 @@
     g.fillStyle = '#0c2a24'; g.fillRect(0, 0, W, H);
     for (let k = 0; k < 18; k++) {
       const bx = (k * 0.137 * W + Math.sin(t + k) * 20) % W, by = H - ((t * 60 * (1 + (k % 4) * 0.4) + k * 53) % (H + 40));
-      g.fillStyle = 'rgba(162, 255, 246,' + (0.15 + (k % 5) * 0.08) + ')'; g.beginPath(); g.arc(bx, by, 6 + (k % 6) * 4, 0, TAU); g.fill();
+      g.fillStyle = 'rgba(212,255,58,' + (0.15 + (k % 5) * 0.08) + ')'; g.beginPath(); g.arc(bx, by, 6 + (k % 6) * 4, 0, TAU); g.fill();
     }
     goo(g, W / 2, H * 0.58, H * 0.22, t, '#2de0a0');
     helpbot(g, W / 2, H * 0.55, H * 0.15, t);
