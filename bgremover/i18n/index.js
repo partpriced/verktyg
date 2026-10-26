@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'cutout',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['actions', 'app', 'menus', 'panel', 'tour', 'video'],
-  langs: ['ar', 'de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'],
+  langs: ['en', 'sv'],
 });
