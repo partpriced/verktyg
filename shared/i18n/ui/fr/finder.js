@@ -16,6 +16,5 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'ui.finder.not_sorted': 'non trié',
   'ui.list.count': '{n} éléments',
   'ui.list.count#one': '{n} élément',
-  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'Rien ici pour l’instant.',
 });

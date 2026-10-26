@@ -1,0 +1,23 @@
+/* Image Editor, Italian: palette titles of the canvas, tool and window commands (app/commands.js). Same keys as imageeditor/i18n/en/commands.js. Terms: shared/i18n/glossary-it.md. */
+window.TlbxI18n && window.TlbxI18n.add('it', {
+  'imageeditor.cmd.opacity_toast': 'Opacità {pct}%',
+  'imageeditor.cmd.cycle_tools': 'Scorri {tools}',
+  'imageeditor.cmd.swap_colors': 'Scambia colore primo piano e sfondo',
+  'imageeditor.cmd.default_colors': 'Colori predefiniti (nero / bianco)',
+  'imageeditor.cmd.brush_bigger': 'Aumenta dimensione pennello',
+  'imageeditor.cmd.brush_smaller': 'Riduci dimensione pennello',
+  'imageeditor.cmd.brush_harder': 'Aumenta durezza pennello',
+  'imageeditor.cmd.brush_softer': 'Riduci durezza pennello',
+  'imageeditor.cmd.tool_opacity': 'Opacità strumento {pct}%',
+  'imageeditor.cmd.nudge_left': 'Sposta a sinistra di {n} px',
+  'imageeditor.cmd.nudge_right': 'Sposta a destra di {n} px',
+  'imageeditor.cmd.nudge_up': 'Sposta in alto di {n} px',
+  'imageeditor.cmd.nudge_down': 'Sposta in basso di {n} px',
+  'imageeditor.cmd.next_doc': 'Documento successivo',
+  'imageeditor.cmd.prev_doc': 'Documento precedente',
+  'imageeditor.cmd.go_to_doc': 'Vai al documento {i}',
+  'imageeditor.cmd.restore_aspect': 'Ripristina proporzioni originali',
+  'imageeditor.cmd.guides_panel': 'Pannello guide (layout delle guide)',
+  'imageeditor.cmd.search_key': 'Cerca comandi ({key})',
+  'imageeditor.cmd.nav_preset': 'Preset di navigazione…',
+});

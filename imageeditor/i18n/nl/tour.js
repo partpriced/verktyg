@@ -1,0 +1,20 @@
+/* Image Editor, Dutch (the guided tour, shared/tour/tours/imageeditor.js). Same keys as imageeditor/i18n/en/tour.js. Terms: shared/i18n/glossary-nl.md. */
+window.TlbxI18n && window.TlbxI18n.add('nl', {
+  'imageeditor.tour.title': 'Rondleiding Image Editor',
+  'imageeditor.tour.new_title': 'Een bestand starten',
+  'imageeditor.tour.new_text': 'Nieuw stelt het formaat, de voorinstelling en de achtergrond van een document in (onder Meer ▾ bij een smal venster); Openen laadt een PSD, ORA of afbeelding. Elk bestand krijgt een tabblad.',
+  'imageeditor.tour.menus_title': 'Menubalk',
+  'imageeditor.tour.menus_text': 'Bestand, Bewerken, Afbeelding, Laag, Selecteren en Filter staan hier. Elk menu toont zijn opdrachten.',
+  'imageeditor.tour.tools_title': 'Tools',
+  'imageeditor.tour.tools_text': 'Penselen, selectie, tekst en bijsnijden staan in de gereedschapskist. Kies er één en stel hem in op de optiebalk.',
+  'imageeditor.tour.options_title': 'Gereedschapsopties',
+  'imageeditor.tour.options_text': 'De optiebalk verandert met het actieve gereedschap: grootte, dekking, mengmodus en meer.',
+  'imageeditor.tour.canvas_title': 'Het canvas',
+  'imageeditor.tour.canvas_text': 'Schilder, selecteer en transformeer op het canvas. De statusbalk toont zoom en grootte.',
+  'imageeditor.tour.panels_title': 'Lagen en deelvensters',
+  'imageeditor.tour.panels_text': 'Lagen, geschiedenis en eigenschappen staan in deze kolom. Op een telefoon tonen de knop Lagen ze.',
+  'imageeditor.tour.export_title': 'Exporteren',
+  'imageeditor.tour.export_text': 'Exporteer PNG, JPEG, WebP of PSD. Het bestand wordt op je apparaat gemaakt; er wordt niets geüpload.',
+  'imageeditor.tour.theme_title': 'Thema',
+  'imageeditor.tour.theme_text': 'Wissel tussen Pro, Licht en Paint ’98.',
+});

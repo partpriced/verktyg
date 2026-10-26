@@ -63,7 +63,6 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'ui.frame.resize_aria': 'Изменить размер панели «{label}» (клавиши со стрелками; двойной щелчок — сброс)',
   'ui.frame.resize_tip': 'Перетащите, чтобы изменить размер. Двойной щелчок — ширина по умолчанию.',
   'ui.frame.reset_sizes': 'Сбросить размеры панелей',
-  'ui.list.empty': '{items}: пока ничего нет.',
   'ui.flow.from_to': '{from} в {to}',
   'ui.flow.file': 'Файл',
   'ui.flow.file_lc': 'файл',

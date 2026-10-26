@@ -1,0 +1,23 @@
+/* Image Editor, Turkish: tuval, araç ve pencere komutlarının komut paleti başlıkları. Aynı anahtarlar: en/commands.js. Terimler: shared/i18n/glossary-tr.md. */
+window.TlbxI18n && window.TlbxI18n.add('tr', {
+  'imageeditor.cmd.opacity_toast': "Opaklık %{pct}",
+  'imageeditor.cmd.cycle_tools': "{tools} arasında geç",
+  'imageeditor.cmd.swap_colors': "Ön plan ve arka plan renklerini değiştir",
+  'imageeditor.cmd.default_colors': "Varsayılan renkler (siyah / beyaz)",
+  'imageeditor.cmd.brush_bigger': "Fırça boyutunu büyüt",
+  'imageeditor.cmd.brush_smaller': "Fırça boyutunu küçült",
+  'imageeditor.cmd.brush_harder': "Fırça sertliğini artır",
+  'imageeditor.cmd.brush_softer': "Fırça sertliğini azalt",
+  'imageeditor.cmd.tool_opacity': "Araç opaklığı %{pct}",
+  'imageeditor.cmd.nudge_left': "Sola kaydır {n} px",
+  'imageeditor.cmd.nudge_right': "Sağa kaydır {n} px",
+  'imageeditor.cmd.nudge_up': "Yukarı kaydır {n} px",
+  'imageeditor.cmd.nudge_down': "Aşağı kaydır {n} px",
+  'imageeditor.cmd.next_doc': "Sonraki belge",
+  'imageeditor.cmd.prev_doc': "Önceki belge",
+  'imageeditor.cmd.go_to_doc': "{i}. belgeye git",
+  'imageeditor.cmd.restore_aspect': "Özgün en-boy oranını geri yükle",
+  'imageeditor.cmd.guides_panel': "Kılavuzlar paneli (kılavuz düzenleri)",
+  'imageeditor.cmd.search_key': "Komutlarda ara ({key})",
+  'imageeditor.cmd.nav_preset': "Gezinme ön ayarı…",
+});

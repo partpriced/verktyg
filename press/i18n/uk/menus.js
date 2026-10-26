@@ -1,0 +1,22 @@
+/* Page Layout, Ukrainian: the menu bar's menus and submenus (ui/menus.js, ui/context.js) and the command groups. Same keys as press/i18n/en/menus.js. Terms: shared/i18n/glossary-uk.md. */
+window.TlbxI18n && window.TlbxI18n.add('uk', {
+  'press.menu.layout': 'Макет',
+  'press.menu.type': 'Текст',
+  'press.menu.object': 'Об’єкт',
+  'press.menu.window': 'Вікно',
+  'press.menu.tools': 'Інструменти',
+  'press.menu.styles': 'Стилі',
+  'press.menu.send_to': 'Надіслати до',
+  'press.menu.pages': 'Сторінки',
+  'press.menu.para_style': 'Стиль абзацу',
+  'press.menu.char_style': 'Стиль символів',
+  'press.menu.alignment': 'Вирівнювання',
+  'press.menu.special_char': 'Вставити спеціальний символ',
+  'press.menu.composer': 'Компонувальник',
+  'press.menu.arrange': 'Упорядкувати',
+  'press.menu.fitting': 'Вписування',
+  'press.menu.text_wrap': 'Обтікання тексту',
+  'press.menu.theme': 'Тема',
+  'press.menu.hub_unavailable': 'Hub недоступний',
+  'press.menu.none': '(немає)',
+});

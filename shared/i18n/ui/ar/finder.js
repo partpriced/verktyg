@@ -28,6 +28,5 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'ui.list.count#few': '{n} عناصر',
   'ui.list.count#many': '{n} عنصرًا',
   'ui.list.count': '{n} عنصر',
-  'ui.list.count_noun': '{n} {noun}',
   'ui.list.empty_any': 'لا يوجد شيء هنا بعد.',
 });
