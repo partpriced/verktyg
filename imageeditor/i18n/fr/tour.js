@@ -1,0 +1,20 @@
+/* Image Editor, French (the source of truth for the keys): the guided tour (shared/tour/tours/imageeditor.js). Same keys as imageeditor/i18n/en/tour.js. Terms: shared/i18n/glossary-fr.md. */
+window.TlbxI18n && window.TlbxI18n.add('fr', {
+  'imageeditor.tour.title': 'Visite guidée de Image Editor',
+  'imageeditor.tour.new_title': 'Commencer un fichier',
+  'imageeditor.tour.new_text': 'Nouveau règle la taille, le préréglage et l’arrière-plan d’un document (dans Plus ▾ sur une fenêtre étroite) ; Ouvrir charge un PSD, un ORA ou une image. Chaque fichier a son onglet.',
+  'imageeditor.tour.menus_title': 'Barre de menus',
+  'imageeditor.tour.menus_text': 'Fichier, Édition, Image, Calque, Sélection et Filtre se trouvent ici. Chaque menu liste ses commandes.',
+  'imageeditor.tour.tools_title': 'Outils',
+  'imageeditor.tour.tools_text': 'Pinceaux, sélection, texte et recadrage sont dans la boîte à outils. Choisissez-en un, puis réglez-le dans la barre d’options.',
+  'imageeditor.tour.options_title': 'Options de l’outil',
+  'imageeditor.tour.options_text': 'La barre d’options change avec l’outil actif : taille, opacité, mode de fusion et plus.',
+  'imageeditor.tour.canvas_title': 'La zone de travail',
+  'imageeditor.tour.canvas_text': 'Peignez, sélectionnez et transformez sur la zone de travail. La barre d’état affiche le zoom et la taille.',
+  'imageeditor.tour.panels_title': 'Calques et panneaux',
+  'imageeditor.tour.panels_text': 'Calques, historique et propriétés sont dans cette colonne. Sur téléphone, le bouton Calques les affiche.',
+  'imageeditor.tour.export_title': 'Exporter',
+  'imageeditor.tour.export_text': 'Exportez en PNG, JPEG, WebP ou PSD. Le fichier est créé sur votre appareil ; rien n’est envoyé.',
+  'imageeditor.tour.theme_title': 'Thème',
+  'imageeditor.tour.theme_text': 'Basculez entre Pro, Clair et Paint ’98.',
+});

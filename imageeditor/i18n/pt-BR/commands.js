@@ -1,0 +1,23 @@
+/* Image Editor, Brazilian Portuguese: the keyboard commands (colours, brush size and hardness, nudging, documents, guides and navigation). Same keys as imageeditor/i18n/en/commands.js. Terms: shared/i18n/glossary-pt-BR.md. */
+window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
+  'imageeditor.cmd.opacity_toast': 'Opacidade {pct}%',
+  'imageeditor.cmd.cycle_tools': 'Alternar {tools}',
+  'imageeditor.cmd.swap_colors': 'Trocar as cores de primeiro plano e de fundo',
+  'imageeditor.cmd.default_colors': 'Cores padrão (preto / branco)',
+  'imageeditor.cmd.brush_bigger': 'Aumentar o tamanho do pincel',
+  'imageeditor.cmd.brush_smaller': 'Diminuir o tamanho do pincel',
+  'imageeditor.cmd.brush_harder': 'Aumentar a dureza do pincel',
+  'imageeditor.cmd.brush_softer': 'Diminuir a dureza do pincel',
+  'imageeditor.cmd.tool_opacity': 'Opacidade da ferramenta {pct}%',
+  'imageeditor.cmd.nudge_left': 'Deslocar {n} px para a esquerda',
+  'imageeditor.cmd.nudge_right': 'Deslocar {n} px para a direita',
+  'imageeditor.cmd.nudge_up': 'Deslocar {n} px para cima',
+  'imageeditor.cmd.nudge_down': 'Deslocar {n} px para baixo',
+  'imageeditor.cmd.next_doc': 'Próximo documento',
+  'imageeditor.cmd.prev_doc': 'Documento anterior',
+  'imageeditor.cmd.go_to_doc': 'Ir para o documento {i}',
+  'imageeditor.cmd.restore_aspect': 'Restaurar a proporção original',
+  'imageeditor.cmd.guides_panel': 'Painel de guias (layouts de guias)',
+  'imageeditor.cmd.search_key': 'Pesquisar comandos ({key})',
+  'imageeditor.cmd.nav_preset': 'Predefinição de navegação…',
+});

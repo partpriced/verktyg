@@ -1,0 +1,20 @@
+/* Image Editor, Brazilian Portuguese: the guided tour. Same keys as imageeditor/i18n/en/tour.js. Terms: shared/i18n/glossary-pt-BR.md. */
+window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
+  'imageeditor.tour.title': 'Tour do Image Editor',
+  'imageeditor.tour.new_title': 'Comece um arquivo',
+  'imageeditor.tour.new_text': 'Novo define o tamanho, a predefinição e o fundo de um documento (em Mais ▾ numa janela estreita); Abrir carrega um PSD, ORA ou imagem. Cada arquivo ganha uma aba.',
+  'imageeditor.tour.menus_title': 'Barra de menus',
+  'imageeditor.tour.menus_text': 'Arquivo, Editar, Imagem, Camada, Selecionar e Filtro ficam aqui. Cada menu lista os seus comandos.',
+  'imageeditor.tour.tools_title': 'Ferramentas',
+  'imageeditor.tour.tools_text': 'Pincéis, seleção, texto e recorte ficam na caixa de ferramentas. Escolha uma e configure-a na barra de opções.',
+  'imageeditor.tour.options_title': 'Opções da ferramenta',
+  'imageeditor.tour.options_text': 'A barra de opções muda com a ferramenta ativa: tamanho, opacidade, modo de mesclagem e mais.',
+  'imageeditor.tour.canvas_title': 'A tela',
+  'imageeditor.tour.canvas_text': 'Pinte, selecione e transforme na tela. A barra de status mostra o zoom e o tamanho.',
+  'imageeditor.tour.panels_title': 'Camadas e painéis',
+  'imageeditor.tour.panels_text': 'Camadas, histórico e propriedades ficam nesta coluna. No celular, o botão Camadas os mostra.',
+  'imageeditor.tour.export_title': 'Exportar',
+  'imageeditor.tour.export_text': 'Exporte PNG, JPEG, WebP ou PSD. O arquivo é feito no seu dispositivo; nada é enviado.',
+  'imageeditor.tour.theme_title': 'Tema',
+  'imageeditor.tour.theme_text': 'Alterne entre Pro, Claro e Paint ’98.',
+});

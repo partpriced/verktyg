@@ -1,0 +1,23 @@
+/* Image Editor, German: the keyboard commands and their toasts (colours, brush size, nudging, documents, view). Same keys as imageeditor/i18n/en/commands.js. Rules: shared/i18n/APPS-HOWTO.md, words: shared/i18n/glossary-de.md. */
+window.TlbxI18n && window.TlbxI18n.add('de', {
+  'imageeditor.cmd.opacity_toast': 'Deckkraft {pct} %',
+  'imageeditor.cmd.cycle_tools': '{tools} durchschalten',
+  'imageeditor.cmd.swap_colors': 'Vorder- und Hintergrundfarbe tauschen',
+  'imageeditor.cmd.default_colors': 'Standardfarben (Schwarz / Weiß)',
+  'imageeditor.cmd.brush_bigger': 'Pinselgröße erhöhen',
+  'imageeditor.cmd.brush_smaller': 'Pinselgröße verringern',
+  'imageeditor.cmd.brush_harder': 'Pinselhärte erhöhen',
+  'imageeditor.cmd.brush_softer': 'Pinselhärte verringern',
+  'imageeditor.cmd.tool_opacity': 'Werkzeugdeckkraft {pct} %',
+  'imageeditor.cmd.nudge_left': 'Um {n} px nach links verschieben',
+  'imageeditor.cmd.nudge_right': 'Um {n} px nach rechts verschieben',
+  'imageeditor.cmd.nudge_up': 'Um {n} px nach oben verschieben',
+  'imageeditor.cmd.nudge_down': 'Um {n} px nach unten verschieben',
+  'imageeditor.cmd.next_doc': 'Nächstes Dokument',
+  'imageeditor.cmd.prev_doc': 'Vorheriges Dokument',
+  'imageeditor.cmd.go_to_doc': 'Zu Dokument {i} wechseln',
+  'imageeditor.cmd.restore_aspect': 'Ursprüngliches Seitenverhältnis wiederherstellen',
+  'imageeditor.cmd.guides_panel': 'Bereich Hilfslinien (Hilfslinienlayouts)',
+  'imageeditor.cmd.search_key': 'Befehle suchen ({key})',
+  'imageeditor.cmd.nav_preset': 'Navigationsvorgabe…',
+});

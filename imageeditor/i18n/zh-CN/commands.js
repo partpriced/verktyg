@@ -1,0 +1,23 @@
+/* Image Editor, Simplified Chinese: palette titles of the canvas, tool and window commands (app/commands.js). Rules: shared/i18n/APPS-HOWTO.md. Terms: shared/i18n/glossary-zh-CN.md. No plural forms (the #one keys are left out). */
+window.TlbxI18n && window.TlbxI18n.add('zh-CN', {
+  'imageeditor.cmd.opacity_toast': '不透明度 {pct}%',
+  'imageeditor.cmd.cycle_tools': '循环切换 {tools}',
+  'imageeditor.cmd.swap_colors': '交换前景色和背景色',
+  'imageeditor.cmd.default_colors': '默认颜色（黑 / 白）',
+  'imageeditor.cmd.brush_bigger': '增大画笔大小',
+  'imageeditor.cmd.brush_smaller': '减小画笔大小',
+  'imageeditor.cmd.brush_harder': '提高画笔硬度',
+  'imageeditor.cmd.brush_softer': '降低画笔硬度',
+  'imageeditor.cmd.tool_opacity': '工具不透明度 {pct}%',
+  'imageeditor.cmd.nudge_left': '向左微移 {n} px',
+  'imageeditor.cmd.nudge_right': '向右微移 {n} px',
+  'imageeditor.cmd.nudge_up': '向上微移 {n} px',
+  'imageeditor.cmd.nudge_down': '向下微移 {n} px',
+  'imageeditor.cmd.next_doc': '下一个文档',
+  'imageeditor.cmd.prev_doc': '上一个文档',
+  'imageeditor.cmd.go_to_doc': '转到文档 {i}',
+  'imageeditor.cmd.restore_aspect': '恢复原始宽高比',
+  'imageeditor.cmd.guides_panel': '参考线面板（参考线布局）',
+  'imageeditor.cmd.search_key': '搜索命令（{key}）',
+  'imageeditor.cmd.nav_preset': '导航预设…',
+});
