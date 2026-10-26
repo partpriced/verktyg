@@ -1,0 +1,23 @@
+/* Image Editor, French: palette titles of the canvas, tool and window commands (app/commands.js). Same keys as imageeditor/i18n/en/commands.js. Terms: shared/i18n/glossary-fr.md. */
+window.TlbxI18n && window.TlbxI18n.add('fr', {
+  'imageeditor.cmd.opacity_toast': 'Opacité {pct} %',
+  'imageeditor.cmd.cycle_tools': 'Parcourir {tools}',
+  'imageeditor.cmd.swap_colors': 'Permuter les couleurs de premier plan et d’arrière-plan',
+  'imageeditor.cmd.default_colors': 'Couleurs par défaut (noir / blanc)',
+  'imageeditor.cmd.brush_bigger': 'Augmenter la taille du pinceau',
+  'imageeditor.cmd.brush_smaller': 'Réduire la taille du pinceau',
+  'imageeditor.cmd.brush_harder': 'Augmenter la dureté du pinceau',
+  'imageeditor.cmd.brush_softer': 'Réduire la dureté du pinceau',
+  'imageeditor.cmd.tool_opacity': 'Opacité de l’outil {pct} %',
+  'imageeditor.cmd.nudge_left': 'Décaler à gauche de {n} px',
+  'imageeditor.cmd.nudge_right': 'Décaler à droite de {n} px',
+  'imageeditor.cmd.nudge_up': 'Décaler vers le haut de {n} px',
+  'imageeditor.cmd.nudge_down': 'Décaler vers le bas de {n} px',
+  'imageeditor.cmd.next_doc': 'Document suivant',
+  'imageeditor.cmd.prev_doc': 'Document précédent',
+  'imageeditor.cmd.go_to_doc': 'Aller au document {i}',
+  'imageeditor.cmd.restore_aspect': 'Rétablir le rapport de forme d’origine',
+  'imageeditor.cmd.guides_panel': 'Panneau des repères (dispositions de repères)',
+  'imageeditor.cmd.search_key': 'Rechercher des commandes ({key})',
+  'imageeditor.cmd.nav_preset': 'Préréglage de navigation…',
+});

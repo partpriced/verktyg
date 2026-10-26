@@ -4,5 +4,5 @@ window.TlbxI18n && window.TlbxI18n.source({
   ns: 'todo',
   base: ((document.currentScript || {}).src || '').replace(/[^/]*$/, ''),
   parts: ['app', 'editor', 'tour'],
-  langs: ['en', 'sv'],
+  langs: ['ar', 'de', 'en', 'es', 'fr', 'ja', 'pt-BR', 'sv', 'zh-CN'],
 });
