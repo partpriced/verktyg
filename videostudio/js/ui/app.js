@@ -62,13 +62,14 @@
 
   /* ------------------------------------------------------------ theme */
   /* The app's names and the shared theme ids (shared/theme/theme.js): the choice is saved through TlbxTheme.set. */
-  const THEMES = [['pro', 'videoedit.app.pro_dark', 'dark'], ['light', 'videoedit.app.light', 'light'], ['classic', 'videoedit.app.classic_98', 'classic']]; // the names are keys (U.t at use)
+  const THEMES = [['pro', 'videoedit.app.pro_dark', 'dark'], ['light', 'videoedit.app.light', 'light'], ['classic', 'videoedit.app.classic_98', 'classic']] // the names are keys (U.t at use)
+    .filter((x) => !window.TlbxTheme || TlbxTheme.has(x[2]));   // only the themes the site offers
   A.THEMES = THEMES;
   /* The choice is saved for every page by the shared switcher; this page only shows it. */
   A.paintMeta = function () {
     const meta = document.querySelector('meta[name="theme-color"]');
     const id = document.documentElement.getAttribute('data-tlbx-theme');
-    if (meta) meta.setAttribute('content', id === 'light' ? '#f1ede4' : id === 'classic' ? '#c0c0c0' : '#0e0e10');
+    if (meta) meta.setAttribute('content', id === 'light' ? '#ebedf2' : id === 'classic' ? '#c0c0c0' : '#0c0e12');
   };
   A.setTheme = function (t, silent) {
     const row = THEMES.find((x) => x[0] === t) || THEMES[0];

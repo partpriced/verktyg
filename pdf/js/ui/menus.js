@@ -9,7 +9,9 @@
   }
   A.sendSub = sendSub;
   /* The app's names (keys) and the shared theme ids (shared/theme/theme.js): the choice is saved through TlbxTheme.set. */
-  var THEMES = [['pro', 'pdf.menu.theme_pro', 'dark'], ['light', 'pdf.menu.theme_light', 'light'], ['classic', 'pdf.menu.theme_classic', 'classic']];
+  var THEMES = [['pro', 'pdf.menu.theme_pro', 'dark'], ['light', 'pdf.menu.theme_light', 'light'], ['classic', 'pdf.menu.theme_classic', 'classic']]
+    .filter(function (r) { return !window.TlbxTheme || TlbxTheme.has(r[2]); });   // only the themes the site offers
+  A.THEMES = THEMES;
   /* ------------------------------------------------------------- menus */
   S.buildMenus = function () {
     var defs = [['menu.file', S.fileMenu], ['menu.edit', S.editMenu], ['menu.view', S.viewMenu], ['menu.help', S.helpMenu]];
@@ -131,7 +133,7 @@
   A.paintMeta = function () {
     var meta = document.querySelector('meta[name="theme-color"]');
     var id = document.documentElement.getAttribute('data-tlbx-theme');
-    if (meta) meta.setAttribute('content', id === 'light' ? '#f1ede4' : id === 'classic' ? '#c0c0c0' : '#0e0e10');
+    if (meta) meta.setAttribute('content', id === 'light' ? '#ebedf2' : id === 'classic' ? '#c0c0c0' : '#0c0e12');
   };
   A.setTheme = function (id) {
     var row = THEMES.filter(function (x) { return x[0] === id; })[0] || THEMES[0];

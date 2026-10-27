@@ -28,7 +28,7 @@
   const { describe, it, expect, waitFor, run } = TlbxTest;
   const HEIGHT = 800;
   const WIDTHS = [390, 768, 1280];
-  const THEMES = ['light', 'dark', 'classic', 'lime'];
+  const THEMES = BRAND_FACTS.themes;   // the themes the build offers (a profile can hide some)
   const CONSENT_KEY = 'tlbx-consent';
   const PROFILE_KEY = 'tlbx-profile';
   const CONTROLS = 'button, a[href]';
