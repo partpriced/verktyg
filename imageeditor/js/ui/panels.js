@@ -194,5 +194,5 @@ function layerViaCopy(cut) {
   if (!r) { duplicateLayer(); return; }
   if (cut) clearSelectionPixels(tr('imageeditor.panel.step_cut'));
   const c = mkCanvas(D.w, D.h); cx(c).drawImage(r.canvas, r.x, r.y);
-  addLayer({ name: nextName('Layer'), canvas: c }, tr(cut ? 'imageeditor.panel.step_via_cut' : 'imageeditor.panel.step_via_copy')); // i18n-ignore: the layer's name is the document's
+  addLayer({ name: nextName('imageeditor.layer.default'), canvas: c }, tr(cut ? 'imageeditor.panel.step_via_cut' : 'imageeditor.panel.step_via_copy'));
 }

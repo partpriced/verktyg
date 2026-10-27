@@ -137,4 +137,9 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'drive.toast.copied_to_n': 'تم نسخ {n} عنصر إلى {place}',
   'drive.toast.link_copied': 'تم نسخ الرابط',
   'drive.toast.link_failed': 'تعذّر نسخ الرابط',
+  'drive.newdoc.sdoc': 'مستند',
+  'drive.newdoc.stab': 'جدول بيانات',
+  'drive.newdoc.sslide': 'عرض تقديمي',
+  'drive.newdoc.sfont': 'خط',
+  'drive.newdoc.s3d': 'مشهد ثلاثي الأبعاد',
 });
