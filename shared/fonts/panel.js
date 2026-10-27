@@ -39,7 +39,7 @@
 .sf-row p{margin:0 0 6px}.sf-btns{display:flex;flex-wrap:wrap;gap:6px}.sf-foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-top:12px}
 .sf-box button{font:inherit;padding:6px 10px;border-radius:6px;border:1px solid #888;background:#f4f4f4;color:#111;cursor:pointer}
 .sf-box button.pri{background:#222;color:#fff;border-color:#222}.sf-box button:disabled{opacity:.5;cursor:default}
-@media (prefers-color-scheme:dark){.sf-box{background:#1d1d20;color:#eee}.sf-row{border-color:#3a3a40}.sf-meta{color:#aaa}.sf-box button{background:#2a2a30;color:#eee;border-color:#555}.sf-box button.pri{background:#eee;color:#111;border-color:#eee}}
+@media (prefers-color-scheme:dark){.sf-box{background:#191d26;color:#eee}.sf-row{border-color:#323b4b}.sf-meta{color:#aaa}.sf-box button{background:#252b37;color:#eee;border-color:#555}.sf-box button.pri{background:#eee;color:#111;border-color:#eee}}
 `));
   }
 

@@ -29,10 +29,10 @@
     C.rects().forEach((r, i) => {
       const x = r.x * W, y = r.y * H, w = r.w * W, h = r.h * H, empty = !lay.slots[i];
       og.setLineDash(empty ? [6 * dpr, 4 * dpr] : []);
-      og.strokeStyle = empty ? 'rgba(162, 255, 246,.95)' : 'rgba(162, 255, 246,.3)';
+      og.strokeStyle = empty ? 'rgba(255, 234, 232,.95)' : 'rgba(255, 234, 232,.3)';
       og.lineWidth = 1.5 * dpr;
       og.strokeRect(x + 0.5, y + 0.5, Math.max(1, w - 1), Math.max(1, h - 1));
-      og.fillStyle = empty ? 'rgba(162, 255, 246,.9)' : 'rgba(0,0,0,.6)';
+      og.fillStyle = empty ? 'rgba(255, 234, 232,.9)' : 'rgba(0,0,0,.6)';
       og.fillRect(x + 4 * dpr, y + 4 * dpr, 18 * dpr, 16 * dpr);
       og.fillStyle = empty ? '#111' : '#fff';
       og.fillText(String(i + 1), x + 9 * dpr, y + 7 * dpr);
@@ -50,7 +50,7 @@
       if (id || !row) return;
       const x = TL.x(lay.start), w = Math.max(4, lay.dur * TL.pps), y = row.y - TL.scrollY + 3;
       g.save();
-      g.fillStyle = 'rgba(162, 255, 246,.07)'; g.fillRect(x, y, w, row.h - 7);
+      g.fillStyle = 'rgba(255, 234, 232,.07)'; g.fillRect(x, y, w, row.h - 7);
       g.setLineDash([5, 4]); g.strokeStyle = col.accent; g.lineWidth = 1;
       g.strokeRect(x + 0.5, y + 0.5, w - 1, row.h - 8);
       g.setLineDash([]); g.fillStyle = col.dim; g.font = '600 10px ' + col.ui; g.textBaseline = 'middle';

@@ -6,7 +6,7 @@
 .np-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
 .np-head b { font-weight: 600; }
 .np-head time { color: var(--sl-muted, #666); font-size: 11px; }
-.np-badge { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--sl-accent-soft, #daf5f2); }
+.np-badge { font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--sl-accent-soft, #faeceb); }
 .np-x { margin-left: auto; border: 0; background: none; color: inherit; font-size: 18px; line-height: 1; cursor: pointer; padding: 0 2px; }
 .np-text { margin: 0 0 6px; white-space: pre-wrap; overflow-wrap: anywhere; }
 .np-replies { list-style: none; margin: 0 0 6px; padding: 6px 0 0; border-top: 1px solid var(--sl-border, #ddd); max-height: 160px; overflow: auto; }

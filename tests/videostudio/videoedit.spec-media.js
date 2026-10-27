@@ -15,7 +15,7 @@
       await ST.reset();
       const SE = ST.SE;
       const wav = SE.synth.wav(1.5, (t) => { const v = Math.sin(2 * Math.PI * 330 * t) * (t < 0.75 ? 0.8 : 0.1); return [v, v]; });
-      const png = await SE.synth.png(64, 32, (g) => { g.fillStyle = '#a2fff6'; g.fillRect(0, 0, 64, 32); });
+      const png = await SE.synth.png(64, 32, (g) => { g.fillStyle = '#ffeae8'; g.fillRect(0, 0, 64, 32); });
       const metas = await SE.media.importFiles([new ST.win.File([wav], 'tone.wav', { type: 'audio/wav' }), new ST.win.File([png], 'lime.png', { type: 'image/png' })]);
       expect(metas.length).toBe(2);
       const a = metas.find((m) => m.kind === 'audio'), im = metas.find((m) => m.kind === 'image');

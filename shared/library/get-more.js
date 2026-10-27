@@ -42,7 +42,7 @@
 .tlbx-lib .meta{color:#555;font-size:12px;margin-top:2px}.tlbx-lib .err{color:#a11;margin:6px 0}
 .tlbx-lib button{font:inherit;padding:6px 10px;border-radius:6px;border:1px solid #888;background:#f4f4f4;cursor:pointer}
 .tlbx-lib button.pri{background:#222;color:#fff;border-color:#222}.tlbx-lib button:disabled{opacity:.5;cursor:default}
-@media (prefers-color-scheme:dark){.tlbx-lib{background:#1d1d20;color:#eee}.tlbx-lib .pk{border-color:#3a3a40}.tlbx-lib .meta{color:#aaa}.tlbx-lib button{background:#2a2a30;color:#eee;border-color:#555}.tlbx-lib button.pri{background:#eee;color:#111;border-color:#eee}}
+@media (prefers-color-scheme:dark){.tlbx-lib{background:#191d26;color:#eee}.tlbx-lib .pk{border-color:#323b4b}.tlbx-lib .meta{color:#aaa}.tlbx-lib button{background:#252b37;color:#eee;border-color:#555}.tlbx-lib button.pri{background:#eee;color:#111;border-color:#eee}}
 `));
   }
 

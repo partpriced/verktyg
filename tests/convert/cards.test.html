@@ -93,7 +93,7 @@
       expect(D.documentElement.scrollWidth <= 390).toBe(true);
       const r = $('#cv-drop').getBoundingClientRect();
       expect(Math.round(r.height) === 76 && r.right <= 390).toBe(true);
-      expect(W.getComputedStyle(D.body).backgroundColor).toBe('rgb(246, 243, 236)');
+      expect(W.getComputedStyle(D.body).backgroundColor).toBe('rgb(242, 243, 246)');
     }, { timeout: 40000 });
   });
   TlbxTest.run({ name: 'File Converter: drop strip and card options' });

@@ -149,10 +149,10 @@
     if (SE.cells) SE.cells.drawTimeline(g, C); // empty layout slots (render/cells.js)
     if (TL.ghost) for (const gh of TL.ghost) {
       const r = TL.rowOf(gh.track); if (!r) continue;
-      g.fillStyle = 'rgba(162, 255, 246,.25)'; g.strokeStyle = C.accent; g.lineWidth = 1.5;
+      g.fillStyle = 'rgba(255, 234, 232,.25)'; g.strokeStyle = C.accent; g.lineWidth = 1.5;
       rr(g, TL.x(gh.start), r.y - TL.scrollY + 1, gh.dur * TL.pps, r.h - 2, 5); g.fill(); g.stroke();
     }
-    if (TL.marquee) { const m = TL.marquee; g.fillStyle = 'rgba(162, 255, 246,.08)'; g.strokeStyle = C.accentLine; g.lineWidth = 1; g.fillRect(m.x, m.y, m.w, m.h); g.strokeRect(m.x + 0.5, m.y + 0.5, m.w, m.h); }
+    if (TL.marquee) { const m = TL.marquee; g.fillStyle = 'rgba(255, 234, 232,.08)'; g.strokeStyle = C.accentLine; g.lineWidth = 1; g.fillRect(m.x, m.y, m.w, m.h); g.strokeRect(m.x + 0.5, m.y + 0.5, m.w, m.h); }
     g.restore();
     drawRuler(g, C);
     if (TL.snapLine != null) {

@@ -13,7 +13,7 @@ function counting() {
   return { log, store: { list: base.list, put: async (r) => { log.puts++; return base.put(r); }, remove: async (id) => { log.removes++; return base.remove(id); } } };
 }
 const goodEffect = () => ({ kind: 'effect', label: 'Brand glow', description: 'Lime halo', apps: ['imageeditor'],
-  params: { effects: [{ type: 'glow', p: { color: '#a2fff6', op: 80, spread: 3, size: 20 } }] } });
+  params: { effects: [{ type: 'glow', p: { color: '#ffeae8', op: 80, spread: 3, size: 20 } }] } });
 const goodMotion = () => ({ kind: 'motion', label: 'Quick rise', apps: ['slides', 'remix'],
   params: { duration: 0.4, tracks: { y: [{ t: 0, value: 0.1, ease: 'easeOutCubic' }, { t: 0.4, value: 0 }], opacity: [{ t: 0, value: 0 }, { t: 0.4, value: 1 }] } } });
 

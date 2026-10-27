@@ -49,7 +49,7 @@ function gradientCanvas(a, b) {
   const c = mkCanvas(D.w, D.h), g = cx(c), o = T.gradient;
   const [fr, fg, fb] = hexToRgb(C.fg);
   let c0 = C.fg, c1 = o.mode === 'fgbg' ? C.bg : `rgba(${fr},${fg},${fb},0)`;
-  if (o.mode === 'tlbx') { c0 = '#a2fff6'; c1 = '#003d37'; }
+  if (o.mode === 'tlbx') { c0 = '#ffeae8'; c1 = '#700700'; }
   if (o.reverse) [c0, c1] = [c1, c0];
   const stops = o.mode === 'spectrum' ? ['#ff0040', '#ff9900', '#ffee00', '#33dd55', '#00aaff', '#7a33ff', '#ff00aa'] : [c0, c1];
   const add = (gr, mirrored) => {

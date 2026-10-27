@@ -3,8 +3,8 @@
 (function (DR) {
   // label / one: the English fallback; shown through DR.kindName(id) and kindLabel() in the current language.
   const KINDS = [
-    { id: 'folder', label: 'Folders', one: 'Folder', color: '#8f8a7e' },   // i18n-ignore
-    { id: 'image', label: 'Images', one: 'Image', color: '#a2fff6' },   // i18n-ignore
+    { id: 'folder', label: 'Folders', one: 'Folder', color: '#7c8ba8' },   // i18n-ignore
+    { id: 'image', label: 'Images', one: 'Image', color: '#ffeae8' },   // i18n-ignore
     { id: 'design', label: 'Design files', one: 'Design file', color: '#a86bff' },   // i18n-ignore
     { id: 'model', label: '3D scenes', one: '3D scene', color: '#ff7ad9' },   // i18n-ignore
     { id: 'doc', label: 'ITpris documents', one: 'ITpris document', color: '#7fb0ff' },   // i18n-ignore

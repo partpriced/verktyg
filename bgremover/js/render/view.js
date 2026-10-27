@@ -47,7 +47,7 @@
   function checkerboard() {
     if (!checker) {
       const c = U.canvas(16, 16), g = U.ctx(c);
-      g.fillStyle = '#c9c9cf'; g.fillRect(0, 0, 16, 16);
+      g.fillStyle = '#c3cad7'; g.fillRect(0, 0, 16, 16);
       g.fillStyle = '#ffffff'; g.fillRect(0, 0, 8, 8); g.fillRect(8, 8, 8, 8);
       checker = cx.createPattern(c, 'repeat');
     }

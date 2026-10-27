@@ -188,7 +188,7 @@ legend { padding: 0 3px; position: absolute; top: -7px; left: 7px; background: v
 }
 .startmenu .banner {
   width: 24px; flex: none;
-  background: linear-gradient(0deg, #006a5f, var(--tlbx2));
+  background: linear-gradient(0deg, #bd0d00, var(--tlbx2));
   color: var(--tlbx);
   writing-mode: vertical-rl; transform: rotate(180deg);
   font: 18px/24px "Arial Black", Arial, sans-serif; letter-spacing: 1px;

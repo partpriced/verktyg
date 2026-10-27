@@ -41,7 +41,7 @@
       it('falls back to safe defaults for bad values, without throwing', () => {
         const c = TlbxBrand.normalize({ name: '', colors: { accent: 'javascript:alert(1)' }, links: { patreon: 'javascript:x' }, home: 'javascript:x' });
         expect(c.name).toBe('ITpris Verktyg');
-        expect(c.colors.accent).toBe('#a2fff6');
+        expect(c.colors.accent).toBe('#ffeae8');
         expect(c.links.patreon).toBe('');
         expect(c.home).toBe('');
       });

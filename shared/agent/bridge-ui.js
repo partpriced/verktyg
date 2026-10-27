@@ -13,7 +13,7 @@
 
   const css = `.sbr-pill{position:fixed;left:72px;bottom:34px;z-index:2147483000;display:flex;align-items:center;gap:8px;padding:6px 8px 6px 12px;border-radius:999px;
     background:var(--sui-bg,#232323);color:var(--sui-fg,#e6e6e6);border:1px solid var(--sui-line,#444);box-shadow:0 4px 18px rgba(0,0,0,.35);font:13px/1.3 system-ui,sans-serif}
-    .sbr-dot{width:9px;height:9px;border-radius:50%;background:var(--sui-accent,#a2fff6);box-shadow:0 0 8px var(--sui-accent,#a2fff6)}
+    .sbr-dot{width:9px;height:9px;border-radius:50%;background:var(--sui-accent,#ffeae8);box-shadow:0 0 8px var(--sui-accent,#ffeae8)}
     .sbr-pill .sui-btn{height:24px;padding:0 10px}
     .sbr-dlg ol{margin:0 0 10px;padding-left:20px}.sbr-dlg li{margin:4px 0}
     .sbr-code{font:600 20px/1.2 ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;width:10ch;text-align:center}

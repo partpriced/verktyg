@@ -1,6 +1,6 @@
 /* ITpris package: the seed, the three files and their previews. Colours come from the site theme variables. */
-:root { --bg: var(--sl-background, #0e0e10); --panel: var(--sl-surface, #17171b); --ink: var(--sl-text, #f1ede4);
-  --mute: color-mix(in srgb, var(--ink) 68%, transparent); --line: var(--sl-border, #2b2b33); --accent: var(--sl-accent, #a2fff6); --on: var(--sl-on-accent, #0e0e10); }
+:root { --bg: var(--sl-background, #0c0e12); --panel: var(--sl-surface, #14171e); --ink: var(--sl-text, #ebedf2);
+  --mute: color-mix(in srgb, var(--ink) 68%, transparent); --line: var(--sl-border, #262c38); --accent: var(--sl-accent, #ffeae8); --on: var(--sl-on-accent, #0c0e12); }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
 .wrap { max-width: 880px; margin: 0 auto; padding: 20px 16px 48px; }
 h1 { font-size: 1.6rem; margin: .2rem 0 .4rem; }

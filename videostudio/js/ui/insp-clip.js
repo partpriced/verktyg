@@ -63,7 +63,7 @@
       t(F.color(U.t('videoedit.gfx.colour'), tg('color'), ts('color', U.t('videoedit.insp.text_colour')))),
       t(F.color(U.t('videoedit.insp.outline'), tg('stroke'), ts('stroke', U.t('videoedit.insp.outline_colour')))),
       t(F.slider(U.t('videoedit.insp.outline_width'), tg('strokeW'), ts('strokeW', U.t('videoedit.insp.outline_width')), { min: 0, max: 20, step: 0.5, unit: 'px', hardMin: 0 })),
-      t(F.chips(U.t('videoedit.insp.box'), [['', U.t('videoedit.insp.none')], ['#000000b0', U.t('videoedit.insp.dark')], ['#ffffffd0', U.t('videoedit.app.light')], ['#a2fff6', U.t('videoedit.insp.lime')]], tg('bg'), (v) => { ts('bg', U.t('videoedit.insp.text_box'))(v); SE.history.breakCoalescing(); })),
+      t(F.chips(U.t('videoedit.insp.box'), [['', U.t('videoedit.insp.none')], ['#000000b0', U.t('videoedit.insp.dark')], ['#ffffffd0', U.t('videoedit.app.light')], ['#ffeae8', U.t('videoedit.insp.lime')]], tg('bg'), (v) => { ts('bg', U.t('videoedit.insp.text_box'))(v); SE.history.breakCoalescing(); })),
       t(F.chips(U.t('videoedit.insp.animation_in'), U.wl('tanim', SE.text.ANIMS), tg('anim'), (v) => { ts('anim', U.t('videoedit.insp.text_animation'))(v); SE.history.breakCoalescing(); })),
       t(F.chips(U.t('videoedit.insp.animation_out'), U.wl('tout', SE.text.OUTS), () => { const x = M.clip(SE.doc, id); return x && x.text.out ? x.text.out : 'same'; }, (v) => { ts('out', U.t('videoedit.insp.text_exit'))(v); SE.history.breakCoalescing(); }))));
     I.textInput = tb.input;

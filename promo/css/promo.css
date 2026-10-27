@@ -1,6 +1,6 @@
 /* ITpris Verktyg promo: page shell, stage and the shared type/colour system. */
 :root {
-  --lime: #a2fff6; --lime-2: #3ef1df; --ink: #0a0b07; --ink-2: #13150d; --bone: #f1ede4; --dim: #9a9a8c;
+  --lime: #ffeae8; --lime-2: #fbcfcb; --ink: #0a0b07; --ink-2: #13150d; --bone: #ebedf2; --dim: #8d9ab3;
   --pink: #ff5fa2; --sky: #38d6ff;
   --cond: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
   --serif: 'Instrument Serif', Georgia, serif;
@@ -33,7 +33,7 @@ body { font-family: 'Inter Tight', system-ui, sans-serif; }
 
 /* player UI */
 .ui { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; padding: 8px 14px 8px 8px;
-  background: rgba(10, 11, 7, .78); border: 1px solid rgba(162, 255, 246, .25); border-radius: 99px; backdrop-filter: blur(10px); z-index: 10; width: min(560px, calc(100vw - 32px)); transition: opacity .3s; }
+  background: rgba(10, 11, 7, .78); border: 1px solid rgba(255, 234, 232, .25); border-radius: 99px; backdrop-filter: blur(10px); z-index: 10; width: min(560px, calc(100vw - 32px)); transition: opacity .3s; }
 .playing .ui { opacity: .15; }
 .playing .ui:hover, .ui:focus-within { opacity: 1; }
 .play { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 0; background: var(--lime); color: var(--ink); display: grid; place-items: center; cursor: pointer; }

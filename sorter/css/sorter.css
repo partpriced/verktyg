@@ -1,6 +1,6 @@
 /* Photo Sorter: the page around the deck (shared/deck/deck.css draws the deck). Colours from the page theme (--sl-*). */
-:root { --so-bg: var(--sl-background, #f3f1ec); --so-card: var(--sl-surface, #fff); --so-fg: var(--sl-text, #111); --so-line: var(--sl-border, #c9c5bb);
-  --so-accent: var(--sl-accent, #006f64); --so-on: var(--sl-on-accent, #fff); --so-mute: color-mix(in srgb, var(--so-fg) 62%, transparent); }
+:root { --so-bg: var(--sl-background, #eff1f5); --so-card: var(--sl-surface, #fff); --so-fg: var(--sl-text, #111); --so-line: var(--sl-border, #bec6d4);
+  --so-accent: var(--sl-accent, #c70d00); --so-on: var(--sl-on-accent, #fff); --so-mute: color-mix(in srgb, var(--so-fg) 62%, transparent); }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--so-bg); color: var(--so-fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
   height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }

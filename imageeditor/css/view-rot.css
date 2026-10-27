@@ -3,16 +3,16 @@
 .view-bar {
   display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
   flex: none; min-height: 32px; padding: 4px 8px; box-sizing: border-box;
-  background: var(--sl-surface, #f4f1ea); color: var(--sl-text, #111); border-bottom: 1px solid var(--sl-border, #888);
+  background: var(--sl-surface, #f0f1f5); color: var(--sl-text, #111); border-bottom: 1px solid var(--sl-border, #888);
   font: 12px/1.2 system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 .vb-btn {
   font: inherit; color: inherit; background: transparent; cursor: pointer;
   min-height: 24px; padding: 2px 8px; border: 1px solid var(--sl-border, #888); border-radius: 4px;
 }
-.vb-btn:hover { border-color: var(--sl-accent, #a2fff6); }
-.vb-btn:focus-visible, .vb-slider:focus-visible { outline: 2px solid var(--sl-accent, #a2fff6); outline-offset: 1px; }
-.vb-slider { flex: 0 1 200px; min-width: 120px; accent-color: var(--sl-accent, #a2fff6); }
+.vb-btn:hover { border-color: var(--sl-accent, #ffeae8); }
+.vb-btn:focus-visible, .vb-slider:focus-visible { outline: 2px solid var(--sl-accent, #ffeae8); outline-offset: 1px; }
+.vb-slider { flex: 0 1 200px; min-width: 120px; accent-color: var(--sl-accent, #ffeae8); }
 .vb-angle { min-width: 3.4em; text-align: right; font-variant-numeric: tabular-nums; }
 .sb-rot { color: var(--sl-text, #111); opacity: 0.85; white-space: nowrap; }
 @media (max-width: 600px) {

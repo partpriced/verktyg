@@ -7,8 +7,8 @@
   --dk: #0a0a0a;
   --hl: #000080;
   --hl-text: #ffffff;
-  --tlbx: #a2fff6;
-  --tlbx2: #00d3be;
+  --tlbx: #ffeae8;
+  --tlbx2: #ffa59e;
   --desk: #008080;
   --ui: 11px Tahoma, "MS Sans Serif", "Microsoft Sans Serif", "Segoe UI", Geneva, Verdana, "DejaVu Sans", sans-serif;
   --raised: inset -1px -1px var(--dk), inset 1px 1px var(--hi), inset -2px -2px var(--sh), inset 2px 2px var(--lt);
@@ -85,7 +85,7 @@ button { cursor: default; }
   font-weight: bold;
   touch-action: none;
 }
-.app.inactive > .titlebar { background: linear-gradient(90deg, #808080, #b5b5b5); color: #d4d0c8; }
+.app.inactive > .titlebar { background: linear-gradient(90deg, #808080, #b5b5b5); color: #cbd1dc; }
 .titlebar .ticon { flex: none; }
 .titlebar .ttl { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: .1px; }
 .tbtn {

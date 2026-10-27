@@ -6,18 +6,18 @@
 .viewer.obj-mode .pv-textlayer { pointer-events: none; }
 .viewer.obj-mode .pv-page { cursor: default; }
 .obj-outline { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.obj-outline polygon { fill: none; stroke: var(--accent, #a2fff6); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.obj-outline polygon { fill: none; stroke: var(--accent, #ffeae8); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
 .obj-outline.is-hover polygon { stroke-dasharray: 5 4; stroke: var(--sl-info, #38d6ff); }
 .obj-outline.is-sel polygon { stroke-width: 2; filter: drop-shadow(0 0 1px rgba(0, 0, 0, .7)); }
-.obj-box { position: absolute; pointer-events: auto; cursor: move; touch-action: none; background: color-mix(in srgb, var(--accent, #a2fff6) 8%, transparent); }
-.obj-h { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; box-sizing: border-box; background: var(--accent, #a2fff6); border: 1.5px solid #0a0a0a; border-radius: 3px; pointer-events: auto; touch-action: none; }
+.obj-box { position: absolute; pointer-events: auto; cursor: move; touch-action: none; background: color-mix(in srgb, var(--accent, #ffeae8) 8%, transparent); }
+.obj-h { position: absolute; width: 12px; height: 12px; margin: -6px 0 0 -6px; box-sizing: border-box; background: var(--accent, #ffeae8); border: 1.5px solid #0a0a0a; border-radius: 3px; pointer-events: auto; touch-action: none; }
 .obj-h-nw, .obj-h-se { cursor: nwse-resize; } .obj-h-ne, .obj-h-sw { cursor: nesw-resize; } .obj-h-n, .obj-h-s { cursor: ns-resize; } .obj-h-e, .obj-h-w { cursor: ew-resize; }
-.obj-rot { position: absolute; width: 14px; height: 14px; margin: -34px 0 0 -7px; box-sizing: border-box; border-radius: 50%; background: var(--panel, #1d1d21); border: 2px solid var(--accent, #a2fff6); cursor: grab; pointer-events: auto; touch-action: none; }
-.obj-rot::before { content: ''; position: absolute; left: 50%; top: 100%; width: 0; height: 15px; border-left: 1.5px solid var(--accent, #a2fff6); }
-.obj-ghost { position: absolute; transform-origin: 0 0; opacity: .88; outline: 1px solid var(--accent, #a2fff6); pointer-events: none; }
-.obj-nudge { position: absolute; box-sizing: border-box; border: 2px dashed var(--accent, #a2fff6); pointer-events: none; }
+.obj-rot { position: absolute; width: 14px; height: 14px; margin: -34px 0 0 -7px; box-sizing: border-box; border-radius: 50%; background: var(--panel, #191d26); border: 2px solid var(--accent, #ffeae8); cursor: grab; pointer-events: auto; touch-action: none; }
+.obj-rot::before { content: ''; position: absolute; left: 50%; top: 100%; width: 0; height: 15px; border-left: 1.5px solid var(--accent, #ffeae8); }
+.obj-ghost { position: absolute; transform-origin: 0 0; opacity: .88; outline: 1px solid var(--accent, #ffeae8); pointer-events: none; }
+.obj-nudge { position: absolute; box-sizing: border-box; border: 2px dashed var(--accent, #ffeae8); pointer-events: none; }
 @media (pointer: coarse) { .obj-h { width: 20px; height: 20px; margin: -10px 0 0 -10px; } .obj-rot { width: 22px; height: 22px; margin: -44px 0 0 -11px; } }
-#btnObjects.on { background: var(--accent-soft, rgba(162, 255, 246, .16)); color: var(--fg); box-shadow: inset 0 0 0 1px var(--accent-line, #a2fff6); }
+#btnObjects.on { background: var(--accent-soft, rgba(255, 234, 232, .16)); color: var(--fg); box-shadow: inset 0 0 0 1px var(--accent-line, #ffeae8); }
 .selbar-btn.is-danger { color: var(--danger, #ff5a6e); }
 .obj-pop { flex-direction: column; gap: 2px; min-width: 170px; }
 .obj-pop .selbar-btn { justify-content: flex-start; }

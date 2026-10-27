@@ -21,7 +21,7 @@
   /** A drag holding one PNG, built in the app's realm. */
   async function dragOf(name = 'picture.png') {
     const c = win.document.createElement('canvas'); c.width = 32; c.height = 24;
-    const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, 32, 24);
+    const g = c.getContext('2d'); g.fillStyle = '#ffeae8'; g.fillRect(0, 0, 32, 24);
     const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
     const dt = new win.DataTransfer();
     dt.items.add(new win.File([blob], name, { type: 'image/png' }));

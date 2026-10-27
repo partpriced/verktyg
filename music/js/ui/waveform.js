@@ -6,7 +6,7 @@
   const BAR = 3;
   function colours(canvas) {
     const cs = getComputedStyle(canvas);
-    return { on: cs.getPropertyValue('--mu-accent').trim() || '#a2fff6', off: cs.getPropertyValue('--mu-line').trim() || '#3d3d3d' };
+    return { on: cs.getPropertyValue('--mu-accent').trim() || '#ffeae8', off: cs.getPropertyValue('--mu-line').trim() || '#3d3d3d' };
   }
   /** Draws one bar per 3 px. Bars before progress (0 to 1) use the accent colour. Without peaks: a flat line. */
   function draw(canvas, peaks, progress) {

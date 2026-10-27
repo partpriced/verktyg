@@ -19,11 +19,11 @@
   }
   const wrap = (inner) => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="256" height="256">' + inner + '</svg>';
   const MARKS = [
-    { id: 'dot', name: 'Dot', svg: () => wrap('<circle cx="24" cy="24" r="22" fill="#111111"/><circle cx="24" cy="24" r="8" fill="#a2fff6"/>') }, // i18n-ignore: the page shows qr.mark.*
-    { id: 'badge', name: 'ITpris badge', svg: () => (g.TLBX_ICON_BADGE && g.TLBX_ICONS ? wrap(g.TLBX_ICON_BADGE(g.TLBX_ICONS.qr)) : wrap('<rect x="2" y="2" width="44" height="44" rx="12" fill="#a2fff6"/>')) }, // i18n-ignore: the page shows qr.mark.*
+    { id: 'dot', name: 'Dot', svg: () => wrap('<circle cx="24" cy="24" r="22" fill="#111111"/><circle cx="24" cy="24" r="8" fill="#ffeae8"/>') }, // i18n-ignore: the page shows qr.mark.*
+    { id: 'badge', name: 'ITpris badge', svg: () => (g.TLBX_ICON_BADGE && g.TLBX_ICONS ? wrap(g.TLBX_ICON_BADGE(g.TLBX_ICONS.qr)) : wrap('<rect x="2" y="2" width="44" height="44" rx="12" fill="#ffeae8"/>')) }, // i18n-ignore: the page shows qr.mark.*
     { id: 'heart', name: 'Heart', svg: () => wrap('<path d="M24 41 6 23C1 18 4 8 13 8c4 0 8 3 11 7 3-4 7-7 11-7 9 0 12 10 7 15z" fill="#e5484d"/>') }, // i18n-ignore: the page shows qr.mark.*
     { id: 'star', name: 'Star', svg: () => wrap('<path d="' + star(5, 22, 9) + '" fill="#f5b400"/>') }, // i18n-ignore: the page shows qr.mark.*
-    { id: 'check', name: 'Check', svg: () => wrap('<circle cx="24" cy="24" r="22" fill="#001412"/><path d="M14 25l7 7 13-14" fill="none" stroke="#a2fff6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>') }, // i18n-ignore: the page shows qr.mark.*
+    { id: 'check', name: 'Check', svg: () => wrap('<circle cx="24" cy="24" r="22" fill="#290300"/><path d="M14 25l7 7 13-14" fill="none" stroke="#ffeae8" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>') }, // i18n-ignore: the page shows qr.mark.*
   ];
 
   function blobUrl(svgText) { return URL.createObjectURL(new Blob([svgText], { type: 'image/svg+xml' })); }

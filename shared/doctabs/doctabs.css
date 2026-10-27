@@ -4,12 +4,12 @@
    232 px wide, and on a phone squeezed to the + button). Ignored where the page is not a grid. */
 .doctabs-host { grid-column: 1 / -1; min-width: 0; }
 .sl-doctabs {
-  --sl-tab-bg: var(--sl-background, #f4f1ea);
+  --sl-tab-bg: var(--sl-background, #f0f1f5);
   --sl-tab-active: var(--sl-surface, #ffffff);
-  --sl-tab-text: var(--sl-text, #f1ede4);
+  --sl-tab-text: var(--sl-text, #ebedf2);
   --sl-tab-muted: color-mix(in srgb, var(--sl-text, #141414) 68%, transparent);
-  --sl-tab-accent: var(--sl-accent, #a2fff6);
-  --sl-tab-line: var(--sl-border, #3a3a35);
+  --sl-tab-accent: var(--sl-accent, #ffeae8);
+  --sl-tab-line: var(--sl-border, #323a4a);
   position: relative;
   display: flex;
   align-items: stretch;

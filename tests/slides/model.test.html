@@ -17,7 +17,7 @@
       SS = await loadSlides(['core', 'render', 'anim', 'io']);
       expect(SS.fonts.isReady()).toBe(true);
       expect(SS.themes.list.length).toBeGreaterThanOrEqual(6);
-      expect(SS.themes.byId('tlbx').colors.accent1).toBe('#a2fff6');
+      expect(SS.themes.byId('tlbx').colors.accent1).toBe('#ffeae8');
     }, { timeout: 30000 });
     it('a new deck is 16:9 with one title slide and theme placeholders', () => {
       const d = SS.model.newDeck({ theme: 'paper' });

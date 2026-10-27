@@ -29,7 +29,7 @@
   const P = g.TlbxBiz.panel;
   if (P) {
     P.form({ app: 'ledger', key: 'journal', view: '#view-journal', form: '#jForm', foot: ['#jPost'], label: 'ledger.gen.new_entry' });
-    P.form({ app: 'ledger', key: 'accounts', view: '#view-accounts', form: '#aForm', foot: ['#aAdd'], label: 'ledger.gen.new_account' });
+    P.form({ app: 'ledger', key: 'accounts', view: '#view-accounts', form: '#aForm', foot: ['#a5afc3dd'], label: 'ledger.gen.new_account' });
     P.form({ app: 'ledger', key: 'rates', view: '#view-rates', form: '#rForm', foot: ['#rAdd'], label: 'ledger.gen.new_rate' });
   }
   const app = g.TlbxBiz.router.start({

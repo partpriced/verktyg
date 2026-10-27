@@ -2,7 +2,7 @@
  * Colours follow the page's tokens when present. No overlay, nothing covers the page. */
 .tlbxsup-corner { position: fixed; inset-inline-end: 16px; bottom: 16px; z-index: 900; }
 .tlbxsup-card { box-sizing: border-box; width: min(340px, calc(100vw - 32px)); padding: 12px 14px; border-radius: 10px;
-  background: var(--paper, #f1ede4); color: var(--ink, #0a0a0a); border: 1px solid rgba(0,0,0,.18);
+  background: var(--paper, #ebedf2); color: var(--ink, #0a0a0a); border: 1px solid rgba(0,0,0,.18);
   box-shadow: 0 6px 24px rgba(0,0,0,.18); font: 13px/1.4 system-ui, sans-serif; }
 .tlbxsup-inline { width: 100%; margin-top: 12px; }
 .tlbxsup-head { display: flex; align-items: center; gap: 10px; }
@@ -23,5 +23,5 @@
 .tlbxsup-ad { border: 1px dashed currentColor; border-radius: 8px; padding: 8px; min-height: 60px; }
 .tlbxsup-ad-label, .tlbxsup-ad-empty { margin: 0; font-size: 11px; opacity: .75; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .tlbxsup-card { background: #1b1b1b; color: #f1ede4; border-color: rgba(255,255,255,.2); }
+  :root:not([data-theme="light"]) .tlbxsup-card { background: #1b1b1b; color: #ebedf2; border-color: rgba(255,255,255,.2); }
 }

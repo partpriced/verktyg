@@ -13,7 +13,7 @@
     styled = true;
     const s = g.document.createElement('style');
     s.textContent = '.face-ov{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none}'
-      + '.face-ov rect{fill:none;stroke:#a2fff6;stroke-width:2px;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 1px #000)}';
+      + '.face-ov rect{fill:none;stroke:#ffeae8;stroke-width:2px;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 1px #000)}';
     g.document.head.append(s);
   }
 

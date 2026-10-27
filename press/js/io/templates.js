@@ -29,7 +29,7 @@
     }
     x.globalAlpha = 1;
     // a friendly slime silhouette
-    x.fillStyle = 'rgba(162, 255, 246,.92)'; x.beginPath();
+    x.fillStyle = 'rgba(255, 234, 232,.92)'; x.beginPath();
     var bx = w * 0.62, by = h * 0.72, s = Math.min(w, h) * 0.32;
     x.moveTo(bx, by - s * 1.3); x.bezierCurveTo(bx + s * 0.4, by - s * 0.7, bx + s, by - s * 0.2, bx + s, by + s * 0.25); x.arc(bx, by + s * 0.25, s, 0, Math.PI); x.bezierCurveTo(bx - s, by - s * 0.2, bx - s * 0.4, by - s * 0.7, bx, by - s * 1.3); x.fill();
     x.fillStyle = '#0a0a0a';
@@ -91,7 +91,7 @@
     void pq;
     // back page
     var p4 = doc.pages[3].items;
-    TP.shape(doc, p4, 'rect', -b, H * 0.55, W + 2 * b, H * 0.45 + b, { fill: '#a2fff6' });
+    TP.shape(doc, p4, 'rect', -b, H * 0.55, W + 2 * b, H * 0.45 + b, { fill: '#ffeae8' });
     TP.text(doc, p4, mL.left, H * 0.62, cw, 60 * mm, 'Print it\nExport a press-ready PDF with bleed, crop marks and embedded fonts — straight from this tab.', 'Title'); // i18n-ignore: sample document content
     doc.stories[p4[p4.length - 1].story].paras[1].ps = 'Deck'; // i18n-ignore: sample document content
     return doc;

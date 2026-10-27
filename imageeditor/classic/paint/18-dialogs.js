@@ -76,7 +76,7 @@ const ICON_SVG = {
   warn: '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2L31 29H1z" fill="#ffd400" stroke="#000" stroke-width="1.5"/><rect x="14.5" y="10" width="3" height="11" fill="#000"/><rect x="14.5" y="23" width="3" height="3" fill="#000"/></svg>',
   question: '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M4 3h24v18H13l-7 7v-7H4z" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="16" y="18" text-anchor="middle" font-family="Times New Roman, serif" font-weight="bold" font-size="15" fill="#0000c0">?</text></svg>',
   info: '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="14" y="13" width="4" height="11" fill="#0000c0"/><rect x="14" y="7" width="4" height="4" fill="#0000c0"/></svg>',
-  tlbx: '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2S5 14 5 21a11 11 0 0 0 22 0C27 14 16 2 16 2z" fill="#a2fff6" stroke="#000" stroke-width="1.5"/><path d="M10.5 21.5a5.5 5.5 0 0 0 4.5 5" fill="none" stroke="#fff" stroke-width="2"/></svg>',
+  tlbx: '<svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2S5 14 5 21a11 11 0 0 0 22 0C27 14 16 2 16 2z" fill="#ffeae8" stroke="#000" stroke-width="1.5"/><path d="M10.5 21.5a5.5 5.5 0 0 0 4.5 5" fill="none" stroke="#fff" stroke-width="2"/></svg>',
 };
 /** The words on a message box button; the value stays the English name ('Yes', 'No', 'Cancel'), which callers compare. */
 const BTN = { OK: 'menu.ok', Cancel: 'menu.cancel', Yes: 'ui.yes', No: 'ui.no' };

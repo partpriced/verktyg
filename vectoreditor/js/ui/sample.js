@@ -12,22 +12,22 @@
   SV.sampleDoc = function () {
     var mk = SV.mk, d = SV.newDoc(1200, 800, 'Helper');
     var bg = mk.layer('Background', '#4f8bff'), tlbx = mk.layer('Helper', '#2fc65a'), type = mk.layer('Type', '#ff4f7b');
-    var INK = '#0a0a0a', LIME = '#a2fff6';
-    var limeBody = { type: 'radial', cx: 0.38, cy: 0.3, r: 0.85, fx: 0.33, fy: 0.22, stops: [{ o: 0, c: '#e8fffd', a: 1 }, { o: 0.28, c: '#affff7', a: 1 }, { o: 0.72, c: '#00ddc7', a: 1 }, { o: 1, c: '#009a8a', a: 1 }] };
-    var limeGoo = { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#75f7ea', a: 1 }, { o: 1, c: '#00ae9c', a: 1 }] };
+    var INK = '#0a0a0a', LIME = '#ffeae8';
+    var limeBody = { type: 'radial', cx: 0.38, cy: 0.3, r: 0.85, fx: 0.33, fy: 0.22, stops: [{ o: 0, c: '#fff9f9', a: 1 }, { o: 0.28, c: '#ffeceb', a: 1 }, { o: 0.72, c: '#ffb2ac', a: 1 }, { o: 1, c: '#ff3e30', a: 1 }] };
+    var limeGoo = { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#fddad8', a: 1 }, { o: 1, c: '#ff6b60', a: 1 }] };
     bg.children.push(
-      mk.rect(0, 0, 1200, 800, 0, { fill: { type: 'radial', cx: 0.32, cy: 0.5, r: 0.8, fx: 0.32, fy: 0.5, stops: [{ o: 0, c: '#fbf9f3', a: 1 }, { o: 1, c: '#e6e0d1', a: 1 }] } }, 'Paper'),
+      mk.rect(0, 0, 1200, 800, 0, { fill: { type: 'radial', cx: 0.32, cy: 0.5, r: 0.8, fx: 0.32, fy: 0.5, stops: [{ o: 0, c: '#fbf9f3', a: 1 }, { o: 1, c: '#dde1e8', a: 1 }] } }, 'Paper'),
       mk.ellipse(400, 440, 330, 330, { fill: { type: 'radial', cx: 0.5, cy: 0.5, r: 0.5, stops: [{ o: 0, c: LIME, a: 0.55 }, { o: 0.6, c: LIME, a: 0.18 }, { o: 1, c: LIME, a: 0 }] } }, 'Glow'),
       mk.star(176, 176, 26, 7, 4, { fill: INK }, 'Sparkle'),
       mk.star(622, 132, 16, 4.5, 4, { fill: INK }, 'Sparkle small'),
       mk.star(1110, 648, 24, 7, 4, { fill: LIME, stroke: INK, sw: 3, join: 'round' }, 'Sparkle lime'),
       mk.star(96, 470, 12, 3.5, 4, { fill: INK }, 'Sparkle tiny'),
-      mk.text(60, 74, 'WORKSUITE  Nº 002', { family: 'JetBrains Mono', size: 14, weight: 600, tracking: 120 }, { fill: '#8a8577' }, 'Kicker')
+      mk.text(60, 74, 'WORKSUITE  Nº 002', { family: 'JetBrains Mono', size: 14, weight: 600, tracking: 120 }, { fill: '#7686a4' }, 'Kicker')
     );
     var shadowGlow = mk.ellipse(408, 690, 270, 22, { fill: '#0a0a0a', opacity: 0.12 }, 'Shadow');
     var puddle = mk.d('M150 646C146 622 236 610 300 614C360 604 450 606 520 612C600 608 676 622 668 648C662 672 580 684 470 680C400 690 300 686 236 680C176 676 152 664 150 646Z', { fill: limeGoo, stroke: INK, sw: 6, join: 'round' }, 'Puddle');
-    var dropL = mk.ellipse(124, 664, 11, 8, { fill: '#00e9d2', stroke: INK, sw: 4 }, 'Goo drop');
-    var dropR = mk.ellipse(698, 660, 8, 6, { fill: '#00e9d2', stroke: INK, sw: 4 }, 'Goo drop');
+    var dropL = mk.ellipse(124, 664, 11, 8, { fill: '#ffc1bd', stroke: INK, sw: 4 }, 'Goo drop');
+    var dropR = mk.ellipse(698, 660, 8, 6, { fill: '#ffc1bd', stroke: INK, sw: 4 }, 'Goo drop');
     var body = mk.d('M236 622C236 560 240 490 262 420C290 320 336 244 404 240C474 236 520 312 548 410C568 482 572 560 570 622C590 630 604 640 598 650C520 664 290 666 210 650C204 640 216 628 236 622Z', { fill: limeBody, stroke: INK, sw: 6, join: 'round' }, 'Body');
     var gloss = mk.ellipse(318, 330, 20, 44, { fill: '#ffffff', opacity: 0.78 }, 'Gloss');
     gloss.m = G.rotate(28 * PI / 180, 318, 330);
@@ -42,7 +42,7 @@
     var flying = mk.d('M512 150C512 150 492 178 492 192C492 203 501 212 512 212C523 212 532 203 532 192C532 178 512 150 512 150Z', { fill: limeBody, stroke: INK, sw: 4, join: 'round' }, 'Flying drop');
     tlbx.children.push(shadowGlow, puddle, dropL, dropR, body, gloss, glossDot, eyes, blush, mouth, tuft, flying);
     var word = mk.text(656, 352, 'TLBX\nVECTOR', { family: 'Archivo', size: 108, weight: 900, lh: 0.9, tracking: -12 }, { fill: INK }, 'Wordmark');
-    var tag = mk.text(660, 506, 'The illustrator clone nobody asked for.', { family: 'Inter Tight', size: 24, weight: 500 }, { fill: '#3b3a36' }, 'Tagline');
+    var tag = mk.text(660, 506, 'The illustrator clone nobody asked for.', { family: 'Inter Tight', size: 24, weight: 500 }, { fill: '#323a4b' }, 'Tagline');
     var pillR = mk.rect(658, 546, 344, 46, 23, { fill: LIME, stroke: INK, sw: 3 }, 'Pill');
     var pillT = mk.text(830, 575, '100% LOCAL · 0% UPLOADS', { family: 'JetBrains Mono', size: 16, weight: 600, align: 'center', tracking: 40 }, { fill: INK }, 'Pill label');
     type.children.push(word, tag, mk.group([pillR, pillT], 'Badge'));

@@ -1,7 +1,7 @@
 /* Motion Graphics. Themed by the shared --sl-* tokens (shared/theme) with dark fallbacks. Phone width (under 760 px) stacks the
    preview, the properties and the timeline in one column with a 16 px gutter and no horizontal page scroll. */
-.fx-app { --fx-bg: var(--sl-background, #0a0a0a); --fx-surface: var(--sl-surface, #151518); --fx-text: var(--sl-text, #f1ede4);
-  --fx-accent: var(--sl-accent, #a2fff6); --fx-border: var(--sl-border, #2a2a30); --fx-dim: color-mix(in srgb, var(--fx-text) 60%, transparent);
+.fx-app { --fx-bg: var(--sl-background, #0a0a0a); --fx-surface: var(--sl-surface, #12151b); --fx-text: var(--sl-text, #ebedf2);
+  --fx-accent: var(--sl-accent, #ffeae8); --fx-border: var(--sl-border, #252b37); --fx-dim: color-mix(in srgb, var(--fx-text) 60%, transparent);
   min-height: 100vh; min-height: 100dvh; display: grid; grid-template-rows: auto 1fr; background: var(--fx-bg); color: var(--fx-text);
   font: 13px/1.4 var(--sui-font, Inter, system-ui, sans-serif); overflow-x: hidden; }
 body { margin: 0; }

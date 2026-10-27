@@ -21,7 +21,7 @@
   }
   async function png(w, h) {
     const c = document.createElement('canvas'); c.width = w; c.height = h;
-    const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, w, h); g.fillStyle = '#222'; g.fillRect(w / 4, h / 4, w / 2, h / 2);
+    const g = c.getContext('2d'); g.fillStyle = '#ffeae8'; g.fillRect(0, 0, w, h); g.fillStyle = '#222'; g.fillRect(w / 4, h / 4, w / 2, h / 2);
     return new Promise((r) => c.toBlob(r, 'image/png'));
   }
 

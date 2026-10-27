@@ -29,7 +29,7 @@
     function draw(canvas, ease, showHandles, cp) {
       const c = canvas.getContext('2d');
       c.clearRect(0, 0, W, W);
-      c.fillStyle = getComputedStyle(canvas).getPropertyValue('--fx-surface') || '#151518';
+      c.fillStyle = getComputedStyle(canvas).getPropertyValue('--fx-surface') || '#12151b';
       c.strokeStyle = 'rgba(128,128,128,.25)';
       c.lineWidth = 1;
       for (const v of [0, 0.5, 1]) {
@@ -37,7 +37,7 @@
         c.beginPath(); c.moveTo(toX(0), toY(v)); c.lineTo(toX(1), toY(v)); c.stroke();
       }
       const fn = ease === 'hold' ? null : g.TlbxMotion.easing.resolve(ease);
-      c.strokeStyle = '#a2fff6';
+      c.strokeStyle = '#ffeae8';
       c.lineWidth = 2.5;
       c.beginPath();
       for (let i = 0; i <= 100; i++) {
@@ -47,11 +47,11 @@
       }
       c.stroke();
       if (showHandles && cp) {
-        c.strokeStyle = 'rgba(241,237,228,.55)';
+        c.strokeStyle = 'rgba(235, 237, 242,.55)';
         c.lineWidth = 1;
         c.beginPath(); c.moveTo(toX(0), toY(0)); c.lineTo(toX(cp[0]), toY(cp[1])); c.stroke();
         c.beginPath(); c.moveTo(toX(1), toY(1)); c.lineTo(toX(cp[2]), toY(cp[3])); c.stroke();
-        c.fillStyle = '#f1ede4';
+        c.fillStyle = '#ebedf2';
         c.beginPath(); c.arc(toX(cp[0]), toY(cp[1]), 6, 0, Math.PI * 2); c.fill();
         c.beginPath(); c.arc(toX(cp[2]), toY(cp[3]), 6, 0, Math.PI * 2); c.fill();
       }

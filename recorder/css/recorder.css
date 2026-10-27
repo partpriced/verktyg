@@ -2,7 +2,7 @@
 :root {
   --rc-bg: var(--sl-background, #161616); --rc-panel: var(--sl-surface, #1f1f1f); --rc-line: var(--sl-border, #333);
   --rc-fg: var(--sl-text, #ececec); --rc-dim: color-mix(in srgb, var(--rc-fg) 72%, transparent);
-  --rc-accent: var(--sl-accent, #a2fff6); --rc-on-accent: var(--sl-on-accent, #0a1817); --rc-radius: 8px; --rc-red: #e5484d;
+  --rc-accent: var(--sl-accent, #ffeae8); --rc-on-accent: var(--sl-on-accent, #24100f); --rc-radius: 8px; --rc-red: #e5484d;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
@@ -17,13 +17,13 @@ p, h2 { margin: 0; }
 .rc-main { flex: 1 1 auto; min-height: 0; }
 .rc-view { display: flex; flex-direction: column; gap: 14px; padding: 16px; overflow-y: auto; }
 .rc-stage { position: relative; display: grid; place-items: center; min-height: 280px; aspect-ratio: 16 / 9; max-height: 62vh; width: 100%;
-  border: 1px solid var(--rc-line); border-radius: var(--rc-radius); background: #0b0b0d; overflow: hidden; }
-.rc-live, .rc-play { width: 100%; height: 100%; object-fit: contain; background: #0b0b0d; grid-area: 1 / 1; }
+  border: 1px solid var(--rc-line); border-radius: var(--rc-radius); background: #0a0b0e; overflow: hidden; }
+.rc-live, .rc-play { width: 100%; height: 100%; object-fit: contain; background: #0a0b0e; grid-area: 1 / 1; }
 .rc-play.rc-audio { height: 54px; align-self: center; background: transparent; }
 .rc-empty { grid-area: 1 / 1; display: grid; justify-items: center; gap: 8px; text-align: center; padding: 20px; max-width: 46ch; color: #ececec; }
 .rc-empty-icon { width: 56px; height: 56px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; opacity: .85; }
 .rc-empty-title { font-size: 17px; font-weight: 650; }
-.rc-empty-text { color: #c9c9cf; }
+.rc-empty-text { color: #c3cad7; }
 /* The countdown over the live picture, and the recording badge in the corner */
 .rc-count { grid-area: 1 / 1; display: grid; place-items: center; width: 132px; height: 132px; border-radius: 50%; font-size: 72px; font-weight: 750;
   color: #fff; background: rgba(0, 0, 0, .62); font-variant-numeric: tabular-nums; }

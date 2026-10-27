@@ -2,10 +2,10 @@
  * follow the one theme switcher). The fallbacks are the light theme for a page without the script. */
 :root {
   --ocr-ink: var(--sl-text, #0a0a0a);
-  --ocr-paper: var(--sl-background, #ebe7de);
-  --ocr-card: var(--sl-surface, #f8f6f1);
-  --ocr-edge: var(--sl-border, #8e8b82);
-  --ocr-hi: var(--sl-accent, #006f64);
+  --ocr-paper: var(--sl-background, #e4e7ed);
+  --ocr-card: var(--sl-surface, #f5f6f8);
+  --ocr-edge: var(--sl-border, #7d8ca8);
+  --ocr-hi: var(--sl-accent, #c70d00);
   --ocr-on-hi: var(--sl-on-accent, #ffffff);
   --ocr-muted: color-mix(in srgb, var(--sl-text, #0a0a0a) 68%, transparent);
 }

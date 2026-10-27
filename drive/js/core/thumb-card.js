@@ -3,7 +3,7 @@
  * paragraph) or a waveform. Every file without a picture of its own gets one. DR.drawCard(r, spec) → Promise<Blob>. */
 'use strict';
 (function (DR) {
-  const W = 320, H = 240, BG = '#1d1e22', FG = '#e8e7ea', FAINT = '#9a9aa3';
+  const W = 320, H = 240, BG = '#1a1e27', FG = '#e5e8ed', FAINT = '#8f9bb4';
   const MONO = '13px ui-monospace, Menlo, Consolas, monospace', SANS = '13px system-ui, sans-serif';
   const canvas = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
   DR.canvasOf = canvas;

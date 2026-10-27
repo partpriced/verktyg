@@ -5,8 +5,8 @@
 :root {
   /* Every colour follows the site theme (shared/theme/theme.js sets --sl-* on each page: Light, Dark, Classic, Lime);
      the values after the commas are the dark look for a page without it. */
-  --bg: var(--sl-background, #0e0e10); --panel: var(--sl-surface, #17171b); --ink: var(--sl-text, #f1ede4);
-  --line: var(--sl-border, #2b2b33); --accent: var(--sl-accent, #a2fff6); --accent-ink: var(--sl-on-accent, #0e0e10); --focus: var(--accent);
+  --bg: var(--sl-background, #0c0e12); --panel: var(--sl-surface, #14171e); --ink: var(--sl-text, #ebedf2);
+  --line: var(--sl-border, #262c38); --accent: var(--sl-accent, #ffeae8); --accent-ink: var(--sl-on-accent, #0c0e12); --focus: var(--accent);
   --panel-2: color-mix(in srgb, var(--panel) 94%, var(--ink)); --input: color-mix(in srgb, var(--bg) 55%, var(--panel));
   --mute: color-mix(in srgb, var(--ink) 68%, transparent); --line-strong: color-mix(in srgb, var(--ink) 30%, var(--line));
   --accent-soft: color-mix(in srgb, var(--accent) 18%, transparent); --hover: color-mix(in srgb, var(--ink) 7%, var(--panel));

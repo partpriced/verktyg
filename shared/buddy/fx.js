@@ -38,7 +38,7 @@ export function hearts(n = 3) {
   }
 }
 
-export function sparkle(x = M.x, y = M.y - size() * 0.6, n = 10, colors = ['#a2fff6', '#ffd23f', '#5cc8ff', '#ff4f86']) {
+export function sparkle(x = M.x, y = M.y - size() * 0.6, n = 10, colors = ['#ffeae8', '#ffd23f', '#5cc8ff', '#ff4f86']) {
   for (let i = 0; i < n; i++) {
     const a = (i / n) * Math.PI * 2 + rand(-0.3, 0.3), d = rand(50, 110);
     const p = particle('helpbot-spark', x, y, STAR);

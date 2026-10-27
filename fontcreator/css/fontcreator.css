@@ -4,7 +4,7 @@
 :root {
   --fc-bg: var(--sl-background, #161616); --fc-panel: var(--sl-surface, #1f1f1f); --fc-line: var(--sl-border, #333);
   --fc-fg: var(--sl-text, #ececec); --fc-dim: var(--sl-muted, color-mix(in srgb, var(--fc-fg) 72%, var(--fc-bg)));
-  --fc-accent: var(--sl-accent, #a2fff6); --fc-radius: 10px;
+  --fc-accent: var(--sl-accent, #ffeae8); --fc-radius: 10px;
   --fc-canvas: var(--fc-bg); --fc-ink: var(--fc-fg); --fc-guide: color-mix(in srgb, var(--fc-fg) 30%, transparent);
   --fc-base: color-mix(in srgb, var(--fc-fg) 62%, transparent); --fc-point: #3b82f6; --fc-box: color-mix(in srgb, var(--fc-fg) 6%, transparent);
   --sf-list-w: 300px;

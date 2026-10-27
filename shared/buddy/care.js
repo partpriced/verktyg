@@ -52,7 +52,7 @@ export function feed(id) {
     M.squash = -0.5;
     setMood('annoyed', 2200);
     say(line('spit'), 1800, { force: true });
-    if (!reduced()) crumbs(M.x + 20, M.y - size() * 0.4, '#3ef1df', 8);
+    if (!reduced()) crumbs(M.x + 20, M.y - size() * 0.4, '#fbcfcb', 8);
     if (M.raging) M.raging += 3000; else M.rage = Math.min(2.5, M.rage - v);
   } else {
     if (it.act === 'hat') { const hats = ['crown', 'tophat', 'wizard', 'party', 'cowboy']; M.tempHat = hats[Math.floor(Math.random() * hats.length)]; }
@@ -125,7 +125,7 @@ export function onDrag(t, x, y) {
   return sc;
 }
 export const dragEnded = () => { samples = []; };
-function slosh() { if (!reduced()) crumbs(M.x, M.y - size() * 0.5, '#3ef1df', 7); }
+function slosh() { if (!reduced()) crumbs(M.x, M.y - size() * 0.5, '#fbcfcb', 7); }
 
 /* ---------- the 'Give…' section (opens only when pressed; the tray shows while he is angry) ---------- */
 let tray = null, giveBtn = null, giveBody = null, candyBtn = null, giveOpen = false;

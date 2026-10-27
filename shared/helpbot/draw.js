@@ -62,7 +62,7 @@ export function drawHelpbot(g, W, Hh, look = {}, t = 0) {
   // soft rim + edge
   bodyPath(g, x, base, w, h);
   g.strokeStyle = rgba(B.rim, 0.55); g.lineWidth = s * 0.018; g.stroke();
-  g.strokeStyle = shade(B.lo.startsWith('#') ? B.lo : '#008f81', -0.35); g.globalAlpha = (B.alpha || 1) * 0.55; g.lineWidth = s * 0.008; g.stroke();
+  g.strokeStyle = shade(B.lo.startsWith('#') ? B.lo : '#fd1100', -0.35); g.globalAlpha = (B.alpha || 1) * 0.55; g.lineWidth = s * 0.008; g.stroke();
   g.globalAlpha = 1;
   // painted gloss (soft, not a hard specular)
   gr = g.createRadialGradient(x - w * 0.24, top + h * 0.26, 0, x - w * 0.24, top + h * 0.26, s * 0.14);

@@ -15,7 +15,7 @@
     preset('hard-shadow', PS,
       [fx('drop-shadow', { color: '#000000', op: 80, a: 135, dist: 10, size: 0 })]),
     preset('neon-glow', PS,
-      [fx('glow', { color: '#a2fff6', op: 85, spread: 4, size: 24 })]),
+      [fx('glow', { color: '#ffeae8', op: 85, spread: 4, size: 24 })]),
     preset('inner-glow-soft', PS,
       [fx('inner-glow', { color: '#fff5b0', op: 75, size: 12 })]),
     preset('outline', PS,

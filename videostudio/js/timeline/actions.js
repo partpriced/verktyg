@@ -113,7 +113,7 @@
   };
   act.addColor = function (color) {
     const t = U.snapFrame(now(), fps());
-    SE.change(U.t('videoedit.tl.add_colour_matte'), (p) => { const id = E.addGenerated(p, 'color', M.videoTracks(p)[0].id, t, 5, { color: color || '#1b1b22' }); A.select([id]); });
+    SE.change(U.t('videoedit.tl.add_colour_matte'), (p) => { const id = E.addGenerated(p, 'color', M.videoTracks(p)[0].id, t, 5, { color: color || '#181c24' }); A.select([id]); });
   };
   act.addTrack = (kind) => SE.change(U.t('videoedit.tl.add_track'), (p) => { M.addTrack(p, kind); });
   /** Add a transition to the selected clip, or to the cut nearest the playhead. */

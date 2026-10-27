@@ -19,7 +19,7 @@
   padding: 7px 10px; border-bottom: 1px solid var(--sl-border, #3d3d3d); cursor: pointer;
 }
 .sr-row:hover, .sr-row:focus-within { background: color-mix(in srgb, var(--sl-text, #e6e6e6) 7%, transparent); }
-.sr-row input { margin: 3px 0 0; accent-color: var(--sl-accent, #a2fff6); }
+.sr-row input { margin: 3px 0 0; accent-color: var(--sl-accent, #ffeae8); }
 .sr-text { display: flex; flex-direction: column; min-width: 0; }
 .sr-text b { font-weight: 500; overflow-wrap: anywhere; }
 .sr-text small { color: color-mix(in srgb, var(--sl-text, #e6e6e6) 70%, transparent); overflow-wrap: anywhere; }

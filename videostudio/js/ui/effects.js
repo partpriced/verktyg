@@ -14,11 +14,11 @@
     ['Lower third', { str: 'Helper\nChief goo officer', size: 0.05, anim: 'slide', align: 'left', bg: '#000000b0', bold: true }, 0.3, -0.25], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
     ['Subtitle', { str: 'Subtitles go here', size: 0.045, anim: 'fade', bg: '#000000a0', bold: false, shadow: false }, 0.4], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
     ['Typewriter', { str: 'Once upon a time…', size: 0.07, anim: 'type', font: 'JetBrains Mono', bold: false }, 0], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
-    ['Handwritten', { str: 'with love', size: 0.11, anim: 'rise', font: 'Caveat', color: '#a2fff6', bold: false }, 0], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
+    ['Handwritten', { str: 'with love', size: 0.11, anim: 'rise', font: 'Caveat', color: '#ffeae8', bold: false }, 0], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
     ['Outline', { str: 'OUTLINE', size: 0.14, anim: 'fade', color: '#ffffff', stroke: '#0a0a0a', strokeW: 6, font: 'Archivo' }, 0], // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
     ['Caption', { str: 'Caption text', size: 0.035, anim: 'fade', out: 'fade', align: 'center', bg: '#000000b0', bold: false, shadow: false }, 0.42] // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
   ];
-  FX.MATTES = [['Black', '#000000'], ['White', '#ffffff'], ['Lime', '#a2fff6'], ['Ink', '#1b1b22'], ['Sunset', '#ff6b4a'], ['Ocean', '#1f6feb']]; // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
+  FX.MATTES = [['Black', '#000000'], ['White', '#ffffff'], ['Lime', '#ffeae8'], ['Ink', '#181c24'], ['Sunset', '#ff6b4a'], ['Ocean', '#1f6feb']]; // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
   FX.LOOKS = [['Warm', { temp: 35, sat: 10 }], ['Cool', { temp: -35 }], ['Punchy', { contrast: 25, sat: 30 }], ['B&W', { sat: -100, contrast: 15 }], ['Faded', { contrast: -25, bright: 8, sat: -20 }], ['Night', { bright: -25, temp: -40, sat: -30 }]]; // i18n-ignore: sample words put into the project, and English fallbacks of videoedit.def.* (U.w)
 
   /** Resolve a title preset for the current sequence size. */

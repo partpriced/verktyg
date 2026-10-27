@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en" data-lang-page="en" data-theme="pro">
-<head><base href="../../expenses/"><script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented)return;e.preventDefault();location.hash=a.getAttribute('href')})</script>
+<head><script data-robots-guard>(function(h){if(["verktyg.itpris.se","www.verktyg.itpris.se","localhost","127.0.0.1","[::1]",""].indexOf(h)<0){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m)}})(location.hostname)</script><base href="../../expenses/"><script>document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href^="#"]');if(!a||e.defaultPrevented)return;e.preventDefault();location.hash=a.getAttribute('href')})</script><script data-robots-guard>(function(h){if(["verktyg.itpris.se","www.verktyg.itpris.se","localhost","127.0.0.1","[::1]",""].indexOf(h)<0){var m=document.createElement('meta');m.name='robots';m.content='noindex';document.head.appendChild(m)}})(location.hostname)</script>
   <script src="../shared/profile/profile.js" data-src="shared/profile/profile.js"></script>
   <script src="../shared/theme/theme.js" data-app="expenses" data-src="shared/theme/theme.js"></script>
   <link rel="expect" href="#tlbx-built" blocking="render">
   <script src="../shared/i18n/i18n.js" data-src="shared/i18n/i18n.js"></script>
   <script src="../shared/biz/i18n/index.js" data-src="shared/biz/i18n/index.js"></script>
   <script src="i18n/index.js" data-src="expenses/i18n/index.js"></script>
+  <script src="../shared/ocr/i18n/index.js" data-src="shared/ocr/i18n/index.js"></script>
 <script src="../shared/consent/config.js"></script>
 <script src="../shared/consent/state.js"></script>
 <script src="../shared/consent/consent-mode.js"></script>
@@ -32,7 +33,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://verktyg.itpris.se/en/"},{"@type":"ListItem","position":2,"name":"Expenses","item":"https://verktyg.itpris.se/en/expenses/"}]}</script>
   <!-- seo:end -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0e0e10">
+  <meta name="theme-color" content="#0c0e12">
   <meta name="color-scheme" content="dark light">
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../shared/fonts/fonts.css">
@@ -52,7 +53,7 @@
     <div class="smb-hold" hidden>
       <button type="button" class="tb-btn" id="xMenuNew" data-cmd="expenses.new" data-i18n="expenses.page.new">New expense</button>
       <button type="button" class="tb-btn" id="xMenuCsv" data-cmd="expenses.csv" data-i18n="expenses.page.csv">Download CSV</button>
-      <a id="xAbout" href="about/" data-i18n="biz.app.about">About</a>
+      <a id="xAbout" href="/en/expenses/about/" data-i18n="biz.app.about">About</a>
       <button type="button" class="tb-btn" id="xCmd" data-cmd="cmd.palette" aria-label="Search commands" title="Search commands (Ctrl+K)" data-i18n-attr="aria-label:ui.cmd.search;title:biz.app.cmd_tip">⌘K</button>
     </div>
 
@@ -158,7 +159,8 @@
   <script src="../shared/biz/router.js"></script><script src="../shared/biz/docbar.js"></script>
   <script src="../shared/ui/list.js"></script>
   <script src="../shared/ui/tabs.js"></script>
-  <script src="../aitools/model-registry.js"></script><script src="../aitools/models.js"></script><script src="../aitools/support.js"></script>
+  <script src="../shared/cdn/assets.js"></script><script src="../shared/models/catalog.js"></script><script src="../shared/ai/makers.js"></script><script src="../shared/ocr/engines.js"></script>
+  <script src="../aitools/ocr-tesseract.js"></script><script src="../aitools/ocr-models.js"></script><script src="../aitools/model-registry.js"></script><script src="../aitools/models.js"></script><script src="../aitools/support.js"></script>
   <script src="../aitools/get-more.js"></script><script src="../aitools/common.js"></script><script src="../shared/firstrun/notice.js"></script>
   <script src="js/core/expenses.js"></script><script src="../shared/data/readtext.js"></script><script src="js/core/receipt.js"></script><script src="js/core/mileage.js"></script>
   <script src="js/ui/list.js"></script>

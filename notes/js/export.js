@@ -6,11 +6,11 @@ import { render, esc } from './markdown.js';
 import { plainText } from './plain.js';
 import { writeZip } from '../../shared/office/zip.js';
 
-const PAGE_CSS = 'body{max-width:44em;margin:2.5em auto;padding:0 16px;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:#1d1c19;background:#fbfaf6}' +
-  'h1,h2,h3{line-height:1.25}code{font:0.9em ui-monospace,Menlo,Consolas,monospace;background:#f1efe8;padding:0.1em 0.3em;border-radius:4px}' +
-  'pre{background:#f1efe8;padding:12px;border-radius:8px;overflow:auto}pre code{background:none;padding:0}blockquote{margin:0;padding-left:14px;border-left:3px solid #b6b09f;color:#5f5b52}' +
-  'img{max-width:100%}a{color:#006c61}table{border-collapse:collapse;margin:1em 0}th,td{border:1px solid #d6d2c6;padding:6px 10px;vertical-align:top}th{background:#f1efe8}' +
-  '.md-table{overflow:auto}aside.md-callout{border-left:4px solid #006c61;background:#f1efe8;padding:8px 14px;border-radius:6px;margin:1em 0}' +
+const PAGE_CSS = 'body{max-width:44em;margin:2.5em auto;padding:0 16px;font:17px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;color:#181c24;background:#f9fafb}' +
+  'h1,h2,h3{line-height:1.25}code{font:0.9em ui-monospace,Menlo,Consolas,monospace;background:#edeff3;padding:0.1em 0.3em;border-radius:4px}' +
+  'pre{background:#edeff3;padding:12px;border-radius:8px;overflow:auto}pre code{background:none;padding:0}blockquote{margin:0;padding-left:14px;border-left:3px solid #a7b1c4;color:#4e5c76}' +
+  'img{max-width:100%}a{color:#c00d00}table{border-collapse:collapse;margin:1em 0}th,td{border:1px solid #cdd2de;padding:6px 10px;vertical-align:top}th{background:#edeff3}' +
+  '.md-table{overflow:auto}aside.md-callout{border-left:4px solid #c00d00;background:#edeff3;padding:8px 14px;border-radius:6px;margin:1em 0}' +
   '.md-callout-title{font-weight:600;margin:0 0 .3em}.md-warning{border-color:#b26a00}.md-video{border-color:#1d4f91}';
 const PRINT_CSS = '@page{size:A4;margin:18mm}body{max-width:none;margin:0;padding:0;background:#fff}';
 const EXT = { md: '.md', html: '.html', txt: '.txt', doc: '.doc' };

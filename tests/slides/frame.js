@@ -6,7 +6,7 @@ window.ST = (function () {
   /** Opens the editor (or any ?drive= url) in a fresh iframe; resolves with its window once it is ready. */
   async function open(src, { width = 1000, height = 700 } = {}) {
     const f = document.createElement('iframe');
-    f.style.cssText = `width:${width}px;height:${height}px;border:0;background:#0e0e10`;
+    f.style.cssText = `width:${width}px;height:${height}px;border:0;background:#0c0e12`;
     f.src = src || '../../slides/';
     document.body.append(f);
     await waitFor(() => f.contentWindow && f.contentWindow.document.body && f.contentWindow.document.body.classList.contains('ready'), { timeout: 20000 });
@@ -32,7 +32,7 @@ window.ST = (function () {
   /** Centre of an object in slide points. */
   const centre = (o) => ({ x: o.x + o.w / 2, y: o.y + o.h / 2 });
   /** A small PNG blob (solid colour) for picture tests. */
-  async function png(w, color = '#a2fff6', size = 32) {
+  async function png(w, color = '#ffeae8', size = 32) {
     const c = document.createElement('canvas');
     c.width = size; c.height = size;
     const g = c.getContext('2d');

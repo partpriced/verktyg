@@ -12,7 +12,7 @@
 .csv-table th, .csv-table td { border-bottom: 1px solid var(--line); padding: 3px 8px; text-align: left; white-space: nowrap; max-width: 260px; overflow: hidden; text-overflow: ellipsis; }
 .csv-table th { position: sticky; top: 0; background: var(--panel-2); font-weight: 600; }
 .pv > .pv3d { width: 100%; display: grid; gap: 6px; }
-.pv3d-cv { width: 100%; height: 260px; display: block; touch-action: none; cursor: grab; border-radius: var(--radius-s); background: #1d1e22; }
+.pv3d-cv { width: 100%; height: 260px; display: block; touch-action: none; cursor: grab; border-radius: var(--radius-s); background: #1a1e27; }
 .pv3d-cv.grabbing { cursor: grabbing; }
 .pv3d.big .pv3d-cv { height: 70vh; }
 .pv3d-reset { justify-self: start; }

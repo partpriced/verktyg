@@ -4,10 +4,10 @@
 <style>
   body { margin: 0; padding: 10px; background: #fff; color: #111; font: 14px/1.4 system-ui, sans-serif; }
   .box { margin: 4px 0; padding: 6px; }
-  #dark { background: #151518; }
+  #dark { background: #12151b; }
   #faded { opacity: .3; }
   #grad { background: linear-gradient(90deg, #000080, #9ab6e0); color: #fff; }
-  #toast { position: fixed; right: 10px; bottom: 10px; padding: 6px 10px; background: #0a0a0a; color: #f1ede4; pointer-events: none; }
+  #toast { position: fixed; right: 10px; bottom: 10px; padding: 6px 10px; background: #0a0a0a; color: #ebedf2; pointer-events: none; }
   #pic { position: relative; height: 40px; }
   #pic canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   #pic span { position: relative; color: #777; }
@@ -18,7 +18,7 @@
 </style></head>
 <body>
 <div class="box" id="ok">Dark text on white reads.</div>
-<div class="box" id="dark"><span id="dd">Near-black on near-black</span> <span id="dl" style="color:#f1ede4">Light on dark reads</span></div>
+<div class="box" id="dark"><span id="dd">Near-black on near-black</span> <span id="dl" style="color:#ebedf2">Light on dark reads</span></div>
 <div class="box" id="faded">Faded to 30 percent</div>
 <div class="box" id="grad">White over a navy to pale gradient</div>
 <div class="box" id="pic"><canvas></canvas><span>Over a picture</span></div>
@@ -55,7 +55,7 @@ describe('TlbxContrast', () => {
   });
   it('reports where, which colours and the ratio', () => {
     const x = C.audit(window).fails.find((f) => f.text === 'Near-black on near-black');
-    expect([x.sel, x.bg, x.need]).toEqual(['span#dd', '#151518', 4.5]);
+    expect([x.sel, x.bg, x.need]).toEqual(['span#dd', '#12151b', 4.5]);
     expect(x.ratio < 1.5).toBe(true);
   });
   it('rates a focus ring against what is behind it', () => {

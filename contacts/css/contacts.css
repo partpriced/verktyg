@@ -2,22 +2,22 @@
  * (prefers-color-scheme); data-theme="light" or "dark" on <html> overrides it. One accent: the ITpris Verktyg lime. */
 :root {
   --ui: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, Roboto, "Helvetica Neue", Arial, sans-serif;
-  --bg: #f4f4f2; --panel: #ffffff; --panel-2: #f0f0ec; --ink: #161616; --mute: #6b6b66; --line: #e2e1dc;
-  --accent: #a2fff6; --accent-ink: #0a1817; --accent-soft: #d5fffb; --danger: #c4283f; --focus: #161616;
+  --bg: #f3f4f7; --panel: #ffffff; --panel-2: #eef0f4; --ink: #161616; --mute: #5c6b8a; --line: #dde1e9;
+  --accent: #ffeae8; --accent-ink: #24100f; --accent-soft: #fff4f4; --danger: #c4283f; --focus: #161616;
   --radius: 10px; --shadow: 0 12px 36px rgba(0, 0, 0, .18);
-  --fg: var(--ink); --fg-dim: var(--mute); --fg-faint: #9a9a94; --line-2: var(--line); --input: var(--panel); --hover: var(--panel-2);
+  --fg: var(--ink); --fg-dim: var(--mute); --fg-faint: #8d9ab3; --line-2: var(--line); --input: var(--panel); --hover: var(--panel-2);
   --sel: var(--accent-soft); --sui-accent: var(--accent); --sui-accent-ink: var(--accent-ink); --sui-font: var(--ui);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #111112; --panel: #1a1a1c; --panel-2: #242427; --ink: #f2f1ec; --mute: #9b9a94; --line: #2c2c30;
-    --accent-soft: #10433d; --danger: #ff6b82; --focus: #f2f1ec; --fg-faint: #6f6e69; color-scheme: dark;
+    --bg: #0f1116; --panel: #171a22; --panel-2: #1f242f; --ink: #eff1f4; --mute: #8e9ab3; --line: #262c39;
+    --accent-soft: #6e1f1a; --danger: #ff6b82; --focus: #eff1f4; --fg-faint: #5e6e8e; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #111112; --panel: #1a1a1c; --panel-2: #242427; --ink: #f2f1ec; --mute: #9b9a94; --line: #2c2c30;
-  --accent-soft: #10433d; --danger: #ff6b82; --focus: #f2f1ec; --fg-faint: #6f6e69; color-scheme: dark;
+  --bg: #0f1116; --panel: #171a22; --panel-2: #1f242f; --ink: #eff1f4; --mute: #8e9ab3; --line: #262c39;
+  --accent-soft: #6e1f1a; --danger: #ff6b82; --focus: #eff1f4; --fg-faint: #5e6e8e; color-scheme: dark;
 }
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); font: 15px/1.4 var(--ui); overflow: hidden; -webkit-font-smoothing: antialiased; }

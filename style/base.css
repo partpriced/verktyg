@@ -3,12 +3,12 @@
   --ink: #0a0a0a;
   --ink-2: #111111;
   --ink-3: #1a1a1a;
-  --bone: #f1ede4;
-  --bone-dim: rgba(241, 237, 228, 0.62);
-  --bone-faint: rgba(241, 237, 228, 0.38);
-  --line: rgba(241, 237, 228, 0.13);
-  --tlbx: #a2fff6;
-  --tlbx-deep: #00d3be;
+  --bone: #ebedf2;
+  --bone-dim: rgba(235, 237, 242, 0.62);
+  --bone-faint: rgba(235, 237, 242, 0.38);
+  --line: rgba(235, 237, 242, 0.13);
+  --tlbx: #ffeae8;
+  --tlbx-deep: #ffa59e;
   --chrome: linear-gradient(180deg, #ffffff 0%, #d9d9d9 30%, #6f6f6f 48%, #f7f7f7 60%, #b9b9b9 78%, #ffffff 100%);
   /* The brand family first (shared/fonts/fonts.css, tools/fonts/css.mjs), then a local font sized like it. */
   --cond: /*profile:fontCond*/"Archivo", /*profile:fontCondFallback*/"Archivo Fallback", "Arial Narrow", sans-serif;
@@ -137,6 +137,6 @@ main { overflow: clip; }
 }
 .btn:hover { border-color: var(--bone); }
 .btn.primary { background: var(--tlbx); border-color: var(--tlbx); color: var(--ink); font-weight: 600; }
-.btn.primary:hover { background: #bffff9; }
+.btn.primary:hover { background: #ffefee; }
 .btn.ghost { border-color: transparent; color: var(--bone-dim); }
 

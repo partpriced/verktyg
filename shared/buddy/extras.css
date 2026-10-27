@@ -4,7 +4,7 @@
 .helpbot-say .say-actions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
 .helpbot-say .say-actions button, .helpbot-say .say-ask button {
   font: 600 11px var(--mono, ui-monospace, monospace); padding: 4px 9px; border-radius: 99px; cursor: pointer;
-  border: 1px solid rgba(10, 10, 10, .25); background: #0a0a0a; color: #f1ede4;
+  border: 1px solid rgba(10, 10, 10, .25); background: #0a0a0a; color: #ebedf2;
 }
 .helpbot-say .say-actions button:last-child { background: transparent; color: #0a0a0a; }
 .helpbot-say .say-ask { display: flex; gap: 5px; margin-top: 7px; }
@@ -16,7 +16,7 @@
 /* AI power-up: a soft glow and orbiting sparkles; the brain hat is drawn in the SVG */
 .helpbot.is-powered::before {
   content: ""; position: absolute; left: 50%; bottom: 14px; width: 130px; height: 120px; margin-left: -65px; border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(162, 255, 246, .45), rgba(92, 200, 255, .18) 60%, transparent);
+  background: radial-gradient(closest-side, rgba(255, 234, 232, .45), rgba(92, 200, 255, .18) 60%, transparent);
   animation: buddy-aura 1.8s ease-in-out infinite alternate; pointer-events: none;
 }
 .helpbot.is-powered .m-led { animation: buddy-blink .8s steps(2) infinite; }
@@ -28,11 +28,11 @@
 .sh-give[hidden] { display: none; }
 .sh-give-l { justify-self: start; padding: 2px 0; border: 0; background: none; color: #ff8fa3; font: inherit; cursor: pointer; }
 .sh-give-l:focus-visible { outline: 2px solid var(--tlbx); outline-offset: 2px; }
-.sh-give-body { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-top: 8px; border-top: 1px solid rgba(241, 237, 228, .15); }
+.sh-give-body { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; padding-top: 8px; border-top: 1px solid rgba(235, 237, 242, .15); }
 .sh-give-body[hidden] { display: none; }
 .sh-item {
-  position: relative; width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 1px solid rgba(241, 237, 228, .18);
-  background: rgba(241, 237, 228, .06); font-size: 16px; line-height: 1; cursor: grab; touch-action: none; overflow: hidden;
+  position: relative; width: 30px; height: 30px; padding: 0; border-radius: 50%; border: 1px solid rgba(235, 237, 242, .18);
+  background: rgba(235, 237, 242, .06); font-size: 16px; line-height: 1; cursor: grab; touch-action: none; overflow: hidden;
 }
 .sh-mk {
   height: 30px; padding: 0 9px; border-radius: 15px; border: 1px solid rgba(255, 143, 163, .45); background: rgba(255, 143, 163, .1);
@@ -55,7 +55,7 @@
   filter: drop-shadow(0 3px 3px rgba(0, 0, 0, .4));
 }
 .helpbot-candy.grabbing { cursor: grabbing; }
-.helpbot-candy:focus-visible { outline: 2px dashed var(--tlbx, #a2fff6); outline-offset: 3px; }
+.helpbot-candy:focus-visible { outline: 2px dashed var(--tlbx, #ffeae8); outline-offset: 3px; }
 @keyframes buddy-wobble { 0%, 100% { rotate: -6deg; } 50% { rotate: 6deg; } }
 .m-face { transition: opacity .25s; }
 

@@ -110,7 +110,7 @@
 
   /* ================= gradient tool ================= */
   SV.defaultGradient = function (base, type) {
-    var c = typeof base === 'string' ? base : '#a2fff6';
+    var c = typeof base === 'string' ? base : '#ffeae8';
     var stops = [{ o: 0, c: '#ffffff', a: 1 }, { o: 1, c: c.toLowerCase() === '#ffffff' ? '#0a0a0a' : c, a: 1 }];
     if (base && typeof base === 'object' && base.stops) stops = clone(base.stops);
     return type === 'radial' ? { type: 'radial', cx: 0.5, cy: 0.5, r: 0.5, fx: 0.5, fy: 0.5, stops: stops } : { type: 'linear', x1: 0, y1: 0.5, x2: 1, y2: 0.5, stops: stops };

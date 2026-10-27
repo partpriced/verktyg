@@ -1,8 +1,8 @@
 /* Workflows: the workflow tool (js/ui/mount.js) wherever it is mounted: the Workflows page (inside the shared frame)
  * or a dialog. Every rule is under .wf-tool, with the tool's own colour tokens: the theme's --sl-* on a page, the dialog's
  * --s-* in a dialog (shared/ops/dialog.css). The step cards: steps.css. */
-.wf-tool { --wf-bg: var(--sl-background, #101012); --wf-surface: var(--sl-surface, #18181b); --wf-text: var(--sl-text, #ecebe6);
-  --wf-line: var(--sl-border, #5a5a5e); --wf-accent: var(--sl-accent, #a2fff6); --wf-on-accent: var(--sl-on-accent, #000);
+.wf-tool { --wf-bg: var(--sl-background, #0e1015); --wf-surface: var(--sl-surface, #15181f); --wf-text: var(--sl-text, #e9ebf0);
+  --wf-line: var(--sl-border, #4e5b75); --wf-accent: var(--sl-accent, #ffeae8); --wf-on-accent: var(--sl-on-accent, #000);
   --wf-dim: color-mix(in srgb, var(--wf-text) 66%, transparent); --wf-soft: color-mix(in srgb, var(--wf-text) 6%, var(--wf-surface));
   --wf-bad: #d64545; --wf-good: #2e9b5f; --sf-list-w: 260px;
   min-height: 0; min-width: 0; color: var(--wf-text); background: var(--wf-bg); container: wf-tool / inline-size; }

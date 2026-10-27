@@ -39,10 +39,10 @@
 :root {
   --sui-bg: var(--bg-panel); --sui-bg2: var(--bg-panel-2); --sui-input: var(--bg-input); --sui-line: var(--border);
   --sui-fg: var(--text); --sui-dim: var(--text-dim); --sui-faint: var(--text-faint); --sui-hover: var(--bg-hover);
-  --sui-sel: #1b5953; --sui-accent: var(--tlbx); --sui-accent-ink: var(--ink);
+  --sui-sel: #8d312b; --sui-accent: var(--tlbx); --sui-accent-ink: var(--ink);
   --sui-radius: 4px; --sui-shadow: var(--shadow); --sui-font: var(--font-ui); --sui-mono: var(--mono);
 }
-:root[data-theme="light"] { --sui-sel: #bdf9f3; }
+:root[data-theme="light"] { --sui-sel: #fde9e8; }
 :root[data-theme="classic"] { --sui-sel: #000080; --sui-radius: 0; }
 .sv-form .sui-field { grid-template-columns: 110px minmax(0, 1fr) 28px; }
 .sv-form .sui-input { width: 100%; }

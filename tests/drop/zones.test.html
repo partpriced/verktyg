@@ -55,7 +55,7 @@
   async function fileOf(w, [name, type, text]) {
     if (type === 'image/png') {
       const c = w.document.createElement('canvas'); c.width = 32; c.height = 24;
-      const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, 32, 24);
+      const g = c.getContext('2d'); g.fillStyle = '#ffeae8'; g.fillRect(0, 0, 32, 24);
       const blob = await new Promise((r) => c.toBlob(r, 'image/png'));
       return new w.File([blob], name, { type });
     }

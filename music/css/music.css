@@ -1,21 +1,21 @@
 /* Music Player. Tokens on :root (dark by default, light when the system asks), no horizontal scroll at 390 px. */
 :root {
-  --mu-bg: #0e0e10; --mu-bg2: #17171a; --mu-panel: #1f1f24; --mu-line: #34343b; --mu-fg: #f1ede4; --mu-dim: #b3ada0;
-  --mu-faint: #938e83; --mu-accent: #a2fff6; --mu-accent-ink: #0a1817; --mu-hover: #2a2a31; --mu-danger: #ff6b7f;
+  --mu-bg: #0c0e12; --mu-bg2: #14171e; --mu-panel: #1b2029; --mu-line: #2d3544; --mu-fg: #ebedf2; --mu-dim: #a4aec2;
+  --mu-faint: #818fab; --mu-accent: #ffeae8; --mu-accent-ink: #24100f; --mu-hover: #252b37; --mu-danger: #ff6b7f;
   color-scheme: dark;
 }
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --mu-bg: #f6f4ef; --mu-bg2: #ffffff; --mu-panel: #ecE9e1; --mu-line: #cfc9bd; --mu-fg: #1a1a1a; --mu-dim: #55514a;
-    --mu-faint: #6b665c; --mu-accent: #007c6f; --mu-accent-ink: #ffffff; --mu-hover: #e4e0d6; --mu-danger: #b3263b;
+    --mu-bg: #f3f4f7; --mu-bg2: #ffffff; --mu-panel: #e7e9ef; --mu-line: #c3cad7; --mu-fg: #1a1a1a; --mu-dim: #465269;
+    --mu-faint: #586784; --mu-accent: #db0f00; --mu-accent-ink: #ffffff; --mu-hover: #dde0e8; --mu-danger: #b3263b;
     color-scheme: light;
   }
 }
 :root[data-theme="light"] {
-  --mu-bg: #f6f4ef; --mu-bg2: #ffffff; --mu-panel: #ecE9e1; --mu-line: #cfc9bd; --mu-fg: #1a1a1a; --mu-dim: #55514a;
-  --mu-faint: #6b665c; --mu-accent: #007c6f; --mu-accent-ink: #ffffff; --mu-hover: #e4e0d6; --mu-danger: #b3263b; color-scheme: light;
+  --mu-bg: #f3f4f7; --mu-bg2: #ffffff; --mu-panel: #e7e9ef; --mu-line: #c3cad7; --mu-fg: #1a1a1a; --mu-dim: #465269;
+  --mu-faint: #586784; --mu-accent: #db0f00; --mu-accent-ink: #ffffff; --mu-hover: #dde0e8; --mu-danger: #b3263b; color-scheme: light;
 }
-:root[data-theme="dark"] { --mu-bg: #0e0e10; --mu-bg2: #17171a; --mu-panel: #1f1f24; --mu-line: #34343b; --mu-fg: #f1ede4; --mu-dim: #b3ada0; --mu-faint: #938e83; --mu-accent: #a2fff6; --mu-accent-ink: #0a1817; --mu-hover: #2a2a31; --mu-danger: #ff6b7f; color-scheme: dark; }
+:root[data-theme="dark"] { --mu-bg: #0c0e12; --mu-bg2: #14171e; --mu-panel: #1b2029; --mu-line: #2d3544; --mu-fg: #ebedf2; --mu-dim: #a4aec2; --mu-faint: #818fab; --mu-accent: #ffeae8; --mu-accent-ink: #24100f; --mu-hover: #252b37; --mu-danger: #ff6b7f; color-scheme: dark; }
 * { box-sizing: border-box; }
 html, body { margin: 0; }
 body { background: var(--mu-bg); color: var(--mu-fg); font: 14px/1.45 "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 100vh; overflow-x: hidden; }
@@ -43,7 +43,7 @@ body { --s-bg2: var(--sui-bg2); --s-input: var(--sui-input); --s-line: var(--sui
 .mu-main { padding: 16px 16px 96px; max-width: 1200px; margin: 0 auto; }
 .mu-view { position: relative; }
 .mu-view.mu-drop-on { outline: 2px dashed var(--mu-accent); outline-offset: 6px; border-radius: 8px; }
-.mu-dropzone { margin: 0 0 10px; padding: 8px 10px; border: 1px dashed var(--mu-line, #3a3a46); border-radius: 8px; }
+.mu-dropzone { margin: 0 0 10px; padding: 8px 10px; border: 1px dashed var(--mu-line, #333b4c); border-radius: 8px; }
 .mu-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .mu-bar .sui-input { height: 32px; }
 #lib-search { flex: 1 1 220px; }

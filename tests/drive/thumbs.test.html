@@ -17,7 +17,7 @@
       DR = W.DR; H = W.TlbxHub; D = W.document;
       await H.clear();
       await DR.thumbCache.clear();
-      await H.put(await DT.png('#a2fff6', 120, 90), { name: 'pic.png', from: 'imageeditor' });
+      await H.put(await DT.png('#ffeae8', 120, 90), { name: 'pic.png', from: 'imageeditor' });
       await H.put(DT.text('line one\nline two\nline three'), { name: 'read me.txt', from: 'upload' });
       await H.put(DT.text('name,qty,price\nrod,3,1.50\nnut,9,0.10'), { name: 'stock.csv', from: 'tables' });
       await H.put(blobJson({ blocks: [{ type: 'p', runs: [{ text: 'Hello from the first paragraph' }] }] }), { name: 'Note.sdoc', from: 'docs' });

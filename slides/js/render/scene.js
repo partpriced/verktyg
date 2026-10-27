@@ -117,11 +117,11 @@
   S.mediaNodes = function (deck, theme, o) {
     var kids = [], r = Math.min(o.w, o.h);
     if (o.poster) kids.push({ k: 'image', media: o.poster, x: 0, y: 0, w: o.w, h: o.h, crop: { l: 0, t: 0, r: 0, b: 0 } });
-    else kids.push({ k: 'path', path: SH.roundRect(o.w, o.h, r * 0.06), fill: { type: 'linear', stops: [[0, '#26262c'], [1, '#111114']], x0: 0, y0: 0, x1: 0, y1: o.h, alpha: 1 } });
+    else kids.push({ k: 'path', path: SH.roundRect(o.w, o.h, r * 0.06), fill: { type: 'linear', stops: [[0, '#212732'], [1, '#0f1116']], x0: 0, y0: 0, x1: 0, y1: o.h, alpha: 1 } });
     var b = Math.min(r * 0.32, 72), cx = o.w / 2, cy = o.h / 2;
     kids.push({ k: 'path', path: SH.ellipse(b, b, cx - b / 2, cy - b / 2), fill: { type: 'solid', color: '#ffffff', alpha: 0.88 } });
-    if (o.kind === 'audio') kids.push({ k: 'path', path: [['M', cx - b * 0.2, cy - b * 0.12], ['L', cx - b * 0.05, cy - b * 0.12], ['L', cx + b * 0.15, cy - b * 0.28], ['L', cx + b * 0.15, cy + b * 0.28], ['L', cx - b * 0.05, cy + b * 0.12], ['L', cx - b * 0.2, cy + b * 0.12], ['Z']], fill: { type: 'solid', color: '#111114', alpha: 1 } });
-    else kids.push({ k: 'path', path: [['M', cx - b * 0.12, cy - b * 0.2], ['L', cx + b * 0.2, cy], ['L', cx - b * 0.12, cy + b * 0.2], ['Z']], fill: { type: 'solid', color: '#111114', alpha: 1 } });
+    if (o.kind === 'audio') kids.push({ k: 'path', path: [['M', cx - b * 0.2, cy - b * 0.12], ['L', cx - b * 0.05, cy - b * 0.12], ['L', cx + b * 0.15, cy - b * 0.28], ['L', cx + b * 0.15, cy + b * 0.28], ['L', cx - b * 0.05, cy + b * 0.12], ['L', cx - b * 0.2, cy + b * 0.12], ['Z']], fill: { type: 'solid', color: '#0f1116', alpha: 1 } });
+    else kids.push({ k: 'path', path: [['M', cx - b * 0.12, cy - b * 0.2], ['L', cx + b * 0.2, cy], ['L', cx - b * 0.12, cy + b * 0.2], ['Z']], fill: { type: 'solid', color: '#0f1116', alpha: 1 } });
     return kids;
   };
 

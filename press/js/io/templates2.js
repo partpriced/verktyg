@@ -10,8 +10,8 @@
     ps['Mega'] = { basedOn: '[Basic Paragraph]', font: 'Liberation Sans', fontStyle: 'Bold', size: 70, leading: 64, tracking: -30, color: '#0a0a0a', hyphenate: false }; // i18n-ignore: sample document content
     ps['Info'] = { basedOn: '[Basic Paragraph]', font: 'Liberation Sans', size: 13, leading: 18, spaceAfter: 6, hyphenate: false }; // i18n-ignore: sample document content
     ps['Info Head'] = { basedOn: 'Info', fontStyle: 'Bold', caps: 'allcaps', tracking: 100, size: 10, color: '#e0245e', spaceAfter: 2 }; // i18n-ignore: sample document content
-    TP.shape(doc, p, 'rect', -b, -b, W + 2 * b, H * 0.58 + b, { fill: '#a2fff6' });
-    TP.image(doc, p, W * 0.42, 40, W * 0.58 + b - 30, H * 0.5, TP.art(700, 640, ['#a2fff6', '#61e2d5', '#00c2d1', '#ff7ac6'], 11), { fit: 'fill', radius: 18 });
+    TP.shape(doc, p, 'rect', -b, -b, W + 2 * b, H * 0.58 + b, { fill: '#ffeae8' });
+    TP.image(doc, p, W * 0.42, 40, W * 0.58 + b - 30, H * 0.5, TP.art(700, 640, ['#ffeae8', '#f3c2bf', '#00c2d1', '#ff7ac6'], 11), { fit: 'fill', radius: 18 });
     TP.text(doc, p, m, m, W * 0.5, H * 0.5, 'TLBX\nFEST\n2026', 'Mega'); // i18n-ignore: sample document content
     TP.shape(doc, p, 'polygon', W - m - 110, H * 0.5 - 40, 110, 110, { sides: 12, inset: 0.18, fill: '#e0245e', rot: 12 });
     var badge = TP.text(doc, p, W - m - 100, H * 0.5 + 2, 90, 30, 'FREE ENTRY', 'Info Head', { rot: 12 }); // i18n-ignore: sample document content
@@ -34,14 +34,14 @@
     ps['Contact'] = { basedOn: '[Basic Paragraph]', font: 'Liberation Sans', size: 7.5, leading: 10, hyphenate: false }; // i18n-ignore: sample document content
     doc.masters[0].pages[0].items = [];
     var f = doc.pages[0].items;
-    TP.shape(doc, f, 'rect', W - 46, -b, 46 + b, H + 2 * b, { fill: '#a2fff6' });
+    TP.shape(doc, f, 'rect', W - 46, -b, 46 + b, H + 2 * b, { fill: '#ffeae8' });
     var t = TP.text(doc, f, 16, 22, 170, 110, 'Ada Tlbxworth\nTypesetter-in-chief\nada@itpris.se\n+1 555 0100\nworksuite.com/press', 'Contact'); // i18n-ignore: sample document content
     var st = doc.stories[t.story]; st.paras[0].ps = 'Name'; st.paras[1].ps = 'Role'; // i18n-ignore: sample document content
     TP.shape(doc, f, 'ellipse', W - 38, H / 2 - 15, 30, 30, { fill: '#0a0a0a' });
     var back = doc.pages[1].items;
     TP.shape(doc, back, 'rect', -b, -b, W + 2 * b, H + 2 * b, { fill: '#0a0a0a' });
     var logo = TP.text(doc, back, 20, H / 2 - 22, W - 40, 44, 'TLBX PRESS', 'Name', { valign: 'center' }); // i18n-ignore: sample document content
-    doc.stories[logo.story].paras[0].ov = { align: 'center', color: '#a2fff6', size: 24, tracking: 120 };
+    doc.stories[logo.story].paras[0].ov = { align: 'center', color: '#ffeae8', size: 24, tracking: 120 };
     return doc;
   } };
 
@@ -57,7 +57,7 @@
     });
     doc.pages[0].master = null;
     var c = doc.pages[0].items, b = 9;
-    TP.image(doc, c, -b, -b, W + 2 * b, H + 2 * b, TP.art(600, 920, ['#0a0a0a', '#2f1d6b', '#a2fff6', '#ff7ac6'], 21));
+    TP.image(doc, c, -b, -b, W + 2 * b, H + 2 * b, TP.art(600, 920, ['#0a0a0a', '#2f1d6b', '#ffeae8', '#ff7ac6'], 21));
     var ct = TP.text(doc, c, 30, 40, W - 60, 160, 'THE TLBX ZINE\nissue nº 1', 'Zine Title'); // i18n-ignore: sample document content
     doc.stories[ct.story].paras.forEach(function (p) { p.ov = { color: '#ffffff' }; });
     var prev = null;
@@ -69,7 +69,7 @@
       prev = fr;
     }
     var back = doc.pages[7].items;
-    TP.shape(doc, back, 'rect', -b, -b, W + 2 * b, H + 2 * b, { fill: '#a2fff6' });
+    TP.shape(doc, back, 'rect', -b, -b, W + 2 * b, H + 2 * b, { fill: '#ffeae8' });
     var bt = TP.text(doc, back, 30, H / 2 - 40, W - 60, 100, 'made with\nPage Layout', 'Zine Title'); // i18n-ignore: sample document content
     doc.stories[bt.story].paras.forEach(function (p) { p.ov = { align: 'center' }; });
     return doc;

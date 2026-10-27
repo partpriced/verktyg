@@ -47,7 +47,7 @@
     if (PV.safe) {
       og.strokeStyle = 'rgba(255,255,255,.55)'; og.lineWidth = 1; og.setLineDash([6, 4]);
       og.strokeRect(W * 0.05 + 0.5, H * 0.05 + 0.5, W * 0.9, H * 0.9);
-      og.strokeStyle = 'rgba(162, 255, 246,.6)'; og.strokeRect(W * 0.1 + 0.5, H * 0.1 + 0.5, W * 0.8, H * 0.8);
+      og.strokeStyle = 'rgba(255, 234, 232,.6)'; og.strokeRect(W * 0.1 + 0.5, H * 0.1 + 0.5, W * 0.8, H * 0.8);
       og.setLineDash([]); og.strokeStyle = 'rgba(255,255,255,.5)';
       og.beginPath(); og.moveTo(W / 2 - 12, H / 2); og.lineTo(W / 2 + 12, H / 2); og.moveTo(W / 2, H / 2 - 12); og.lineTo(W / 2, H / 2 + 12); og.stroke();
       og.fillStyle = 'rgba(255,255,255,.6)'; og.font = '600 ' + Math.round(10 * PV.dpr) + 'px monospace'; // i18n-ignore: canvas fonts, the broadcast safe-area marks, the brand, an API name
@@ -57,9 +57,9 @@
     PV.box = null;
     if (c && c.kind !== 'audio' && SE.player.time >= c.start && SE.player.time < M.end(c) && !SE.player.playing) {
       const pts = CMP.bounds(p, c, SE.player.time).map(([x, y]) => [x * k, y * k]);
-      og.strokeStyle = '#a2fff6'; og.lineWidth = 1.5;
+      og.strokeStyle = '#ffeae8'; og.lineWidth = 1.5;
       og.beginPath(); pts.forEach(([x, y], i) => (i ? og.lineTo(x, y) : og.moveTo(x, y))); og.closePath(); og.stroke();
-      og.fillStyle = '#a2fff6';
+      og.fillStyle = '#ffeae8';
       for (const [x, y] of pts) og.fillRect(x - 4, y - 4, 8, 8);
       const top = [(pts[0][0] + pts[1][0]) / 2, (pts[0][1] + pts[1][1]) / 2];
       og.beginPath(); og.arc(top[0], top[1] - 18 * PV.dpr, 5, 0, Math.PI * 2); og.fill();

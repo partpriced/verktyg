@@ -1,10 +1,10 @@
 /* Calculator: tokens from the shared ITpris theme (--sl-*, set by shared/theme/theme.js), the entry and side panels.
  * One column at phone width (390 px), two from 860 px. */
 :root {
-  --sc-bg: var(--sl-background, #fbfaf6); --sc-panel: var(--sl-surface, #f1efe8); --sc-line: var(--sl-border, #d9d5ca); --sc-fg: var(--sl-text, #1d1c19);
+  --sc-bg: var(--sl-background, #f9fafb); --sc-panel: var(--sl-surface, #edeff3); --sc-line: var(--sl-border, #d0d5e0); --sc-fg: var(--sl-text, #181c24);
   --sc-dim: color-mix(in srgb, var(--sc-fg) 78%, transparent); --sc-faint: color-mix(in srgb, var(--sc-fg) 64%, transparent);
-  --sc-accent: var(--sl-accent, #006c61); --sc-on: color-mix(in srgb, var(--sc-accent) 14%, transparent);
-  --sc-hover: color-mix(in srgb, var(--sc-fg) 7%, transparent); --sc-ink: var(--sl-on-accent, #0a1817); --sc-danger: #b3261e;
+  --sc-accent: var(--sl-accent, #c00d00); --sc-on: color-mix(in srgb, var(--sc-accent) 14%, transparent);
+  --sc-hover: color-mix(in srgb, var(--sc-fg) 7%, transparent); --sc-ink: var(--sl-on-accent, #24100f); --sc-danger: #b3261e;
   --sc-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
   --sc-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color-scheme: light;
@@ -14,8 +14,8 @@
 /* Without the shared theme script (it sets data-tlbx-theme), the page keeps its own dark palette when the system is dark. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-tlbx-theme]) {
-    --sc-bg: #0e0e10; --sc-panel: #17171b; --sc-line: #2c2c34; --sc-fg: #f1ede4; --sc-dim: #aaa59b; --sc-faint: #78746c;
-    --sc-accent: #a2fff6; --sc-on: rgba(162, 255, 246, .12); --sc-hover: rgba(255, 255, 255, .06); --sc-ink: #0a1817; --sc-danger: #ff7b7b;
+    --sc-bg: #0c0e12; --sc-panel: #14171e; --sc-line: #262d3a; --sc-fg: #ebedf2; --sc-dim: #9ba6bc; --sc-faint: #647596;
+    --sc-accent: #ffeae8; --sc-on: rgba(255, 234, 232, .12); --sc-hover: rgba(255, 255, 255, .06); --sc-ink: #24100f; --sc-danger: #ff7b7b;
     color-scheme: dark;
   }
 }

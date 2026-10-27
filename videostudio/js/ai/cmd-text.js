@@ -135,7 +135,7 @@
       description: 'An animated graphic (arrow, circle, box, underline, counter, check, bubble, star) over the pictures.',
       args: [{ name: 'shape', type: 'enum', values: (window.TlbxGraphics ? TlbxGraphics.list().map((g) => g.id) : ['check']), default: 'check' },
         { name: 'start', type: 'number', min: 0, max: 86400, required: true }, { name: 'duration', type: 'number', min: 0.2, max: 600, default: 3 },
-        { name: 'color', type: 'color', default: '#a2fff6' }, { name: 'size', type: 'number', min: 0.05, max: 1, default: 0.3, description: 'fraction of the frame height' },
+        { name: 'color', type: 'color', default: '#ffeae8' }, { name: 'size', type: 'number', min: 0.05, max: 1, default: 0.3, description: 'fraction of the frame height' },
         { name: 'motion', type: 'enum', values: ['draw', 'pulse', 'bounce', 'pop', 'none'], default: 'draw' }, { name: 'x', type: 'number', min: -1, max: 1, default: 0 }, { name: 'y', type: 'number', min: -1, max: 1, default: 0 }],
       run: (a) => SE.change('Add graphic', (p) => { const t = AI.frame(a.start); const id = E.addGenerated(p, 'graphic', AI.freeTrack(p, t, a.duration), t, a.duration, { gfx: { id: a.shape, color: a.color, size: a.size, anim: a.motion, value: 100 }, x: Math.round(a.x * p.w), y: Math.round(a.y * p.h) }); return `Added graphic ${id}.`; }) },
     { id: 'cut.effectLayer', tool: 'add_effect_layer', title: 'Add an effect layer…', group: 'Timeline', prefill: () => ({ start: AI.t(AI.now()) }),

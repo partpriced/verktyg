@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head><meta charset="utf-8"><title>shared/ui/menubutton.js: a button with its own menu of choices</title>
-<style>:root { --panel: #fff; --ink: #111; --line: #999; --accent: #005c53; --focus: #111; } body { margin: 0; padding: 40px; }</style></head>
+<style>:root { --panel: #fff; --ink: #111; --line: #999; --accent: #a60b00; --focus: #111; } body { margin: 0; padding: 40px; }</style></head>
 <body>
 <button type="button" id="b">Pick</button> <button type="button" id="other">Other</button>
 <script src="../../shared/ui/menubutton.js"></script>
@@ -111,10 +111,10 @@ describe('TlbxMenuButton colours', () => {
   // apps (PDF Editor): dark rows on the dark menu. It reads the theme (--sl-*) or TlbxUI's --s-* only.
   it('takes the theme text and surface, never the page --ink', () => {
     const r = document.documentElement.style;
-    r.setProperty('--sl-text', 'rgb(241, 237, 228)'); r.setProperty('--sl-surface', 'rgb(21, 21, 24)'); r.setProperty('--ink', 'rgb(10, 10, 10)');
+    r.setProperty('--sl-text', 'rgb(235, 237, 242)'); r.setProperty('--sl-surface', 'rgb(18, 21, 27)'); r.setProperty('--ink', 'rgb(10, 10, 10)');
     TlbxMenuButton.close(); mb.open();
     const m = mb.menu, row = m.querySelector('.smb-row:not([aria-checked="true"])');
-    expect([getComputedStyle(m).backgroundColor, getComputedStyle(row).color]).toEqual(['rgb(21, 21, 24)', 'rgb(241, 237, 228)']);
+    expect([getComputedStyle(m).backgroundColor, getComputedStyle(row).color]).toEqual(['rgb(18, 21, 27)', 'rgb(235, 237, 242)']);
     TlbxMenuButton.close();
     ['--sl-text', '--sl-surface', '--ink'].forEach((k) => r.removeProperty(k));
   });

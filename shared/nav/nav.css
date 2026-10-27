@@ -2,7 +2,7 @@
 .nav-dlg { width: min(640px, calc(100vw - 32px)); }
 .nav-body { display: grid; gap: 12px; }
 .nav-tabs { display: flex; gap: 6px; }
-.nav-tab[aria-selected="true"] { background: var(--accent, #a2fff6); color: #111; }
+.nav-tab[aria-selected="true"] { background: var(--accent, #ffeae8); color: #111; }
 .nav-pane { display: grid; gap: 10px; }
 .nav-pane[hidden] { display: none; }
 .nav-cards { display: grid; gap: 6px; }

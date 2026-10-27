@@ -8,8 +8,8 @@ const { S, clearOverlay, discSpans, markDirty, mctx, octx, stamp } = P;
 /* =====================================================================
  * ITpris brush (layered slime + animated drips)
  * ===================================================================== */
-const TLBX_PAL = { shadow: '#00554d', body: '#00d3be', shine: '#c5fff9' };
-const TLBX_DARK = { shadow: '#002c28', body: '#006a5f', shine: '#00d3be' };
+const TLBX_PAL = { shadow: '#990a00', body: '#ffa59e', shine: '#fff1f0' };
+const TLBX_DARK = { shadow: '#530600', body: '#bd0d00', shine: '#ffa59e' };
 function tlbxStamp(x, y) {
   const st = P.st.tlbxStroke, pal = st.pal, d = S.tlbx, r = d / 2;
   const [sh, bo, sn] = st.X;

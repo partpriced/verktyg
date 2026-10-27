@@ -91,9 +91,9 @@
   function render(r) {
     const box = document.createElement('div');
     box.id = 'tlbxtest-report';
-    box.style.cssText = 'position:fixed;inset:auto 0 0 0;max-height:60vh;overflow:auto;z-index:2147483647;background:#0a0a0a;color:#f1ede4;font:12px/1.5 ui-monospace,Menlo,monospace;padding:12px 16px;border-top:2px solid ' + (r.failed ? '#ff4f6e' : '#a2fff6');
-    box.innerHTML = `<b>${r.name}</b> — <span style="color:#a2fff6">${r.passed} passed</span>${r.failed ? `, <span style="color:#ff4f6e">${r.failed} failed</span>` : ''}<br>` +
-      r.results.map((x) => `<div style="color:${x.status === 'pass' ? '#50d9cc' : '#ff4f6e'}">${x.status === 'pass' ? '✓' : '✗'} ${x.suite} › ${x.test} <span style="opacity:.5">${x.ms}ms</span>${x.message ? `<pre style="margin:2px 0 6px 16px;white-space:pre-wrap;color:#ffb3c0">${x.message.replace(/</g, '&lt;')}</pre>` : ''}</div>`).join('');
+    box.style.cssText = 'position:fixed;inset:auto 0 0 0;max-height:60vh;overflow:auto;z-index:2147483647;background:#0a0a0a;color:#ebedf2;font:12px/1.5 ui-monospace,Menlo,monospace;padding:12px 16px;border-top:2px solid ' + (r.failed ? '#ff4f6e' : '#ffeae8');
+    box.innerHTML = `<b>${r.name}</b> — <span style="color:#ffeae8">${r.passed} passed</span>${r.failed ? `, <span style="color:#ff4f6e">${r.failed} failed</span>` : ''}<br>` +
+      r.results.map((x) => `<div style="color:${x.status === 'pass' ? '#9fd640' : '#ff4f6e'}">${x.status === 'pass' ? '✓' : '✗'} ${x.suite} › ${x.test} <span style="opacity:.5">${x.ms}ms</span>${x.message ? `<pre style="margin:2px 0 6px 16px;white-space:pre-wrap;color:#ffb3c0">${x.message.replace(/</g, '&lt;')}</pre>` : ''}</div>`).join('');
     document.body.append(box);
   }
   /** The open TlbxUI dialog on top in a document (a closing one, .sui-out, is skipped), or null. Use it rather than the first

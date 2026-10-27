@@ -1,7 +1,7 @@
 /* Email Signature: the mock email (always white, like most mail) in TlbxFrame's view, the form and the actions in its panel on
  * the right (shared/frame/frame.css; a bottom sheet on a phone). */
-:root { --sg-bg: var(--sl-background, #f3f1ec); --sg-card: var(--sl-surface, #fff); --sg-fg: var(--sl-text, #111); --sg-line: var(--sl-border, #d3cfc6);
-  --sg-accent: var(--sl-accent, #006f64); --sg-mute: color-mix(in srgb, var(--sg-fg) 62%, transparent); }
+:root { --sg-bg: var(--sl-background, #eff1f5); --sg-card: var(--sl-surface, #fff); --sg-fg: var(--sl-text, #111); --sg-line: var(--sl-border, #cad0db);
+  --sg-accent: var(--sl-accent, #c70d00); --sg-mute: color-mix(in srgb, var(--sg-fg) 62%, transparent); }
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--sg-bg); color: var(--sg-fg); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
   height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }

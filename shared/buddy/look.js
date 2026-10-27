@@ -11,7 +11,7 @@ export const CW = 176, CH = 204, BASE = 168;
 const S0 = 72;                                 // body width in px at level 1
 const FEET = 28;                               // the body's feet sit at y = 28 in its own units
 const NS = 'http://www.w3.org/2000/svg';
-const INK = '#001412';
+const INK = '#290300';
 // Lumps: [cx, cy, r, wobble dx, wobble dy, period s] (from the 2100 Helper and its blob animations).
 const LUMPS = [[0, 4, 25, 0, 0, 1], [-15, 18, 10, -4, 4, 4], [16, 19, 9, 4, 3, 5], [0, -18, 9, 2, -4, 3.6]];
 let lastBrain = false, svg = null, parts = null, blinkAt = 0, blinkUntil = 0, lastEyes = '', lastMouth = '', lastHat = '', lastRage = null;
@@ -44,9 +44,9 @@ export function setup(container) {
   svg.setAttribute('viewBox', `0 0 ${CW} ${CH}`);
   svg.setAttribute('aria-hidden', 'true');
   svg.innerHTML = `<defs>
-    <radialGradient id="slp-g-mascot" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#e7fffd"/><stop offset=".35" stop-color="#a2fff6"/><stop offset="1" stop-color="#009183"/></radialGradient>
+    <radialGradient id="slp-g-mascot" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#fff9f8"/><stop offset=".35" stop-color="#ffeae8"/><stop offset="1" stop-color="#ff1909"/></radialGradient>
     <radialGradient id="slp-gr-mascot" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#ffe0d0"/><stop offset=".35" stop-color="#ff5a3a"/><stop offset="1" stop-color="#8f1200"/></radialGradient>
-    <radialGradient id="slp-gw-mascot" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#c2f3ee"/><stop offset=".35" stop-color="#3cbfb2"/><stop offset="1" stop-color="#105c54"/></radialGradient>
+    <radialGradient id="slp-gw-mascot" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#fae5e4"/><stop offset=".35" stop-color="#de9c97"/><stop offset="1" stop-color="#9c241c"/></radialGradient>
     <filter id="slp-goo-mascot" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter>
   </defs>
   <g class="m-root"><g class="m-squash"><g class="m-scale">
@@ -97,7 +97,7 @@ export function draw(t) {
   if (!!M.powered !== lastBrain) { lastBrain = !!M.powered; parts.brain.innerHTML = lastBrain ? BRAIN_SVG : ''; }
   const rage = M.raging ? 'rage' : moodIs('woozy') ? 'woozy' : 'calm';
   if (rage !== lastRage) {
-    const fills = rage === 'rage' ? ['url(#slp-gr-mascot)', '#e8442a', '#d93a1c', '#ff9a80'] : rage === 'woozy' ? ['url(#slp-gw-mascot)', '#2ca296', '#219186', '#6dc5bc'] : ['url(#slp-g-mascot)', '#53edde', '#11e2cd', '#c0fff9'];
+    const fills = rage === 'rage' ? ['url(#slp-gr-mascot)', '#e8442a', '#d93a1c', '#ff9a80'] : rage === 'woozy' ? ['url(#slp-gw-mascot)', '#d8756e', '#d75950', '#dcaaa7'] : ['url(#slp-g-mascot)', '#faccc9', '#fabbb6', '#fff0ef'];
     parts.lumps.forEach((c, i) => c.setAttribute('fill', fills[i]));
     lastRage = rage;
   }

@@ -94,7 +94,7 @@
       for (const it of objects.items.values()) if (it.mesh) it.mesh.material.wireframe = s.view.wire;
       stage.setGrid(s.view.grid);
       stage.setAxes(s.view.axes);
-      stage.setBackground(s.doc.background || '#1d1e22');
+      stage.setBackground(s.doc.background || '#1a1e27');
       $('btnWire').setAttribute('aria-pressed', String(s.view.wire));
       $('btnGrid').setAttribute('aria-pressed', String(s.view.grid));
       stage.request();

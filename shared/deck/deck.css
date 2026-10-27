@@ -1,12 +1,12 @@
 /* TlbxDeck (shared/deck/deck.js): the full-screen swipe deck for sorting photos. Dark on purpose, like a photo viewer,
  * so every photo is seen the same way whatever the app's theme. */
-.sortmode { position: fixed; inset: 0; z-index: 1000; background: #000; color: #f2f0ea; display: flex; flex-direction: column; outline: none; font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
+.sortmode { position: fixed; inset: 0; z-index: 1000; background: #000; color: #eef0f4; display: flex; flex-direction: column; outline: none; font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; }
 .sortmode[hidden] { display: none; }
 .sortmode .s-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; padding: 8px 10px; background: rgba(0, 0, 0, .7); font-size: 12px; }
-.sortmode .dk-btn { font: inherit; padding: 6px 12px; border-radius: 8px; cursor: pointer; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .15); color: #f2f0ea; }
+.sortmode .dk-btn { font: inherit; padding: 6px 12px; border-radius: 8px; cursor: pointer; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .15); color: #eef0f4; }
 .sortmode .dk-btn:hover { background: rgba(255, 255, 255, .16); }
 .sortmode .dk-spacer { flex: 1; }
-.sortmode .s-hint { font-size: 12px; color: #bdb9b0; }
+.sortmode .s-hint { font-size: 12px; color: #b1bacb; }
 .sortmode .s-stage { flex: 1; min-height: 0; position: relative; display: flex; }
 .sortmode .s-pic { flex: 1; min-width: 0; min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .sortmode .s-pic img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
@@ -16,25 +16,25 @@
 .sortmode .s-bar { display: flex; gap: 10px; justify-content: center; padding: 10px; }
 .sortmode .s-quick { padding: 8px 12px 0; background: rgba(0, 0, 0, .7); }
 .sortmode .s-quick[hidden] { display: none; }
-.sortmode .s-quick input { display: block; width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .3); color: #f2f0ea; border-radius: 6px; padding: 8px 10px; font: inherit; }
+.sortmode .s-quick input { display: block; width: 100%; box-sizing: border-box; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .3); color: #eef0f4; border-radius: 6px; padding: 8px 10px; font: inherit; }
 .sortmode .s-big { flex: 1; max-width: 220px; padding: 12px; border-radius: 10px; border: 2px solid transparent; font: inherit; font-weight: 700; font-size: 15px; cursor: pointer; color: #111; }
 .sortmode .s-big.like { background: #6fe39a; }
 .sortmode .s-big.dislike { background: #ff6f8a; }
 .sortmode .s-big[aria-pressed="true"] { border-color: #fff; }
 .sortmode .s-tags { padding: 8px 12px 12px; background: rgba(0, 0, 0, .7); display: flex; flex-direction: column; gap: 8px; }
 .sortmode .s-tagform { display: flex; gap: 6px; }
-.sortmode .s-tagform input { flex: 1; min-width: 0; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .15); color: #f2f0ea; border-radius: 6px; padding: 7px 9px; font: inherit; }
+.sortmode .s-tagform input { flex: 1; min-width: 0; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .15); color: #eef0f4; border-radius: 6px; padding: 7px 9px; font: inherit; }
 .sortmode .s-taglist { display: flex; flex-wrap: wrap; gap: 6px; min-height: 0; }
-.sortmode .chip { background: rgba(255, 255, 255, .12); border: 0; color: #f2f0ea; border-radius: 999px; padding: 3px 10px; cursor: pointer; font-size: 12px; }
-.sortmode :focus-visible { outline: 2px solid #a2fff6; outline-offset: 2px; }
+.sortmode .chip { background: rgba(255, 255, 255, .12); border: 0; color: #eef0f4; border-radius: 999px; padding: 3px 10px; cursor: pointer; font-size: 12px; }
+.sortmode :focus-visible { outline: 2px solid #ffeae8; outline-offset: 2px; }
 @media (max-width: 560px) {
   .sortmode .s-hint { display: none; }
   .sortmode .s-big { padding: 10px; font-size: 14px; }
   .sortmode .dk-nav { width: 34px; height: 52px; font-size: 24px; }
 }
 /* Where the round is: "Photo 3 of 8", the tallies and a bar of how many are decided. */
-.sortmode .s-count { font: 600 13px/1.3 system-ui, sans-serif; color: #f2f0ea; }
-.sortmode .s-tally { font-size: 13px; color: #bdb9b0; margin-left: 8px; }
+.sortmode .s-count { font: 600 13px/1.3 system-ui, sans-serif; color: #eef0f4; }
+.sortmode .s-tally { font-size: 13px; color: #b1bacb; margin-left: 8px; }
 .sortmode .s-progress { height: 3px; background: rgba(255, 255, 255, .12); }
 .sortmode .s-progress i { display: block; height: 100%; width: 0; background: #6fe39a; transition: width .25s ease; }
 /* The photo's decision, and the stamp that flashes over it when one is made. */
@@ -51,7 +51,7 @@
 .sortmode .s-end { position: absolute; inset: 0; z-index: 3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px; text-align: center; background: rgba(0, 0, 0, .88); }
 .sortmode .s-end[hidden] { display: none; }
 .sortmode .s-end h2 { margin: 0; font-size: 28px; }
-.sortmode .s-end-sum { margin: 0; font-size: 16px; color: #d9d5cc; max-width: 46ch; }
+.sortmode .s-end-sum { margin: 0; font-size: 16px; color: #d0d6e0; max-width: 46ch; }
 .sortmode .s-end-acts { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin-top: 8px; }
 .sortmode .s-end-acts .s-big { flex: none; padding: 12px 22px; }
 /* The status line is for screen readers; the stamp, the counts and the end card say it on screen. */

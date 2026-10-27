@@ -8,7 +8,7 @@ export async function seedDrive() {
   const hats = Object.keys(HATS);
   const bodies = ['lime', 'pink', 'sky', 'grape', 'tangerine', 'mint', 'gold', 'void', 'lava', 'frost'];
   const eyes = ['happy', 'heart', 'star', 'wink', 'sleepy', 'spiral'];
-  const bgs = ['#102523', '#2a1020', '#0f2233', '#1c1236', '#2e1a06', '#0e2a20', '#2c2508', '#111118', '#2a0f06', '#122833'];
+  const bgs = ['#351a18', '#2a1020', '#0f2233', '#1c1236', '#2e1a06', '#0e2a20', '#2c2508', '#0f1217', '#2a0f06', '#122833'];
   const png = (c) => new Promise((r) => c.toBlob(r, 'image/png'));
   async function art(i, w = 640, h = 480) {
     const c = document.createElement('canvas'); c.width = w; c.height = h;
@@ -29,7 +29,7 @@ export async function seedDrive() {
     if (i === 0 || i === 4) await H.update(id, { starred: true });
   }
   const svg = (col) => new Blob([`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#111"/><path d="M100 20C100 20 40 90 40 130a60 60 0 0 0 120 0C160 90 100 20 100 20z" fill="${col}"/><circle cx="80" cy="130" r="9" fill="#111"/><circle cx="120" cy="130" r="9" fill="#111"/></svg>`], { type: 'image/svg+xml' });
-  await H.put(svg('#a2fff6'), { name: 'logo-goo.svg', from: 'vector' });
+  await H.put(svg('#ffeae8'), { name: 'logo-goo.svg', from: 'vector' });
   await H.put(svg('#ff8fb8'), { name: 'logo-pink.svg', from: 'vector', folderId: f['Client work'] });
   const pdf = (title) => {
     const body = `BT /F1 28 Tf 50 760 Td (${title}) Tj ET`;

@@ -75,7 +75,7 @@
 .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
 .btn.primary:hover:not(:disabled) { filter: brightness(1.05); background: var(--accent); }
 .btn.tlbx { background: var(--tlbx); color: var(--ink); border-color: rgba(0, 0, 0, .35); font-weight: 700; }
-.btn.tlbx:hover { background: #bbfff8; }
+.btn.tlbx:hover { background: #ffefed; }
 .btn.tlbx .ic { width: 16px; height: 16px; fill: rgba(0, 0, 0, .12); }
 .btn.wide { width: 100%; margin-top: 8px; height: 28px; }
 .ibtn { display: inline-grid; place-items: center; width: 26px; height: 24px; border: 1px solid transparent; background: transparent; color: var(--text-dim); border-radius: var(--radius-s); padding: 0; }

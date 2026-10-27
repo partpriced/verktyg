@@ -1,7 +1,7 @@
 /* Presentations: the presenter view (second window, built by js/ui/presenter-view.js). Current slide large on the left; the
    next slide and the notes on the right; the counter, timer and clock on top; the controls below. One column on narrow
    windows. The buttons are the shared .sui-btn (shared/tlbxui.css). */
-:root { --bg: #0e0e10; --panel: #16161a; --line: #2a2a31; --text: #f1ede4; --dim: #a29e95; --acc: #a2fff6; color-scheme: dark; }
+:root { --bg: #0c0e12; --panel: #13161d; --line: #252b37; --text: #ebedf2; --dim: #939fb7; --acc: #ffeae8; color-scheme: dark; }
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; height: 100%; }
 body.pv { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--bg); color: var(--text); font: 15px/1.45 "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }

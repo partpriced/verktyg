@@ -137,7 +137,7 @@
       + '<p>Hi Tom,</p><p>Thanks for the first order. The invoice is attached, and here is the plan for <b>Thursday</b>:</p>'
       + '<ol><li>Winter menu: the chai and the new oat milk</li><li>Delivery days (Tuesday and Friday?)</li><li>Your standing order</li></ol>'
       + '<p>The invite is attached too. See you at the café at 2&nbsp;pm.</p>'
-      + '<p style="color:#306d67">Maya Lindqvist<br>Brightwater Supply Co.</p></body></html>';
+      + '<p style="color:#9d4b45">Maya Lindqvist<br>Brightwater Supply Co.</p></body></html>';
     const A = 'sample-alt-7f3a', M = 'sample-mix-7f3a';
     return [
       'From: Maya Lindqvist <maya@brightwater.example>', 'To: Tom Okafor <tom@harborpine.example>',

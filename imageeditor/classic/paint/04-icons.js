@@ -12,7 +12,7 @@ const ICONS = {
   freesel: svg('<path d="M5.5 1.5l4 1 1 3 3 1-1 4 1 3-4-1-3 2-2-3-3-1 2-3-1-3z" fill="none" stroke="#000" stroke-dasharray="1 1"/>'),
   select: svg('<rect x="1.5" y="2.5" width="13" height="11" fill="none" stroke="#000" stroke-dasharray="1 1"/>'),
   eraser: svg('<path d="M6.5 3.5h8l-4 5h-8z" fill="#fff" stroke="#000"/><path d="M2.5 8.5h8v4h-8z" fill="#ffb7cf" stroke="#000"/><path d="M10.5 8.5l4-5v4l-4 5z" fill="#c8668a" stroke="#000"/>'),
-  fill: svg('<path d="M1.5 7.5l5-5 6 6-5 5z" fill="#c0c0c0" stroke="#000"/><path d="M3.5 7.5l3-3 3 3z" fill="#fff"/><path d="M6.5 2.5c-2-2-4-1-4 1" fill="none" stroke="#000"/><path d="M12.5 8.5c1 1 2 2.5 2 4.5 0 1-1 1-1 0v-3" fill="#00d3be" stroke="#003f39"/>'),
+  fill: svg('<path d="M1.5 7.5l5-5 6 6-5 5z" fill="#c0c0c0" stroke="#000"/><path d="M3.5 7.5l3-3 3 3z" fill="#fff"/><path d="M6.5 2.5c-2-2-4-1-4 1" fill="none" stroke="#000"/><path d="M12.5 8.5c1 1 2 2.5 2 4.5 0 1-1 1-1 0v-3" fill="#ffa59e" stroke="#740800"/>'),
   picker: svg('<path d="M10.5 1.5l1-1 4 4-1 1-1-0.2-3.8-3.8z" fill="#000"/><path d="M9.5 3.5l3 3-7 7h-2l-1 1-1-1 1-1v-2z" fill="#fff" stroke="#000"/><path d="M4 12l6-6" stroke="#9ab" />'),
   zoom: svg('<circle cx="6" cy="6" r="4.5" fill="#cfe7ff" stroke="#000"/><path d="M4 4.5q1-1.5 2.5-1" fill="none" stroke="#fff"/><path d="M9 9l5 5" stroke="#000" stroke-width="2.6" stroke-linecap="square"/>'),
   pencil: svg('<path d="M1.5 14.5l1-4 8.5-8.5 3 3-8.5 8.5z" fill="#ffd400" stroke="#000"/><path d="M1.5 14.5l1-4 3 3z" fill="#f2cf9a" stroke="#000"/><path d="M1 15l1-2.5 1.5 1.5z" fill="#000"/><path d="M11 2l1.5-1.5 3 3L14 5z" fill="#ff8fb0" stroke="#000"/><path d="M4 11l7-7" stroke="#b08a00"/>'),
@@ -25,8 +25,8 @@ const ICONS = {
   poly: svg('<path d="M2.5 2.5h7l-2 4.5h6.5v6.5h-11.5z" fill="#808080" stroke="#000"/>'),
   ellipse: svg('<ellipse cx="8" cy="8" rx="6.5" ry="4.5" fill="#808080" stroke="#000"/>'),
   rrect: svg('<rect x="2.5" y="3.5" width="11" height="9" rx="3" fill="#808080" stroke="#000"/>'),
-  tlbx: svg('<path d="M1.5 3.5h13v3c0 1-1 1-1 2v2c0 1.6-2 1.6-2 0V8.2c0-.9-1.5-.9-1.5 0v5c0 1.7-2.2 1.7-2.2 0V8.6c0-.9-1.5-.9-1.5 0v1.2c0 1.5-2 1.5-2 0V7.4c0-.6-.6-.8-.8-1.3z" fill="#00d3be" stroke="#003f39"/><path d="M3 5h6" stroke="#cdfffa"/><rect x="8" y="10" width="1" height="2" fill="#cdfffa"/>'),
-  stamp: svg('<rect x="6" y="1" width="4" height="4" rx="2" fill="#8b4a1a" stroke="#000"/><rect x="7" y="5" width="2" height="3" fill="#8b4a1a" stroke="#000" stroke-width=".8"/><rect x="2.5" y="8.5" width="11" height="3" fill="#c0c0c0" stroke="#000"/><rect x="2.5" y="11.5" width="11" height="2" fill="#a2fff6" stroke="#000"/><path d="M13 1l.6 1.4L15 3l-1.4.6L13 5l-.6-1.4L11 3l1.4-.6z" fill="#ffd400"/>'),
+  tlbx: svg('<path d="M1.5 3.5h13v3c0 1-1 1-1 2v2c0 1.6-2 1.6-2 0V8.2c0-.9-1.5-.9-1.5 0v5c0 1.7-2.2 1.7-2.2 0V8.6c0-.9-1.5-.9-1.5 0v1.2c0 1.5-2 1.5-2 0V7.4c0-.6-.6-.8-.8-1.3z" fill="#ffa59e" stroke="#740800"/><path d="M3 5h6" stroke="#fff2f1"/><rect x="8" y="10" width="1" height="2" fill="#fff2f1"/>'),
+  stamp: svg('<rect x="6" y="1" width="4" height="4" rx="2" fill="#8b4a1a" stroke="#000"/><rect x="7" y="5" width="2" height="3" fill="#8b4a1a" stroke="#000" stroke-width=".8"/><rect x="2.5" y="8.5" width="11" height="3" fill="#c0c0c0" stroke="#000"/><rect x="2.5" y="11.5" width="11" height="2" fill="#ffeae8" stroke="#000"/><path d="M13 1l.6 1.4L15 3l-1.4.6L13 5l-.6-1.4L11 3l1.4-.6z" fill="#ffd400"/>'),
 };
 const CURSORS = (() => {
   const cur = (inner, x, y, fb = 'crosshair') => `url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16" shape-rendering="crispEdges">${inner}</svg>`)}") ${x} ${y}, ${fb}`;

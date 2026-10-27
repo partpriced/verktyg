@@ -56,7 +56,7 @@
   function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
   SV.drawRulers = function () {
     if (!S.prefs.rulers) return;
-    if (!UI.st.rulerColors) UI.st.rulerColors = { bg: cssVar('--ruler-bg') || '#2b2b2b', fg: cssVar('--ruler-fg') || '#999', tick: cssVar('--ruler-tick') || '#666', acc: cssVar('--accent-line') || '#a2fff6' };
+    if (!UI.st.rulerColors) UI.st.rulerColors = { bg: cssVar('--ruler-bg') || '#2b2b2b', fg: cssVar('--ruler-fg') || '#999', tick: cssVar('--ruler-tick') || '#666', acc: cssVar('--accent-line') || '#ffeae8' };
     ['rulerH', 'rulerV'].forEach(function (id) {
       var c = document.getElementById(id); if (!c) return;
       var horiz = id === 'rulerH', dpr = window.devicePixelRatio || 1, w = c.clientWidth, hh = c.clientHeight;

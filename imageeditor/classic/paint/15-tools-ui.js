@@ -70,7 +70,7 @@ function opaqueSection(get, set) {
     if (!transparent) { x.fillStyle = '#000'; x.fillRect(5, 3, 24, 16); x.fillStyle = '#fff'; x.fillRect(6, 4, 22, 14); }
     x.fillStyle = '#ff0000'; stamp(x, 12, 10, discSpans(9));
     x.fillStyle = '#0000ff'; for (let i = 0; i < 9; i++) x.fillRect(19 - i / 2 | 0, 6 + i, i + 1, 1);
-    x.fillStyle = '#00d3be'; x.fillRect(9, 14, 5, 4);
+    x.fillStyle = '#ffa59e'; x.fillRect(9, 14, 5, 4);
   }, false);
   return section(1, [
     opt(icon(false), !get(), () => set(false), t('paint-classic.opt.opaque')),

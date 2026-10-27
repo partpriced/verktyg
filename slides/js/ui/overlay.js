@@ -56,7 +56,7 @@
     });
     if (OV.resizable(objs)) {
       var pts = OV.handlePoints(objs[0]);
-      ctx.fillStyle = '#0e0e10';
+      ctx.fillStyle = '#0c0e12';
       OV.HANDLES.forEach(function (h) {
         ctx.fillRect(pts[h][0] - hs / 2, pts[h][1] - hs / 2, hs, hs);
         ctx.strokeRect(pts[h][0] - hs / 2, pts[h][1] - hs / 2, hs, hs);

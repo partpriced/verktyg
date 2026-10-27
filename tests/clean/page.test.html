@@ -32,7 +32,7 @@
       H = window.TlbxHub;
       await H.clear();
       const c = document.createElement('canvas'); c.width = 64; c.height = 48;
-      const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, 64, 48); g.fillStyle = '#1a3a6e'; g.fillRect(20, 12, 24, 24);
+      const g = c.getContext('2d'); g.fillStyle = '#ffeae8'; g.fillRect(0, 0, 64, 48); g.fillStyle = '#1a3a6e'; g.fillRect(20, 12, 24, 24);
       const jpeg = new Uint8Array(await (await new Promise((r) => c.toBlob(r, 'image/jpeg', 0.9))).arrayBuffer());
       const bytes = F.cat(jpeg.subarray(0, 2), F.seg(0xe1, F.exifOf(F.buildTiff({ entries: F.SAMPLE_ENTRIES }))), jpeg.subarray(2));
       id = await H.put(new Blob([bytes], { type: 'image/jpeg' }), { name: 'beach.jpg', from: 'upload' });

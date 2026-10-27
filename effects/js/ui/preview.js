@@ -36,7 +36,7 @@
       const pts = [[0, 0], [b.w, 0], [b.w, b.h], [0, b.h]].map(([x, y]) => V().apply(st.world, x, y));
       ctx.save();
       ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.strokeStyle = '#a2fff6';
+      ctx.strokeStyle = '#ffeae8';
       ctx.lineWidth = Math.max(1, S.doc.comp.width / 480);
       ctx.setLineDash([6, 4]);
       ctx.beginPath();

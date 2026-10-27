@@ -44,8 +44,8 @@ test('glyphs are stroke-only line art with no colour of their own', () => {
 
 test('the shared badge builder wraps any glyph in a lime Helper tile, with the glyph in ink', () => {
   const badge = win.TLBX_ICON_BADGE(icons.time);
-  assert.match(badge, /^<rect x="2" y="2" width="44" height="44" rx="12" fill="#a2fff6"\/>/);
+  assert.match(badge, /^<rect x="2" y="2" width="44" height="44" rx="12" fill="#ffeae8"\/>/);
   assert.ok(badge.includes(icons.time), 'glyph is inside the badge');
-  assert.match(badge, /stroke="#001412"/);
+  assert.match(badge, /stroke="#290300"/);
   assert.match(win.TLBX_ICON_BADGE(icons.time, '#ff5a3a'), /fill="#ff5a3a"/);
 });

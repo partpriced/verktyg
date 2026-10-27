@@ -2,7 +2,7 @@
 :root {
   --wm-bg: var(--sl-background, #161616); --wm-panel: var(--sl-surface, #1f1f1f); --wm-line: var(--sl-border, #333);
   --wm-fg: var(--sl-text, #ececec); --wm-dim: color-mix(in srgb, var(--wm-fg) 70%, transparent);
-  --wm-accent: var(--sl-accent, #a2fff6); --wm-on-accent: var(--sl-on-accent, #0a1817); --wm-radius: 8px;
+  --wm-accent: var(--sl-accent, #ffeae8); --wm-on-accent: var(--sl-on-accent, #24100f); --wm-radius: 8px;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }

@@ -1,13 +1,13 @@
 /* Gallery: page layout and the timeline. Colours are tokens on :root; dark is the default, light follows the OS or
  * the data-theme attribute. Works at 390px wide with no horizontal page scroll (the side panel becomes a drawer). */
 :root {
-  --bg: #0e0e10; --panel: #17171a; --panel-2: #202026; --line: #2c2c33; --fg: #ece9e1; --fg-dim: #a3a09a; --fg-faint: #6d6b67;
-  --accent: #a2fff6; --accent-ink: #0a1817; --like: #6fe39a; --dislike: #ff6f8a; --hover: #26262d; --sel: #1f4a7a;
+  --bg: #0c0e12; --panel: #14171e; --panel-2: #1c212a; --line: #262d3a; --fg: #e7e9ef; --fg-dim: #95a1b8; --fg-faint: #5c6c8a;
+  --accent: #ffeae8; --accent-ink: #24100f; --like: #6fe39a; --dislike: #ff6f8a; --hover: #212732; --sel: #1f4a7a;
   --radius: 8px; --ui: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; --mono: "JetBrains Mono", ui-monospace, monospace;
   color-scheme: dark;
 }
-@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg: #f4f2ec; --panel: #ffffff; --panel-2: #efece4; --line: #d9d5ca; --fg: #1d1c19; --fg-dim: #5c5a54; --fg-faint: #8e8b84; --accent: #005c53; --accent-ink: #ffffff; --like: #1f8a4c; --dislike: #b3264a; --hover: #e6e2d8; --sel: #cfe0ff; color-scheme: light; } }
-:root[data-theme="light"] { --bg: #f4f2ec; --panel: #ffffff; --panel-2: #efece4; --line: #d9d5ca; --fg: #1d1c19; --fg-dim: #5c5a54; --fg-faint: #8e8b84; --accent: #005c53; --accent-ink: #ffffff; --like: #1f8a4c; --dislike: #b3264a; --hover: #e6e2d8; --sel: #cfe0ff; color-scheme: light; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --bg: #f0f2f5; --panel: #ffffff; --panel-2: #eaecf1; --line: #d0d5e0; --fg: #181c24; --fg-dim: #4d5a74; --fg-faint: #7d8ca8; --accent: #a50b00; --accent-ink: #ffffff; --like: #1f8a4c; --dislike: #b3264a; --hover: #dfe2ea; --sel: #cfe0ff; color-scheme: light; } }
+:root[data-theme="light"] { --bg: #f0f2f5; --panel: #ffffff; --panel-2: #eaecf1; --line: #d0d5e0; --fg: #181c24; --fg-dim: #4d5a74; --fg-faint: #7d8ca8; --accent: #a50b00; --accent-ink: #ffffff; --like: #1f8a4c; --dislike: #b3264a; --hover: #dfe2ea; --sel: #cfe0ff; color-scheme: light; }
 :root[data-theme="dark"] { color-scheme: dark; }
 
 * { box-sizing: border-box; }
@@ -114,7 +114,7 @@ body.dragging .drop-hint { display: flex; }
 .reel-bar { width: 100%; height: 10px; }
 
 /* Drop strip above the grid (shared/drop, compact) */
-.g-dropstrip { margin: 8px 12px 0; padding: 6px 10px; border: 1px dashed var(--line, #3a3a46); border-radius: 8px; }
+.g-dropstrip { margin: 8px 12px 0; padding: 6px 10px; border: 1px dashed var(--line, #333b4c); border-radius: 8px; }
 /* A finger: a long press on a photo is the gallery's menu (shared/input), not iOS's image callout or a text selection. */
 @media (pointer: coarse) { .tile, .tile img { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; } }
 /* The panel on the right (js/ui/panel.js, shared/frame/frame.css) in the gallery's colours; Import photos at its foot. On a

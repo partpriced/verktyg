@@ -28,7 +28,7 @@ function buildPanels() {
   const renderSw = () => {
     sw.textContent = '';
     const custom = store.get('swatches', []);
-    const base = ['#000000', '#ffffff', '#7f7f7f', '#c3c3c3', '#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#7f00ff', '#a2fff6', '#00d3be', '#00554d', '#002c28', '#c5fff9', '#ff6f8e', '#ffb3c7', '#f1ede4', '#0a0a0a', '#1e90ff', '#ffd23f', '#8b4513'];
+    const base = ['#000000', '#ffffff', '#7f7f7f', '#c3c3c3', '#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#7f00ff', '#ffeae8', '#ffa59e', '#990a00', '#530600', '#fff1f0', '#ff6f8e', '#ffb3c7', '#ebedf2', '#0a0a0a', '#1e90ff', '#ffd23f', '#8b4513'];
     for (const c of base.concat(custom)) {
       const b = h('button', { type: 'button', class: 'swatch', title: tr('imageeditor.panel.swatch_tip', { c }), 'aria-label': tr('imageeditor.panel.swatch', { c }) });
       b.style.background = c;

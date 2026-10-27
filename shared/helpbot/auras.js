@@ -27,7 +27,7 @@ export function aura(g, look, H, t, W, Hh) {
     g.lineWidth = H.s * 0.035; g.globalAlpha = 0.75;
     cols.forEach((c, i) => { g.strokeStyle = c; g.beginPath(); g.arc(H.x, H.base, H.w * (0.95 + i * 0.07), Math.PI, TAU); g.stroke(); });
   } else if (k === 'glitch') {
-    for (let i = 0; i < 7; i++) { g.fillStyle = ['rgba(255,0,90,.35)', 'rgba(0,255,220,.35)', 'rgba(162, 255, 246,.3)'][i % 3]; g.fillRect(rnd() * W * 0.5, rnd() * Hh, W * (0.3 + rnd() * 0.6), H.s * (0.01 + rnd() * 0.04)); }
+    for (let i = 0; i < 7; i++) { g.fillStyle = ['rgba(255,0,90,.35)', 'rgba(0,255,220,.35)', 'rgba(255, 234, 232,.3)'][i % 3]; g.fillRect(rnd() * W * 0.5, rnd() * Hh, W * (0.3 + rnd() * 0.6), H.s * (0.01 + rnd() * 0.04)); }
   } else if (k === 'gold') {
     g.globalCompositeOperation = 'lighter';
     const gr = g.createRadialGradient(H.x, H.base - H.h * 0.5, H.s * 0.2, H.x, H.base - H.h * 0.5, H.s * 1.1);

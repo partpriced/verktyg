@@ -7,7 +7,7 @@ import * as THREE from '../../vendor/three/three.module.min.js';
 const INK = 0x0b1300, FEET = 28;
 // Lumps in the 2D body units (y down): [cx, cy, r, wobble dx, wobble dy, period s].
 const LUMPS = [[0, 4, 25, 0, 0, 1], [-15, 18, 10, -4, 4, 4], [16, 19, 9, 4, 3, 5], [0, -18, 9, 2, -4, 3.6]];
-const PALETTE = { calm: ['#009183', '#a2fff6', '#e7fffd'], rage: ['#8f1200', '#ff5a3a', '#ffe0d0'] };
+const PALETTE = { calm: ['#ff1909', '#ffeae8', '#fff9f8'], rage: ['#8f1200', '#ff5a3a', '#ffe0d0'] };
 
 const VERT = `varying vec3 vN; varying vec3 vV;
 void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = -mv.xyz; gl_Position = projectionMatrix * mv; }`;

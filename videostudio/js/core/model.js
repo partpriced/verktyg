@@ -15,7 +15,7 @@
     kind: 'video', media: null, name: '', start: 0, dur: 5, in: 0, speed: 1, link: null,
     x: 0, y: 0, scale: 1, rot: 0, opacity: 1, cropL: 0, cropT: 0, cropR: 0, cropB: 0,
     bright: 0, contrast: 0, sat: 0, temp: 0, fadeIn: 0, fadeOut: 0, trIn: null,
-    vol: 1, keys: null, afIn: 0, afOut: 0, color: '#1b1b22', text: null,
+    vol: 1, keys: null, afIn: 0, afOut: 0, color: '#181c24', text: null,
     anim: null, fx: null, mask: null
   };
   /** Random effect layer defaults (kind 'effect'). Reset restores these; a new layer gets a random seed. */
@@ -25,7 +25,7 @@
   /** Transition library (core/transitions in render/transitions.js gives the motion). Ids are stored in projects. */
   M.TRANSITIONS = [['cross', 'Cross dissolve'], ['blur', 'Blur dissolve'], ['black', 'Dip to black'], ['white', 'Dip to white'], ['wipe', 'Wipe right'], ['wipe-left', 'Wipe left'], ['wipe-up', 'Wipe up'], ['wipe-down', 'Wipe down'], ['slide', 'Slide'], ['push', 'Push'], ['zoom-in', 'Zoom in'], ['zoom-out', 'Zoom out'], ['spin', 'Spin'], ['glitch', 'Glitch']];
   /** Graphic clip defaults (kind 'graphic'): shape id, colour, size (fraction of the frame height), motion, counter target. */
-  M.GFX_DEFAULT = { id: 'check', color: '#a2fff6', size: 0.3, anim: 'draw', value: 100 };
+  M.GFX_DEFAULT = { id: 'check', color: '#ffeae8', size: 0.3, anim: 'draw', value: 100 };
   M.FONTS = ['Archivo', 'Inter Tight', 'JetBrains Mono', 'Instrument Serif', 'Caveat', 'Dancing Script', 'Great Vibes', 'Georgia', 'Impact', 'Arial', 'Times New Roman', 'Courier New'];
   // sequence sizes [['WxH', label]]: shared/video presets, read each time so the labels follow the language
   Object.defineProperty(M, 'PRESETS', { enumerable: true, get: () => window.TlbxVideo.presets.LIST.map((x) => [x.w + 'x' + x.h, x.name]) });

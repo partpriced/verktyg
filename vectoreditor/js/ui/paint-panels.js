@@ -25,11 +25,11 @@
   var panelEls = $.panelEls;
 
   /* ---------- Swatches ---------- */
-  var DEFAULT_SWATCHES = [null, '#ffffff', '#0a0a0a', '#f1ede4', '#a2fff6', '#00efd7', '#00b3a1', '#ff3d8b', '#ff7eb6', '#7a5cff', '#3a7bff', '#00c2b8', '#2ecc71', '#ffe14d', '#ff8a00', '#ff4d4d', '#8b5a2b', '#e6e6e6', '#bdbdbd', '#8a8a8a', '#4a4a4a', '#262626',
-    { type: 'radial', cx: 0.4, cy: 0.35, r: 0.7, fx: 0.35, fy: 0.3, stops: [{ o: 0, c: '#e4fffc', a: 1 }, { o: 0.45, c: '#a2fff6', a: 1 }, { o: 1, c: '#009e8e', a: 1 }], name: 'Slime' }, // i18n-ignore: swatch names (stored in the document)
+  var DEFAULT_SWATCHES = [null, '#ffffff', '#0a0a0a', '#ebedf2', '#ffeae8', '#ffc8c5', '#ff746a', '#ff3d8b', '#ff7eb6', '#7a5cff', '#3a7bff', '#00c2b8', '#2ecc71', '#ffe14d', '#ff8a00', '#ff4d4d', '#8b5a2b', '#e6e6e6', '#bdbdbd', '#8a8a8a', '#4a4a4a', '#262626',
+    { type: 'radial', cx: 0.4, cy: 0.35, r: 0.7, fx: 0.35, fy: 0.3, stops: [{ o: 0, c: '#fff8f7', a: 1 }, { o: 0.45, c: '#ffeae8', a: 1 }, { o: 1, c: '#ff4a3d', a: 1 }], name: 'Slime' }, // i18n-ignore: swatch names (stored in the document)
     { type: 'linear', x1: 0, y1: 0, x2: 1, y2: 1, stops: [{ o: 0, c: '#ff3d8b', a: 1 }, { o: 1, c: '#ff8a00', a: 1 }], name: 'Toxic Sunset' }, // i18n-ignore: swatch names (stored in the document)
     { type: 'linear', x1: 0, y1: 0, x2: 1, y2: 0, stops: [{ o: 0, c: '#7a5cff', a: 1 }, { o: 1, c: '#00c2b8', a: 1 }], name: 'Synth' }, // i18n-ignore: swatch names (stored in the document)
-    { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#f1ede4', a: 1 }, { o: 1, c: '#0a0a0a', a: 1 }], name: 'Bone to Ink' }]; // i18n-ignore: swatch names (stored in the document)
+    { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#ebedf2', a: 1 }, { o: 1, c: '#0a0a0a', a: 1 }], name: 'Bone to Ink' }]; // i18n-ignore: swatch names (stored in the document)
   var selSwatch = -1;
   function swatches() { return S.doc.swatches || DEFAULT_SWATCHES; }
   /** Apply swatch i to 'fill' or 'stroke' (the swatch click and its context menu). */
@@ -77,7 +77,7 @@
   }
   function buildGradient() {
     var body = panelEls.gradient.body, g = 'grad';
-    var empty = h('div', { class: 'gempty' }, [h('div', { class: 'gpreview big', style: { background: 'linear-gradient(90deg,#fff,#a2fff6)' } }), h('p', { class: 'tip' }), btn('vector.grad.apply', function () { SV.applyStyle(S.focus, SV.defaultGradient(SV.currentPaint(S.focus))); }, 'primary')]);
+    var empty = h('div', { class: 'gempty' }, [h('div', { class: 'gpreview big', style: { background: 'linear-gradient(90deg,#fff,#ffeae8)' } }), h('p', { class: 'tip' }), btn('vector.grad.apply', function () { SV.applyStyle(S.focus, SV.defaultGradient(SV.currentPaint(S.focus))); }, 'primary')]);
     var tipP = empty.querySelector('.tip');
     var ed = h('div', { class: 'geditor' });
     var target = seg(g, [['fill', 'vector.paint.fill', 'vector.grad.edit_fill'], ['stroke', 'vector.paint.stroke', 'vector.grad.edit_stroke']], function () { return S.focus; }, function (v) { S.focus = v; SV.requestRender(true); }, 'vector.grad.target');

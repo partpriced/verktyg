@@ -80,7 +80,7 @@
 .hello-helpbot { width: 96px; height: 96px; }
 .hello p { margin: 0; max-width: 460px; }
 .starters { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-.helpbot.powered canvas { filter: drop-shadow(0 0 6px rgba(162, 255, 246, .6)); }
+.helpbot.powered canvas { filter: drop-shadow(0 0 6px rgba(255, 234, 232, .6)); }
 .helpbot-bubble { position: fixed; top: calc(var(--top-h) + 8px); right: 70px; z-index: 600; width: min(340px, calc(100vw - 32px)); padding: 14px 14px 10px; display: grid; gap: 10px; background: var(--panel); border: 2px solid var(--accent-line); border-radius: 18px 4px 18px 18px; box-shadow: var(--shadow); }
 .helpbot-bubble .say { font-weight: 600; min-height: 1.4em; white-space: pre-wrap; }
 .helpbot-bubble form { display: flex; } .helpbot-bubble .inp { flex: 1; }

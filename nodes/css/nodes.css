@@ -1,23 +1,23 @@
 /* Node Calculator: the page, the canvas and the boxes. Colours come from the theme (--sl-*). Each node type has its own colour. */
 :root { --sn-value: #2563eb; --sn-formula: #7c3aed; --sn-output: #15803d; --sn-note: #ca8a04; --sn-err: #b91c1c; }
 html, body { height: 100%; }
-body { margin: 0; overflow: hidden; background: var(--sl-background, #f6f6f4); color: var(--sl-text, #1b1b1f); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+body { margin: 0; overflow: hidden; background: var(--sl-background, #f5f6f8); color: var(--sl-text, #181b23); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
 /* The menu bar (shared/menubar) holds the add buttons and Save; they are as tall as the shared header buttons
  * (shared/ui/hbtn.css). Under it, one line: the project's name, the status and the count; then the canvas fills the rest. */
-.smb-bar { --tlbx-hbtn-h: 32px; --tlbx-hbtn-radius: 6px; --tlbx-hbtn-bg: var(--sl-surface, #fff); --tlbx-hbtn-line: var(--sl-border, #d9d9de); }
+.smb-bar { --tlbx-hbtn-h: 32px; --tlbx-hbtn-radius: 6px; --tlbx-hbtn-bg: var(--sl-surface, #fff); --tlbx-hbtn-line: var(--sl-border, #d5dae3); }
 .smb-tools { align-items: center; }
 .smb-tools .sn-add, .smb-tools .sui-btn { height: var(--tlbx-hbtn-h); box-sizing: border-box; padding-block: 0; }
 .sn-info { flex: none; display: flex; align-items: baseline; gap: 4px 14px; padding: 8px 16px; min-width: 0; }
 .sn-info > p { margin: 0; }
-.sn-project { font-weight: 600; color: color-mix(in srgb, var(--sl-text, #1b1b1f) 60%, transparent); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
-.sn-add { border: 1px solid var(--sl-border, #d9d9de); border-radius: 999px; padding: 5px 12px; background: var(--sl-surface, #fff); color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
+.sn-project { font-weight: 600; color: color-mix(in srgb, var(--sl-text, #181b23) 60%, transparent); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 240px; }
+.sn-add { border: 1px solid var(--sl-border, #d5dae3); border-radius: 999px; padding: 5px 12px; background: var(--sl-surface, #fff); color: inherit; font: inherit; font-weight: 600; cursor: pointer; }
 .sn-add::before { content: ''; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 7px; background: var(--c); vertical-align: 1px; }
 .sn-add.sn-v { --c: var(--sn-value); } .sn-add.sn-f { --c: var(--sn-formula); } .sn-add.sn-o { --c: var(--sn-output); } .sn-add.sn-n { --c: var(--sn-note); }
 .sn-add:hover { border-color: var(--c); }
-.sn-status { flex: 1 1 0; min-width: 0; color: color-mix(in srgb, var(--sl-text, #1b1b1f) 78%, transparent); font-size: 13px; }
-.sn-count { margin: 0; font-size: 13px; font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--sl-text, #1b1b1f) 60%, transparent); }
-.sn-stage { position: relative; overflow: auto; flex: 1 1 auto; min-height: 0; margin: 0 10px 10px; border: 1px solid var(--sl-border, #d9d9de); border-radius: 14px;
-  background-color: var(--sl-surface, #fff); background-image: radial-gradient(color-mix(in srgb, var(--sl-text, #1b1b1f) 16%, transparent) 1px, transparent 1px); background-size: 22px 22px; }
+.sn-status { flex: 1 1 0; min-width: 0; color: color-mix(in srgb, var(--sl-text, #181b23) 78%, transparent); font-size: 13px; }
+.sn-count { margin: 0; font-size: 13px; font-variant-numeric: tabular-nums; color: color-mix(in srgb, var(--sl-text, #181b23) 60%, transparent); }
+.sn-stage { position: relative; overflow: auto; flex: 1 1 auto; min-height: 0; margin: 0 10px 10px; border: 1px solid var(--sl-border, #d5dae3); border-radius: 14px;
+  background-color: var(--sl-surface, #fff); background-image: radial-gradient(color-mix(in srgb, var(--sl-text, #181b23) 16%, transparent) 1px, transparent 1px); background-size: 22px 22px; }
 .sn-sizer { position: relative; width: 2400px; height: 1600px; }
 .sn-world { position: absolute; left: 0; top: 0; width: 2400px; height: 1600px; transform-origin: 0 0; }
 .sn-wires { position: absolute; left: 0; top: 0; width: 2400px; height: 1600px; overflow: visible; pointer-events: none; }
@@ -25,7 +25,7 @@ body { margin: 0; overflow: hidden; background: var(--sl-background, #f6f6f4); c
 .sn-wire.is-sel { stroke-width: 4; stroke: var(--sn-formula); }
 .sn-wire.sn-temp { stroke-dasharray: 6 5; opacity: .85; }
 .sn-hit { fill: none; stroke: transparent; stroke-width: 14; pointer-events: stroke; cursor: pointer; }
-.sn-node { position: absolute; width: 230px; box-sizing: border-box; background: var(--sl-surface, #fff); border: 1px solid var(--sl-border, #d9d9de); border-radius: 12px;
+.sn-node { position: absolute; width: 230px; box-sizing: border-box; background: var(--sl-surface, #fff); border: 1px solid var(--sl-border, #d5dae3); border-radius: 12px;
   box-shadow: 0 1px 2px rgb(0 0 0 / .06), 0 4px 14px rgb(0 0 0 / .06); }
 .sn-node::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; border-radius: 12px 12px 0 0; background: var(--nc, var(--sn-formula)); }
 .sn-node[data-type="value"] { --nc: var(--sn-value); }
@@ -40,8 +40,8 @@ body { margin: 0; overflow: hidden; background: var(--sl-background, #f6f6f4); c
 .sn-name { flex: 1; min-width: 0; border: 0; border-radius: 6px; background: transparent; color: inherit; font: 600 14px ui-monospace, Menlo, Consolas, monospace; padding: 3px 4px; }
 .sn-name:focus { outline: 2px solid var(--sl-accent, #2563eb); background: color-mix(in srgb, var(--sl-accent, #2563eb) 8%, transparent); }
 .sn-more { border: 0; background: none; color: inherit; opacity: .55; font-size: 16px; line-height: 1; width: 24px; height: 24px; border-radius: 6px; cursor: pointer; }
-.sn-more:hover { opacity: 1; background: color-mix(in srgb, var(--sl-text, #1b1b1f) 8%, transparent); }
-.sn-expr { display: block; box-sizing: border-box; width: calc(100% - 20px); margin: 4px 10px 2px; border: 1px solid var(--sl-border, #d9d9de); border-radius: 8px; padding: 6px 8px; background: color-mix(in srgb, var(--sl-text, #1b1b1f) 3%, transparent); color: inherit; font: 13px ui-monospace, Menlo, Consolas, monospace; }
+.sn-more:hover { opacity: 1; background: color-mix(in srgb, var(--sl-text, #181b23) 8%, transparent); }
+.sn-expr { display: block; box-sizing: border-box; width: calc(100% - 20px); margin: 4px 10px 2px; border: 1px solid var(--sl-border, #d5dae3); border-radius: 8px; padding: 6px 8px; background: color-mix(in srgb, var(--sl-text, #181b23) 3%, transparent); color: inherit; font: 13px ui-monospace, Menlo, Consolas, monospace; }
 .sn-expr:focus { outline: 2px solid var(--sl-accent, #2563eb); border-color: transparent; }
 .sn-note { display: block; box-sizing: border-box; width: calc(100% - 20px); min-height: 70px; margin: 4px 10px 10px; border: 0; border-radius: 8px; padding: 8px; resize: vertical; background: transparent; color: inherit; font: 13px/1.4 system-ui, sans-serif; }
 .sn-node[data-type="note"] { background: color-mix(in srgb, var(--sn-note) 14%, var(--sl-surface, #fff)); border-color: color-mix(in srgb, var(--sn-note) 40%, transparent); }
@@ -56,15 +56,15 @@ body { margin: 0; overflow: hidden; background: var(--sl-background, #f6f6f4); c
 .sn-out { right: -8px; }
 .sn-node.is-drag .sn-port { pointer-events: none; }
 .snm { position: fixed; z-index: 1000; }
-.snm-list { min-width: 200px; padding: 5px; background: var(--sl-surface, #fff); border: 1px solid var(--sl-border, #d9d9de); border-radius: 10px; box-shadow: 0 12px 32px rgb(0 0 0 / .22); }
-.snm-sub { margin: 0 0 0 10px; border-left: 2px solid var(--sl-border, #d9d9de); padding-left: 6px; }
+.snm-list { min-width: 200px; padding: 5px; background: var(--sl-surface, #fff); border: 1px solid var(--sl-border, #d5dae3); border-radius: 10px; box-shadow: 0 12px 32px rgb(0 0 0 / .22); }
+.snm-sub { margin: 0 0 0 10px; border-left: 2px solid var(--sl-border, #d5dae3); padding-left: 6px; }
 .snm-item { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 30px; padding: 4px 10px; border: 0; border-radius: 6px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
 .snm-item:hover:not(:disabled), .snm-item:focus-visible { background: color-mix(in srgb, var(--sl-accent, #2563eb) 14%, transparent); outline: none; }
 .snm-item:disabled { opacity: .45; cursor: default; }
 .snm-item > span:first-child { flex: 1; }
 .snm-keys { font-size: 12px; opacity: .6; }
 .snm-arrow { opacity: .6; }
-.snm-sep { margin: 5px 6px; border: 0; border-top: 1px solid var(--sl-border, #d9d9de); }
+.snm-sep { margin: 5px 6px; border: 0; border-top: 1px solid var(--sl-border, #d5dae3); }
 /* Below 1180 px the bar keeps one row: nodes are added from the Insert menu, which has the same four; Save stays. */
 @media (max-width: 1180px) { .smb-tools .sn-add { display: none; } }
 @media (max-width: 720px) { .sn-project { display: none; } .sn-info { padding: 6px 12px; } }

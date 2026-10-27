@@ -40,7 +40,7 @@ FILTERS.push(
         d[i] = nr; d[i + 1] = ng; d[i + 2] = nb;
       }
     }) },
-  { id: 'bw', menu: 'adjust', params: [R('re', 'reds', -200, 300, 40), R('ye', 'yellows', -200, 300, 60), R('gr', 'greens', -200, 300, 40), R('cy', 'cyans', -200, 300, 60), R('bl', 'blues', -200, 300, 20), R('ma', 'magentas', -200, 300, 80), { k: 'tint', lk: 'tint', type: 'check', v: false }, { k: 'tintc', lk: 'tint_colour', type: 'color', v: '#e1d3b3' }],
+  { id: 'bw', menu: 'adjust', params: [R('re', 'reds', -200, 300, 40), R('ye', 'yellows', -200, 300, 60), R('gr', 'greens', -200, 300, 40), R('cy', 'cyans', -200, 300, 60), R('bl', 'blues', -200, 300, 20), R('ma', 'magentas', -200, 300, 80), { k: 'tint', lk: 'tint', type: 'check', v: false }, { k: 'tintc', lk: 'tint_colour', type: 'color', v: '#cfd4df' }],
     fn: (s, p) => withPixels(s, (d) => {
       // Photoshop's B&W: min + (mid−min)·w(secondary) + (max−mid)·w(primary).
       const W = { r: p.re / 100, y: p.ye / 100, g: p.gr / 100, c: p.cy / 100, b: p.bl / 100, m: p.ma / 100 };

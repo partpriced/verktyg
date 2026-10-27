@@ -28,7 +28,7 @@
   let n = 0;
   async function png(name) {
     const c = D.createElement('canvas'); c.width = 32 + (n++ % 7); c.height = 24;
-    const g = c.getContext('2d'); g.fillStyle = '#a2fff6'; g.fillRect(0, 0, c.width, 24);
+    const g = c.getContext('2d'); g.fillStyle = '#ffeae8'; g.fillRect(0, 0, c.width, 24);
     return new W.File([await new Promise((r) => c.toBlob(r, 'image/png'))], name, { type: 'image/png' });
   }
   const dtOf = (files) => { const dt = new W.DataTransfer(); files.forEach((f) => dt.items.add(f)); return dt; };

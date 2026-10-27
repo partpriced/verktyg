@@ -41,7 +41,7 @@
   UI.hexToRgb = hexToRgb; UI.rgbToHex = rgbToHex;
   UI.st.picker = null;
   // Recent colours and the palette live in localStorage (shared picker: list() / add()).
-  var PALETTE = ['#0a0a0a', '#ffffff', '#f1ede4', '#a2fff6', '#ff3d8b', '#7a5cff', '#00c2b8', '#ff8a00', '#ffe14d', '#3a7bff', '#ff4d4d', '#2ecc71'];
+  var PALETTE = ['#0a0a0a', '#ffffff', '#ebedf2', '#ffeae8', '#ff3d8b', '#7a5cff', '#00c2b8', '#ff8a00', '#ffe14d', '#3a7bff', '#ff4d4d', '#2ecc71'];
   var RECENTS = {
     list: function () { try { return JSON.parse(SV.lsGet('vectoreditor.recentColors') || '[]') || []; } catch (e) { return []; } },
     add: function (hex) { SV.lsSet('vectoreditor.recentColors', JSON.stringify(TlbxColor.recentAdd(RECENTS.list(), hex, 12))); },
@@ -61,7 +61,7 @@
   UI.pickColor = function (anchor, initial, onInput, onDone, opts) {
     UI.closePicker();
     opts = opts || {};
-    var hex = typeof initial === 'string' ? initial : (initial && initial.stops ? initial.stops[0].c : '#a2fff6');
+    var hex = typeof initial === 'string' ? initial : (initial && initial.stops ? initial.stops[0].c : '#ffeae8');
     var el = h('div', { class: 'picker', role: 'dialog', 'aria-label': opts.title || SV.t('vector.paint.picker') });
     var head = h('div', { class: 'picker-head' }, [h('span', { text: opts.title || SV.t('vector.paint.color') }), h('button', { class: 'xbtn', type: 'button', 'aria-label': SV.t('menu.close'), html: '&times;', onclick: function () { UI.closePicker(); } })]);
     var st = { el: el, hex: hex, value: initial, changed: false, onDone: onDone };

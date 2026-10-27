@@ -60,14 +60,14 @@ export async function setOn(v, save = true) {
 export const toggle = () => setOn(!on);
 
 /* ---------- the floating toggle ---------- */
-const FACE = '<svg viewBox="-30 -30 60 60" aria-hidden="true"><defs><radialGradient id="slp-g-toggle" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#e7fffd"/><stop offset=".35" stop-color="#a2fff6"/><stop offset="1" stop-color="#009183"/></radialGradient></defs><circle r="24" cy="3" fill="url(#slp-g-toggle)"/><ellipse cx="-7" cy="0" rx="3" ry="4.2" fill="#001412"/><ellipse cx="7" cy="0" rx="3" ry="4.2" fill="#001412"/><path d="M-4 8 Q0 11 4 8" stroke="#001412" stroke-width="1.8" fill="none" stroke-linecap="round"/><ellipse cx="-9" cy="-10" rx="5" ry="3" transform="rotate(-30 -9 -10)" fill="rgba(255,255,255,.8)"/></svg>';
+const FACE = '<svg viewBox="-30 -30 60 60" aria-hidden="true"><defs><radialGradient id="slp-g-toggle" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#fff9f8"/><stop offset=".35" stop-color="#ffeae8"/><stop offset="1" stop-color="#ff1909"/></radialGradient></defs><circle r="24" cy="3" fill="url(#slp-g-toggle)"/><ellipse cx="-7" cy="0" rx="3" ry="4.2" fill="#290300"/><ellipse cx="7" cy="0" rx="3" ry="4.2" fill="#290300"/><path d="M-4 8 Q0 11 4 8" stroke="#290300" stroke-width="1.8" fill="none" stroke-linecap="round"/><ellipse cx="-9" cy="-10" rx="5" ry="3" transform="rotate(-30 -9 -10)" fill="rgba(255,255,255,.8)"/></svg>';
 const CSS = `.buddy-toggle{display:flex;flex-direction:column;align-items:center;gap:2px}
-.buddy-toggle .bt-main{width:44px;height:44px;padding:4px;border-radius:50%;border:1px solid rgba(241,237,228,.18);background:rgba(17,17,17,.85);cursor:pointer;touch-action:none;box-shadow:0 6px 18px rgba(0,0,0,.35);filter:grayscale(.85) brightness(.8);transition:filter .2s,transform .2s}
+.buddy-toggle .bt-main{width:44px;height:44px;padding:4px;border-radius:50%;border:1px solid rgba(235, 237, 242,.18);background:rgba(17,17,17,.85);cursor:pointer;touch-action:none;box-shadow:0 6px 18px rgba(0,0,0,.35);filter:grayscale(.85) brightness(.8);transition:filter .2s,transform .2s}
 .buddy-toggle .bt-main svg{display:block;width:100%;height:100%}
-.buddy-toggle.is-on .bt-main{filter:none;border-color:#a2fff6}
+.buddy-toggle.is-on .bt-main{filter:none;border-color:#ffeae8}
 .buddy-toggle .bt-main:hover{transform:scale(1.06)}
-.buddy-toggle .bt-main:focus-visible,.buddy-toggle .bt-more:focus-visible{outline:2px solid #a2fff6;outline-offset:2px}
-.buddy-toggle .bt-more{position:absolute;top:-8px;left:-8px;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid rgba(241,237,228,.25);background:#111;color:#f1ede4;font:700 11px/1 system-ui;cursor:pointer}
+.buddy-toggle .bt-main:focus-visible,.buddy-toggle .bt-more:focus-visible{outline:2px solid #ffeae8;outline-offset:2px}
+.buddy-toggle .bt-more{position:absolute;top:-8px;left:-8px;width:20px;height:20px;padding:0;border-radius:50%;border:1px solid rgba(235, 237, 242,.25);background:#111;color:#ebedf2;font:700 11px/1 system-ui;cursor:pointer}
 .buddy-toggle .bt-more[hidden]{display:none}
 .buddy-toggle[hidden]{display:none}
 @media print{.buddy-toggle{display:none}}`;

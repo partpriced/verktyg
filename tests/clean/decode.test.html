@@ -20,7 +20,7 @@
   function picture(w = 96, h = 64) {
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     const g = c.getContext('2d');
-    const grd = g.createLinearGradient(0, 0, w, h); grd.addColorStop(0, '#a2fff6'); grd.addColorStop(1, '#1a3a6e');
+    const grd = g.createLinearGradient(0, 0, w, h); grd.addColorStop(0, '#ffeae8'); grd.addColorStop(1, '#1a3a6e');
     g.fillStyle = grd; g.fillRect(0, 0, w, h);
     g.fillStyle = '#ff4f6e'; g.beginPath(); g.arc(w / 3, h / 2, 14, 0, Math.PI * 2); g.fill();
     g.fillStyle = '#111'; g.fillRect(w * 0.6, h * 0.2, 20, 10);

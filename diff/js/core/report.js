@@ -7,19 +7,19 @@
 import { esc, textTable, jsonTable, csvTable } from './render.js';
 import { summary } from './kind.js';
 
-const CSS = `body{font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#1b1b1f;background:#fff;margin:0;padding:24px}
-h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}.meta{color:#4a4a55;margin:0 0 12px}.sum{font-weight:600}
+const CSS = `body{font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#181b23;background:#fff;margin:0;padding:24px}
+h1{font-size:20px;margin:0 0 4px}h2{font-size:16px;margin:24px 0 8px}.meta{color:#404b61;margin:0 0 12px}.sum{font-weight:600}
 .df-t{border-collapse:collapse;width:100%;font:12.5px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;table-layout:fixed}
 .df-t td,.df-t th{padding:1px 6px;vertical-align:top;white-space:pre-wrap;word-break:break-word;text-align:left}
-.df-n{width:3.5em;color:#5c5c66;text-align:right!important;user-select:none}.df-s{width:1.2em}
+.df-n{width:3.5em;color:#505d78;text-align:right!important;user-select:none}.df-s{width:1.2em}
 .df-unified .df-n{width:3.2em}.df-del,.df-unified .df-del td{background:#ffe9ec}.df-ins,.df-unified .df-ins td{background:#e3f7e8}
-.df-none{background:#f3f3f5}del{background:#ffc2cb;text-decoration:none;color:#7a0016}ins{background:#a8e8b8;text-decoration:none;color:#0b4a1d}
-.df-fold td{background:#f1f2f6;color:#4a4a55;text-align:center!important;font-style:italic}.df-fold button{all:unset}
+.df-none{background:#f2f3f6}del{background:#ffc2cb;text-decoration:none;color:#7a0016}ins{background:#a8e8b8;text-decoration:none;color:#0b4a1d}
+.df-fold td{background:#f1f2f5;color:#404b61;text-align:center!important;font-style:italic}.df-fold button{all:unset}
 .df-page td{background:#e8ecf8;font-weight:600;font-family:system-ui,sans-serif}
-.df-grid th{background:#f1f2f6;border-bottom:1px solid #ccd}.df-grid td{border-bottom:1px solid #e4e4ea}.df-k{width:6em;font-family:system-ui,sans-serif}
+.df-grid th{background:#f1f2f5;border-bottom:1px solid #c7ceda}.df-grid td{border-bottom:1px solid #e1e5eb}.df-k{width:6em;font-family:system-ui,sans-serif}
 .df-row-del td{background:#ffe9ec}.df-row-ins td{background:#e3f7e8}.df-col-del{background:#ffe0e5!important}.df-col-ins{background:#d9f3e0!important}
-.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.pics figure{margin:0}.pics img{max-width:100%;border:1px solid #ccd}
-figcaption{color:#4a4a55;font-size:12px}@media print{body{padding:0}.df-t{font-size:10px}}`;
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.pics figure{margin:0}.pics img{max-width:100%;border:1px solid #c7ceda}
+figcaption{color:#404b61;font-size:12px}@media print{body{padding:0}.df-t{font-size:10px}}`;
 
 export const reportName = (a, b, ext = 'html') => {
   const s = (n) => String(n || '').replace(/\.[^.]+$/, '').replace(/[^\w.-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'text';

@@ -49,7 +49,7 @@
         const svg = doc.querySelector(`.shot[data-id="${a.id}"] svg.shot-icon`);
         if (!svg) throw new Error('no icon on the card for ' + a.id);
         expect(svg.getAttribute('data-icon')).toBe(a.id);
-        expect(svg.querySelector('rect').getAttribute('fill')).toBe('#a2fff6');
+        expect(svg.querySelector('rect').getAttribute('fill')).toBe('#ffeae8');
         expect(svg.querySelector('g').children.length).toBeGreaterThan(0);
         ids.add(svg.querySelector('g').innerHTML);
       }
@@ -137,7 +137,7 @@
         const rect = svg.querySelector(':scope > rect');
         if (!rect) throw new Error('no badge rect as a direct child of ' + svg.getAttribute('class'));
         expect(rect.namespaceURI).toBe(SVG);
-        expect(rect.getAttribute('fill')).toBe('#a2fff6');
+        expect(rect.getAttribute('fill')).toBe('#ffeae8');
         expect(svg.querySelector(':scope > ellipse').namespaceURI).toBe(SVG);
         expect(svg.querySelector(':scope > g').namespaceURI).toBe(SVG);
       }

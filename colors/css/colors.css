@@ -3,7 +3,7 @@
 :root {
   --co-bg: var(--sl-background, #161616); --co-panel: var(--sl-surface, #1f1f1f); --co-line: var(--sl-border, #333);
   --co-fg: var(--sl-text, #ececec); --co-dim: var(--sl-muted, color-mix(in srgb, var(--co-fg) 72%, var(--co-bg)));
-  --co-accent: var(--sl-accent, #a2fff6); --co-radius: 10px;
+  --co-accent: var(--sl-accent, #ffeae8); --co-radius: 10px;
 }
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }

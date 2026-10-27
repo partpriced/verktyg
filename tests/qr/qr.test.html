@@ -177,7 +177,7 @@
       const w = await open();
       const cv = document.createElement('canvas');
       cv.width = 40; cv.height = 40;
-      cv.getContext('2d').fillStyle = '#a2fff6';
+      cv.getContext('2d').fillStyle = '#ffeae8';
       cv.getContext('2d').fillRect(0, 0, 40, 40);
       const blob = await new Promise((r) => cv.toBlob(r, 'image/png'));
       const url = await w.QRLogo.fromFile(new (W().File)([blob], 'mark.png', { type: 'image/png' }));

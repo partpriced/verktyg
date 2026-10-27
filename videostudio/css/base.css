@@ -1,6 +1,6 @@
 /* Video Editor — tokens for the three themes (Pro, Light, Classic 98), base, layout, top bar and buttons. */
 :root {
-  --ink: #0a0a0a; --bone: #f1ede4; --lime: #a2fff6;
+  --ink: #0a0a0a; --bone: #ebedf2; --lime: #ffeae8;
   --font-ui: 'Inter Tight', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Archivo', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -8,13 +8,13 @@
   --top-h: 48px; --bin-w: 300px; --insp-w: 300px; --status-h: 24px; --tl-h: 300px;
   --radius: 8px; --radius-s: 6px;
   /* Colours follow the shared ITpris theme (--sl-*, set by shared/theme/theme.js). The value after each var() is the Pro fallback. */
-  --bg: var(--sl-background, #0b0b0d); --panel: var(--sl-surface, #141417); --panel-2: color-mix(in srgb, var(--panel) 96%, var(--fg)); --surface: var(--bg);
-  --line: var(--sl-border, #222228); --line-2: color-mix(in srgb, var(--line) 85%, var(--fg));
-  --fg: var(--sl-text, #ececef); --dim: color-mix(in srgb, var(--fg) 74%, transparent); --faint: color-mix(in srgb, var(--fg) 60%, transparent);
-  --accent: var(--sl-accent, #a2fff6); --accent-ink: var(--sl-on-accent, #0a0a0a); --accent-line: var(--accent); --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
-  --hover: color-mix(in srgb, var(--fg) 8%, var(--panel)); --active: color-mix(in srgb, var(--fg) 16%, var(--panel)); --input: var(--sl-surface, #0f0f12);
-  --danger: #ff5a6e; --ok: #4be3d4; --warn: #ffc94a;
-  --clip-video: #3d6fd6; --clip-audio: #2e9c74; --clip-image: #9b59d6; --clip-title: #d68a2e; --clip-color: #6b6b78;
+  --bg: var(--sl-background, #0a0b0e); --panel: var(--sl-surface, #11141a); --panel-2: color-mix(in srgb, var(--panel) 96%, var(--fg)); --surface: var(--bg);
+  --line: var(--sl-border, #1e232d); --line-2: color-mix(in srgb, var(--line) 85%, var(--fg));
+  --fg: var(--sl-text, #eaecf1); --dim: color-mix(in srgb, var(--fg) 74%, transparent); --faint: color-mix(in srgb, var(--fg) 60%, transparent);
+  --accent: var(--sl-accent, #ffeae8); --accent-ink: var(--sl-on-accent, #0a0a0a); --accent-line: var(--accent); --accent-soft: color-mix(in srgb, var(--accent) 14%, transparent);
+  --hover: color-mix(in srgb, var(--fg) 8%, var(--panel)); --active: color-mix(in srgb, var(--fg) 16%, var(--panel)); --input: var(--sl-surface, #0d0f14);
+  --danger: #ff5a6e; --ok: #f5c1bd; --warn: #ffc94a;
+  --clip-video: #3d6fd6; --clip-audio: #2e9c74; --clip-image: #9b59d6; --clip-title: #d68a2e; --clip-color: #5d6c8b;
   --tl-bg: var(--bg); --tl-lane: var(--panel); --tl-lane2: color-mix(in srgb, var(--panel) 94%, var(--fg)); --tl-ruler: var(--panel-2); --playhead: #ff4d5e;
   --shadow: 0 18px 50px rgba(0, 0, 0, .55), 0 2px 8px rgba(0, 0, 0, .35);
   --bevel: none; --bevel-in: none;
@@ -23,8 +23,8 @@
   color-scheme: dark;
 }
 :root[data-tlbx-theme="light"] {
-  --accent-line: var(--sl-accent, #008175);
-  --danger: #d0263f; --ok: #007c6f; --warn: #a66b00;
+  --accent-line: var(--sl-accent, #e60f00);
+  --danger: #d0263f; --ok: #dc0f00; --warn: #a66b00;
   --playhead: #e0263a;
   --shadow: 0 16px 44px rgba(40, 30, 10, .2), 0 2px 6px rgba(40, 30, 10, .12);
   color-scheme: light;
@@ -117,7 +117,7 @@ input[type=color] { width: 30px; height: 24px; padding: 0; border: 1px solid var
 .st-local { display: inline-flex; align-items: center; gap: 4px; }
 .st-local .ic { width: 12px; height: 12px; }
 
-.drop-overlay { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; background: rgba(10, 10, 12, .7); backdrop-filter: blur(3px); pointer-events: none; }
+.drop-overlay { position: fixed; inset: 0; z-index: 900; display: grid; place-items: center; background: rgba(9, 10, 13, .7); backdrop-filter: blur(3px); pointer-events: none; }
 .drop-overlay > div { display: grid; justify-items: center; gap: 6px; padding: 30px 46px; border: 2px dashed var(--accent-line); border-radius: 18px; background: var(--panel); color: var(--fg); }
 .drop-overlay .ic { width: 34px; height: 34px; color: var(--accent-line); }
 .drop-overlay span { color: var(--dim); }

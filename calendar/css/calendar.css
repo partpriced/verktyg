@@ -2,10 +2,10 @@
  * ITpris theme (--sl-*, set by shared/theme/theme.js); the category colours below are fixed event colours. Nothing scrolls
  * sideways: at 390 px the agenda replaces the week and day views. */
 :root {
-  --bg: var(--sl-background, #0e0e10); --panel: var(--sl-surface, #17171b); --ink: var(--sl-text, #f1ede4);
+  --bg: var(--sl-background, #0c0e12); --panel: var(--sl-surface, #14171e); --ink: var(--sl-text, #ebedf2);
   --panel-2: color-mix(in srgb, var(--panel) 88%, var(--ink)); --chip: color-mix(in srgb, var(--panel) 90%, var(--ink));
-  --mute: color-mix(in srgb, var(--ink) 68%, transparent); --line: var(--sl-border, #2b2b33);
-  --accent: var(--sl-accent, #a2fff6); --accent-ink: var(--sl-on-accent, #0e0e10); --danger: #c81e44;
+  --mute: color-mix(in srgb, var(--ink) 68%, transparent); --line: var(--sl-border, #262c38);
+  --accent: var(--sl-accent, #ffeae8); --accent-ink: var(--sl-on-accent, #0c0e12); --danger: #c81e44;
   --focus: var(--accent); --today: color-mix(in srgb, var(--accent) 9%, transparent);
   --c-blue: #5b8cff; --c-green: #5fc97a; --c-amber: #f5b041; --c-red: #ff5d6c; --c-violet: #a78bfa; --c-teal: #2dd4bf; --c-pink: #f472b6; --c-grey: #9aa0a6;
 }

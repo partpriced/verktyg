@@ -27,7 +27,7 @@
     W.TlbxFaces.setEmbedder(fakeEmbed); // no recogniser model in the test: a fixed vector per face
       expect(W.TlbxFaces.enabled()).toBe(false);
       expect(W.TlbxFaces.status()).toBe('off');
-      rec = await H.get(await H.put(await DT.png('#a2fff6', 40, 30), { name: 'first.png', from: 'clean' }));
+      rec = await H.get(await H.put(await DT.png('#ffeae8', 40, 30), { name: 'first.png', from: 'clean' }));
       await DR.refresh(); DR.render();
     });
 

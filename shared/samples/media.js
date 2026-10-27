@@ -69,7 +69,7 @@
       const sky = x.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#5aa9e6'); sky.addColorStop(1, '#ffe8a3');
       x.fillStyle = sky; x.fillRect(0, 0, w, h);
       x.fillStyle = '#fff3b0'; x.beginPath(); x.arc(w * (0.15 + t * 0.06), h * (0.32 - t * 0.02), h * 0.1, 0, TAU); x.fill();
-      [['#7fb069', 0.62, 0.06, 20], ['#207c72', 0.76, 0.05, 55]].forEach(([c, base, amp, speed]) => {
+      [['#7fb069', 0.62, 0.06, 20], ['#c83d33', 0.76, 0.05, 55]].forEach(([c, base, amp, speed]) => {
         x.fillStyle = c; x.beginPath(); x.moveTo(0, h);
         for (let px = 0; px <= w; px += 8) x.lineTo(px, h * (base + amp * Math.sin((px + t * speed) / (w * 0.12))));
         x.lineTo(w, h); x.fill();
@@ -78,7 +78,7 @@
       x.fillStyle = '#e63946'; x.beginPath(); x.arc(bx, by, h * 0.05, 0, TAU); x.fill();
     },
     sea(x, w, h, t) {
-      const sky = x.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#2b2d6e'); sky.addColorStop(0.55, '#f08a5d'); sky.addColorStop(1, '#f9d56e');
+      const sky = x.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#2d3544'); sky.addColorStop(0.55, '#f08a5d'); sky.addColorStop(1, '#f9d56e');
       x.fillStyle = sky; x.fillRect(0, 0, w, h);
       x.fillStyle = '#ffe9a8'; x.beginPath(); x.arc(w * 0.5, h * (0.5 + t * 0.03), h * 0.13, 0, TAU); x.fill();
       for (let k = 0; k < 5; k++) {

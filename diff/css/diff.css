@@ -3,7 +3,7 @@
 :root {
   --df-bg: var(--sl-background, #161616); --df-panel: var(--sl-surface, #1f1f1f); --df-line: var(--sl-border, #333);
   --df-fg: var(--sl-text, #ececec); --df-dim: color-mix(in srgb, var(--df-fg) 78%, var(--df-panel));
-  --df-accent: var(--sl-accent, #a2fff6); --df-radius: 8px;
+  --df-accent: var(--sl-accent, #ffeae8); --df-radius: 8px;
   --df-red: #e5484d; --df-green: #30a46c;
   --df-del: color-mix(in srgb, var(--df-red) 16%, var(--df-panel)); --df-ins: color-mix(in srgb, var(--df-green) 16%, var(--df-panel));
   --df-del-w: color-mix(in srgb, var(--df-red) 38%, var(--df-panel)); --df-ins-w: color-mix(in srgb, var(--df-green) 38%, var(--df-panel));

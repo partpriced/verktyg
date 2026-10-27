@@ -16,7 +16,7 @@ window.DT = (function () {
   }
   async function delDb(name) { await new Promise((res) => { const r = indexedDB.deleteDatabase(name); r.onsuccess = r.onerror = r.onblocked = () => res(); }); }
   const text = (s, type = 'text/plain') => new Blob([s], { type });
-  async function png(color = '#a2fff6', w = 40, h = 30) {
+  async function png(color = '#ffeae8', w = 40, h = 30) {
     const c = document.createElement('canvas'); c.width = w; c.height = h;
     const g = c.getContext('2d'); g.fillStyle = color; g.fillRect(0, 0, w, h); g.fillStyle = '#fff'; g.fillRect(w / 4, h / 4, w / 2, h / 2);
     return new Promise((r) => c.toBlob(r, 'image/png'));

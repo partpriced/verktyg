@@ -51,7 +51,7 @@
       const r = await G.importer.run([
         { file: await T.jpegFile('one.jpg', 40, 30, { colour: '#3a7bd5' }), name: 'one.jpg' },
         { file: await T.jpegFile('two.jpg', 50, 30, { colour: '#d53a7b' }), name: 'two.jpg' },
-        { file: await T.jpegFile('none.jpg', 60, 30, { colour: '#37d4c5' }), name: 'none.jpg' },
+        { file: await T.jpegFile('none.jpg', 60, 30, { colour: '#7bd53a' }), name: 'none.jpg' },
       ]);
       expect(r.added).toBe(3);
       await waitFor(() => G.people.stats().checked === 3, { timeout: 20000 });

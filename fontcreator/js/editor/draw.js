@@ -10,8 +10,8 @@
   function colors(el) {
     const cs = getComputedStyle(el);
     const v = (k, d) => (cs.getPropertyValue(k) || '').trim() || d;
-    return { bg: v('--fc-canvas', '#fff'), fg: v('--fc-ink', '#111'), line: v('--fc-guide', '#99a'), base: v('--fc-base', '#556'), accent: v('--fc-point', '#2563eb'),
-      dim: v('--fc-dim', '#667'), box: v('--fc-box', 'rgba(127,127,127,.08)') };
+    return { bg: v('--fc-canvas', '#fff'), fg: v('--fc-ink', '#111'), line: v('--fc-guide', '#8e9bb4'), base: v('--fc-base', '#4a576f'), accent: v('--fc-point', '#2563eb'),
+      dim: v('--fc-dim', '#596885'), box: v('--fc-box', 'rgba(127,127,127,.08)') };
   }
   function trace(ctx, contours, cam) {
     ctx.beginPath();

@@ -86,12 +86,12 @@ export const HATS = {
   },
   headphones(g, H) {
     const y = H.eyeY - H.s * 0.02;
-    g.strokeStyle = '#1b1b2e'; g.lineWidth = H.s * 0.035; g.beginPath(); g.ellipse(H.x, y, H.w * 0.48, H.s * 0.48, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
-    for (const sx of [-1, 1]) { g.fillStyle = '#ff4f86'; g.beginPath(); g.ellipse(H.x + sx * H.w * 0.46, y, H.s * 0.07, H.s * 0.1, 0, 0, TAU); g.fill(); g.fillStyle = '#1b1b2e'; g.beginPath(); g.ellipse(H.x + sx * H.w * 0.49, y, H.s * 0.04, H.s * 0.08, 0, 0, TAU); g.fill(); }
+    g.strokeStyle = '#191d25'; g.lineWidth = H.s * 0.035; g.beginPath(); g.ellipse(H.x, y, H.w * 0.48, H.s * 0.48, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
+    for (const sx of [-1, 1]) { g.fillStyle = '#ff4f86'; g.beginPath(); g.ellipse(H.x + sx * H.w * 0.46, y, H.s * 0.07, H.s * 0.1, 0, 0, TAU); g.fill(); g.fillStyle = '#191d25'; g.beginPath(); g.ellipse(H.x + sx * H.w * 0.49, y, H.s * 0.04, H.s * 0.08, 0, 0, TAU); g.fill(); }
   },
   shades(g, H) {
     const y = H.eyeY - H.s * 0.01;
-    g.fillStyle = '#0b0b10';
+    g.fillStyle = '#0a0b0f';
     for (const sx of [-1, 1]) { g.beginPath(); g.roundRect ? g.roundRect(H.x + sx * H.s * 0.17 - H.s * 0.11, y - H.s * 0.06, H.s * 0.22, H.s * 0.12, H.s * 0.04) : g.rect(H.x + sx * H.s * 0.17 - H.s * 0.11, y - H.s * 0.06, H.s * 0.22, H.s * 0.12); g.fill(); }
     g.fillRect(H.x - H.s * 0.07, y - H.s * 0.04, H.s * 0.14, H.s * 0.025);
     g.fillStyle = 'rgba(255,255,255,.35)'; for (const sx of [-1, 1]) g.fillRect(H.x + sx * H.s * 0.17 - H.s * 0.08, y - H.s * 0.04, H.s * 0.06, H.s * 0.02);
@@ -102,14 +102,14 @@ export const HATS = {
   },
   pirate(g, H) {
     const y = H.top + H.s * 0.12, x = H.x, w = H.w * 0.7;
-    g.fillStyle = '#1b1b22'; g.beginPath(); g.moveTo(x - w / 2, y); g.quadraticCurveTo(x - w * 0.3, y - w * 0.45, x, y - w * 0.32); g.quadraticCurveTo(x + w * 0.3, y - w * 0.45, x + w / 2, y); g.quadraticCurveTo(x, y + w * 0.06, x - w / 2, y); g.fill();
+    g.fillStyle = '#181c24'; g.beginPath(); g.moveTo(x - w / 2, y); g.quadraticCurveTo(x - w * 0.3, y - w * 0.45, x, y - w * 0.32); g.quadraticCurveTo(x + w * 0.3, y - w * 0.45, x + w / 2, y); g.quadraticCurveTo(x, y + w * 0.06, x - w / 2, y); g.fill();
     g.fillStyle = '#fff'; g.beginPath(); g.arc(x, y - w * 0.16, w * 0.06, 0, TAU); g.fill();
     g.strokeStyle = '#ffd23f'; g.lineWidth = H.s * 0.008; g.beginPath(); g.moveTo(x - w / 2, y); g.quadraticCurveTo(x, y + w * 0.06, x + w / 2, y); g.stroke();
     HATS.eyepatch(g, H);
   },
   viking(g, H) {
     const y = H.top + H.s * 0.14, x = H.x, w = H.w * 0.55;
-    g.fillStyle = '#f1ede4'; for (const sx of [-1, 1]) { g.beginPath(); g.moveTo(x + sx * w * 0.42, y - w * 0.12); g.quadraticCurveTo(x + sx * w * 0.9, y - w * 0.2, x + sx * w * 0.85, y - w * 0.75); g.quadraticCurveTo(x + sx * w * 0.66, y - w * 0.28, x + sx * w * 0.3, y - w * 0.3); g.closePath(); g.fill(); }
+    g.fillStyle = '#ebedf2'; for (const sx of [-1, 1]) { g.beginPath(); g.moveTo(x + sx * w * 0.42, y - w * 0.12); g.quadraticCurveTo(x + sx * w * 0.9, y - w * 0.2, x + sx * w * 0.85, y - w * 0.75); g.quadraticCurveTo(x + sx * w * 0.66, y - w * 0.28, x + sx * w * 0.3, y - w * 0.3); g.closePath(); g.fill(); }
     const gr = g.createLinearGradient(0, y - w * 0.5, 0, y); gr.addColorStop(0, '#d9dde4'); gr.addColorStop(1, '#7a8494');
     g.fillStyle = gr; g.beginPath(); g.ellipse(x, y, w / 2, w * 0.45, 0, Math.PI, TAU); g.fill();
     g.fillStyle = '#b07a33'; g.fillRect(x - w / 2, y - w * 0.06, w, w * 0.1);
@@ -136,8 +136,8 @@ export const HATS = {
   },
   sprout(g, H) {
     const x = H.x, y = H.top + H.s * 0.02;
-    g.strokeStyle = '#00897b'; g.lineWidth = H.s * 0.016; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + H.s * 0.02, y - H.s * 0.08, x, y - H.s * 0.14); g.stroke();
-    g.fillStyle = '#00d2bd'; for (const sx of [-1, 1]) { g.beginPath(); g.ellipse(x + sx * H.s * 0.07, y - H.s * 0.15, H.s * 0.07, H.s * 0.035, sx * -0.5, 0, TAU); g.fill(); }
+    g.strokeStyle = '#f21000'; g.lineWidth = H.s * 0.016; g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + H.s * 0.02, y - H.s * 0.08, x, y - H.s * 0.14); g.stroke();
+    g.fillStyle = '#ffa29b'; for (const sx of [-1, 1]) { g.beginPath(); g.ellipse(x + sx * H.s * 0.07, y - H.s * 0.15, H.s * 0.07, H.s * 0.035, sx * -0.5, 0, TAU); g.fill(); }
   },
   bow(g, H) {
     const x = H.x + H.w * 0.22, y = H.top + H.s * 0.13, r = H.s * 0.08;
@@ -146,7 +146,7 @@ export const HATS = {
   },
   gradcap(g, H) {
     const y = H.top + H.s * 0.1, x = H.x, w = H.w * 0.5;
-    g.fillStyle = '#1b1b22'; g.beginPath(); g.ellipse(x, y, w * 0.4, w * 0.16, 0, 0, TAU); g.fill();
+    g.fillStyle = '#181c24'; g.beginPath(); g.ellipse(x, y, w * 0.4, w * 0.16, 0, 0, TAU); g.fill();
     g.beginPath(); g.moveTo(x - w * 0.7, y - w * 0.2); g.lineTo(x, y - w * 0.45); g.lineTo(x + w * 0.7, y - w * 0.2); g.lineTo(x, y + w * 0.05); g.closePath(); g.fill();
     g.strokeStyle = '#ffd23f'; g.lineWidth = H.s * 0.01; g.beginPath(); g.moveTo(x, y - w * 0.22); g.lineTo(x + w * 0.55, y - w * 0.12); g.lineTo(x + w * 0.55, y + w * 0.2); g.stroke();
   },

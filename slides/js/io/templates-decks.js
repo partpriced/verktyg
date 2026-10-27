@@ -11,7 +11,7 @@
   TP.register({ id: 'pitch', name: 'Pitch deck', theme: 'tlbx', build: function () { // i18n-ignore
     var d = TP.make('tlbx', 'Pitch deck'); // i18n-ignore
     TP.slide(d, { layout: 'title', title: 'Gooey', subtitle: 'Collaboration that sticks', notes: 'Open with the problem in one sentence. Smile.', section: 'Intro', // i18n-ignore
-      objects: [shape('ellipse', 700, 60, 180, 180, { name: 'Blob', fill: { type: 'radial', colors: ['accent1', '#1b8f84'], cx: 0.35, cy: 0.3 }, opacity: 0.9 })] }); // i18n-ignore
+      objects: [shape('ellipse', 700, 60, 180, 180, { name: 'Blob', fill: { type: 'radial', colors: ['accent1', '#dc5147'], cx: 0.35, cy: 0.3 }, opacity: 0.9 })] }); // i18n-ignore
     TP.slide(d, { layout: 'title-content', title: 'The problem', body: ['Teams lose 9 hours a week hunting for files', 'Tools do not talk to each other', { t: 'Context switching kills focus', level: 1 }, 'Everyone pays for five subscriptions'], // i18n-ignore
       transition: { name: 'fade', duration: 1 }, anims: { body: [{ preset: 'slide-up', trigger: 'click' }] },
       objects: [shape('ellipse', 830, 400, 90, 90, { name: 'Blob', fill: { type: 'radial', colors: ['accent2', '#7a1f30'], cx: 0.35, cy: 0.3 } })], notes: 'Pause after each point.' }); // i18n-ignore

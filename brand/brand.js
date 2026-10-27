@@ -30,7 +30,7 @@
     tagline: 'Office and creative software that runs in your browser.',
     logo: '',
     home: '',
-    colors: Object.freeze({ ink: '#0a0a0a', paper: '#f1ede4', accent: '#a2fff6' }),
+    colors: Object.freeze({ ink: '#0a0a0a', paper: '#ebedf2', accent: '#ffeae8' }),
     footer: '',
     links: Object.freeze({ patreon: '', support: '', reddit: '', x: '', tiktok: '', gumroad: '' }),
     appOrder: Object.freeze([]),

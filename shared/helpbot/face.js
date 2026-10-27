@@ -34,7 +34,7 @@ export function eye(g, B, x, y, s, kind, side) {
     g.shadowBlur = 0;
     const iris = kind === 'laser' ? '#ff2a2a' : B.iris;
     const ig = g.createLinearGradient(x, y - ry, x, y + ry);
-    ig.addColorStop(0, rgba('#120c04', 0)); ig.addColorStop(0.5, rgba(iris.startsWith('#') ? iris : '#00897b', 0.55)); ig.addColorStop(1, iris);
+    ig.addColorStop(0, rgba('#120c04', 0)); ig.addColorStop(0.5, rgba(iris.startsWith('#') ? iris : '#f21000', 0.55)); ig.addColorStop(1, iris);
     g.fillStyle = ig; g.beginPath(); g.ellipse(x, y + ry * 0.12, rx * 0.82, ry * 0.82, 0, 0, TAU); g.fill();
     g.fillStyle = '#fff'; g.beginPath(); g.ellipse(x - rx * 0.32, y - ry * 0.38, rx * 0.36, ry * 0.3, -0.4, 0, TAU); g.fill();
     g.beginPath(); g.arc(x + rx * 0.35, y + ry * 0.42, rx * 0.16, 0, TAU); g.fill();

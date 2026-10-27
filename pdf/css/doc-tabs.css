@@ -2,7 +2,7 @@
 .doctabs-host {
   flex: none;
   min-width: 0;
-  border-bottom: 1px solid var(--sl-border, #3a3a35);
+  border-bottom: 1px solid var(--sl-border, #323a4a);
   min-height: 35px; /* the strip's height (border included), kept while the strip loads after the first paint (index.html) */
 }
 /* a file is dragged over the strip: it will open in a new tab */

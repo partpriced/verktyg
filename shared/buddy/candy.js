@@ -9,7 +9,7 @@ import { calmRage, persistRage } from './rage.js';
 
 export const CANDY_CALM = 1.2;
 const LIFE_MS = 60000, TAU = Math.PI * 2;
-const COLS = ['#ff4f86', '#ffd23f', '#5cc8ff', '#a2fff6'];
+const COLS = ['#ff4f86', '#ffd23f', '#5cc8ff', '#ffeae8'];
 let out = null, lifeTok = 0;
 
 export const candyOut = () => !!out;
@@ -22,7 +22,7 @@ function sprite() {
   const g = c.getContext('2d');
   if (!g) return null;
   if (Math.random() < 0.5) {
-    g.fillStyle = '#f4f1e8'; g.fillRect(29, 38, 6, 24);                           // stick
+    g.fillStyle = '#eff1f5'; g.fillRect(29, 38, 6, 24);                           // stick
     g.beginPath(); g.arc(32, 26, 22, 0, TAU); g.fillStyle = '#fff'; g.fill();
     for (let i = 0, r = 19; r > 3; r -= 4, i++) { g.beginPath(); g.arc(32, 26, r, 0, TAU); g.strokeStyle = COLS[i % COLS.length]; g.lineWidth = 3; g.stroke(); }
     g.beginPath(); g.arc(32, 26, 22, 0, TAU); g.strokeStyle = 'rgba(0,0,0,.3)'; g.lineWidth = 1.5; g.stroke();

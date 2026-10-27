@@ -2,14 +2,14 @@
  * Then the sidebar of views and lists, the task list with subtasks, the editor. At 390 px the
  * sidebar sits above the list as a row of buttons, so nothing scrolls sideways. */
 :root {
-  --bg: var(--sl-background, #0e0e10); --panel: var(--sl-surface, #17171b);
-  --panel-2: color-mix(in srgb, var(--sl-text, #f1ede4) 6%, var(--sl-surface, #1f1f25));
-  --ink: var(--sl-text, #f1ede4); --mute: color-mix(in srgb, var(--sl-text, #f1ede4) 70%, transparent);
-  --line: var(--sl-border, #2b2b33);
-  --accent: var(--sl-accent, #a2fff6); --accent-ink: var(--sl-on-accent, #0e0e10);
+  --bg: var(--sl-background, #0c0e12); --panel: var(--sl-surface, #14171e);
+  --panel-2: color-mix(in srgb, var(--sl-text, #ebedf2) 6%, var(--sl-surface, #1b2029));
+  --ink: var(--sl-text, #ebedf2); --mute: color-mix(in srgb, var(--sl-text, #ebedf2) 70%, transparent);
+  --line: var(--sl-border, #262c38);
+  --accent: var(--sl-accent, #ffeae8); --accent-ink: var(--sl-on-accent, #0c0e12);
   --danger: #ff4f6e; --warn: #ffb547;
-  --chip: color-mix(in srgb, var(--sl-text, #f1ede4) 10%, var(--sl-surface, #26262e));
-  --focus: var(--sl-accent, #a2fff6);
+  --chip: color-mix(in srgb, var(--sl-text, #ebedf2) 10%, var(--sl-surface, #212732));
+  --focus: var(--sl-accent, #ffeae8);
   color-scheme: dark;
 }
 :root[data-tlbx-theme="light"], :root[data-tlbx-theme="classic"] {

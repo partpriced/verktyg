@@ -46,14 +46,14 @@
 .sflow-track{position:relative;flex:1 1 auto;min-width:calc(var(--sflow-w)*.9);max-width:calc(var(--sflow-w)*3);height:4px;border-radius:2px;
  background:repeating-linear-gradient(90deg,color-mix(in srgb,currentColor 45%,transparent) 0 8px,transparent 8px 14px);transform-origin:left center}
 .sflow-track::after{content:"";position:absolute;right:-2px;top:50%;width:10px;height:10px;border:solid color-mix(in srgb,currentColor 70%,transparent);border-width:3px 3px 0 0;transform:translateY(-50%) rotate(45deg)}
-.sflow-fill{position:absolute;left:0;top:0;bottom:0;width:calc(var(--sflow-p,0)*100%);border-radius:2px;background:var(--sl-accent,#006f64);transition:width .25s}
-.sflow-dot{position:absolute;top:50%;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--sl-accent,#006f64);opacity:0}
+.sflow-fill{position:absolute;left:0;top:0;bottom:0;width:calc(var(--sflow-p,0)*100%);border-radius:2px;background:var(--sl-accent,#c70d00);transition:width .25s}
+.sflow-dot{position:absolute;top:50%;left:0;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;background:var(--sl-accent,#c70d00);opacity:0}
 .sflow-to{transition:transform .2s}
 .sflow-mark{position:absolute;z-index:2;right:-7px;bottom:-7px;width:20px;height:20px;border-radius:50%;display:none;place-items:center;font-size:12px;font-weight:800;color:#fff;box-shadow:0 0 0 2px var(--sl-surface,#fff)}
 .sflow[data-state=done] .sflow-to .sflow-mark{display:grid;background:#2e8540}.sflow[data-state=done] .sflow-to .sflow-mark::before{content:"\\2713"}
 .sflow[data-state=error] .sflow-to .sflow-mark{display:grid;background:#c62828}.sflow[data-state=error] .sflow-to .sflow-mark::before{content:"!"}
 .sflow-more[hidden]{display:none}
-.sflow-pick{cursor:pointer}.sflow-pick:focus-visible{outline:3px solid var(--sl-accent,#006f64);outline-offset:3px}
+.sflow-pick{cursor:pointer}.sflow-pick:focus-visible{outline:3px solid var(--sl-accent,#c70d00);outline-offset:3px}
 .sflow-caret{position:absolute;z-index:3;left:-8px;bottom:-8px;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--sl-text,#222);color:var(--sl-surface,#fff);font-size:12px;font-weight:700;box-shadow:0 0 0 2px var(--sl-surface,#fff)}
 .sflow-pick:hover{transform:translateY(-2px)}
 .sflow[data-state=error] .sflow-track{background:repeating-linear-gradient(90deg,#c62828 0 8px,transparent 8px 14px)}

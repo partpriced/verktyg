@@ -1,20 +1,20 @@
 /* Documents — the app chrome. Tokens on :root; dark is the default look, light follows the OS or the theme switch. */
 :root {
-  --ink: #0a0a0a; --lime: #a2fff6;
+  --ink: #0a0a0a; --lime: #ffeae8;
   --font-ui: 'Inter Tight', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
-  --bg: #0e0e10; --panel: #151518; --panel-2: #1d1d22; --desk: #2a2a30; --line: #24242a; --line-2: #33333b;
-  --fg: #ececef; --dim: #a3a3ad; --faint: #6c6c76; --accent: #a2fff6; --accent-ink: #0a0a0a;
-  --hover: #24242b; --active: #2e2e36; --input: #0f0f12; --sel: rgba(96, 165, 250, .35); --danger: #ff5a6e;
+  --bg: #0c0e12; --panel: #12151b; --panel-2: #191e26; --desk: #252b37; --line: #1f252f; --line-2: #2c3443;
+  --fg: #eaecf1; --dim: #99a4bb; --faint: #5e6d8c; --accent: #ffeae8; --accent-ink: #0a0a0a;
+  --hover: #1f252f; --active: #282f3c; --input: #0d0f14; --sel: rgba(96, 165, 250, .35); --danger: #ff5a6e;
   --paper: #ffffff; --paper-ink: #000000; --radius: 8px;
   --sui-bg: var(--panel); --sui-bg2: var(--panel-2); --sui-input: var(--input); --sui-line: var(--line-2); --sui-fg: var(--fg); --sui-dim: var(--dim);
   --sui-faint: var(--faint); --sui-hover: var(--hover); --sui-sel: var(--active); --sui-accent: var(--accent); --sui-accent-ink: var(--accent-ink);
   --sui-font: var(--font-ui); --sui-mono: var(--mono); --sui-radius: 6px;
 }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="pro"]) { --bg: #f4f4f1; --panel: #ffffff; --panel-2: #f1f1ee; --desk: #dcdcd6; --line: #e2e2dc; --line-2: #cfcfc7; --fg: #15151a; --dim: #55555f; --faint: #8a8a94; --hover: #ececE6; --active: #e2e2da; --input: #ffffff; --sel: rgba(37, 99, 235, .25); }
+  :root:not([data-theme="pro"]) { --bg: #f2f4f7; --panel: #ffffff; --panel-2: #eff1f4; --desk: #d7dce5; --line: #dee2e9; --line-2: #c9cfdb; --fg: #12161c; --dim: #4a566f; --faint: #7d8ba8; --hover: #e9ecf1; --active: #dee2e9; --input: #ffffff; --sel: rgba(37, 99, 235, .25); }
 }
-:root[data-theme="light"] { --bg: #f4f4f1; --panel: #ffffff; --panel-2: #f1f1ee; --desk: #dcdcd6; --line: #e2e2dc; --line-2: #cfcfc7; --fg: #15151a; --dim: #55555f; --faint: #8a8a94; --hover: #ececE6; --active: #e2e2da; --input: #ffffff; --sel: rgba(37, 99, 235, .25); }
+:root[data-theme="light"] { --bg: #f2f4f7; --panel: #ffffff; --panel-2: #eff1f4; --desk: #d7dce5; --line: #dee2e9; --line-2: #c9cfdb; --fg: #12161c; --dim: #4a566f; --faint: #7d8ba8; --hover: #e9ecf1; --active: #dee2e9; --input: #ffffff; --sel: rgba(37, 99, 235, .25); }
 html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 13px/1.4 var(--font-ui); overflow: hidden; }
 body { background: var(--bg); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

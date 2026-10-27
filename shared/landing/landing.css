@@ -4,12 +4,12 @@
  * page), and the dim and line colours are mixed from them, so the pages read in light and dark themes alike. */
 :root {
   --ink: var(--sl-background, #0a0a0a);
-  --bone: var(--sl-text, #f1ede4);
+  --bone: var(--sl-text, #ebedf2);
   --ink-2: color-mix(in srgb, var(--bone) 5%, var(--ink));
   --bone-dim: color-mix(in srgb, var(--bone) 72%, var(--ink));
   --bone-faint: color-mix(in srgb, var(--bone) 64%, var(--ink));   /* 4.5:1 or more on light and dark pages */
   --line: color-mix(in srgb, var(--bone) 15%, var(--ink));
-  --tlbx: var(--sl-accent, #a2fff6);
+  --tlbx: var(--sl-accent, #ffeae8);
   --amber: color-mix(in srgb, #d98a10 55%, var(--bone));   /* readable on light and dark: mixed toward the text colour */
   --sans: "Inter Tight", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
@@ -80,7 +80,7 @@ p { margin: 0 0 12px; }
 .l-matrix thead th { font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone-faint); font-weight: 500; border-bottom-color: var(--bone-faint); }
 .l-matrix tbody th { font-weight: 500; width: 40%; }
 .l-matrix td { color: var(--bone-dim); width: 30%; }
-.l-matrix td.us { color: var(--bone); background: rgba(162, 255, 246, 0.06); }
+.l-matrix td.us { color: var(--bone); background: rgba(255, 234, 232, 0.06); }
 .l-matrix .yes { color: var(--tlbx); font-weight: 600; }
 .l-matrix .later { color: var(--amber); font-weight: 600; }
 .l-matrix .no { color: var(--bone-faint); font-weight: 600; }

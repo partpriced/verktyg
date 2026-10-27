@@ -9,12 +9,12 @@
 .para-c[data-h="se"] { left: calc(100% + 3px); top: calc(100% + 3px); cursor: nwse-resize; }
 .para-c[data-h="sw"] { left: -3px; top: calc(100% + 3px); cursor: nesw-resize; }
 .para-r, .sel-rot { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; box-sizing: border-box; border-radius: 50%;
-  background: var(--panel, #1d1d21); border: 2px solid var(--accent, #a2fff6); cursor: grab; touch-action: none; pointer-events: auto; }
+  background: var(--panel, #191d26); border: 2px solid var(--accent, #ffeae8); cursor: grab; touch-action: none; pointer-events: auto; }
 .para-r { left: 50%; top: -26px; }
 .para-r::before { content: ''; position: absolute; left: 50%; top: 100%; height: 12px; border-left: 1.5px solid #0a0a0a; }
 .sel-rot { z-index: 2; }
 .para-frame .para-tag { left: auto; right: -1.5px; } /* the tag keeps clear of the turn handle */
-.para-frame.is-editing { box-shadow: 0 0 0 5px rgba(162, 255, 246, .45); }
+.para-frame.is-editing { box-shadow: 0 0 0 5px rgba(255, 234, 232, .45); }
 .para-frame.is-editing .para-h, .para-frame.is-editing .para-c, .para-frame.is-editing .para-r { display: block; pointer-events: auto; }
 .para-frame.is-locked .para-h, .para-frame.is-locked .para-c, .para-frame.is-locked .para-r { display: none; }
 @media (pointer: coarse) {
@@ -26,11 +26,11 @@
 
 /* an annotation turned freely: its box and handles turn with it; the others of a group: an outline each */
 .sel-box.is-turned { transform-origin: 50% 50%; }
-.sel-box.is-member { outline: 1.5px dashed #0a0a0a; box-shadow: 0 0 0 3px rgba(162, 255, 246, .45); }
-.sel-marquee { position: absolute; border: 1px dashed #0a0a0a; background: rgba(162, 255, 246, .18); pointer-events: none; }
+.sel-box.is-member { outline: 1.5px dashed #0a0a0a; box-shadow: 0 0 0 3px rgba(255, 234, 232, .45); }
+.sel-marquee { position: absolute; border: 1px dashed #0a0a0a; background: rgba(255, 234, 232, .18); pointer-events: none; }
 
 /* a drag over another page: the page that takes the drop */
-.pv-page.is-drop-target { outline: 3px solid var(--accent, #a2fff6); outline-offset: 2px; }
+.pv-page.is-drop-target { outline: 3px solid var(--accent, #ffeae8); outline-offset: 2px; }
 
 /* the panel: position, size and rotation side by side */
 .xf-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 10px; }

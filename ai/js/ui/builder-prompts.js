@@ -27,10 +27,10 @@ ${css}
 </style>
 </head>`;
 
-  const GAME = head('Catch the Tlbx', `html, body { margin: 0; height: 100%; background: #0e0e10; color: #ececef; font: 16px system-ui, sans-serif; overflow: hidden; }
+  const GAME = head('Catch the Tlbx', `html, body { margin: 0; height: 100%; background: #0c0e12; color: #eaecf1; font: 16px system-ui, sans-serif; overflow: hidden; }
 canvas { display: block; width: 100vw; height: 100vh; touch-action: none; }
 #hud { position: fixed; top: 10px; left: 12px; font-weight: 700; }
-#again { position: fixed; inset: 0; margin: auto; width: 180px; height: 56px; border: 0; border-radius: 14px; background: #a2fff6; font: 700 18px system-ui; display: none; }`) + `
+#again { position: fixed; inset: 0; margin: auto; width: 180px; height: 56px; border: 0; border-radius: 14px; background: #ffeae8; font: 700 18px system-ui; display: none; }`) + `
 <body>
 <canvas id="c"></canvas>
 <div id="hud">Score 0 · Lives 3</div>
@@ -57,8 +57,8 @@ function step() {
     drops = drops.filter((d) => !d.done);
     if (lives <= 0) { over = true; again.style.display = 'block'; }
   }
-  g.fillStyle = '#0e0e10'; g.fillRect(0, 0, W, H);
-  g.fillStyle = '#a2fff6';
+  g.fillStyle = '#0c0e12'; g.fillRect(0, 0, W, H);
+  g.fillStyle = '#ffeae8';
   for (const d of drops) { g.beginPath(); g.arc(d.x, d.y, 12, 0, Math.PI * 2); g.fill(); }
   g.fillStyle = '#5cc8ff'; g.fillRect(x - 45, H - 40, 90, 14);
   hud.textContent = over ? 'Game over · Score ' + score : 'Score ' + score + ' · Lives ' + lives;
@@ -70,11 +70,11 @@ reset(); step();
 </html>`;
 
   const LANDING = head('Slime Co.', `* { box-sizing: border-box; }
-body { margin: 0; font: 17px/1.5 system-ui, sans-serif; background: #f6f3ea; color: #111; }
+body { margin: 0; font: 17px/1.5 system-ui, sans-serif; background: #f2f3f6; color: #111; }
 header { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; }
 .hero { padding: 64px 24px; text-align: center; }
 .hero h1 { font-size: clamp(36px, 8vw, 72px); line-height: 1; margin: 0 0 16px; letter-spacing: -0.03em; }
-.cta { display: inline-block; padding: 14px 26px; border-radius: 999px; background: #111; color: #a2fff6; border: 0; font: 700 17px system-ui; cursor: pointer; }
+.cta { display: inline-block; padding: 14px 26px; border-radius: 999px; background: #111; color: #ffeae8; border: 0; font: 700 17px system-ui; cursor: pointer; }
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; padding: 24px; max-width: 980px; margin: 0 auto; }
 .card { background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
 #msg { margin-top: 14px; font-weight: 600; min-height: 1.5em; }

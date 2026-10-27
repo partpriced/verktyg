@@ -4,14 +4,14 @@
  * own colour tokens and container queries, so it looks the same on File Converter's pages and inside a dialog of another
  * app, at any width. convert.css imports this file; mountTool adds it to a page that has not loaded it (--cv-tool tells). */
 .cv-tool {
-  --bg: #0a0a0a; --panel: #161618; --panel-2: #1f1f23; --ink: #f1ede4; --muted: #b3ada3;
-  --line: #3a3a40; --accent: #a2fff6; --accent-ink: #0a0a0a; --danger: #ff8a9b; --focus: #ffffff;
+  --bg: #0a0a0a; --panel: #13161d; --panel-2: #1b1f28; --ink: #ebedf2; --muted: #a4aec2;
+  --line: #323b4b; --accent: #ffeae8; --accent-ink: #0a0a0a; --danger: #ff8a9b; --focus: #ffffff;
   --cv-tool: 1; container: cv-tool / inline-size; color-scheme: dark; color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; overflow-wrap: anywhere;
 }
 @media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) .cv-tool { --bg: #f6f3ec; --panel: #ffffff; --panel-2: #efebe2; --ink: #161616; --muted: #58534b; --line: #c9c3b6; --accent: #005c53; --accent-ink: #ffffff; --danger: #b00020; --focus: #161616; color-scheme: light; }
+  :root:not([data-theme="dark"]) .cv-tool { --bg: #f2f3f6; --panel: #ffffff; --panel-2: #e9ebf0; --ink: #161616; --muted: #48546c; --line: #bcc4d3; --accent: #a60b00; --accent-ink: #ffffff; --danger: #b00020; --focus: #161616; color-scheme: light; }
 }
-:root[data-theme="light"] .cv-tool { --bg: #f6f3ec; --panel: #ffffff; --panel-2: #efebe2; --ink: #161616; --muted: #58534b; --line: #c9c3b6; --accent: #005c53; --accent-ink: #ffffff; --danger: #b00020; --focus: #161616; color-scheme: light; }
+:root[data-theme="light"] .cv-tool { --bg: #f2f3f6; --panel: #ffffff; --panel-2: #e9ebf0; --ink: #161616; --muted: #48546c; --line: #bcc4d3; --accent: #a60b00; --accent-ink: #ffffff; --danger: #b00020; --focus: #161616; color-scheme: light; }
 .cv-tool, .cv-tool * { box-sizing: border-box; }
 .cv-tool [hidden] { display: none !important; }
 .cv-tool a, .cv-tool button { color: inherit; }

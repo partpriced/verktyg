@@ -32,8 +32,8 @@
     g.strokeStyle = '#333'; g.lineWidth = s * 0.012;
     g.beginPath(); g.moveTo(x + w * 0.1, y - h * 0.95); g.quadraticCurveTo(x + w * 0.2, y - h * 1.35, x + w * 0.12, y - h * 1.55); g.stroke();
     const on = 0.55 + 0.45 * Math.sin(t * 6);
-    g.shadowColor = '#a2fff6'; g.shadowBlur = s * 0.12 * on;
-    g.fillStyle = `rgba(162, 255, 246,${0.6 + 0.4 * on})`; g.beginPath(); g.arc(x + w * 0.12, y - h * 1.6, s * 0.035, 0, TAU); g.fill();
+    g.shadowColor = '#ffeae8'; g.shadowBlur = s * 0.12 * on;
+    g.fillStyle = `rgba(255, 234, 232,${0.6 + 0.4 * on})`; g.beginPath(); g.arc(x + w * 0.12, y - h * 1.6, s * 0.035, 0, TAU); g.fill();
     g.restore();
   }
 
@@ -41,7 +41,7 @@
     g.save();
     const p = 0.85 + 0.15 * Math.sin(t * 2.4);
     const gr = g.createRadialGradient(cx, cy, r * 0.25, cx, cy, r * 1.25 * p);
-    gr.addColorStop(0, 'rgba(162, 255, 246,.38)'); gr.addColorStop(0.55, 'rgba(92,200,255,.18)'); gr.addColorStop(1, 'rgba(92,200,255,0)');
+    gr.addColorStop(0, 'rgba(255, 234, 232,.38)'); gr.addColorStop(0.55, 'rgba(92,200,255,.18)'); gr.addColorStop(1, 'rgba(92,200,255,0)');
     g.fillStyle = gr; g.beginPath(); g.arc(cx, cy, r * 1.3, 0, TAU); g.fill();
     g.restore();
   }
@@ -56,7 +56,7 @@
     for (let i = 0; i < n; i++) {
       const a = t * 0.9 + (i / n) * TAU, rr = r * (0.95 + 0.12 * Math.sin(t * 2 + i));
       const tw = 0.5 + 0.5 * Math.sin(t * 4 + i * 1.7);
-      g.globalAlpha = 0.35 + 0.65 * tw; g.fillStyle = i % 2 ? '#ffffff' : '#a2fff6';
+      g.globalAlpha = 0.35 + 0.65 * tw; g.fillStyle = i % 2 ? '#ffffff' : '#ffeae8';
       star4(g, cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * 0.8, r * (0.05 + 0.05 * tw));
     }
     g.restore();

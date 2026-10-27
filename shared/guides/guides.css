@@ -8,8 +8,8 @@
   --g-dim: var(--sui-dim, var(--fg-dim, #a0a0a0));
   --g-faint: var(--sui-faint, var(--fg-faint, #6c6c6c));
   --g-hover: var(--sui-hover, var(--hover, #3a3a3a));
-  --g-accent: var(--sui-accent, var(--accent, #a2fff6));
-  --g-accent-ink: var(--sui-accent-ink, var(--accent-ink, #0a1817));
+  --g-accent: var(--sui-accent, var(--accent, #ffeae8));
+  --g-accent-ink: var(--sui-accent-ink, var(--accent-ink, #24100f));
   --g-radius: var(--sui-radius, var(--radius, 6px));
   --g-shadow: var(--sui-shadow, var(--shadow, 0 18px 50px rgba(0, 0, 0, .55)));
   --g-font: var(--sui-font, var(--ui, "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif));

@@ -81,8 +81,8 @@
       if (!res || !res.body.length) { skipped++; out.push(id); return; }
       var srcSt = ls[ls.length - 1].style;
       var st = SV.mkStyle({
-        fill: { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#dbfffb', a: 1 }, { o: 0.42, c: '#a2fff6', a: 1 }, { o: 1, c: '#00bdaa', a: 1 }] },
-        stroke: srcSt.stroke ? '#002824' : null, sw: srcSt.stroke ? max(1, srcSt.sw) : 1, join: 'round', cap: 'round'
+        fill: { type: 'linear', x1: 0.5, y1: 0, x2: 0.5, y2: 1, stops: [{ o: 0, c: '#fff6f5', a: 1 }, { o: 0.42, c: '#ffeae8', a: 1 }, { o: 1, c: '#ff857c', a: 1 }] },
+        stroke: srcSt.stroke ? '#4b0500' : null, sw: srcSt.stroke ? max(1, srcSt.sw) : 1, join: 'round', cap: 'round'
       });
       var body = SV.mk.path(res.body, st, 'Slime');
       var kids = [body];

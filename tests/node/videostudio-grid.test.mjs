@@ -114,8 +114,8 @@ test('shared graphics: every shape has stroke paths and an SVG string with the c
   }
   assert.equal(ctx.TlbxGraphics.get('burst').paths.length, 8);
   assert.equal(ctx.TlbxGraphics.get('nope'), null);
-  const svg = ctx.TlbxGraphics.svg('check', { color: '#a2fff6', size: 32 });
-  assert.ok(svg.startsWith('<svg') && svg.includes('stroke="#a2fff6"') && svg.includes('viewBox="0 0 100 100"'));
+  const svg = ctx.TlbxGraphics.svg('check', { color: '#ffeae8', size: 32 });
+  assert.ok(svg.startsWith('<svg') && svg.includes('stroke="#ffeae8"') && svg.includes('viewBox="0 0 100 100"'));
   same(ctx.TlbxGraphics.ANIMS.map((a) => a[0]), ['draw', 'pulse', 'bounce', 'pop', 'none']);
 });
 

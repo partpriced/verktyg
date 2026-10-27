@@ -5,7 +5,7 @@
 .lv-sel { max-width: 16em; }
 .lv-btn { font: inherit; padding: 3px 8px; border: 1px solid var(--sui-line, #bbb); border-radius: 4px; background: var(--sui-panel, #fff); color: inherit; cursor: pointer; }
 .lv-btn:disabled { opacity: .5; cursor: default; }
-.lv-track { position: relative; height: 34px; border-radius: 4px; background: var(--sui-track, #ececf1); overflow: hidden; outline-offset: 2px; touch-action: none; user-select: none; }
+.lv-track { position: relative; height: 34px; border-radius: 4px; background: var(--sui-track, #eaedf1); overflow: hidden; outline-offset: 2px; touch-action: none; user-select: none; }
 .lv-track:focus-visible { outline: 2px solid var(--sui-accent, #3b6cf6); }
 .lv-band { position: absolute; top: 0; bottom: 0; border-right: 1px solid rgba(0, 0, 0, .15); background: var(--sui-band, hsl(220 60% 88%)); overflow: hidden; }
 .lv-band:nth-of-type(even) { background: var(--sui-band2, hsl(200 55% 82%)); }

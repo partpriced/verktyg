@@ -11,12 +11,12 @@
   AI.specCard = function (sys, { W = 1200, H = 675 } = {}) {
     const c = document.createElement('canvas'); c.width = W; c.height = H;
     const g = c.getContext('2d');
-    const bg = g.createLinearGradient(0, 0, W, H); bg.addColorStop(0, '#0e0e10'); bg.addColorStop(1, '#1b1f12');
+    const bg = g.createLinearGradient(0, 0, W, H); bg.addColorStop(0, '#0c0e12'); bg.addColorStop(1, '#1b1f12');
     g.fillStyle = bg; g.fillRect(0, 0, W, H);
-    g.fillStyle = 'rgba(162, 255, 246,.07)'; g.beginPath(); g.arc(W - 120, 90, 260, 0, Math.PI * 2); g.fill();
+    g.fillStyle = 'rgba(255, 234, 232,.07)'; g.beginPath(); g.arc(W - 120, 90, 260, 0, Math.PI * 2); g.fill();
     const font = (w, s) => `${w} ${s}px "Inter Tight", system-ui, sans-serif`;
-    g.fillStyle = '#a2fff6'; g.font = font(800, 20); g.fillText('TLBX AI · SPEC CARD', 56, 64);
-    g.fillStyle = '#ececef'; g.font = font(800, 46); g.fillText('Can my PC run local AI?', 56, 118);
+    g.fillStyle = '#ffeae8'; g.font = font(800, 20); g.fillText('TLBX AI · SPEC CARD', 56, 64);
+    g.fillStyle = '#eaecf1'; g.font = font(800, 46); g.fillText('Can my PC run local AI?', 56, 118);
     const gp = sys.gpu || {}, b = sys.browser || {}, be = sys.bench || {};
     const lines = [
       ['GPU', gp.ok ? [gp.vendor, gp.architecture, gp.description].filter(Boolean).join(' · ') || 'WebGPU adapter' : 'No WebGPU'],
@@ -26,29 +26,29 @@
     ];
     let y = 176;
     for (const [k, v] of lines) {
-      g.fillStyle = '#8a8a94'; g.font = font(600, 18); g.fillText(k.toUpperCase(), 56, y);
-      g.fillStyle = '#ececef'; g.font = font(500, 22); g.fillText(fit(g, v, 470), 170, y); y += 40;
+      g.fillStyle = '#7d8ba8'; g.font = font(600, 18); g.fillText(k.toUpperCase(), 56, y);
+      g.fillStyle = '#eaecf1'; g.font = font(500, 22); g.fillText(fit(g, v, 470), 170, y); y += 40;
     }
     // verdicts
     const x0 = 680, rows = K.catalog.list;
-    g.fillStyle = '#8a8a94'; g.font = font(600, 16); g.fillText('MODEL', x0, 170); g.fillText('VERDICT', x0 + 250, 170);
+    g.fillStyle = '#7d8ba8'; g.font = font(600, 16); g.fillText('MODEL', x0, 170); g.fillText('VERDICT', x0 + 250, 170);
     let ry = 204;
-    const col = { good: '#4be3d4', slow: '#ffc23a', no: '#ff5a6e' };
+    const col = { good: '#f5c1bd', slow: '#ffc23a', no: '#ff5a6e' };
     for (const m of rows) {
       const v = K.sysinfo.verdict(sys, m);
-      g.fillStyle = '#ececef'; g.font = font(600, 19); g.fillText(fit(g, m.name, 235), x0, ry);
+      g.fillStyle = '#eaecf1'; g.font = font(600, 19); g.fillText(fit(g, m.name, 235), x0, ry);
       g.fillStyle = col[v.level]; g.font = font(700, 19);
       g.fillText(v.level === 'good' ? `● ~${v.tps} tok/s` : v.level === 'slow' ? `● slow ~${v.tps} tok/s` : '● won’t fit', x0 + 250, ry);
       ry += 36;
     }
     const rec = K.sysinfo.recommend(sys, rows), rm = rec && K.catalog.byId(rec);
     g.fillStyle = 'rgba(255,255,255,.06)'; g.fillRect(56, 360, 560, 140);
-    g.fillStyle = '#8a8a94'; g.font = font(600, 16); g.fillText('BEST PICK FOR THIS DEVICE', 80, 396);
-    g.fillStyle = '#a2fff6'; g.font = font(800, 36); g.fillText(fit(g, rm ? rm.name : 'Get WebGPU first', 510), 80, 444); // i18n-ignore: the card's words stay English
-    g.fillStyle = '#c9c9d1'; g.font = font(500, 18); g.fillText(rm ? fit(g, `${enVerdict(K.sysinfo.verdict(sys, rm))} · ${rm.license.short}`, 510) : 'See verktyg.itpris.se/ai for how', 80, 478);
-    g.fillStyle = '#8a8a94'; g.font = font(500, 18); g.fillText('Runs 100% on your device. Your chats never leave it.', 56, H - 70);
-    g.fillStyle = '#ececef'; g.font = font(800, 22); g.fillText('verktyg.itpris.se/ai', 56, H - 38);
-    g.fillStyle = '#6c6c76'; g.font = font(500, 15); g.fillText(new Date(sys.time || Date.now()).toLocaleDateString(), W - 170, H - 38);
+    g.fillStyle = '#7d8ba8'; g.font = font(600, 16); g.fillText('BEST PICK FOR THIS DEVICE', 80, 396);
+    g.fillStyle = '#ffeae8'; g.font = font(800, 36); g.fillText(fit(g, rm ? rm.name : 'Get WebGPU first', 510), 80, 444); // i18n-ignore: the card's words stay English
+    g.fillStyle = '#c3cad7'; g.font = font(500, 18); g.fillText(rm ? fit(g, `${enVerdict(K.sysinfo.verdict(sys, rm))} · ${rm.license.short}`, 510) : 'See verktyg.itpris.se/ai for how', 80, 478);
+    g.fillStyle = '#7d8ba8'; g.font = font(500, 18); g.fillText('Runs 100% on your device. Your chats never leave it.', 56, H - 70);
+    g.fillStyle = '#eaecf1'; g.font = font(800, 22); g.fillText('verktyg.itpris.se/ai', 56, H - 38);
+    g.fillStyle = '#5e6d8c'; g.font = font(500, 15); g.fillText(new Date(sys.time || Date.now()).toLocaleDateString(), W - 170, H - 38);
     return c;
   };
   AI.specCardBlob = (sys) => new Promise((r) => AI.specCard(sys).toBlob(r, 'image/png'));

@@ -13,12 +13,12 @@
   /** A comment's icon: a sticky note with a folded corner and three lines (a check mark when resolved). */
   V.noteNode = function (a) {
     var g = U.s('g', { 'data-aid': a.id, class: 'an an-note' + (a.resolved ? ' is-resolved' : ''), transform: V.boxTransform(a) }), w = a.w, hh = a.h;
-    var fill = a.resolved ? '#cfcab8' : '#ffd23f';
+    var fill = a.resolved ? '#c4cad7' : '#ffd23f';
     g.appendChild(U.s('rect', { x: 0, y: 0, width: fmt(w), height: fmt(hh), fill: 'transparent', class: 'an-hit' }));
-    g.appendChild(U.s('path', { d: 'M0 0H' + fmt(w) + 'V' + fmt(hh * 0.68) + 'L' + fmt(w * 0.68) + ' ' + fmt(hh) + 'H0Z', fill: fill, stroke: '#3a3320', 'stroke-width': 0.8, 'stroke-linejoin': 'round' }));
-    g.appendChild(U.s('path', { d: 'M' + fmt(w * 0.68) + ' ' + fmt(hh) + 'V' + fmt(hh * 0.68) + 'H' + fmt(w), fill: 'none', stroke: '#3a3320', 'stroke-width': 0.6 }));
+    g.appendChild(U.s('path', { d: 'M0 0H' + fmt(w) + 'V' + fmt(hh * 0.68) + 'L' + fmt(w * 0.68) + ' ' + fmt(hh) + 'H0Z', fill: fill, stroke: '#2c3442', 'stroke-width': 0.8, 'stroke-linejoin': 'round' }));
+    g.appendChild(U.s('path', { d: 'M' + fmt(w * 0.68) + ' ' + fmt(hh) + 'V' + fmt(hh * 0.68) + 'H' + fmt(w), fill: 'none', stroke: '#2c3442', 'stroke-width': 0.6 }));
     if (a.resolved) g.appendChild(U.s('path', { d: 'M' + fmt(w * 0.22) + ' ' + fmt(hh * 0.5) + 'l' + fmt(w * 0.18) + ' ' + fmt(hh * 0.2) + 'l' + fmt(w * 0.4) + ' -' + fmt(hh * 0.4), fill: 'none', stroke: '#2c6e3f', 'stroke-width': 1.6, 'stroke-linecap': 'round' }));
-    else [0.36, 0.52, 0.68].forEach(function (f) { g.appendChild(U.s('path', { d: 'M' + fmt(w * 0.2) + ' ' + fmt(hh * f) + 'H' + fmt(w * 0.8), stroke: '#3a3320', 'stroke-width': 0.8, 'stroke-linecap': 'round' })); });
+    else [0.36, 0.52, 0.68].forEach(function (f) { g.appendChild(U.s('path', { d: 'M' + fmt(w * 0.2) + ' ' + fmt(hh * f) + 'H' + fmt(w * 0.8), stroke: '#2c3442', 'stroke-width': 0.8, 'stroke-linecap': 'round' })); });
     return g;
   };
 

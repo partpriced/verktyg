@@ -41,7 +41,7 @@
     activeLayer: null,
     view: { zoom: 1, x: 0, y: 0 },
     tool: 'select', spaceHand: false,
-    style: { fill: '#a2fff6', stroke: '#0a0a0a', sw: 2, cap: 'butt', join: 'miter', miter: 10, dash: null, opacity: 1, blend: 'normal', rule: 'nonzero' },
+    style: { fill: '#ffeae8', stroke: '#0a0a0a', sw: 2, cap: 'butt', join: 'miter', miter: 10, dash: null, opacity: 1, blend: 'normal', rule: 'nonzero' },
     focus: 'fill',
     font: { family: 'Inter Tight', size: 48, weight: 700, style: 'normal', align: 'left', lh: 1.2, tracking: 0 },
     shape: { radius: 16, sides: 6, points: 5, inner: 0.45 },

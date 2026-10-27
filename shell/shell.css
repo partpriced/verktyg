@@ -3,12 +3,12 @@
 .sh-back, .sh-dr, .sh-dr-folder, .sh-hdr, .sh-ghost, .sn-stack, .sn-panel {
   --sh-bg: var(--sl-surface, var(--sui-bg, var(--panel, #1c1c1c)));
   --sh-page: var(--sui-page, #0d0d0d);
-  --sh-fg: var(--sl-text, var(--sui-fg, var(--brand-paper, #f1ede4)));
-  --sh-dim: var(--sui-dim, rgba(241, 237, 228, .62));
-  --sh-faint: rgba(241, 237, 228, .42);
-  --sh-line: var(--sui-line, rgba(241, 237, 228, .14));
-  --sh-sel: rgba(241, 237, 228, .1);
-  --sh-accent: var(--sui-accent, var(--brand-accent, #a2fff6));
+  --sh-fg: var(--sl-text, var(--sui-fg, var(--brand-paper, #ebedf2)));
+  --sh-dim: var(--sui-dim, rgba(235, 237, 242, .62));
+  --sh-faint: rgba(235, 237, 242, .42);
+  --sh-line: var(--sui-line, rgba(235, 237, 242, .14));
+  --sh-sel: rgba(235, 237, 242, .1);
+  --sh-accent: var(--sui-accent, var(--brand-accent, #ffeae8));
   --sh-ink: var(--sui-accent-ink, var(--brand-ink, #0a0a0a));
   --sh-radius: 10px;
   --sh-shadow: 0 18px 50px rgba(0, 0, 0, .55);
@@ -62,7 +62,7 @@ button { font: inherit; }
 .sh-tile:hover { background: var(--sh-sel); }
 .sh-tile .sh-badge { width: 56px; height: 56px; border-radius: 14px; font-size: 24px; }
 .sh-name { max-width: 100%; font-size: 12px; text-align: center; }
-.sh-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 56px; height: 56px; padding: 6px; border-radius: 14px; background: rgba(241, 237, 228, .08); }
+.sh-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; width: 56px; height: 56px; padding: 6px; border-radius: 14px; background: rgba(235, 237, 242, .08); }
 .sh-mini .sh-mini-b { width: auto; height: auto; min-height: 0; font-size: 10px; border-radius: 5px; aspect-ratio: 1; }
 .sh-src { opacity: .35; }
 .sh-drop-combine { background: var(--sh-sel); box-shadow: inset 0 0 0 2px var(--sh-accent); }

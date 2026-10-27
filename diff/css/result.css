@@ -51,7 +51,7 @@
 .df-handle { position: absolute; top: 0; bottom: 0; width: 44px; margin-left: -22px; cursor: ew-resize; }
 .df-handle::before { content: ''; position: absolute; left: 21px; top: 0; bottom: 0; width: 2px; background: var(--df-accent); box-shadow: 0 0 0 1px #0006; }
 .df-handle::after { content: '⇆'; position: absolute; left: 6px; top: 50%; width: 32px; height: 32px; margin-top: -16px; border-radius: 50%; display: grid; place-items: center;
-  line-height: 1; font-size: 16px; background: var(--df-accent); color: var(--sl-on-accent, #0a1817); box-shadow: 0 1px 4px #0006; }
+  line-height: 1; font-size: 16px; background: var(--df-accent); color: var(--sl-on-accent, #24100f); box-shadow: 0 1px 4px #0006; }
 .df-handle:focus-visible::after { outline: 3px solid var(--df-fg); outline-offset: 2px; }
 @media (max-width: 860px) {
   .df-pics-side { grid-template-columns: minmax(0, 1fr); }

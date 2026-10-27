@@ -28,11 +28,11 @@
     sunset(x, w, h, r) { sky(x, w, h, ['#2b1b5a', '#c2457a', '#ff9b54', '#ffd27a']); disc(x, w * 0.5, h * 0.62, h * 0.14, '#fff1b8');
       x.fillStyle = '#1d3557'; x.fillRect(0, h * 0.66, w, h); for (let i = 0; i < 14; i++) { x.fillStyle = 'rgba(255,220,150,.5)'; x.fillRect(w * 0.5 - w * 0.12 * r(), h * (0.68 + i * 0.022), w * 0.24 * r(), 2); } },
     mountains(x, w, h, r) { sky(x, w, h, ['#6fa8dc', '#cfe2f3']); ridge(x, w, h, h * 0.45, h * 0.18, '#7d8fa6', r); ridge(x, w, h, h * 0.6, h * 0.12, '#4a5d73', r); ridge(x, w, h, h * 0.78, h * 0.06, '#2f4f3a', r); },
-    forest(x, w, h, r) { sky(x, w, h, ['#a8d5ba', '#e1f3f1']);
+    forest(x, w, h, r) { sky(x, w, h, ['#a8d5ba', '#f8edec']);
       for (let i = 0; i < 40; i++) { const tx = r() * w, th = h * (0.3 + r() * 0.4), ty = h * 0.95 - th; x.fillStyle = ['#1e5631', '#2d6a4f', '#40916c'][i % 3];
         x.beginPath(); x.moveTo(tx, ty); x.lineTo(tx - th * 0.22, h * 0.95); x.lineTo(tx + th * 0.22, h * 0.95); x.closePath(); x.fill(); }
-      x.fillStyle = '#3b2f1e'; x.fillRect(0, h * 0.94, w, h); },
-    city(x, w, h, r) { sky(x, w, h, ['#0b132b', '#1c2541', '#3a506b']); disc(x, w * 0.82, h * 0.18, h * 0.06, '#f1f1d0');
+      x.fillStyle = '#2a313f'; x.fillRect(0, h * 0.94, w, h); },
+    city(x, w, h, r) { sky(x, w, h, ['#0b132b', '#212631', '#3a506b']); disc(x, w * 0.82, h * 0.18, h * 0.06, '#f1f1d0');
       for (let bx = 0; bx < w;) { const bw = w * (0.05 + r() * 0.07), bh = h * (0.25 + r() * 0.5); x.fillStyle = '#111827'; x.fillRect(bx, h - bh, bw, bh);
         for (let wy = h - bh + 8; wy < h - 8; wy += 12) for (let wx = bx + 5; wx < bx + bw - 6; wx += 10) if (r() < 0.45) { x.fillStyle = '#ffd166'; x.fillRect(wx, wy, 4, 6); }
         bx += bw + 2; } },
@@ -42,7 +42,7 @@
       for (let i = 0; i < 18; i++) { x.fillStyle = 'rgba(255,255,255,.35)'; x.fillRect(r() * w, h * (0.62 + r() * 0.35), w * 0.08, 2); } },
     snow(x, w, h, r) { sky(x, w, h, ['#9db4c0', '#e0e7ec']); ridge(x, w, h, h * 0.5, h * 0.14, '#f8f9fa', r); ridge(x, w, h, h * 0.7, h * 0.08, '#dee2e6', r);
       for (let i = 0; i < 120; i++) disc(x, r() * w, r() * h, 1 + r() * 2, 'rgba(255,255,255,.85)'); },
-    meadow(x, w, h, r) { sky(x, w, h, ['#4cc9f0', '#bde0fe']); disc(x, w * 0.8, h * 0.2, h * 0.08, '#fff3b0'); ridge(x, w, h, h * 0.6, h * 0.06, '#18bcac', r);
+    meadow(x, w, h, r) { sky(x, w, h, ['#4cc9f0', '#bde0fe']); disc(x, w * 0.8, h * 0.2, h * 0.08, '#fff3b0'); ridge(x, w, h, h * 0.6, h * 0.06, '#ef8e87', r);
       for (let i = 0; i < 160; i++) disc(x, r() * w, h * (0.68 + r() * 0.32), 2 + r() * 3, ['#ff006e', '#ffbe0b', '#fb5607', '#ffffff'][i % 4]); },
   };
   const NAMES = Object.keys(SCENES);

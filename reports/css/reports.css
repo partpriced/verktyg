@@ -2,8 +2,8 @@
 [hidden] { display: none !important; }
 body {
   margin: 0;
-  background: var(--sl-background, #f6f4ee);
-  color: var(--sl-text, #1d1d1b);
+  background: var(--sl-background, #f3f4f7);
+  color: var(--sl-text, #191d25);
   font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 /* The page keeps one width whatever the report: the body is a flex column (the shared bar), where an auto-margin item
@@ -21,32 +21,32 @@ html:has(.rp-main.sf-root) { scrollbar-gutter: auto; }   /* the window does not 
 .rp-panel .rp-pick button { flex: 1 1 auto; }
 .rp-panel .sf-sec.rp-def:has(#editor[hidden]) { display: none; }
 .rp-panel #json { min-height: 240px; }
-.rp-home { color: var(--sl-text-muted, #5c584e); text-decoration: none; font-size: 13px; }
-.rp-lead, .rp-sub { color: var(--sl-text-muted, #5c584e); margin: 4px 0 12px; }
+.rp-home { color: var(--sl-text-muted, #4c5972); text-decoration: none; font-size: 13px; }
+.rp-lead, .rp-sub { color: var(--sl-text-muted, #4c5972); margin: 4px 0 12px; }
 .rp-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
 .rp-bar label { font-weight: 600; }
 select, textarea, button { font: inherit; }
 select, textarea {
   background: var(--sl-surface, #fff);
-  color: var(--sl-text, #1d1d1b);
-  border: 1px solid var(--sl-border, #cfcac0);
+  color: var(--sl-text, #191d25);
+  border: 1px solid var(--sl-border, #c4cbd8);
   border-radius: 6px;
   padding: 6px 8px;
   max-width: 100%;
 }
 button {
   background: var(--sl-surface, #fff);
-  color: var(--sl-text, #1d1d1b);
-  border: 1px solid var(--sl-border, #cfcac0);
+  color: var(--sl-text, #191d25);
+  border: 1px solid var(--sl-border, #c4cbd8);
   border-radius: 6px;
   padding: 6px 12px;
   cursor: pointer;
 }
-button:hover { border-color: var(--sl-accent, #009485); }
-button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--sl-accent, #009485); outline-offset: 2px; }
+button:hover { border-color: var(--sl-accent, #ff2718); }
+button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--sl-accent, #ff2718); outline-offset: 2px; }
 .rp-note {
-  background: var(--sl-surface-2, color-mix(in srgb, var(--sl-text, #0a0a0a) 6%, var(--sl-surface, #f6f3ec)));
-  border-left: 4px solid var(--sl-accent, #009485);
+  background: var(--sl-surface-2, color-mix(in srgb, var(--sl-text, #0a0a0a) 6%, var(--sl-surface, #f2f3f6)));
+  border-left: 4px solid var(--sl-accent, #ff2718);
   padding: 10px 12px;
   border-radius: 6px;
   margin: 8px 0;
@@ -54,11 +54,11 @@ button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2p
 .rp-editor { margin: 8px 0 12px; display: grid; gap: 6px; }
 #json { width: 100%; box-sizing: border-box; font: 13px/1.4 ui-monospace, Menlo, Consolas, monospace; }
 .rp-err { color: var(--sl-danger, #b3261e); margin: 0; min-height: 1em; }
-.rp-empty { color: var(--sl-text-muted, #5c584e); }
+.rp-empty { color: var(--sl-text-muted, #4c5972); }
 .rp-tablewrap { overflow-x: auto; }
 .rp-table { border-collapse: collapse; width: 100%; background: var(--sl-surface, #fff); }
-.rp-table th, .rp-table td { padding: 6px 10px; border-bottom: 1px solid var(--sl-border, #cfcac0); text-align: left; vertical-align: top; }
-.rp-table th { font-weight: 600; background: var(--sl-surface-2, color-mix(in srgb, var(--sl-text, #0a0a0a) 6%, var(--sl-surface, #f6f3ec))); }
+.rp-table th, .rp-table td { padding: 6px 10px; border-bottom: 1px solid var(--sl-border, #c4cbd8); text-align: left; vertical-align: top; }
+.rp-table th { font-weight: 600; background: var(--sl-surface-2, color-mix(in srgb, var(--sl-text, #0a0a0a) 6%, var(--sl-surface, #f2f3f6))); }
 .rp-num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .rp-line { padding: 4px 0; }
 .rp-card { display: grid; gap: 2px; min-width: 0; }

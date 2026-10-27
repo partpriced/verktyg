@@ -16,11 +16,11 @@
   const clone = (v) => JSON.parse(JSON.stringify(v));
 
   const transform = (p = [0, 0, 0], r = [0, 0, 0], s = [1, 1, 1]) => ({ p: p.slice(), r: r.slice(), s: s.slice() });
-  const material = (o = {}) => Object.assign({ color: o.color || '#c9c3b6', roughness: o.roughness ?? 0.55, metallic: o.metallic ?? 0, opacity: o.opacity ?? 1 }, o.map ? { map: String(o.map) } : {});
+  const material = (o = {}) => Object.assign({ color: o.color || '#bcc4d3', roughness: o.roughness ?? 0.55, metallic: o.metallic ?? 0, opacity: o.opacity ?? 1 }, o.map ? { map: String(o.map) } : {});
   const local = (n) => X.fromTRS(n.transform.p, n.transform.r, n.transform.s);
 
   function emptyScene(name = 'Untitled') {
-    return { format: FORMAT, version: VERSION, name, seq: 0, background: '#1d1e22', roots: [], nodes: {} };
+    return { format: FORMAT, version: VERSION, name, seq: 0, background: '#1a1e27', roots: [], nodes: {} };
   }
   /** A new scene starts with a sun and an ambient light, so a first object is lit. */
   function defaultScene(name) {

@@ -1,6 +1,6 @@
 /* Page Layout — theme tokens: Pro (dark), Light, Classic 98 (shared look with Vector Editor) */
 :root {
-  --ink: #0a0a0a; --bone: #f1ede4; --tlbx: #a2fff6;
+  --ink: #0a0a0a; --bone: #ebedf2; --tlbx: #ffeae8;
   --font-ui: 'Inter Tight', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Archivo', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -13,13 +13,13 @@
   --bg-app: #1e1e1e; --bg-panel: #2b2b2b; --bg-panel-2: #323232; --bg-input: #1c1c1c; --bg-hover: #3a3a3a; --bg-active: #4a4a4a;
   --border: #3c3c3c; --border-dark: #151515; --sep: #3a3a3a;
   --text: #dcdcdc; --text-dim: #a3a3a3; --text-faint: #9c9c9c;
-  --accent: #a2fff6; --accent-ink: #0a0a0a; --accent-line: #a2fff6; --accent-soft: rgba(162, 255, 246, .14);
+  --accent: #ffeae8; --accent-ink: #0a0a0a; --accent-line: #ffeae8; --accent-soft: rgba(255, 234, 232, .14);
   --pasteboard: #383838; --ruler-bg: #262626; --ruler-fg: #8d8d8d; --ruler-tick: #555;
-  --menu-bg: #2f2f2f; --menu-hover-bg: #a2fff6; --menu-hover-fg: #0a0a0a;
+  --menu-bg: #2f2f2f; --menu-hover-bg: #ffeae8; --menu-hover-fg: #0a0a0a;
   --shadow: 0 10px 34px rgba(0, 0, 0, .5), 0 2px 6px rgba(0, 0, 0, .35);
   --btn-bg: #3a3a3a; --btn-hover: #444; --btn-border: #4a4a4a;
   --title-bg: #2b2b2b; --title-fg: #e6e6e6;
-  --sel-row: rgba(162, 255, 246, .12); --sel-row-strong: rgba(162, 255, 246, .2);
+  --sel-row: rgba(255, 234, 232, .12); --sel-row-strong: rgba(255, 234, 232, .2);
   --artboard-shadow: rgba(0, 0, 0, .42);
   --doctab-bg: #2b2b2b; --doctab-fg: #e2e2e2;
   color-scheme: dark;
@@ -28,13 +28,13 @@
   --bg-app: #e6e6e6; --bg-panel: #f2f2f2; --bg-panel-2: #e5e5e5; --bg-input: #ffffff; --bg-hover: #e1e1e1; --bg-active: #d0d0d0;
   --border: #cdcdcd; --border-dark: #bdbdbd; --sep: #d4d4d4;
   --text: #1c1c1c; --text-dim: #555; --text-faint: #636363;
-  --accent: #a2fff6; --accent-ink: #0a0a0a; --accent-line: #007e72; --accent-soft: rgba(0, 197, 178, .16);
+  --accent: #ffeae8; --accent-ink: #0a0a0a; --accent-line: #e00f00; --accent-soft: rgba(255, 145, 137, .16);
   --pasteboard: #cacaca; --ruler-bg: #ececec; --ruler-fg: #666; --ruler-tick: #a8a8a8;
-  --menu-bg: #fafafa; --menu-hover-bg: #a2fff6; --menu-hover-fg: #0a0a0a;
+  --menu-bg: #fafafa; --menu-hover-bg: #ffeae8; --menu-hover-fg: #0a0a0a;
   --shadow: 0 10px 30px rgba(0, 0, 0, .18), 0 2px 6px rgba(0, 0, 0, .12);
   --btn-bg: #fff; --btn-hover: #f4f4f4; --btn-border: #c4c4c4;
   --title-bg: #f2f2f2; --title-fg: #1c1c1c;
-  --sel-row: rgba(0, 213, 191, .18); --sel-row-strong: rgba(0, 213, 191, .3);
+  --sel-row: rgba(255, 166, 160, .18); --sel-row-strong: rgba(255, 166, 160, .3);
   --artboard-shadow: rgba(0, 0, 0, .18);
   --doctab-bg: #f2f2f2; --doctab-fg: #222;
   color-scheme: light;

@@ -85,7 +85,7 @@
     if (kc === 'shift+x') { SV.swapFillStroke(); return; }
     if (kc === 'd') { SV.defaultFillStroke(); return; }
     if (kc === '/') { e.preventDefault(); SV.applyStyle(S.focus, null); return; }
-    if (kc === ',') { var cp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, typeof cp === 'string' ? cp : (cp && cp.stops ? cp.stops[0].c : '#a2fff6')); return; }
+    if (kc === ',') { var cp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, typeof cp === 'string' ? cp : (cp && cp.stops ? cp.stops[0].c : '#ffeae8')); return; }
     if (kc === '.') { var gp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, gp && typeof gp === 'object' ? gp : SV.defaultGradient(gp)); return; }
   }
   function onKeyUp(e) {

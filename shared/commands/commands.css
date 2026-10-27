@@ -12,9 +12,9 @@
   --c-faint: var(--s-faint, color-mix(in srgb, var(--sl-text, #e6e6e6) 62%, transparent));
   --c-hover: var(--s-hover, color-mix(in srgb, var(--sl-text, #e6e6e6) 12%, var(--sl-surface, #2c2c2c)));
   --c-sel: var(--s-sel, color-mix(in srgb, var(--sl-accent, #1f4a7a) 28%, var(--sl-surface, #1c1c1c)));
-  --c-accent: var(--s-accent, var(--sl-accent, #a2fff6));
-  --c-ring: var(--s-ring, var(--sl-accent, #a2fff6));
-  --c-accent-ink: var(--s-accent-ink, var(--sl-on-accent, #0a1817));
+  --c-accent: var(--s-accent, var(--sl-accent, #ffeae8));
+  --c-ring: var(--s-ring, var(--sl-accent, #ffeae8));
+  --c-accent-ink: var(--s-accent-ink, var(--sl-on-accent, #24100f));
   --c-radius: var(--s-radius, 6px);
   --c-shadow: var(--s-shadow, 0 18px 50px rgba(0, 0, 0, .55));
   --c-font: var(--s-font, "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif);

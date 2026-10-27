@@ -40,7 +40,7 @@ function app() {
     const it = {
       id, status: 'done', model: null, hist: { undo: [], redo: [] },
       s: { threshold: 0.5, softness: 1, feather: 0, decontaminate: true, refine: true },
-      bg: { mode: 'transparent', color: '#ffffff', blur: 24, image: null, gradA: '#a2fff6', gradB: '#2b6cff', angle: 135 },
+      bg: { mode: 'transparent', color: '#ffffff', blur: 24, image: null, gradA: '#ffeae8', gradB: '#2b6cff', angle: 135 },
       shadow: { on: false, opacity: 0.45, blur: 3, x: 0, y: 2, color: '#000000' },
       crop: { mode: 'original', pad: 8 },
     };

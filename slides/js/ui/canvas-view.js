@@ -5,7 +5,7 @@
   'use strict';
   var SS = window.SS, A = SS.app, S = SS.scene, R = SS.canvasRender;
   var St = SS.stage = { k: 1, ox: 0, oy: 0, dpr: 1, cv: null, wrap: null };
-  var queued = false, BG = '#16161a';
+  var queued = false, BG = '#13161d';
 
   St.mount = function (wrap, cv) {
     St.wrap = wrap; St.cv = cv;
@@ -57,7 +57,7 @@
     R.draw(ctx, scene, { deck: d, onImage: St.redraw });
     ctx.restore();
     ctx.lineWidth = 1 / St.k;
-    ctx.strokeStyle = 'rgba(160,160,170,.45)';
+    ctx.strokeStyle = 'rgba(150, 161, 185,.45)';
     ctx.strokeRect(0, 0, d.size.w, d.size.h);
     if (A.mode === 'edit' && SS.overlay) SS.overlay.draw(ctx);
   };

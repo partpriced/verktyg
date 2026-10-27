@@ -8,23 +8,23 @@ export function helpbot(cls = '') {
   const el = h('div', 'helpbot ' + cls);
   el.innerHTML = `<svg viewBox="-60 -60 120 120" aria-hidden="true">
     <defs>
-      <radialGradient id="${id}g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#e7fffd"/><stop offset=".35" stop-color="#a2fff6"/><stop offset="1" stop-color="#009183"/></radialGradient>
+      <radialGradient id="${id}g" cx="38%" cy="30%" r="75%"><stop offset="0" stop-color="#fff9f8"/><stop offset=".35" stop-color="#ffeae8"/><stop offset="1" stop-color="#ff1909"/></radialGradient>
       <filter id="${id}f" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" result="b"/><feColorMatrix in="b" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -9"/></filter>
     </defs>
     <g class="sp-all">
       <g filter="url(#${id}f)">
         <circle class="c0" cx="0" cy="4" r="25" fill="url(#${id}g)"/>
-        <circle class="c1" cx="-15" cy="18" r="10" fill="#53edde"/>
-        <circle class="c2" cx="16" cy="19" r="9" fill="#11e2cd"/>
-        <circle class="c3" cx="0" cy="-18" r="9" fill="#c0fff9"/>
-        <circle class="d1" cx="-30" cy="30" r="0" fill="#53edde"/>
-        <circle class="d2" cx="30" cy="30" r="0" fill="#11e2cd"/>
+        <circle class="c1" cx="-15" cy="18" r="10" fill="#faccc9"/>
+        <circle class="c2" cx="16" cy="19" r="9" fill="#fabbb6"/>
+        <circle class="c3" cx="0" cy="-18" r="9" fill="#fff0ef"/>
+        <circle class="d1" cx="-30" cy="30" r="0" fill="#faccc9"/>
+        <circle class="d2" cx="30" cy="30" r="0" fill="#fabbb6"/>
       </g>
       <g class="face">
-        <ellipse class="eye l" cx="-8" cy="0" rx="3.6" ry="5" fill="#050e0d"/>
-        <ellipse class="eye r" cx="8" cy="0" rx="3.6" ry="5" fill="#050e0d"/>
+        <ellipse class="eye l" cx="-8" cy="0" rx="3.6" ry="5" fill="#150908"/>
+        <ellipse class="eye r" cx="8" cy="0" rx="3.6" ry="5" fill="#150908"/>
         <circle cx="-6.8" cy="-1.8" r="1.2" fill="#fff"/><circle cx="9.2" cy="-1.8" r="1.2" fill="#fff"/>
-        <path class="mouth" d="M-5 10 Q0 14 5 10" fill="none" stroke="#050e0d" stroke-width="2.2" stroke-linecap="round"/>
+        <path class="mouth" d="M-5 10 Q0 14 5 10" fill="none" stroke="#150908" stroke-width="2.2" stroke-linecap="round"/>
       </g>
       <ellipse cx="-10" cy="-10" rx="6" ry="3.5" transform="rotate(-30 -10 -10)" fill="#fff" opacity=".55"/>
     </g>
@@ -46,7 +46,7 @@ export function helpbot(cls = '') {
     face.setAttribute('transform', `translate(${look * 4} 0)`);
     const m = 10 + open * 7;
     mouth.setAttribute('d', open > 0.05 ? `M-5 10 Q0 ${m} 5 10 Q0 ${10 + open * 2} -5 10` : 'M-5 10 Q0 14 5 10');
-    mouth.setAttribute('fill', open > 0.05 ? '#050e0d' : 'none');
+    mouth.setAttribute('fill', open > 0.05 ? '#150908' : 'none');
   }
   pose(0);
   return { el, pose };

@@ -9,9 +9,9 @@ import { MAX_SERIES } from './chart-data.js';
 import { t } from '../i18n.js';
 
 export const LIGHT = { palette: ['#2a78d6', '#eb6834', '#1baf7a', '#eda100', '#e87ba4', '#008300', '#6250d6', '#e34948'],
-  text: '#0b0b0b', muted: '#52514e', grid: '#e4e2dc', base: '#9a978e', surface: '#fcfcfb' };
+  text: '#0b0b0b', muted: '#465169', grid: '#dfe2e9', base: '#8b98b1', surface: '#fcfcfd' };
 export const DARK = { palette: ['#3987e5', '#d95926', '#199e70', '#c98500', '#d55181', '#008300', '#9085e9', '#e66767'],
-  text: '#f0efec', muted: '#c3c2b7', grid: '#34332f', base: '#6f6d66', surface: '#1a1a19' };
+  text: '#edeff3', muted: '#bac2d1', grid: '#2c3342', base: '#5e6d8d', surface: '#1a1a19' };
 
 export const esc = (s) => String(s).replace(/[&<>"]/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
 const W = (s, size) => String(s).length * size * 0.58; // text width estimate (no DOM to measure with)

@@ -51,7 +51,7 @@
     K('paint.swap', t('vector.cmd.paint_swap'), ['X', 'Shift+X'], function () { SV.swapFillStroke(); });
     K('paint.default', t('vector.cmd.paint_default'), ['D'], function () { SV.defaultFillStroke(); });
     K('paint.none', t('vector.cmd.paint_none'), ['/'], function () { SV.applyStyle(S.focus, null); });
-    K('paint.color', t('vector.cmd.paint_color'), [','], function () { var cp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, typeof cp === 'string' ? cp : (cp && cp.stops ? cp.stops[0].c : '#a2fff6')); });
+    K('paint.color', t('vector.cmd.paint_color'), [','], function () { var cp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, typeof cp === 'string' ? cp : (cp && cp.stops ? cp.stops[0].c : '#ffeae8')); });
     K('paint.gradient', t('vector.cmd.paint_gradient'), ['.'], function () { var gp = SV.currentPaint(S.focus); SV.applyStyle(S.focus, gp && typeof gp === 'object' ? gp : SV.defaultGradient(gp)); });
     var noShapeOp = function () { return !(S.op && S.op.kind === 'shape'); };
     [['left', -1, 0, t('vector.cmd.nudge_left')], ['right', 1, 0, t('vector.cmd.nudge_right')], ['up', 0, -1, t('vector.cmd.nudge_up')], ['down', 0, 1, t('vector.cmd.nudge_down')]].forEach(function (d) {

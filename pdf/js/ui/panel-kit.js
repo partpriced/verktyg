@@ -49,7 +49,7 @@
     r.addEventListener('input', function () { var v = parseFloat(r.value); out.textContent = fmt ? fmt(v) : String(v); onChange(v); });
     return h('div', { class: 'sl-wrap' }, r, out);
   }
-  var SWATCHES = ['#111111', '#ffffff', '#e0245e', '#ff9f1c', '#ffe14d', '#78f8eb', '#2ee6a8', '#1d4ed8', '#7c3aed'];
+  var SWATCHES = ['#111111', '#ffffff', '#e0245e', '#ff9f1c', '#ffe14d', '#fddcd9', '#2ee6a8', '#1d4ed8', '#7c3aed'];
   function colorPicker(value, onChange, allowNone) {
     var wrap = h('div', { class: 'swatches' });
     var inp = h('input', { type: 'color', class: 'sw-input', value: value && value !== 'none' ? value : '#000000', 'aria-label': t('pdf.app.colour_custom') });

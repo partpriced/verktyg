@@ -49,7 +49,7 @@
 <html><head><meta charset="utf-8"><title>Calculator</title>
 <style>body{margin:0;display:grid;place-items:center;min-height:100vh;background:#111;color:#eee;font:20px system-ui}
 .c{display:grid;grid-template-columns:repeat(4,64px);gap:8px}#d{grid-column:span 4;background:#222;padding:12px;text-align:right;min-height:28px;border-radius:8px}
-button{height:56px;border:0;border-radius:10px;background:#2a2a30;color:#eee;font:inherit}button.o{background:#a2fff6;color:#111}</style></head>
+button{height:56px;border:0;border-radius:10px;background:#252b37;color:#eee;font:inherit}button.o{background:#ffeae8;color:#111}</style></head>
 <body><div class="c"><div id="d">0</div></div>
 <script>
 const d = document.getElementById('d'), c = document.querySelector('.c'); let s = '';

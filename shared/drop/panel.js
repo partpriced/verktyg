@@ -46,7 +46,7 @@
     '.sd-compact .sd-list,.sd-compact .sd-status{flex-basis:100%}',
     '.sd-hint{position:fixed;z-index:9000;pointer-events:none;box-sizing:border-box;border:2px dashed var(--sd-accent);border-radius:8px;background:color-mix(in srgb,var(--sd-accent) 8%,transparent);display:flex;align-items:center;justify-content:center;padding:6px}',
     '.sd-hint b{background:var(--sd-accent);color:var(--sd-on-accent);font:600 13px/1.3 system-ui,sans-serif;padding:6px 10px;border-radius:6px;max-width:90%;text-align:center}',
-    '.sd-toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9001;max-width:min(560px,calc(100vw - 32px));background:var(--sui-text,var(--sl-text,#1b1b22));color:var(--sui-panel,var(--sl-background,#fff));font:13px/1.4 system-ui,sans-serif;padding:9px 14px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer}',
+    '.sd-toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9001;max-width:min(560px,calc(100vw - 32px));background:var(--sui-text,var(--sl-text,#181c24));color:var(--sui-panel,var(--sl-background,#fff));font:13px/1.4 system-ui,sans-serif;padding:9px 14px;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.25);cursor:pointer}',
     '@media (max-width:900px){.sd-toast{bottom:calc(20px + var(--tlbx-foot-h,0px))}}',   // above a phone sheet's footer (shared/frame/panel.js)
     '.sd-toast.warn{border-left:4px solid #e0a040}',
     // The preview: what the app makes (a picture) and how (three steps), above the prompt, so an empty page explains itself.

@@ -9,7 +9,7 @@
   const tr = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
   SP.tr = tr;
   const CSS = [
-    '.spv{--spv-fg:var(--sui-fg,var(--fg,#f1ede4));--spv-line:var(--sui-line,var(--line-2,#3d3d3d));',
+    '.spv{--spv-fg:var(--sui-fg,var(--fg,#ebedf2));--spv-line:var(--sui-line,var(--line-2,#3d3d3d));',
     'display:flex;flex-direction:column;position:relative;box-sizing:border-box;width:100%;height:100%;min-width:0;min-height:0;',
     'color:var(--spv-fg);font:13px/1.3 system-ui,sans-serif;outline:none}',
     '.spv *{box-sizing:border-box}',

@@ -3,11 +3,11 @@
  * the page background, the tabs, the buttons (primary and small), the empty-state panel and the inputs. Each app keeps its
  * own layout. Values match invoices/css/invoices.css. */
 :root {
-  --s365-bg: var(--sl-background, #0e0e10); --s365-panel: var(--sl-surface, #17171b);
+  --s365-bg: var(--sl-background, #0c0e12); --s365-panel: var(--sl-surface, #14171e);
   --s365-input: color-mix(in srgb, var(--s365-bg) 55%, var(--s365-panel));
-  --s365-ink: var(--sl-text, #f1ede4); --s365-mute: color-mix(in srgb, var(--s365-ink) 68%, transparent);
-  --s365-line: var(--sl-border, #2b2b33); --s365-line-strong: color-mix(in srgb, var(--s365-ink) 30%, var(--s365-line));
-  --s365-accent: var(--sl-accent, #a2fff6); --s365-accent-ink: var(--sl-on-accent, #0e0e10);
+  --s365-ink: var(--sl-text, #ebedf2); --s365-mute: color-mix(in srgb, var(--s365-ink) 68%, transparent);
+  --s365-line: var(--sl-border, #262c38); --s365-line-strong: color-mix(in srgb, var(--s365-ink) 30%, var(--s365-line));
+  --s365-accent: var(--sl-accent, #ffeae8); --s365-accent-ink: var(--sl-on-accent, #0c0e12);
   --s365-accent-soft: color-mix(in srgb, var(--s365-accent) 18%, transparent);
   --s365-hover: color-mix(in srgb, var(--s365-ink) 7%, var(--s365-panel));
   --s365-danger: #ff4f6e;

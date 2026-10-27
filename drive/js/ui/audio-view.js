@@ -44,7 +44,7 @@
       if (wave.width !== Math.round(w * dpr) || wave.height !== Math.round(h * dpr)) { wave.width = Math.round(w * dpr); wave.height = Math.round(h * dpr); }
       const g = wave.getContext('2d'), dur = durNow(), frac = isCur() && dur ? Math.min(1, P.audio.currentTime / dur) : 0;
       g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, h);
-      const faint = '#8a8a94', colour = DR.kindColor(r), n = peaks ? peaks.length : 0;
+      const faint = '#7d8ba8', colour = DR.kindColor(r), n = peaks ? peaks.length : 0;
       if (!n) { g.fillStyle = faint; g.fillRect(0, h / 2, w, 1); }
       else {
         const bw = w / n;
@@ -54,7 +54,7 @@
           g.fillRect(i * bw, (h - bh) / 2, Math.max(1, bw * 0.7), bh);
         }
       }
-      g.fillStyle = '#f2f2f4'; g.fillRect(Math.round(frac * w), 0, 2, h);
+      g.fillStyle = '#f1f2f5'; g.fillRect(Math.round(frac * w), 0, 2, h);
       wave.dataset.pos = frac.toFixed(4);
     }
     function update() {
