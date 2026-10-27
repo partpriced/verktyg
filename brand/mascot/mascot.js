@@ -7,7 +7,9 @@
 // The slot's optional hooks: look(dx, dy) turns the eyes towards the pointer (-1..1 each way, eased per frame), and
 // react(kind, detail) answers a touch: hover (happy while on), poke (surprised, then a wink), drag (a slight tilt the way
 // it moves, dizzy when shaken), drop (a small bounce). A reaction lays its face and motion over the running animation,
-// which carries on underneath. With reduced motion the faces change but nothing tilts or bounces.
+// which carries on underneath. travel ({ on, dx }: a roaming slot floats Chippy to another spot) turns Chippy a little
+// the way it goes until it arrives (the slot leans the whole stage and turns the eyes). With reduced motion the faces
+// change but nothing tilts or bounces.
 import { T, build, makeZ, dispose } from './model.js';
 import { ANIMS } from './anims.js';
 
@@ -33,7 +35,7 @@ export function create(el, { reduce = false } = {}) {
   const t0 = performance.now(), secs = () => (performance.now() - t0) / 1000;
   let shown = null, A = null, anim = null, zs = null, poseT = 0, raf = 0, w = 0, h = 0;
   // the hooks' state: eye target and eased position, hover, the poke and drop timers, the drag tilt and its shake
-  const eye = { tx: 0, ty: 0, x: 0, y: 0 }, re = { hover: false, poke: -9, drop: -9, drag: false, shake: 0, tilt: 0, tiltT: 0 };
+  const eye = { tx: 0, ty: 0, x: 0, y: 0 }, re = { hover: false, poke: -9, drop: -9, drag: false, shake: 0, tilt: 0, tiltT: 0, yaw: 0, yawT: 0 };
   const EYE_X = 3.4, EYE_Y = 2.4;
   function reactFace(t) {                  // the face a reaction asks for now, or null
     if (re.drag) return re.shake > 0.5 ? 'dizzy' : 'surprised';
@@ -97,7 +99,9 @@ export function create(el, { reduce = false } = {}) {
     if (A) { A.eyeGroup.position.x = Math.max(-EYE_X, Math.min(EYE_X, look + eye.x * EYE_X)); A.eyeGroup.position.y = eye.y * EYE_Y; }
     if (!re.drag) { re.tiltT = 0; re.shake *= 0.9; }
     re.tilt += (re.tiltT - re.tilt) * 0.2;
+    re.yaw += (re.yawT - re.yaw) * 0.06;    // travelling: turned towards where it goes
     if (!reduce) {
+      if (g) g.rotation.y += re.yaw;
       root.rotation.z += re.tilt;
       const b = (t - re.drop) / 0.45; if (b > 0 && b < 1) root.position.y += Math.sin(b * Math.PI) * 9 * (1 - b);
     }
@@ -123,13 +127,15 @@ export function create(el, { reduce = false } = {}) {
     },
     /** Eyes towards the pointer: dx, dy in -1..1 (0, 0 looks ahead). */
     look(dx, dy) { eye.tx = Math.max(-1, Math.min(1, +dx || 0)); eye.ty = Math.max(-1, Math.min(1, +dy || 0)); },
-    /** A touch: 'hover' ({ on }), 'poke', 'drag' ({ dx, dy, shake }), 'drop'. Unknown kinds do nothing. */
+    /** A touch: 'hover' ({ on }), 'poke', 'drag' ({ dx, dy, shake }), 'drop'; 'travel' ({ on, dx, dy }) from a roaming slot.
+     * Unknown kinds do nothing. */
     react(kind, detail = {}) {
       const t = secs();
       if (kind === 'hover') re.hover = !!detail.on;
       else if (kind === 'poke') re.poke = t;
       else if (kind === 'drag') { re.drag = true; re.shake = Math.max(0, Math.min(1, +detail.shake || 0)); re.tiltT = Math.max(-0.25, Math.min(0.25, -(+detail.dx || 0) * 0.02)); }
       else if (kind === 'drop') { re.drag = false; re.drop = t; re.poke = -9; }
+      else if (kind === 'travel') re.yawT = detail.on ? Math.max(-1, Math.min(1, +detail.dx || 0)) * 0.45 : 0;
     },
     get pose() { return shown; },
     get playing() { return anim ? anim.k : null; },
