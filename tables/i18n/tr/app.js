@@ -64,6 +64,7 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'tables.sheet.tab_tip': "{name} (yeniden adlandırmak için çift tıklayın)",
   'tables.sheet.rename_title': "Sayfayı yeniden adlandır",
   'tables.sheet.name': "Sayfa adı",
+  'tables.sheet.default': "Sayfa{n}",
   'tables.sheet.need_one': "Bir çalışma kitabında en az bir sayfa olmalı",
   'tables.sheet.delete_body': "“{name}” ve üzerindeki her şey silinsin mi?",
   'tables.nf.general': "Genel",
