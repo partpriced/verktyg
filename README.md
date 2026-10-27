@@ -8,7 +8,7 @@ Live at **https://verktyg.itpris.se**.
 > kept: the next release replaces them, and the release step refuses to run while this repository has commits it did not
 > make. Report problems as issues instead.
 
-Release: 2026-10-26
+Release: 2026-10-27
 
 ## Run it locally
 
