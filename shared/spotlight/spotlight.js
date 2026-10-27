@@ -12,17 +12,17 @@
   const css = `
   .sps-dock{position:fixed;left:12px;bottom:12px;z-index:60;display:flex;gap:6px}
   .sps-pill{display:flex;gap:6px;align-items:center;padding:6px 10px;border-radius:99px;
-    border:1px solid rgba(127,127,140,.45);background:rgba(20,20,24,.82);color:#f1ede4;font:600 12px system-ui,sans-serif;text-decoration:none;cursor:pointer;
+    border:1px solid rgba(113, 128, 160,.45);background:rgba(18, 20, 26,.82);color:#ebedf2;font:600 12px system-ui,sans-serif;text-decoration:none;cursor:pointer;
     -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-  .sps-pill:focus-visible{outline:2px solid #a2fff6;outline-offset:2px}
+  .sps-pill:focus-visible{outline:2px solid #ffeae8;outline-offset:2px}
   .sps-pill kbd{font:inherit;opacity:.6}
   .sps-back{position:fixed;inset:0;z-index:100;display:none;align-items:flex-start;justify-content:center;padding:12vh 16px 16px;background:rgba(0,0,0,.45)}
   .sps-back.on{display:flex}
-  .sps-box{width:min(560px,100%);max-height:70vh;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#17171b;color:#f1ede4;border:1px solid #2b2b33;box-shadow:0 18px 50px rgba(0,0,0,.5);font:14px system-ui,sans-serif}
-  .sps-in{width:100%;box-sizing:border-box;padding:14px 16px;border:0;border-bottom:1px solid #2b2b33;background:transparent;color:inherit;font:inherit;font-size:16px;outline:none}
+  .sps-box{width:min(560px,100%);max-height:70vh;display:flex;flex-direction:column;border-radius:14px;overflow:hidden;background:#14171e;color:#ebedf2;border:1px solid #262c38;box-shadow:0 18px 50px rgba(0,0,0,.5);font:14px system-ui,sans-serif}
+  .sps-in{width:100%;box-sizing:border-box;padding:14px 16px;border:0;border-bottom:1px solid #262c38;background:transparent;color:inherit;font:inherit;font-size:16px;outline:none}
   .sps-list{list-style:none;margin:0;padding:6px;overflow:auto}
   .sps-item{display:grid;gap:2px;padding:10px 12px;border-radius:10px;cursor:pointer}
-  .sps-item[aria-selected="true"],.sps-item:hover{background:rgba(162, 255, 246,.12)}
+  .sps-item[aria-selected="true"],.sps-item:hover{background:rgba(255, 234, 232,.12)}
   .sps-name{font-weight:700}
   .sps-desc{font-size:12.5px;opacity:.7;line-height:1.4}
   .sps-none{padding:14px 16px;opacity:.7}
@@ -35,7 +35,7 @@
   const tr = (k, v) => (I() ? I().t(k, v) : k);
   const own = (k, fallback) => (I() && I().has(k) ? I().t(k) : fallback);
   const nameOf = (a) => (window.tlbxAppName ? window.tlbxAppName(a) : own('app.' + a.id, a.name));   // the app's name in the chosen language
-  const descOf = (a) => ((window.TLBX_APP_SEARCH || {})[a.id] || {}).desc || own('apptag.' + a.id, a.tagline || '');   // the long description (ui.appdesc.*)
+  const descOf = (a) => ((window.TLBX_APP_SEARCH || {})[a.id] || {}).desc || (window.tlbxAppTagline ? window.tlbxAppTagline(a) : own('apptag.' + a.id, a.tagline || ''));   // the long description (ui.appdesc.*), else the one-liner
 
   function addStyle() {
     const st = document.createElement('style');

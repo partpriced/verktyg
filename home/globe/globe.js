@@ -69,6 +69,8 @@
     n.style.setProperty('--gx-k', String(ic.k));
     n.replaceChildren(C.icon(a, 'gx-svg') || '', el('span', { class: 'gx-name' }, name(a)));
   }
+  // a new language (its tables are in): the names again; the labels (labels.js) read them from aria-label
+  window.addEventListener('tlbxi18n', () => { for (const ic of icons) { const s = name(ic.app), x = ic.el.querySelector('.gx-name'); ic.el.setAttribute('aria-label', s); if (x) x.textContent = s; } });
   function build() {
     T = G.TIERS[tierName];
     layer.querySelectorAll('.gx-i').forEach((n) => n.remove());
@@ -89,7 +91,7 @@
   }
 
   /* ---------- geometry: the globe fills the reserved box; the copy's boxes are kept clear ---------- */
-  let W = 0, H = 0, geom = { cx: 0, cy: 0, r: 1, d: 3.4 }, rects = [], size = 56, ink = '#888', accent = '#a2fff6';
+  let W = 0, H = 0, geom = { cx: 0, cy: 0, r: 1, d: 3.4 }, rects = [], size = 56, ink = '#888', accent = '#ffeae8';
   function rel(n, base) {
     const r = n && n.getBoundingClientRect();
     return r && r.width ? { l: r.left - base.left, t: r.top - base.top, r: r.right - base.left, b: r.bottom - base.top } : null;
