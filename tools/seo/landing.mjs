@@ -2,10 +2,9 @@
 // /businessapps/, /creativepro/ and /compare/. Each page has an H1, an intro, a feature matrix (features as
 // rows, with status and file types), the file types it opens, a button to the app, and related apps.
 // Only registry facts are written. Called by tools/seo/write.mjs, which adds the SEO head block to each page.
-// /businessapps/ and /creativepro/ are written only when every app they list is shown (a profile's apps.hide).
 // In one language (L from lang.mjs, the root one when left out): the registry's title, tagline and features are the
 // SEO tables' seo.reg.<id>.* in a language other than English (tools/seo/tables.mjs writes the English part).
-import { isPage, registryWindow } from './site.mjs';
+import { isPage } from './site.mjs';
 import { compareTables } from './roundups.mjs';
 import { appNav, withToc, docsLayout } from './guide.mjs';
 import { ROOT_L, esc, shell, cardList, statusOf, fileTypeList, fileTypes, mediaBlock, related } from './frame.mjs';
@@ -16,7 +15,6 @@ import { seg } from '../../shared/seo/i18n.mjs';
 export { esc, shell, cardList, related, fileTypeList, STATUS, statusWords, siteTop, siteFoot, SITE_HEAD, videoLink, shotFigure, mediaBlock } from './frame.mjs';
 
 /** Business apps tools, in the order the hub lists them. Each id must be an app in the registry. */
-const CREATIVE = ['imageeditor', 'vector', 'videoedit'];
 export const TLBX365 = ['invoices', 'orders', 'contacts', 'inventory', 'crm', 'ledger', 'reports', 'tables', 'docs', 'notes'];
 const NOTE = (L) => ({ beta: L.t('seo.ui.note.beta'), building: L.t('seo.ui.note.building', { status: statusOf({ status: 'building' }, L) }) });
 
@@ -64,6 +62,7 @@ ${cardList(related(app, apps), L)}
 
 function tlbx365Body(apps, L = ROOT_L) {
   const tools = TLBX365.map((id) => apps.find((a) => a.id === id));
+  if (tools.some((t) => !t)) throw new Error('TLBX365 lists an id that is not in shared/apps.js');
   return `<p class="eyebrow">${esc(L.t('seo.ui.s365.eyebrow'))}</p>
 <h1>${esc(L.t('seo.ui.s365.h1'))}</h1>
 <p class="lead">${esc(L.t('seo.ui.s365.lead'))}</p>
@@ -72,7 +71,9 @@ ${cardList(tools, L)}`;
 }
 
 function creativeBody(apps, L = ROOT_L) {
-  const picks = CREATIVE.map((id) => apps.find((a) => a.id === id));
+  const ids = ['imageeditor', 'vector', 'videoedit'];
+  const picks = ids.map((id) => apps.find((a) => a.id === id));
+  if (picks.some((t) => !t)) throw new Error('Creative Pro lists an id that is not in shared/apps.js');
   const [photo, vector, video] = picks;
   return `<p class="eyebrow">Creative Pro</p>
 <h1>${esc(L.t('seo.ui.csp.h1'))}</h1>
@@ -127,14 +128,8 @@ export function landingPages(apps, site, LANDING, TASKS = [], ROUNDUPS = [], GUI
     const { body, toc } = withToc(appBody(app, apps, tasks, roundups, L));
     add(app.id, `apps/${app.id}/`, app.name, docsLayout(appNav(app, { tasks, roundups, guides: GUIDES.filter((g) => g.app === app.id) }, `/apps/${app.id}/`, L), toc, body, L));
   }
-  // a page of a few apps: only when the profile shows them all (an id the registry lacks is a mistake here)
-  const all = (ids, what) => {
-    const known = registryWindow().TLBX_ALL_APPS;
-    if (ids.some((id) => !known.some((a) => a.id === id))) throw new Error(`${what} lists an id that is not in shared/apps.js`);
-    return ids.every((id) => apps.some((a) => a.id === id));
-  };
-  if (all(TLBX365, 'TLBX365')) add('businessapps', 'businessapps/', L.t('seo.ui.s365.crumb'), tlbx365Body(apps, L));
-  if (all(CREATIVE, 'Creative Pro')) add('creativepro', 'creativepro/', L.t('seo.ui.csp.crumb'), creativeBody(apps, L));
+  add('businessapps', 'businessapps/', L.t('seo.ui.s365.crumb'), tlbx365Body(apps, L));
+  add('creativepro', 'creativepro/', L.t('seo.ui.csp.crumb'), creativeBody(apps, L));
   add('compare', 'compare/', L.t('seo.ui.cmp.crumb'), compareBody(apps, ROUNDUPS, L));
   return out;
 }

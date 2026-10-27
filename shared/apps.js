@@ -13,7 +13,7 @@
   // The brand profile (brand/profiles/<id>.json) sets these at build time (tools/whitelabel/build.mjs rewrites the literal
   // after each marker). Here they hold this site's own values: brand names, every app listed, shots and videos shown.
   const NAMING = /*profile:naming*/"plain";
-  const HIDE = /*profile:hideApps*/[], PARENT = /*profile:parent*/null;   // PARENT: { name, url } of a single-app site's suite (shared/parent)
+  const HIDE = /*profile:hideApps*/[];
   const MEDIA = /*profile:media*/false;
   const LEAD = ['pdf', 'html2pdf', 'ocr', 'watermark', 'convert'];   // the homepage leads with the PDF family, in this order: the globe opens on them side by side (PDF square in front), its keyboard list and the capability strip start with them (window.TLBX_LEAD: home/globe/globe.js, list.js, tools/seo/marquee.mjs)
   const GROUP_LABELS = Object.freeze(NAMING === 'plain' ? { business: 'Business', creative: 'Creative' } : { business: 'Business apps', creative: 'Creative apps' });
@@ -278,20 +278,23 @@
     a.plain = p[0];
     a.plainTagline = p[1] || a.tagline;
     a.brandName = a.name;
-    if (NAMING === 'plain') { a.name = a.plain; a.title = a.plain; a.ownTagline = !!p[1]; a.tagline = a.plainTagline; }
+    if (NAMING === 'plain') { a.name = a.plain; a.title = a.plain; a.tagline = a.plainTagline; }
     if (!MEDIA) { delete a.shot; delete a.video; }
   }
-  window.TLBX_NAMING = NAMING; window.TLBX_HIDDEN_APPS = HIDE; window.TLBX_PARENT = PARENT; window.TLBX_LEAD = LEAD.filter((id) => window.TLBX_APPS.some((a) => a.id === id));
-  const find = (app) => (typeof app === 'string' ? window.TLBX_APPS.find((x) => x.id === app) : app);
-  /** A key's text in the chosen language, or null when neither it nor English has one (TlbxI18n.t gives the key back). */
-  const word = (k) => { const I = window.TlbxI18n, s = I && typeof I.t === 'function' ? I.t(k) : null; return s && s !== k ? s : null; };
+  window.TLBX_NAMING = NAMING; window.TLBX_HIDDEN_APPS = HIDE; window.TLBX_LEAD = LEAD.filter((id) => window.TLBX_APPS.some((a) => a.id === id));
   /** The name to show for an app (a registry entry or an id): the profile's name, in the chosen language when that
    * language has an 'app.<id>' string and the profile uses plain names. Brand names stay as they are in every language. */
-  window.tlbxAppName = (app) => { const a = find(app); return !a ? String(app || '') : (NAMING === 'plain' && word('app.' + a.id)) || a.name; };
-  /* The descriptive title ("Image Editor: photo editor") and the one-line description, in the chosen language: its
-   * 'seo.reg.<id>.title' / '.tagline' (shared/i18n/apps/<code>.js, written from the SEO tables by tools/seo/apptables.mjs),
-   * else the registry's English. With plain names the title is the plain name (tlbxAppName), and the tagline the
-   * language's 'apptag.<id>' first; a plain description of its own (PLAIN) is not the brand one the tables translate. */
-  window.tlbxAppTitle = (app) => { const a = find(app); return !a ? String(app || '') : NAMING === 'plain' ? window.tlbxAppName(a) : word('seo.reg.' + a.id + '.title') || a.title || a.name; };
-  window.tlbxAppTagline = (app) => { const a = find(app); return !a ? '' : (NAMING === 'plain' && word('apptag.' + a.id)) || (!a.ownTagline && word('seo.reg.' + a.id + '.tagline')) || a.tagline; };
+  window.tlbxAppName = (app) => {
+    const a = typeof app === 'string' ? window.TLBX_APPS.find((x) => x.id === app) : app;
+    if (!a) return String(app || '');
+    const I = window.TlbxI18n;
+    if (NAMING === 'plain' && I && typeof I.t === 'function') { const k = 'app.' + a.id, s = I.t(k); if (s && s !== k) return s; }
+    return a.name;
+  };
+  /** The one-line description, the same way: the chosen language's 'apptag.<id>' when the profile uses plain names. */
+  window.tlbxAppTagline = (a) => {
+    const I = window.TlbxI18n;
+    if (NAMING === 'plain' && a && I && typeof I.t === 'function') { const k = 'apptag.' + a.id, s = I.t(k); if (s && s !== k) return s; }
+    return a ? a.tagline : '';
+  };
 })();

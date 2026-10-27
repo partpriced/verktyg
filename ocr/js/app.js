@@ -1,9 +1,8 @@
-/* OCR page: files in, text out. Recognition runs through the OCR engines (shared/ocr/engines.js, window.TlbxOcrEngines:
- * PaddleOCR in the inference worker of aitools/common.js, or Tesseract), with the engine chosen under Text recognition
- * engine (Auto by default). The model is only used after the gate passes; nothing downloads here except from the Language
- * and model dialog (shared/ocr/choose.js): without a choice the quick model reads first (PaddleOCR's bundled Chinese and
- * English one), and a line under the text offers the model for another script when the text looks like one. Layout,
- * outputs and drawing live in the modules beside this file. */
+/* OCR page: files in, text out. Recognition is the AI Tools OCR engine (PaddleOCR in the inference worker,
+ * reached through window.TlbxAITools from aitools/common.js, which loads first as a classic script). The model is only
+ * used after the gate passes; nothing downloads here except from the Language and model dialog (shared/ocr/choose.js):
+ * without a choice the bundled Chinese and English model reads first, and a line under the text offers the model for
+ * another script when the text looks like one. Layout, outputs and drawing live in the modules beside this file. */
 import { isSupported, openFile, renderPage } from './sources.js';
 import { linesToText, rowsOf } from './layout.js';
 import { drawPage } from './overlay.js';
@@ -11,7 +10,7 @@ import { plainText, markdownText, docxFile, searchablePdf, jpegBytes, saveBlob, 
 import { sampleReceipt } from './sample.js';
 import { createOcrChoice } from '../../shared/ocr/choose.js';
 
-const T = window.TlbxAITools, E = window.TlbxOcrEngines;
+const T = window.TlbxAITools;
 const $ = (id) => document.getElementById(id);
 const EXPORT_IDS = ['dlTxt', 'dlMd', 'dlDocx', 'dlPdf', 'copy'];
 const state = { pages: [], cur: 0, busy: false, shown: null };
@@ -89,7 +88,10 @@ async function addFiles(list) {
 async function readPage(p, i, model, onProgress) {
   const canvas = await renderPage(p);
   const bitmap = await createImageBitmap(canvas);
-  const r = await E.run(model, { bitmap, w: canvas.width, h: canvas.height }, { onProgress: (q) => onProgress(q) });
+  const r = await T.call('ocr', { model, bitmap, w: canvas.width, h: canvas.height }, {
+    transfer: [bitmap],
+    onProgress: (q) => onProgress(q),
+  });
   Object.assign(p, { w: canvas.width, h: canvas.height, lines: r.lines, skipped: r.skipped || 0, model, text: linesToText(r.lines), done: true, error: null, edited: false });
   if (i === state.cur) state.shown = { i, canvas };
 }
@@ -105,7 +107,7 @@ async function readAll() {
   try {
     const pick = await choice.pick();
     if (!pick) { say(t('ocr.app.choose_lang')); return; }
-    await E.load(pick.model, say);
+    await T.ensure(pick.model, say);
     for (let k = 0; k < todo.length; k++) {
       const { p, i } = todo[k];
       say(t('ocr.app.reading', { label: p.label, i: k + 1, n: todo.length }));
@@ -210,7 +212,6 @@ function wire() {
   $('boxes').addEventListener('change', () => paint());
   $('text').addEventListener('input', () => { const p = state.pages[state.cur]; if (p) { p.text = $('text').value; p.edited = true; } });
   choice.button($('lang'), () => { if (state.pages.some((p) => p.done)) again(); });
-  $('lang').before(choice.engineSelect(() => { if (state.pages.some((p) => p.done)) again(); }));   // Text recognition engine
   $('dlTxt').addEventListener('click', () => saveBlob(stem() + '.txt', new Blob([plainText(outPages())], { type: 'text/plain' })));
   $('dlMd').addEventListener('click', () => saveBlob(stem() + '.md', new Blob([markdownText(outPages())], { type: 'text/markdown' })));
   $('dlDocx').addEventListener('click', async () => {

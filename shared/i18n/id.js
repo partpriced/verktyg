@@ -141,8 +141,6 @@
     'shell.theme_dark': 'Gelap',
     'shell.theme_classic': 'Klasik 98',
     'shell.theme_lime': 'Accent',
-    'shell.theme_brand_light': '{brand} Terang',
-    'shell.theme_brand_dark': '{brand} Gelap',
     'shell.more': 'Lainnya',
     'shell.install': 'Instal',
     'shell.install_title': 'Instal {brand}',

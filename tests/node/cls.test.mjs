@@ -25,9 +25,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const LIMIT = 0.05;
-// a site that is not indexed has no landing pages (tests/brand-facts.js seoIndex): its homepage alone then
-const { FACTS } = await import('../brand-facts.mjs');
-const PAGES = FACTS.seoIndex ? ['', 'apps/pdf/'] : [''];
+const PAGES = ['', 'apps/pdf/'];
 
 /** Records every layout shift of the page, with what moved, from the first paint on. */
 function observe() {

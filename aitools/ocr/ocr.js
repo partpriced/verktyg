@@ -1,7 +1,6 @@
-/* OCR tool page: an image or one PDF page in, text out. Recognition runs through the OCR engines (shared/ocr/engines.js:
- * PaddleOCR in the inference worker, or Tesseract; Text recognition engine picks one, Auto by default), with the model
+/* OCR tool page: an image or one PDF page in, text out. Recognition runs in the inference worker (PaddleOCR), with the model
  * for the language chosen under Language and model (shared/ocr/choose.js, the same dialog as OCR); without a choice
- * the quick model reads first and a line under the text offers the model for another script.
+ * the bundled Chinese and English model reads first and a line under the text offers the model for another script.
  * Nothing leaves the device: the file is read here and handed to the worker, and the text is only saved when asked. */
 (function () {
   'use strict';
@@ -44,10 +43,10 @@
       const choice = await choiceP, pick = await choice.pick();
       $('suggest').replaceChildren();
       if (!pick) { $('msg').textContent = t('aitools.ocr.choose_lang'); return; }
-      const E = window.TlbxOcrEngines;
-      await E.load(pick.model, (s) => ($('msg').textContent = s));
+      await T.ensure(pick.model, (s) => ($('msg').textContent = s));
       const img = await source();
-      const r = await E.run(pick.model, img, {
+      const r = await T.call('ocr', { model: pick.model, bitmap: img.bitmap, w: img.w, h: img.h }, {
+        transfer: [img.bitmap],
         onProgress: (p) => { prog.value = p.total ? p.done / p.total : 0; $('msg').textContent = p.stage === 'detect' ? t('aitools.ocr.finding') : t('aitools.ocr.line_of', { i: p.done + 1, n: p.total }); },
       });
       const text = r.lines.map((l) => l.text).join('\n');
@@ -72,10 +71,7 @@
   // the one way in (aitools/intake.js): a drop on the box, choose a file, a paste, ?drive=<id>, a launch
   const intake = T.intake('ai-ocr', { accept: { types: ['image/*', 'application/pdf'], exts: ['.pdf', '.png', '.jpg', '.jpeg', '.webp', '.gif', '.bmp'], noun: 'aitools.ocr.noun' }, read: (f) => pick(f) });
   $('run').addEventListener('click', run);
-  choiceP.then((c) => {
-    c.button($('lang'), () => { if (file && $('out').value) run(); });
-    $('lang').before(c.engineSelect(() => { if (file && $('out').value) run(); }));   // Text recognition engine, in the panel's Settings
-  });
+  choiceP.then((c) => c.button($('lang'), () => { if (file && $('out').value) run(); }));
   $('copy').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('out').value); $('msg').textContent = t('aitools.page.copied'); } catch (e) { $('msg').textContent = t('aitools.ocr.blocked'); } });
   $('dl').addEventListener('click', () => { const base = (file ? file.name.replace(/\.[^.]+$/, '') : 'ocr'); T.download(base + '.txt', $('out').value, 'text/plain'); });
   $('docs').addEventListener('click', async () => {

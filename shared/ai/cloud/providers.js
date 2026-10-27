@@ -10,9 +10,7 @@
  *   the browser cannot call it: cors 'needs-proxy'); chat (false for a picture-only provider).
  * One code path per API format: FORMATS maps the catalog's format to its file (openai-chat → compat.js, openai-responses
  * → openai.js); a provider adds no code of its own. Prices are what we know for sure: Anthropic's published list
- * (2026-10) and OpenRouter's, which its model list carries. For the others the panel shows tokens only and says so.
- * The models the site hides (shared/ai/makers.js, the brand profile's "ai") are left out everywhere here: providers and
- * byId skip a hidden provider, p.models and suggested() a hidden model, offered(p, list) a fetched list's. */
+ * (2026-10) and OpenRouter's, which its model list carries. For the others the panel shows tokens only and says so. */
 (function () {
   'use strict';
   const K = (window.TlbxAIKit = window.TlbxAIKit || {});
@@ -54,9 +52,7 @@
     const auth = p.auth || 'bearer';
     words(p);
     for (const f of ['who', 'short']) if (p[f] == null) Object.defineProperty(p, f, { get: () => p.name, enumerable: true, configurable: true });
-    p._models = p.models || [];   // as the catalog has them; models: the ones the site offers
-    Object.defineProperty(p, 'models', { get: () => offered(p, p._models), enumerable: true, configurable: true });
-    Object.assign(p, { _n: true, prefer: p.prefer || [/./], caps: p.caps || {},
+    Object.assign(p, { _n: true, models: p.models || [], prefer: p.prefer || [/./], caps: p.caps || {},
       needsKey: auth !== 'none' && auth !== 'optional', keyOptional: auth === 'optional', chat: !!FORMATS[p.format] });
     p.usable = p.cors !== 'needs-proxy';   // a picture-only provider can be chosen: its key is kept for AI pictures
     if (p.local || p.anyAddress) p.editBase = true;
@@ -64,13 +60,9 @@
     return p;
   }
   const order = (p) => GROUPS.findIndex((g) => g.id === p.group);
-  const M = () => K.makers;
-  const shown = (p) => !M() || M().provider(p);
-  /** The models of a list (the catalog's, or one fetched from the provider) that the site offers. */
-  const offered = (p, list) => (M() ? M().filter(list, p && p.id) : (list || []).slice());
-  const all = () => raw.map(norm).filter(shown).sort((a, b) => order(a) - order(b) || (a.rank || 50) - (b.rank || 50));
+  const all = () => raw.map(norm).sort((a, b) => order(a) - order(b) || (a.rank || 50) - (b.rank || 50));
   Object.defineProperty(C, 'providers', { get: all, configurable: true });
-  const byId = (id) => { const p = raw.find((x) => x.id === id); return p && shown(norm(p)) ? p : null; };
+  const byId = (id) => { const p = raw.find((x) => x.id === id); return p ? norm(p) : null; };
 
   /** A templated base URL filled in: { url, missing: [the labels of empty fields] }. Values are URL-encoded. */
   function resolve(p, values = {}) {
@@ -107,7 +99,7 @@
     const words = q.split(/\s+/);
     const score = (p) => {
       const name = p.name.toLowerCase(), hay = [p.id, p.who, ...(p.aliases || [])].join(' ').toLowerCase();
-      const models = [...p.models.map((m) => m.id + ' ' + (m.name || '')), ...offered(p, p.modelHints)].join(' ').toLowerCase();
+      const models = [...p.models.map((m) => m.id + ' ' + (m.name || '')), ...(p.modelHints || [])].join(' ').toLowerCase();
       let s = 0;
       for (const w of words) {
         if (name.startsWith(w) || p.id.startsWith(w)) s += 8; else if (name.includes(w)) s += 5; else if (hay.includes(w)) s += 4; else if (models.includes(w)) s += 2; else return 0;
@@ -145,8 +137,7 @@
 
   /** The models offered first: the provider's preferred ones that the fetched list has, else its defaults. */
   function suggested(p, models) {
-    models = offered(p, models);
-    if (!models.length) return p.models.slice();
+    if (!models || !models.length) return p.models.slice();
     const usable = models.filter((m) => m.tools !== false || !p.toolsOnly), out = [];
     for (const re of p.prefer || []) { const m = usable.find((x) => re.test(x.id) && !out.includes(x)); if (m) out.push(m); }
     return (out.length ? out : usable).slice(0, 4);
@@ -158,5 +149,5 @@
     return [...lines, T('ui.ai.cloud.setup_chrome'), ...(p.after || [])];
   }
 
-  Object.assign(C, { byId, offered, GROUPS, FORMATS, IMAGE_FORMATS, price, cost, suggested, search, resolve, baseFor, endpoint, authHeaders, checkBase, mixed, localHelp, norm });
+  Object.assign(C, { byId, GROUPS, FORMATS, IMAGE_FORMATS, price, cost, suggested, search, resolve, baseFor, endpoint, authHeaders, checkBase, mixed, localHelp, norm });
 })();

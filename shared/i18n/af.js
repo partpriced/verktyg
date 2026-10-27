@@ -140,8 +140,6 @@
     'shell.theme_dark': 'Donker',
     'shell.theme_classic': 'Klassiek 98',
     'shell.theme_lime': 'Accent',
-    'shell.theme_brand_light': '{brand} Lig',
-    'shell.theme_brand_dark': '{brand} Donker',
     'shell.more': 'Meer',
     'shell.install': 'Installeer',
     'shell.install_title': 'Installeer {brand}',

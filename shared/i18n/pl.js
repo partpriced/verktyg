@@ -140,8 +140,6 @@
     'shell.theme_dark': 'Ciemny',
     'shell.theme_classic': 'Klasyczny 98',
     'shell.theme_lime': 'Accent',
-    'shell.theme_brand_light': '{brand} Jasny',
-    'shell.theme_brand_dark': '{brand} Ciemny',
     'shell.more': 'Więcej',
     'shell.install': 'Zainstaluj',
     'shell.install_title': 'Zainstaluj {brand}',

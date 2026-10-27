@@ -18,8 +18,7 @@ Object.defineProperty(App, 'sel', {
   get: () => selIds,
   set(ids) { selIds = ids; if (App.doc && typeof markPropsOpen === 'function') markPropsOpen(); },
 });
-const THEMES = [['pro', 'label.app.pro_dark'], ['light', 'label.app.light'], ['classic', 'label.app.classic_98']] // keys (LT at use)
-  .filter(([id]) => !window.TlbxTheme || TlbxTheme.has(id));   // only the themes the site offers
+const THEMES = [['pro', 'label.app.pro_dark'], ['light', 'label.app.light'], ['classic', 'label.app.classic_98']]; // keys (LT at use)
 
 /* ---------------- document access ---------------- */
 function previewGet() { return previewResolver(App.doc, App.rec, App.prompts); }

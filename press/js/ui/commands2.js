@@ -103,8 +103,6 @@
     { id: 'help.about', title: 'press.cmd.help_about', group: 'menu.help', run: function () { ui().about(); } },
     { id: 'help.home', title: 'verktyg.itpris.se', group: 'menu.help', run: function () { location.href = '../'; } } // i18n-ignore: the site's address
   ]);
-  // a theme the site does not offer (its profile hides it, shared/theme/theme.js) is not a command or a menu row here
-  ['pro', 'light', 'classic'].forEach(function (t) { if (window.TlbxTheme && !TlbxTheme.has(t)) A.unregister('theme.' + t); });
 
   /* ---------- one command per style ("Apply paragraph style: Heading 1") ---------- */
   var styleIds = [];

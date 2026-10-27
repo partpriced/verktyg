@@ -140,8 +140,6 @@
     'shell.theme_dark': 'डार्क',
     'shell.theme_classic': 'क्लासिक 98',
     'shell.theme_lime': 'Accent',
-    'shell.theme_brand_light': '{brand} लाइट',
-    'shell.theme_brand_dark': '{brand} डार्क',
     'shell.more': 'और',
     'shell.install': 'इंस्टॉल करें',
     'shell.install_title': '{brand} इंस्टॉल करें',

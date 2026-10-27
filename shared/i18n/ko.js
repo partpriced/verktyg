@@ -140,8 +140,6 @@
     'shell.theme_dark': '다크',
     'shell.theme_classic': '클래식 98',
     'shell.theme_lime': 'Accent',
-    'shell.theme_brand_light': '{brand} 라이트',
-    'shell.theme_brand_dark': '{brand} 다크',
     'shell.more': '더 보기',
     'shell.install': '설치',
     'shell.install_title': '{brand} 설치',

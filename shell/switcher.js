@@ -21,8 +21,7 @@
     const all = S.apps();
     const query = q.trim().toLowerCase();
     if (query) {
-      const sub = (a) => (window.tlbxAppTagline ? window.tlbxAppTagline(a) + ' ' : '') + (a.tagline || '');   // the chosen language's words and the English
-      const hits = all.filter((a) => (a.name + ' ' + a.id + ' ' + sub(a)).toLowerCase().includes(query))
+      const hits = all.filter((a) => (a.name + ' ' + a.id + ' ' + (a.tagline || '')).toLowerCase().includes(query))
         .sort((a, b) => Number(!a.name.toLowerCase().startsWith(query)) - Number(!b.name.toLowerCase().startsWith(query)));
       return [{ title: hits.length ? tr('nav.apps', 'Apps') : '', items: hits.map((app) => ({ kind: 'app', app })) }];
     }
