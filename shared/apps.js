@@ -13,7 +13,7 @@
   // The brand profile (brand/profiles/<id>.json) sets these at build time (tools/whitelabel/build.mjs rewrites the literal
   // after each marker). Here they hold this site's own values: brand names, every app listed, shots and videos shown.
   const NAMING = /*profile:naming*/"plain";
-  const HIDE = /*profile:hideApps*/[];
+  const HIDE = /*profile:hideApps*/[], PARENT = /*profile:parent*/null;   // PARENT: { name, url } of a single-app site's suite (shared/parent)
   const MEDIA = /*profile:media*/false;
   const LEAD = ['pdf', 'html2pdf', 'ocr', 'watermark', 'convert'];   // the homepage leads with the PDF family, in this order: the globe opens on them side by side (PDF square in front), its keyboard list and the capability strip start with them (window.TLBX_LEAD: home/globe/globe.js, list.js, tools/seo/marquee.mjs)
   const GROUP_LABELS = Object.freeze(NAMING === 'plain' ? { business: 'Business', creative: 'Creative' } : { business: 'Business apps', creative: 'Creative apps' });
@@ -281,7 +281,7 @@
     if (NAMING === 'plain') { a.name = a.plain; a.title = a.plain; a.tagline = a.plainTagline; }
     if (!MEDIA) { delete a.shot; delete a.video; }
   }
-  window.TLBX_NAMING = NAMING; window.TLBX_HIDDEN_APPS = HIDE; window.TLBX_LEAD = LEAD.filter((id) => window.TLBX_APPS.some((a) => a.id === id));
+  window.TLBX_NAMING = NAMING; window.TLBX_HIDDEN_APPS = HIDE; window.TLBX_PARENT = PARENT; window.TLBX_LEAD = LEAD.filter((id) => window.TLBX_APPS.some((a) => a.id === id));
   /** The name to show for an app (a registry entry or an id): the profile's name, in the chosen language when that
    * language has an 'app.<id>' string and the profile uses plain names. Brand names stay as they are in every language. */
   window.tlbxAppName = (app) => {
