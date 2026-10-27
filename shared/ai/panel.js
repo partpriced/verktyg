@@ -35,13 +35,15 @@
   if (signing()) add('cloud/signin', () => K.cloud && K.cloud.signin).catch(() => {});   // a phone's bottom sheet: as soon as it is here, not after the kit
   // The kit in two parts, each requested at once (K.load): what the chat needs (the composer works when it is in), then
   // what waits (permission settings, the model menu, pictures), which a send also waits for. A part that fails says so.
-  const CORE = ['permissions', 'app-skills', 'apptools', 'cmdtools', 'toolbox', 'prompt', 'filetools', 'optools', 'handoff', 'md', 'catalog', 'picker', 'panel-run'];
+  const CORE = ['permissions', 'app-skills', 'apptools', 'cmdtools', 'toolbox', 'prompt', 'filetools', 'optools', 'handoff', 'md', 'makers', 'catalog', 'picker', 'panel-run',
+    'quick/engine', 'quick/context', 'quick/shared', 'quick/ui'];   // the ready-made prompts (quick/ui.js), their words: i18n/index
   const LATER = ['permissions-ui', '../ui/menubutton', 'model-menu', 'imagegen/index'];
   K.panelKit = { CORE, LATER };
   const OPEN_KEY = 'tlbx-ai.open';   // '1' open, '0' closed: what the person did last, on any app (read by shell/header.js)
   const remember = (on) => { try { localStorage.setItem(OPEN_KEY, on ? '1' : '0'); } catch (e) { /* storage blocked */ } };
-  const kit = Promise.all([add('tlbxai', () => window.TlbxAI), add('history', () => K.history), add('../commands/args', () => window.TlbxCmdArgs), sheetP, add('../ui/resize-panel', () => window.TlbxResizePanel)])
-    .then(() => Promise.all([window.TlbxAI.loaded, K.load(CORE)]))
+  const kit = Promise.all([add('tlbxai', () => window.TlbxAI), add('history', () => K.history), add('../commands/args', () => window.TlbxCmdArgs), sheetP, add('../ui/resize-panel', () => window.TlbxResizePanel),
+    add('i18n/index', () => !window.TlbxI18n || TlbxI18n.shipped('prompts').length)])
+    .then(() => Promise.all([window.TlbxAI.loaded, K.load(CORE), window.TlbxI18n && TlbxI18n.ready()]))
     .then(() => takeHandoff()).then(() => restoreCloud()).then(() => signedIn());
   const extras = kit.then(() => K.load(LATER)).then(() => K.imageGenReady && K.imageGenReady.catch(() => null));
   kit.then(() => extras.catch(() => null)).then(() => { if (P.pending && P.engine()) runPending(); }, () => {});
@@ -128,6 +130,7 @@
     document.body.append(host);
     P.words();
     P.render();
+    if (K.quickUI) K.quickUI.mount();   // the prompts button and list (else quick/ui.js mounts itself when it arrives)
     // the model menu arrives with the later part; a tap before then opens it as soon as it is in (or the model choice)
     const early = () => { if (!P.modelMenu) extras.catch(() => null).then(() => (P.modelMenu ? P.modelMenu.open() : P.choose())); };
     P.status.addEventListener('click', early);
@@ -196,7 +199,7 @@
       return;
     }
     if (!P.messages.length) {
-      if (P.engine()) P.list.append(h('div', { class: 'sap-empty' }, T('ui.ai.panel.empty', { app: appName() })));
+      if (P.engine()) P.list.append(h('div', { class: 'sap-empty' }, T('ui.ai.panel.empty', { app: appName() }), K.quickUI ? K.quickUI.chips() : null));
       else if (picking) {
         const box = P.pickBox = h('div', { class: 'sap-empty' });
         P.list.append(box);

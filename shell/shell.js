@@ -33,13 +33,15 @@
     const rank = (a) => { const i = order.indexOf(a.id); return i < 0 ? 1e6 + reg.indexOf(a) : i; };
     return reg.slice().sort((a, b) => rank(a) - rank(b));
   }
-  /** The registry app whose folder this page is in (longest path wins), or null on the homepage. */
+  /** The registry app whose folder this page is in (longest path wins), or null on the homepage. The page's base address
+   *  decides: a single-app site's root is its app's page with a base in the app's folder (tools/seo/mainapp.mjs). */
   function detectCurrent() {
     let best = null, len = -1;
+    const here = new URL(document.baseURI).pathname;
     for (const a of window.TLBX_APPS || []) {
       if (!a.path || a.path.startsWith('#')) continue;
       const p = new URL(a.path, ROOT).pathname;
-      if (location.pathname.startsWith(p) && p.length > len) { best = a; len = p.length; }
+      if (here.startsWith(p) && p.length > len) { best = a; len = p.length; }
     }
     return best;
   }
@@ -51,7 +53,7 @@
     apps: sortedApps,
     brandOrder: () => (window.TlbxBrand && window.TlbxBrand.order) || [],
     appUrl: (app) => new URL(app.path, ROOT).href,
-    navigate(url) { location.assign(url); },
+    navigate(url) { location.assign(window.TlbxParent ? window.TlbxParent.href(url) : url); },   // a hidden app's: on the parent site
     recent: readRecent,
     /** Text made safe inside HTML (the one escape of the shell's modules). */
     esc: (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]),
@@ -81,6 +83,7 @@
 
   const queue = [];
   if (!window.TLBX_APPS) queue.push(['shared/apps.js']);
+  if (!window.TlbxParent) queue.push(['shared/parent/parent.js']);   // a single-app site's links to its suite (after the registry)
   if (!window.TLBX_ICONS) queue.push(['shared/app-icons.js']); // before brand.js, which puts the app's icon in the header brand
   if (!window.TlbxBrand) queue.push(['brand/brand.js', { brandSrc: (me && me.dataset.brandSrc) || '' }]);
   if (!window.TlbxUI) { addCss('shared/tlbxui.css'); queue.push(['shared/tlbxui.js']); }
