@@ -13,9 +13,9 @@ finds in its code (`node tools/i18n/i18n.mjs extract <app>` lists them). The rat
 | Shared components (shared/i18n/ui) | 219 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% |
 | Shared components, more (shared/i18n/ui/<code>/) | 3172 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | Shared biz (shared/biz/i18n/) | 349 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
-| Shared seo (shared/seo/i18n/) | 10931 | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| Shared seo (shared/seo/i18n/) | 10931 | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 
-Shared code (shell/, shared/) still has 2963 hard-coded strings; most belong to one app family (office, biz, watermark, ...).
+Shared code (shell/, shared/) still has 2973 hard-coded strings; most belong to one app family (office, biz, watermark, ...).
 
 ## Apps, by strings to translate
 
@@ -31,7 +31,7 @@ Shared code (shell/, shared/) still has 2963 hard-coded strings; most belong to 
 | 8 | Spreadsheets | tables | 671 | 267 | 404 | 0 of 29 |
 | 9 | Files | drive | 628 | 573 | 55 | 0 of 29 |
 | 10 | Motion Graphics | effects | 526 | 311 | 215 | 0 of 29 |
-| 11 | 3D Modeller | 3d | 470 | 298 | 172 | 0 of 29 |
+| 11 | 3D Modeller | 3d | 471 | 298 | 173 | 0 of 29 |
 | 12 | Documents | docs | 461 | 248 | 213 | 0 of 29 |
 | 13 | Assistant | ai | 397 | 321 | 76 | 0 of 29 |
 | 14 | Contacts | contacts | 389 | 389 | 0 | 17 of 29 |
@@ -39,9 +39,9 @@ Shared code (shell/, shared/) still has 2963 hard-coded strings; most belong to 
 | 16 | Font Creator | fontcreator | 365 | 340 | 25 | 0 of 29 |
 | 17 | Gallery | gallery | 364 | 323 | 41 | 0 of 29 |
 | 18 | Background Remover | cutout | 362 | 300 | 62 | 0 of 29 |
-| 19 | Metadata Remover | clean | 361 | 178 | 183 | 0 of 29 |
+| 19 | Metadata Remover | clean | 360 | 178 | 182 | 0 of 29 |
 | 20 | CRM | crm | 336 | 335 | 1 | 0 of 29 |
-| 21 | Video Remix | remix | 336 | 220 | 116 | 0 of 29 |
+| 21 | Video Remix | remix | 335 | 220 | 115 | 0 of 29 |
 | 22 | Inventory | inventory | 299 | 294 | 5 | 0 of 29 |
 | 23 | Ledger | ledger | 275 | 272 | 3 | 0 of 29 |
 | 24 | Resizer | resize | 275 | 202 | 73 | 0 of 29 |
@@ -75,9 +75,9 @@ Shared code (shell/, shared/) still has 2963 hard-coded strings; most belong to 
 | 52 | Timesheets | timesheets | 111 | 111 | 0 | 17 of 29 |
 | 53 | Admin | admin | 110 | 110 | 0 | 17 of 29 |
 | 54 | Image to 3D | img3d | 109 | 74 | 35 | 0 of 29 |
-| 55 | Paste | paste | 107 | 84 | 23 | 0 of 29 |
-| 56 | To-do | todo | 107 | 107 | 0 | 17 of 29 |
-| 57 | OCR | ocr | 106 | 75 | 31 | 0 of 29 |
+| 55 | OCR | ocr | 109 | 75 | 34 | 0 of 29 |
+| 56 | Paste | paste | 107 | 84 | 23 | 0 of 29 |
+| 57 | To-do | todo | 107 | 107 | 0 | 17 of 29 |
 | 58 | Quotes | quotes | 104 | 104 | 0 | 17 of 29 |
 | 59 | Calculator | calculator | 94 | 79 | 15 | 0 of 29 |
 | 60 | HTML to PDF | html2pdf | 85 | 49 | 36 | 0 of 29 |
@@ -86,7 +86,7 @@ Shared code (shell/, shared/) still has 2963 hard-coded strings; most belong to 
 | 63 | Reminders | reminders | 44 | 44 | 0 | 17 of 29 |
 | 64 | Checksum | checksum | 42 | 24 | 18 | 0 of 29 |
 
-Total: 22106 strings in 64 apps.
+Total: 22108 strings in 64 apps.
 
 ## Apps with tables, per language
 
@@ -146,9 +146,9 @@ Total: 22106 strings in 64 apps.
 | timesheets | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | admin | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | img3d | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 67% | 0% | 67% | 67% | 67% | 67% | 67% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
+| ocr | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 68% | 0% | 68% | 68% | 68% | 68% | 68% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | paste | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 78% | 0% | 78% | 78% | 78% | 78% | 78% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | todo | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
-| ocr | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 70% | 0% | 70% | 70% | 70% | 70% | 70% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | quotes | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 100% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | calculator | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 84% | 0% | 84% | 84% | 84% | 84% | 84% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
 | html2pdf | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 57% | 0% | 57% | 57% | 57% | 57% | 57% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% | 0% |
