@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'seo.landing.reports.description': 'Reports pokazuje sumy z Contacts, Invoices, Expenses i CRM, w tym zysk miesięczny i niezapłacone faktury. Tylko odczyt, eksport CSV.',
   'seo.landing.ocr.title': 'OCR: odczyt tekstu ze zdjęć i skanów PDF | ITpris',
   'seo.landing.ocr.description': 'OCR odczytuje tekst ze zdjęć i skanów PDF na urządzeniu w 200 dpi. Popraw go i zapisz jako .txt, .md lub przeszukiwalny PDF. Nic nie jest wysyłane.',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',   // English until translated (Document Scanner)
+  'seo.landing.scan.description': 'Free document scanner in your browser: take photos of pages, crop them automatically and download one PDF in black & white or colour. No app, no upload.',   // English until translated (Document Scanner)
   'seo.landing.html2pdf.title': 'HTML do PDF: drukuj pliki HTML z nagłówkiem i kodem QR | ITpris',
   'seo.landing.html2pdf.description': 'HTML do PDF drukuje plik HTML do PDF w przeglądarce, z nagłówkiem na każdej stronie: nazwa, data i kod QR. Nic nie jest przesyłane.',
   'seo.landing.clean.title': 'Metadata Remover: zobacz i usuń metadane zdjęć, np. GPS | ITpris',

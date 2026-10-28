@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'seo.app.aitools.description': 'OCR для изображений и сканов PDF, речь в текст с экспортом .srt, шумоподавление фото с ползунком «до и после» и размытие портрета. Работает на устройстве.',
   'seo.app.ocr.title': 'OCR: чтение текста с изображений и PDF на устройстве | ITpris',
   'seo.app.ocr.description': 'Читайте текст с фото и сканов PDF на вашем устройстве. Исправьте его и сохраните как TXT, Markdown, Word или PDF с поиском. Ничего не отправляется.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: прибыль по месяцам, неоплаченные счета и CRM | ITpris',
   'seo.app.reports.description': 'Отчёты по вашим книгам: прибыль и денежный поток по месяцам, налог с продаж по кварталам, неоплаченные счета, расходы по поставщикам. Экспорт CSV.',
   'seo.app.html2pdf.title': 'HTML to PDF: печать HTML с колонтитулом и QR-кодом | ITpris',

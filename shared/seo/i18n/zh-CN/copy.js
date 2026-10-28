@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('zh-CN', {
   'seo.app.aitools.description': '图片和扫描 PDF 的 OCR、带 .srt 导出的语音转文字、带前后对比滑块的照片降噪，以及人像虚化。在你的设备上运行。',
   'seo.app.ocr.title': 'OCR：从图片和 PDF 中识别文字 | ITpris',
   'seo.app.ocr.description': '在设备上从照片和扫描 PDF 中识别文字。可编辑后保存为 TXT、Markdown、Word 或可搜索的 PDF。图片不会上传。',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photos of pages to one clean PDF: edges found, pages made flat, shadows removed. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports：按月利润、未付发票和 CRM | ITpris',
   'seo.app.reports.description': '基于你自己账目的商务报表：按月利润和现金流、按季度的销售税、未付发票，以及各供应商的支出。只读，支持 CSV 导出。',
   'seo.app.html2pdf.title': 'HTML to PDF：打印带页眉和二维码的 HTML | ITpris',

@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'seo.landing.reports.description': 'Reports показывает итоги по контактам, счетам, расходам и CRM, включая прибыль по месяцам и неоплаченные счета. Только чтение, экспорт CSV.',
   'seo.landing.ocr.title': 'OCR: чтение текста с изображений и сканов PDF | ITpris',
   'seo.landing.ocr.description': 'OCR читает текст с картинок и сканов PDF на вашем устройстве при 200 dpi. Исправьте текст, скопируйте его или сохраните как .txt, .md или PDF с поиском.',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',   // English until translated (Document Scanner)
+  'seo.landing.scan.description': 'Free document scanner in your browser: take photos of pages, crop them automatically and download one PDF in black & white or colour. No app, no upload.',   // English until translated (Document Scanner)
   'seo.landing.html2pdf.title': 'HTML to PDF: печать HTML-файлов с колонтитулом и QR | ITpris',
   'seo.landing.html2pdf.description': 'HTML to PDF печатает HTML-файл в PDF в браузере, с колонтитулом на каждой странице: имя, дата и QR-код. Ничего не отправляется.',
   'seo.landing.clean.title': 'Metadata Remover: просмотр и удаление метаданных фото, например GPS | ITpris',

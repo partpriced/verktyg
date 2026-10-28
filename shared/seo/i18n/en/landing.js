@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.landing.reports.description': 'Reports shows totals across Contacts, Invoices, Expenses and CRM, including profit by month and unpaid invoices. It is read-only and exports CSV.',
   'seo.landing.ocr.title': 'OCR: read text from images and scanned PDFs | ITpris',
   'seo.landing.ocr.description': 'OCR reads text from images and scanned PDFs on your device, page by page at 200 dpi. Edit the text, then copy it or save .txt, .md or a searchable PDF.',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',
+  'seo.landing.scan.description': 'Free document scanner in your browser: take photos of pages, crop them automatically and download one PDF in black & white or colour. No app, no upload.',
   'seo.landing.html2pdf.title': 'HTML to PDF: print HTML files with a header and QR | ITpris',
   'seo.landing.html2pdf.description': 'HTML to PDF prints an HTML file to PDF in your browser, with a header on every page showing a name, date and QR code. Nothing is uploaded.',
   'seo.landing.clean.title': 'Metadata Remover: see and remove photo metadata like GPS | ITpris',

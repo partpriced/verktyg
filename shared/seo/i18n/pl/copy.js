@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'seo.app.aitools.description': 'OCR zdjęć i skanów PDF, zamiana mowy na tekst z eksportem .srt, redukcja szumu z suwakiem przed i po oraz rozmycie portretu. Działa na Twoim urządzeniu.',
   'seo.app.ocr.title': 'OCR: odczyt tekstu ze zdjęć i PDF-ów na urządzeniu | ITpris',
   'seo.app.ocr.description': 'Odczytuj tekst ze zdjęć i skanów PDF na urządzeniu. Popraw go i zapisz jako TXT, Markdown, Word lub przeszukiwalny PDF. Nic nie jest przesyłane.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: zysk miesięczny, niezapłacone faktury i CRM | ITpris',
   'seo.app.reports.description': 'Raporty z Twoich ksiąg: zysk i przepływ gotówki co miesiąc, podatek od sprzedaży co kwartał, niezapłacone faktury, wydatki wg dostawców. Eksport CSV.',
   'seo.app.html2pdf.title': 'HTML do PDF: drukuj HTML z nagłówkiem i kodem QR | ITpris',
