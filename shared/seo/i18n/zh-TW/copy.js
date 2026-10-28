@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'seo.app.aitools.description': '為圖片與掃描 PDF 進行 OCR，語音轉文字並可匯出 .srt 字幕，照片降噪附前後對照滑桿，以及人像模糊。在您的裝置上執行。',
   'seo.app.ocr.title': 'OCR：在裝置上辨識圖片與 PDF 中的文字 | ITpris',
   'seo.app.ocr.description': '在您的裝置上辨識照片與掃描 PDF 中的文字。可直接編輯，再另存為 TXT、Markdown、Word 或可搜尋的 PDF。檔案不會上傳。',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photos of pages to one clean PDF: edges found, pages made flat, shadows removed. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports：每月獲利、未付發票與 CRM | ITpris',
   'seo.app.reports.description': '根據您自己的帳簿產生報表：每月獲利與現金流、每季營業稅、未付發票，以及各供應商的支出。唯讀，可匯出 CSV。',
   'seo.app.html2pdf.title': 'HTML 轉 PDF：列印含頁首與 QR Code 的 HTML | ITpris',

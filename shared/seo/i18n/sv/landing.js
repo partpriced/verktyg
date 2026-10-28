@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.landing.reports.description': 'Reports visar summor för Contacts, Invoices, Expenses och CRM, bland annat vinst per månad och obetalda fakturor. Skrivskyddat och exporterar CSV.',
   'seo.landing.ocr.title': 'OCR: läs text i bilder och skannade PDF:er | ITpris',
   'seo.landing.ocr.description': 'OCR läser text i bilder och skannade PDF:er på din enhet, sida för sida i 200 dpi. Redigera texten och kopiera den eller spara .txt, .md eller sökbar PDF.',
+  'seo.landing.scan.title': 'Gratis dokumentskanner i webbläsaren: foto till PDF | Document Scanner',
+  'seo.landing.scan.description': 'Gratis dokumentskanner i webbläsaren: fotografera sidor, beskär dem automatiskt och ladda ned en PDF i svartvitt eller färg. Ingen app, ingen uppladdning.',
   'seo.landing.html2pdf.title': 'HTML to PDF: skriv ut HTML-filer med sidhuvud och QR | ITpris',
   'seo.landing.html2pdf.description': 'HTML to PDF skriver ut en HTML-fil till PDF i webbläsaren, med ett sidhuvud på varje sida som visar namn, datum och QR-kod. Inget laddas upp.',
   'seo.landing.clean.title': 'Metadata Remover: se och ta bort metadata som GPS i foton | ITpris',

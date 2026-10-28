@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('it', {
   'seo.app.aitools.description': 'OCR per immagini e PDF scansionati, da voce a testo con .srt, riduzione del rumore con cursore prima/dopo e sfocatura del ritratto. Sul tuo dispositivo.',
   'seo.app.ocr.title': 'OCR: leggi il testo da immagini e PDF sul dispositivo | ITpris',
   'seo.app.ocr.description': 'Leggi il testo da foto e PDF scansionati sul tuo dispositivo. Modificalo, poi salva come TXT, Markdown, Word o PDF ricercabile. Nulla viene caricato.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: utile per mese, fatture non pagate e CRM | ITpris',
   'seo.app.reports.description': 'Report aziendali dai tuoi conti: utile e flusso di cassa per mese, IVA per trimestre, fatture non pagate e spese per fornitore. Sola lettura, esportazione CSV.',
   'seo.app.html2pdf.title': 'HTML in PDF: stampa HTML con intestazione e codice QR | ITpris',
