@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'seo.landing.reports.description': 'Reports; Kişiler, Faturalar, Giderler ve CRM genelinde toplamları, aylık kârı ve ödenmemiş faturaları gösterir. Salt okunurdur ve CSV dışa aktarır.',
   'seo.landing.ocr.title': 'OCR: resimlerden ve taranmış PDF\'lerden metin okuyun | ITpris',
   'seo.landing.ocr.description': 'OCR cihazınızda resim ve taranmış PDF\'lerden metni 200 dpi’de okur. Düzenleyin, sonra kopyalayın ya da .txt, .md veya aranabilir PDF kaydedin.',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',   // English until translated (Document Scanner)
+  'seo.landing.scan.description': 'Free document scanner in your browser: take photos of pages, crop them automatically and download one PDF in black & white or colour. No app, no upload.',   // English until translated (Document Scanner)
   'seo.landing.html2pdf.title': 'HTML’den PDF\'ye: üstbilgili ve QR kodlu HTML yazdırma | ITpris',
   'seo.landing.html2pdf.description': 'HTML’den PDF\'ye, bir HTML dosyasını tarayıcınızda PDF olarak yazdırır; her sayfada ad, tarih ve QR kodu gösteren bir üstbilgiyle. Hiçbir şey yüklenmez.',
   'seo.landing.clean.title': 'Metadata Remover: GPS gibi fotoğraf verilerini görün ve kaldırın | ITpris',

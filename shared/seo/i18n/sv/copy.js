@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.app.aitools.description': 'OCR för bilder och inskannade PDF:er, tal till text med .srt-export, brusreducering av foton med före/efter-reglage och porträttoskärpa. Körs på din enhet.',
   'seo.app.ocr.title': 'OCR: läs text i bilder och PDF:er på din enhet | ITpris',
   'seo.app.ocr.description': 'Läs text i foton och inskannade PDF:er på din enhet. Redigera texten och spara sedan som TXT, Markdown, Word eller en sökbar PDF. Inget laddas upp.',
+  'seo.app.scan.title': 'Document Scanner: gör foton av sidor till en ren PDF | ITpris',
+  'seo.app.scan.description': 'Fotografera sidor med mobilen och få en ren PDF: kanterna hittas, sidorna görs plana och skuggorna försvinner, i svartvitt eller färg. Inget laddas upp.',
   'seo.app.reports.title': 'Reports: resultat per månad, obetalda fakturor, CRM | ITpris',
   'seo.app.reports.description': 'Rapporter från din egen bokföring: resultat och kassaflöde per månad, moms per kvartal, obetalda fakturor och inköp per leverantör. Skrivskyddat, CSV-export.',
   'seo.app.html2pdf.title': 'HTML to PDF: skriv ut HTML med sidhuvud och QR-kod | ITpris',

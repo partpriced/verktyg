@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'seo.app.aitools.description': 'OCR voor afbeeldingen en gescande PDF’s, spraak naar tekst met .srt-export, ruisreductie met een schuif voor en na, en portretvervaging. Op je apparaat.',
   'seo.app.ocr.title': 'OCR: tekst uit afbeeldingen en PDF’s halen | ITpris',
   'seo.app.ocr.description': 'Lees tekst uit foto’s en gescande PDF’s op je apparaat. Bewerk hem en sla op als TXT, Markdown, Word of doorzoekbare PDF. Er wordt niets geüpload.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: winst per maand, openstaande facturen en CRM | ITpris',
   'seo.app.reports.description': 'Zakelijke rapporten uit je eigen boeken: winst en kasstroom per maand, btw per kwartaal, openstaande facturen en uitgaven per leverancier. Alleen lezen, CSV.',
   'seo.app.html2pdf.title': 'HTML to PDF: HTML printen met koptekst en QR-code | ITpris',

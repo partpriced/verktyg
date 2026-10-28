@@ -51,6 +51,13 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'seo.reg.ocr.features.1': 'Sayfadaki kutular ve kaydetmeden önce düzenlenebilir metin',
   'seo.reg.ocr.features.2': 'Kopyala, .txt, .md, Word ya da aranabilir PDF',
   'seo.reg.ocr.features.3': '85 dil, yazı sistemi başına bir model, cihazınızda',
+  'seo.reg.scan.title': 'Document scanner: photo to PDF',   // English until translated (Document Scanner)
+  'seo.reg.scan.tagline': 'Photos of pages to a clean PDF: edges found, shadows gone. Nothing uploaded.',   // English until translated (Document Scanner)
+  'seo.reg.scan.features.0': 'Take photos or add them, several pages at once; iPhone HEIC too',   // English until translated (Document Scanner)
+  'seo.reg.scan.features.1': 'Edges found and the page made flat; drag the corners with a magnifier',   // English until translated (Document Scanner)
+  'seo.reg.scan.features.2': 'Colour, greyscale, black & white and photo looks that take out shadows',   // English until translated (Document Scanner)
+  'seo.reg.scan.features.3': 'A4, Letter or the scan\'s own shape, margins and quality; searchable text with OCR',   // English until translated (Document Scanner)
+  'seo.reg.scan.features.4': 'One PDF, or the pages as JPG and PNG; open it in PDF Editor',   // English until translated (Document Scanner)
   'seo.reg.html2pdf.title': 'HTML’den PDF\'ye dönüştürücü',
   'seo.reg.html2pdf.tagline': 'Bir HTML dosyasını üstbilgi ve QR kodla PDF olarak yazdırın. Hiçbir şey yüklenmez.',
   'seo.reg.html2pdf.features.0': 'Bir dosya bırakın ya da HTML yapıştırın',

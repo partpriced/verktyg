@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.app.aitools.description': 'OCR for images and scanned PDFs, speech to text with .srt export, photo denoise with a before and after slider and portrait blur. Runs on your device.',
   'seo.app.ocr.title': 'OCR: read text from images and PDFs on your device | ITpris',
   'seo.app.ocr.description': 'Read text from photos and scanned PDFs on your device. Edit it, then save as TXT, Markdown, Word or a searchable PDF. Nothing is uploaded.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',
   'seo.app.reports.title': 'Reports: profit by month, unpaid invoices and CRM | ITpris',
   'seo.app.reports.description': 'Business reports from your own books: profit and cash flow by month, sales tax by quarter, unpaid invoices and spend by supplier. Read-only, CSV export.',
   'seo.app.html2pdf.title': 'HTML to PDF: print HTML with a header and QR code | ITpris',

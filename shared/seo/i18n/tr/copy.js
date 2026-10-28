@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'seo.app.aitools.description': 'Görseller ve taranmış PDF\'ler için OCR, .srt’li konuşmadan metne, önce-sonra kaydırıcılı gürültü azaltma ve portre bulanıklaştırma. Cihazınızda çalışır.',
   'seo.app.ocr.title': 'OCR: görsel ve PDF\'lerden cihazınızda metin okuyun | ITpris',
   'seo.app.ocr.description': 'Fotoğraflardan ve taranmış PDF\'lerden metni cihazınızda okuyun. Düzenleyin, sonra TXT, Markdown, Word ya da aranabilir PDF olarak kaydedin. Yükleme yok.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: aylık kâr, ödenmemiş faturalar ve CRM | ITpris',
   'seo.app.reports.description': 'Kendi defterlerinizden raporlar: aylık kâr ve nakit akışı, üç aylık satış vergisi, ödenmemiş faturalar, tedarikçi harcamaları. Salt okunur, CSV dışa aktarma.',
   'seo.app.html2pdf.title': 'HTML’den PDF\'ye: üstbilgili ve QR kodlu yazdırma | ITpris',

@@ -29,6 +29,16 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'prompts.ocr.summary.text': 'Açık dosyadan okunan metni özetle. Uzunluk: {length}.',
   'prompts.ocr.translate_read': 'Okunan metni çevir',
   'prompts.ocr.translate_read.text': 'Açık dosyadan okunan metni {language} diline çevir. Yalnızca çeviriyi ver.',
+  'prompts.scan.plain': 'Make it look like a plain PDF',   // English until translated (Document Scanner)
+  'prompts.scan.plain.text': 'Set every page of the scan to black & white so it reads like a clean photocopy, and tell me which pages need their corners checked.',   // English until translated (Document Scanner)
+  'prompts.scan.a4': 'Make an A4 PDF',   // English until translated (Document Scanner)
+  'prompts.scan.a4.text': 'Put the scan on A4 pages with small margins and download the PDF.',   // English until translated (Document Scanner)
+  'prompts.scan.order': 'Check the page order',   // English until translated (Document Scanner)
+  'prompts.scan.order.text': 'Look at the pages of the scan, tell me if they seem out of order, and move them into reading order.',   // English until translated (Document Scanner)
+  'prompts.scan.searchable': 'Make the text searchable',   // English until translated (Document Scanner)
+  'prompts.scan.searchable.text': 'Turn on searchable text (OCR) and make the PDF, so its words can be searched and copied.',   // English until translated (Document Scanner)
+  'prompts.scan.receipts': 'Scan receipts',   // English until translated (Document Scanner)
+  'prompts.scan.receipts.text': 'Set the scan up for receipts: the scan\'s own page size, no margins, black & white. Then save the PDF to Files.',   // English until translated (Document Scanner)
   'prompts.html2pdf.header': 'Üst bilgi satırı yaz',
   'prompts.html2pdf.header.text': 'Açık HTML dosyasının PDF\'si için, başlığı ve bugünün tarihiyle birlikte kısa bir üst bilgi metni öner.',
   'prompts.html2pdf.print_check': 'Düzgün yazdırılır mı?',

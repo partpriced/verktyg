@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'seo.landing.reports.description': 'Reports muestra totales de Contactos, Facturas, Gastos y CRM, con el beneficio por mes y las facturas impagadas. Es de solo lectura y exporta CSV.',
   'seo.landing.ocr.title': 'OCR: lee texto de imágenes y PDF escaneados | ITpris',
   'seo.landing.ocr.description': 'Lee texto de imágenes y PDF escaneados en tu dispositivo, página a página a 200 ppp. Corrígelo y cópialo o guárdalo en .txt, .md o PDF con búsqueda.',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',   // English until translated (Document Scanner)
+  'seo.landing.scan.description': 'Free document scanner in your browser: take photos of pages, crop them automatically and download one PDF in black & white or colour. No app, no upload.',   // English until translated (Document Scanner)
   'seo.landing.html2pdf.title': 'HTML to PDF: imprime archivos HTML con encabezado y QR | ITpris',
   'seo.landing.html2pdf.description': 'Imprime un archivo HTML a PDF en tu navegador, con un encabezado en cada página con nombre, fecha y código QR. Nada se sube.',
   'seo.landing.clean.title': 'Metadata Remover: mira y quita metadatos de fotos, como el GPS | ITpris',

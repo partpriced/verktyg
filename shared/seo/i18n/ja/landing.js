@@ -22,6 +22,8 @@ window.TlbxI18n && window.TlbxI18n.add('ja', {
   'seo.landing.reports.description': 'Reportsは、連絡先、請求書、経費、CRMの集計を表示します。月ごとの利益と未払い請求書も含まれます。参照のみで、CSVに書き出せます。',
   'seo.landing.ocr.title': 'OCR：画像とスキャンしたPDFの文字を読み取り | ITpris',
   'seo.landing.ocr.description': 'OCRは、画像とスキャンしたPDFの文字を端末上で、200 dpiでページごとに読み取ります。テキストを編集して、コピーするか、.txt、.md、検索できるPDFで保存できます。',
+  'seo.landing.scan.title': 'Free document scanner in your browser: photo to PDF | Document Scanner',   // English until translated (Document Scanner)
+  'seo.landing.scan.description': 'Free document scanner in your browser: photos of pages to one PDF, cropped for you. No upload.',   // English until translated (Document Scanner)
   'seo.landing.html2pdf.title': 'HTML to PDF：ヘッダーとQR付きでHTMLを印刷 | ITpris',
   'seo.landing.html2pdf.description': 'HTML to PDFは、ブラウザーでHTMLファイルをPDFに印刷します。名前、日付、QRコードを示すヘッダーがすべてのページに付きます。アップロードはありません。',
   'seo.landing.clean.title': 'Metadata Remover：GPSなど写真のメタデータを確認して削除 | ITpris',

@@ -16,6 +16,8 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'seo.app.aitools.description': 'OCR für Bilder und gescannte PDFs, Sprache zu Text mit SRT-Export, Fotoentrauschen mit Vorher-nachher-Regler und Porträtunschärfe. Läuft auf dem Gerät.',
   'seo.app.ocr.title': 'OCR: Text aus Bildern und PDFs auf dem Gerät | ITpris',
   'seo.app.ocr.description': 'Text aus Fotos und gescannten PDFs auf dem Gerät lesen. Bearbeiten und dann als TXT, Markdown, Word oder durchsuchbares PDF speichern. Nichts wird hochgeladen.',
+  'seo.app.scan.title': 'Document Scanner: turn photos of pages into a clean PDF | ITpris',   // English until translated (Document Scanner)
+  'seo.app.scan.description': 'Photograph pages with your phone and get one clean PDF: edges found, pages made flat, shadows removed, in black & white or colour. Nothing is uploaded.',   // English until translated (Document Scanner)
   'seo.app.reports.title': 'Reports: Gewinn pro Monat und offene Rechnungen | ITpris',
   'seo.app.reports.description': 'Berichte aus Ihren Büchern: Gewinn und Cashflow pro Monat, Umsatzsteuer pro Quartal, offene Rechnungen und Ausgaben je Lieferant. Nur lesend, mit CSV-Export.',
   'seo.app.html2pdf.title': 'HTML to PDF: HTML mit Kopfzeile und QR-Code drucken | ITpris',
