@@ -11,7 +11,7 @@ The apps stand in for about **$1,700 a year** of paid software for one person, a
 > kept: the next release replaces them, and the release step refuses to run while this repository has commits it did not
 > make. Report problems as issues instead.
 
-Release: 2026-10-27
+Release: 2026-10-29
 
 ## Fork me! (no, really)
 
