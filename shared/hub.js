@@ -52,7 +52,10 @@
     });
   }
   const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-  const changed = (what, data) => { emit('drive:' + what, data); emit('drive:change', { what, ...data }); };
+  const changed = (what, data) => {
+    emit('drive:' + what, data); emit('drive:change', { what, ...data });
+    try { window.dispatchEvent(new CustomEvent('tlbx-drive-change', { detail: { what } })); } catch (e) { /* old browser */ }   // this page's own changes (the bus skips them)
+  };
 
   /** Save blob as a Drive file. New files go into the app's own folder (app, or else from, when it is a registered app
    * id; see appFolderId). folderId is only used when given. An existing record (id) keeps its folder. */
@@ -230,4 +233,8 @@
   window.TlbxHub = { apps, appById, urlOf, put, get, list, update, remove, clear, touch, createFolder, getFolder, listFolders, updateFolder, removeFolder, folderPath, inTrash, appFolderId, appSubfolderId,
     on, emit, register, openApps, appsAccepting, sendTo, openIn, sendMenuItems, consumeLaunch, pickFromDrive, pickFolder, saveToDrive, matches, fmtSize, loadScript, self,
     driveTx: tx, normFile, normFolder, ROOT, DB_NAME };
+  // In the iPhone/iPad app, Files also keeps its files in the app's folder (the Files app): shared/native/files-sync.js
+  const nativeFiles = window.TlbxNative && window.TlbxNative.files ? window.TlbxNative.files() : null;
+  if (nativeFiles) window.TlbxHub.nativeSync = loadScript('shared/native/files-plan.js').then(() => loadScript('shared/native/files-sync.js'))
+    .then(() => window.TlbxNativeSync || null).catch((e) => { console.warn('Files: the app folder sync did not load', e); return null; });
 })();
