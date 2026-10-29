@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Background Remover low memory</title>
+  <style>body { margin: 0; background: #111; } iframe { width: 1280px; height: 760px; border: 0; display: block; }</style>
+</head>
+<body>
+  <!-- Covers: shared/cutout/cutout.js, shared/cutout/worker.js, shared/cutout/runtime.js, shared/cutout/memory.js, bgremover/js/io/process.js, bgremover/js/ui/main.js -->
+  <iframe id="app" src="about:blank"></iframe>
+  <script>try { localStorage.setItem('tlbx-firstrun:bgremover', '1'); } catch (e) { /* private window */ }</script>
+  <script src="../harness.js"></script>
+  <script src="lowmem.spec.js"></script>
+  <script>TlbxTest.run({ name: 'Background Remover low memory' });</script>
+</body>
+</html>
