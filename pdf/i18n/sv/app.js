@@ -66,13 +66,13 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'pdf.app.selected_n': '{n} markerade',
   'pdf.app.zoom_pct': 'Zoom {pct}%',
 
-  'pdf.app.saving_drive': 'Sparar i Files…',
-  'pdf.app.saved_drive': 'Sparade {name} i Files. Originalet finns kvar.',
-  'pdf.app.save_drive_failed': 'Det gick inte att spara i Files: {error}',
+  'pdf.app.saving_drive': 'Sparar i Filer…',
+  'pdf.app.saved_drive': 'Sparade {name} i Filer. Originalet finns kvar.',
+  'pdf.app.save_drive_failed': 'Det gick inte att spara i Filer: {error}',
   'pdf.app.drive_unavailable': 'Files är inte tillgängligt. Dokumentet finns bara på den här enheten.',
   'pdf.app.preparing_pdf': 'Förbereder PDF:en…',
   'pdf.app.rendering_page': 'Renderar sida {n}…',
-  'pdf.app.opened_drive': 'Öppnade ”{name}” från Files',
+  'pdf.app.opened_drive': 'Öppnade ”{name}” från Filer',
 
   'pdf.app.colour_custom': 'Anpassad färg',
   'pdf.app.colour_none': 'Ingen färg',

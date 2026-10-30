@@ -19,7 +19,7 @@
       TlbxCmd.run('tst.ai.set-size');   // a key or the palette: no arguments, so the defaults
       expect(got.map((a) => a.size)).toEqual([7, 4, 4]);
     });
-    it('sources() loads shared/commands/sources.js once and finds a Files file by id, name or part of it', async () => {
+    it('sources() loads shared/commands/sources.js once and finds a file from Files by id, name or part of it', async () => {
       const was = window.TlbxHub, files = [{ id: 'f1', name: 'Sales 2026.xlsx', type: 'text/plain', blob: new Blob(['a,b'], { type: 'text/plain' }) }];
       window.TlbxHub = { get: async (id) => files.find((f) => f.id === id) || null, list: async () => files.map(({ id, name }) => ({ id, name })) };
       try {
@@ -30,7 +30,7 @@
         const f = await a.driveAsFile('Sales');
         expect(f instanceof File).toBe(true); expect(f.name).toBe('Sales 2026.xlsx'); expect(await f.text()).toBe('a,b');
         let err = ''; try { await a.driveAsFile('nope'); } catch (e) { err = e.message; }
-        expect(err).toContain('No Files file “nope”');
+        expect(err).toContain('No file in Files “nope”');
       } finally { window.TlbxHub = was; }
     });
     it('state() and app_state give an async state, and a failing one as { error }', async () => {

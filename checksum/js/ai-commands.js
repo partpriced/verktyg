@@ -1,6 +1,6 @@
 /* Checksum for the assistant: TlbxCmd commands with arguments, loaded on demand by TlbxCmd.prepare() (checksum.js).
  * The page's own hashing (Web Crypto, TlbxChecksum.use): new_check (an empty check: no file, no published hash),
- * hash_file (a Files file, any algorithm, optionally checked against a published hash; the page shows the same
+ * hash_file (a file from Files, any algorithm, optionally checked against a published hash; the page shows the same
  * result), add_text (typed text as the file), paste_hash (the published hash to check against) and save_hash (a
  * "<hash>  <name>" file such as name.sha256, to Files and/or a download). */
 (function () {
@@ -12,7 +12,7 @@
   async function driveFile(q) {
     const H = window.TlbxHub, s = String(q).toLowerCase(), all = await H.list();   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
     const hit = all.find((f) => f.id === q) || all.find((f) => f.name.toLowerCase() === s) || all.find((f) => f.name.toLowerCase().includes(s));
-    if (!hit) throw new Error(`No Files file “${q}”`);
+    if (!hit) throw new Error(`No file in Files “${q}”`);
     const rec = await H.get(hit.id);
     return new File([rec.blob], rec.name, { type: rec.type || rec.blob.type });
   }
@@ -37,7 +37,7 @@
     async (a) => {
       const r = await K().use(await driveFile(a.file), a.algorithm, a.expected || '');
       return { hash: r.hash, algorithm: a.algorithm, verdict: r.verdict || null };
-    }, { description: 'The SHA-256 (or SHA-384, SHA-512, SHA-1) of a Files file, and whether it matches a published hash.', macro: false }),
+    }, { description: 'The SHA-256 (or SHA-384, SHA-512, SHA-1) of a file from Files, and whether it matches a published hash.', macro: false }),
     add('save_hash', 'Save the hash as a file', [{ name: 'to', type: 'enum', values: ['drive', 'download', 'both'], default: 'drive' }], async (a) => {
       const cur = K().current();
       if (!cur.hash) throw new Error('Hash a file first (hash_file)');

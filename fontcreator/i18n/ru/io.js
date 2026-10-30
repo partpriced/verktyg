@@ -1,4 +1,4 @@
-/* Font Creator Creator, русский: открытие и сохранение шрифтов, рисование из SVG, перевод изображений и листы для почерка. Те же ключи, что в fontcreator/i18n/en/io.js. Термины: shared/i18n/glossary-ru.md. */
+/* Font Creator, русский: открытие и сохранение шрифтов, рисование из SVG, перевод изображений и листы для почерка. Те же ключи, что в fontcreator/i18n/en/io.js. Термины: shared/i18n/glossary-ru.md. */
 window.TlbxI18n && window.TlbxI18n.add('ru', {
   'fontcreator.io.noun': 'шрифт (.ttf, .otf, .woff, .woff2), проект шрифта, SVG или изображение',
   'fontcreator.io.not_font': '{name} — не файл шрифта',

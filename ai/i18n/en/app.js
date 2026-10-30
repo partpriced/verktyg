@@ -68,7 +68,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'ai.launch.with': 'Open {name} with…',
   'ai.launch.with_tip': 'Open with a file…',
   'ai.launch.new_tab': 'Open in a new tab',
-  'ai.launch.drive_file': 'Open a Files file in it…',
+  'ai.launch.drive_file': 'Open a file from Files in it…',
   'ai.launch.computer_file': 'Open a file from this computer…',
 
   'ai.helpbot.ask': 'Ask Helper',

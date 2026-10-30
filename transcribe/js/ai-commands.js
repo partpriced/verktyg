@@ -36,7 +36,7 @@ export function wireCommands({ queue: q, add, run, select, current, draw, say, m
     if (!id) throw new Error(`“${file.name}” is not an audio or video file.`);
     return `Added “${file.name}” as file ${id}. Transcribe it next.`;
   }
-  /** A Files file by id, name or part of the name, as a File (shared/commands/sources.js). */
+  /** A file in Files by id, name or part of the name, as a File (shared/commands/sources.js). */
   async function driveFile(q) {
     if (!q) throw new Error('Give the Files id or the name of the file.');
     return (await S.sources()).driveAsFile(q);
@@ -132,7 +132,7 @@ export function wireCommands({ queue: q, add, run, select, current, draw, say, m
       run: newBatch },
     { id: 'tr.add-from-drive', tool: 'add_from_drive', title: tr('transcribe.cmd.add_drive', 'Add a file from Files'), group: tr('menu.file', 'File'), keywords: ['drive', 'open', 'audio', 'video'],
       description: 'Add an audio or video file from Files to the list, by its Drive id or its name.',
-      args: [{ name: 'id', type: 'string', maxLength: 100, description: 'Files file id' }, { name: 'name', type: 'string', maxLength: 300, description: 'file name (or part of it) when the id is not known' }],
+      args: [{ name: 'id', type: 'string', maxLength: 100, description: 'file in Files id' }, { name: 'name', type: 'string', maxLength: 300, description: 'file name (or part of it) when the id is not known' }],
       run: addFromDrive },
     { id: 'tr.transcribe', tool: 'transcribe', title: tr('transcribe.cmd.transcribe', 'Transcribe'), group: tr('menu.file', 'File'), keywords: ['whisper', 'speech', 'text', 'run'],
       description: 'Turn the speech of every waiting file into text on this device, or read one file again with another language or model. Shows progress; it can take a while.',

@@ -43,7 +43,7 @@
   function cancel(id) { clear(); if (id && !cancelled(id)) ss(STOPPED, [ss(STOPPED), id].filter(Boolean).join(',')); }
 
   const isOpen = (q) => /^(open|current|this|app)$/i.test(String(q || '').trim());
-  /** The files to carry: what the app has open (as it hands it to Convert), or Files files by name or id. */
+  /** The files to carry: what the app has open (as it hands it to Convert), or files in Files by name or id. */
   async function filesOf(list, env) {
     const out = [], hub = env.hub !== undefined ? env.hub : window.TlbxHub;
     for (const q of [].concat(list || [])) {
@@ -60,7 +60,7 @@
     return {
       name: 'open_in_app',
       description: 'Move the task to another app in this tab, with files (as "Open in…" does: a Background Remover cut-out arrives in Image Editor as a layer with its mask). The chat comes along; you continue there with "task". For editing that needs that app; file in → file out jobs: run_operation here.',
-      params: { app: { type: 'string', description: 'app id, e.g. "imageeditor"', required: true }, files: { type: 'array', description: 'Files file names, or "open" for what this app has open; none to just open the app' }, task: { type: 'string', description: 'what to do there, in full (the next page starts from it)', required: true } },
+      params: { app: { type: 'string', description: 'app id, e.g. "imageeditor"', required: true }, files: { type: 'array', description: 'file in Files names, or "open" for what this app has open; none to just open the app' }, task: { type: 'string', description: 'what to do there, in full (the next page starts from it)', required: true } },
       schema: { type: 'object', properties: { app: { type: 'string', description: 'app id, e.g. "imageeditor"' }, files: { type: 'array', items: { type: 'string' }, description: 'Files names, or "open" (what is open here)' }, task: { type: 'string', description: 'what to do there, in full' } }, required: ['app', 'task'] },
       label: (a) => { const app = ((apps().find((x) => x.id === a.app) || {}).name) || a.app, files = [].concat(a.files || []); return files.length ? T('ui.ai.hop.open_with', { app, files: files.join(', ') }) : T('ui.ai.hop.open', { app }); },
       run: async (a) => {

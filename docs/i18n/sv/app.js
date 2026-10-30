@@ -7,7 +7,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.app.main_menu': 'Huvudmeny',
   'docs.app.local_tip': 'Dina dokument stannar på den här enheten. Inget laddas upp.',
   'docs.app.local_badge': 'Lokalt · inget laddas upp',
-  'docs.app.save_tip': 'Spara i Files (Ctrl+S)',
+  'docs.app.save_tip': 'Spara i Filer (Ctrl+S)',
   'docs.app.search_cmds': 'Sök kommandon',
   'docs.app.search_cmds_key': 'Sök kommandon ({key})',
   'docs.app.document': 'Dokument',
@@ -62,8 +62,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.status.words#one': '{n} ord',
   'docs.status.zoom': 'Zoom',
   'docs.save.unsaved': 'Osparade ändringar',
-  'docs.save.not_in_drive': 'Inte sparat i Files ännu',
-  'docs.save.saved': 'Sparat i Files',
+  'docs.save.not_in_drive': 'Inte sparat i Filer ännu',
+  'docs.save.saved': 'Sparat i Filer',
   'docs.save.draft': 'Utkastet sparas automatiskt i webbläsaren',
 
   // the Fonts panel
@@ -82,15 +82,15 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
 
   // files: open, save, download, the buffer
   'docs.file.discard_title': 'Ignorera osparade ändringar?',
-  'docs.file.discard_body': 'Dokumentet har ändringar som inte är sparade i Files ännu. Spara först, eller ignorera dem.',
+  'docs.file.discard_body': 'Dokumentet har ändringar som inte är sparade i Filer ännu. Spara först, eller ignorera dem.',
   'docs.file.discard': 'Ignorera',
   'docs.file.save_failed': 'Kunde inte spara: {error}',
   'docs.file.downloaded': '{name} har laddats ned',
   'docs.file.opened': '{name} öppnades',
   'docs.file.opened_new': '{name} öppnades som en ny Docs-fil',
   'docs.file.open_failed': 'Kunde inte öppna: {error}',
-  'docs.file.open_title': 'Öppna från Files',
-  'docs.file.import_title': 'Importera från Files',
+  'docs.file.open_title': 'Öppna från Filer',
+  'docs.file.import_title': 'Importera från Filer',
   'docs.file.empty': 'Filen är tom',
   'docs.file.cannot_open': 'Documents kan inte öppna {name}',
   'docs.file.this_file': 'den här filen',

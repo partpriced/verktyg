@@ -3,7 +3,7 @@
  * engine (downloaded once, after the shared first-use notice) that follows the White balance, Exposure and Highlights
  * controls. Open develops the full-size picture (8-bit sRGB, the camera's orientation applied) as one Background layer.
  * "Use embedded preview" opens the camera's JPEG without the engine. Cancel opens nothing (err.code 'cancelled').
- * Reached from readAnyFile (io/formats.js): File ▸ Open, drop, and Files files stored with an image/* type. */
+ * Reached from readAnyFile (io/formats.js): File ▸ Open, drop, and files in Files stored with an image/* type. */
 'use strict';
 
 function rawCancelled() { const e = new Error('Opening was cancelled'); e.code = 'cancelled'; return e; }

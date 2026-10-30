@@ -3,7 +3,7 @@
 // that have moved to it (STRICT below), app code may not add its own way:
 //   in:  a 'drop' or 'paste' listener, TlbxUI.pickFiles, a file <input>, TlbxHub.consumeLaunch / ?drive= / launchQueue,
 //        TlbxHub.pickFromDrive (use TlbxIntake.take, pick, fromDrive, launch, dropTarget, or TlbxDrop.attach), and a list
-//        of Files files built from TlbxHub.list (the one Drive picker is TlbxIntake.fromDrive; a library view or a
+//        of files in Files built from TlbxHub.list (the one Drive picker is TlbxIntake.fromDrive; a library view or a
 //        lookup by name that is not a picker says so with intake-ok:)
 //   out: a hand-made "Open in …" / "Send to …" list (appsAccepting(...).map, labels built from an app name)
 //        (use TlbxOuttake.items / menu / button, TlbxHub.openIn or sendMenuItems)
@@ -17,7 +17,7 @@ export const RULES = [
   { re: /type:\s*['"]file['"]|type="file"|\.type\s*=\s*['"]file['"]/, why: 'a file input of its own (use TlbxIntake.pick)' },
   { re: /\bconsumeLaunch\s*\(|searchParams\.get\(\s*['"]drive['"]\s*\)|\blaunchQueue\b/, why: 'its own ?drive= or launch reader (use TlbxIntake.launch)' },
   { re: /\bpickFromDrive\s*\(/, why: 'its own Files picker (use TlbxIntake.fromDrive)' },
-  { re: /(?:\bTlbxHub|\b(?:hub|H|SH|HUB)\(\)|(?<![\w.])(?:hub|H))\.list\(/, why: 'a list of Files files of its own (the picker is TlbxIntake.fromDrive; a library or lookup says intake-ok:)' },
+  { re: /(?:\bTlbxHub|\b(?:hub|H|SH|HUB)\(\)|(?<![\w.])(?:hub|H))\.list\(/, why: 'a list of files in Files of its own (the picker is TlbxIntake.fromDrive; a library or lookup says intake-ok:)' },
   { re: /appsAccepting\([^)]*\)\s*\.map\(|label:\s*[`'"](?:Open in|Send to) (?:\$\{|['"]\s*\+)/, why: 'a hand-made "Open in" / "Send to" list (use TlbxOuttake.items)', out: true },
 ];
 export const strict = (f) => STRICT.some((d) => f.startsWith(d)) && !EXEMPT.test(f) && /\.(m?js|html)$/.test(f);

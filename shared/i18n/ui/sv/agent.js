@@ -2,7 +2,7 @@
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.agent.about_title': 'AI-agenter',
   'ui.agent.about_1': 'Vissa webbläsare låter en AI-agent använda sidan du har öppen: en assistent som är inbyggd i webbläsaren, eller en app på datorn som ansluts via ett webbläsartillägg. Sidan berättar för agenten vad den kan göra, och agenten ber sidan göra det.',
-  'ui.agent.about_2': 'Här kan en agent köra appens kommandon, köra konverteringar i File Converter och Workflows på dina filer, och öppna filer, spara dem i Files eller ladda ned dem.',
+  'ui.agent.about_2': 'Här kan en agent köra appens kommandon, köra konverteringar i File Converter och Workflows på dina filer, och öppna filer, spara dem i Filer eller ladda ned dem.',
   'ui.agent.about_3': 'Dina filer stannar på den här enheten. Appen ger agenten filnamn, id:n och resultatet av det den körde; själva arbetet sker i den här webbläsaren och appen laddar inte upp något. Vad agenten gör med det den får veta beror på agenten du använder.',
   'ui.agent.about_4': 'Innan något som tar bort, rensar eller ersätter ditt arbete frågar appen dig först.',
   'ui.agent.about_5': 'En AI-app på datorn (Claude Code, Codex, Cursor, VS Code, Claude Desktop…) kan också ansluta direkt via Worksuites MCP-server: ”Anslut en AI-app…” nedan, eller Ctrl+K. Du parkopplar den en gång per flik med en kod som den visar, och sidan visar att den är ansluten tills du kopplar från.',

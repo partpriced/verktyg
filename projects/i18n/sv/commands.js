@@ -33,5 +33,5 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'projects.cmd.delete_task': 'Projekt: ta bort en uppgift',
   'projects.cmd.add_column': 'Projekt: lägg till en kolumn',
   'projects.cmd.list_tasks': 'Projekt: lista uppgifterna',
-  'projects.cmd.save_drive': 'Projekt: spara till Files',
+  'projects.cmd.save_drive': 'Projekt: spara till Filer',
 });

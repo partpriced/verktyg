@@ -1,4 +1,4 @@
-/* Presentations: the editor. Dark, like the other ITpris Verktyg tools. Desktop: slides | canvas | inspector.
+/* Presentations: the editor. Dark, like the other ITpris tools. Desktop: slides | canvas | inspector.
    Phones (under 700 px): canvas on top, the slides as a strip; the inspector is a bottom sheet. */
 :root {
   --bg: #0c0e12; --panel: #13161d; --panel2: #1a1f27; --line: #252b37; --line2: #333b4c;

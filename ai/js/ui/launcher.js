@@ -1,5 +1,5 @@
 /* Assistant — ui/launcher: the Apps list under the chat list. Every app in the registry (shared/apps.js) can be opened
- * in a new tab, with a Files file, or with a file from this computer (the same as "Send to…" in the other apps). */
+ * in a new tab, with a file from Files, or with a file from this computer (the same as "Send to…" in the other apps). */
 'use strict';
 (function (AI) {
   const el = AI.el;

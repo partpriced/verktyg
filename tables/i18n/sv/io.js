@@ -4,7 +4,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'tables.file.open_failed': 'Det gick inte att öppna filen',
   'tables.file.save_failed': 'Det gick inte att spara',
   'tables.file.left_out': 'Öppnad, men några delar kom inte med',
-  'tables.file.left_out_body': 'Spara behåller den som en Tables-fil i Files; Arkiv ▸ Ladda ned ▸ XLSX skriver en ny Excel-fil.',
+  'tables.file.left_out_body': 'Spara behåller den som en Tables-fil i Filer; Arkiv ▸ Ladda ned ▸ XLSX skriver en ny Excel-fil.',
   'tables.file.opened': 'Öppnade {name}',
   'tables.file.opened_it': 'Öppnade filen',
   'tables.file.not_ours': 'Det här är inte en Tables-fil.',

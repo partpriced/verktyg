@@ -2,7 +2,7 @@
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'drive.app.today_at': 'I dag {time}',
   'drive.app.yesterday_at': 'I går {time}',
-  'drive.app.search': 'Sök i Files',
+  'drive.app.search': 'Sök i Filer',
   'drive.app.search_crumb': 'Sök ”{q}”',
   'drive.app.cmd_tip': 'Sök kommandon (⌘K)',
   'drive.app.backup_tip': 'Säkerhetskopiera och återställ',

@@ -8,9 +8,9 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.menu.random': 'Slumpad mall…',
   'docs.menu.my_templates': 'Mina mallar',
   'docs.menu.no_templates': 'Inga sparade mallar ännu',
-  'docs.menu.open_drive': 'Öppna från Files…',
-  'docs.menu.import_drive': 'Importera Word, Markdown eller text från Files…',
-  'docs.menu.save_drive': 'Spara i Files',
+  'docs.menu.open_drive': 'Öppna från Filer…',
+  'docs.menu.import_drive': 'Importera Word, Markdown eller text från Filer…',
+  'docs.menu.save_drive': 'Spara i Filer',
   'docs.menu.dl_pdf': 'Ladda ned PDF (.pdf)',
   'docs.menu.dl_docx': 'Ladda ned Word (.docx)',
   'docs.menu.dl_md': 'Ladda ned Markdown (.md)',
@@ -31,7 +31,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.menu.search_cmds': 'Sök kommandon…',
   'docs.menu.keys': 'Kortkommandon…',
   'docs.menu.about': 'Om Documents',
-  'docs.menu.about_body': 'Dina dokument lagras i Files, i den här webbläsaren. Inget laddas upp, och det finns inget konto och ingen vattenstämpel.',
+  'docs.menu.about_body': 'Dina dokument lagras i Filer, i den här webbläsaren. Inget laddas upp, och det finns inget konto och ingen vattenstämpel.',
 
   // context menus on the page
   'docs.ctx.copy_blocked': 'Det går inte att kopiera här',

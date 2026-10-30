@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer for the assistant: TlbxCmd commands with arguments (shared/commands/args.js), imported on demand by
+/* Spreadsheet Viewer for the assistant: TlbxCmd commands with arguments (shared/commands/args.js), imported on demand by
  * TlbxCmd.prepare() (main.js): new_workbook (a new tab from rows), add_rows and add_sheet (into the open tab), open_file
  * (from Files), select_sheet, sort_column, filter_rows, clear_filters and export_rows (CSV, TSV or XLSX of the visible
  * or all rows, to Files and/or a download, through export.js). Columns are named by header text, letter or number. */

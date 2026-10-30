@@ -88,7 +88,7 @@
       };
     }
 
-    /** A Files file by id, or the newest image or video whose name contains the text. */
+    /** A file in Files by id, or the newest image or video whose name contains the text. */
     async function driveFile(id, name) {
       const H = g.TlbxHub;
       if (!H) throw new Error('Files is not available on this page');
@@ -97,7 +97,7 @@
         if (!full || !full.blob || full.trashedAt) throw new Error(`No file with id "${id}" in Files`);
         return full;
       }
-      if (!name) throw new Error('Give the Files file id or a part of its name');
+      if (!name) throw new Error('Give the file in Files id or a part of its name');
       const low = String(name).toLowerCase();
       const hit = (await H.list({ accept: ['image/*', 'video/*'] })).find((r) => String(r.name).toLowerCase().includes(low)); // intake-ok: an AI command looks a Drive file up by name (a lookup; the person's picker is TlbxIntake.fromDrive)
       if (!hit) throw new Error(`No image or video named like "${name}" in Files`);

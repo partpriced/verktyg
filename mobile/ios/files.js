@@ -16,7 +16,7 @@
  *   saveDownload(blob, name)     a download in the app: shared/native/save.js (loaded on first use)
  * Files other apps hand over (Open in…, share, Files) open in the app the site uses for their type (NATIVE_CONFIG.open,
  * from desktop/lib/open-map.js): this page, or that app's page, gets them through window.launchQueue as an installed
- * web app does (TlbxIntake.launch). A file from the app's own folder opens as its Files file (?drive=<id>).
+ * web app does (TlbxIntake.launch). A file from the app's own folder opens as its file in Files (?drive=<id>).
  * Pure helpers are exported for Node (tests/node/mobile-ios-files.test.mjs). */
 (function (root, factory) {
   const api = factory();

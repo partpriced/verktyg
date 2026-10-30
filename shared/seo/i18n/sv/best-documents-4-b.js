@@ -73,7 +73,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.best.free-hex-editors.tools.2.cons.0': 'Sidan beskriver få funktioner i detalj',
   'seo.best.free-hex-editors.tools.2.cons.1': 'Kräver JavaScript och en modern webbläsare',
   'seo.best.free-hex-editors.tools.2.sources.0.label': 'HexEd.it',
-  'seo.best.free-hex-editors.tools.3.bestFor': 'En snabb titt och små patchar i webbläsaren, med filtyp och SHA-256 synliga och versioner sparade i Files.',
+  'seo.best.free-hex-editors.tools.3.bestFor': 'En snabb titt och små patchar i webbläsaren, med filtyp och SHA-256 synliga och versioner sparade i Filer.',
   'seo.best.free-hex-editors.tools.3.cells.1': 'Alla moderna webbläsare',
   'seo.best.free-hex-editors.tools.3.cells.3': 'Läser i sidor om 64 KB (100 MB öppnas)',
   'seo.best.free-hex-editors.tools.3.pros.0': 'Kolumner för offset, hex och ASCII, sök efter hexbyte eller text, gå till valfri offset, ångra och gör om',

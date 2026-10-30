@@ -133,7 +133,7 @@
       await waitFor(() => /Saved worksuite-backup-/.test(dlg.textContent), { timeout: 15000 });
       W.TlbxBackupUI.open.choose(new W.File([file], 'b.tlbx'));
       await waitFor(() => dlg.querySelector('[data-act="restore"]'));
-      expect(dlg.textContent).toContain('Files files in 2 folders');
+      expect(dlg.textContent).toContain('files in Files in 2 folders');
       expect(dlg.querySelectorAll('input[name="bk-mode"]').length).toBe(2);
       dlg.querySelector('[data-act="restore"]').click();
       await waitFor(() => /Restored \d+ items/.test(dlg.textContent), { timeout: 15000 });

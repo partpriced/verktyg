@@ -42,7 +42,7 @@
     return `Made the album “${al.name}”${n ? ` with ${plural(n, 'photo')}` : ''}.`;
   }, { description: 'Make an album, optionally with photos from the library.' });   // i18n-ignore: tool text for the assistant (API)
 
-  add('add_photos', 'Add photos from Files', [{ name: 'files', type: 'array', required: true, maxItems: 500, items: { type: 'string' }, description: 'Files file names or ids' },   // i18n-ignore: tool text for the assistant (API)
+  add('add_photos', 'Add photos from Files', [{ name: 'files', type: 'array', required: true, maxItems: 500, items: { type: 'string' }, description: 'file in Files names or ids' },   // i18n-ignore: tool text for the assistant (API)
     Object.assign({}, ALBUM, { description: 'also put them in this album (made when new)' })],   // i18n-ignore: tool text for the assistant (API)
   async (a) => {
     await sources();
@@ -88,7 +88,7 @@
     const al = albumOf(a.album), n = await L().removeFromAlbum(al.id, idsOf(a.photos)); return `Took ${plural(n, 'photo')} out of “${al.name}” (they stay in the library).`;
   });
   add('remove_photos', 'Remove photos from the library', [PHOTOS], async (a) => {
-    const n = await G.actions.removeIds(idsOf(a.photos), { ask: false }); return `Removed ${plural(n, 'photo')} from the library (their Files files are kept).`;
+    const n = await G.actions.removeIds(idsOf(a.photos), { ask: false }); return `Removed ${plural(n, 'photo')} from the library (their files in Files are kept).`;
   }, { destructive: true });
   add('delete_album', 'Delete an album', [ALBUM], async (a) => { const al = albumOf(a.album); await L().deleteAlbum(al.id); return `Deleted the album “${al.name}” (its photos stay).`; }, { destructive: true });
 

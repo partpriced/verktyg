@@ -21,7 +21,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ai.chat.choose_model': 'Välj en modell',
   'ai.chat.persona_tip': 'Persona, temperatur, max antal token',
   'ai.chat.tools': 'Styr appar',
-  'ai.chat.tools_tip': 'Låt modellen öppna appar och spara i Files',
+  'ai.chat.tools_tip': 'Låt modellen öppna appar och spara i Filer',
   'ai.chat.tools_on': 'Styr appar är på: modellen kan öppna appar och spara filer',
   'ai.chat.tools_off': 'Styr appar är av',
   'ai.chat.placeholder': 'Skriv till Assistant',
@@ -32,7 +32,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ai.chat.attach': 'Bifoga en textfil',
   'ai.chat.privacy': 'Körs på din enhet. Inget lämnar den.',
   'ai.chat.from_computer': 'Från den här datorn…',
-  'ai.chat.from_drive': 'Från Files…',
+  'ai.chat.from_drive': 'Från Filer…',
   'ai.chat.text_only': '{name}: än så länge går det bara att bifoga textfiler',
   'ai.chat.first_part': 'första 24 000 tecknen',
   'ai.chat.remove_att': 'Ta bort {name}',
@@ -40,8 +40,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ai.chat.allow': 'Tillåt',
   'ai.chat.save_failed': 'Det gick inte att spara chatten: {why}',
 
-  'ai.export.md_drive': 'Markdown till Files…',
-  'ai.export.json_drive': 'JSON till Files…',
+  'ai.export.md_drive': 'Markdown till Filer…',
+  'ai.export.json_drive': 'JSON till Filer…',
   'ai.export.md_dl': 'Ladda ned Markdown',
   'ai.export.json_dl': 'Ladda ned JSON',
 

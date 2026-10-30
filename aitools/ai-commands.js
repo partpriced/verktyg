@@ -25,7 +25,7 @@
 
   add('new_job', 'New job', [
     { name: 'tool', type: 'enum', values: TOOL_IDS, required: true, description: 'denoise (a photo, no model), portrait (blur the background behind a person), tags (suggest tags for a photo), ocr (read text from a picture), speech (audio or video to text)' },
-    { name: 'file', type: 'string', maxLength: 300, description: 'optional: a Files file to start with (name or id)' },
+    { name: 'file', type: 'string', maxLength: 300, description: 'optional: a file from Files to start with (name or id)' },
   ], async (a) => {
     job = { tool: a.tool, file: null, options: {}, result: null };
     const t = J.TOOLS[a.tool], miss = await J.missing(job);
@@ -47,7 +47,7 @@
     return `Added ${r.name} (${R().formatSize(r.blob.size)}). Use run_job to run it.`;
   }
   add('add_file', 'Add the file', [
-    { name: 'file', type: 'string', maxLength: 300, description: 'a Files file name or id' },
+    { name: 'file', type: 'string', maxLength: 300, description: 'a file from Files name or id' },
     { name: 'url', type: 'string', maxLength: 500, description: 'or the address of a file on this site' },
   ], addFile, { description: 'Give the job its file (one; a new one replaces it).' });
 
@@ -104,7 +104,7 @@
     const H = window.TlbxHub, X = window.TlbxTranscript, src = stem(j.file.name);
     if (r.kind === 'tags') {
       if (!r.tags.length) throw new Error('No tags to save');
-      if (a.to === 'download') throw new Error('Tags are saved onto the Files file; use to: drive');
+      if (a.to === 'download') throw new Error('Tags are saved onto the file in Files; use to: drive');
       const tags = r.tags.map((t) => t.tag);
       if (j.file.driveId) {
         const rec = await H.get(j.file.driveId), all = window.TlbxTags.withAdded(window.TlbxTags.of(rec), tags);

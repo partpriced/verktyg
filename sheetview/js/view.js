@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: draws the open files, their sheet tabs, the grid and the status line from the store.
+/* Spreadsheet Viewer: draws the open files, their sheet tabs, the grid and the status line from the store.
  * createView(store, els, appearance) → { render(), grid }. Clicks go back to the store, which the render reads. */
 import { mountGrid, colName } from '../../shared/sheets/table.js';
 import { describeSort, isActiveFilter } from '../../shared/sheets/query.js';

@@ -93,7 +93,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'crm.bk.csv': 'Exportera CSV',
   'crm.bk.clear': 'Rensa markeringen',
   'crm.im.title': 'Importera från Contacts',
-  'crm.im.none': 'Ingen sparad kontaktlista hittades i Files. Spara dina kontakter i Contacts först och kom sedan tillbaka hit.',
+  'crm.im.none': 'Ingen sparad kontaktlista hittades i Filer. Spara dina kontakter i Contacts först och kom sedan tillbaka hit.',
   'crm.im.plan': '{add} nya kunder, {skipped} redan kopplade eller utan id, {invalid} som inte kan sparas.',
   'crm.im.plan#one': '{add} ny kund, {skipped} redan kopplade eller utan id, {invalid} som inte kan sparas.',
   'crm.im.choose': 'Välj en sparad kontaktlista',

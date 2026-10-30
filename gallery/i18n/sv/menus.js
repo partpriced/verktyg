@@ -39,7 +39,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'gallery.cmd.group_view': 'Visa',
   'gallery.cmd.import': 'Importera foton…',
   'gallery.cmd.import_folder': 'Importera en mapp…',
-  'gallery.cmd.import_drive': 'Importera från Files…',
+  'gallery.cmd.import_drive': 'Importera från Filer…',
   'gallery.cmd.backup': 'Säkerhetskopiera hela biblioteket',
   'gallery.cmd.restore': 'Återställ från en säkerhetskopia…',
   'gallery.cmd.export': 'Ladda ned markeringen',

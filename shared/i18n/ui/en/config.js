@@ -107,7 +107,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'ui.cfgv.no_file': 'no file was given',
   'ui.cfgv.read_failed': 'could not read the file: {err}',
   'ui.cfgv.no_drive': 'Files is not available here',
-  'ui.cfgv.drive_empty': 'that Files file has no content',
+  'ui.cfgv.drive_empty': 'that file in Files has no content',
   'ui.cfgv.cannot_export': 'cannot export {kind}: {err}',
   'ui.cfgv.no_export': '"{kind}" has no export yet',
   'ui.cfgv.no_store': 'the ITpris data store is not loaded on this page',

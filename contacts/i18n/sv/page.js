@@ -2,7 +2,7 @@
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'contacts.page.home': 'ITpris Verktyg start',
   'contacts.page.contacts': 'Kontakter',
-  'contacts.page.save_tip': 'Spara kontakterna till Files nu',
+  'contacts.page.save_tip': 'Spara kontakterna till Filer nu',
   'contacts.page.cc_tip': 'Standardlandsnummer för telefonnummer',
   'contacts.page.local_tip': 'Dina kunder stannar i den här webbläsaren. Inget laddas upp.',
   'contacts.page.groups': 'Grupper',

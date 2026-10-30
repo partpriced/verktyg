@@ -1,4 +1,4 @@
-/* ITpris tags: pure helpers for free-text tags stored on a Files file record in meta.tags.
+/* ITpris tags: pure helpers for free-text tags stored on a file from Files record in meta.tags.
  * A tag is lowercase, single-spaced, at most 40 characters, unique per file. No DOM, no storage: callers
  * read and write the record themselves (TlbxHub.update(id, { meta: {...meta, tags} }, { touch: false })).
  * Classic script, exposes window.TlbxTags. Copied from drive/js/core/tags.js; see HANDOFF.md. */

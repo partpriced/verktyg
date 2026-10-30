@@ -112,7 +112,7 @@
     const folderAt = new Set(fpaths.values());
     for (const e of tree) if (e.dir && !folderAt.has(e.path)) steps.push({ op: 'newFolder', path: e.path });
 
-    /* files Files has */
+    /* files that Files has */
     const claimed = new Set(), wanted = new Set(paths.values());
     const owner = new Map(Object.keys(known).map((id) => [known[id].p, id]));   // path → the file an earlier sync put there
     for (const [id, p] of paths) {

@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: the table's look, chosen in the header and remembered on this device.
+/* Spreadsheet Viewer: the table's look, chosen in the header and remembered on this device.
  * Table style (plain, striped, grid, compact) and colour (follow the app theme, light, dark, Classic 98, lime).
  * Only the table is restyled; the rest of the page follows the app theme. The choice lives in localStorage, read and
  * written inside try/catch: a blocked or full store just means the defaults come back next time. */

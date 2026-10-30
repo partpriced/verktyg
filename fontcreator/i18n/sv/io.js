@@ -15,7 +15,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'fontcreator.io.took_svg': '{name} (att rita från)',
   'fontcreator.io.took_picture': '{name} (att spåra)',
   'fontcreator.io.no_outlines': 'Rita en glyf först: teckensnittet har inga konturer än',
-  'fontcreator.io.saved': 'Sparade {name} i Files',
+  'fontcreator.io.saved': 'Sparade {name} i Filer',
   'fontcreator.io.css_copied': 'Kopierade regeln @font-face',
   'fontcreator.io.copy_failed': 'Kunde inte kopiera: webbläsaren tillät det inte',
 

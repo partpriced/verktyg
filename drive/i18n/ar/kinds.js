@@ -1,4 +1,4 @@
-/* The Files file kinds, empty states and duplicate finder, Arabic. Same keys as drive/i18n/en/kinds.js. Terms: shared/i18n/glossary-ar.md. */
+/* The file in Files kinds, empty states and duplicate finder, Arabic. Same keys as drive/i18n/en/kinds.js. Terms: shared/i18n/glossary-ar.md. */
 window.TlbxI18n && window.TlbxI18n.add('ar', {
   'drive.kind.label_folder': 'المجلدات',
   'drive.kind.label_image': 'الصور',

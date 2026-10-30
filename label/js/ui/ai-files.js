@@ -11,7 +11,7 @@
   const { add, N, E, S, B, XY, WH, findObj, edgeNote, place, pick, made } = X;
   const SRC = () => window.TlbxCmdSources;
 
-  add('add_image', 'Add picture', [S('file', 'a Files file name or id'), S('url', 'or the address of a picture on this site, e.g. /favicon.svg', { maxLength: 500 })].concat(XY, WH,
+  add('add_image', 'Add picture', [S('file', 'a file from Files name or id'), S('url', 'or the address of a picture on this site, e.g. /favicon.svg', { maxLength: 500 })].concat(XY, WH,
     [B('fit', 'shrink and move it so it stays on the label', false), S('name', 'object name', { maxLength: 80 })]),
   async (a) => {
     if (!a.file && !a.url) throw new Error('Give file (a Files name or id) or url (a picture on this site)');

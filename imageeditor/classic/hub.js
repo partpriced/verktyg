@@ -10,7 +10,7 @@
   const t = (k, v) => (window.TlbxI18n ? window.TlbxI18n.t(k, v) : k);
   const baseOf = (n) => (String(n || 'untitled').replace(/\.[^.]+$/, '') || 'untitled').slice(0, 60);
 
-  /** The intake's reader opened a Files file: Save writes back to it when the picture is still that file. */
+  /** The intake's reader opened a file from Files: Save writes back to it when the picture is still that file. */
   window.TlbxPaint.linkDrive = (id, name) => { driveId = S.fileName === baseOf(name) ? id : null; };
   ACTIONS.openDrive = async function () {
     if (P.opActive()) cancelOp();

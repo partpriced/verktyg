@@ -62,7 +62,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'vector.msg.pdf_failed': 'PDF-exporten misslyckades: {error}',
   'vector.msg.app_downloaded': 'Laddade ned {file} – öppna den från disken, den fungerar helt offline',
   'vector.msg.app_failed': 'Det gick inte att bygga offline-kopian: {error}',
-  'vector.msg.saved_drive': 'Sparade ”{file}” i Files',
+  'vector.msg.saved_drive': 'Sparade ”{file}” i Filer',
   'vector.msg.save_failed': 'Det gick inte att spara: {error}',
   'vector.msg.buffer_select': 'Markera något att kopiera till bufferten',
   'vector.msg.buffer_copied': 'Kopierade till bufferten',

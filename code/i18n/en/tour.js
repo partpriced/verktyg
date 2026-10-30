@@ -6,7 +6,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'code.tour.new_title': 'New',
   'code.tour.new_text': 'Start a new file (Ctrl+Alt+N).',
   'code.tour.save_title': 'Save',
-  'code.tour.save_text': 'Save to the same Files file (Ctrl+S). Save as makes a copy.',
+  'code.tour.save_text': 'Save to the same file in Files (Ctrl+S). Save as makes a copy.',
   'code.tour.explorer_title': 'Explorer',
   'code.tour.explorer_text': 'Your files from Files, in folders. Open a file to edit it.',
   'code.tour.run_title': 'Run',

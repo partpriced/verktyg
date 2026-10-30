@@ -54,7 +54,7 @@
     emit('photos');
     return rows;
   }
-  /** Removes photos (bytes, thumbnails and album links). Files files are not touched. */
+  /** Removes photos (bytes, thumbnails and album links). files in Files are not touched. */
   async function remove(ids) {
     const gone = new Set(ids.filter((id) => photos.has(id)));
     if (!gone.size) return 0;

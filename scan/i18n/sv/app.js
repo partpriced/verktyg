@@ -14,7 +14,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'scan.io.noun': 'ett foto',
   'scan.io.unreadable': '{name} gick inte att läsa som en bild',
   'scan.io.no_pages': 'Det finns inga sidor än',
-  'scan.io.saved': '{name} har sparats i Files',
+  'scan.io.saved': '{name} har sparats i Filer',
   'scan.io.not_written': 'Sidan kunde inte skrivas',
   'scan.ocr.model_missing': 'Sökbar text behöver textigenkänningsmodellen på den här enheten. Ladda ned den i fönstret som öppnades och gör sedan PDF:en igen.',
   'scan.list.label': 'Sidor',

@@ -19,7 +19,7 @@
       const hit = list.find((f) => f.name.toLowerCase() === s) || list.find((f) => f.name.toLowerCase().includes(s));
       rec = hit ? await H.get(hit.id) : null;
     }
-    if (!rec || !rec.blob) throw new Error(`No Files file “${q}”. List the files to see the names.`);
+    if (!rec || !rec.blob) throw new Error(`No file in Files “${q}”. List the files to see the names.`);
     return rec;
   }
   const driveAsFile = (q) => driveFile(q).then((r) => new File([r.blob], r.name || 'file', { type: r.type || r.blob.type || '' }));

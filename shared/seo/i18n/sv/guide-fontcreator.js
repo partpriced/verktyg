@@ -26,6 +26,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.fontcreator.getting-started.sections.3.steps.2': 'Kontrollera i vyn Provtext med din egen text, i flera storlekar, på ljus eller mörk bakgrund.',
   'seo.guide.fontcreator.getting-started.sections.4.h2': 'Exportera och spara',
   'seo.guide.fontcreator.getting-started.sections.4.steps.0': 'Under Teckensnitt anger du familjenamnet, formgivaren och licensen (Använd SIL Open Font License 1.1 fyller i den).',
-  'seo.guide.fontcreator.getting-started.sections.4.steps.1': 'Under Exportera väljer du TTF, OTF, WOFF2 eller WOFF och klickar på Ladda ned teckensnitt, eller Spara i Files….',
+  'seo.guide.fontcreator.getting-started.sections.4.steps.1': 'Under Exportera väljer du TTF, OTF, WOFF2 eller WOFF och klickar på Ladda ned teckensnitt, eller Spara i Filer….',
   'seo.guide.fontcreator.getting-started.sections.4.steps.2': 'Kopiera CSS @font-face ger regeln för en webbplats. Spara projekt sparar en .sfont-fil som du kan redigera igen.',
 });

@@ -29,7 +29,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   '3d.app.palette_tip': 'Sök kommandon (Ctrl+K)',
   '3d.app.palette': 'Sök kommandon',
   '3d.app.save': 'Spara',
-  '3d.app.save_tip': 'Spara i Files (Ctrl+S)',
+  '3d.app.save_tip': 'Spara i Filer (Ctrl+S)',
   '3d.app.outliner': 'Scenträd',
   '3d.app.scene': 'Scen',
   '3d.app.properties': 'Egenskaper',

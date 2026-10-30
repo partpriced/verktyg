@@ -2,7 +2,7 @@
  * faces of each picture, with their landmarks and embeddings) and 'people' (the groups of faces, one record per scope).
  * Version 1 to 2 migration: results without the v2 shape (no embeddings) are deleted, so those pictures are checked
  * again once; the people store is created empty. A row is keyed by
- * scope + ':' + id (scope 'drive' for Files files, 'gallery' for Gallery photos) and holds the stamp it was
+ * scope + ':' + id (scope 'drive' for files in Files, 'gallery' for Gallery photos) and holds the stamp it was
  * detected for: a Drive file's modified time, or a photo's SHA-256. A row whose stamp or model differs from the
  * picture's is treated as missing, so an edited picture is detected again. It is derived data: it can be deleted at any
  * time. Every access is in try/catch; when storage is blocked the rows live in memory for this page only.

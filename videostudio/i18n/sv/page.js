@@ -58,7 +58,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'videoedit.io.open_failed': 'Kunde inte öppna projektet: {error}',
   'videoedit.io.replace_with': 'Ersätta det aktuella projektet med ”{name}”?',
   'videoedit.io.saved': 'Sparade {name}',
-  'videoedit.io.saved_drive': 'Sparade {name} i Files',
+  'videoedit.io.saved_drive': 'Sparade {name} i Filer',
   'videoedit.io.save_failed': 'Kunde inte spara: {error}',
   'videoedit.io.recording': 'Spelar in i realtid · {at} / {of}',
   'videoedit.io.reel_failed': 'Kunde inte öppna reelen: {error}',

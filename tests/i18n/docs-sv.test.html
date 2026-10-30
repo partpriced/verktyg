@@ -60,7 +60,7 @@
       await waitFor(() => /^Sida \d+ av \d+$/.test(doc.getElementById('pageInfo').textContent), { timeout: 10000 });
       expect(doc.querySelector('.ol-title').textContent).toBe('Disposition');
       expect(doc.querySelector('#docPanel').textContent).toContain('Ladda ned och skicka');
-      expect(W.TlbxCmd.get('file.save').title).toBe('Spara i Files');
+      expect(W.TlbxCmd.get('file.save').title).toBe('Spara i Filer');
       expect(W.TlbxCmd.get('outline.add').title).toBe('Lägg till avsnitt');
       const items = await menu(f, 'file');
       expect(items.join(' | ')).toContain('Ladda ned PDF (.pdf)');
@@ -95,7 +95,7 @@
       expect(doc.querySelector('#docPanel').textContent).toContain('Download and send');
       expect((await menu(f, 'file')).join(' | ')).toContain('Download PDF (.pdf)');
       I.set('sv');
-      await waitFor(() => menuNames(doc)[0] === 'Arkiv' && aria(doc, 'tbBold') === 'Fet' && W.TlbxCmd.get('file.save').title === 'Spara i Files', { timeout: 20000 });
+      await waitFor(() => menuNames(doc)[0] === 'Arkiv' && aria(doc, 'tbBold') === 'Fet' && W.TlbxCmd.get('file.save').title === 'Spara i Filer', { timeout: 20000 });
       expect(KEY.test(visible(doc))).toBe(false);
     });
 

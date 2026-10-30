@@ -10,7 +10,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'pdf.cmd.group_panels': 'Paneler',
 
   'pdf.cmd.file_open': 'Öppna PDF:er eller bilder…',
-  'pdf.cmd.file_drive': 'Öppna från Files…',
+  'pdf.cmd.file_drive': 'Öppna från Filer…',
   'pdf.cmd.file_sample': 'Prova exempel-PDF:en',
   'pdf.cmd.file_fonts': 'Teckensnitt…',
   'pdf.cmd.file_extract_assets': 'Extrahera allt…',

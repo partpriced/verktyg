@@ -3,7 +3,7 @@
  * so the assistant, the panel and the Workflows step mean the same by each. ES module, loaded by TlbxCmd.prepare().
  *   diff.ai.new-comparison   new_comparison   (none)                      clears both sides
  *   diff.ai.add-text         add_text         side, text, name?           a text as A or B
- *   diff.ai.add-file         add_file         side, file | url            a Files file (or a file on this site)
+ *   diff.ai.add-file         add_file         side, file | url            a file from Files (or a file on this site)
  *   diff.ai.set-options      set_options      the OPTIONS keys            view, ignore whitespace and case, CSV key…
  *   diff.ai.compare          compare          (none)                      runs it; the summary and the first changes
  *   diff.ai.list-changes     list_changes     limit                       read only

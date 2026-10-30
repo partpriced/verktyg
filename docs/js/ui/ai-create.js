@@ -75,7 +75,7 @@ export function commands(add) {
     return `Added a table of ${t.rows.length} rows × ${t.cols.length} columns.`;
   }, { description: 'Add a table from rows of cell texts.' }); // i18n-ignore: assistant tool text (API)
 
-  add('insert_image', 'Insert picture', [Str('file', 'a Files file name or id', { maxLength: 300 }), Str('url', 'or the address of a picture on this site', { maxLength: 500 }),
+  add('insert_image', 'Insert picture', [Str('file', 'a file from Files name or id', { maxLength: 300 }), Str('url', 'or the address of a picture on this site', { maxLength: 500 }),
     { name: 'width', type: 'number', min: 8, max: 2000, description: 'width in points (the text column is about 450); the picture\'s own size when empty' },
     Str('alt', 'a short description', { maxLength: 300 }), WHERE],
   async (a) => {

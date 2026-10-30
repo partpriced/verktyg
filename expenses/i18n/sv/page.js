@@ -24,7 +24,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'expenses.page.mileage': 'Milersättning…',
   'expenses.page.back': '← Utgifter',
   'expenses.page.receipt': 'Från ett kvitto…',
-  'expenses.page.receipt_note': 'Ta eller välj ett foto av kvittot: det läses på den här enheten och sparas i Files.',
+  'expenses.page.receipt_note': 'Ta eller välj ett foto av kvittot: det läses på den här enheten och sparas i Filer.',
   'expenses.page.date': 'Datum',
   'expenses.page.supplier': 'Leverantör',
   'expenses.page.description': 'Beskrivning',

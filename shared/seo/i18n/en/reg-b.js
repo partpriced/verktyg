@@ -161,7 +161,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.reg.drive.features.2': 'Duplicate finder',
   'seo.reg.drive.features.3': 'One-file backup & restore',
   'seo.reg.code.title': 'Code Editor',
-  'seo.reg.code.tagline': 'A code editor for your Files files. Nothing uploaded.',
+  'seo.reg.code.tagline': 'A code editor for your files in Files. Nothing uploaded.',
   'seo.reg.code.features.0': 'JavaScript, TypeScript, HTML, CSS, JSON, Markdown and Python',
   'seo.reg.code.features.1': 'Completion, search and replace, multiple cursors',
   'seo.reg.code.features.2': 'Saves back to Files, with autosaved drafts',

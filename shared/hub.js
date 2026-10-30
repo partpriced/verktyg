@@ -215,7 +215,7 @@
     return loaded.get(rel);
   }
   const picker = () => loadScript('shared/drive/picker.js').then(() => window.TlbxDrivePicker);
-  /** A Files file picker with folder navigation. Resolves with a record or null. */
+  /** A file in Files picker with folder navigation. Resolves with a record or null. */
   const pickFromDrive = (opts = {}) => picker().then((p) => p.pickFile(opts)).catch((e) => { console.warn(e); if (window.TlbxUI) TlbxUI.toast(word('ui.no_drive')); return null; });
   /** Choose a Drive folder. Resolves with a folder id, null for the root, or undefined if cancelled. */
   const pickFolder = (opts = {}) => picker().then((p) => p.pickFolder(opts));

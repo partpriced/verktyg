@@ -32,7 +32,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'expenses.ed.receipt': 'Kvitto',
   'expenses.ed.view_receipt': 'Visa kvittot',
   'expenses.ed.no_receipt': 'Kvittot hittades inte',
-  'expenses.ed.no_receipt_body': 'Fotot finns inte längre i Files.',
+  'expenses.ed.no_receipt_body': 'Fotot finns inte längre i Filer.',
   'expenses.ed.bad_amount': 'Belopp: skriv vad som betalades, till exempel 24,00.',
   'expenses.ed.bad_tax': 'Moms: skriv ett belopp som 4,00, eller lämna tomt.',
   'expenses.ed.recorded_toast': 'Utgiften från {name} är registrerad',

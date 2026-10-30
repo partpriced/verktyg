@@ -8,7 +8,7 @@
   var F = SS.aiFiles = {};
 
   F.commands = function (add, h) {
-    add('add_image', 'Add picture', [h.SLIDE, h.Str('file', 'a Files file name or id (list_files)', { maxLength: 300 }), // i18n-ignore
+    add('add_image', 'Add picture', [h.SLIDE, h.Str('file', 'a file from Files name or id (list_files)', { maxLength: 300 }), // i18n-ignore
       h.Str('url', 'or the address of a picture on this site, e.g. /assets/logo.png', { maxLength: 500 }), h.Str('name', 'object name', { maxLength: 120 })].concat(h.BOX), // i18n-ignore
     async function (a) {
       var t = h.slideAt(a.slide), f = await TlbxCmdSources.picture({ file: a.file, url: a.url }), url = f.dataUrl, sz = { w: f.w, h: f.h }, d = A.deck;

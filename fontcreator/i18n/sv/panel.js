@@ -92,7 +92,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'fontcreator.more.format_note': 'WOFF2 och WOFF är för webbplatser; TTF och OTF installeras på en dator.',
   'fontcreator.more.css': 'Kopiera CSS @font-face',
   'fontcreator.more.download': 'Ladda ned teckensnitt (.{ext})',
-  'fontcreator.more.drive': 'Spara i Files…',
+  'fontcreator.more.drive': 'Spara i Filer…',
   'fontcreator.more.save_project': 'Spara projekt',
   'fontcreator.more.save_failed': 'Kunde inte spara: {error}',
   'fontcreator.more.open_in': 'Öppna i…',

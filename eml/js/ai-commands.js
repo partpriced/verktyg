@@ -23,7 +23,7 @@
   async function driveFile(q) {
     const H = window.TlbxHub, s = String(q).toLowerCase(), all = await H.list();   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
     const hit = all.find((f) => f.id === q) || all.find((f) => f.name.toLowerCase() === s) || all.find((f) => f.name.toLowerCase().includes(s));
-    if (!hit) throw new Error(`No Files file “${q}”`);
+    if (!hit) throw new Error(`No file in Files “${q}”`);
     return H.get(hit.id);
   }
   /** A message's own file as header entries (folded lines kept) and the body, as bin strings (one char per byte). */
@@ -105,13 +105,13 @@
     const nd = rewrite(d, hs, body, eol);
     return `Added ${text} to ${a.field.toUpperCase()} of “${nd.summary.subject || nd.name}”.`;
   }, { description: 'Add an address to the To, Cc or Bcc of a message (its .eml file is rewritten; export_messages with format eml saves it).' });
-  add('add_attachment', 'Attach a Files file', [S('file', 'Files name or id', { required: true }), S('name', 'the attachment\'s name; the file\'s own when empty'), MSG], async (a) => {
+  add('add_attachment', 'Attach a file from Files', [S('file', 'Files name or id', { required: true }), S('name', 'the attachment\'s name; the file\'s own when empty'), MSG], async (a) => {
     const d = find(a.message), rec = await driveFile(a.file), name = a.name || rec.name;
     const type = window.EmlBatch.typeOf(name, rec.blob.type || 'application/octet-stream');
     const { hs, body, eol } = partsOf(d), part = attachmentPart(new Uint8Array(await rec.blob.arrayBuffer()), name, type, eol);
     const nd = rewrite(d, hs, withPart(hs, body, eol, part), eol);
     return `Attached ${name} (${rec.blob.size} bytes) to “${nd.summary.subject || nd.name}”; it has ${nd.attachments.length} attachment(s) now.`;
-  }, { description: 'Attach a Files file to a message (its .eml file is rewritten; export_messages with format eml saves it).' });
+  }, { description: 'Attach a file from Files to a message (its .eml file is rewritten; export_messages with format eml saves it).' });
   add('select_message', 'Show a message', [Object.assign({}, MSG, { required: true })], (a) => { const d = find(a.message); A().select(d.id); return `Showing “${d.summary.subject || d.name}”.`; });
   add('search_messages', 'Search the messages', [S('query', 'words in the subject, sender, text…', { default: '' })], (a) => {
     A().setList({ query: a.query }); return `${A().visible().length} message(s) match.`;

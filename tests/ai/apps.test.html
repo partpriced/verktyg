@@ -46,7 +46,7 @@
       const t = toolsWith(opened);
       const a = await K.tools.dispatch({ name: 'open_app', arguments: { id: 'vector', file: 'no-such-file.svg' } }, t);
       const b = await K.tools.dispatch({ name: 'open_app', arguments: { id: 'nope', file: 'poster.svg' } }, t);
-      expect(a.ok).toBe(false); expect(a.error).toMatch(/No Files file/);
+      expect(a.ok).toBe(false); expect(a.error).toMatch(/No file in Files/);
       expect(b.ok).toBe(false); expect(b.error).toMatch(/No app/);
       expect(opened.length).toBe(0);
     });
@@ -93,7 +93,7 @@
       $('#appsLaunch .app-row[data-app="pdf"] .app-more').click();
       await waitFor(() => D.querySelector('.sui-menu'));
       const items = $$('.sui-menu .sui-lbl').map((x) => x.textContent);
-      expect(items).toContain('Open a Files file in it…');
+      expect(items).toContain('Open a file from Files in it…');
       [...D.querySelectorAll('.sui-row')].find((r) => r.textContent.includes('Open in a new tab')).click();
       expect(W.__opened.pop()).toMatch(/\/pdf\/$/);
     });

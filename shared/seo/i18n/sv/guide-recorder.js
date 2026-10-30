@@ -19,7 +19,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.recorder.getting-started.sections.2.h2': 'Trimma och spara',
   'seo.guide.recorder.getting-started.sections.2.steps.0': 'Spela upp inspelningen i spelaren. Under Trimma flyttar du Start och Slut, eller trycker på Börja vid uppspelningshuvudet och Sluta vid uppspelningshuvudet.',
   'seo.guide.recorder.getting-started.sections.2.steps.1': 'Under Spara som väljer du WebM (som inspelad), MP4 eller GIF; en inspelning med bara ljud sparas som WebM eller WAV.',
-  'seo.guide.recorder.getting-started.sections.2.steps.2': 'Tryck på Ladda ned, Spara i Files eller Öppna i… för att skicka den till Video Editor eller en annan app.',
+  'seo.guide.recorder.getting-started.sections.2.steps.2': 'Tryck på Ladda ned, Spara i Filer eller Öppna i… för att skicka den till Video Editor eller en annan app.',
   'seo.guide.recorder.getting-started.sections.2.text.0': 'En WebM trimmas genom att den del du behåller spelas upp en gång i realtid. MP4 och GIF skapas av videomotorn, som laddas ned en gång (cirka 32 MB), på din enhet.',
   'seo.guide.recorder.getting-started.sections.2.tip': 'Öppna inspelning… i sidhuvudet öppnar en inspelning du gjort tidigare, så att du kan trimma den eller spara den i ett annat format.',
   'seo.guide.recorder.getting-started.shortcuts.0.1': 'Spela in eller stoppa inspelningen',

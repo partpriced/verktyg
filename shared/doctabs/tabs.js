@@ -261,7 +261,7 @@
         if (name === undefined) { startEdit(t); return Promise.resolve(null); }
         return renameTab(t, name);
       },
-      /** Record the Files file a tab is linked to (kept across reloads by session.js). */
+      /** Record the file in Files a tab is linked to (kept across reloads by session.js). */
       setDriveId(doc, id) { const t = find(doc); if (t) { t.driveId = id || null; emit('drive', t); } },
       /** After a save: the adapter's saved(doc) runs (clears the dirty state), then the strip is redrawn. */
       markSaved(doc) { if (find(doc)) { call('saved', doc); changed(doc); } },

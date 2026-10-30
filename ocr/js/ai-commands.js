@@ -69,7 +69,7 @@ C.register([
   Object.assign({ id: 'ocr.ai.new-document', tool: 'new_document', title: 'Start over', destructive: true, args: [], run: () => { notBusy(); P.clearAll(); return 'Cleared: add_files to start again.'; },
     description: 'Close every page and the text read from them.' }, base),
   Object.assign({ id: 'ocr.ai.add-files', tool: 'add_files', title: 'Add pictures or PDFs', destructive: false,
-    args: [{ name: 'files', type: 'array', maxItems: 100, items: { type: 'string' }, description: 'Files file names or ids (pictures or PDFs)' },
+    args: [{ name: 'files', type: 'array', maxItems: 100, items: { type: 'string' }, description: 'file in Files names or ids (pictures or PDFs)' },
       { name: 'urls', type: 'array', maxItems: 20, items: { type: 'string' }, description: 'or addresses of pictures on this site' }],
     run: addFiles, description: 'Open photos, scans or PDFs from Files to read their text.' }, base),
   Object.assign({ id: 'ocr.ai.read-text', tool: 'read_text', title: 'Read text', destructive: false, args: [], run: readText,

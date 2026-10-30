@@ -66,7 +66,7 @@
 
   const EDL_SCHEMA = { type: 'object', description: 'the edit decision list', properties: {
     name: { type: 'string' }, aspect: { type: 'string', enum: SV.edl.ASPECTS }, width: { type: 'integer' }, height: { type: 'integer' }, fps: { type: 'number' },
-    clips: { type: 'array', items: { type: 'object', properties: { source: { type: 'string', description: 'Files file id or name, or bin media id' }, in: { type: 'number' }, out: { type: 'number' }, dur: { type: 'number' }, start: { type: 'number' }, track: { type: 'integer' },
+    clips: { type: 'array', items: { type: 'object', properties: { source: { type: 'string', description: 'file in Files id or name, or bin media id' }, in: { type: 'number' }, out: { type: 'number' }, dur: { type: 'number' }, start: { type: 'number' }, track: { type: 'integer' },
       speed: { type: 'number' }, volume: { type: 'number' }, mute: { type: 'boolean' }, fadeIn: { type: 'number' }, fadeOut: { type: 'number' }, transition: { type: 'object', properties: { type: { type: 'string', enum: M.TRANSITIONS.map((t) => t[0]) }, dur: { type: 'number' } } } }, required: ['source'] } },
     titles: { type: 'array', items: { type: 'object', properties: { text: { type: 'string' }, start: { type: 'number' }, dur: { type: 'number' }, style: { type: 'string' }, font: { type: 'string' }, size: { type: 'number' }, color: { type: 'string' }, position: { type: 'string', enum: SV.edl.POSITIONS }, animation: { type: 'string' }, exit: { type: 'string' }, background: { type: 'string' } }, required: ['text', 'start'] } },
     captions: { type: 'object', properties: { srt: { type: 'string' }, source: { type: 'string' }, size: { type: 'number' }, position: { type: 'string' } } },
@@ -77,7 +77,7 @@
 
   AI.def([
     { id: 'cut.build', tool: 'build_from_edit_list', title: 'Build from an edit list…', group: 'Sequence', ok: 'Build',
-      description: 'Make a whole edit in one call from an edit decision list (JSON): clips (source = Files file id or name or bin media id, in/out in source seconds, optional track, start, speed, volume, fades, transition into the clip), titles (text, start, dur, style, font, size as a fraction of the height, colour, position top/center/bottom/lower-third, animation), captions (srt text or a Files subtitle file), music (source, volume, duck level), markers, aspect or width/height, reframe { aspect, focus }. Clips without start follow each other on their track. It replaces the timeline (one undo step). Example: ' + EXAMPLE,
+      description: 'Make a whole edit in one call from an edit decision list (JSON): clips (source = file in Files id or name or bin media id, in/out in source seconds, optional track, start, speed, volume, fades, transition into the clip), titles (text, start, dur, style, font, size as a fraction of the height, colour, position top/center/bottom/lower-third, animation), captions (srt text or a Files subtitle file), music (source, volume, duck level), markers, aspect or width/height, reframe { aspect, focus }. Clips without start follow each other on their track. It replaces the timeline (one undo step). Example: ' + EXAMPLE,
       args: [{ name: 'edit_list', type: 'json', required: true, maxLength: 600000, schema: EDL_SCHEMA }, { name: 'replace', type: 'boolean', default: true, description: 'replace the timeline (false adds to it)' }],
       run: async (a, ctx) => {
         const job = AI.job('Building the edit', ctx);

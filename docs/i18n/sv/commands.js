@@ -10,9 +10,9 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.cmd.group_outline': 'Disposition',
 
   'docs.cmd.file_new': 'Nytt dokument',
-  'docs.cmd.file_open': 'Öppna från Files…',
+  'docs.cmd.file_open': 'Öppna från Filer…',
   'docs.cmd.file_random': 'Slumpad mall…',
-  'docs.cmd.file_save': 'Spara i Files',
+  'docs.cmd.file_save': 'Spara i Filer',
   'docs.cmd.file_rename': 'Byt namn…',
   'docs.cmd.file_pdf': 'Ladda ned PDF (.pdf)',
   'docs.cmd.file_print': 'Skriv ut…',

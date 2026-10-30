@@ -1,4 +1,4 @@
-/* File gallery, Italian: the photo library page: side panel, grid, selection and Files files. Same keys as gallery/i18n/en/app.js. Terms: shared/i18n/glossary-it.md. */
+/* File gallery, Italian: the photo library page: side panel, grid, selection and files in Files. Same keys as gallery/i18n/en/app.js. Terms: shared/i18n/glossary-it.md. */
 window.TlbxI18n && window.TlbxI18n.add('it', {
   'gallery.app.filters': 'Filtri',
   'gallery.app.import_tip': 'Importa foto (Ctrl+O)',

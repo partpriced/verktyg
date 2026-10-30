@@ -54,7 +54,7 @@
       s.onerror = () => rej(new Error('Could not load ' + src));
       document.head.append(s);
     });
-    // shared/commands/sources.js finds Files files for add_files (ai-files.js)
+    // shared/commands/sources.js finds files in Files for add_files (ai-files.js)
     return (g.TlbxCmdSources ? Promise.resolve() : one('../shared/commands/sources.js')).then(() => one('js/app/ai-commands.js')).then(() => one('js/app/ai-files.js'));
   }
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: boot. Opens files through the one intake (shared/intake, spec 'sheetview': the Open buttons, a
+/* Spreadsheet Viewer: boot. Opens files through the one intake (shared/intake, spec 'sheetview': the Open buttons, a
  * drop, the sample, a paste, ?drive=<id> from Files, a PWA launch; several at once as tabs),
  * wires the header, the Export and Menu buttons, the commands, the table style choices and Open in Spreadsheet.
  * Module script; the classic scripts (apps, tlbxui, hub, drop, commands) load first.

@@ -1,4 +1,4 @@
-/* Background Remover — Send to Image Editor. Two results. "Send back" returns the mask of an image Image Editor sent here
+/* Background Remover — Send to Image Editor. Two results. "Send back" returns the mask of an image the Image Editor sent here
  * (Layer ▸ Isolate Subject): Image Editor makes it that layer's mask. "Send to Image Editor as a new layer" sends the
  * cut-out itself (PNG with alpha). Both go over the Hub bus to the Image Editor tab that is waiting for them.
  * If no tab answers, the mask is saved to Files as a grey PNG and the cut-out opens in a new ImageEditor tab. */

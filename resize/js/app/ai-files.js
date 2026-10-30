@@ -1,4 +1,4 @@
-/* Resizer for the assistant: the files around a run. new_batch (empties the list), add_files (Files files or
+/* Resizer for the assistant: the files around a run. new_batch (empties the list), add_files (files in Files or
  * pictures on this site, through the app's one way in, TlbxIntake.take, like a drop or Open from Files) and
  * save_results (the app's own Save to Files and Download all). Loaded on demand after ai-commands.js by
  * TlbxCmd.prepare() (commands.js); window.TlbxCmdSources (shared/commands/sources.js) finds the files.
@@ -47,7 +47,7 @@
       run: () => { notBusy(); const n = NS.queue.items().length; NS.queue.clear(); return `Emptied the list (${plural(n, 'file', 'files')} removed; originals and saved results stay).`; },
       description: 'Empty the list to start a new batch. Results not saved or downloaded are dropped.' }, base),
     Object.assign({ id: 'rs.ai.add-files', tool: 'add_files', title: 'Add files', destructive: false,
-      args: [{ name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'Files file names or ids' },
+      args: [{ name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'file in Files names or ids' },
         { name: 'urls', type: 'array', maxItems: 50, items: { type: 'string' }, description: 'or addresses of pictures on this site' }],
       run: addFiles, description: 'Add pictures or videos from Files to the list.' }, base),
     Object.assign({ id: 'rs.ai.save-results', tool: 'save_results', title: 'Save the results', destructive: false,

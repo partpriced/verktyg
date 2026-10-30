@@ -2,7 +2,7 @@
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'upscale.tour.title': 'Rundtur i Upscaler',
   'upscale.tour.open_title': 'Öppna',
-  'upscale.tour.open_text': 'Öppna en bild eller video från den här datorn, eller från Files.',
+  'upscale.tour.open_text': 'Öppna en bild eller video från den här datorn, eller från Filer.',
   'upscale.tour.picture_title': 'Bild',
   'upscale.tour.picture_text': 'Din bild visas här, före och efter uppskalningen.',
   'upscale.tour.scale_title': 'Skala',

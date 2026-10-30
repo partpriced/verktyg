@@ -35,7 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'gallery.viewer.from_drive': 'Imported from Files',
   'gallery.viewer.from_device': 'Imported from this device',
   'gallery.viewer.remove_title': 'Remove photo',
-  'gallery.viewer.remove_body': 'Remove “{name}” from Gallery? Its Files file, if it has one, is kept.',
+  'gallery.viewer.remove_body': 'Remove “{name}” from Gallery? Its file in Files, if it has one, is kept.',
 
   'gallery.reel.title': 'Make reel',
   'gallery.reel.making': 'Making your reel…',

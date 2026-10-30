@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: the filter popover opened from a column's filter button. A list of the column's distinct values
+/* Spreadsheet Viewer: the filter popover opened from a column's filter button. A list of the column's distinct values
  * (with a search box, Select all and Clear), an optional "contains" text and an optional number test (greater or less).
  * Apply hands a filter object to onApply; Remove filter hands an empty one. Escape or a click outside cancels. */
 import { distinctValues, emptyFilter, isActiveFilter } from '../../shared/sheets/query.js';

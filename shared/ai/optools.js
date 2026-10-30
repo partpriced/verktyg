@@ -113,7 +113,7 @@
         } },
       { name: 'run_operation', label: (a) => T('ui.ai.step.run_op', { op: String(a.operation), files: [...[].concat(a.files || []), ...(a.input && a.input.name ? [a.input.name] : a.input ? [T('ui.ai.step.the_input')] : [])].join(', ') }),
         description: 'Run a file operation (id from find_tools or list_operations) on files, or on an input written in the call (e.g. an outline → a presentation). New files go to Files on this device.',
-        params: { operation: { type: 'string', description: 'operation id from list_operations', required: true }, files: { type: 'array', description: 'Files file names, or "open"' }, input: { type: 'object', description: '{ name, text | json }: an input written here instead of a file' }, options: { type: 'object', description: 'the operation\'s options' } },
+        params: { operation: { type: 'string', description: 'operation id from list_operations', required: true }, files: { type: 'array', description: 'file in Files names, or "open"' }, input: { type: 'object', description: '{ name, text | json }: an input written here instead of a file' }, options: { type: 'object', description: 'the operation\'s options' } },
         schema: { type: 'object', properties: { operation: { type: 'string', description: 'operation id from list_operations' }, files: FILES, input: INPUT, options: { type: 'object', description: 'its options (list_operations with a query shows them)' } }, required: ['operation'] },
         run: async (a) => {
           const { R } = await mods(), op = R.byId(String(a.operation));
@@ -123,7 +123,7 @@
         } },
       { name: 'run_workflow', label: (a) => T('ui.ai.step.run_flow', { name: (a.workflow && a.workflow.name) || '' }).trim(),
         description: 'Run a Workflows document on files: { kind: "tlbxflow", v: 1, name, steps: [{ kind: "op", id, options }] }, or workflow_text (a .tlbxflow file\'s text). Each step\'s files go to the next; the results are saved to Files.',
-        params: { workflow: { type: 'object', description: 'the .tlbxflow document' }, workflow_text: { type: 'string', description: 'or the text of a .tlbxflow file' }, files: { type: 'array', description: 'Files file names, or "open"' }, input: { type: 'object', description: '{ name, text | json }: an input written here instead of a file' } },
+        params: { workflow: { type: 'object', description: 'the .tlbxflow document' }, workflow_text: { type: 'string', description: 'or the text of a .tlbxflow file' }, files: { type: 'array', description: 'file in Files names, or "open"' }, input: { type: 'object', description: '{ name, text | json }: an input written here instead of a file' } },
         schema: { type: 'object', properties: { workflow: { type: 'object', description: 'the .tlbxflow document' }, workflow_text: { type: 'string', description: 'or the text of a .tlbxflow file' }, files: FILES, input: INPUT } },
         run: (a) => runFlow(a.workflow || a.workflow_text, a.files, env, a.input) },
     ];

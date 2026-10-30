@@ -131,7 +131,7 @@ Without it the item reads `'ui.outtake.open_in'`. An app's plain item carries `p
 
 In the apps listed in `STRICT` (in tools/one-way.mjs: every folder in the Migrated list below), app code may not add a
 `drop` or `paste` listener, call `pickFiles`, make a file input, read ?drive= (`consumeLaunch`) or `launchQueue`, call
-`pickFromDrive`, list Files files with `TlbxHub.list` (a picker of its own; a library view or a lookup by name
+`pickFromDrive`, list files in Files with `TlbxHub.list` (a picker of its own; a library view or a lookup by name
 says `intake-ok:`), or build an "Open in"/"Send to" list by hand. A line that must stay (a tab dragged to a new place, text
 pasted into a field) says why with an `// intake-ok: …` comment. When an app below is migrated, add its folder to
 `STRICT`.
@@ -222,7 +222,7 @@ pasted into a field) says why with an `// intake-ok: …` comment. When an app b
   file, ?drive= launch and launchQueue. The reader waits for the tabs (`before: whenTabs`), and a launch that opens
   replaces the blank tab; a zero-byte .stab (Drive's New) is taken (`allowEmpty`). The grid's own paste is only cells and
   text. Import a template (file or Files) is the part's pick / fromDrive. `tests/intake/tables.test.html`.
-- **Spreadsheet Viewer viewer** (`sheetview/js/main.js`, spec `sheetview`): Open spreadsheet… (both buttons, Ctrl+O), a drop,
+- **Spreadsheet Viewer** (`sheetview/js/main.js`, spec `sheetview`): Open spreadsheet… (both buttons, Ctrl+O), a drop,
   the sample (`TlbxIntake.sample`), a paste (new), ?drive= launch and launchQueue, and the test hook. A file that fails
   is refused with its reason (was an alert per file). Out: Open current sheet in Spreadsheet is `TlbxOuttake.send`.
   `tests/intake/sheetview.test.html`.
@@ -240,7 +240,7 @@ pasted into a field) says why with an `// intake-ok: …` comment. When an app b
   ?drive= launch and launchQueue (the reader waits for the tabs). A file already open is refused.
   `tests/intake/hex.test.html`.
 - **Code Editor** (`code/js/main.js`, spec `code`): Open from Files, ?drive= launch and launchQueue, a drop on the
-  editor (new) and a paste (new); Code Editor edits Files files, so a file from this device is put in Files (the
+  editor (new) and a paste (new); Code Editor edits files in Files, so a file from this device is put in Files (the
   folder chosen in the tree) and opened from there. The page now loads shared/intake. The tree's drag of rows stays
   (`intake-ok`). Out: a file that is not text offers `TlbxOuttake.items({ id })` (the record opens in the app, no copy;
   its bytes are read from Files when an item needs them). `tests/intake/code.test.html`.
@@ -311,7 +311,7 @@ pasted into a field) says why with an `// intake-ok: …` comment. When an app b
   `ai.launch`): the attach menu (this computer, Files), a drop on the messages, a paste (new), ?drive= launch and
   launchQueue (a picture is refused with the reason). Import a conversation and Open a chat from Files (linked) are
   `ai.conv`; the model folder fallback (no directory picker) is `ai.model` (`pick({ folder: true })`); the Apps list's
-  "Open a file from this computer / a Files file in it" is `ai.launch`, which sends through `TlbxOuttake.send`.
+  "Open a file from this computer / a file from Files in it" is `ai.launch`, which sends through `TlbxOuttake.send`.
   The page now loads shared/intake. `tests/intake/ai.test.html`.
 - **Projects** (`projects/js/ui/files.js`, spec `projects`, one .json backup): Open a backup, the empty page's zone
   (a drop, its Choose files, the sample: `TlbxIntake.sample`), Try a sample project and a paste (new).

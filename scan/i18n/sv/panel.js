@@ -41,7 +41,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'scan.cmd.add': 'Lägg till foton',
   'scan.cmd.pdf': 'Ladda ned PDF:en',
   'scan.cmd.to_pdf': 'Öppna PDF:en i PDF Editor',
-  'scan.cmd.drive': 'Spara PDF:en i Files',
+  'scan.cmd.drive': 'Spara PDF:en i Filer',
   'scan.cmd.jpg': 'Spara sidorna som JPG',
   'scan.cmd.png': 'Spara sidorna som PNG',
   'scan.cmd.corners': 'Visa eller dölj hörnen',

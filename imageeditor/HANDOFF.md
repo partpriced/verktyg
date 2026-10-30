@@ -159,7 +159,7 @@ Desktop 1440×900 and phone 390×844 in Chromium, zero console errors: guide pan
 
 ## Files (shared storage)
 
-- **Save (Ctrl+S)** writes the layered PSD back to the Files file the tab was opened from (`CUR.driveId`, via `TlbxHub.update`, falling back to `put` with the same id). The first save asks for a folder. `File ▸ Download as Photoshop (.psd)` keeps the old download; `Save PNG to Files` still adds a copy.
+- **Save (Ctrl+S)** writes the layered PSD back to the file in Files the tab was opened from (`CUR.driveId`, via `TlbxHub.update`, falling back to `put` with the same id). The first save asks for a folder. `File ▸ Download as Photoshop (.psd)` keeps the old download; `Save PNG to Files` still adds a copy.
 - **File ▸ Open from Files…**, `?drive=<id>` launch (`hubBoot` → `openRecordTab`, which links the new tab), and `TlbxHub.register('imageeditor')` on boot.
 - Paint Classic (`classic/`): `hub.js` overrides `ACTIONS.save` (PNG written back to the linked Drive file) and adds `File ▸ Open from Files…`; it registers as `paint-classic` and opens `?drive=` launches. Offline and without `TlbxHub`, Save downloads as before.
 

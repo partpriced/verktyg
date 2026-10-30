@@ -60,7 +60,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'ui.appdesc.ledger': 'Double-entry books with a chart of accounts, journal, trial balance and foreign currency.',
   'ui.appdesc.admin': 'Set up your company profile, numbering and currency, and make validated backups or restores.',
   'ui.appdesc.drive': 'One local drive for the files from every app, with folders, search, duplicates and one-file backup.',
-  'ui.appdesc.code': 'A code editor for your Files files, with highlighting, search, and a sandboxed HTML preview.',
+  'ui.appdesc.code': 'A code editor for your files in Files, with highlighting, search, and a sandboxed HTML preview.',
   'ui.appdesc.gallery': 'Browse your photo library by timeline and album, sort photos, and find exact duplicates.',
   'ui.appdesc.3d': 'Build simple 3D models and scenes with primitives, materials and lights, and render PNG images.',
   'ui.appdesc.music': 'Play the audio in your Files, with playlists, waveform seek, shuffle and repeat.',

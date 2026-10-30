@@ -10,7 +10,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'drive.folder.save_body': 'Save the ITpris Verktyg settings as {file} in "{name}". You can load them back from this folder later. Nothing is sent anywhere.',
   'drive.folder.save_config': 'Save config',
   'drive.folder.not_now': 'Not now',
-  'drive.folder.writing': 'Writing Files files to “{name}”…',
+  'drive.folder.writing': 'Writing files in Files to “{name}”…',
   'drive.folder.connected': 'Connected “{name}”',
   'drive.folder.not_saved': 'Config not saved',
   'drive.folder.saved_in': 'Saved {name} in the folder',

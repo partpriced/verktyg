@@ -61,8 +61,8 @@
     const who = env.who || T('ui.ai.the_provider');
     return {
       name: 'look_at_file', maxChars: MAX_CHARS + 400,
-      description: `Look at a picture or read a text file: a Files file (name or id from list_files), or "open" for what this app has open. The person is asked each time; a picture comes as a small copy (at most ${MAX_PX} px).`,
-      params: { file: { type: 'string', description: 'Files file name or id, or "open"', required: true } },
+      description: `Look at a picture or read a text file: a file from Files (name or id from list_files), or "open" for what this app has open. The person is asked each time; a picture comes as a small copy (at most ${MAX_PX} px).`,
+      params: { file: { type: 'string', description: 'file in Files name or id, or "open"', required: true } },
       destructive: true, kind: () => 'send',   // not destructive: it sends a copy out, so it needs approval (its own kind)
       confirmTitle: () => T('ui.ai.step.send_copy_q', { who }),
       confirmText: (a) => T(/^(open|current|this|app)$/i.test(String(a.file || '').trim()) ? 'ui.ai.step.look_open' : 'ui.ai.step.look_file', { file: String(a.file), px: String(MAX_PX), chars: MAX_CHARS, who }),

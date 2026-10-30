@@ -84,5 +84,5 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'docs.tour.page_title': 'Sida',
   'docs.tour.page_text': 'Dina sidor. Skriv direkt på dem.',
   'docs.tour.save_title': 'Spara',
-  'docs.tour.save_text': 'Spara i Files (Ctrl+S).',
+  'docs.tour.save_text': 'Spara i Filer (Ctrl+S).',
 });

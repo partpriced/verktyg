@@ -15,7 +15,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'imageeditor.fx.noun_preset': 'en effektförinställning (.tlbx.json)',
   'imageeditor.fx.imported': 'Importerad.',
   'imageeditor.fx.delete_preset': 'Ta bort förinställning',
-  'imageeditor.fx.delete_ask': 'Vill du ta bort ”{name}”? Den tas bort från Files för alla appar.',
+  'imageeditor.fx.delete_ask': 'Vill du ta bort ”{name}”? Den tas bort från Filer för alla appar.',
   'imageeditor.fx.picker_help': 'Välj en förinställning för att förhandsgranska den på lagret. Tillämpa behåller den som ett steg att ångra.',
   'imageeditor.fx.apply_preset': 'Tillämpa effektförinställning',
   'imageeditor.fx.step_apply_preset': 'Tillämpa förinställning: {name}',

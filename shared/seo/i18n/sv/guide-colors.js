@@ -22,6 +22,6 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.colors.getting-started.sections.3.text.0': 'Skriv en textfärg och en bakgrund, eller använd Använd som textfärg och Använd som bakgrund i panelen. Kvoten och WCAG-nivåerna visas direkt, och Justera textfärgen hittar den närmaste färgen som klarar AA.',
   'seo.guide.colors.getting-started.sections.4.h2': 'Exportera och spara',
   'seo.guide.colors.getting-started.sections.4.steps.0': 'Ge paletten ett namn och välj ett Format under Exportera.',
-  'seo.guide.colors.getting-started.sections.4.steps.1': 'Klicka på Ladda ned palett, Kopiera kod eller Spara i Files…; Öppna i… skickar filen till en annan app.',
+  'seo.guide.colors.getting-started.sections.4.steps.1': 'Klicka på Ladda ned palett, Kopiera kod eller Spara i Filer…; Öppna i… skickar filen till en annan app.',
   'seo.guide.colors.getting-started.sections.4.steps.2': 'Öppna en palett igen genom att släppa dess .gpl-, .ase-, .json- eller .css-fil på sidan.',
 });

@@ -62,7 +62,7 @@
       expect(W.TlbxTranscribe.queue.items.map((x) => x.name)).toEqual(['Team meeting.mp3', 'Team meeting.mp3']);
       const bad = await S.exec('tr.add-from-drive', { id: 'no-such-id' });
       expect(bad.ok).toBe(false);
-      expect(bad.error).toContain('No Files file “no-such-id”');   // shared/commands/sources.js says it
+      expect(bad.error).toContain('No file in Files “no-such-id”');   // shared/commands/sources.js says it
     });
 
     it('state() lists the files with their ids, status and the selection', async () => {

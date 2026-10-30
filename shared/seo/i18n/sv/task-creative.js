@@ -176,7 +176,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.resize.bulk-image-resizer.faq.2.0': 'Laddas mina foton upp?',
   'seo.task.resize.bulk-image-resizer.faq.2.1': 'Nej. Varje bild avkodas, ändras i storlek och kodas i din webbläsare.',
   'seo.task.resize.bulk-image-resizer.faq.3.0': 'Kan jag spara mina inställningar till nästa gång?',
-  'seo.task.resize.bulk-image-resizer.faq.3.1': 'Ja. Spara inställningarna som en förinställning; de sparas i Files, eller i den här webbläsaren utan det.',
+  'seo.task.resize.bulk-image-resizer.faq.3.1': 'Ja. Spara inställningarna som en förinställning; de sparas i Filer, eller i den här webbläsaren utan det.',
   'seo.task.resize.compress-image-to-100kb.crumb': 'Komprimera bild till 100 KB',
   'seo.task.resize.compress-image-to-100kb.title': 'Komprimera en bild till 100 KB (eller valfri gräns), gratis',
   'seo.task.resize.compress-image-to-100kb.description': 'Gör ett foto mindre än 100 KB, 200 KB eller annan gräns för ett formulär, en uppladdning eller ett mejl. Resizer hittar rätt kvalitet. Gratis i webbläsaren.',

@@ -1,11 +1,11 @@
 /* Page Layout, Swedish: opening, placing, saving, Files and the offline copy (io/).
  * Rules: shared/i18n/APPS-HOWTO.md, shared/i18n/glossary-sv.md. */
 window.TlbxI18n && window.TlbxI18n.add('sv', {
-  'press.io.saved_drive': 'Sparade {name} till Files',
+  'press.io.saved_drive': 'Sparade {name} till Filer',
   'press.io.send_pdf_to': 'Skicka PDF till {app}',
   'press.io.send_png_to': 'Skicka sidan som PNG till {app}',
-  'press.io.open_drive_title': 'Öppna från Files',
-  'press.io.place_drive_title': 'Montera från Files',
+  'press.io.open_drive_title': 'Öppna från Filer',
+  'press.io.place_drive_title': 'Montera från Filer',
   'press.io.intake_noun': 'en bild, text, PDF, ett teckensnitt eller en .slpress-fil',
   'press.io.placed_text': 'Monterade text: lade till {n} sidor',
   'press.io.placed_text#one': 'Monterade text: lade till {n} sida',

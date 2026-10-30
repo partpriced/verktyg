@@ -1,7 +1,7 @@
 /* TlbxAgentTools: turns provider-neutral tool definitions into WebMCP tools. Pure (no DOM): window.TlbxAgentTools on
  * pages, a CommonJS module for Node tests. The definitions are the one tool list (shared/ai/apptools.js appTools.build:
  * the app's TlbxCmd commands with args, ai: false left out, app_state, list_commands, run_command, the operations, the
- * Files files) through cmdTools.neutral (shared/ai/cmdtools.js), plus shared/agent/workspace.js.
+ * files in Files) through cmdTools.neutral (shared/ai/cmdtools.js), plus shared/agent/workspace.js.
  * A neutral definition (cmdTools.neutral's shape): { name, title?, description, inputSchema, readOnly?, mayDestroy?, untrusted? (it returns the person's own content),
  *   destructive?: bool | fn(input),
  *   confirmText?(input), run(input) → value }.

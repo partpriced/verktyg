@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer, Traditional Chinese (Taiwan): the page, the look and send panel, the filters and the messages. Same keys as sheetview/i18n/en/app.js. Terms: shared/i18n/glossary-zh-TW.md. */
+/* Spreadsheet Viewer, Traditional Chinese (Taiwan): the page, the look and send panel, the filters and the messages. Same keys as sheetview/i18n/en/app.js. Terms: shared/i18n/glossary-zh-TW.md. */
 window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'sheetview.app.home': 'ITpris Verktyg 首頁',
   'sheetview.app.open': '開啟',

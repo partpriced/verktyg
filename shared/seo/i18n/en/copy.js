@@ -118,7 +118,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.app.admin.description': 'Set your company profile and default currency, use numbering that only moves forward, and make a validated full backup or restore.',
   'seo.app.drive.title': 'Files: every file from every app in one drive | ITpris',
   'seo.app.drive.description': 'One local drive for the files from every ITpris Verktyg app, with folders, stars, Trash, several views, a duplicate finder and backup.',
-  'seo.app.code.title': 'Code Editor: a code editor for your Files files | ITpris',
+  'seo.app.code.title': 'Code Editor: a code editor for your files in Files | ITpris',
   'seo.app.code.description': 'Edit JavaScript, TypeScript, HTML, CSS, JSON, Markdown and Python in your browser, with completion, multiple cursors and a sandboxed preview.',
   'seo.app.gallery.title': 'Gallery: your photo library on this device | ITpris',
   'seo.app.gallery.description': 'A photo library that stays on this device, with a timeline, albums, favourites, a sort mode, an exact duplicate finder and backup.',

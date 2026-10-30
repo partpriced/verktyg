@@ -200,7 +200,7 @@
       return `${lay.id}: ${done.join(', ')}.`;
     }), { description: 'Rename, hide or show a layer, change its text, font, size or colour, or parent it to another layer.' });
 
-    add('add_media_from_drive', 'Add media from Files by id', 'Layer', [T('drive_id', 'the Files file id'), T('name', 'or a part of the file name')], (a) => ops.addMedia(a),
+    add('add_media_from_drive', 'Add media from Files by id', 'Layer', [T('drive_id', 'the file in Files id'), T('name', 'or a part of the file name')], (a) => ops.addMedia(a),
       { palette: () => io.importFromDrive(), description: 'Add an image or video from Files as a new layer, by its file id or name.' });
 
     add('render', 'Render to Files', 'File', [E('format', ['webm', 'mp4', 'png'], 'webm', 'webm or mp4 video (real time), png: a zip of frames'), E('range', ['all', 'range'], 'all', 'range: only the play range'),

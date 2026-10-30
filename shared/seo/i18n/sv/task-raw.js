@@ -60,7 +60,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.resize.resize-raw-photos.steps.0': 'Släpp RAW-filer på Resizer. Varje fil mäts utifrån kamerans förhandsvisning, så listan fylls direkt.',
   'seo.task.resize.resize-raw-photos.steps.1': 'Välj en storlek, en procentsats, en längsta sida eller en gräns för filstorlek, och utdataformat.',
   'seo.task.resize.resize-raw-photos.steps.2': 'Ändra storlek. Varje RAW-fil framkallas med kamerans vitbalans, vänds rätt och skalas sedan om.',
-  'seo.task.resize.resize-raw-photos.steps.3': 'Ladda ned kopiorna en och en eller som en ZIP, eller spara dem i Files.',
+  'seo.task.resize.resize-raw-photos.steps.3': 'Ladda ned kopiorna en och en eller som en ZIP, eller spara dem i Filer.',
   'seo.task.resize.resize-raw-photos.faq.2.0': 'Kan jag ändra vitbalansen här?',
   'seo.task.resize.resize-raw-photos.faq.2.1': 'Nej. Resizer framkallar med den vitbalans som kameran registrerade. Vill du välja den själv använder du File Converter eller Image Editor.',
   'seo.task.resize.resize-raw-photos.faq.3.0': 'Vad händer om motorn inte är tillgänglig?',

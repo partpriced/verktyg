@@ -6,7 +6,7 @@
                                prefill() (the selected clip, the playhead): TlbxCmdForm, shared/commands/argform.js
      clip(id) / clips(list)    the clip (or clips) named: an id, 'selected', or a comma list; a plain error otherwise
      track(spec, kind)         'V2', 'A1', a track id or a number (video by default); missing V/A tracks are added
-     media(q)                  a bin item by id or name, else a Files file (id or name) imported into the bin
+     media(q)                  a bin item by id or name, else a file from Files (id or name) imported into the bin
      state()                   the small JSON the assistant reads (app_state): sequence, tracks, clips, media, markers
      job(title, ctx)           a long job: { set(f, text), signal (encode.js style), aborted(), close() } with a progress
                                dialog and Cancel, stopped too by ctx.signal (the AI panel's Stop, a workflow's cancel)
@@ -52,7 +52,7 @@
   /** A media item: bin id or name first, then Files (id or name), imported once. */
   AI.media = async function (q) {
     const s = String(q == null ? '' : q).trim();
-    if (!s) throw new Error('Name the media: a bin item (list_media) or a Files file id or name.');
+    if (!s) throw new Error('Name the media: a bin item (list_media) or a file from Files id or name.');
     const low = s.toLowerCase();
     const have = SE.doc.media.find((m) => m.id === s || m.driveId === s) || SE.doc.media.find((m) => m.name.toLowerCase() === low) || SE.doc.media.find((m) => U.baseName(m.name).toLowerCase() === low);
     if (have) { if (!SE.media.ready(have.id)) throw new Error(`${have.name} is not ready (${(SE.media.get(have.id) || {}).error || 'still loading'}).`); return have; }
@@ -72,7 +72,7 @@
       const f = all.find((x) => x.name.toLowerCase() === low) || all.find((x) => x.name.toLowerCase().includes(low));
       rec = f ? (f.blob ? f : await H.get(f.id)) : null;
     }
-    if (!rec || !rec.blob) throw new Error(`There is no Files file "${q}" (and no bin item of that name).`);
+    if (!rec || !rec.blob) throw new Error(`There is no file in Files "${q}" (and no bin item of that name).`);
     return rec;
   };
 

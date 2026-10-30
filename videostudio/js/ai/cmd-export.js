@@ -29,7 +29,7 @@
 
   AI.def([
     { id: 'cut.export', tool: 'export_video', title: 'Export video to Files…', group: 'File', prefill: () => ({ width: SE.doc.w, height: SE.doc.h }),
-      description: 'Render the edit to MP4 or WebM on this device (WebCodecs; long edits take a while and report progress; Stop cancels). The file is saved to Files (save_to_drive) and/or downloaded. Returns the Files file id, size, length and codec.',
+      description: 'Render the edit to MP4 or WebM on this device (WebCodecs; long edits take a while and report progress; Stop cancels). The file is saved to Files (save_to_drive) and/or downloaded. Returns the file in Files id, size, length and codec.',
       args: [{ name: 'format', type: 'enum', values: ['mp4', 'webm'], default: 'mp4' }, { name: 'aspect', type: 'enum', values: SV.edl.ASPECTS, description: 'a standard size; default the sequence size' },
         { name: 'width', type: 'number', min: 16, max: 7680, integer: true }, { name: 'height', type: 'number', min: 16, max: 4320, integer: true },
         { name: 'fps', type: 'number', min: 1, max: 60, integer: true, description: 'frames per second' }, { name: 'quality', type: 'enum', values: ['low', 'medium', 'high', 'max'], default: 'high' },

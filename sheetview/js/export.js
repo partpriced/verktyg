@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: export. The Export menu offers CSV, TSV and XLSX, each for the visible rows (after filter and
+/* Spreadsheet Viewer: export. The Export menu offers CSV, TSV and XLSX, each for the visible rows (after filter and
  * sort, current sheet) or for all rows. XLSX with all rows holds every sheet; with visible rows, the current sheet only.
  * Files are made in the browser and downloaded; nothing is uploaded. */
 import { csvBlob } from '../../shared/sheets/csv.js';

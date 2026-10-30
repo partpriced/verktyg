@@ -1,4 +1,4 @@
-/* Font Creator Creator, русский: страница, инструменты, операции с контуром, новый шрифт и форматы. Те же ключи, что в fontcreator/i18n/en/app.js. Термины: shared/i18n/glossary-ru.md. */
+/* Font Creator, русский: страница, инструменты, операции с контуром, новый шрифт и форматы. Те же ключи, что в fontcreator/i18n/en/app.js. Термины: shared/i18n/glossary-ru.md. */
 window.TlbxI18n && window.TlbxI18n.add('ru', {
   'fontcreator.app.subtitle': 'Создавайте шрифт в браузере: рисуйте, переводите рукописный текст в контуры или редактируйте шрифт. Ничего не отправляется.',
   'fontcreator.app.open': 'Открыть…',

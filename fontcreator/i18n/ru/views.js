@@ -1,4 +1,4 @@
-/* Font Creator Creator, русский: сетка глифов, операции с контуром, кернинг и проверка текста. Те же ключи, что в fontcreator/i18n/en/views.js. Термины: shared/i18n/glossary-ru.md. */
+/* Font Creator, русский: сетка глифов, операции с контуром, кернинг и проверка текста. Те же ключи, что в fontcreator/i18n/en/views.js. Термины: shared/i18n/glossary-ru.md. */
 window.TlbxI18n && window.TlbxI18n.add('ru', {
   'fontcreator.grid.show': 'Символы для показа',
   'fontcreator.grid.add_ph': 'Добавьте символы: введите и нажмите Enter',

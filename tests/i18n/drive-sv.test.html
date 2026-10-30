@@ -64,7 +64,7 @@
       expect(place(doc, 'starred')).toBe('Stjärnmärkta');
       expect(place(doc, 'trash')).toBe('Papperskorgen');
       expect(newLabel(doc)).toBe('Ny');
-      expect(doc.querySelector('#search').getAttribute('placeholder')).toBe('Sök i Files');
+      expect(doc.querySelector('#search').getAttribute('placeholder')).toBe('Sök i Filer');
       expect(doc.querySelector('.tree-h').textContent).toBe('Mappar');
       expect(doc.querySelector('#kind option').textContent).toBe('Alla');
       expect(doc.querySelector('#views [data-view="grid"]').getAttribute('title')).toBe('Rutnät (1)');

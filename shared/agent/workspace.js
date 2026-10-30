@@ -1,6 +1,6 @@
 /* TlbxAgentWorkspace: the two file tools a page adds for an agent beside the one tool list (shared/ai/apptools.js
  * appTools.build, which has list_files, read_file, save_to_drive, the operations of shared/ai/optools.js and the app's
- * commands): open_file (a Files file into this app, through TlbxIntake.take) and download. Classic script;
+ * commands): open_file (a file from Files into this app, through TlbxIntake.take) and download. Classic script;
  * window.TlbxAgentWorkspace. Files are Files ids or names (list_files), or "open" (what the app has open, the same
  * event the Convert dialog asks, shared/convert/provided.js). Nothing is uploaded.
  *   defs({ app, hub }) → [open_file?, download]   (open_file only where the app registered an intake spec)
@@ -10,7 +10,7 @@
   if (g.TlbxAgentWorkspace) return;
   const SCRIPT = document.currentScript;
   const ROOT = SCRIPT && SCRIPT.src ? new URL('../../', SCRIPT.src).href : new URL('/', location.href).href;
-  const FILE = { type: 'string', description: 'a Files file id or name from list_files, or "open" for what this app has open' };
+  const FILE = { type: 'string', description: 'a file from Files id or name from list_files, or "open" for what this app has open' };
 
   async function file(ref, hub = g.TlbxHub) {
     const q = String(ref || '').trim();
@@ -39,8 +39,8 @@
     ];
     const I = g.TlbxIntake;
     if (I && I.take && I.spec && I.spec()) list.unshift({ name: 'open_file',
-      description: `Open a Files file (id or name from list_files) in ${app}, the same way as opening it from Files. The app may ask the person whether to add it or start a new document.`,
-      inputSchema: { type: 'object', properties: { file: { type: 'string', description: 'a Files file id or name from list_files' } }, required: ['file'] },
+      description: `Open a file from Files (id or name from list_files) in ${app}, the same way as opening it from Files. The app may ask the person whether to add it or start a new document.`,
+      inputSchema: { type: 'object', properties: { file: { type: 'string', description: 'a file from Files id or name from list_files' } }, required: ['file'] },
       run: async (a) => {
         const f = await file(a.file, hub), s = await I.take([f.tlbxDrive || f], { source: f.tlbxDrive ? 'drive' : 'api' });
         if (s.added && s.added.length) return `Opened ${f.name} in ${app}.`;

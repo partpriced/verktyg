@@ -1,4 +1,4 @@
-/* Shared components, Traditional Chinese (Taiwan): browser storage: the full-storage warning and its fixes, the storage list, the Files file picker, the reload guard and the task dates. Rules: shared/i18n/APPS-HOWTO.md. */
+/* Shared components, Traditional Chinese (Taiwan): browser storage: the full-storage warning and its fixes, the storage list, the file in Files picker, the reload guard and the task dates. Rules: shared/i18n/APPS-HOWTO.md. */
 window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'ui.storage.full_msg': '此網站的儲存空間已滿。您的變更仍顯示在畫面上，但尚未儲存。請釋出一些空間，然後再儲存一次。',
   'ui.storage.idb': 'IndexedDB（已儲存的記錄）',

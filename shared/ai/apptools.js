@@ -31,12 +31,12 @@
   const TEXT_TYPE = /^text\/|json|xml|javascript|svg|yaml|toml|sql/;
   const TEXT_NAME = /\.(md|markdown|txt|csv|tsv|json|js|mjs|ts|py|html?|css|xml|svg|ya?ml|toml|ini|sql|sh|log)$/i;
   const isText = (f) => TEXT_TYPE.test(f.type || '') || TEXT_NAME.test(f.name || '');
-  /** A Files file by id, or by name (exact, then a part of the name). */
+  /** A file in Files by id, or by name (exact, then a part of the name). */
   async function findFile(hub, q) {
     if (!hub || !hub.list) throw new Error('Files is not available on this page.');
     const files = await hub.list(), s = String(q || '').trim().toLowerCase();
     const f = files.find((x) => x.id === q) || files.find((x) => x.name.toLowerCase() === s) || files.find((x) => x.name.toLowerCase().includes(s));
-    if (!f) throw new Error(`No Files file "${q}". Use list_files to see the names.`);
+    if (!f) throw new Error(`No file in Files "${q}". Use list_files to see the names.`);
     return f;
   }
 
@@ -128,9 +128,9 @@
       { name: 'list_apps', description: 'List the ITpris Verktyg apps, games and experiments (id, name, what it does).', params: {}, maxChars: 12000,
         run: () => apps().map((a) => ({ id: a.id, name: a.name, kind: a.kind, does: a.tagline, status: a.status })) },
       { name: 'open_app', description: ws
-        ? 'Open a ITpris Verktyg app beside this chat in the workspace, by its id (for example "imageeditor", "vector", "pdf", "drive"), or focus it if it is already open. Pass a web address (https://…) as the id to open a website in a new browser tab instead; websites never open inside the workspace. With "file", the app opens that Files file in a new tab.'
-        : 'Open a ITpris Verktyg app in a new tab by id ("imageeditor", "pdf", "drive"…), optionally with a Files file.',
-        params: Object.assign({ id: { type: 'string', description: 'app id, or a web address', required: true }, file: { type: 'string', description: 'Files file name or id' } },
+        ? 'Open a ITpris Verktyg app beside this chat in the workspace, by its id (for example "imageeditor", "vector", "pdf", "drive"), or focus it if it is already open. Pass a web address (https://…) as the id to open a website in a new browser tab instead; websites never open inside the workspace. With "file", the app opens that file in Files in a new tab.'
+        : 'Open a ITpris Verktyg app in a new tab by id ("imageeditor", "pdf", "drive"…), optionally with a file from Files.',
+        params: Object.assign({ id: { type: 'string', description: 'app id, or a web address', required: true }, file: { type: 'string', description: 'file in Files name or id' } },
           env.handoff ? { task: { type: 'string', description: 'what to do there: the chat continues there with it' } } : {}),
         run: async (a) => {
           if (ws && /^https?:\/\//i.test(String(a.id))) return ws.openUrl(String(a.id));
@@ -172,7 +172,7 @@
           return files.map((f) => ({ id: f.id, name: f.name, type: f.type, size: f.size, from: f.from }));
         } },
       { name: 'read_file', description: 'Read a text file from Files (its first 4000 characters), so you can answer questions about it.',
-        params: { file: { type: 'string', description: 'Files file name or id', required: true } },
+        params: { file: { type: 'string', description: 'file in Files name or id', required: true } },
         run: async (a) => {
           const f = await findFile(hub, a.file);
           if (!isText(f)) throw new Error(`${f.name} is not a text file (${f.type || 'unknown type'}).`);

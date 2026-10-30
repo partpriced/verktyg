@@ -1,4 +1,4 @@
-/* Font Creator Creator, русский: панели глифа, шрифта и метрик, подмножество, почерк и экспорт. Те же ключи, что в fontcreator/i18n/en/panel.js. Термины: shared/i18n/glossary-ru.md. */
+/* Font Creator, русский: панели глифа, шрифта и метрик, подмножество, почерк и экспорт. Те же ключи, что в fontcreator/i18n/en/panel.js. Термины: shared/i18n/glossary-ru.md. */
 window.TlbxI18n && window.TlbxI18n.add('ru', {
   'fontcreator.panel.glyph': 'Глиф',
   'fontcreator.panel.font': 'Шрифт',

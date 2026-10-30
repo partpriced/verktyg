@@ -158,7 +158,7 @@
   });
 
   describe('moving and copying between places', () => {
-    it('a Files file dropped on a named drive is copied; the Drive keeps it', async () => {
+    it('a file from Files dropped on a named drive is copied; the Drive keeps it', async () => {
       await boot();
       const dir = sampleDir();
       store = [drive('x1', 'NAS', dir)];
@@ -170,7 +170,7 @@
       expect(DR.liveFiles().some((r) => r.name === 'hello.txt')).toBe(true);
     });
 
-    it('a Files file moved onto a named drive leaves Files', async () => {
+    it('a file from Files moved onto a named drive leaves Files', async () => {
       await boot();
       const dir = sampleDir();
       store = [drive('x1', 'NAS', dir)];

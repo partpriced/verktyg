@@ -12,5 +12,5 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'tables.tour.side_title': 'Blad och mallar',
   'tables.tour.side_text': 'Blad, mallar och funktionslistan. Pilknappen döljer sidofältet.',
   'tables.tour.save_title': 'Spara',
-  'tables.tour.save_text': 'Spara i Files (Ctrl+S).',
+  'tables.tour.save_text': 'Spara i Filer (Ctrl+S).',
 });

@@ -8,7 +8,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'paste.tour.image_title': 'Bildklipp',
   'paste.tour.image_text': 'Lägg till ett klipp som är en bild.',
   'paste.tour.items_title': 'Dina klipp',
-  'paste.tour.items_text': 'Varje klipp sparas i Files medan du arbetar.',
+  'paste.tour.items_text': 'Varje klipp sparas i Filer medan du arbetar.',
   'paste.tour.editor_title': 'Redigerare',
   'paste.tour.editor_text': 'Klistra in text, kod eller en bild här, och kopiera eller dela den sedan.',
   'paste.tour.commands_title': 'Kommandon',

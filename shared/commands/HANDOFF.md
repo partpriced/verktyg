@@ -29,7 +29,7 @@ List `search.js`, `palette.js`, `recorder.js` and `keymap.js` too if the app bui
 
 `run(ctx)` receives `{ source: 'key' | 'palette' | 'api', event }`.
 
-### Arguments and app state (for the Assistant assistant)
+### Arguments and app state (for the Assistant)
 `args.js` (`window.TlbxCmdArgs`, also a CommonJS module) describes what a command takes. Every existing command keeps
 working unchanged; only a command that sets `args` is called differently.
 
@@ -69,7 +69,7 @@ const r = await TlbxCmd.exec('ps.ai.gaussian-blur', { radius: '900px' });  // { 
   `<prefix>.ai.<tool-with-dashes>`, hidden, group AI, `destructive: false` unless extra says so, run with the defaults
   when called without arguments; pushed into `list` when given, and returned. Keep the name `add` (tools/ai-coverage.mjs reads `add('tool', …)`).
 - `sources()` loads `sources.js` once and resolves `TlbxCmdSources` (`driveFile(q)`, `driveAsFile(q)`, `siteFile`, `picture`,
-  `put`): the one way a command finds a Files file by id or name. Tests: `tests/commands/spec-ai.js`.
+  `put`): the one way a command finds a file from Files by id or name. Tests: `tests/commands/spec-ai.js`.
 - Make every command one step in the app's own undo history (Image Editor folds several commits into one with `aiOneStep`).
 - Return a short sentence (or a promise of one) saying what happened; throw an `Error` with a plain message when it
   cannot run. Both reach the model and the panel's step list.

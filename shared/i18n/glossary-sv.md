@@ -140,7 +140,7 @@ Register: informal «du», as the Swedish versions of Microsoft Office, Adobe Ac
 | revert | Återgå | «Återgå till originalet» |
 | pane | ruta |  |
 | zip | zip | «en .zip-fil» |
-| Files | Files | brand: «till Files», «i Files», «från Files» |
+| Files | Files | brand: «till Filer», «i Filer», «från Filer» |
 
 ## PDF editor (part B)
 
@@ -375,7 +375,7 @@ history step and palette word, so never strip a suffix to get it. Layer names th
 
 | English | Svenska | Note |
 | --- | --- | --- |
-| place (a file, art, image) | Montera | as Adobe sv (InDesign, Illustrator): «Montera…», «Montera från Files…», «Monterade text» |
+| place (a file, art, image) | Montera | as Adobe sv (InDesign, Illustrator): «Montera…», «Montera från Filer…», «Monterade text» |
 | master page | mallsida | «Ny mallsida», «Använd mallsida» |
 | paragraph style / character style | styckeformat / teckenformat | as InDesign sv |
 | swatch / Swatches panel | färgruta / Färgrutor |  |

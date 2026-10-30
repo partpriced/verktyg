@@ -13,12 +13,12 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'tables.app.local_badge': '100 % lokalt',
   'tables.app.workbook_name': 'Arbetsbokens namn',
   'tables.app.untitled': 'Namnlöst kalkylark',
-  'tables.app.save_tip': 'Spara i Files (Ctrl+S)',
+  'tables.app.save_tip': 'Spara i Filer (Ctrl+S)',
   'tables.app.name_box': 'Namnruta',
   'tables.app.formula_bar': 'Formelfält',
   'tables.app.grid': 'Kalkylarkets rutnät',
   'tables.app.cell_editor': 'Cellredigerare',
-  'tables.app.about': 'Ett kalkylprogram som körs helt i den här webbläsaren. Arbetsböcker sparas i Files på den här enheten; inget laddas upp. Formler: motorn har över 300 funktioner.',
+  'tables.app.about': 'Ett kalkylprogram som körs helt i den här webbläsaren. Arbetsböcker sparas i Filer på den här enheten; inget laddas upp. Formler: motorn har över 300 funktioner.',
 
   'tables.side.sidebar': 'Sidofält',
   'tables.side.show': 'Visa sidofältet',
@@ -44,7 +44,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'tables.status.count': 'Antal {n}',
   'tables.status.sum_avg': 'Summa {sum}   Medel {avg}',
   'tables.status.unsaved': 'Osparade ändringar',
-  'tables.status.saved': 'Sparad i Files',
+  'tables.status.saved': 'Sparad i Filer',
   'tables.status.not_saved': 'Inte sparad än',
 
   'tables.toast.namebox': 'Skriv en cell som B7 eller ett område som A1:C9',

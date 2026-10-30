@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: the page chrome (header, file and sheet tabs, the status bar, the empty state and the filter
+/* Spreadsheet Viewer: the page chrome (header, file and sheet tabs, the status bar, the empty state and the filter
  * popover). The colours are the app's --sl-* tokens only. The grid itself is shared/sheets/table.css.
  * On a phone the header wraps, the tabs scroll sideways and the grid scrolls inside its box, with a 16px gutter. */
 [hidden] { display: none !important; }

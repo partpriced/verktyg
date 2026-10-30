@@ -27,7 +27,7 @@ async function save(blob, name, to) {
   return out.join(' and ') + '.';
 }
 
-/** Files files by id or name (shared/commands/sources.js), all found before anything changes. */
+/** files in Files by id or name (shared/commands/sources.js), all found before anything changes. */
 async function driveFiles(names) {
   const src = await window.TlbxCmd.sources(), files = [];
   for (const q of names) files.push(await src.driveAsFile(q));

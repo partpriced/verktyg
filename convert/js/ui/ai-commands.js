@@ -1,7 +1,7 @@
 /* File Converter for the assistant: TlbxCmd commands with arguments (shared/commands/args.js), imported on demand by
  * TlbxCmd.prepare() (mount.js). They drive the page's ConvertTool (tool.js) the way its controls do:
  *   new_conversion   clear the list and the results; optionally the format new files start on (like ?to=)
- *   add_files        Files files, files on this site, or a text, through the tool's intake (as a drop)
+ *   add_files        files in Files, files on this site, or a text, through the tool's intake (as a drop)
  *   list_targets     what the files can become, with each conversion's options
  *   set_target       the format (a conversion id, a kind like png, or a route) and its options, for all files or some
  *   run_conversion   Convert: every file with its own target and options
@@ -61,7 +61,7 @@ add('new_conversion', 'Start a new conversion', [{ name: 'to', type: 'string', m
 }, { destructive: true, description: 'Clear the file list and the results to start a new conversion. Results not exported are dropped.' });   // i18n-ignore: for the assistant (API)
 
 add('add_files', 'Add files', [   // i18n-ignore: hidden assistant command (API)
-  { name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'Files file names or ids' },   // i18n-ignore: for the assistant (API)
+  { name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'file in Files names or ids' },   // i18n-ignore: for the assistant (API)
   { name: 'urls', type: 'array', maxItems: 50, items: { type: 'string' }, description: 'or addresses of files on this site' },   // i18n-ignore: for the assistant (API)
   { name: 'text', type: 'string', maxLength: 500000, description: 'or a text to convert (CSV, JSON, Markdown, YAML…)' },   // i18n-ignore: for the assistant (API)
   { name: 'name', type: 'string', maxLength: 200, default: 'pasted.txt', description: 'the text\'s file name; its extension says what it is (data.csv)' },

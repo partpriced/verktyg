@@ -34,7 +34,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.appbar.unsaved': 'Osparade ändringar',
   'ui.appbar.actions': 'Åtgärder',
   'ui.appbar.more': 'Fler åtgärder',
-  'ui.hub.saved_drive': 'Sparat i Files',
+  'ui.hub.saved_drive': 'Sparat i Filer',
   'ui.size.b': '{size} byte',
   'ui.size.kb': '{size} kB',
   'ui.size.mb': '{size} MB',

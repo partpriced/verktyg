@@ -43,7 +43,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.press.getting-started.sections.2.text.2': 'Dokumentinställningar… och Marginaler och spalter… i fältet högst upp ändrar sidstorlek, marginaler, spalter och utfall.',
   'seo.guide.press.getting-started.sections.3.h2': 'Exportera en PDF',
   'seo.guide.press.getting-started.sections.3.text.0': 'Klicka på Exportera PDF… (Ctrl+E). Teckensnitten bäddas in, och du kan lägga till utfall och skärmärken för ett tryckeri. Exportera PNG… (Alt+Ctrl+E) gör bilder av sidorna.',
-  'seo.guide.press.getting-started.sections.3.text.1': 'Spara (Ctrl+S) behåller dokumentet i Files.',
+  'seo.guide.press.getting-started.sections.3.text.1': 'Spara (Ctrl+S) behåller dokumentet i Filer.',
   'seo.guide.press.getting-started.shortcuts.0.1': 'Markeringsverktyg',
   'seo.guide.press.getting-started.shortcuts.1.1': 'Textverktyg',
   'seo.guide.press.getting-started.shortcuts.2.1': 'Rektangelramverktyg',
@@ -73,7 +73,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.qr.getting-started.sections.1.image.alt': 'Fliken Utseende i QR Code Generator med modulfärgen satt till blått och den blå koden i förhandsgranskningen',
   'seo.guide.qr.getting-started.sections.2.h2': 'Ladda ned och spara',
   'seo.guide.qr.getting-started.sections.2.text.0': 'Klicka på SVG eller PNG under förhandsgranskningen för att ladda ned koden, eller på Utskriftssida (PDF) för en sida att skriva ut.',
-  'seo.guide.qr.getting-started.sections.2.text.1': 'Spara i Drive behåller koden och dess inställningar i Files, så att du kan redigera den igen senare med Öppna från Drive.',
+  'seo.guide.qr.getting-started.sections.2.text.1': 'Spara i Drive behåller koden och dess inställningar i Filer, så att du kan redigera den igen senare med Öppna från Drive.',
   'seo.guide.qr.getting-started.sections.2.text.2': 'För många koder på en gång öppnar du Batch: varje rad du skriver blir en kod med samma utseende, var och en med egen nedladdning som SVG och PNG. Upp till 100 rader ritas.',
   'seo.guide.qr.getting-started.sections.2.tip': 'Testa koden med en telefon innan du skriver ut många exemplar.',
 });

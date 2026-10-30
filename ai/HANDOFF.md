@@ -115,7 +115,7 @@ Hiding the panel (×) keeps the frames loaded. On a phone (≤ 760 px) the panel
 **Tools** (`shared/ai/apptools.js`, with `env.workspace`):
 - `open_app(id)`: opens the app in a frame, or focuses it. Only registry apps of kind `app`, same origin, and not Assistant
   itself are framed. A web address (`https://…`) as the id opens a new tab and is never framed. With `file`, the app
-  opens that Files file in a new tab, as before (frames do not take files).
+  opens that file in Files in a new tab, as before (frames do not take files).
 - `app_search(appId, query)`: up to ten commands of the app matching the words: `{ id, title, group, enabled }`.
 - `app_command(appId, commandId, args?)`: runs one command with `TlbxCmd.run(id, { source: 'ai', args })` in the frame.
   Returns `Ran “…” in …` or an error. `TlbxCmd.run` returns only whether the command ran, not its own return value, and

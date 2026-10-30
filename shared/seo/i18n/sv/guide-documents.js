@@ -28,7 +28,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.pdf.getting-started.sections.3.steps.1': 'Klicka på Ladda ned. PDF Editor bygger den nya filen, kontrollerar den och sparar den på din enhet.',
   'seo.guide.pdf.getting-started.sections.3.text.0': 'Ångra (Ctrl+Z) och Gör om (Ctrl+Shift+Z) fungerar för varje ändring tills du stänger filen.',
   'seo.guide.pdf.getting-started.shortcuts.0.1': 'Öppna PDF:er eller bilder',
-  'seo.guide.pdf.getting-started.shortcuts.1.1': 'Spara (till Files eller ladda ned)',
+  'seo.guide.pdf.getting-started.shortcuts.1.1': 'Spara (till Filer eller ladda ned)',
   'seo.guide.pdf.getting-started.shortcuts.2.1': 'Ångra / gör om',
   'seo.guide.pdf.getting-started.shortcuts.3.1': 'Sök i dokumentet',
   'seo.guide.pdf.getting-started.shortcuts.4.1': 'Sök kommandon',

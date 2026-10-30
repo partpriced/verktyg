@@ -54,7 +54,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'resize.panel.apply': 'Tillämpa',
   'resize.panel.save_as': 'Spara som…',
   'resize.panel.delete': 'Ta bort',
-  'resize.panel.saved_note': 'Sparas i Files, i mappen Resizer. Utan Files stannar de i den här webbläsaren.',
+  'resize.panel.saved_note': 'Sparas i Filer, i mappen Resizer. Utan Filer stannar de i den här webbläsaren.',
   'resize.panel.no_alpha': '{format} saknar genomskinlighet. Genomskinliga delar av en bild fylls med färgen ovan (vit som standard).',
   'resize.panel.note_cover': 'Täck beskär bilden till exakt den här rutan och behåller dess form. Lämna en sida på 0 för att följa bilden i stället.',
   'resize.panel.note_fit': 'Anpassa lägger bilden i exakt den här rutan med kanter och behåller dess form. Lämna en sida på 0 för att följa bilden i stället.',

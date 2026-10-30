@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: the panel on the right (the suite rule, shared/frame/HANDOFF.md: TlbxFrame, shared/frame/frame.js
+/* Spreadsheet Viewer: the panel on the right (the suite rule, shared/frame/HANDOFF.md: TlbxFrame, shared/frame/frame.js
  * and panel.js). The sheet is the view; the panel holds the table's look (Table style, Colours: the header's old pickers,
  * moved in with their ids and listeners), Open in Spreadsheet, and Export ▾, the main button, at its foot. Open, Commands
  * and Menu stay in the header. On a phone the panel is a bottom sheet whose closed state still shows Export.

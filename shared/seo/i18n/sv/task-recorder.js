@@ -10,7 +10,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.recorder.screen-recorder-with-webcam.steps.1': 'Välj hörn och storlek för webbkameran och kryssa i Mikrofon.',
   'seo.task.recorder.screen-recorder-with-webcam.steps.2': 'Tryck på Spela in och välj sedan skärmen, fönstret eller fliken som ska delas. Webbläsaren frågar också efter kameran.',
   'seo.task.recorder.screen-recorder-with-webcam.steps.3': 'Spela in när nedräkningen är klar; Pausa och Stoppa finns längst ned i panelen.',
-  'seo.task.recorder.screen-recorder-with-webcam.steps.4': 'Trimma början och slutet och välj sedan Ladda ned, Spara i Files eller Öppna i Video Editor.',
+  'seo.task.recorder.screen-recorder-with-webcam.steps.4': 'Trimma början och slutet och välj sedan Ladda ned, Spara i Filer eller Öppna i Video Editor.',
   'seo.task.recorder.screen-recorder-with-webcam.faq.0.0': 'Fungerar det på en telefon?',
   'seo.task.recorder.screen-recorder-with-webcam.faq.0.1': 'Telefoner och surfplattor låter inte webbsidor spela in skärmen, så Skärm + kamera kräver en webbläsare på en dator. Webbkameran och mikrofonen var för sig fungerar på en telefon.',
   'seo.task.recorder.screen-recorder-with-webcam.faq.1.0': 'Laddas inspelningen upp?',

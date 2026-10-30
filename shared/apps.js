@@ -226,7 +226,7 @@
       accepts: ['*'],
       features: ['Folders, stars, Trash & search', 'Grid, list, columns, node graph & disk usage', 'Duplicate finder', 'One-file backup & restore'],
       shot: 'assets/shots/drive.jpg', icon: 'folder', status: 'beta' }),
-    A('code', 'app', 'Code Editor', 'code/', 'A code editor for your Files files. Nothing uploaded.', { title: 'Code editor', group: 'creative',
+    A('code', 'app', 'Code Editor', 'code/', 'A code editor for your files in Files. Nothing uploaded.', { title: 'Code editor', group: 'creative',
       accepts: ['text/plain', 'text/markdown', 'text/html', 'text/css', 'text/javascript', 'application/javascript', 'application/json', 'text/x-python', 'text/typescript'],
       features: ['JavaScript, TypeScript, HTML, CSS, JSON, Markdown and Python', 'Completion, search and replace, multiple cursors', 'Saves back to Files, with autosaved drafts', 'Run HTML and JavaScript in a sandboxed preview'],
       icon: 'page', status: 'building' }),

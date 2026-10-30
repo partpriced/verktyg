@@ -45,7 +45,7 @@
       if (!E.state.pages.length) A.closeTab(); // the file did not open (an error was shown): no empty tab left behind
     });
     if (!E.state.pages.length) throw new Error(t('pdf.app.err_not_opened'));
-    if (file.tlbxDrive) A.driveId = file.tlbxDrive.id; // a Files file: Save writes back to it
+    if (file.tlbxDrive) A.driveId = file.tlbxDrive.id; // a file from Files: Save writes back to it
   }
 
   /** The PDFs the Convert dialog made (open-convert.js): through the intake, each in a new tab; then a toast names the
@@ -118,7 +118,7 @@
     if (!data.tab && !E.state.pages.length) {
       await A.lockedOpen(function () { return A.addFiles(files); });
       if (!E.state.pages.length) throw new Error(t('pdf.app.err_not_opened'));
-      if (files.length === 1 && files[0].tlbxDrive) A.driveId = files[0].tlbxDrive.id; // a Files file: Save writes back to it
+      if (files.length === 1 && files[0].tlbxDrive) A.driveId = files[0].tlbxDrive.id; // a file from Files: Save writes back to it
       return;
     }
     var errs = [];

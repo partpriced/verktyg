@@ -82,7 +82,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'ui.ai.img.step_edit': 'Edit picture: {prompt}',
   'ui.ai.img.step_make': 'Make a picture: {prompt}',
   'ui.ai.img.none_text': 'No picture provider is connected. The chat models cannot draw; pictures need an image model. Add an OpenAI, Gemini or OpenRouter key in the AI panel (click the model name at its top, then “Use your own AI account”), then ask again.',
-  'ui.ai.img.which_file': 'Say which picture to edit: a Files file name.',
+  'ui.ai.img.which_file': 'Say which picture to edit: a file from Files name.',
   'ui.ai.img.not_picture': '{name} is not a picture.',
   'ui.ai.img.no_drive': 'Files is not available on this page, so the picture has nowhere to go.',
   'ui.ai.img.err_refused': '{who} declined to make this picture under its content rules. Change the prompt and try again.',

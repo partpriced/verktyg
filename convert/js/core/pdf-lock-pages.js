@@ -14,7 +14,7 @@ export const PDF_LOCK_PAGES = withWords([
       'Untick what readers may not do once the file is open: printing, copying text and pictures, or editing pages, text and comments.',
       'Press Convert. Every string and stream of the PDF is encrypted with AES-256 (the PDF 2.0 standard security handler), and the password fields are cleared.'],
     faq: [['How strong is the encryption?', 'AES-256 with the PDF 2.0 password hashing, the strongest encryption PDF has. A long password that is not used anywhere else is what keeps the file safe.'],
-      ['Which apps open the protected PDF?', 'Any current PDF reader: Adobe Acrobat and Reader, Apple Preview, Chrome, Edge, Firefox and the PDF Editor editor ask for the password and open it.'],
+      ['Which apps open the protected PDF?', 'Any current PDF reader: Adobe Acrobat and Reader, Apple Preview, Chrome, Edge, Firefox and the PDF Editor ask for the password and open it.'],
       ['Do the print and copy limits always hold?', 'Readers that follow the PDF rules, such as Acrobat, Preview and browsers, apply them. They are a request to the reader app, not a lock like the password itself.'],
       ['What if I forget the password?', 'The file cannot be opened. There is no recovery: keep a copy of the original PDF or of the password somewhere safe.'], PRIVATE] },
   { slug: 'remove-password-from-pdf', conv: 'pdf-unlock', from: ['pdf'], accept: '.pdf,application/pdf', pair: ['PDF', 'PDF'], cat: 'Documents',

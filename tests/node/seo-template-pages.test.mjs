@@ -53,7 +53,7 @@ test('in English the pages keep their words', { skip: ROOT_LANG !== 'en' }, () =
   assert.ok(calc.includes('<a class="l-btn primary" href="../">Open Calculator</a>') && calc.includes('<h2 id="about-title">About Calculator</h2>'));
   for (const s of ['<p class="eyebrow">Audit</p>', '<h2 id="short">The short version</h2>', '<th scope="col">Where in the code</th>',
     '<td>Fetch</td><td>Every network request in the apps. The full list is in <a href="#network">Outbound requests</a>.</td>',
-    '<code>tlbx-drive</code></td><td>IndexedDB</td><td>Files files and folders, including the file contents.</td>']) assert.ok(how.includes(s), `how it works: ${s}`);
+    '<code>tlbx-drive</code></td><td>IndexedDB</td><td>files in Files and folders, including the file contents.</td>']) assert.ok(how.includes(s), `how it works: ${s}`);
 });
 
 test('every other published language: its own copy, in the sitemap, with none of the root page\'s sentences', () => {

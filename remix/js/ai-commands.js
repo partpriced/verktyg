@@ -59,7 +59,7 @@
   const said = (p, verb) => `${verb}: ${num(p.total)} s, ${p.cuts.length} cuts, seed ${p.seedHex}.`;
   const cutOf = (i) => { const p = RM.state.plan; if (!p || !p.cuts[i]) throw new Error(`There is no cut ${i} (the plan has ${p ? p.cuts.length : 0}; they count from 0).`); return p.cuts[i]; };
   const redraw = () => { if (RM.renderPlan) RM.renderPlan(); };
-  /** A Files file by id or name (or part of it): shared/commands/sources.js. */
+  /** A file in Files by id or name (or part of it): shared/commands/sources.js. */
   const driveFile = async (q) => (await window.TlbxCmd.sources()).driveAsFile(q);
   async function addFile(file) {
     if (!(await RM.addFiles([file]))) throw new Error(`${file.name} is not a picture or video this browser can read.`);
@@ -89,7 +89,7 @@
     { id: 'remix.ai.new', tool: 'new_reel', title: 'Start a new reel…', destructive: true,
       args: [{ name: 'sources', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'Files ids or names of the videos and photos for the new bin' }].concat(AI.OPTION_ARGS),
       description: 'Start over: empty the bin, put every option back to its default and draw a new seed (the frame stays), then add the Files sources, set any options given and plan the edit.', run: newReel },
-    { id: 'remix.ai.add', tool: 'add_from_drive', title: 'Add a clip from Files…', args: [{ name: 'source', type: 'string', required: true, maxLength: 200, description: 'Files file id or name' }],
+    { id: 'remix.ai.add', tool: 'add_from_drive', title: 'Add a clip from Files…', args: [{ name: 'source', type: 'string', required: true, maxLength: 200, description: 'file in Files id or name' }],
       description: 'Add a video or photo from Files to the bin.', run: async (a) => { const it = await AI.fromDrive(a.source); return `Added ${it.name} as ${it.id}.`; } },
     { id: 'remix.ai.remove', tool: 'remove_clip', title: 'Remove a clip from the bin…', destructive: true, args: [{ name: 'clip', type: 'string', required: true, maxLength: 40 }],
       description: 'Take a clip out of the bin (the next remix plans without it).', run: (a) => { const it = RM.state.items.find((m) => m.id === a.clip || m.name === a.clip); if (!it) throw new Error(`No clip ${a.clip}.`); RM.removeItem(it.id); RM.syncUI(); return `Removed ${it.name}.`; } },

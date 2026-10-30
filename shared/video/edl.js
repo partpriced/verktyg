@@ -10,7 +10,7 @@
        captions?: { srt? | source? | cues?: [{ start, end, text }], size?, color?, position?, background? },
        music?: { source, start?, in?, volume?, duck?: true | false | level 0–1, fadeIn?, fadeOut? },
        markers?: [{ t, name? }], reframe?: { aspect, focus?: 0–1 } }
-   source: a Video Editor media id or name, or a Files file id or name (imported on the way). Clips without start follow
+   source: a Video Editor media id or name, or a file from Files id or name (imported on the way). Clips without start follow
    the previous clip on their track. Times are seconds.
      validate(raw, { transitions, fonts }) → { ok, edl, errors: [text], notes: [text] }   (the normalised list)
      cover(src, frame, focus) → { scale, x, y }   the clip transform that fills frame (cover, not letterbox) with the
@@ -77,7 +77,7 @@
       if (!plain(c)) { errors.push(`${where}: must be an object with a source`); return; }
       known(c, ['source', 'in', 'out', 'dur', 'start', 'track', 'speed', 'volume', 'mute', 'fadeIn', 'fadeOut', 'transition', 'x', 'y', 'scale', 'name'], where, notes);
       const source = str(c.source, 200).trim();
-      if (!source) { errors.push(`${where}: source is missing (a media id, a Files file id or a file name)`); return; }
+      if (!source) { errors.push(`${where}: source is missing (a media id, a file from Files id or a file name)`); return; }
       const x = { source, in: field(c, 'in', where, 0, 86400, 0), track: Math.round(field(c, 'track', where, 1, 8, 1)) };
       const out = field(c, 'out', where, 0, 86400), dur = field(c, 'dur', where, 0.04, 86400);
       if (out !== undefined) { if (out <= x.in) errors.push(`${where}: out (${out}) must be after in (${x.in})`); else x.dur = out - x.in; }

@@ -122,7 +122,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.landing.admin.description': 'Admin holds the company profile and default currency, numbering that only moves forward, and a validated full backup and restore, with a guarded reset.',
   'seo.landing.drive.title': 'Files: private file storage in your browser | ITpris',
   'seo.landing.drive.description': 'Files keeps your files in your own browser, not a server: folders, stars, tags, search, previews, a duplicate finder and one-file backup. No account.',
-  'seo.landing.code.title': 'Code Editor: code editor for your Files files | ITpris',
+  'seo.landing.code.title': 'Code Editor: code editor for your files in Files | ITpris',
   'seo.landing.code.description': 'Code Editor edits JavaScript, TypeScript, HTML, CSS, JSON, Markdown and Python files from Files, with search and replace and a sandboxed preview.',
   'seo.landing.gallery.title': 'Offline photo gallery with albums and duplicate finder | Gallery',
   'seo.landing.gallery.description': 'A photo library that stays on this device: a timeline by date taken, albums, favourites, an exact duplicate finder and one-file backup. Free, no account.',

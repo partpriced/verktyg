@@ -38,7 +38,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'prompts.scan.searchable': 'Gör texten sökbar',
   'prompts.scan.searchable.text': 'Slå på sökbar text (OCR) och gör PDF:en, så att orden går att söka i och kopiera.',
   'prompts.scan.receipts': 'Skanna kvitton',
-  'prompts.scan.receipts.text': 'Ställ in skanningen för kvitton: skanningens egen sidstorlek, inga marginaler, svartvitt. Spara sedan PDF:en i Files.',
+  'prompts.scan.receipts.text': 'Ställ in skanningen för kvitton: skanningens egen sidstorlek, inga marginaler, svartvitt. Spara sedan PDF:en i Filer.',
   'prompts.html2pdf.header': 'Skriv en sidhuvudrad',
   'prompts.html2pdf.header.text': 'Föreslå en kort sidhuvudtext för PDF:en av den öppna HTML-filen, med dess titel och dagens datum.',
   'prompts.html2pdf.print_check': 'Blir utskriften bra?',

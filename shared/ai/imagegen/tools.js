@@ -55,7 +55,7 @@
     return `Saved ${names.map((n) => `“${n}”`).join(', ')} to Files. Any app opens ${names.length > 1 ? 'them' : 'it'} from there (open_app with the file name).`;
   }
 
-  /** The picture an edit starts from: the page's sink (Image Editor: the active layer and the selection), a Files file. */
+  /** The picture an edit starts from: the page's sink (Image Editor: the active layer and the selection), a file from Files. */
   async function source(file, env) {
     const sink = env.sink !== undefined ? env.sink : window.TlbxImageSink;
     if (sink && sink.source && (!file || /^(open|current|layer|selection|this)$/i.test(String(file)))) return sink.source();

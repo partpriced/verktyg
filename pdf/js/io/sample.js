@@ -12,7 +12,7 @@
       footer: 'WORKSUITE · FIELD MANUAL Nº 001', kicker: 'FIELD MANUAL Nº 001', title: ["the helper's Guide", 'to Goo'], // i18n-ignore: sample document content
       sub: 'Everything a well-adjusted slime needs to know.', badge: 'WORKSUITE', // i18n-ignore: sample document content
       h2: 'What is goo?', p2: ['Goo is any substance that is too thick to pour politely and too thin to stack. Scientists call it a non-Newtonian fluid. Helper calls it home, lunch and, on Sundays, a bed.', // i18n-ignore: sample document content
-        'This guide covers the four classical goos, how to store them, and what to do when your goo develops opinions. Use the PDF Editor editor to reorder, rotate, sign or stamp these pages: everything happens in your browser.'], // i18n-ignore: sample document content
+        'This guide covers the four classical goos, how to store them, and what to do when your goo develops opinions. Use the PDF Editor to reorder, rotate, sign or stamp these pages: everything happens in your browser.'], // i18n-ignore: sample document content
       chart: 'Viscosity by goo type', bars: ['Lime slime', 'Pink ooze', 'Blue gel', 'Grey sludge'], fig: 'Fig. 1 — Helper, at rest.', // i18n-ignore: sample document content
       h3: 'The goo spectrum', swatches: [['LIME', 'Classic. Glows faintly.'], ['BUBBLEGUM', 'Sticky. Smells of 1997.'], ['GLACIER', 'Cold, polite, wobbly.'], ['MARMALADE', 'Bitter. Rare. Prized.']], // i18n-ignore: sample document content
       h4: 'Goo licence application', fields: ['Applicant name', 'Favourite goo'], grade: ['Goo grade', 'Starter slime', 'Advanced ooze', 'Master of muck'], // i18n-ignore: sample document content

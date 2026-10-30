@@ -2,7 +2,7 @@
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.music.flac-player.steps.0': 'Öppna Music Player, tryck på Lägg till filer… och välj dina .flac-filer. MP3, WAV och M4A går också bra.',
   'seo.task.music.flac-player.steps.1': 'Klicka på ett spår för att spela det. Klicka på vågformen för att spola; mellanslag pausar och piltangenterna spolar 5 sekunder.',
-  'seo.task.music.flac-player.steps.2': 'Skapa en spellista under Spellistor och spara den i Files som en .splaylist-fil.',
+  'seo.task.music.flac-player.steps.2': 'Skapa en spellista under Spellistor och spara den i Filer som en .splaylist-fil.',
   'seo.task.music.flac-player.faq.0.0': 'Vilka webbläsare spelar FLAC?',
   'seo.task.music.flac-player.faq.0.1': 'Chrome, Edge och Firefox spelar FLAC, och det gör Safari också från version 11. Music Player har ingen egen avkodare; den använder den som finns i din webbläsare.',
   'seo.task.music.flac-player.faq.1.0': 'Läser den FLAC-taggar?',
@@ -135,7 +135,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.videoedit.capcut-alternative.steps.2': 'Redigera på tidslinjen: trimma, dela med S och lägg till övergångar och titlar från Effekter.',
   'seo.task.videoedit.capcut-alternative.steps.3': 'Prova Sekvens ▸ Slumpklippning… (Shift+R) för en automatisk redigering, eller en layout med delad skärm från Mallar.',
   'seo.task.videoedit.capcut-alternative.steps.4': 'Tryck Exportera för MP4, WebM eller en GIF, i storlekar från Mobil 1080×1920 till 4K.',
-  'seo.task.videoedit.capcut-alternative.body.0': 'Video Editor fungerar i webbläsaren på en dator eller en mobil; på mobilbredd ligger monitorn överst och panelerna blir flikar. Det finns inga molnprojekt: spara ett projekt som en .videoedit-fil eller i Files för att fortsätta senare.',
+  'seo.task.videoedit.capcut-alternative.body.0': 'Video Editor fungerar i webbläsaren på en dator eller en mobil; på mobilbredd ligger monitorn överst och panelerna blir flikar. Det finns inga molnprojekt: spara ett projekt som en .videoedit-fil eller i Filer för att fortsätta senare.',
   'seo.task.videoedit.capcut-alternative.faq.0.0': 'Har ITpris Verktyg någon koppling till CapCut?',
   'seo.task.videoedit.capcut-alternative.faq.0.1': 'Nej. ITpris Verktyg har ingen koppling till CapCut eller dess ägare. CapCut är ett varumärke som tillhör sin ägare och nämns här bara för jämförelse.',
   'seo.task.videoedit.capcut-alternative.faq.1.0': 'Fungerar det offline?',

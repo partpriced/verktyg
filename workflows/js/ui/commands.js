@@ -1,4 +1,4 @@
-/* Workflows: every action as a TlbxCmd command (the menus, Ctrl+K and the Assistant assistant use the same list).
+/* Workflows: every action as a TlbxCmd command (the menus, Ctrl+K and the Assistant use the same list).
  * The commands with args, which let the assistant build, run and export a workflow, are in ai-commands.js; the rest are
  * here. app_state (provide) is the workflow, its steps with their options and problems, the files and the results.
  * The page's tool only (a dialog's tool has its own buttons and the global "Run a workflow…").

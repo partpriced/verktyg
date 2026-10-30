@@ -84,8 +84,8 @@
         return `Sequence ${SE.doc.w}×${SE.doc.h}, ${SE.doc.fps} fps.`;
       } },
     { id: 'cut.import', tool: 'import_media', title: 'Import from Files by name…', group: 'File',
-      description: 'Bring a Files file (video, sound or picture; id or name) into the bin and return its media id, length, size and whether it has sound. timeline: also add it at the end of V1 (or A1).',
-      args: [{ name: 'source', type: 'string', required: true, maxLength: 200, description: 'Files file id or name' }, { name: 'timeline', type: 'boolean', default: false }],
+      description: 'Bring a file from Files (video, sound or picture; id or name) into the bin and return its media id, length, size and whether it has sound. timeline: also add it at the end of V1 (or A1).',
+      args: [{ name: 'source', type: 'string', required: true, maxLength: 200, description: 'file in Files id or name' }, { name: 'timeline', type: 'boolean', default: false }],
       run: async (a) => {
         const m = await AI.media(a.source);
         if (a.timeline) SE.app.appendToTimeline([m]);

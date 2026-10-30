@@ -18,7 +18,7 @@
   const ABC = 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad';   // SHA-256 of "abc"
 
   describe('Checksum: assistant commands', () => {
-    it('hash_file hashes a Files file, checks it and the page shows it; save_hash writes abc.txt.sha256', async () => {
+    it('hash_file hashes a file from Files, checks it and the page shows it; save_hash writes abc.txt.sha256', async () => {
       f.src = '../../checksum/index.html';
       await waitFor(() => f.contentWindow && f.contentWindow.TlbxChecksum && f.contentWindow.TlbxCmd && f.contentWindow.TlbxHub, { timeout: 15000 });
       W = f.contentWindow; C = W.TlbxCmd;

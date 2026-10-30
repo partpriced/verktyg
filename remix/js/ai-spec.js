@@ -56,7 +56,7 @@
     { id: 'remix.ai.send', tool: 'send_to_videostudio', title: 'Send the reel to Video Editor', args: [],
       description: 'Store the clips and the plan in Files and open Video Editor on them, to edit the reel further there.', run: async () => { const id = await RM.sendToVideoStudio(); if (!id) throw new Error('Nothing to send.'); return `Opened in Video Editor (manifest ${id}).`; } },
     { id: 'remix.ai.spec', tool: 'remix_from_spec', title: 'Remix from a spec…', ok: 'Remix',
-      description: 'A whole reel in one call: { "sources": [Files file ids or names], "target": 15, "pace": "fast", "aspect": "phone", "layout": "none", "audio": "music", "effect": "random", "seed": "1a2b3c4d", "export": { "engine": "videostudio", "save_to_drive": true } }. The bin is replaced by the sources (replace: false adds them); every option of set_options can be given.',
+      description: 'A whole reel in one call: { "sources": [file in Files ids or names], "target": 15, "pace": "fast", "aspect": "phone", "layout": "none", "audio": "music", "effect": "random", "seed": "1a2b3c4d", "export": { "engine": "videostudio", "save_to_drive": true } }. The bin is replaced by the sources (replace: false adds them); every option of set_options can be given.',
       args: [{ name: 'spec', type: 'json', required: true, maxLength: 100000, schema: { type: 'object', properties: { sources: { type: 'array', items: { type: 'string' } }, export: { type: 'object' } }, required: ['sources'] } }],
       run: async (a, ctx) => {
         const v = AI.checkSpec(a.spec);

@@ -11,7 +11,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.presets.description': 'Beskrivning',
   'ui.presets.empty': 'Inga förinställningar här än. Spara en från menyn eller importera en .tlbx.json-fil.',
   'ui.presets.delete_title': 'Ta bort förinställning',
-  'ui.presets.delete_ask': 'Ta bort ”{name}”? Den tas bort från Files för alla appar.',
+  'ui.presets.delete_ask': 'Ta bort ”{name}”? Den tas bort från Filer för alla appar.',
   'ui.presets.imported': 'Importerad.',
   'ui.presets.noun': 'en förinställningsfil (.json)',
   'ui.presets.choose_first': 'Välj en förinställning först.',

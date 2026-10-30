@@ -205,7 +205,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.guide.crm.getting-started.sections.0.steps.0': 'Välj Lägg till kund på fliken Kunder.',
   'seo.guide.crm.getting-started.sections.0.steps.1': 'Fyll i Namn och eventuella telefonnummer, e-postadresser och uppgifter under Företag.',
   'seo.guide.crm.getting-started.sections.0.steps.2': 'Under Uppföljning väljer du Steg i säljtratten och ett Uppföljningsdatum.',
-  'seo.guide.crm.getting-started.sections.0.text.0': 'Välj en kund i listan för att se allt om kunden till höger: kontaktuppgifter, taggar och grupper, steget i säljtratten, anteckningar samt kundens order och fakturor. Importera från Contacts hämtar kontaktlistan som är sparad i Files.',
+  'seo.guide.crm.getting-started.sections.0.text.0': 'Välj en kund i listan för att se allt om kunden till höger: kontaktuppgifter, taggar och grupper, steget i säljtratten, anteckningar samt kundens order och fakturor. Importera från Contacts hämtar kontaktlistan som är sparad i Filer.',
   'seo.guide.crm.getting-started.sections.0.image.alt': 'En kund öppen i CRM: företag, taggar och grupper, steg i säljtratten och uppföljningsdatum',
   'seo.guide.crm.getting-started.sections.1.h2': 'Arbeta med säljtratten',
   'seo.guide.crm.getting-started.sections.1.text.0': 'Fliken Säljtratt har en kolumn per steg: Lead, Kontaktad, Kund och Förlorad. Dra ett kort till en annan kolumn eller använd dess knapp Flytta. Varje flytt sparas direkt.',

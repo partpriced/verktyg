@@ -68,7 +68,7 @@
       run: () => { const n = S.items.length; for (const it of S.items.slice()) CO.process.remove(it); return `Emptied the list (${plural(n, 'image', 'images')} removed).`; },
       description: 'Remove every image from the list to start a new batch (cutouts not saved are dropped).' }, base),
     Object.assign({ id: 'co.ai.add-images', tool: 'add_images', title: 'Add images', destructive: false,
-      args: [{ name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'Files file names or ids' },
+      args: [{ name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'file in Files names or ids' },
         { name: 'urls', type: 'array', maxItems: 50, items: { type: 'string' }, description: 'or addresses of pictures on this site' }],
       run: addImages, description: 'Add pictures from Files; each one gets its background removed on this device.' }, base),
     Object.assign({ id: 'co.ai.save-cutouts', tool: 'save_cutouts', title: 'Save the cutouts', destructive: false,

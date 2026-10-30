@@ -1,4 +1,4 @@
-/* Shared helpers for the Page Layout layout tests (scripts loaded directly, no app UI). */
+/* Shared helpers for the Page Layout tests (scripts loaded directly, no app UI). */
 /* exported LOREM, fixedGlyphs, textDoc, fontsReady */
 var LOREM = 'Typography is the craft of endowing human language with a durable visual form. Every line of this paragraph is broken by the composer, justified when asked, and hyphenated with English patterns where the measure demands it, so that the column keeps an even colour from top to bottom.';
 /** Monospaced glyphs (10pt each, space 5pt) for deterministic breaker tests. */

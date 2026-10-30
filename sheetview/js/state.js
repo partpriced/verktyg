@@ -1,4 +1,4 @@
-/* Spreadsheet Viewer viewer: the open documents and their views (sheet, sort, filters). No DOM here.
+/* Spreadsheet Viewer: the open documents and their views (sheet, sort, filters). No DOM here.
  * A document: { id, name, format, sheets, sheet (index), views: [{ sort, filters: Map<col, filter>, head, version, cache }] }.
  * head is how many rows at the top are the sheet's header (headerRows): sort and filter leave them on top.
  * Every change to a view bumps its version, and the visible rows are recomputed only when the version moves. */

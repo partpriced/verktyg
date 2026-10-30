@@ -107,7 +107,7 @@ function checkpoint() {
 }
 
 const base = { group: 'AI', hidden: true };
-const FILES = [{ name: 'files', type: 'array', maxItems: 500, items: { type: 'string' }, description: 'Files file names or ids' },
+const FILES = [{ name: 'files', type: 'array', maxItems: 500, items: { type: 'string' }, description: 'file in Files names or ids' },
   { name: 'urls', type: 'array', maxItems: 50, items: { type: 'string' }, description: 'or addresses of files on this site' }];
 C.register([
   Object.assign({ id: 'wm.ai.new-batch', tool: 'new_batch', title: 'Start a new batch', destructive: true, args: [],

@@ -119,7 +119,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.cv.password-protect-pdf.faq.0.0': 'How strong is the encryption?',
   'seo.cv.password-protect-pdf.faq.0.1': 'AES-256 with the PDF 2.0 password hashing, the strongest encryption PDF has. A long password that is not used anywhere else is what keeps the file safe.',
   'seo.cv.password-protect-pdf.faq.1.0': 'Which apps open the protected PDF?',
-  'seo.cv.password-protect-pdf.faq.1.1': 'Any current PDF reader: Adobe Acrobat and Reader, Apple Preview, Chrome, Edge, Firefox and the PDF Editor editor ask for the password and open it.',
+  'seo.cv.password-protect-pdf.faq.1.1': 'Any current PDF reader: Adobe Acrobat and Reader, Apple Preview, Chrome, Edge, Firefox and the PDF Editor ask for the password and open it.',
   'seo.cv.password-protect-pdf.faq.2.0': 'Do the print and copy limits always hold?',
   'seo.cv.password-protect-pdf.faq.2.1': 'Readers that follow the PDF rules, such as Acrobat, Preview and browsers, apply them. They are a request to the reader app, not a lock like the password itself.',
   'seo.cv.password-protect-pdf.faq.3.0': 'What if I forget the password?',

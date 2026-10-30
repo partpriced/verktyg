@@ -20,7 +20,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'settings.defaults.locale_help': 'Hur tal, valutor och datum skrivs. Börjar som webbläsarens språk.',
 
   'settings.folder.title': 'Lokal mapp',
-  'settings.folder.lede': 'Spara en kopia av dina Worksuite-inställningar i en mapp på den här datorn. Det är samma mapp som Files använder, så du kan ansluta den på båda ställena. Filer skrivs bara till den mappen och inget skickas någonstans.',
+  'settings.folder.lede': 'Spara en kopia av dina Worksuite-inställningar i en mapp på den här datorn. Det är samma mapp som Filer använder, så du kan ansluta den på båda ställena. Filer skrivs bara till den mappen och inget skickas någonstans.',
   'settings.folder.see_files': 'Så ser du filerna i mappen:',
   'settings.folder.open_drive': 'Öppna Files',
 

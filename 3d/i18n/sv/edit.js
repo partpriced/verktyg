@@ -28,7 +28,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   '3d.edit.scale_axis': 'Skala {f} {axis}',
 
   '3d.file.discard_title': 'Ignorera ändringarna?',
-  '3d.file.discard_body': 'Scenen har ändringar som inte är sparade i Files. Fortsätta ändå?',
+  '3d.file.discard_body': 'Scenen har ändringar som inte är sparade i Filer. Fortsätta ändå?',
   '3d.file.continue': 'Fortsätt',
   '3d.file.noun': 'en scen, en modell eller en bild',
   '3d.file.err_read_image': 'bilden kunde inte läsas',
@@ -39,7 +39,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   '3d.file.not_scene': 'Det är ingen giltig 3D-scen:\n{errors}',
   '3d.file.import_failed': 'Filen kunde inte importeras',
   '3d.file.imported': '{name} har importerats',
-  '3d.file.saved': 'Sparad i Files',
+  '3d.file.saved': 'Sparad i Filer',
   '3d.file.save_failed': 'Kunde inte spara: {error}',
   '3d.file.nothing_export': 'Inget att exportera än',
   '3d.file.zip_note': '{format} sparad med sina {n} tillhörande filer, i en zip',

@@ -82,7 +82,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.ai.img.step_edit': 'Redigera bild: {prompt}',
   'ui.ai.img.step_make': 'Gör en bild: {prompt}',
   'ui.ai.img.none_text': 'Ingen bildleverantör är ansluten. Chattmodellerna kan inte rita; bilder kräver en bildmodell. Lägg till en nyckel för OpenAI, Gemini eller OpenRouter i AI-panelen (klicka på modellnamnet högst upp och sedan på ”Använd ditt eget AI-konto”) och fråga igen.',
-  'ui.ai.img.which_file': 'Ange vilken bild som ska redigeras: ett filnamn i Files.',
+  'ui.ai.img.which_file': 'Ange vilken bild som ska redigeras: ett filnamn i Filer.',
   'ui.ai.img.not_picture': '{name} är inte en bild.',
   'ui.ai.img.no_drive': 'Files är inte tillgänglig på den här sidan, så bilden har ingenstans att ta vägen.',
   'ui.ai.img.err_refused': '{who} avböjde att göra bilden enligt sina innehållsregler. Ändra prompten och försök igen.',

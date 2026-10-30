@@ -45,7 +45,7 @@ function downloadProject() {
   status(LT('label.exp.saved', { name: safeName(App.doc.name, '.labeldesigner') }), '', 2500);
 }
 /** Open whatever came in (ui/intake.js: chosen, dropped, sent from another app): projects, ZPL, images (placed) or data
- *  files (merged). o.driveId: the Files file a project came from (Save writes back to it). */
+ *  files (merged). o.driveId: the file in Files a project came from (Save writes back to it). */
 async function openFiles(files, o = {}) {
   const tab = (f) => ({ origName: f.name, driveId: o.driveId || null });
   for (const f of files) {

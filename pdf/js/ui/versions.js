@@ -1,4 +1,4 @@
-/* PDF Editor — File ▸ Versions. The original of a document is its Files file (io/drive-docs.js); the edited copy and the
+/* PDF Editor — File ▸ Versions. The original of a document is its file in Files (io/drive-docs.js); the edited copy and the
    change list (io/doc-changes.js) sit beside it. Open the original, open the edited copy, open the original with the saved
    changes replayed on it, revert the open document to the original (the saved copy stays in Files) and download the
    change list. Each opens in a new tab, without the device's saved-edits prompt. Classic script. */

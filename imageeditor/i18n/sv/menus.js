@@ -8,7 +8,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'imageeditor.menu.config': 'Konfiguration',
   'imageeditor.menu.close': 'Stäng',
   'imageeditor.menu.close_others': 'Stäng övriga',
-  'imageeditor.menu.open_from_tlbx_drive': 'Öppna från Files…',
+  'imageeditor.menu.open_from_tlbx_drive': 'Öppna från Filer…',
   'imageeditor.menu.place_image_as_layer': 'Placera bild som lager…',
   'imageeditor.menu.new_from_clipboard': 'Nytt från Urklipp',
   'imageeditor.menu.save': 'Spara',

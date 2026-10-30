@@ -70,7 +70,7 @@
   (a) => { const id = A.importTree(treeOf(a)); return `Added ${where(s.doc.nodes[id])}.`; },
   { description: 'Add a cube, sphere, cylinder, cone, torus, plane, blob, light or group with its place and material.' }); // i18n-ignore: the assistant's tool text (API)
 
-  add('add_model', 'Add a model', [{ name: 'file', type: 'string', maxLength: 300, description: 'a Files file (OBJ, STL, PLY, glTF, GLB, 3MF, DAE, FBX, or a picture)' }, // i18n-ignore: the assistant's tool text (API)
+  add('add_model', 'Add a model', [{ name: 'file', type: 'string', maxLength: 300, description: 'a file from Files (OBJ, STL, PLY, glTF, GLB, 3MF, DAE, FBX, or a picture)' }, // i18n-ignore: the assistant's tool text (API)
     { name: 'url', type: 'string', maxLength: 500, description: 'or a file on this site' }], // i18n-ignore: the assistant's tool text (API)
   async (a) => {
     await S.ai.sources();

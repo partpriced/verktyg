@@ -36,7 +36,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
 
   'nodes.menu.new': 'Ny graf',
   'nodes.menu.open': 'Öppna projekt…',
-  'nodes.menu.save': 'Spara i Files',
+  'nodes.menu.save': 'Spara i Filer',
   'nodes.menu.save_copy': 'Spara en kopia…',
   'nodes.menu.example': 'Läs in exemplet',
   'nodes.menu.copy': 'Kopiera nod',
@@ -66,7 +66,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'nodes.dlg.new_ok': 'Ny',
   'nodes.dlg.example_body': 'Ersätta grafen med exemplet? Ångra tar tillbaka den.',
   'nodes.dlg.example_ok': 'Läs in',
-  'nodes.dlg.keys_body': 'Ctrl+Z ångra · Ctrl+Y eller Ctrl+Skift+Z gör om · Ctrl+D duplicera · Ctrl+C kopiera · Ctrl+V klistra in · Ctrl+S spara i Files · Del ta bort markerad nod eller tråd · Esc avmarkera · Ctrl+hjul zooma. Högerklicka på en nod, en tråd eller arbetsytan för mer.',
+  'nodes.dlg.keys_body': 'Ctrl+Z ångra · Ctrl+Y eller Ctrl+Skift+Z gör om · Ctrl+D duplicera · Ctrl+C kopiera · Ctrl+V klistra in · Ctrl+S spara i Filer · Del ta bort markerad nod eller tråd · Esc avmarkera · Ctrl+hjul zooma. Högerklicka på en nod, en tråd eller arbetsytan för mer.',
 
   'nodes.st.undone': 'Ångrade.',
   'nodes.st.redone': 'Gjorde om.',
@@ -91,7 +91,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'nodes.st.pasted': 'Klistrade in.',
   'nodes.st.deleted': 'Tog bort.',
   'nodes.st.select_first': 'Markera en nod eller en tråd först.',
-  'nodes.st.saved': 'Sparade ”{name}” i Files.',
+  'nodes.st.saved': 'Sparade ”{name}” i Filer.',
   'nodes.st.not_saved': 'Sparades inte: {why}',
   'nodes.st.no_drive': 'Files är inte tillgängligt.',
   'nodes.st.opened': 'Öppnade ”{name}”. Ångra tar tillbaka grafen du hade.',

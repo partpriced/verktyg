@@ -68,7 +68,7 @@
 
     it('a tool whose model is missing is refused with the model named; request_model shows the dialog only', async () => {
       await run('new_job', { tool: 'tags' });
-      expect(await fails('add_file', { file: 'nope-not-here.png' })).toMatch(/No Files file/);
+      expect(await fails('add_file', { file: 'nope-not-here.png' })).toMatch(/No file in Files/);
       await run('add_file', { file: 'noisy-ai-test.png' });
       expect((await C.state()).job.missing).toContain('mobilenetv3-l100');
       expect(await fails('run_job', {})).toMatch(/MobileNet.*not on this device/);

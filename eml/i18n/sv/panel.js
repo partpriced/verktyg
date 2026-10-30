@@ -52,7 +52,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'eml.ex.eml': 'Original-.eml',
   'eml.ex.atts': 'Bilagor (ZIP)',
   'eml.ex.pdf_combined': 'PDF, en fil (sammanfogad)',
-  'eml.ex.to_drive': 'Spara PDF i Files…',
+  'eml.ex.to_drive': 'Spara PDF i Filer…',
   'eml.ex.more': 'Fler alternativ…',
   'eml.ex.this': 'Det här meddelandet',
   'eml.ex.selected': 'Markerade ({n})',

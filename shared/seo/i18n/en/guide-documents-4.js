@@ -72,7 +72,7 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'seo.guide.code.getting-started.sections.1.h2': 'Edit and save',
   'seo.guide.code.getting-started.sections.1.text.0': 'The editor has line numbers, folding, bracket matching, search and replace, and several cursors (Ctrl+click adds one). Press Ctrl+Space for completion and snippets. Enter or Tab accepts.',
   'seo.guide.code.getting-started.sections.1.text.1': 'Your edits are kept as a draft on this device until you save. A dot marks a tab with unsaved changes.',
-  'seo.guide.code.getting-started.sections.1.steps.0': 'Press Ctrl+S, or click Save, to write the file back to the same Files file.',
+  'seo.guide.code.getting-started.sections.1.steps.0': 'Press Ctrl+S, or click Save, to write the file back to the same file in Files.',
   'seo.guide.code.getting-started.sections.1.steps.1': 'Click Save as to save a copy in a folder you pick.',
   'seo.guide.code.getting-started.sections.2.h2': 'Run a page',
   'seo.guide.code.getting-started.sections.2.steps.0': 'Open an HTML or JavaScript file.',

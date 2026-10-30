@@ -1,8 +1,8 @@
 /* Presentations, svenska: the commands (Mod+K palette and shortcuts). Same keys as slides/i18n/en/commands.js. Rules: shared/i18n/APPS-HOWTO.md. */
 window.TlbxI18n && window.TlbxI18n.add('sv', {
   'slides.cmd.file_new': 'Ny presentation',
-  'slides.cmd.file_open': 'Öppna från Files…',
-  'slides.cmd.file_save': 'Spara i Files',
+  'slides.cmd.file_open': 'Öppna från Filer…',
+  'slides.cmd.file_save': 'Spara i Filer',
   'slides.cmd.file_rename': 'Byt namn…',
   'slides.cmd.file_save_as': 'Spara som ny fil i Drive…',
   'slides.cmd.file_download': 'Ladda ned .sslide',

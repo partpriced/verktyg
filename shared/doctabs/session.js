@@ -5,7 +5,7 @@
  *   await s.clear()     // forgets the stored tabs (localStorage and IndexedDB)
  * localStorage 'tlbx.doctabs.<appId>.v1' = { v: 1, data: { tabs: [{ id, title }], active } } and nothing else.
  * IndexedDB 'tlbx-doctabs', store 'docs': key = tab id, value = adapter.serialize(doc); key '<tab id>:drive' = { id } for
- * a tab linked to a Files file. Every storage access is wrapped: a blocked or broken storage only turns saving off. */
+ * a tab linked to a file from Files. Every storage access is wrapped: a blocked or broken storage only turns saving off. */
 (function () {
   'use strict';
   /** A word from the shared tables (shared/i18n/ui/en.js), or the English given when TlbxI18n or the key is absent. */

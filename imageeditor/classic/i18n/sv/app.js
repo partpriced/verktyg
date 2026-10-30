@@ -48,7 +48,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'paint-classic.status.resized': 'Ändrade ritytans storlek till {w}x{h}. Mer plats för tlbx.',
   'paint-classic.status.opened': 'Öppnade {name} ({w}x{h}). Redo att tlbxas.',
   'paint-classic.status.saved': 'Sparade {name}.png. Ditt mästerverk är i säkerhet.',
-  'paint-classic.status.saved_drive': 'Sparade {name} i Files.',
+  'paint-classic.status.saved_drive': 'Sparade {name} i Filer.',
   'paint-classic.status.grid_zoom': 'Rutnätet visas vid zoom 400 % och mer.',
   'paint-classic.status.tlbxified': 'Tlbxifierade. Ctrl+Z om du ångrar dig.',
   'paint-classic.toast.tlbxified': 'TLBXIFIERAD',
@@ -58,5 +58,5 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'paint-classic.msg.save_changes': 'Vill du spara ändringarna i {name}?',
   'paint-classic.msg.whole_number': 'Ange ett heltal mellan 1 och 6000.\nÄven tlbx har sina gränser.',
   'paint-classic.msg.too_big': 'Det är för mycket tlbx, till och med för oss.',
-  'paint-classic.drive.open_title': 'Öppna från Files',
+  'paint-classic.drive.open_title': 'Öppna från Filer',
 });

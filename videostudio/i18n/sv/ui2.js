@@ -45,7 +45,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'videoedit.exp.export_failed': 'Exporten misslyckades',
   'videoedit.exp.exported_gif': 'Exporterade GIF',
   'videoedit.exp.export_finished': 'Exporten är klar',
-  'videoedit.exp.save_to_tlbx_drive': 'Spara i Files',
+  'videoedit.exp.save_to_tlbx_drive': 'Spara i Filer',
   'videoedit.exp.download': 'Ladda ned',
   'videoedit.gfx.graphic_colour': 'Grafikens färg',
   'videoedit.gfx.graphic_motion': 'Grafikens rörelse',

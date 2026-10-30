@@ -1,7 +1,7 @@
 /* Metadata Remover for the assistant: TlbxCmd commands with arguments (shared/commands/args.js), loaded on demand by
  * TlbxCmd.prepare() (main.js). Through the app's own controller (CL.app) and intake:
  *   new_batch       empty the list to start again (results not saved are dropped)
- *   add_files       Files files or pictures on this site, through TlbxIntake.take (as a drop would)
+ *   add_files       files in Files or pictures on this site, through TlbxIntake.take (as a drop would)
  *   set_options     what to remove: a preset, then categories to remove or keep (the "What to remove" panel)
  *   remove_file     take one picture off the list
  *   export_cleaned  the cleaned copies to Files (the Metadata Remover folder) and/or a download (one file or a zip)
@@ -32,7 +32,7 @@
   }, { destructive: true, description: 'Empty the list of pictures to start a new batch. Cleaned copies not saved or downloaded are dropped.' });
 
   add('add_files', 'Add pictures', [
-    { name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'Files file names or ids (JPEG, PNG, WebP or TIFF)' },
+    { name: 'files', type: 'array', maxItems: 200, items: { type: 'string' }, description: 'file in Files names or ids (JPEG, PNG, WebP or TIFF)' },
     { name: 'urls', type: 'array', maxItems: 50, items: { type: 'string' }, description: 'or addresses of pictures on this site' },
   ], async (a) => {
     const src = window.TlbxCmdSources, files = [];

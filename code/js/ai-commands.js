@@ -45,10 +45,10 @@ async (a) => {
   return `Created and opened “${name}” (${langOf(d).label}, ${lines(String(a.content || ''))} lines; id ${id}).`;
 }, { description: 'Make a file in Files with its code and open it in the editor.' });
 
-add('open_file', 'Open a file', [Str('file', 'a Files file name, path or id', { required: true })], async (a) => {
+add('open_file', 'Open a file', [Str('file', 'a file from Files name, path or id', { required: true })], async (a) => {
   const all = (await H().list()).filter((r) => !r.trashedAt), s = String(a.file).trim().toLowerCase();   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
   const rec = all.find((r) => r.id === a.file) || all.find((r) => r.name.toLowerCase() === s.split('/').pop()) || all.find((r) => r.name.toLowerCase().includes(s));
-  if (!rec) throw new Error(`No Files file “${a.file}”`);
+  if (!rec) throw new Error(`No file in Files “${a.file}”`);
   const d = await openRecord(rec);
   return `Opened “${d.name}”${d.kind === 'text' ? ` (${lines(docs.textOf(d))} lines)` : ` (${d.kind}, a view)`}.`;
 });
@@ -88,7 +88,7 @@ add('format_document', 'Format document', [], () => { const d = current(); if (!
 add('run_preview', 'Run preview', [], async () => { const d = current(); await window.TlbxCode.runCurrent(); return `Ran “${d.name}” in the preview.`; });
 
 add('save_file', 'Save', [], async () => { const d = current(); if (!(await saveDoc(d))) throw new Error('Could not save'); return `Saved “${d.name}” to Files.`; },
-  { description: 'Write the open file back to its Files file.' });
+  { description: 'Write the open file back to its file in Files.' });
 add('export_file', 'Save a copy', [Str('name', 'file name; the same name when empty', { maxLength: 200 }), Str('folder', 'Files folder path or id; the file\'s own folder when empty'),
   { name: 'to', type: 'enum', values: ['drive', 'download', 'both'], default: 'drive' }],
 async (a) => {

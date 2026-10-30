@@ -68,7 +68,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'colors.io.not_supported': '{name} är varken en bild eller en palettfil',
   'colors.io.noun': 'en bild eller en palettfil (.gpl, .ase, .json, .css)',
   'colors.io.empty': 'Paletten är tom: lägg till färger först',
-  'colors.io.saved': 'Sparade {name} i Files',
-  'colors.io.ase_binary': 'En .ase-fil är binär: ladda ned den eller spara den i Files',
+  'colors.io.saved': 'Sparade {name} i Filer',
+  'colors.io.ase_binary': 'En .ase-fil är binär: ladda ned den eller spara den i Filer',
   'colors.io.copied': 'Kopierade paletten som {name}',
 });

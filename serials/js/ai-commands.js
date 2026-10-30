@@ -38,7 +38,7 @@ add('add_photos', 'Add photos from Files', [{ name: 'files', type: 'array', requ
   const H = window.TlbxHub, all = await H.list(), files = [];   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
   for (const q of a.files) {
     const s = String(q).toLowerCase(), hit = all.find((f) => f.id === q) || all.find((f) => f.name.toLowerCase() === s);
-    if (!hit) throw new Error(`No Files file “${q}”`);
+    if (!hit) throw new Error(`No file in Files “${q}”`);
     const rec = await H.get(hit.id);
     files.push(new File([rec.blob], rec.name, { type: rec.type || rec.blob.type }));
   }

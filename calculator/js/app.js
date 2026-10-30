@@ -162,7 +162,7 @@
     catch (e) { setStatus(t('calculator.status.clipboard_blocked')); }
   }
 
-  /** One Files file per calculation: Markdown, meta { type:'notes', kind:'calc' }. Notes ignores kind 'calc'. */
+  /** One file in Files per calculation: Markdown, meta { type:'notes', kind:'calc' }. Notes ignores kind 'calc'. */
   async function saveDrive() {
     if (!S.last) { setStatus(t('calculator.status.first')); return; }
     if (!window.TlbxHub) { setStatus(t('calculator.status.no_drive')); return; }

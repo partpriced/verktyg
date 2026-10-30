@@ -2,7 +2,7 @@
  * The file (worksuite-backup-YYYY-MM-DD.backup) is a ZIP:
  *   manifest.json   format, version, date, origin and counts
  *   local.json      every localStorage key on this origin (settings, saves, high scores, XP…)
- *   idb.json        every IndexedDB database (Files files and folders, app autosaves): schema + records
+ *   idb.json        every IndexedDB database (files in Files and folders, app autosaves): schema + records
  *   blobs/<n>       binary values referenced from idb.json (file contents, image data, buffers)
  * Needs TlbxZip (zip.js) and TlbxBackupCodec (codec.js). Classic script, exposes window.TlbxBackupCore. */
 (function () {

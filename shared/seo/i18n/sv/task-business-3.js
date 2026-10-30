@@ -44,7 +44,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'seo.task.expenses.receipt-scanner.steps.0': 'Välj Från ett kvitto… Första gången laddas textläsaren ned till den här enheten (du tillfrågas först).',
   'seo.task.expenses.receipt-scanner.steps.1': 'Fotografera kvittot, eller välj en bild.',
   'seo.task.expenses.receipt-scanner.steps.2': 'Kontrollera vad som hittades: leverantör, datum, belopp och moms. Rätta det som lästs fel och välj kategori.',
-  'seo.task.expenses.receipt-scanner.steps.3': 'Välj Registrera utgift. Fotot sparas i Files och kopplas till utgiften.',
+  'seo.task.expenses.receipt-scanner.steps.3': 'Välj Registrera utgift. Fotot sparas i Filer och kopplas till utgiften.',
   'seo.task.expenses.receipt-scanner.faq.0.0': 'Laddas kvittot upp för att läsas?',
   'seo.task.expenses.receipt-scanner.faq.0.1': 'Nej. Textläsaren körs i webbläsaren, på den här enheten. Bara själva läsaren laddas ned, en gång, första gången du använder den.',
   'seo.task.expenses.receipt-scanner.faq.1.0': 'Vad kan den läsa?',

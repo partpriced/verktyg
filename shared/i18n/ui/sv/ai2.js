@@ -22,7 +22,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.ai.perm.mode_all': 'Tillåt allt',
   'ui.ai.perm.mode_all_q': 'Tillåta allt?',
   'ui.ai.perm.mode_all_note': 'Inget frågar.',
-  'ui.ai.perm.mode_all_warning': 'Assistenten kan då ta bort eller rensa ditt arbete, skicka kopior av dina filer till AI-leverantören och lägga pengar på bildgenerering utan att fråga dig. ”Ångra alla AI-ändringar” tar fortfarande tillbaka appändringar, men inget kan kalla tillbaka en fil som har skickats eller tagits bort från Files.',
+  'ui.ai.perm.mode_all_warning': 'Assistenten kan då ta bort eller rensa ditt arbete, skicka kopior av dina filer till AI-leverantören och lägga pengar på bildgenerering utan att fråga dig. ”Ångra alla AI-ändringar” tar fortfarande tillbaka appändringar, men inget kan kalla tillbaka en fil som har skickats eller tagits bort från Filer.',
   // the question
   'ui.ai.perm.an_action': 'En åtgärd',
   'ui.ai.perm.in_app': '{action} i {app}',
@@ -100,8 +100,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.convert.remove_from': 'Ta bort filerna från {app}',
   'ui.convert.from': 'Från {app}: {files}',
   'ui.convert.no_pdf': '{files} kan inte konverteras till PDF här. Bilder, SVG, HTML, text och Markdown-filer blir PDF.',
-  'ui.convert.save_drive': 'Spara i Files',
-  'ui.convert.save_title': 'Spara ”{name}” i Files',
-  'ui.convert.saved': 'Sparad i Files',
-  'ui.convert.save_failed': 'Kunde inte spara i Files: {error}',
+  'ui.convert.save_drive': 'Spara i Filer',
+  'ui.convert.save_title': 'Spara ”{name}” i Filer',
+  'ui.convert.saved': 'Sparad i Filer',
+  'ui.convert.save_failed': 'Kunde inte spara i Filer: {error}',
 });

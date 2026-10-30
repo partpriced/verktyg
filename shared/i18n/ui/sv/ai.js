@@ -83,7 +83,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'ui.ai.pick.download_size': 'Ladda ned {size}',
   'ui.ai.pick.facts': '{what} · behöver ungefär {vram} GPU-minne · {licence}',
   'ui.ai.pick.net_failed': 'nedladdningen misslyckades. Kontrollera anslutningen och tryck på Ladda ned igen (färdiga delar sparas).',
-  'ui.ai.pick.no_storage': 'den här webbplatsen har inget lagringsutrymme kvar. Frigör utrymme i Files ▸ Lagring och försök sedan igen.',
+  'ui.ai.pick.no_storage': 'den här webbplatsen har inget lagringsutrymme kvar. Frigör utrymme i Filer ▸ Lagring och försök sedan igen.',
   // the model menu in the panel's header
   'ui.ai.menu.model': 'Modell',
   'ui.ai.menu.free': 'Gratis',

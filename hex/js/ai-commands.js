@@ -25,10 +25,10 @@
     await A().openBlob(new Blob([b]), { name: a.name });
     return `Opened ${a.name} (${b.length} bytes) in a new tab. Use save_version or export_file to keep it.`;
   });
-  add('open_file', 'Open a Files file', [{ name: 'file', type: 'string', required: true, maxLength: 300, description: 'Files name or id' }], async (a) => {
+  add('open_file', 'Open a file from Files', [{ name: 'file', type: 'string', required: true, maxLength: 300, description: 'Files name or id' }], async (a) => {
     const H = window.TlbxHub, s = String(a.file).toLowerCase(), all = await H.list();   // intake-ok: an AI command looks a Drive file up by name or id (a lookup; the person's picker is TlbxIntake.fromDrive)
     const hit = all.find((f) => f.id === a.file) || all.find((f) => f.name.toLowerCase() === s) || all.find((f) => f.name.toLowerCase().includes(s));
-    if (!hit) throw new Error(`No Files file “${a.file}”`);
+    if (!hit) throw new Error(`No file in Files “${a.file}”`);
     const rec = await H.get(hit.id);
     await A().openBlob(rec.blob, { name: rec.name, driveId: rec.id });
     return `Opened ${rec.name} (${rec.blob.size} bytes, ${B().guessType(new Uint8Array(await rec.blob.slice(0, 64).arrayBuffer()))}).`;

@@ -78,7 +78,7 @@
     Object.assign({ id: 'up.ai.new-upscale', tool: 'new_upscale', title: 'Start over', destructive: true, args: [],
       run: () => { notBusy(); U.controller.clear(); return 'Cleared: open a new picture with add_file.'; }, description: 'Close the open picture and its result (a result not saved is dropped).' }, base),
     Object.assign({ id: 'up.ai.add-file', tool: 'add_file', title: 'Open a picture or video', destructive: false,
-      args: [{ name: 'file', type: 'string', maxLength: 300, description: 'a Files file name or id' }, { name: 'url', type: 'string', maxLength: 500, description: 'or a picture on this site' }],
+      args: [{ name: 'file', type: 'string', maxLength: 300, description: 'a file from Files name or id' }, { name: 'url', type: 'string', maxLength: 500, description: 'or a picture on this site' }],
       run: addFile, description: 'Open one picture or short video from Files to upscale.' }, base),
     Object.assign({ id: 'up.ai.set-upscale', tool: 'set_upscale', title: 'Upscale settings', destructive: false,
       args: [{ name: 'scale', type: 'enum', values: ['2', '4'] }, { name: 'model', type: 'enum', options: [['fast', 'Fast (bundled)'], ['quality', 'Quality (4× only, once installed)'], ['lanczos', 'Lanczos (no AI)']] },
