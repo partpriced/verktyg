@@ -35,6 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'paint-classic.menu.attributes': '&الخصائص...',
   'paint-classic.menu.clear_image': '&مسح الصورة',
   'paint-classic.menu.opaque': '&رسم معتم',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&الألوان',
   'paint-classic.menu.edit_colors': '&تحرير الألوان...',
   'paint-classic.menu.help': '&مساعدة',

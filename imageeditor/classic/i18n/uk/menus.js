@@ -36,6 +36,7 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'paint-classic.menu.attributes': '&Атрибути...',
   'paint-classic.menu.clear_image': '&Очистити зображення',
   'paint-classic.menu.opaque': '&Малювати непрозоро',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&Кольори',
   'paint-classic.menu.edit_colors': '&Редагувати кольори...',
   'paint-classic.menu.help': '&Довідка',

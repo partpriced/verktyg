@@ -37,6 +37,7 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'paint-classic.menu.attributes': '&Kenmerken...',
   'paint-classic.menu.clear_image': 'Afbeelding &wissen',
   'paint-classic.menu.opaque': '&Ondoorzichtig tekenen',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&Kleuren',
   'paint-classic.menu.edit_colors': '&Kleuren bewerken...',
   'paint-classic.menu.help': '&Help',
