@@ -35,6 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'paint-classic.menu.attributes': '&Attributs...',
   'paint-classic.menu.clear_image': 'Effacer l’i&mage',
   'paint-classic.menu.opaque': '&Dessin opaque',
+  'paint-classic.menu.tlbxify': 'TLBXIFIER',
   'paint-classic.menu.colors': '&Couleurs',
   'paint-classic.menu.edit_colors': '&Modifier les couleurs...',
   'paint-classic.menu.help': '&Aide',

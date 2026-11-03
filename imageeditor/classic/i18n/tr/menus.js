@@ -36,6 +36,7 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'paint-classic.menu.attributes': 'Ö&zellikler...',
   'paint-classic.menu.clear_image': 'Resm&i temizle',
   'paint-classic.menu.opaque': '&Opak çiz',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&Renkler',
   'paint-classic.menu.edit_colors': 'Renkleri &düzenle...',
   'paint-classic.menu.help': '&Yardım',

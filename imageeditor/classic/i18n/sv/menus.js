@@ -36,6 +36,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'paint-classic.menu.attributes': '&Attribut...',
   'paint-classic.menu.clear_image': '&Rensa bild',
   'paint-classic.menu.opaque': 'Rita &ogenomskinligt',
+  'paint-classic.menu.tlbxify': 'TLBXIFIERA',
   'paint-classic.menu.colors': '&Färger',
   'paint-classic.menu.edit_colors': '&Redigera färger...',
   'paint-classic.menu.help': '&Hjälp',

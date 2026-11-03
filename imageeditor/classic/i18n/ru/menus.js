@@ -35,6 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'paint-classic.menu.attributes': '&Атрибуты...',
   'paint-classic.menu.clear_image': '&Очистить рисунок',
   'paint-classic.menu.opaque': '&Рисовать непрозрачно',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&Цвета',
   'paint-classic.menu.edit_colors': '&Изменить цвета...',
   'paint-classic.menu.help': '&Справка',

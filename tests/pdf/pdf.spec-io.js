@@ -4,6 +4,7 @@
   const { describe, it, expect, waitFor, sleep } = TlbxTest;
 
   describe('decryption', () => {
+    const PW = 'fixture';   // the fixtures' user password (tests/pdf/fixtures/make-encrypted.py)
     const cases = [['rc4-128.pdf', PW], ['aes-128.pdf', PW], ['aes-256.pdf', PW], ['owner-only.pdf', null]];
     for (const [name, pw] of cases) {
       it(`opens ${name}, removes the encryption and exports clean pages`, async () => {

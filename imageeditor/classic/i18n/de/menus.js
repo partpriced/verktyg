@@ -35,6 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'paint-classic.menu.attributes': '&Attribute...',
   'paint-classic.menu.clear_image': 'Bild &leeren',
   'paint-classic.menu.opaque': '&Deckend zeichnen',
+  'paint-classic.menu.tlbxify': 'STYLIZE',
   'paint-classic.menu.colors': '&Farben',
   'paint-classic.menu.edit_colors': 'Farben &bearbeiten...',
   'paint-classic.menu.help': '&Hilfe',
