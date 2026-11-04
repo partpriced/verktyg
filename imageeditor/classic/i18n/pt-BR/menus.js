@@ -35,7 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'paint-classic.menu.attributes': '&Atributos...',
   'paint-classic.menu.clear_image': '&Limpar imagem',
   'paint-classic.menu.opaque': 'Desenhar &opaco',
-  'paint-classic.menu.tlbxify': 'TLBXIFICAR',
+  'paint-classic.menu.tlbxify': 'ESTILIZAR',
   'paint-classic.menu.colors': '&Cores',
   'paint-classic.menu.edit_colors': '&Editar cores...',
   'paint-classic.menu.help': '&Ajuda',

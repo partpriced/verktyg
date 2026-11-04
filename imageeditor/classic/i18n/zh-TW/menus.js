@@ -36,7 +36,7 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'paint-classic.menu.attributes': '屬性(&A)...',
   'paint-classic.menu.clear_image': '清除影像(&C)',
   'paint-classic.menu.opaque': '不透明繪圖(&D)',
-  'paint-classic.menu.tlbxify': 'TLBX 化(&L)',
+  'paint-classic.menu.tlbxify': '風格化(&L)',
   'paint-classic.menu.colors': '色彩(&C)',
   'paint-classic.menu.edit_colors': '編輯色彩(&E)...',
   'paint-classic.menu.help': '說明(&H)',

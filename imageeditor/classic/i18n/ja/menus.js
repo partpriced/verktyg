@@ -35,7 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('ja', {
   'paint-classic.menu.attributes': '属性(&A)...',
   'paint-classic.menu.clear_image': '画像を消去(&C)',
   'paint-classic.menu.opaque': '不透明に描画(&D)',
-  'paint-classic.menu.tlbxify': 'TLBXIFY(&L)',
+  'paint-classic.menu.tlbxify': 'STYLIZE(&L)',
   'paint-classic.menu.colors': '色(&C)',
   'paint-classic.menu.edit_colors': '色の編集(&E)...',
   'paint-classic.menu.help': 'ヘルプ(&H)',

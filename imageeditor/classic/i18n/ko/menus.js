@@ -35,7 +35,7 @@ window.TlbxI18n && window.TlbxI18n.add('ko', {
   'paint-classic.menu.attributes': '속성(&A)...',
   'paint-classic.menu.clear_image': '이미지 지우기(&C)',
   'paint-classic.menu.opaque': '불투명하게 그리기(&D)',
-  'paint-classic.menu.tlbxify': 'TLBXIFY(&L)',
+  'paint-classic.menu.tlbxify': 'STYLIZE(&L)',
   'paint-classic.menu.colors': '색(&C)',
   'paint-classic.menu.edit_colors': '색 편집(&E)...',
   'paint-classic.menu.help': '도움말(&H)',

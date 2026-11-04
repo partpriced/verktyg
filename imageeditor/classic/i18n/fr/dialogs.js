@@ -50,7 +50,7 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'paint-classic.help.drop': 'Déposez un fichier image sur la fenêtre pour l’ouvrir.',
   'paint-classic.help.undo': '<b>Ctrl+Z / Ctrl+Y</b> annulent et rétablissent. <b>Ctrl+molette</b> zoome. Sur écran tactile, deux doigts font défiler.',
   'paint-classic.help.palette': 'Double-cliquez sur une couleur de la palette pour la modifier. Cliquez sur la case de couleur pour échanger les couleurs.',
-  'paint-classic.help.tlbx': '<b>Pinceau Tlbx</b> coule, <b>Tampon Tlbx</b> tamponne des emojis, <b>Image → TLBXIFIER</b> frit l’image (Ctrl+Z l’annule).',
+  'paint-classic.help.tlbx': '<b>Pinceau Tlbx</b> coule, <b>Tampon Tlbx</b> tamponne des emojis, <b>Image → STYLISER</b> frit l’image (Ctrl+Z l’annule).',
   'paint-classic.ec.title': 'Modifier les couleurs',
   'paint-classic.ec.basic': 'Couleurs de base :',
   'paint-classic.ec.custom': 'Couleurs personnalisées :',

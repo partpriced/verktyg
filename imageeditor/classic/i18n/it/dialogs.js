@@ -50,7 +50,7 @@ window.TlbxI18n && window.TlbxI18n.add('it', {
   'paint-classic.help.drop': 'Trascina un file immagine sulla finestra per aprirlo.',
   'paint-classic.help.undo': '<b>Ctrl+Z / Ctrl+Y</b> annullano e ripetono. <b>Ctrl+rotella</b> fa zoom. Su schermi touch due dita scorrono.',
   'paint-classic.help.palette': 'Doppio clic su un colore della tavolozza per modificarlo. Clicca il riquadro dei colori per scambiarli.',
-  'paint-classic.help.tlbx': '<b>Pennello Tlbx</b> cola, <b>Timbro Tlbx</b> timbra emoji, <b>Immagine → TLBXIFICA</b> frigge l’immagine (Ctrl+Z la annulla).',
+  'paint-classic.help.tlbx': '<b>Pennello Tlbx</b> cola, <b>Timbro Tlbx</b> timbra emoji, <b>Immagine → STILIZZA</b> frigge l’immagine (Ctrl+Z la annulla).',
   'paint-classic.ec.title': 'Modifica colori',
   'paint-classic.ec.basic': 'Colori base:',
   'paint-classic.ec.custom': 'Colori personalizzati:',

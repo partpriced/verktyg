@@ -51,7 +51,7 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'paint-classic.help.drop': 'Släpp en bildfil på fönstret för att öppna den.',
   'paint-classic.help.undo': '<b>Ctrl+Z / Ctrl+Y</b> ångrar och gör om. <b>Ctrl+mushjul</b> zoomar. Två fingrar rullar på pekskärmar.',
   'paint-classic.help.palette': 'Dubbelklicka på en palettfärg för att redigera den. Klicka på färgrutan för att byta färger.',
-  'paint-classic.help.tlbx': '<b>Tlbx-pensel</b> droppar, <b>Tlbx-stämpel</b> stämplar emoji, <b>Bild → TLBXIFIERA</b> friterar bilden (Ctrl+Z ångrar).',
+  'paint-classic.help.tlbx': '<b>Tlbx-pensel</b> droppar, <b>Tlbx-stämpel</b> stämplar emoji, <b>Bild → STILISERA</b> friterar bilden (Ctrl+Z ångrar).',
   'paint-classic.ec.title': 'Redigera färger',
   'paint-classic.ec.basic': 'Grundfärger:',
   'paint-classic.ec.custom': 'Anpassade färger:',

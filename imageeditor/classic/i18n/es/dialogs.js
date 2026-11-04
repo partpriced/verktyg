@@ -50,7 +50,7 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'paint-classic.help.drop': 'Suelta un archivo de imagen sobre la ventana para abrirlo.',
   'paint-classic.help.undo': '<b>Ctrl+Z / Ctrl+Y</b> deshacen y rehacen. <b>Ctrl + rueda del ratón</b> hace zoom. Dos dedos desplazan en pantallas táctiles.',
   'paint-classic.help.palette': 'Haz doble clic en un color de la paleta para editarlo. Haz clic en el recuadro de color para intercambiar colores.',
-  'paint-classic.help.tlbx': '<b>El pincel Tlbx</b> gotea, <b>el sello Tlbx</b> estampa emojis, <b>Imagen → TLBXIFICAR</b> fríe la imagen (Ctrl+Z lo deshace).',
+  'paint-classic.help.tlbx': '<b>El pincel Tlbx</b> gotea, <b>el sello Tlbx</b> estampa emojis, <b>Imagen → ESTILIZAR</b> fríe la imagen (Ctrl+Z lo deshace).',
   'paint-classic.ec.title': 'Editar colores',
   'paint-classic.ec.basic': 'Colores básicos:',
   'paint-classic.ec.custom': 'Colores personalizados:',
