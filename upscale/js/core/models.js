@@ -17,14 +17,14 @@
     'fsrcnn-x2': {
       id: 'fsrcnn-x2', name: 'Fast', arch: 'FSRCNN', scale: 2, channels: 'luma', bundled: true,
       path: 'vendor/models/upscale/fsrcnn/fsrcnn-x2.onnx', bytes: 35823,
-      sha256: 'c2b6925f67fca0125e413739a9090682345353ac220136af5ec397991a4e9928',
+      sha256: '624a29863cf7947dd7d4f843015a02590835154ea9c5a0ed764ce86996e07e36',
       licence: 'Apache-2.0', licenceFile: 'vendor/models/upscale/fsrcnn/LICENSE',
       blurb: 'Small and quick. Sharpens edges; best on drawings, logos and simple photos.',
     },
     'fsrcnn-x4': {
       id: 'fsrcnn-x4', name: 'Fast', arch: 'FSRCNN', scale: 4, channels: 'luma', bundled: true,
       path: 'vendor/models/upscale/fsrcnn/fsrcnn-x4.onnx', bytes: 38559,
-      sha256: '08cfb34887ceeb2c96bd7e9db817dd9e50207f3ff6a29015a710494a13eaa94c',
+      sha256: '4e6a6ead181643186c7e69ac69870381ad30d3661328424cd5182e5a3157c8a5',
       licence: 'Apache-2.0', licenceFile: 'vendor/models/upscale/fsrcnn/LICENSE',
       blurb: 'Small and quick. Sharpens edges; best on drawings, logos and simple photos.',
     },
