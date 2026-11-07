@@ -55,6 +55,10 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'imageeditor.tool.hand_short': 'Рука',
   'imageeditor.tool.zoom': 'Інструмент «Масштаб»',
   'imageeditor.tool.zoom_short': 'Масштаб',
+  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
   'imageeditor.tool.free_transform': 'Вільне перетворення',
   'imageeditor.tool.free_transform_tip': 'Вільне перетворення (Ctrl+T)',
   'imageeditor.tool.transform_btn': 'Перетворити',
