@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'imageeditor.tool.hand_short': "El",
   'imageeditor.tool.zoom': "Yakınlaştırma aracı",
   'imageeditor.tool.zoom_short': "Yakınlaştır",
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': 'Görünüm döndürme aracı',
+  'imageeditor.tool.rotate_short': 'Görünümü döndür',
+  'imageeditor.tool.rotate_angle': 'Döndürme açısı',
+  'imageeditor.tool.rotate_hint': 'Görünümü çevirmek için sürükleyin · Shift: 15° adımlar · Esc: 0°',
   'imageeditor.tool.free_transform': "Serbest dönüştürme",
   'imageeditor.tool.free_transform_tip': "Serbest dönüştürme (Ctrl+T)",
   'imageeditor.tool.transform_btn': "Dönüştür",

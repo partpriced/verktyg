@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'imageeditor.ctx.create_clip': 'Utwórz maskę przycinającą',
   'imageeditor.ctx.hide_layer': 'Ukryj warstwę',
   'imageeditor.ctx.show_layer': 'Pokaż warstwę',
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': 'Ukryj warstwy',
+  'imageeditor.ctx.show_layers': 'Pokaż warstwy',
   'imageeditor.ctx.expand_panel': 'Rozwiń panel',
   'imageeditor.ctx.collapse_panel': 'Zwiń panel',
   'imageeditor.ctx.load_selection': 'Wczytaj zaznaczenie',

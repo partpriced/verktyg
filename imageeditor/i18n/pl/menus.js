@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'imageeditor.menu.trim_transparent_pixels': 'Przytnij przezroczyste piksele',
   'imageeditor.menu.new_layer': 'Nowa warstwa',
   'imageeditor.menu.duplicate_layer': 'Duplikuj warstwę',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': 'Duplikuj warstwy',
   'imageeditor.menu.delete': 'Usuń',
   'imageeditor.menu.delete_layer': 'Usuń warstwę',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': 'Usuń warstwy',
   'imageeditor.menu.remove_all_layers': 'Usuń wszystkie warstwy',
   'imageeditor.menu.layer_properties': 'Właściwości warstwy…',
   'imageeditor.menu.layer_via_copy': 'Warstwa przez kopiowanie',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'imageeditor.menu.send_to_back': 'Przenieś na spód',
   'imageeditor.menu.lock_unlock_layer': 'Zablokuj / odblokuj warstwę',
   'imageeditor.menu.merge_down': 'Scal w dół',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': 'Scal warstwy',
   'imageeditor.menu.merge_visible': 'Scal widoczne',
   'imageeditor.menu.flatten_image': 'Spłaszcz obraz',
   'imageeditor.menu.all': 'Wszystko',
   'imageeditor.menu.deselect': 'Odznacz',
   'imageeditor.menu.inverse': 'Odwróć zaznaczenie',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': 'Wszystkie warstwy',
   'imageeditor.menu.layer_transparency': 'Przezroczystość warstwy',
   'imageeditor.menu.subject': 'Obiekt',
   'imageeditor.menu.color_range_foreground': 'Zakres kolorów (pierwszy plan)…',

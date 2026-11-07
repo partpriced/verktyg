@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'imageeditor.ctx.create_clip': 'Crear máscara de recorte',
   'imageeditor.ctx.hide_layer': 'Ocultar capa',
   'imageeditor.ctx.show_layer': 'Mostrar capa',
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': 'Ocultar capas',
+  'imageeditor.ctx.show_layers': 'Mostrar capas',
   'imageeditor.ctx.expand_panel': 'Expandir panel',
   'imageeditor.ctx.collapse_panel': 'Contraer panel',
   'imageeditor.ctx.load_selection': 'Cargar selección',

@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ja', {
   'imageeditor.tool.hand_short': '手のひら',
   'imageeditor.tool.zoom': 'ズーム ツール',
   'imageeditor.tool.zoom_short': 'ズーム',
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': '表示回転ツール',
+  'imageeditor.tool.rotate_short': '表示を回転',
+  'imageeditor.tool.rotate_angle': '回転角度',
+  'imageeditor.tool.rotate_hint': 'ドラッグして表示を回転 · Shift: 15° 刻み · Esc: 0°',
   'imageeditor.tool.free_transform': '自由変形',
   'imageeditor.tool.free_transform_tip': '自由変形（Ctrl+T）',
   'imageeditor.tool.transform_btn': '変形',

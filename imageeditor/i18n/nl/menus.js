@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'imageeditor.menu.trim_transparent_pixels': 'Transparante pixels bijsnijden',
   'imageeditor.menu.new_layer': 'Nieuwe laag',
   'imageeditor.menu.duplicate_layer': 'Laag dupliceren',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': 'Lagen dupliceren',
   'imageeditor.menu.delete': 'Verwijderen',
   'imageeditor.menu.delete_layer': 'Laag verwijderen',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': 'Lagen verwijderen',
   'imageeditor.menu.remove_all_layers': 'Alle lagen verwijderen',
   'imageeditor.menu.layer_properties': 'Laageigenschappen…',
   'imageeditor.menu.layer_via_copy': 'Laag via kopiëren',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'imageeditor.menu.send_to_back': 'Naar achtergrond',
   'imageeditor.menu.lock_unlock_layer': 'Laag vergrendelen / ontgrendelen',
   'imageeditor.menu.merge_down': 'Naar beneden samenvoegen',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': 'Lagen samenvoegen',
   'imageeditor.menu.merge_visible': 'Zichtbare lagen samenvoegen',
   'imageeditor.menu.flatten_image': 'Afbeelding reduceren',
   'imageeditor.menu.all': 'Alles',
   'imageeditor.menu.deselect': 'Selectie opheffen',
   'imageeditor.menu.inverse': 'Omkeren',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': 'Alle lagen',
   'imageeditor.menu.layer_transparency': 'Transparantie van de laag',
   'imageeditor.menu.subject': 'Onderwerp',
   'imageeditor.menu.color_range_foreground': 'Kleurbereik (voorgrond)…',

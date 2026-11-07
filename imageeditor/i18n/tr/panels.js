@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'imageeditor.ctx.create_clip': "Kırpma maskesi oluştur",
   'imageeditor.ctx.hide_layer': "Katmanı gizle",
   'imageeditor.ctx.show_layer': "Katmanı göster",
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': 'Katmanları gizle',
+  'imageeditor.ctx.show_layers': 'Katmanları göster',
   'imageeditor.ctx.expand_panel': "Paneli genişlet",
   'imageeditor.ctx.collapse_panel': "Paneli daralt",
   'imageeditor.ctx.load_selection': "Seçimi yükle",

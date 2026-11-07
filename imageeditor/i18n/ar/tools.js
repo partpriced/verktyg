@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'imageeditor.tool.hand_short': "يد",
   'imageeditor.tool.zoom': "أداة التكبير",
   'imageeditor.tool.zoom_short': "تكبير",
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': 'أداة تدوير العرض',
+  'imageeditor.tool.rotate_short': 'تدوير العرض',
+  'imageeditor.tool.rotate_angle': 'زاوية التدوير',
+  'imageeditor.tool.rotate_hint': 'اسحب لتدوير العرض · Shift: خطوات 15° · Esc: 0°',
   'imageeditor.tool.free_transform': "تحويل حر",
   'imageeditor.tool.free_transform_tip': "تحويل حر (Ctrl+T)",
   'imageeditor.tool.transform_btn': "تحويل",

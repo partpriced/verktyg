@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'imageeditor.tool.hand_short': 'Hand',
   'imageeditor.tool.zoom': 'Zoomgereedschap',
   'imageeditor.tool.zoom_short': 'Zoomen',
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': 'Weergave draaien-gereedschap',
+  'imageeditor.tool.rotate_short': 'Weergave draaien',
+  'imageeditor.tool.rotate_angle': 'Draaihoek',
+  'imageeditor.tool.rotate_hint': 'Slepen om de weergave te draaien · Shift: stappen van 15° · Esc: 0°',
   'imageeditor.tool.free_transform': 'Vrij transformeren',
   'imageeditor.tool.free_transform_tip': 'Vrij transformeren (Ctrl+T)',
   'imageeditor.tool.transform_btn': 'Transformeren',

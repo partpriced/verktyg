@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.ctx.create_clip': 'Créer un masque d’écrêtage',
   'imageeditor.ctx.hide_layer': 'Masquer le calque',
   'imageeditor.ctx.show_layer': 'Afficher le calque',
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': 'Masquer les calques',
+  'imageeditor.ctx.show_layers': 'Afficher les calques',
   'imageeditor.ctx.expand_panel': 'Déplier le panneau',
   'imageeditor.ctx.collapse_panel': 'Réduire le panneau',
   'imageeditor.ctx.load_selection': 'Charger la sélection',
