@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ko', {
   'imageeditor.tool.hand_short': '손',
   'imageeditor.tool.zoom': '확대/축소 도구',
   'imageeditor.tool.zoom_short': '확대/축소',
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': '보기 회전 도구',
+  'imageeditor.tool.rotate_short': '보기 회전',
+  'imageeditor.tool.rotate_angle': '회전 각도',
+  'imageeditor.tool.rotate_hint': '드래그하여 보기 회전 · Shift: 15° 단위 · Esc: 0°',
   'imageeditor.tool.free_transform': '자유 변형',
   'imageeditor.tool.free_transform_tip': '자유 변형(Ctrl+T)',
   'imageeditor.tool.transform_btn': '변형',

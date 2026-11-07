@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.menu.trim_transparent_pixels': 'Transparente Pixel abschneiden',
   'imageeditor.menu.new_layer': 'Neue Ebene',
   'imageeditor.menu.duplicate_layer': 'Ebene duplizieren',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': 'Ebenen duplizieren',
   'imageeditor.menu.delete': 'Löschen',
   'imageeditor.menu.delete_layer': 'Ebene löschen',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': 'Ebenen löschen',
   'imageeditor.menu.remove_all_layers': 'Alle Ebenen entfernen',
   'imageeditor.menu.layer_properties': 'Ebeneneigenschaften…',
   'imageeditor.menu.layer_via_copy': 'Ebene durch Kopieren',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.menu.send_to_back': 'In den Hintergrund',
   'imageeditor.menu.lock_unlock_layer': 'Ebene sperren / entsperren',
   'imageeditor.menu.merge_down': 'Nach unten zusammenführen',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': 'Ebenen zusammenführen',
   'imageeditor.menu.merge_visible': 'Sichtbare zusammenführen',
   'imageeditor.menu.flatten_image': 'Bild reduzieren',
   'imageeditor.menu.all': 'Alle',
   'imageeditor.menu.deselect': 'Auswahl aufheben',
   'imageeditor.menu.inverse': 'Umkehren',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': 'Alle Ebenen',
   'imageeditor.menu.layer_transparency': 'Ebenentransparenz',
   'imageeditor.menu.subject': 'Motiv',
   'imageeditor.menu.color_range_foreground': 'Farbbereich (Vordergrund)…',

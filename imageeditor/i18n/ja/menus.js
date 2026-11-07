@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ja', {
   'imageeditor.menu.trim_transparent_pixels': '透明なピクセルを切り落とす',
   'imageeditor.menu.new_layer': '新規レイヤー',
   'imageeditor.menu.duplicate_layer': 'レイヤーを複製',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': 'レイヤーを複製',
   'imageeditor.menu.delete': '削除',
   'imageeditor.menu.delete_layer': 'レイヤーを削除',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': 'レイヤーを削除',
   'imageeditor.menu.remove_all_layers': 'すべてのレイヤーを削除',
   'imageeditor.menu.layer_properties': 'レイヤーのプロパティ…',
   'imageeditor.menu.layer_via_copy': 'コピーによるレイヤー',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('ja', {
   'imageeditor.menu.send_to_back': '最背面へ移動',
   'imageeditor.menu.lock_unlock_layer': 'レイヤーのロック / ロック解除',
   'imageeditor.menu.merge_down': '下のレイヤーと結合',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': 'レイヤーを結合',
   'imageeditor.menu.merge_visible': '表示中のレイヤーを結合',
   'imageeditor.menu.flatten_image': '画像を統合',
   'imageeditor.menu.all': 'すべて',
   'imageeditor.menu.deselect': '選択解除',
   'imageeditor.menu.inverse': '選択を反転',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': 'すべてのレイヤー',
   'imageeditor.menu.layer_transparency': 'レイヤーの透明部分',
   'imageeditor.menu.subject': '被写体',
   'imageeditor.menu.color_range_foreground': '色域を選択（描画色）…',

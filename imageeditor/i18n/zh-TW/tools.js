@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'imageeditor.tool.hand_short': '抓手',
   'imageeditor.tool.zoom': '縮放工具',
   'imageeditor.tool.zoom_short': '縮放',
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': '旋轉檢視工具',
+  'imageeditor.tool.rotate_short': '旋轉檢視',
+  'imageeditor.tool.rotate_angle': '旋轉角度',
+  'imageeditor.tool.rotate_hint': '拖曳以旋轉檢視 · Shift: 每次 15° · Esc: 0°',
   'imageeditor.tool.free_transform': '自由變形',
   'imageeditor.tool.free_transform_tip': '自由變形（Ctrl+T）',
   'imageeditor.tool.transform_btn': '變形',

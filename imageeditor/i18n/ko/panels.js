@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('ko', {
   'imageeditor.ctx.create_clip': '클리핑 마스크 만들기',
   'imageeditor.ctx.hide_layer': '레이어 숨기기',
   'imageeditor.ctx.show_layer': '레이어 표시',
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': '레이어 숨기기',
+  'imageeditor.ctx.show_layers': '레이어 표시',
   'imageeditor.ctx.expand_panel': '패널 펼치기',
   'imageeditor.ctx.collapse_panel': '패널 접기',
   'imageeditor.ctx.load_selection': '선택 영역 불러오기',

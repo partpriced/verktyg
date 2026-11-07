@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.menu.trim_transparent_pixels': 'Rogner les pixels transparents',
   'imageeditor.menu.new_layer': 'Nouveau calque',
   'imageeditor.menu.duplicate_layer': 'Dupliquer le calque',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': 'Dupliquer les calques',
   'imageeditor.menu.delete': 'Supprimer',
   'imageeditor.menu.delete_layer': 'Supprimer le calque',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': 'Supprimer les calques',
   'imageeditor.menu.remove_all_layers': 'Supprimer tous les calques',
   'imageeditor.menu.layer_properties': 'Propriétés du calque…',
   'imageeditor.menu.layer_via_copy': 'Calque par copie',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('fr', {
   'imageeditor.menu.send_to_back': 'Envoyer à l’arrière-plan',
   'imageeditor.menu.lock_unlock_layer': 'Verrouiller / déverrouiller le calque',
   'imageeditor.menu.merge_down': 'Fusionner avec le calque du dessous',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': 'Fusionner les calques',
   'imageeditor.menu.merge_visible': 'Fusionner les calques visibles',
   'imageeditor.menu.flatten_image': 'Aplatir l’image',
   'imageeditor.menu.all': 'Tout',
   'imageeditor.menu.deselect': 'Désélectionner',
   'imageeditor.menu.inverse': 'Inverser',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': 'Tous les calques',
   'imageeditor.menu.layer_transparency': 'Transparence du calque',
   'imageeditor.menu.subject': 'Sujet',
   'imageeditor.menu.color_range_foreground': 'Plage de couleurs (premier plan)…',

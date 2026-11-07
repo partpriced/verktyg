@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.tool.hand_short': 'Hand',
   'imageeditor.tool.zoom': 'Zoomwerkzeug',
   'imageeditor.tool.zoom_short': 'Zoom',
-  'imageeditor.tool.rotate': 'Rotate View Tool',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_short': 'Rotate View',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_angle': 'Rotation Angle',   // English until translated (Rotate View tool)
-  'imageeditor.tool.rotate_hint': 'Drag to turn the view · Shift: 15° steps · Esc: 0°',   // English until translated (Rotate View tool)
+  'imageeditor.tool.rotate': 'Ansicht drehen-Werkzeug',
+  'imageeditor.tool.rotate_short': 'Ansicht drehen',
+  'imageeditor.tool.rotate_angle': 'Drehwinkel',
+  'imageeditor.tool.rotate_hint': 'Ziehen, um die Ansicht zu drehen · Shift: 15°-Schritte · Esc: 0°',
   'imageeditor.tool.free_transform': 'Frei transformieren',
   'imageeditor.tool.free_transform_tip': 'Frei transformieren (Strg+T)',
   'imageeditor.tool.transform_btn': 'Transformieren',

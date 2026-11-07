@@ -54,10 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'imageeditor.menu.trim_transparent_pixels': '修剪透明像素',
   'imageeditor.menu.new_layer': '新增圖層',
   'imageeditor.menu.duplicate_layer': '複製圖層',
-  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.duplicate_layers': '複製圖層',
   'imageeditor.menu.delete': '刪除',
   'imageeditor.menu.delete_layer': '刪除圖層',
-  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.delete_layers': '刪除圖層',
   'imageeditor.menu.remove_all_layers': '移除所有圖層',
   'imageeditor.menu.layer_properties': '圖層屬性…',
   'imageeditor.menu.layer_via_copy': '透過複製建立圖層',
@@ -87,13 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'imageeditor.menu.send_to_back': '移至最後',
   'imageeditor.menu.lock_unlock_layer': '鎖定／解除鎖定圖層',
   'imageeditor.menu.merge_down': '向下合併',
-  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.merge_layers': '合併圖層',
   'imageeditor.menu.merge_visible': '合併可見圖層',
   'imageeditor.menu.flatten_image': '合併影像',
   'imageeditor.menu.all': '全部',
   'imageeditor.menu.deselect': '取消選取',
   'imageeditor.menu.inverse': '反向',
-  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
+  'imageeditor.menu.all_layers': '所有圖層',
   'imageeditor.menu.layer_transparency': '圖層透明度',
   'imageeditor.menu.subject': '主體',
   'imageeditor.menu.color_range_foreground': '色彩範圍（前景色）…',

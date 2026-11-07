@@ -42,8 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('nl', {
   'imageeditor.ctx.create_clip': 'Uitknipmasker maken',
   'imageeditor.ctx.hide_layer': 'Laag verbergen',
   'imageeditor.ctx.show_layer': 'Laag tonen',
-  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
-  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.hide_layers': 'Lagen verbergen',
+  'imageeditor.ctx.show_layers': 'Lagen tonen',
   'imageeditor.ctx.expand_panel': 'Deelvenster uitvouwen',
   'imageeditor.ctx.collapse_panel': 'Deelvenster samenvouwen',
   'imageeditor.ctx.load_selection': 'Selectie laden',
