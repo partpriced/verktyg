@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'imageeditor.menu.trim_transparent_pixels': 'Aparar pixels transparentes',
   'imageeditor.menu.new_layer': 'Nova camada',
   'imageeditor.menu.duplicate_layer': 'Duplicar camada',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': 'Excluir',
   'imageeditor.menu.delete_layer': 'Excluir camada',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': 'Remover todas as camadas',
   'imageeditor.menu.layer_properties': 'Propriedades da camada…',
   'imageeditor.menu.layer_via_copy': 'Camada por cópia',
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'imageeditor.menu.send_to_back': 'Enviar para o fundo',
   'imageeditor.menu.lock_unlock_layer': 'Bloquear / desbloquear camada',
   'imageeditor.menu.merge_down': 'Mesclar com a de baixo',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': 'Mesclar visíveis',
   'imageeditor.menu.flatten_image': 'Achatar imagem',
   'imageeditor.menu.all': 'Tudo',
   'imageeditor.menu.deselect': 'Desmarcar',
   'imageeditor.menu.inverse': 'Inverter',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': 'Transparência da camada',
   'imageeditor.menu.subject': 'Sujeito',
   'imageeditor.menu.color_range_foreground': 'Intervalo de cores (primeiro plano)…',

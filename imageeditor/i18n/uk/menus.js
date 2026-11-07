@@ -55,8 +55,10 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'imageeditor.menu.trim_transparent_pixels': 'Обрізати прозорі пікселі',
   'imageeditor.menu.new_layer': 'Створити шар',
   'imageeditor.menu.duplicate_layer': 'Дублювати шар',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': 'Видалити',
   'imageeditor.menu.delete_layer': 'Видалити шар',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': 'Вилучити всі шари',
   'imageeditor.menu.layer_properties': 'Властивості шару…',
   'imageeditor.menu.layer_via_copy': 'Шар через копіювання',
@@ -86,11 +88,13 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'imageeditor.menu.send_to_back': 'Перенести на задній план',
   'imageeditor.menu.lock_unlock_layer': 'Заблокувати / розблокувати шар',
   'imageeditor.menu.merge_down': 'Об’єднати з нижнім',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': 'Об’єднати видимі',
   'imageeditor.menu.flatten_image': 'Звести зображення',
   'imageeditor.menu.all': 'Усе',
   'imageeditor.menu.deselect': 'Зняти виділення',
   'imageeditor.menu.inverse': 'Інвертувати',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': 'Прозорість шару',
   'imageeditor.menu.subject': 'Об’єкт',
   'imageeditor.menu.color_range_foreground': 'Діапазон кольорів (передній план)…',

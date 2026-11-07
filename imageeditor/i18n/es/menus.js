@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'imageeditor.menu.trim_transparent_pixels': 'Recortar píxeles transparentes',
   'imageeditor.menu.new_layer': 'Capa nueva',
   'imageeditor.menu.duplicate_layer': 'Duplicar capa',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': 'Eliminar',
   'imageeditor.menu.delete_layer': 'Eliminar capa',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': 'Quitar todas las capas',
   'imageeditor.menu.layer_properties': 'Propiedades de capa…',
   'imageeditor.menu.layer_via_copy': 'Capa por copia',
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('es', {
   'imageeditor.menu.send_to_back': 'Enviar al fondo',
   'imageeditor.menu.lock_unlock_layer': 'Bloquear / desbloquear capa',
   'imageeditor.menu.merge_down': 'Combinar con la inferior',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': 'Combinar visibles',
   'imageeditor.menu.flatten_image': 'Aplanar imagen',
   'imageeditor.menu.all': 'Todo',
   'imageeditor.menu.deselect': 'Anular selección',
   'imageeditor.menu.inverse': 'Invertir',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': 'Transparencia de la capa',
   'imageeditor.menu.subject': 'Sujeto',
   'imageeditor.menu.color_range_foreground': 'Rango de color (primer plano)…',

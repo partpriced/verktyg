@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'imageeditor.menu.trim_transparent_pixels': "قص البكسلات الشفافة",
   'imageeditor.menu.new_layer': "طبقة جديدة",
   'imageeditor.menu.duplicate_layer': "تكرار الطبقة",
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': "حذف",
   'imageeditor.menu.delete_layer': "حذف الطبقة",
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': "إزالة كل الطبقات",
   'imageeditor.menu.layer_properties': "خصائص الطبقة…",
   'imageeditor.menu.layer_via_copy': "طبقة عبر النسخ",
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'imageeditor.menu.send_to_back': "إرسال إلى الخلفية",
   'imageeditor.menu.lock_unlock_layer': "قفل / فتح الطبقة",
   'imageeditor.menu.merge_down': "دمج للأسفل",
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': "دمج المرئي",
   'imageeditor.menu.flatten_image': "تسطيح الصورة",
   'imageeditor.menu.all': "الكل",
   'imageeditor.menu.deselect': "إلغاء التحديد",
   'imageeditor.menu.inverse': "عكس",
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': "شفافية الطبقة",
   'imageeditor.menu.subject': "الموضوع",
   'imageeditor.menu.color_range_foreground': "نطاق اللون (المقدمة)…",

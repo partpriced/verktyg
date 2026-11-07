@@ -43,6 +43,8 @@ window.TlbxI18n && window.TlbxI18n.add('uk', {
   'imageeditor.ctx.create_clip': 'Створити маску обтинання',
   'imageeditor.ctx.hide_layer': 'Сховати шар',
   'imageeditor.ctx.show_layer': 'Показати шар',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': 'Розгорнути панель',
   'imageeditor.ctx.collapse_panel': 'Згорнути панель',
   'imageeditor.ctx.load_selection': 'Завантажити виділення',

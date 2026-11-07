@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('pt-BR', {
   'imageeditor.ctx.create_clip': 'Criar máscara de recorte',
   'imageeditor.ctx.hide_layer': 'Ocultar camada',
   'imageeditor.ctx.show_layer': 'Mostrar camada',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': 'Expandir painel',
   'imageeditor.ctx.collapse_panel': 'Recolher painel',
   'imageeditor.ctx.load_selection': 'Carregar seleção',

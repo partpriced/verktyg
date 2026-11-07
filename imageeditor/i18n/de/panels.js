@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'imageeditor.ctx.create_clip': 'Schnittmaske erstellen',
   'imageeditor.ctx.hide_layer': 'Ebene ausblenden',
   'imageeditor.ctx.show_layer': 'Ebene einblenden',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': 'Bereich ausklappen',
   'imageeditor.ctx.collapse_panel': 'Bereich einklappen',
   'imageeditor.ctx.load_selection': 'Auswahl laden',

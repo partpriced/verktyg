@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'imageeditor.menu.trim_transparent_pixels': 'Обрезать прозрачные пиксели',
   'imageeditor.menu.new_layer': 'Новый слой',
   'imageeditor.menu.duplicate_layer': 'Дублировать слой',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': 'Удалить',
   'imageeditor.menu.delete_layer': 'Удалить слой',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': 'Удалить все слои',
   'imageeditor.menu.layer_properties': 'Свойства слоя…',
   'imageeditor.menu.layer_via_copy': 'Слой через копирование',
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'imageeditor.menu.send_to_back': 'Переместить вниз',
   'imageeditor.menu.lock_unlock_layer': 'Заблокировать / разблокировать слой',
   'imageeditor.menu.merge_down': 'Объединить с нижним',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': 'Объединить видимые',
   'imageeditor.menu.flatten_image': 'Выполнить сведение',
   'imageeditor.menu.all': 'Все',
   'imageeditor.menu.deselect': 'Снять выделение',
   'imageeditor.menu.inverse': 'Инверсия',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': 'Прозрачность слоя',
   'imageeditor.menu.subject': 'Объект',
   'imageeditor.menu.color_range_foreground': 'Диапазон цветов (основной)…',

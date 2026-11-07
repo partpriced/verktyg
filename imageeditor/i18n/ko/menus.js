@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('ko', {
   'imageeditor.menu.trim_transparent_pixels': '투명 픽셀 다듬기',
   'imageeditor.menu.new_layer': '새 레이어',
   'imageeditor.menu.duplicate_layer': '레이어 복제',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': '삭제',
   'imageeditor.menu.delete_layer': '레이어 삭제',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': '모든 레이어 제거',
   'imageeditor.menu.layer_properties': '레이어 속성…',
   'imageeditor.menu.layer_via_copy': '복사로 레이어 만들기',
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('ko', {
   'imageeditor.menu.send_to_back': '맨 뒤로 보내기',
   'imageeditor.menu.lock_unlock_layer': '레이어 잠금/잠금 해제',
   'imageeditor.menu.merge_down': '아래 레이어와 병합',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': '보이는 레이어 병합',
   'imageeditor.menu.flatten_image': '이미지 평면화',
   'imageeditor.menu.all': '모두',
   'imageeditor.menu.deselect': '선택 해제',
   'imageeditor.menu.inverse': '반전',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': '레이어 투명도',
   'imageeditor.menu.subject': '피사체',
   'imageeditor.menu.color_range_foreground': '색상 범위(전경색)…',
