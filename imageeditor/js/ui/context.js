@@ -93,13 +93,14 @@ function canvasItemsFor({ x, y }) {
 function selectLayerPixels(L) { const c = mkCanvas(D.w, D.h); cx(c).drawImage(bakedLayer(L).canvas, L.x, L.y); D.sel = makeSel(c); commit(tr('imageeditor.ctx.load_selection')); }
 
 /* ---------- layers and text ---------- */
-function activateLayer(L) { if (D.activeId !== L.id) { D.activeId = L.id; UI.editMask = false; emit('doc'); } }
+/** Makes L the active layer; when it is one of several selected layers the selection stays (layers/multi.js). */
+function activateLayer(L) { if (D.activeId !== L.id) { if (!keepInLayerSelection(L.id)) D.activeId = L.id; UI.editMask = false; emit('doc'); } }
 function layerItems(L) {
   activateLayer(L);
   return [M('Edit', 'free_transform'), '-', M('Layer', 'layer_properties'), M('Layer', 'duplicate_layer'), M('Layer', 'delete'), { label: tr('imageeditor.ctx.isolate_subject'), act: () => isolateSubject(L.id) }, '-', // i18n-ignore: ids, key names, CSS
     { label: tr('imageeditor.ctx.select_pixels'), act: () => selectLayerPixels(L) }, (hasMask() ? M('Layer', 'mask') : { label: tr('imageeditor.ctx.add_mask'), sub: maskAddItems() }), M('Layer', 'layer_style'), { label: tr('imageeditor.ctx.apply_fx_preset'), act: () => fxPresetPick(L.id) }, { label: tr('imageeditor.ctx.save_fx_preset'), act: () => fxPresetSaveDialog(L.id), en: () => !!(L.fx && L.fx.length) },{ label: tr(L.clip ? 'imageeditor.ctx.release_clip' : 'imageeditor.ctx.create_clip'), act: () => setClipping(L.id, !L.clip) }, '-', // i18n-ignore: ids, key names, CSS
     M('Layer', 'rotate_and_flip'), '-', // i18n-ignore: ids, key names, CSS
-    M('Layer', 'lock_unlock_layer'), { label: tr(L.visible ? 'imageeditor.ctx.hide_layer' : 'imageeditor.ctx.show_layer'), act: () => setLayerProps(L.id, { visible: !L.visible }, tr(L.visible ? 'imageeditor.ctx.hide_layer' : 'imageeditor.ctx.show_layer')) }, '-', // i18n-ignore: ids, key names, CSS
+    M('Layer', 'lock_unlock_layer'), layerVisItem(L), '-', // i18n-ignore: ids, key names, CSS
     M('Layer', 'merge_down'), M('Layer', 'merge_visible'), M('Layer', 'flatten_image')]; // i18n-ignore: ids, key names, CSS
 }
 function textItems(L) { activateLayer(L); return [M('Layer', 'edit_text'), M('Layer', 'warp_text'), M('Layer', 'rasterize_type'), '-'].concat(layerItems(L)); } // i18n-ignore: ids, key names, CSS

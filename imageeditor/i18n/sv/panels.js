@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('sv', {
   'imageeditor.ctx.create_clip': 'Skapa urklippsmask',
   'imageeditor.ctx.hide_layer': 'Dölj lager',
   'imageeditor.ctx.show_layer': 'Visa lager',
+  'imageeditor.ctx.hide_layers': 'Dölj lager',
+  'imageeditor.ctx.show_layers': 'Visa lager',
   'imageeditor.ctx.expand_panel': 'Expandera panel',
   'imageeditor.ctx.collapse_panel': 'Komprimera panel',
   'imageeditor.ctx.load_selection': 'Läs in markering',

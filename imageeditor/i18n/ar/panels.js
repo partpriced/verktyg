@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('ar', {
   'imageeditor.ctx.create_clip': "إنشاء قناع قص",
   'imageeditor.ctx.hide_layer': "إخفاء الطبقة",
   'imageeditor.ctx.show_layer': "إظهار الطبقة",
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': "توسيع اللوحة",
   'imageeditor.ctx.collapse_panel': "طيّ اللوحة",
   'imageeditor.ctx.load_selection': "تحميل التحديد",

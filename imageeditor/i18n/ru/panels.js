@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('ru', {
   'imageeditor.ctx.create_clip': 'Создать обтравочную маску',
   'imageeditor.ctx.hide_layer': 'Скрыть слой',
   'imageeditor.ctx.show_layer': 'Показать слой',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': 'Развернуть панель',
   'imageeditor.ctx.collapse_panel': 'Свернуть панель',
   'imageeditor.ctx.load_selection': 'Загрузить выделение',

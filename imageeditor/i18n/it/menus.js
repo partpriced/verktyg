@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('it', {
   'imageeditor.menu.trim_transparent_pixels': 'Rifila pixel trasparenti',
   'imageeditor.menu.new_layer': 'Nuovo livello',
   'imageeditor.menu.duplicate_layer': 'Duplica livello',
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': 'Elimina',
   'imageeditor.menu.delete_layer': 'Elimina livello',
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': 'Rimuovi tutti i livelli',
   'imageeditor.menu.layer_properties': 'Proprietà livello…',
   'imageeditor.menu.layer_via_copy': 'Livello tramite copia',
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('it', {
   'imageeditor.menu.send_to_back': 'Porta sullo sfondo',
   'imageeditor.menu.lock_unlock_layer': 'Blocca / sblocca livello',
   'imageeditor.menu.merge_down': 'Unisci con il livello sotto',
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': 'Unisci livelli visibili',
   'imageeditor.menu.flatten_image': 'Appiattisci immagine',
   'imageeditor.menu.all': 'Tutto',
   'imageeditor.menu.deselect': 'Deseleziona',
   'imageeditor.menu.inverse': 'Inverti',
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': 'Trasparenza del livello',
   'imageeditor.menu.subject': 'Soggetto',
   'imageeditor.menu.color_range_foreground': 'Intervallo colori (primo piano)…',

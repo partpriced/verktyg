@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('en', {
   'imageeditor.ctx.create_clip': 'Create Clipping Mask',
   'imageeditor.ctx.hide_layer': 'Hide Layer',
   'imageeditor.ctx.show_layer': 'Show Layer',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',
+  'imageeditor.ctx.show_layers': 'Show Layers',
   'imageeditor.ctx.expand_panel': 'Expand Panel',
   'imageeditor.ctx.collapse_panel': 'Collapse Panel',
   'imageeditor.ctx.load_selection': 'Load Selection',

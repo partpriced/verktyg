@@ -42,6 +42,8 @@ window.TlbxI18n && window.TlbxI18n.add('zh-TW', {
   'imageeditor.ctx.create_clip': '建立剪裁遮罩',
   'imageeditor.ctx.hide_layer': '隱藏圖層',
   'imageeditor.ctx.show_layer': '顯示圖層',
+  'imageeditor.ctx.hide_layers': 'Hide Layers',   // English until translated (multi-layer selection)
+  'imageeditor.ctx.show_layers': 'Show Layers',   // English until translated (multi-layer selection)
   'imageeditor.ctx.expand_panel': '展開面板',
   'imageeditor.ctx.collapse_panel': '收合面板',
   'imageeditor.ctx.load_selection': '載入選取範圍',

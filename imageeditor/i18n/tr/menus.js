@@ -54,8 +54,10 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'imageeditor.menu.trim_transparent_pixels': "Saydam pikselleri kırp",
   'imageeditor.menu.new_layer': "Yeni katman",
   'imageeditor.menu.duplicate_layer': "Katmanı çoğalt",
+  'imageeditor.menu.duplicate_layers': 'Duplicate Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.delete': "Sil",
   'imageeditor.menu.delete_layer': "Katmanı sil",
+  'imageeditor.menu.delete_layers': 'Delete Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.remove_all_layers': "Tüm katmanları kaldır",
   'imageeditor.menu.layer_properties': "Katman özellikleri…",
   'imageeditor.menu.layer_via_copy': "Kopyadan katman",
@@ -85,11 +87,13 @@ window.TlbxI18n && window.TlbxI18n.add('tr', {
   'imageeditor.menu.send_to_back': "En arkaya gönder",
   'imageeditor.menu.lock_unlock_layer': "Katmanı kilitle / kilidini aç",
   'imageeditor.menu.merge_down': "Altıyla birleştir",
+  'imageeditor.menu.merge_layers': 'Merge Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.merge_visible': "Görünenleri birleştir",
   'imageeditor.menu.flatten_image': "Resmi düzleştir",
   'imageeditor.menu.all': "Tümü",
   'imageeditor.menu.deselect': "Seçimi kaldır",
   'imageeditor.menu.inverse': "Ters",
+  'imageeditor.menu.all_layers': 'All Layers',   // English until translated (multi-layer selection)
   'imageeditor.menu.layer_transparency': "Katman saydamlığı",
   'imageeditor.menu.subject': "Konu",
   'imageeditor.menu.color_range_foreground': "Renk aralığı (ön plan)…",
