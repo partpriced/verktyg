@@ -12,6 +12,7 @@
   const V = (window.TlbxFmpView = window.TlbxFmpView || {});
   const BASE = (document.currentScript && document.currentScript.src ? document.currentScript.src : '').replace(/[^/]*$/, '');
   V.READER = V.READER || ['scsu.js', 'charset.js', 'sectors.js', 'chunks.js', 'chunks7.js', 'values.js', 'reader.js', 'xml.js', 'export.js', 'fmp.js']; // shared/fmp/HANDOFF.md
+  V.PATTERNS = ['../patterns/patterns.js', '../patterns/patterns-kinds.js']; // shared/patterns: the kinds of text the find list offers (IP addresses, keys...)
   V.PARTS = ['view-util.js', 'view-error.js', 'view-grid.js', 'view-find.js', 'view-export.js', 'view.js'];
   // the two words this file shows before view-util.js is in (the rest are in view-util.js, which merges into the same table)
   V.EN = Object.assign(V.EN || {}, { 'ui.fmp.opening': 'Opening the database…', 'ui.fmp.load_failed': 'The database viewer could not be loaded.' }); // i18n-ignore: the English of the keys
@@ -33,7 +34,7 @@
   let loading = null;
   V.load = function () {
     if (loading) return loading;
-    const need = [...(window.TlbxFmp ? [] : V.READER), ...(V.mount && V.mountError && V.grid && V.finder && V.exporter ? [] : V.PARTS)];
+    const need = [...(window.TlbxPatterns ? [] : V.PATTERNS), ...(window.TlbxFmp ? [] : V.READER), ...(V.mount && V.mountError && V.grid && V.finder && V.exporter ? [] : V.PARTS)];
     loading = need.reduce((p, f) => p.then(() => script(new URL(f, BASE).href)), Promise.resolve()).then(() => {
       if (!window.TlbxFmp || !window.TlbxFmp.open) throw new Error('TlbxFmp is not loaded');
     }, (e) => { loading = null; throw e; });
