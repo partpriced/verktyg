@@ -263,4 +263,7 @@ window.TlbxI18n && window.TlbxI18n.add('de', {
   'pdf.ed.an_signature': 'Unterschrift',
   'pdf.ed.an_stamp': 'Stempel',
   'pdf.ed.an_annotation': 'Anmerkung',
+
+  // editor/edit-text.js, editor/para-xform.js: old text that could not be taken off the page
+  'pdf.ed.cover_note': 'The old text can’t be taken out of this page; it’s hidden under a cover.', // English until translated (cover guard)
 });
