@@ -246,5 +246,5 @@ window.TlbxI18n && window.TlbxI18n.add('pl', {
   'pdf.ed.an_annotation': 'adnotacja',
 
   // editor/edit-text.js, editor/para-xform.js: old text that could not be taken off the page
-  'pdf.ed.cover_note': 'The old text can’t be taken out of this page; it’s hidden under a cover.', // English until translated (cover guard)
+  'pdf.ed.cover_note': 'Starego tekstu nie da się usunąć z tej strony; jest ukryty pod osłoną.',
 });
